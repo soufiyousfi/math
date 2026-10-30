@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>الواجب المنزلي التفاعلي | الرابعة متوسط</title>
+<style>
+:root{--site-primary:#1d4ed8;--site-on-primary:#ffffff;--site-secondary:#0f766e;--site-on-secondary:#ffffff;--site-background:#f1f5f9;--site-on-background:#172033;--site-font-body:"Tahoma","Arial",sans-serif;--site-font-heading:"Tahoma","Arial",sans-serif;--site-heading-scale:1;--site-spacing-scale:1;--site-radius-scale:1;--site-decoration-opacity:1;--surface:light-dark(#ffffff,#182235);--surface2:light-dark(#eff6ff,#202e44);--text:light-dark(#172033,#f1f5f9);--muted:light-dark(#64748b,#bdc8d8);--border:light-dark(#dbe3ef,#39485f);--good:light-dark(#166534,#86efac);--goodbg:light-dark(#dcfce7,#163b2a);--bad:light-dark(#92400e,#fcd34d);--badbg:light-dark(#fef3c7,#493719)}
+*{box-sizing:border-box}body{margin:0;background-color:var(--site-background);color:var(--site-on-background);font-family:var(--site-font-body);line-height:1.8}.app{min-height:100vh;background-color:var(--site-background);color:var(--site-on-background)}header{background:linear-gradient(120deg,var(--site-primary),var(--site-secondary));color:white;text-align:center;padding:26px 16px;border-bottom:4px solid #fbbf24}header h1{font-size:calc(1.6rem * var(--site-heading-scale));margin:4px 0;color:#fef08a}header p{margin:0;opacity:.9}.sub{font-size:.95rem}.wrap{max-width:880px;margin:auto;padding:0 16px 40px}.scorebar{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:12px 16px;margin:0 auto 20px;background:var(--surface);color:var(--text);border:1px solid var(--border);border-top:0;border-radius:0 0 14px 14px;box-shadow:0 3px 12px #00000012}.score{background:var(--site-primary);color:white;border-radius:22px;padding:3px 14px;font-weight:bold;white-space:nowrap}.progress{height:6px;background:var(--border);border-radius:10px;overflow:hidden;flex-basis:100%}.progress span{display:block;height:100%;width:0;background:#22c55e;transition:width .25s}.card{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:calc(16px * var(--site-radius-scale));padding:calc(22px * var(--site-spacing-scale));margin-bottom:22px;box-shadow:0 4px 14px #00000008}.cardhead{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--surface2);padding:10px 14px;border-right:4px solid var(--site-primary);border-radius:10px;margin-bottom:18px}.cardhead h2{font-size:calc(1.2rem * var(--site-heading-scale));color:var(--site-primary);margin:0}.pts{font-size:.85rem;color:var(--site-primary);background:var(--surface);border:1px solid var(--border);padding:1px 10px;border-radius:20px;white-space:nowrap}.intro{background:var(--surface2);padding:12px;border-radius:10px;margin-bottom:16px}.question{border:1px solid var(--border);border-radius:12px;padding:15px;margin-bottom:14px}.question:last-child{margin-bottom:0}.qtitle{font-weight:bold;margin-bottom:10px}.row{display:flex;flex-wrap:wrap;gap:9px;align-items:center}input,select{max-width:100%;min-width:100px;padding:9px 11px;border:2px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font:inherit;font-weight:bold}input[type=text]{direction:ltr;text-align:center;width:180px}select{direction:rtl}.btn{border:0;border-radius:9px;padding:9px 17px;background:var(--site-primary);color:white;font:inherit;font-weight:bold;cursor:pointer}.btn:hover{filter:brightness(1.1)}.btn.secondary{background:var(--site-secondary)}.feedback{display:none;margin-top:10px;padding:9px 12px;border-radius:8px;font-weight:bold}.feedback.success{display:block;background:var(--goodbg);color:var(--good)}.feedback.hint{display:block;background:var(--badbg);color:var(--bad)}.solution{display:none;margin-top:10px;padding:12px;background:var(--surface2);border-right:4px solid var(--site-secondary);border-radius:8px}.solution{line-height:2}.solution h4{margin:0 0 5px;color:var(--site-secondary)}.math{direction:ltr;unicode-bidi:isolate;display:inline-block;background:var(--surface2);padding:0 5px;border-radius:4px;font-family:monospace}.footer{text-align:center;color:var(--muted);font-size:.9rem;padding:8px 0 22px}.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:20px 0}.tiny{font-size:.9rem;color:var(--muted)}.scale{margin-top:10px}.scale table{width:100%;border-collapse:collapse;font-size:.92rem}.scale td{border:1px solid var(--border);padding:4px 8px}bdi{white-space:nowrap}.scale td.n{width:70px;text-align:center;white-space:nowrap;font-weight:bold}.keys{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.keys button{border:1px solid var(--border);border-radius:7px;background:var(--surface2);color:var(--text);min-width:40px;padding:2px 8px;font:inherit;font-size:1.05rem;cursor:pointer;direction:ltr}@media(max-width:560px){header h1{font-size:1.3rem}.card{padding:14px}.scorebar{font-size:.92rem}.row input[type=text]{flex:1;width:120px}.cardhead h2{font-size:1.05rem}}
+</style>
+</head>
+<body>
+<div class="app">
+<header><div class="sub">الجمهورية الجزائرية الديمقراطية الشعبية وزارة التربية الوطنية متوسطة العربي بن مهيدي — الأستاذ: يوسفي السوفي</div><h1>الواجب المنزلي التفاعلي</h1><p>السنة الرابعة متوسط · المقطع الأول</p></header>
+<div class="wrap">
+<div class="scorebar"><strong>النتيجة</strong><span class="score" id="score">0 / 20</span><span id="progressText" class="tiny">أجب عن الأسئلة للبدء</span><div class="progress"><span id="progressFill"></span></div></div>
+<main id="quiz">
+<section class="card"><div class="cardhead"><h2>التمرين الأول</h2><span class="pts">6 نقاط</span></div>
+<div class="question" data-id="q1" data-points="2"><div class="qtitle">(1) هل العددان 1428 و630 أوليان فيما بينهما؟ علّل.</div><div class="row"><select id="a1"><option value="">-- اختر الإجابة --</option><option value="yes">نعم، أوليان</option><option value="no">لا، ليسا أوليين</option></select><button class="btn" onclick="check('q1',document.getElementById('a1').value==='no','ابحث عن قاسم مشترك للعددين يختلف عن 1: انظر إلى رقم آحاد كل منهما.')">تحقق</button></div><div class="feedback"></div><div class="solution"><h4>الإجابة النموذجية</h4>• العدد 1428 زوجي لأن رقم آحاده 8، إذن يقبل القسمة على 2: <span class="math">1428 = 2 × 714</span><br>• العدد 630 زوجي لأن رقم آحاده 0، إذن يقبل القسمة على 2: <span class="math">630 = 2 × 315</span><br>• إذن العدد 2 قاسم مشترك للعددين 1428 و 630، وهو يختلف عن 1.<br><b>النتيجة:</b> العددان 1428 و 630 ليسا أوليين فيما بينهما.</div></div>
+<div class="question" data-id="q2" data-points="2"><div class="qtitle">(2) احسب <span class="math">PGCD(1428 ; 630)</span> باستعمال خوارزمية إقليدس.</div><div class="row"><input id="a2" type="text" placeholder="القاسم الأكبر"><button class="btn" onclick="check('q2',norm(document.getElementById('a2').value)==='42','تابع القسمة الإقليدية حتى تصل إلى باقٍ معدوم؛ آخر باقٍ غير معدوم هو القاسم المطلوب.')">تحقق</button></div><div class="feedback"></div><div class="solution"><h4>الإجابة النموذجية</h4>نطبّق خوارزمية إقليدس: نقسم العدد الأكبر على الأصغر، ثم نقسم القاسم على الباقي، حتى نحصل على باقٍ معدوم.<br>• القسمة الأولى: <span class="math">1428 = 630 × 2 + 168</span> (الباقي 168)<br>• القسمة الثانية: <span class="math">630 = 168 × 3 + 126</span> (الباقي 126)<br>• القسمة الثالثة: <span class="math">168 = 126 × 1 + 42</span> (الباقي 42)<br>• القسمة الرابعة: <span class="math">126 = 42 × 3 + 0</span> (الباقي معدوم)<br>آخر باقٍ غير معدوم هو 42.<br><b>النتيجة:</b> <span class="math">PGCD(1428 ; 630) = 42</span></div></div>
+<div class="question" data-id="q3" data-points="2"><div class="qtitle">(3) اختزل الكسر <span class="math">630/1428</span> إلى أبسط شكل.</div><div class="row"><input id="a3" type="text" placeholder="مثال: 3/7"><button class="btn" onclick="check('q3',norm(document.getElementById('a3').value)==='15/34','اقسم البسط والمقام على القاسم المشترك الأكبر 42.')">تحقق</button></div><div class="feedback"></div><div class="solution"><h4>الإجابة النموذجية</h4>• نعلم من السؤال (2) أن <span class="math">PGCD(1428 ; 630) = 42</span>.<br>• نقسم البسط على 42: <span class="math">630 ÷ 42 = 15</span><br>• نقسم المقام على 42: <span class="math">1428 ÷ 42 = 34</span><br>• إذن: <span class="math">630/1428 = (630÷42)/(1428÷42)</span><br>• الكسر 15/34 غير قابل للاختزال لأننا قسمنا على القاسم المشترك الأكبر.<br><b>النتيجة:</b> <span class="math">630/1428 = 15/34</span></div></div>
+</section>
+<section class="card"><div class="cardhead"><h2>التمرين الثاني</h2><span class="pts">6 نقاط</span></div><div class="intro">لتكن: <span class="math">A = √54 − √24 + 2√150</span>، <span class="math">B = 2√5 × √20</span>، <span class="math">C = 15/√5</span>.</div>
+<div class="question" data-id="q4" data-points="1.5"><div class="qtitle">(1) اكتب A على الشكل <span class="math">a√6</span>. اكتب قيمة a أو العبارة.</div><div class="row"><input id="a4" type="text" placeholder="قيمة a أو A"><button class="btn" onclick="check('q4',['11','11√6','11*√6'].includes(norm(document.getElementById('a4').value)),'بسّط الجذور: √54 = 3√6، و√24 = 2√6، و√150 = 5√6.')">تحقق</button></div><div class="feedback"></div><div class="solution"><h4>الإجابة النموذجية</h4>• نبسّط كل جذر:<br><span class="math">√54 = √(9 × 6) = 3√6</span><br><span class="math">√24 = √(4 × 6) = 2√6</span><br><span class="math">√150 = √(25 × 6) = 5√6</span><br>• نعوّض في A:<br><span class="math">A = 3√6 − 2√6 + 2 × 5√6</span><br><span class="math">A = 3√6 − 2√6 + 10√6</span><br><span class="math">A = (3 − 2 + 10)√6</span><br><b>النتيجة:</b> <span class="math">A = 11√6</span> ، أي <span class="math">a = 11</span></div></div>
+<div class="question" data-id="q5" data-points="1.5"><div class="qtitle">(2) بيّن أن B عدد طبيعي.</div><div class="row"><input id="a5" type="text" placeholder="قيمة B"><button class="btn" onclick="check('q5',norm(document.getElementById('a5').value)==='20','استعمل √5 × √20 = √100، ثم احسب.')">تحقق</button></div><div class="feedback"></div><div class="solution"><h4>الإجابة النموذجية</h4>• نستعمل الخاصية <span class="math">√a × √b = √(a × b)</span>:<br><span class="math">B = 2√5 × √20 = 2√(5 × 20)</span><br><span class="math">B = 2√100</span><br><span class="math">B = 2 × 10</span><br><span class="math">B = 20</span><br><b>النتيجة:</b> B = 20 وهو عدد طبيعي.</div></div>
+<div class="question" data-id="q6" data-points="1.5"><div class="qtitle">(3) اكتب C على شكل نسبة مقامها عدد ناطق.</div><div class="row"><input id="a6" type="text" placeholder="العبارة المبسطة"><button class="btn" onclick="check('q6',['3√5','3*√5'].includes(norm(document.getElementById('a6').value)),'اضرب البسط والمقام في √5 لإزالة الجذر من المقام.')">تحقق</button></div><div class="feedback"></div><div class="solution"><h4>الإجابة النموذجية</h4>• لكي يصبح المقام عددا ناطقا نضرب البسط والمقام في √5:<br><span class="math">C = 15/√5 = (15 × √5)/(√5 × √5)</span><br>• نعلم أن <span class="math">√5 × √5 = 5</span> ، إذن:<br><span class="math">C = 15√5/5</span><br>• نبسّط: <span class="math">15 ÷ 5 = 3</span><br><b>النتيجة:</b> <span class="math">C = 3√5</span></div></div>
+<div class="question" data-id="q7" data-points="1.5"><div class="qtitle">(4) حل المعادلة <span class="math">x² = 45</span>.</div><div class="row"><input id="a7" type="text" placeholder="الحلان"><button class="btn" onclick="check('q7',validRoots(document.getElementById('a7').value),'تذكّر أن للمعادلة حلين متعاكسين، لأن مربع العدد الموجب أو السالب قد يساوي 45.')">تحقق</button></div><div class="feedback"></div><div class="solution"><h4>الإجابة النموذجية</h4>• العدد 45 موجب، إذن للمعادلة <span class="math">x² = 45</span> حلان متعاكسان:<br><span class="math">x = √45</span> أو <span class="math">x = −√45</span><br>• نبسّط الجذر: <span class="math">√45 = √(9 × 5) = 3√5</span><br><b>النتيجة:</b> للمعادلة حلان: <span class="math">x = 3√5</span> أو <span class="math">x = −3√5</span></div></div>
+</section>
+<section class="card"><div class="cardhead"><h2>التمرين الثالث — الوضعية الإدماجية</h2><span class="pts">8 نقاط</span></div><div class="intro">توجد 312 كيسا من السميد و 234 قارورة من الزيت يراد توزيعها بالتساوي على أكبر عدد ممكن من العائلات. أرضية مخزن مربعة مساحتها <span class="math">162 m²</span>، ويراد إحاطتها بإطار ثمن المتر الواحد منه <span class="math">200 DA</span>، والمبلغ المتوفر <span class="math">10000 DA</span>. خذ <span class="math">√2 ≈ 1,414</span>.</div>
+<div class="question" data-id="q8" data-points="4"><div class="qtitle">(1) ما أكبر عدد من العائلات؟ وماذا تأخذ كل عائلة؟</div><div class="row"><input id="a8f" type="text" placeholder="عدد العائلات"><input id="a8s" type="text" placeholder="أكياس السميد"><input id="a8o" type="text" placeholder="قوارير الزيت"><button class="btn" onclick="check('q8',norm(document.getElementById('a8f').value)==='78'&&norm(document.getElementById('a8s').value)==='4'&&norm(document.getElementById('a8o').value)==='3','احسب PGCD(312 ; 234)، ثم اقسم كل كمية على عدد العائلات.')">تحقق</button></div><div class="feedback"></div><div class="solution"><h4>الإجابة النموذجية</h4>• عدد العائلات يقسم 312 و 234 معا، وأكبر عدد ممكن هو <span class="math">PGCD(312 ; 234)</span>.<br>• خوارزمية إقليدس:<br><span class="math">312 = 234 × 1 + 78</span><br><span class="math">234 = 78 × 3 + 0</span><br>آخر باقٍ غير معدوم هو 78، إذن <span class="math">PGCD(312 ; 234) = 78</span>.<br>• أكبر عدد من العائلات: 78 عائلة.<br>• نصيب كل عائلة من السميد: <span class="math">312 ÷ 78 = 4</span> أكياس.<br>• نصيب كل عائلة من الزيت: <span class="math">234 ÷ 78 = 3</span> قوارير.<br><b>النتيجة:</b> 78 عائلة، تأخذ كل عائلة 4 أكياس سميد و 3 قوارير زيت.</div></div>
+<div class="question" data-id="q9" data-points="4"><div class="qtitle">(2) هل يكفي المبلغ لتركيب الإطار؟ برّر بحساب التكلفة.</div><div class="row"><select id="a9d"><option value="">القرار</option><option value="yes">نعم، يكفي</option><option value="no">لا يكفي</option></select><input id="a9c" type="text" placeholder="التكلفة بالدينار"><button class="btn" onclick="check('q9',document.getElementById('a9d').value==='no'&&Math.abs(parseFloat(norm(document.getElementById('a9c').value).replace(',','.'))-10180.8)<=2,'احسب ضلع المربع √162 = 9√2، ثم المحيط 36√2، واضربه في 200 DA للمتر.')">تحقق</button></div><div class="feedback"></div><div class="solution"><h4>الإجابة النموذجية</h4>• طول ضلع المربع c هو العدد الموجب الذي مربعه 162:<br><span class="math">c = √162 = √(81 × 2)</span><br><span class="math">c = 9√2 m</span><br>• محيط الأرضية (طول الإطار):<br><span class="math">P = 4 × c = 4 × 9√2 = 36√2 m</span><br>• تكلفة الإطار:<br><span class="math">36√2 × 200 = 7200√2 DA</span><br><span class="math">7200√2 ≈ 7200 × 1,414</span><br><span class="math">7200√2 ≈ 10180,8 DA</span><br>• المقارنة: <span class="math">10180,8 DA > 10000 DA</span><br><b>النتيجة:</b> المبلغ المتوفر لا يكفي، وينقص <span class="math">10180,8 − 10000 = 180,8 DA</span>.</div></div>
+</section>
+<div class="actions"><button class="btn secondary" onclick="showAll()">إظهار جميع الحلول</button><button class="btn" onclick="resetQuiz()">إعادة المحاولة</button></div>
+</main><div class="footer">بالتوفيق والنجاح لجميع التلاميذ 🌟</div>
+</div>
+</div>
+<script>
+const solved={},tries={};let score=0;const total=9;
+function norm(s){return (s||'').toString().trim().toLowerCase().replace(/\s+/g,'').replace(/[×*]/g,'').replace(/[٫،]/g,'.').replace(/−/g,'-').replace(/√\s*/g,'√').replace(/,/g,'.')}
+function check(id,ok,hint){const q=document.querySelector('[data-id="'+id+'"]');const fb=q.querySelector('.feedback');if(solved[id]){fb.className='feedback success';fb.textContent='تم احتساب النقاط لهذا السؤال مسبقًا.';return}if(ok){solved[id]=true;score+=Number(q.dataset.points);fb.className='feedback success';fb.textContent='إجابة صحيحة! أحسنت، تم احتساب النقاط.';q.querySelector('.solution').style.display='block';document.getElementById('score').textContent=Number(score.toFixed(1))+' / 20';q.querySelectorAll('input,select,.btn,.keys button').forEach(e=>e.disabled=true);FX.good(q,tries[id]||0,fb);done()}else{tries[id]=(tries[id]||0)+1;if(tries[id]===1){fb.className='feedback hint';fb.textContent='ليست صحيحة بعد. التلميح الأول: '+hint;FX.bad(q)}else if(tries[id]===2){fb.className='feedback hint';fb.textContent='ليست صحيحة بعد. التلميح الثاني: '+HINT2[id];FX.bad(q)}else{solved[id]=true;fb.className='feedback hint';fb.textContent='انتهت المحاولات الثلاث. اقرأ الإجابة النموذجية وسلم التنقيط.';q.querySelector('.solution').style.display='block';q.querySelectorAll('input,select,.btn,.keys button').forEach(e=>e.disabled=true);FX.bad(q,true);done()}}}
+function validRoots(v){v=norm(v).replace(/[{}()x=+]/g,'');if(v==='±3√5')return true;const p=v.split(/[;.\/]|أو|و/).filter(Boolean);return p.length===2&&p.includes('3√5')&&p.includes('-3√5')}
+document.querySelectorAll('.question').forEach(q=>{const ins=q.querySelectorAll('input[type=text]');if(!ins.length)return;let last=ins[0];ins.forEach(i=>i.addEventListener('focus',()=>last=i));const k=document.createElement('div');k.className='keys';['√','²','±','−',';',',','/','×','⌫'].forEach(c=>{const b=document.createElement('button');b.type='button';b.textContent=c;b.addEventListener('mousedown',e=>e.preventDefault());b.addEventListener('click',()=>{const p=last.selectionStart??last.value.length,e=last.selectionEnd??p;if(c==='⌫'){const a=p===e?Math.max(p-1,0):p;last.value=last.value.slice(0,a)+last.value.slice(e);last.setSelectionRange(a,a)}else{last.value=last.value.slice(0,p)+c+last.value.slice(e);last.setSelectionRange(p+c.length,p+c.length)}last.focus()});k.appendChild(b)});q.querySelector('.row').after(k)});
+
+const HINT2={
+q1:'العددان زوجيان (آحادهما 8 و 0): هل يقبلان القسمة على 2؟',
+q2:'1428 = 630 × 2 + 168 ، ثم 630 = 168 × 3 + 126 ، تابع حتى تصل إلى باقٍ معدوم.',
+q3:'630 ÷ 42 = 15 ، احسب 1428 ÷ 42.',
+q4:'A = 3√6 − 2√6 + 2 × 5√6',
+q5:'B = 2√(5 × 20) = 2√100 ، و √100 = 10.',
+q6:'√5 × √5 = 5 ، إذن C = 15√5 / 5.',
+q7:'√45 = √(9 × 5) = 3√5 ، ولا تنس الحل السالب.',
+q8:'312 = 234 × 1 + 78 ، ثم 234 = 78 × 3 + 0.',
+q9:'المحيط 36√2 m ، والتكلفة 36√2 × 200 = 7200√2 ≈ 7200 × 1,414.'};
+const SCALE={
+q1:['الجواب: ليسا أوليين فيما بينهما|1','التعليل: 2 قاسم مشترك يختلف عن 1|1'],
+q2:['القسمات الإقليدية الأربع (0,25 لكل قسمة)|1','<bdi dir="ltr">PGCD(1428 ; 630) = 42</bdi>|1'],
+q3:['قسمة البسط والمقام على 42|1','الكسر غير القابل للاختزال <bdi dir="ltr">15/34</bdi>|1'],
+q4:['تبسيط الجذور الثلاثة (0,25 لكل جذر)|0,75','<bdi dir="ltr">A = 11√6</bdi>|0,75'],
+q5:['<bdi dir="ltr">√5 × √20 = √100</bdi>|0,75','<bdi dir="ltr">B = 20</bdi> عدد طبيعي|0,75'],
+q6:['ضرب البسط والمقام في <bdi dir="ltr">√5</bdi>|0,75','<bdi dir="ltr">C = 3√5</bdi>|0,75'],
+q7:['<bdi dir="ltr">x = √45</bdi> أو <bdi dir="ltr">x = −√45</bdi>|0,75','تبسيط الحلين: <bdi dir="ltr">3√5 و −3√5</bdi>|0,75'],
+q8:['<bdi dir="ltr">PGCD(312 ; 234) = 78</bdi> بالخوارزمية: 78 عائلة|2','4 أكياس سميد لكل عائلة|1','3 قوارير زيت لكل عائلة|1'],
+q9:['طول الضلع <bdi dir="ltr">√162 = 9√2 m</bdi>|1','المحيط <bdi dir="ltr">36√2 m</bdi>|1','التكلفة <bdi dir="ltr">7200√2 ≈ 10180,8 DA</bdi>|1','القرار: المبلغ لا يكفي لأن <bdi dir="ltr">10180,8 > 10000</bdi>|1']};
+Object.entries(SCALE).forEach(([id,rows])=>{const sol=document.querySelector('[data-id="'+id+'"] .solution');const d=document.createElement('div');d.className='scale';d.innerHTML='<h4>سلم التنقيط</h4><table>'+rows.map(r=>{const[t,n]=r.split('|');return '<tr><td>'+t+'</td><td class="n">'+n+' ن</td></tr>'}).join('')+'</table>';sol.appendChild(d)});
+function done(){const n=Object.keys(solved).length;if(n===total)setTimeout(()=>FX.final(score,20),900);document.getElementById('progressText').textContent=n+' من '+total+' أسئلة منجزة';document.getElementById('progressFill').style.width=(n/total*100)+'%'}
+function showAll(){document.querySelectorAll('.solution').forEach(e=>e.style.display='block')}
+function resetQuiz(){score=0;FX.reset();Object.keys(tries).forEach(k=>delete tries[k]);document.querySelectorAll('#quiz input,#quiz select,#quiz .btn,#quiz .keys button').forEach(e=>e.disabled=false);Object.keys(solved).forEach(k=>delete solved[k]);document.querySelectorAll('input').forEach(e=>e.value='');document.querySelectorAll('select').forEach(e=>e.selectedIndex=0);document.querySelectorAll('.feedback').forEach(e=>{e.className='feedback';e.textContent=''});document.querySelectorAll('.solution').forEach(e=>e.style.display='none');document.getElementById('score').textContent='0 / 20';document.getElementById('progressText').textContent='أجب عن الأسئلة للبدء';document.getElementById('progressFill').style.width='0%';window.scrollTo({top:0,behavior:'smooth'})}
+</script>
+<!-- FX: نجوم ورسائل تحفيزية -->
+<style>
+.fx-star{position:fixed;z-index:50;font-size:1.6rem;pointer-events:none;animation:fxfly .9s ease-out forwards}
+@keyframes fxfly{from{transform:translate(0,0) scale(.4);opacity:1}to{transform:translate(var(--dx),var(--dy)) scale(1.2) rotate(200deg);opacity:0}}
+.fx-shake{animation:fxshake .45s}
+@keyframes fxshake{20%,60%{transform:translateX(-7px)}40%,80%{transform:translateX(7px)}}
+.fx-pop{animation:fxpop .5s}
+@keyframes fxpop{50%{transform:scale(1.04)}}
+.fx-toast{position:fixed;left:50%;top:84px;transform:translateX(-50%);z-index:60;background:#fff;color:#172033;border-radius:30px;padding:10px 22px;font-weight:bold;box-shadow:0 6px 24px #0003;animation:fxtoast 2.2s forwards;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
+.fx-toast.good{border:3px solid #22c55e}.fx-toast.bad{border:3px solid #f59e0b}
+@keyframes fxtoast{0%{opacity:0;top:60px}12%{opacity:1;top:84px}80%{opacity:1}100%{opacity:0}}
+.fx-stars{font-size:1.15rem;letter-spacing:2px;margin-inline-start:6px}
+.fx-total{background:#fbbf24;color:#172033;border-radius:22px;padding:3px 12px;font-weight:bold;white-space:nowrap}
+.fx-sound{background:none;border:0;font-size:1.2rem;cursor:pointer;padding:0 4px}
+.fx-over{position:fixed;inset:0;z-index:70;background:#0008;display:flex;align-items:center;justify-content:center;padding:16px}
+.fx-card{background:#fff;color:#172033;border-radius:18px;padding:24px 20px;max-width:380px;width:100%;text-align:center;animation:fxpop .6s}
+.fx-card .big{font-size:2.6rem;margin:6px 0}
+.fx-card button{margin-top:12px;border:0;border-radius:9px;padding:9px 20px;background:#1d4ed8;color:#fff;font:inherit;font-weight:bold;cursor:pointer}
+</style>
+<script>
+const FX = (() => {
+  const PRAISE = ["ممتاز!", "أحسنت!", "رائع، واصل هكذا!", "عمل متقن!", "بارك الله فيك!", "إجابة ذكية!"];
+  const RETRY = ["لا بأس، حاول مرة أخرى 💪", "اقتربت! اقرأ التلميح وأعد المحاولة", "الخطأ طريق التعلّم، جرّب ثانية 🌱", "أنت قادر على ذلك، ركّز قليلا!"];
+  const LOST = "لا تحزن 🌱 اقرأ الإجابة النموذجية جيدا، وستنجح في السؤال القادم";
+  const pick = a => a[Math.floor(Math.random() * a.length)];
+  let stars = 0, sound = true, finished = false, actx = null;
+  try { sound = localStorage.getItem("fx-sound") !== "0"; } catch (e) {}
+
+  function tone(freqs){
+    if (!sound) return;
+    try {
+      actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+      freqs.forEach((f, i) => {
+        const o = actx.createOscillator(), g = actx.createGain(), t = actx.currentTime + i * .12;
+        o.frequency.value = f; o.type = "sine"; g.gain.setValueAtTime(.12, t); g.gain.exponentialRampToValueAtTime(.001, t + .25);
+        o.connect(g); g.connect(actx.destination); o.start(t); o.stop(t + .26);
+      });
+    } catch (e) {}
+  }
+  function toast(text, cls){
+    document.querySelectorAll(".fx-toast").forEach(e => e.remove());
+    const t = document.createElement("div"); t.className = "fx-toast " + cls; t.textContent = text;
+    document.body.appendChild(t); setTimeout(() => t.remove(), 2300);
+  }
+  function burst(el, n){
+    const r = el.getBoundingClientRect(), x = r.left + r.width / 2, y = Math.max(r.top, 0) + 30;
+    for (let i = 0; i < n; i++){
+      const s = document.createElement("span"); s.className = "fx-star"; s.textContent = i % 3 ? "⭐" : "✨";
+      const a = Math.random() * 2 * Math.PI, d = 70 + Math.random() * 90;
+      s.style.left = x + "px"; s.style.top = y + "px";
+      s.style.setProperty("--dx", Math.cos(a) * d + "px"); s.style.setProperty("--dy", Math.sin(a) * d - 40 + "px");
+      document.body.appendChild(s); setTimeout(() => s.remove(), 950);
+    }
+  }
+  function again(el, cls){ el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
+  function bar(){
+    const b = document.querySelector(".scorebar"); if (!b || document.getElementById("fxTotal")) return;
+    const t = document.createElement("span"); t.id = "fxTotal"; t.className = "fx-total"; t.textContent = "⭐ 0";
+    const m = document.createElement("button"); m.className = "fx-sound"; m.title = "الصوت"; m.textContent = sound ? "🔊" : "🔇";
+    m.onclick = () => { sound = !sound; m.textContent = sound ? "🔊" : "🔇"; try { localStorage.setItem("fx-sound", sound ? "1" : "0"); } catch (e) {} };
+    b.querySelector(".score").after(t, m);
+  }
+  function upd(){ const t = document.getElementById("fxTotal"); if (t) t.textContent = "⭐ " + stars; }
+  return {
+    /* tries = عدد الأخطاء قبل الجواب الصحيح: 0 → 3 نجوم، 1 → نجمتان، 2 → نجمة */
+    good(el, tries, fb){
+      const n = Math.max(3 - tries, 1); stars += n; upd(); bar();
+      if (fb) fb.insertAdjacentHTML("beforeend", ' <span class="fx-stars">' + "⭐".repeat(n) + "</span>");
+      burst(el, 6 + n * 3); again(el, "fx-pop"); toast(pick(PRAISE) + " " + "⭐".repeat(n), "good"); tone([523, 659, 784]);
+    },
+    bad(el, last){ again(el, "fx-shake"); toast(last ? LOST : pick(RETRY), "bad"); tone(last ? [330, 262] : [392, 330]); },
+    final(score, max){
+      if (finished) return; finished = true;
+      const p = score / max, msg = p >= .9 ? "أداء ممتاز! أنت نجم القسم 🏆" : p >= .7 ? "عمل جيد جدا! واصل التقدم 👏" : p >= .5 ? "عمل مقبول، راجع الأخطاء وستتحسن 💪" : "لا تستسلم! أعد التمارين وستنجح 🌱";
+      const o = document.createElement("div"); o.className = "fx-over";
+      o.innerHTML = `<div class="fx-card"><div class="big">${p >= .5 ? "🎉" : "💪"}</div><h2 style="margin:0">${msg}</h2>
+        <p>علامتك: <b>${String(Math.round(score * 100) / 100).replace(".", ",")} / ${max}</b><br>نجومك: <b>⭐ ${stars}</b></p><button>متابعة</button></div>`;
+      o.querySelector("button").onclick = () => o.remove(); o.onclick = e => { if (e.target === o) o.remove(); };
+      document.body.appendChild(o); if (p >= .5){ burst(o.querySelector(".fx-card"), 24); tone([523, 659, 784, 1047]); }
+    },
+    reset(){ stars = 0; finished = false; upd(); },
+    bar
+  };
+})();
+FX.bar();
+</script>
+</body></html>
