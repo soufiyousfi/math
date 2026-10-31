@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلسلة 20 تمرينا تفاعليا - السنة الأولى متوسط - المقطع الأول</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #0f766e;
+            --primary-light: #eff6ff;
+            --accent: #fbbf24;
+            --success: #15803d;
+            --success-bg: #dcfce7;
+            --warning: #b45309;
+            --warning-bg: #fef3c7;
+            --danger: #b91c1c;
+            --danger-bg: #fee2e2;
+            --dark: #0f172a;
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --border: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+        }
+
+        html, body {
+            background-color: var(--bg);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            width: 100%;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%);
+            color: #ffffff;
+            padding: 20px 12px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        header .school-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fef08a;
+            margin-bottom: 6px;
+        }
+
+        header h1 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 6px 0;
+            color: #ffffff;
+        }
+
+        header .sub-info {
+            font-size: 0.92rem;
+            opacity: 0.95;
+            background: rgba(255, 255, 255, 0.14);
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-top: 4px;
+        }
+
+        .sticky-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(6px);
+            border-bottom: 2px solid var(--border);
+            padding: 8px 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .sticky-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .stars-badge {
+            background: #fef3c7;
+            color: #b45309;
+            border: 1px solid #f59e0b;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .sound-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .progress-wrap {
+            flex: 1;
+            min-width: 110px;
+            max-width: 240px;
+            background: #e2e8f0;
+            height: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #0f766e, #15803d);
+            width: 0%;
+            height: 100%;
+            transition: width 0.35s ease;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 18px auto 0 auto;
+            padding: 0 10px;
+        }
+
+        .exercise-card {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 16px 14px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-light);
+            padding: 10px 12px;
+            border-radius: 10px;
+            border-right: 4px solid var(--primary);
+            margin-bottom: 12px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .card-header h2 {
+            font-size: 1.08rem;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .pts-badge {
+            background: #ffffff;
+            color: var(--primary);
+            border: 1px solid #bfdbfe;
+            padding: 3px 10px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .context-box {
+            background: #f8fafc;
+            border: 1px dashed #94a3b8;
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin-bottom: 14px;
+            font-size: 0.96rem;
+        }
+
+        .math {
+            direction: ltr;
+            unicode-bidi: isolate;
+            display: inline-block;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 700;
+            background: #e2e8f0;
+            padding: 1px 6px;
+            border-radius: 5px;
+            margin: 0 2px;
+            color: #0f172a;
+        }
+
+        .q-box {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 14px;
+            background: #ffffff;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .q-box.solved {
+            border-color: #86efac;
+            background: #f0fdf4;
+        }
+
+        .q-box.failed {
+            border-color: #fca5a5;
+            background: #fef2f2;
+        }
+
+        .q-title {
+            font-weight: 700;
+            font-size: 0.98rem;
+            margin-bottom: 10px;
+            color: #1e293b;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .q-meta {
+            font-size: 0.78rem;
+            background: #f1f5f9;
+            color: #475569;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .answer-area {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-line {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            min-width: 170px;
+            padding: 9px 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.98rem;
+            font-weight: 700;
+            direction: ltr;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary);
+        }
+
+        .sym-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .sym-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            color: #0f172a;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            direction: ltr;
+            unicode-bidi: isolate;
+            user-select: none;
+        }
+
+        .sym-btn:hover {
+            background: #cbd5e1;
+        }
+
+        .sym-btn:active {
+            transform: scale(0.96);
+        }
+
+        .btn-check {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .btn-check:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-check:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        @keyframes shakeField {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        .shake {
+            animation: shakeField 0.35s ease;
+            border-color: var(--danger) !important;
+        }
+
+        .feedback-box {
+            margin-top: 10px;
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            display: none;
+        }
+
+        .feedback-box.success {
+            display: block;
+            background: var(--success-bg);
+            color: var(--success);
+            border-right: 4px solid var(--success);
+        }
+
+        .feedback-box.hint {
+            display: block;
+            background: var(--warning-bg);
+            color: var(--warning);
+            border-right: 4px solid var(--warning);
+        }
+
+        .feedback-box.fail {
+            display: block;
+            background: var(--danger-bg);
+            color: var(--danger);
+            border-right: 4px solid var(--danger);
+        }
+
+        .model-solution {
+            margin-top: 12px;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-right: 4px solid var(--secondary);
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+            font-size: 0.93rem;
+        }
+
+        .model-solution h4 {
+            color: var(--secondary);
+            margin-bottom: 8px;
+            font-size: 0.98rem;
+        }
+
+        .sol-line {
+            padding: 3px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .sol-result {
+            margin-top: 6px;
+            font-weight: 800;
+            color: var(--primary);
+            background: #eff6ff;
+            padding: 5px 8px;
+            border-radius: 6px;
+        }
+
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.86rem;
+            background: #ffffff;
+        }
+
+        .rubric-table td .math { white-space: nowrap; }
+        .rubric-table th, .rubric-table td {
+            border: 1px solid #cbd5e1;
+            padding: 6px 8px;
+            text-align: right;
+        }
+
+        .rubric-table th {
+            background: #e2e8f0;
+            color: #1e293b;
+            font-weight: 800;
+        }
+
+        .star-burst {
+            display: inline-block;
+            animation: popStars 0.6s ease forwards;
+        }
+
+        @keyframes popStars {
+            0% { transform: scale(0.4); opacity: 0; }
+            60% { transform: scale(1.25); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.65);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 15px;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            max-width: 420px;
+            width: 100%;
+            border-radius: 16px;
+            padding: 24px 18px;
+            text-align: center;
+            border-top: 6px solid var(--accent);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .modal-score {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin: 10px 0;
+        }
+
+        .modal-stars {
+            font-size: 1.4rem;
+            color: #d97706;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .btn-close-modal {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 9px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        @media (max-width: 420px) {
+            header .school-title { font-size: 0.98rem; }
+            header h1 { font-size: 1.12rem; }
+            .input-line { flex-direction: column; }
+            input[type="text"], .btn-check { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="school-title">متوسطة العربي بن مهيدي — الأستاذ: يوسفي السوفي</div>
+        <h1>سلسلة 20 تمرينا تفاعليا في الرياضيات</h1>
+        <div class="sub-info">المستوى: السنة الأولى متوسط (1م) | المقطع الأول: الأعداد الطبيعية والأعداد العشرية</div>
+    </header>
+
+    <div class="sticky-bar">
+        <div class="sticky-inner">
+            <div class="stat-group">
+                <span class="score-badge">العلامة: <span class="math" id="scoreVal" style="background:transparent;color:#fff;padding:0;">0 / 20</span></span>
+                <span class="stars-badge">⭐ <span class="math" id="starsVal" style="background:transparent;color:#b45309;padding:0;">0</span></span>
+                <button type="button" class="sound-btn" id="soundToggle" onclick="toggleSound()" title="تشغيل/كتم الصوت">🔊</button>
+            </div>
+            <div class="progress-wrap" title="شريط التقدم">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="exercisesRoot"></div>
+
+    <div class="modal-overlay" id="finalModal">
+        <div class="modal-card">
+            <h3 id="finalTitle">🎉 أحسنت! أتممت جميع الأسئلة</h3>
+            <p>لقد أنهيت سلسلة المقطع الأول للسنة الأولى متوسط</p>
+            <div class="modal-score" id="finalScoreText">0 / 20</div>
+            <div class="modal-stars" id="finalStarsText">⭐ 0 نجمة</div>
+            <button type="button" class="btn-close-modal" onclick="document.getElementById('finalModal').style.display='none'">مراجعة إجاباتي</button>
+        </div>
+    </div>
+
+    <script>
+        let soundEnabled = true;
+        let totalScore = 0;
+        let totalStars = 0;
+        let completedQuestions = 0;
+        let totalQuestionsCount = 0;
+
+        const attemptsLeft = {};
+        const questionEarned = {};
+        const questionLocked = {};
+
+        const symbols1AM = ['+', '−', '×', '÷', ',', '/', '<', '>', '=', '⌫'];
+
+        function playTone(type) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'success') {
+                    osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+                    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.09);
+                    osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.18);
+                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.35);
+                } else {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, ctx.currentTime);
+                    osc.frequency.setValueAtTime(180, ctx.currentTime + 0.1);
+                    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.25);
+                }
+            } catch (e) {}
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            document.getElementById('soundToggle').innerText = soundEnabled ? '🔊' : '🔇';
+        }
+
+        const exercises = [
+ {
+  "id": 1,
+  "pts": 1,
+  "title": "التمرين 01: تمور بسكرة (المورد 1: جمع وطرح وضرب أعداد طبيعية — تمرين تطبيقي)",
+  "context": "جنى فلاح من بسكرة <span class=\"math\">2345 kg</span> من تمر دقلة نور، وباع منها <span class=\"math\">1870 kg</span>.",
+  "questions": [
+   {
+    "text": "1) ما كتلة التمر المتبقية عند الفلاح؟",
+    "exact": [
+     "475"
+    ],
+    "partial": [],
+    "h1": "المتبقي = الكمية الكلية − الكمية المبيعة.",
+    "h2": "اطرح العدد الأصغر من العدد الأكبر عموديا، وانتبه إلى الاستلاف.",
+    "steps": [
+     "<span class=\"math\">2345 − 1870 = 475</span>",
+     "النتيجة: <span class=\"math\">475 kg</span>"
+    ],
+    "rubric": [
+     {
+      "step": "كتابة العملية <span class=\"math\">2345 − 1870</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">475 kg</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "1-1"
+   },
+   {
+    "text": "2) باع الكيلوغرام الواحد بـ <span class=\"math\">450 DA</span>. ما ثمن التمر المبيع؟",
+    "exact": [
+     "841500"
+    ],
+    "partial": [],
+    "h1": "الثمن = الكتلة المبيعة × ثمن الكيلوغرام الواحد.",
+    "h2": "احسب <span class=\"math\">1870 × 45</span> ثم اضرب الناتج في <span class=\"math\">10</span>.",
+    "steps": [
+     "<span class=\"math\">1870 × 450</span>",
+     "<span class=\"math\">= 1870 × 45 × 10</span>",
+     "<span class=\"math\">1870 × 45 = 84150</span>",
+     "<span class=\"math\">84150 × 10 = 841500</span>",
+     "النتيجة: <span class=\"math\">841500 DA</span>"
+    ],
+    "rubric": [
+     {
+      "step": "كتابة العملية <span class=\"math\">1870 × 450</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">841500 DA</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "1-2"
+   }
+  ]
+ },
+ {
+  "id": 2,
+  "pts": 1,
+  "title": "التمرين 02: مبادلة الحصالة (المورد 1: جمع وطرح وضرب أعداد طبيعية — مستوحى من الكتاب ص 17 ت 2 (الأعداد معدلة))",
+  "context": "وجد أنس في حصالته <span class=\"math\">2385 DA</span> قطعا نقدية، فبادلها عند صاحب الدكان بأوراق نقدية من فئة <span class=\"math\">100 DA</span> فقط، وأبقى ما تبقى قطعا.",
+  "questions": [
+   {
+    "text": "1) ما عدد الأوراق النقدية التي يأخذها أنس؟",
+    "exact": [
+     "23"
+    ],
+    "partial": [
+     "23,85"
+    ],
+    "h1": "عدد أوراق <span class=\"math\">100 DA</span> هو عدد المئات الكاملة في <span class=\"math\">2385</span>.",
+    "h2": "اكتب <span class=\"math\">2385</span> على الشكل <span class=\"math\">... × 100 + ...</span>.",
+    "steps": [
+     "<span class=\"math\">2385 = 2300 + 85</span>",
+     "<span class=\"math\">2385 = 23 × 100 + 85</span>",
+     "النتيجة: <span class=\"math\">23</span> ورقة"
+    ],
+    "rubric": [
+     {
+      "step": "التفكيك <span class=\"math\">2385 = 23 × 100 + 85</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "عدد الأوراق <span class=\"math\">23</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "عدد الأوراق لا يكون عددا عشريا.",
+    "partialZero": true,
+    "qId": "2-1"
+   },
+   {
+    "text": "2) ما المبلغ الذي يبقى عنده قطعا نقدية؟",
+    "exact": [
+     "85"
+    ],
+    "partial": [],
+    "h1": "المبلغ الباقي هو ما لا يكفي لتكوين ورقة من <span class=\"math\">100 DA</span>.",
+    "h2": "استعمل التفكيك السابق: ما العدد الذي يبقى بعد المئات؟",
+    "steps": [
+     "<span class=\"math\">23 × 100 = 2300</span>",
+     "<span class=\"math\">2385 − 2300 = 85</span>",
+     "النتيجة: <span class=\"math\">85 DA</span>"
+    ],
+    "rubric": [
+     {
+      "step": "حساب <span class=\"math\">2385 − 2300</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">85 DA</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "2-2"
+   }
+  ]
+ },
+ {
+  "id": 3,
+  "pts": 1,
+  "title": "التمرين 03: رقم المئات وعدد المئات (المورد 1: جمع وطرح وضرب أعداد طبيعية — تمرين تطبيقي)",
+  "context": "نعتبر العدد الطبيعي <span class=\"math\">47382</span>.",
+  "questions": [
+   {
+    "text": "1) ما رقم المئات في هذا العدد؟",
+    "exact": [
+     "3"
+    ],
+    "partial": [
+     "473"
+    ],
+    "h1": "رقم المئات هو الرقم الثالث من اليمين.",
+    "h2": "ضع الأرقام في جدول المراتب: آحاد، عشرات، مئات، آلاف، عشرات الآلاف.",
+    "steps": [
+     "آحاد <span class=\"math\">2</span>، عشرات <span class=\"math\">8</span>، مئات <span class=\"math\">3</span>، آلاف <span class=\"math\">7</span>، عشرات الآلاف <span class=\"math\">4</span>",
+     "النتيجة: <span class=\"math\">3</span>"
+    ],
+    "rubric": [
+     {
+      "step": "تعيين خانة المئات والرقم <span class=\"math\">3</span>",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "هذا عدد المئات، والسؤال عن رقم المئات.",
+    "partialZero": true,
+    "qId": "3-1"
+   },
+   {
+    "text": "2) ما عدد المئات في هذا العدد؟",
+    "exact": [
+     "473"
+    ],
+    "partial": [
+     "3"
+    ],
+    "h1": "عدد المئات نقرؤه من خانة المئات إلى اليسار.",
+    "h2": "احذف رقمي العشرات والآحاد من العدد.",
+    "steps": [
+     "<span class=\"math\">47382 = 473 × 100 + 82</span>",
+     "النتيجة: <span class=\"math\">473</span>"
+    ],
+    "rubric": [
+     {
+      "step": "التفكيك <span class=\"math\">473 × 100 + 82</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">473</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "هذا رقم المئات، والسؤال عن عدد المئات.",
+    "partialZero": true,
+    "qId": "3-2"
+   }
+  ]
+ },
+ {
+  "id": 4,
+  "pts": 1,
+  "title": "التمرين 04: الحافلات المدرسية (المورد 1: جمع وطرح وضرب أعداد طبيعية — تمرين تطبيقي)",
+  "context": "خصصت بلدية <span class=\"math\">3</span> حافلات لنقل تلاميذ متوسطة، في كل حافلة <span class=\"math\">48</span> مقعدا. عدد التلاميذ <span class=\"math\">131</span> تلميذا.",
+  "questions": [
+   {
+    "text": "1) ما عدد المقاعد في الحافلات الثلاث؟",
+    "exact": [
+     "144"
+    ],
+    "partial": [],
+    "h1": "عدد المقاعد = عدد الحافلات × عدد مقاعد الحافلة.",
+    "h2": "احسب <span class=\"math\">3 × 48</span>.",
+    "steps": [
+     "<span class=\"math\">3 × 48 = 144</span>",
+     "النتيجة: <span class=\"math\">144</span> مقعدا"
+    ],
+    "rubric": [
+     {
+      "step": "العملية <span class=\"math\">3 × 48</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">144</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "4-1"
+   },
+   {
+    "text": "2) ما عدد المقاعد الشاغرة؟",
+    "exact": [
+     "13"
+    ],
+    "partial": [],
+    "h1": "المقاعد الشاغرة = عدد المقاعد − عدد التلاميذ.",
+    "h2": "اطرح <span class=\"math\">131</span> من عدد المقاعد الذي وجدته.",
+    "steps": [
+     "<span class=\"math\">144 − 131 = 13</span>",
+     "النتيجة: <span class=\"math\">13</span> مقعدا"
+    ],
+    "rubric": [
+     {
+      "step": "العملية <span class=\"math\">144 − 131</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">13</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "4-2"
+   }
+  ]
+ },
+ {
+  "id": 5,
+  "pts": 1,
+  "title": "التمرين 05: من الكسر العشري إلى الكتابة العشرية (المورد 2: الكتابة الكسرية والكتابة العشرية — تمرين تطبيقي)",
+  "context": "اكتب كل كسر عشري بالفاصلة.",
+  "questions": [
+   {
+    "text": "1) <span class=\"math\">3257/100</span>",
+    "exact": [
+     "32,57"
+    ],
+    "partial": [],
+    "h1": "عدد الأصفار في المقام يساوي عدد الأرقام بعد الفاصلة.",
+    "h2": "المقام <span class=\"math\">100</span> فيه صفران: ضع رقمين بعد الفاصلة.",
+    "steps": [
+     "المقام <span class=\"math\">100</span>: رقمان بعد الفاصلة",
+     "<span class=\"math\">3257/100 = 32,57</span>",
+     "النتيجة: <span class=\"math\">32,57</span>"
+    ],
+    "rubric": [
+     {
+      "step": "رقمان بعد الفاصلة",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">32,57</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "5-1"
+   },
+   {
+    "text": "2) <span class=\"math\">49/1000</span>",
+    "exact": [
+     "0,049"
+    ],
+    "partial": [],
+    "h1": "المقام <span class=\"math\">1000</span> فيه ثلاثة أصفار: ثلاثة أرقام بعد الفاصلة.",
+    "h2": "البسط فيه رقمان فقط: أكمل بصفر قبله لتحصل على ثلاثة أرقام بعد الفاصلة.",
+    "steps": [
+     "المقام <span class=\"math\">1000</span>: ثلاثة أرقام بعد الفاصلة",
+     "<span class=\"math\">49 = 049</span>",
+     "<span class=\"math\">49/1000 = 0,049</span>",
+     "النتيجة: <span class=\"math\">0,049</span>"
+    ],
+    "rubric": [
+     {
+      "step": "ثلاثة أرقام بعد الفاصلة",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">0,049</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "5-2"
+   }
+  ]
+ },
+ {
+  "id": 6,
+  "pts": 1,
+  "title": "التمرين 06: من الكتابة العشرية إلى الكسر العشري (المورد 2: الكتابة الكسرية والكتابة العشرية — تمرين تطبيقي)",
+  "context": "اكتب كل عدد على شكل كسر عشري.",
+  "questions": [
+   {
+    "text": "1) <span class=\"math\">7,8</span> (كسر عشري مقامه <span class=\"math\">10</span>)",
+    "exact": [
+     "78/10"
+    ],
+    "partial": [
+     "780/100"
+    ],
+    "h1": "رقم واحد بعد الفاصلة: المقام <span class=\"math\">10</span>.",
+    "h2": "اكتب العدد دون فاصلة في البسط.",
+    "steps": [
+     "رقم واحد بعد الفاصلة: المقام <span class=\"math\">10</span>",
+     "البسط: <span class=\"math\">78</span>",
+     "النتيجة: <span class=\"math\">78/10</span>"
+    ],
+    "rubric": [
+     {
+      "step": "المقام <span class=\"math\">10</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "البسط <span class=\"math\">78</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "الكسر صحيح القيمة، لكن المطلوب مقامه <span class=\"math\">10</span>.",
+    "qId": "6-1"
+   },
+   {
+    "text": "2) <span class=\"math\">0,305</span>",
+    "exact": [
+     "305/1000"
+    ],
+    "partial": [
+     "3050/10000"
+    ],
+    "h1": "كم رقما بعد الفاصلة؟ يحدد ذلك عدد أصفار المقام.",
+    "h2": "ثلاثة أرقام بعد الفاصلة: المقام <span class=\"math\">1000</span>.",
+    "steps": [
+     "ثلاثة أرقام بعد الفاصلة: المقام <span class=\"math\">1000</span>",
+     "البسط: <span class=\"math\">305</span>",
+     "النتيجة: <span class=\"math\">305/1000</span>"
+    ],
+    "rubric": [
+     {
+      "step": "المقام <span class=\"math\">1000</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "البسط <span class=\"math\">305</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "الكسر صحيح القيمة، لكن اختر أصغر مقام مناسب.",
+    "qId": "6-2"
+   }
+  ]
+ },
+ {
+  "id": 7,
+  "pts": 1,
+  "title": "التمرين 07: مجموع عدد طبيعي وكسور عشرية (المورد 2: الكتابة الكسرية والكتابة العشرية — مستوحى من الكتاب ص 17 ت 7 (الأعداد معدلة))",
+  "context": "الانتقال بين المجموع والكتابة العشرية.",
+  "questions": [
+   {
+    "text": "1) اكتب بالفاصلة: <span class=\"math\">6 + 4/10 + 9/100</span>",
+    "exact": [
+     "6,49"
+    ],
+    "partial": [
+     "649/100"
+    ],
+    "h1": "العدد الطبيعي هو الجزء الصحيح، ثم الأعشار ثم الأجزاء من مائة.",
+    "h2": "بعد الفاصلة: رقم الأعشار أولا ثم رقم الأجزاء من مائة.",
+    "steps": [
+     "<span class=\"math\">4/10 = 0,4</span>",
+     "<span class=\"math\">9/100 = 0,09</span>",
+     "<span class=\"math\">6 + 0,4 + 0,09 = 6,49</span>",
+     "النتيجة: <span class=\"math\">6,49</span>"
+    ],
+    "rubric": [
+     {
+      "step": "تحويل الكسرين",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">6,49</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "القيمة صحيحة، لكن المطلوب الكتابة بالفاصلة.",
+    "qId": "7-1"
+   },
+   {
+    "text": "2) اكتب <span class=\"math\">52/10</span> على شكل مجموع عدد طبيعي وكسر عشري أصغر من <span class=\"math\">1</span>.",
+    "exact": [
+     "5+2/10",
+     "2/10+5"
+    ],
+    "partial": [
+     "5,2",
+     "50/10+2/10"
+    ],
+    "h1": "فكك البسط إلى مضاعف لـ <span class=\"math\">10</span> وباق.",
+    "h2": "اكتب <span class=\"math\">52 = 50 + 2</span> ثم قسم كل حد على <span class=\"math\">10</span>.",
+    "steps": [
+     "<span class=\"math\">52/10 = (50 + 2)/10</span>",
+     "<span class=\"math\">= 50/10 + 2/10</span>",
+     "<span class=\"math\">= 5 + 2/10</span>",
+     "النتيجة: <span class=\"math\">5 + 2/10</span>"
+    ],
+    "rubric": [
+     {
+      "step": "التفكيك <span class=\"math\">50/10 + 2/10</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">5 + 2/10</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "القيمة صحيحة، لكن المطلوب: عدد طبيعي + كسر عشري أصغر من <span class=\"math\">1</span>.",
+    "qId": "7-2"
+   }
+  ]
+ },
+ {
+  "id": 8,
+  "pts": 1,
+  "title": "التمرين 08: المفكوك النموذجي (المورد 2: الكتابة الكسرية والكتابة العشرية — مستوحى من الكتاب ص 17 ت 12 (الأعداد معدلة))",
+  "context": "أعط الكتابة العشرية الموافقة للمفكوك:<br><span class=\"math\">3 × 100 + 7 × 1 + 2 × 0,1 + 5 × 0,001</span>",
+  "questions": [
+   {
+    "text": "ما الكتابة العشرية لهذا العدد؟",
+    "exact": [
+     "307,205"
+    ],
+    "partial": [],
+    "h1": "احسب الجزء الصحيح أولا، ثم الجزء العشري.",
+    "h2": "لا يوجد عشرات ولا أجزاء من مائة: ضع <span class=\"math\">0</span> في خانتيهما.",
+    "steps": [
+     "<span class=\"math\">3 × 100 + 7 × 1 = 300 + 7 = 307</span>",
+     "<span class=\"math\">2 × 0,1 = 0,2</span>",
+     "<span class=\"math\">5 × 0,001 = 0,005</span>",
+     "<span class=\"math\">0,2 + 0,005 = 0,205</span>",
+     "<span class=\"math\">307 + 0,205 = 307,205</span>",
+     "النتيجة: <span class=\"math\">307,205</span>"
+    ],
+    "rubric": [
+     {
+      "step": "الجزء الصحيح <span class=\"math\">307</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "الأعشار <span class=\"math\">0,2</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "الأجزاء من ألف وصفر الأجزاء من مائة",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">307,205</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 1,
+    "qId": "8-1"
+   }
+  ]
+ },
+ {
+  "id": 9,
+  "pts": 1,
+  "title": "التمرين 09: دلالة الأرقام في كتابة عشرية (المورد 2: الكتابة الكسرية والكتابة العشرية — تمرين تطبيقي)",
+  "context": "نعتبر العدد العشري <span class=\"math\">1806,247</span>.",
+  "questions": [
+   {
+    "text": "1) ما رقم الأجزاء من مائة؟",
+    "exact": [
+     "4"
+    ],
+    "partial": [],
+    "h1": "الأجزاء من مائة هي المرتبة الثانية بعد الفاصلة.",
+    "h2": "بعد الفاصلة: <span class=\"math\">2</span> أعشار، ثم الرقم الذي يليه.",
+    "steps": [
+     "بعد الفاصلة: أعشار <span class=\"math\">2</span>، أجزاء من مائة <span class=\"math\">4</span>، أجزاء من ألف <span class=\"math\">7</span>",
+     "النتيجة: <span class=\"math\">4</span>"
+    ],
+    "rubric": [
+     {
+      "step": "تعيين المرتبة والرقم <span class=\"math\">4</span>",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "9-1"
+   },
+   {
+    "text": "2) في المفكوك النموذجي، في أي عدد عشري يضرب الرقم <span class=\"math\">7</span>؟",
+    "exact": [
+     "0,001",
+     "1/1000"
+    ],
+    "partial": [],
+    "h1": "حدد مرتبة الرقم <span class=\"math\">7</span> بعد الفاصلة.",
+    "h2": "المرتبة الأولى بعد الفاصلة تقابل <span class=\"math\">0,1</span>، والثانية <span class=\"math\">0,01</span>، والثالثة <span class=\"math\">0,001</span>.",
+    "steps": [
+     "<span class=\"math\">1806,247 = 1 × 1000 + 8 × 100 + 6 × 1 + 2 × 0,1 + 4 × 0,01 + 7 × 0,001</span>",
+     "النتيجة: <span class=\"math\">0,001</span>"
+    ],
+    "rubric": [
+     {
+      "step": "تعيين مرتبة الرقم <span class=\"math\">7</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">0,001</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "9-2"
+   }
+  ]
+ },
+ {
+  "id": 10,
+  "pts": 1,
+  "title": "التمرين 10: الضرب في 10، 100، 1000 (المورد 3: الضرب في 10، 100، 1000 و0,1، 0,01، 0,001 — مستوحى من الكتاب ص 14)",
+  "context": "أنجز ذهنيا دون وضع العملية.",
+  "questions": [
+   {
+    "text": "1) <span class=\"math\">4,56 × 100</span>",
+    "exact": [
+     "456"
+    ],
+    "partial": [],
+    "h1": "الضرب في <span class=\"math\">100</span>: نزيح الفاصلة إلى اليمين.",
+    "h2": "أزح الفاصلة مرتبتين إلى اليمين.",
+    "steps": [
+     "الضرب في <span class=\"math\">100</span>: الفاصلة مرتبتان إلى اليمين",
+     "<span class=\"math\">4,56 × 100 = 456</span>",
+     "النتيجة: <span class=\"math\">456</span>"
+    ],
+    "rubric": [
+     {
+      "step": "إزاحة الفاصلة مرتبتين",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">456</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "10-1"
+   },
+   {
+    "text": "2) <span class=\"math\">0,73 × 1000</span>",
+    "exact": [
+     "730"
+    ],
+    "partial": [
+     "73"
+    ],
+    "h1": "الضرب في <span class=\"math\">1000</span>: ثلاث مراتب إلى اليمين.",
+    "h2": "بعد الفاصلة رقمان فقط: أضف صفرا عند الحاجة.",
+    "steps": [
+     "<span class=\"math\">0,73 = 0,730</span>",
+     "ثلاث مراتب إلى اليمين: <span class=\"math\">730</span>",
+     "النتيجة: <span class=\"math\">730</span>"
+    ],
+    "rubric": [
+     {
+      "step": "إضافة الصفر وإزاحة الفاصلة",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">730</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "انتبه: ثلاث مراتب وليس مرتبتين.",
+    "partialZero": true,
+    "qId": "10-2"
+   }
+  ]
+ },
+ {
+  "id": 11,
+  "pts": 1,
+  "title": "التمرين 11: الضرب في 0,1 و 0,01 (المورد 3: الضرب في 10، 100، 1000 و0,1، 0,01، 0,001 — تمرين تطبيقي)",
+  "context": "أنجز ذهنيا.",
+  "questions": [
+   {
+    "text": "1) <span class=\"math\">352 × 0,1</span>",
+    "exact": [
+     "35,2"
+    ],
+    "partial": [
+     "3520"
+    ],
+    "h1": "الضرب في <span class=\"math\">0,1</span> يعني القسمة على <span class=\"math\">10</span>.",
+    "h2": "أزح الفاصلة مرتبة واحدة إلى اليسار.",
+    "steps": [
+     "<span class=\"math\">352 × 0,1 = 352 ÷ 10</span>",
+     "<span class=\"math\">= 35,2</span>",
+     "النتيجة: <span class=\"math\">35,2</span>"
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">× 0,1</span> يعني <span class=\"math\">÷ 10</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">35,2</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "الضرب في <span class=\"math\">0,1</span> يصغر العدد ولا يكبره.",
+    "partialZero": true,
+    "qId": "11-1"
+   },
+   {
+    "text": "2) <span class=\"math\">48,6 × 0,01</span>",
+    "exact": [
+     "0,486"
+    ],
+    "partial": [],
+    "h1": "الضرب في <span class=\"math\">0,01</span> يعني القسمة على <span class=\"math\">100</span>.",
+    "h2": "أزح الفاصلة مرتبتين إلى اليسار وأكمل بصفر.",
+    "steps": [
+     "<span class=\"math\">48,6 × 0,01 = 48,6 ÷ 100</span>",
+     "<span class=\"math\">= 0,486</span>",
+     "النتيجة: <span class=\"math\">0,486</span>"
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">× 0,01</span> يعني <span class=\"math\">÷ 100</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">0,486</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "11-2"
+   }
+  ]
+ },
+ {
+  "id": 12,
+  "pts": 1,
+  "title": "التمرين 12: القسمة على 10 و 100 (المورد 4: القسمة على 10، 100، 1000 و0,1، 0,01، 0,001 — تمرين تطبيقي)",
+  "context": "أنجز ذهنيا.",
+  "questions": [
+   {
+    "text": "1) <span class=\"math\">87,5 ÷ 10</span>",
+    "exact": [
+     "8,75"
+    ],
+    "partial": [],
+    "h1": "القسمة على <span class=\"math\">10</span>: الفاصلة مرتبة واحدة إلى اليسار.",
+    "h2": "الفاصلة بين <span class=\"math\">8</span> و <span class=\"math\">7</span>.",
+    "steps": [
+     "القسمة على <span class=\"math\">10</span>: مرتبة واحدة إلى اليسار",
+     "<span class=\"math\">87,5 ÷ 10 = 8,75</span>",
+     "النتيجة: <span class=\"math\">8,75</span>"
+    ],
+    "rubric": [
+     {
+      "step": "إزاحة الفاصلة",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">8,75</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "12-1"
+   },
+   {
+    "text": "2) <span class=\"math\">3,2 ÷ 100</span>",
+    "exact": [
+     "0,032"
+    ],
+    "partial": [],
+    "h1": "القسمة على <span class=\"math\">100</span>: مرتبتان إلى اليسار.",
+    "h2": "لا يوجد ما يكفي من الأرقام: أضف أصفارا على اليسار.",
+    "steps": [
+     "<span class=\"math\">3,2 = 003,2</span>",
+     "مرتبتان إلى اليسار: <span class=\"math\">0,032</span>",
+     "النتيجة: <span class=\"math\">0,032</span>"
+    ],
+    "rubric": [
+     {
+      "step": "إضافة الأصفار وإزاحة الفاصلة",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">0,032</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "12-2"
+   }
+  ]
+ },
+ {
+  "id": 13,
+  "pts": 1,
+  "title": "التمرين 13: القسمة على 0,1 و 0,01 (المورد 4: القسمة على 10، 100، 1000 و0,1، 0,01، 0,001 — تمرين تطبيقي)",
+  "context": "أنجز ذهنيا.",
+  "questions": [
+   {
+    "text": "1) <span class=\"math\">6,4 ÷ 0,1</span>",
+    "exact": [
+     "64"
+    ],
+    "partial": [
+     "0,64"
+    ],
+    "h1": "القسمة على <span class=\"math\">0,1</span> تعني الضرب في <span class=\"math\">10</span>.",
+    "h2": "أزح الفاصلة مرتبة واحدة إلى اليمين.",
+    "steps": [
+     "<span class=\"math\">6,4 ÷ 0,1 = 6,4 × 10</span>",
+     "<span class=\"math\">= 64</span>",
+     "النتيجة: <span class=\"math\">64</span>"
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">÷ 0,1</span> يعني <span class=\"math\">× 10</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">64</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "القسمة على <span class=\"math\">0,1</span> تكبر العدد ولا تصغره.",
+    "partialZero": true,
+    "qId": "13-1"
+   },
+   {
+    "text": "2) <span class=\"math\">0,25 ÷ 0,01</span>",
+    "exact": [
+     "25"
+    ],
+    "partial": [],
+    "h1": "القسمة على <span class=\"math\">0,01</span> تعني الضرب في <span class=\"math\">100</span>.",
+    "h2": "أزح الفاصلة مرتبتين إلى اليمين.",
+    "steps": [
+     "<span class=\"math\">0,25 ÷ 0,01 = 0,25 × 100</span>",
+     "<span class=\"math\">= 25</span>",
+     "النتيجة: <span class=\"math\">25</span>"
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">÷ 0,01</span> يعني <span class=\"math\">× 100</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">25</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "13-2"
+   }
+  ]
+ },
+ {
+  "id": 14,
+  "pts": 1,
+  "title": "التمرين 14: في المكتبة (المورد 3: الضرب في 10، 100، 1000 و0,1، 0,01، 0,001 — تمرين تطبيقي)",
+  "context": "في مكتبة بقسنطينة: ثمن القلم الواحد <span class=\"math\">35,5 DA</span>، وثمن <span class=\"math\">10</span> كراريس من نوع واحد <span class=\"math\">452 DA</span>.",
+  "questions": [
+   {
+    "text": "1) ما ثمن <span class=\"math\">100</span> قلم؟",
+    "exact": [
+     "3550"
+    ],
+    "partial": [],
+    "h1": "الثمن = <span class=\"math\">35,5 × 100</span>.",
+    "h2": "الضرب في <span class=\"math\">100</span>: الفاصلة مرتبتان إلى اليمين، أضف صفرا.",
+    "steps": [
+     "<span class=\"math\">35,5 × 100</span>",
+     "<span class=\"math\">35,5 = 35,50</span>",
+     "<span class=\"math\">35,50 × 100 = 3550</span>",
+     "النتيجة: <span class=\"math\">3550 DA</span>"
+    ],
+    "rubric": [
+     {
+      "step": "العملية <span class=\"math\">35,5 × 100</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">3550 DA</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "14-1"
+   },
+   {
+    "text": "2) ما ثمن الكراس الواحد؟",
+    "exact": [
+     "45,2"
+    ],
+    "partial": [],
+    "h1": "ثمن الكراس = <span class=\"math\">452 ÷ 10</span>.",
+    "h2": "القسمة على <span class=\"math\">10</span>: الفاصلة مرتبة واحدة إلى اليسار.",
+    "steps": [
+     "<span class=\"math\">452 ÷ 10 = 45,2</span>",
+     "النتيجة: <span class=\"math\">45,2 DA</span>"
+    ],
+    "rubric": [
+     {
+      "step": "العملية <span class=\"math\">452 ÷ 10</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">45,2 DA</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "14-2"
+   }
+  ]
+ },
+ {
+  "id": 15,
+  "pts": 1,
+  "title": "التمرين 15: مقارنة عددين عشريين (المورد 5: المقارنة والترتيب والحصر — مستوحى من الكتاب ص 19 ت 8 (الأعداد معدلة))",
+  "context": "اكتب الرمز المناسب <span class=\"math\">&lt;</span> أو <span class=\"math\">&gt;</span> أو <span class=\"math\">=</span> (الرمز وحده أو المقارنة كاملة).",
+  "questions": [
+   {
+    "text": "1) <span class=\"math\">12,4 ... 12,38</span>",
+    "exact": [
+     ">",
+     "12,4>12,38",
+     "12,38<12,4"
+    ],
+    "partial": [],
+    "h1": "الجزآن الصحيحان متساويان: قارن الأعشار.",
+    "h2": "اكتب <span class=\"math\">12,4 = 12,40</span> ثم قارن <span class=\"math\">40</span> و <span class=\"math\">38</span> جزءا من مائة.",
+    "steps": [
+     "<span class=\"math\">12,4 = 12,40</span>",
+     "<span class=\"math\">40 &gt; 38</span>",
+     "<span class=\"math\">12,4 &gt; 12,38</span>",
+     "النتيجة: <span class=\"math\">&gt;</span>"
+    ],
+    "rubric": [
+     {
+      "step": "توحيد عدد الأرقام بعد الفاصلة",
+      "mark": "0,25"
+     },
+     {
+      "step": "الرمز <span class=\"math\">&gt;</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "15-1"
+   },
+   {
+    "text": "2) <span class=\"math\">0,7 ... 0,70</span>",
+    "exact": [
+     "=",
+     "0,7=0,70",
+     "0,70=0,7"
+    ],
+    "partial": [],
+    "h1": "الصفر في آخر الجزء العشري لا يغير العدد.",
+    "h2": "قارن <span class=\"math\">70</span> جزءا من مائة مع <span class=\"math\">70</span> جزءا من مائة.",
+    "steps": [
+     "<span class=\"math\">0,7 = 0,70</span>",
+     "النتيجة: <span class=\"math\">=</span>"
+    ],
+    "rubric": [
+     {
+      "step": "ملاحظة أن الصفر غير ضروري",
+      "mark": "0,25"
+     },
+     {
+      "step": "الرمز <span class=\"math\">=</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "15-2"
+   }
+  ]
+ },
+ {
+  "id": 16,
+  "pts": 1,
+  "title": "التمرين 16: ترتيب أعداد عشرية (المورد 5: المقارنة والترتيب والحصر — تمرين تطبيقي)",
+  "context": "نتائج القفز الطويل لأربعة تلاميذ من الجلفة بالمتر: <span class=\"math\">3,45 ; 3,5 ; 3,405 ; 3,054</span>.",
+  "questions": [
+   {
+    "text": "رتب هذه الأعداد تصاعديا مستعملا الرمز <span class=\"math\">&lt;</span>.",
+    "exact": [
+     "3,054<3,405<3,45<3,5"
+    ],
+    "partial": [
+     "3,5>3,45>3,405>3,054"
+    ],
+    "h1": "وحد عدد الأرقام بعد الفاصلة بإضافة أصفار.",
+    "h2": "اكتبها: <span class=\"math\">3,450 ; 3,500 ; 3,405 ; 3,054</span> ثم قارن الأجزاء من ألف.",
+    "steps": [
+     "<span class=\"math\">3,45 = 3,450</span>",
+     "<span class=\"math\">3,5 = 3,500</span>",
+     "<span class=\"math\">054 &lt; 405 &lt; 450 &lt; 500</span>",
+     "<span class=\"math\">3,054 &lt; 3,405 &lt; 3,45 &lt; 3,5</span>",
+     "النتيجة: <span class=\"math\">3,054 &lt; 3,405 &lt; 3,45 &lt; 3,5</span>"
+    ],
+    "rubric": [
+     {
+      "step": "توحيد عدد الأرقام بعد الفاصلة",
+      "mark": "0,25"
+     },
+     {
+      "step": "المقارنة الصحيحة",
+      "mark": "0,25"
+     },
+     {
+      "step": "الترتيب التصاعدي كاملا",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 1,
+    "partialMsg": "الترتيب صحيح لكنه تنازلي، والمطلوب تصاعدي بالرمز <span class=\"math\">&lt;</span>.",
+    "qId": "16-1"
+   }
+  ]
+ },
+ {
+  "id": 17,
+  "pts": 1,
+  "title": "التمرين 17: حصر عدد عشري (المورد 5: المقارنة والترتيب والحصر — تمرين تطبيقي)",
+  "context": "الحصر بين عددين متتاليين.",
+  "questions": [
+   {
+    "text": "1) احصر <span class=\"math\">17,63</span> بين عددين طبيعيين متتاليين.",
+    "exact": [
+     "17<17,63<18",
+     "18>17,63>17"
+    ],
+    "partial": [],
+    "h1": "الجزء الصحيح هو العدد الطبيعي الأصغر.",
+    "h2": "الحد الأكبر هو العدد الطبيعي الذي يلي <span class=\"math\">17</span>.",
+    "steps": [
+     "الجزء الصحيح: <span class=\"math\">17</span>",
+     "العدد الطبيعي الموالي: <span class=\"math\">18</span>",
+     "النتيجة: <span class=\"math\">17 &lt; 17,63 &lt; 18</span>"
+    ],
+    "rubric": [
+     {
+      "step": "الحدان <span class=\"math\">17</span> و <span class=\"math\">18</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "كتابة الحصر",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "17-1"
+   },
+   {
+    "text": "2) احصر <span class=\"math\">4,268</span> بين عددين عشريين متتاليين لكل منهما رقم واحد بعد الفاصلة.",
+    "exact": [
+     "4,2<4,268<4,3",
+     "4,3>4,268>4,2"
+    ],
+    "partial": [],
+    "h1": "احتفظ برقم واحد بعد الفاصلة للحد الأصغر.",
+    "h2": "الحد الأصغر <span class=\"math\">4,2</span>، والأكبر يزيد عليه <span class=\"math\">0,1</span>.",
+    "steps": [
+     "الحد الأصغر: <span class=\"math\">4,2</span>",
+     "<span class=\"math\">4,2 + 0,1 = 4,3</span>",
+     "النتيجة: <span class=\"math\">4,2 &lt; 4,268 &lt; 4,3</span>"
+    ],
+    "rubric": [
+     {
+      "step": "الحدان <span class=\"math\">4,2</span> و <span class=\"math\">4,3</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "كتابة الحصر",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "17-2"
+   }
+  ]
+ },
+ {
+  "id": 18,
+  "pts": 1,
+  "title": "التمرين 18: في سوق سطيف (المورد 6: جمع وطرح أعداد عشرية — تمرين تطبيقي)",
+  "context": "اشترت مريم من سوق سطيف خضرا بـ <span class=\"math\">245,50 DA</span> وفواكه بـ <span class=\"math\">312,75 DA</span>، ودفعت ورقة من فئة <span class=\"math\">1000 DA</span>.",
+  "questions": [
+   {
+    "text": "1) ما ثمن المشتريات؟",
+    "exact": [
+     "558,25"
+    ],
+    "partial": [],
+    "h1": "اجمع المبلغين مع وضع الفواصل تحت بعضها.",
+    "h2": "اجمع الأجزاء من مائة ثم الأعشار ثم الأجزاء الصحيحة مع الاحتفاظ.",
+    "steps": [
+     "<span class=\"math\">245,50 + 312,75</span>",
+     "<span class=\"math\">= 558,25</span>",
+     "النتيجة: <span class=\"math\">558,25 DA</span>"
+    ],
+    "rubric": [
+     {
+      "step": "العملية <span class=\"math\">245,50 + 312,75</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">558,25 DA</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "18-1"
+   },
+   {
+    "text": "2) كم يعيد لها البائع؟",
+    "exact": [
+     "441,75"
+    ],
+    "partial": [],
+    "h1": "المبلغ المعاد = المبلغ المدفوع − ثمن المشتريات.",
+    "h2": "اكتب <span class=\"math\">1000 = 1000,00</span> ثم اطرح.",
+    "steps": [
+     "<span class=\"math\">1000,00 − 558,25</span>",
+     "<span class=\"math\">= 441,75</span>",
+     "النتيجة: <span class=\"math\">441,75 DA</span>"
+    ],
+    "rubric": [
+     {
+      "step": "العملية <span class=\"math\">1000 − 558,25</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">441,75 DA</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "18-2"
+   }
+  ]
+ },
+ {
+  "id": 19,
+  "pts": 1,
+  "title": "التمرين 19: ضرب أعداد عشرية (المورد 7: ضرب أعداد عشرية — تمرين تطبيقي)",
+  "context": "أنجز الحسابات الآتية.",
+  "questions": [
+   {
+    "text": "1) <span class=\"math\">3,6 × 2,5</span>",
+    "exact": [
+     "9"
+    ],
+    "partial": [
+     "900",
+     "90"
+    ],
+    "h1": "اضرب دون فاصلة، ثم ضع في الناتج عدد أرقام بعد الفاصلة يساوي مجموعها في العاملين.",
+    "h2": "احسب <span class=\"math\">36 × 25</span> ثم ضع رقمين بعد الفاصلة.",
+    "steps": [
+     "<span class=\"math\">36 × 25 = 900</span>",
+     "رقمان بعد الفاصلة: <span class=\"math\">9,00</span>",
+     "<span class=\"math\">9,00 = 9</span>",
+     "النتيجة: <span class=\"math\">9</span>"
+    ],
+    "rubric": [
+     {
+      "step": "حساب <span class=\"math\">36 × 25 = 900</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "وضع الفاصلة والنتيجة <span class=\"math\">9</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "انتبه إلى موضع الفاصلة: رقمان بعد الفاصلة في الناتج.",
+    "partialZero": true,
+    "qId": "19-1"
+   },
+   {
+    "text": "2) ثمن المتر من قماش <span class=\"math\">650 DA</span>. ما ثمن <span class=\"math\">4,2 m</span>؟",
+    "exact": [
+     "2730"
+    ],
+    "partial": [],
+    "h1": "الثمن = الطول × ثمن المتر.",
+    "h2": "احسب <span class=\"math\">42 × 650</span> ثم ضع رقما واحدا بعد الفاصلة.",
+    "steps": [
+     "<span class=\"math\">4,2 × 650</span>",
+     "<span class=\"math\">42 × 650 = 27300</span>",
+     "رقم واحد بعد الفاصلة: <span class=\"math\">2730,0</span>",
+     "النتيجة: <span class=\"math\">2730 DA</span>"
+    ],
+    "rubric": [
+     {
+      "step": "العملية <span class=\"math\">4,2 × 650</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">2730 DA</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "19-2"
+   }
+  ]
+ },
+ {
+  "id": 20,
+  "pts": 1,
+  "title": "التمرين 20: رتبة مقدار (المورد 8: رتبة مقدار — تمرين تطبيقي)",
+  "context": "نريد رتبة مقدار للنتيجة دون حسابها بدقة.",
+  "questions": [
+   {
+    "text": "1) أعط رتبة مقدار للمجموع <span class=\"math\">398 + 207</span> باستبدال كل عدد بأقرب مئة إليه.",
+    "exact": [
+     "600"
+    ],
+    "partial": [
+     "605"
+    ],
+    "h1": "أقرب مئة إلى <span class=\"math\">398</span>، ثم أقرب مئة إلى <span class=\"math\">207</span>.",
+    "h2": "<span class=\"math\">398</span> قريب من <span class=\"math\">400</span>، و<span class=\"math\">207</span> قريب من <span class=\"math\">200</span>.",
+    "steps": [
+     "<span class=\"math\">398 ≈ 400</span>",
+     "<span class=\"math\">207 ≈ 200</span>",
+     "<span class=\"math\">400 + 200 = 600</span>",
+     "النتيجة: <span class=\"math\">600</span>"
+    ],
+    "rubric": [
+     {
+      "step": "اختيار <span class=\"math\">400</span> و <span class=\"math\">200</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "رتبة المقدار <span class=\"math\">600</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "هذه النتيجة المضبوطة، والمطلوب رتبة المقدار.",
+    "partialZero": true,
+    "qId": "20-1"
+   },
+   {
+    "text": "2) أعط رتبة مقدار للجداء <span class=\"math\">49 × 21</span> باستبدال كل عدد بأقرب عشرة إليه.",
+    "exact": [
+     "1000"
+    ],
+    "partial": [
+     "1029"
+    ],
+    "h1": "أقرب عشرة إلى <span class=\"math\">49</span>، ثم أقرب عشرة إلى <span class=\"math\">21</span>.",
+    "h2": "<span class=\"math\">49</span> قريب من <span class=\"math\">50</span>، و<span class=\"math\">21</span> قريب من <span class=\"math\">20</span>.",
+    "steps": [
+     "<span class=\"math\">49 ≈ 50</span>",
+     "<span class=\"math\">21 ≈ 20</span>",
+     "<span class=\"math\">50 × 20 = 1000</span>",
+     "النتيجة: <span class=\"math\">1000</span>"
+    ],
+    "rubric": [
+     {
+      "step": "اختيار <span class=\"math\">50</span> و <span class=\"math\">20</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "رتبة المقدار <span class=\"math\">1000</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "هذه النتيجة المضبوطة، والمطلوب رتبة المقدار.",
+    "partialZero": true,
+    "qId": "20-2"
+   }
+  ]
+ }
+];
+
+        function exercisesCount() { return exercises.reduce((a, e) => a + e.questions.length, 0); }
+
+        function renderApp() {
+            totalQuestionsCount = exercisesCount();
+            const root = document.getElementById('exercisesRoot');
+            root.innerHTML = '';
+
+            exercises.forEach(ex => {
+                const card = document.createElement('div');
+                card.className = 'exercise-card';
+
+                let questionsHtml = '';
+                ex.questions.forEach(q => {
+                    attemptsLeft[q.qId] = 3;
+                    questionEarned[q.qId] = 0;
+                    questionLocked[q.qId] = false;
+
+                    let symHtml = '';
+                    symbols1AM.forEach(s => {
+                        symHtml += `<button type="button" class="sym-btn" onclick="pressSym('${q.qId}', '${s}')">${s}</button>`;
+                    });
+
+                    let stepsHtml = '';
+                    q.steps.forEach((st, idx) => {
+                        const isLast = (idx === q.steps.length - 1);
+                        stepsHtml += `<div class="${isLast ? 'sol-result' : 'sol-line'}">${st}</div>`;
+                    });
+
+                    let rubricRows = '';
+                    q.rubric.forEach(r => {
+                        rubricRows += `<tr><td>${r.step}</td><td><span class="math">${r.mark} ن</span></td></tr>`;
+                    });
+
+                    questionsHtml += `
+                        <div class="q-box" id="qbox-${q.qId}">
+                            <div class="q-title">
+                                <span>${q.text}</span>
+                                <span class="q-meta" id="meta-${q.qId}">المحاولات: <span class="math">3</span> | النقاط: <span class="math">${String(q.pts).replace('.', ',')}</span></span>
+                            </div>
+                            <div class="answer-area">
+                                <div class="input-line">
+                                    <input type="text" id="in-${q.qId}" placeholder="اكتب إجابتك هنا" autocomplete="off">
+                                    <button type="button" class="btn-check" id="btn-${q.qId}" onclick="checkAns(${ex.id}, '${q.qId}')">تحقق من الإجابة</button>
+                                </div>
+                                <div class="sym-toolbar">${symHtml}</div>
+                            </div>
+                            <div class="feedback-box" id="fb-${q.qId}"></div>
+                            <div class="model-solution" id="sol-${q.qId}">
+                                <h4>✔ الإجابة النموذجية المفصلة:</h4>
+                                ${stepsHtml}
+                                <table class="rubric-table">
+                                    <thead>
+                                        <tr><th>مراحل الحل (سلم التنقيط)</th><th>النقطة</th></tr>
+                                    </thead>
+                                    <tbody>${rubricRows}</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h2>${ex.title}</h2>
+                        <span class="pts-badge"><span class="math">${String(ex.pts).replace('.', ',')}</span> نقاط</span>
+                    </div>
+                    <div class="context-box">${ex.context}</div>
+                    ${questionsHtml}
+                `;
+                root.appendChild(card);
+            });
+        }
+
+        function pressSym(qId, sym) {
+            const inp = document.getElementById(`in-${qId}`);
+            if (!inp || inp.disabled) return;
+            if (sym === '⌫') {
+                inp.value = inp.value.slice(0, -1);
+            } else {
+                inp.value += sym;
+            }
+            inp.focus();
+        }
+
+        function normalizeInput(raw) {
+            if (!raw) return '';
+            const arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+            let s = raw.toString().trim();
+            for (let i = 0; i < 10; i++) {
+                s = s.replace(new RegExp(arDigits[i], 'g'), i);
+            }
+            s = s.replace(/\s+/g, '');
+            s = s.replace(/^[a-zA-Z]\s*=/i, '');
+            s = s.replace(/،/g, ',').replace(/\./g, ',');
+            s = s.replace(/[\*xX]/g, '×').replace(/−/g, '-');
+            s = s.replace(/(da|دج|دينار|أوراق|ورقة|عشرة|عشرات|وحدة|متر|cm|m|kg)$/i, '');
+            s = s.replace(/(\d),(\d*?)0+(?=$|[^\d])/g, (m, a, b) => b ? a + ',' + b : a);
+            return s.toLowerCase();
+        }
+
+        function updateHeaderStats() {
+            const formattedScore = String(Math.round(totalScore * 100) / 100).replace('.', ',');
+            document.getElementById('scoreVal').innerText = `${formattedScore} / 20`;
+            document.getElementById('starsVal').innerText = totalStars;
+            const pct = Math.min(100, Math.round((completedQuestions / totalQuestionsCount) * 100));
+            document.getElementById('progressBar').style.width = pct + '%';
+
+            if (completedQuestions === totalQuestionsCount) {
+                setTimeout(() => {
+                    document.getElementById('finalScoreText').innerText = `${formattedScore} / 20`;
+                    document.getElementById('finalTitle').innerText = totalScore >= 10 ? '🎉 أحسنت! أتممت جميع الأسئلة' : '💪 أتممت السلسلة! راجع الإجابات النموذجية وأعد المحاولة';
+                    document.getElementById('finalStarsText').innerText = `⭐ ${totalStars} نجمة`;
+                    document.getElementById('finalModal').style.display = 'flex';
+                }, 600);
+            }
+        }
+
+        function triggerShake(qId) {
+            const inp = document.getElementById(`in-${qId}`);
+            inp.classList.remove('shake');
+            void inp.offsetWidth;
+            inp.classList.add('shake');
+        }
+
+        function checkAns(exId, qId) {
+            if (questionLocked[qId]) return;
+            const ex = exercises.find(e => e.id === exId);
+            const q = ex.questions.find(item => item.qId === qId);
+            const inp = document.getElementById(`in-${qId}`);
+            const fb = document.getElementById(`fb-${qId}`);
+            const val = normalizeInput(inp.value);
+
+            if (!val) {
+                triggerShake(qId);
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = 'يرجى كتابة إجابتك أولاً في الخانة قبل الضغط على زر التحقق.';
+                return;
+            }
+
+            const isExactMatch = q.exact.some(ans => normalizeInput(ans) === val);
+            if (isExactMatch) {
+                const rem = attemptsLeft[qId];
+                const starsAwarded = (rem === 3) ? 3 : (rem === 2 ? 2 : 1);
+                const starIcons = '⭐'.repeat(starsAwarded);
+
+                const prevPts = questionEarned[qId] || 0;
+                totalScore += (q.pts - prevPts);
+                questionEarned[qId] = q.pts;
+                totalStars += starsAwarded;
+                questionLocked[qId] = true;
+                completedQuestions++;
+
+                playTone('success');
+                document.getElementById(`qbox-${qId}`).classList.add('solved');
+                inp.disabled = true;
+                document.getElementById(`btn-${qId}`).disabled = true;
+
+                fb.className = 'feedback-box success';
+                fb.innerHTML = `<span class="star-burst">${starIcons}</span> أحسنت يا بطل! إجابة صحيحة وممتازة. نلت العلامة الكاملة (<span class="math">${String(q.pts).replace('.', ',')} ن</span>).`;
+                document.getElementById(`sol-${qId}`).style.display = 'block';
+                updateHeaderStats();
+                return;
+            }
+
+            const isPartialMatch = q.partial && q.partial.some(ans => normalizeInput(ans) === val);
+            if (isPartialMatch) {
+                if (q.partialZero) { handleWrongAttempt(q, q.partialMsg); return; }
+                const halfPts = Math.round((q.pts / 2) * 100) / 100;
+                const prevPts = questionEarned[qId] || 0;
+                if (halfPts > prevPts) {
+                    totalScore += (halfPts - prevPts);
+                    questionEarned[qId] = halfPts;
+                }
+                handleWrongAttempt(q, `${q.partialMsg} (حصلت على نصف العلامة <span class="math">${String(halfPts).replace('.', ',')} ن</span>، صحّح الشكل لتنال العلامة الكاملة).`);
+                updateHeaderStats();
+                return;
+            }
+
+            handleWrongAttempt(q, null);
+        }
+
+        function handleWrongAttempt(q, customReason) {
+            const qId = q.qId;
+            attemptsLeft[qId]--;
+            const rem = attemptsLeft[qId];
+            const inp = document.getElementById(`in-${qId}`);
+            const fb = document.getElementById(`fb-${qId}`);
+
+            playTone('error');
+            triggerShake(qId);
+            document.getElementById(`meta-${qId}`).innerHTML = `المحاولات: <span class="math">${rem}</span> | النقاط: <span class="math">${String(q.pts).replace('.', ',')}</span>`;
+
+            if (rem === 2) {
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = `${customReason ? customReason + '<br>' : 'لا بأس، حاول مرة أخرى بتأنٍّ!<br>'}<strong>💡 التلميح 1:</strong> ${q.h1}`;
+            } else if (rem === 1) {
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = `${customReason ? customReason + '<br>' : 'قاربت على الوصول، ركّز جيداً في هذه المحاولة الأخيرة!<br>'}<strong>💡 التلميح 2:</strong> ${q.h2}`;
+            } else {
+                questionLocked[qId] = true;
+                completedQuestions++;
+                inp.disabled = true;
+                document.getElementById(`btn-${qId}`).disabled = true;
+                document.getElementById(`qbox-${qId}`).classList.add('failed');
+
+                fb.className = 'feedback-box fail';
+                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 محاولة طيبة! لا تحزن، التعلم يأتي بالمحاولة. اقرأ الإجابة النموذجية وسلم التنقيط بتمعن لتتقن الفكرة في المرة القادمة.';
+                document.getElementById(`sol-${qId}`).style.display = 'block';
+                updateHeaderStats();
+            }
+        }
+
+        window.onload = renderApp;
+    </script>
+</body>
+</html>
