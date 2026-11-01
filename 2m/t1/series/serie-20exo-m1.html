@@ -1,0 +1,2197 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلسلة 20 تمرينا تفاعليا - السنة الثانية متوسط - المقطع الأول</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #0f766e;
+            --primary-light: #eff6ff;
+            --accent: #fbbf24;
+            --success: #15803d;
+            --success-bg: #dcfce7;
+            --warning: #b45309;
+            --warning-bg: #fef3c7;
+            --danger: #b91c1c;
+            --danger-bg: #fee2e2;
+            --dark: #0f172a;
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --border: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+        }
+
+        html, body {
+            background-color: var(--bg);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            width: 100%;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%);
+            color: #ffffff;
+            padding: 20px 12px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        header .school-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fef08a;
+            margin-bottom: 6px;
+        }
+
+        header h1 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 6px 0;
+            color: #ffffff;
+        }
+
+        header .sub-info {
+            font-size: 0.92rem;
+            opacity: 0.95;
+            background: rgba(255, 255, 255, 0.14);
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-top: 4px;
+        }
+
+        .sticky-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(6px);
+            border-bottom: 2px solid var(--border);
+            padding: 8px 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .sticky-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .stars-badge {
+            background: #fef3c7;
+            color: #b45309;
+            border: 1px solid #f59e0b;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .sound-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .progress-wrap {
+            flex: 1;
+            min-width: 110px;
+            max-width: 240px;
+            background: #e2e8f0;
+            height: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #0f766e, #15803d);
+            width: 0%;
+            height: 100%;
+            transition: width 0.35s ease;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 18px auto 0 auto;
+            padding: 0 10px;
+        }
+
+        .exercise-card {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 16px 14px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-light);
+            padding: 10px 12px;
+            border-radius: 10px;
+            border-right: 4px solid var(--primary);
+            margin-bottom: 12px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .card-header h2 {
+            font-size: 1.08rem;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .pts-badge {
+            background: #ffffff;
+            color: var(--primary);
+            border: 1px solid #bfdbfe;
+            padding: 3px 10px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .context-box {
+            background: #f8fafc;
+            border: 1px dashed #94a3b8;
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin-bottom: 14px;
+            font-size: 0.96rem;
+        }
+
+        .math {
+            direction: ltr;
+            unicode-bidi: isolate;
+            display: inline-block;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 700;
+            background: #e2e8f0;
+            padding: 1px 6px;
+            border-radius: 5px;
+            margin: 0 2px;
+            color: #0f172a;
+        }
+
+        .q-box {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 14px;
+            background: #ffffff;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .q-box.solved {
+            border-color: #86efac;
+            background: #f0fdf4;
+        }
+
+        .q-box.failed {
+            border-color: #fca5a5;
+            background: #fef2f2;
+        }
+
+        .q-title {
+            font-weight: 700;
+            font-size: 0.98rem;
+            margin-bottom: 10px;
+            color: #1e293b;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .q-meta {
+            font-size: 0.78rem;
+            background: #f1f5f9;
+            color: #475569;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .answer-area {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-line {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            min-width: 170px;
+            padding: 9px 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.98rem;
+            font-weight: 700;
+            direction: ltr;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary);
+        }
+
+        .sym-toolbar {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 4px;
+        }
+
+        .sym-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            color: #0f172a;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            direction: ltr;
+            unicode-bidi: isolate;
+            user-select: none;
+        }
+
+        .sym-btn { flex: 1 1 0; min-width: 0; padding: 6px 0; text-align: center; }
+
+        .sym-btn:hover {
+            background: #cbd5e1;
+        }
+
+        .sym-btn:active {
+            transform: scale(0.96);
+        }
+
+        .btn-check {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .btn-check:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-check:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        @keyframes shakeField {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        .shake {
+            animation: shakeField 0.35s ease;
+            border-color: var(--danger) !important;
+        }
+
+        .feedback-box {
+            margin-top: 10px;
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            display: none;
+        }
+
+        .feedback-box.success {
+            display: block;
+            background: var(--success-bg);
+            color: var(--success);
+            border-right: 4px solid var(--success);
+        }
+
+        .feedback-box.hint {
+            display: block;
+            background: var(--warning-bg);
+            color: var(--warning);
+            border-right: 4px solid var(--warning);
+        }
+
+        .feedback-box.fail {
+            display: block;
+            background: var(--danger-bg);
+            color: var(--danger);
+            border-right: 4px solid var(--danger);
+        }
+
+        .model-solution {
+            margin-top: 12px;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-right: 4px solid var(--secondary);
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+            font-size: 0.93rem;
+        }
+
+        .model-solution h4 {
+            color: var(--secondary);
+            margin-bottom: 8px;
+            font-size: 0.98rem;
+        }
+
+        .sol-line {
+            padding: 3px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .sol-result {
+            margin-top: 6px;
+            font-weight: 800;
+            color: var(--primary);
+            background: #eff6ff;
+            padding: 5px 8px;
+            border-radius: 6px;
+        }
+
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.86rem;
+            background: #ffffff;
+        }
+
+        .rubric-table td .math { white-space: nowrap; }
+        .rubric-table th, .rubric-table td {
+            border: 1px solid #cbd5e1;
+            padding: 6px 8px;
+            text-align: right;
+        }
+
+        .rubric-table th {
+            background: #e2e8f0;
+            color: #1e293b;
+            font-weight: 800;
+        }
+
+        .star-burst {
+            display: inline-block;
+            animation: popStars 0.6s ease forwards;
+        }
+
+        @keyframes popStars {
+            0% { transform: scale(0.4); opacity: 0; }
+            60% { transform: scale(1.25); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.65);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 15px;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            max-width: 420px;
+            width: 100%;
+            border-radius: 16px;
+            padding: 24px 18px;
+            text-align: center;
+            border-top: 6px solid var(--accent);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .modal-score {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin: 10px 0;
+        }
+
+        .modal-stars {
+            font-size: 1.4rem;
+            color: #d97706;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .btn-close-modal {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 9px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        @media (max-width: 420px) {
+            header .school-title { font-size: 0.98rem; }
+            header h1 { font-size: 1.12rem; }
+            .input-line { flex-direction: column; }
+            input[type="text"], .btn-check { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="school-title">متوسطة العربي بن مهيدي — الأستاذ: يوسفي السوفي</div>
+        <h1>سلسلة 20 تمرينا تفاعليا في الرياضيات</h1>
+        <div class="sub-info">المستوى: السنة الثانية متوسط (2م) | المقطع الأول: الأعداد والحساب (حسب المخطط السنوي 2022)</div>
+    </header>
+
+    <div class="sticky-bar">
+        <div class="sticky-inner">
+            <div class="stat-group">
+                <span class="score-badge">العلامة: <span class="math" id="scoreVal" style="background:transparent;color:#fff;padding:0;">0 / 20</span></span>
+                <span class="stars-badge">⭐ <span class="math" id="starsVal" style="background:transparent;color:#b45309;padding:0;">0</span></span>
+                <button type="button" class="sound-btn" id="soundToggle" onclick="toggleSound()" title="تشغيل/كتم الصوت">🔊</button>
+            </div>
+            <div class="progress-wrap" title="شريط التقدم">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="exercisesRoot"></div>
+
+    <div class="modal-overlay" id="finalModal">
+        <div class="modal-card">
+            <h3 id="finalTitle">🎉 أحسنت! أتممت جميع الأسئلة</h3>
+            <p>لقد أنهيت سلسلة المقطع الأول للسنة الثانية متوسط</p>
+            <div class="modal-score" id="finalScoreText">0 / 20</div>
+            <div class="modal-stars" id="finalStarsText">⭐ 0 نجمة</div>
+            <button type="button" class="btn-close-modal" onclick="document.getElementById('finalModal').style.display='none'">مراجعة إجاباتي</button>
+        </div>
+    </div>
+
+    <script>
+        let soundEnabled = true;
+        let totalScore = 0;
+        let totalStars = 0;
+        let completedQuestions = 0;
+        let totalQuestionsCount = 0;
+
+        const attemptsLeft = {};
+        const questionEarned = {};
+        const questionLocked = {};
+
+        const symbols1AM = ["+", "−", "×", "÷", ",", "/", "(", ")", "⌫"];
+
+        function playTone(type) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'success') {
+                    osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+                    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.09);
+                    osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.18);
+                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.35);
+                } else {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, ctx.currentTime);
+                    osc.frequency.setValueAtTime(180, ctx.currentTime + 0.1);
+                    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.25);
+                }
+            } catch (e) {}
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            document.getElementById('soundToggle').innerText = soundEnabled ? '🔊' : '🔇';
+        }
+
+        const exercises = [
+ {
+  "id": 1,
+  "pts": 1,
+  "title": "التمرين 01: أولوية الضرب (المورد 1: سلسلة عمليات مع احترام الأولويات والأقواس)",
+  "context": "احسب مع احترام أولوية العمليات.",
+  "questions": [
+   {
+    "text": "1) <span class=\"math\">A = 18 + 6 × 4</span>",
+    "exact": [
+     "42"
+    ],
+    "partial": [
+     "96"
+    ],
+    "h1": "في سلسلة بدون أقواس: الضرب والقسمة قبل الجمع والطرح.",
+    "h2": "احسب أولا <span class=\"math\">6 × 4</span> ثم أضف <span class=\"math\">18</span>.",
+    "steps": [
+     "<span class=\"math\">A = 18 + 6 × 4</span>",
+     "<span class=\"math\">A = 18 + 24</span>",
+     "<span class=\"math\">A = 42</span>",
+     "النتيجة: <span class=\"math\">A = 42</span>"
+    ],
+    "rubric": [
+     {
+      "step": "حساب الجداء <span class=\"math\">6 × 4 = 24</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">42</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "حسبت من اليسار إلى اليمين؛ الضرب يُنجز قبل الجمع.",
+    "partialZero": true,
+    "qId": "1-1"
+   },
+   {
+    "text": "2) <span class=\"math\">B = 50 − 12 × 3 + 7</span>",
+    "exact": [
+     "21"
+    ],
+    "partial": [
+     "7",
+     "121"
+    ],
+    "h1": "ابدأ بالجداء، ثم أنجز الطرح والجمع من اليسار إلى اليمين.",
+    "h2": "احسب <span class=\"math\">12 × 3</span>، ثم <span class=\"math\">50 − 36</span>، ثم أضف <span class=\"math\">7</span>.",
+    "steps": [
+     "<span class=\"math\">B = 50 − 12 × 3 + 7</span>",
+     "<span class=\"math\">B = 50 − 36 + 7</span>",
+     "<span class=\"math\">B = 14 + 7</span>",
+     "<span class=\"math\">B = 21</span>",
+     "النتيجة: <span class=\"math\">B = 21</span>"
+    ],
+    "rubric": [
+     {
+      "step": "حساب الجداء <span class=\"math\">12 × 3 = 36</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "<span class=\"math\">50 − 36 + 7 = 21</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "انتبه إلى الترتيب: الجداء أولا، ثم الطرح والجمع من اليسار إلى اليمين.",
+    "partialZero": true,
+    "qId": "1-2"
+   }
+  ]
+ },
+ {
+  "id": 2,
+  "pts": 1,
+  "title": "التمرين 02: القسمة والضرب قبل الجمع والطرح (المورد 1: سلسلة عمليات مع احترام الأولويات والأقواس)",
+  "context": "احسب مع احترام أولوية العمليات.",
+  "questions": [
+   {
+    "text": "1) <span class=\"math\">C = 45 ÷ 5 + 4 × 2,5</span>",
+    "exact": [
+     "19"
+    ],
+    "partial": [
+     "32,5"
+    ],
+    "h1": "احسب حاصل القسمة والجداء أولا، ثم اجمعهما.",
+    "h2": "<span class=\"math\">45 ÷ 5</span> و <span class=\"math\">4 × 2,5</span> يحسبان قبل الجمع.",
+    "steps": [
+     "<span class=\"math\">C = 45 ÷ 5 + 4 × 2,5</span>",
+     "<span class=\"math\">C = 9 + 10</span>",
+     "<span class=\"math\">C = 19</span>",
+     "النتيجة: <span class=\"math\">C = 19</span>"
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">45 ÷ 5 = 9</span> و <span class=\"math\">4 × 2,5 = 10</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">19</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "الجمع لا يُنجز قبل الضرب.",
+    "partialZero": true,
+    "qId": "2-1"
+   },
+   {
+    "text": "2) <span class=\"math\">D = 7,2 − 4,8 ÷ 4</span>",
+    "exact": [
+     "6"
+    ],
+    "partial": [
+     "0,6"
+    ],
+    "h1": "القسمة قبل الطرح.",
+    "h2": "احسب <span class=\"math\">4,8 ÷ 4</span> ثم اطرح الناتج من <span class=\"math\">7,2</span>.",
+    "steps": [
+     "<span class=\"math\">D = 7,2 − 4,8 ÷ 4</span>",
+     "<span class=\"math\">D = 7,2 − 1,2</span>",
+     "<span class=\"math\">D = 6</span>",
+     "النتيجة: <span class=\"math\">D = 6</span>"
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">4,8 ÷ 4 = 1,2</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">6</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "القسمة تُنجز قبل الطرح.",
+    "partialZero": true,
+    "qId": "2-2"
+   }
+  ]
+ },
+ {
+  "id": 3,
+  "pts": 1,
+  "title": "التمرين 03: الأقواس أولا (المورد 1: سلسلة عمليات مع احترام الأولويات والأقواس)",
+  "context": "احسب. نبدأ دائما بما بين الأقواس.",
+  "questions": [
+   {
+    "text": "1) <span class=\"math\">G = (17 + 8) × 4</span>",
+    "exact": [
+     "100"
+    ],
+    "partial": [
+     "49"
+    ],
+    "h1": "ما بين الأقواس يُحسب قبل كل شيء.",
+    "h2": "احسب <span class=\"math\">17 + 8</span> ثم اضرب في <span class=\"math\">4</span>.",
+    "steps": [
+     "<span class=\"math\">G = (17 + 8) × 4</span>",
+     "<span class=\"math\">G = 25 × 4</span>",
+     "<span class=\"math\">G = 100</span>",
+     "النتيجة: <span class=\"math\">G = 100</span>"
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">17 + 8 = 25</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">100</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "لم تبدأ بالأقواس.",
+    "partialZero": true,
+    "qId": "3-1"
+   },
+   {
+    "text": "2) <span class=\"math\">H = 90 ÷ (12 − 3)</span>",
+    "exact": [
+     "10"
+    ],
+    "partial": [
+     "4,5"
+    ],
+    "h1": "احسب ما بين القوسين أولا.",
+    "h2": "احسب <span class=\"math\">12 − 3</span> ثم اقسم <span class=\"math\">90</span> على الناتج.",
+    "steps": [
+     "<span class=\"math\">H = 90 ÷ (12 − 3)</span>",
+     "<span class=\"math\">H = 90 ÷ 9</span>",
+     "<span class=\"math\">H = 10</span>",
+     "النتيجة: <span class=\"math\">H = 10</span>"
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">12 − 3 = 9</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">10</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "لم تبدأ بالأقواس.",
+    "partialZero": true,
+    "qId": "3-2"
+   }
+  ]
+ },
+ {
+  "id": 4,
+  "pts": 1,
+  "title": "التمرين 04: رحلة مدرسية (المورد 1: سلسلة عمليات مع احترام الأولويات والأقواس)",
+  "context": "نظمت متوسطة بتلمسان رحلة لـ <span class=\"math\">45</span> تلميذا و<span class=\"math\">5</span> أساتذة. ثمن التذكرة للفرد الواحد <span class=\"math\">120 DA</span>.",
+  "questions": [
+   {
+    "text": "1) ما المبلغ الكلي للتذاكر؟",
+    "exact": [
+     "6000"
+    ],
+    "partial": [
+     "5520"
+    ],
+    "h1": "عدد الأفراد = التلاميذ + الأساتذة، ثم اضرب في ثمن التذكرة.",
+    "h2": "السلسلة: <span class=\"math\">(45 + 5) × 120</span>.",
+    "steps": [
+     "<span class=\"math\">(45 + 5) × 120</span>",
+     "<span class=\"math\">= 50 × 120</span>",
+     "<span class=\"math\">= 6000</span>",
+     "النتيجة: <span class=\"math\">6000 DA</span>"
+    ],
+    "rubric": [
+     {
+      "step": "كتابة السلسلة بالأقواس",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">6000 DA</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "بدون أقواس يُضرب <span class=\"math\">5</span> وحده في <span class=\"math\">120</span>: ضع <span class=\"math\">45 + 5</span> بين قوسين.",
+    "partialZero": true,
+    "qId": "4-1"
+   },
+   {
+    "text": "2) تدفع جمعية أولياء التلاميذ <span class=\"math\">1500 DA</span>، والباقي يُقسم بالتساوي على التلاميذ فقط. كم يدفع كل تلميذ؟",
+    "exact": [
+     "100"
+    ],
+    "partial": [
+     "90"
+    ],
+    "h1": "الباقي = المبلغ الكلي − ما تدفعه الجمعية، ثم يُقسم على <span class=\"math\">45</span>.",
+    "h2": "السلسلة: <span class=\"math\">(6000 − 1500) ÷ 45</span>.",
+    "steps": [
+     "<span class=\"math\">(6000 − 1500) ÷ 45</span>",
+     "<span class=\"math\">= 4500 ÷ 45</span>",
+     "<span class=\"math\">= 100</span>",
+     "النتيجة: <span class=\"math\">100 DA</span>"
+    ],
+    "rubric": [
+     {
+      "step": "كتابة السلسلة <span class=\"math\">(6000 − 1500) ÷ 45</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">100 DA</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "القسمة على <span class=\"math\">50</span> تخص الجميع، والمطلوب التلاميذ فقط (<span class=\"math\">45</span>).",
+    "partialZero": true,
+    "qId": "4-2"
+   }
+  ]
+ },
+ {
+  "id": 5,
+  "pts": 1,
+  "title": "التمرين 05: التوزيع لتسهيل الحساب الذهني (المورد 2: الخاصية التوزيعية في الاتجاهين)",
+  "context": "احسب ذهنيا باستعمال توزيع الضرب على الجمع.",
+  "questions": [
+   {
+    "text": "1) <span class=\"math\">7 × 102</span> (اكتب <span class=\"math\">102 = 100 + 2</span>)",
+    "exact": [
+     "714"
+    ],
+    "partial": [],
+    "h1": "خاصية التوزيع: <span class=\"math\">k × (a + b) = k × a + k × b</span>.",
+    "h2": "<span class=\"math\">7 × 100 + 7 × 2</span>.",
+    "steps": [
+     "<span class=\"math\">7 × 102 = 7 × (100 + 2)</span>",
+     "<span class=\"math\">= 7 × 100 + 7 × 2</span>",
+     "<span class=\"math\">= 700 + 14</span>",
+     "<span class=\"math\">= 714</span>",
+     "النتيجة: <span class=\"math\">714</span>"
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">7 × 100 + 7 × 2</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">714</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "5-1"
+   },
+   {
+    "text": "2) <span class=\"math\">25 × 4,4</span> (اكتب <span class=\"math\">4,4 = 4 + 0,4</span>)",
+    "exact": [
+     "110"
+    ],
+    "partial": [],
+    "h1": "خاصية التوزيع: <span class=\"math\">k × (a + b) = k × a + k × b</span>.",
+    "h2": "<span class=\"math\">25 × 4 + 25 × 0,4</span>.",
+    "steps": [
+     "<span class=\"math\">25 × 4,4</span>",
+     "<span class=\"math\">= 25 × (4 + 0,4)</span>",
+     "<span class=\"math\">= 25 × 4 + 25 × 0,4</span>",
+     "<span class=\"math\">= 100 + 10</span>",
+     "<span class=\"math\">= 110</span>",
+     "النتيجة: <span class=\"math\">110</span>"
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">25 × 4 + 25 × 0,4</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">110</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "5-2"
+   }
+  ]
+ },
+ {
+  "id": 6,
+  "pts": 1,
+  "title": "التمرين 06: العامل المشترك (التوزيع في الاتجاه العكسي) (المورد 2: الخاصية التوزيعية في الاتجاهين)",
+  "context": "احسب بطريقة سهلة باستعمال العامل المشترك: <span class=\"math\">k × a + k × b = k × (a + b)</span>.",
+  "questions": [
+   {
+    "text": "1) <span class=\"math\">8 × 13 + 8 × 7</span>",
+    "exact": [
+     "160"
+    ],
+    "partial": [],
+    "h1": "العامل المشترك هو <span class=\"math\">8</span>.",
+    "h2": "<span class=\"math\">8 × (13 + 7)</span>.",
+    "steps": [
+     "<span class=\"math\">8 × 13 + 8 × 7</span>",
+     "<span class=\"math\">= 8 × (13 + 7)</span>",
+     "<span class=\"math\">= 8 × 20</span>",
+     "<span class=\"math\">= 160</span>",
+     "النتيجة: <span class=\"math\">160</span>"
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">8 × (13 + 7)</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">160</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "6-1"
+   },
+   {
+    "text": "2) <span class=\"math\">3,7 × 6 + 3,7 × 4</span>",
+    "exact": [
+     "37"
+    ],
+    "partial": [],
+    "h1": "العامل المشترك هو <span class=\"math\">3,7</span>.",
+    "h2": "<span class=\"math\">3,7 × (6 + 4)</span> ثم الضرب في <span class=\"math\">10</span>.",
+    "steps": [
+     "<span class=\"math\">3,7 × 6 + 3,7 × 4</span>",
+     "<span class=\"math\">= 3,7 × (6 + 4)</span>",
+     "<span class=\"math\">= 3,7 × 10</span>",
+     "<span class=\"math\">= 37</span>",
+     "النتيجة: <span class=\"math\">37</span>"
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">3,7 × (6 + 4)</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">37</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "6-2"
+   }
+  ]
+ },
+ {
+  "id": 7,
+  "pts": 1,
+  "title": "التمرين 07: التوزيع على الطرح ذهنيا (المورد 2: الخاصية التوزيعية في الاتجاهين)",
+  "context": "احسب ذهنيا باستعمال توزيع الضرب على الطرح.",
+  "questions": [
+   {
+    "text": "1) <span class=\"math\">9 × 98</span> (اكتب <span class=\"math\">98 = 100 − 2</span>)",
+    "exact": [
+     "882"
+    ],
+    "partial": [],
+    "h1": "خاصية التوزيع: <span class=\"math\">k × (a − b) = k × a − k × b</span>.",
+    "h2": "<span class=\"math\">9 × 100 − 9 × 2</span>.",
+    "steps": [
+     "<span class=\"math\">9 × 98 = 9 × (100 − 2)</span>",
+     "<span class=\"math\">= 9 × 100 − 9 × 2</span>",
+     "<span class=\"math\">= 900 − 18</span>",
+     "<span class=\"math\">= 882</span>",
+     "النتيجة: <span class=\"math\">882</span>"
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">9 × 100 − 9 × 2</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">882</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "7-1"
+   },
+   {
+    "text": "2) <span class=\"math\">15 × 19</span> (اكتب <span class=\"math\">19 = 20 − 1</span>)",
+    "exact": [
+     "285"
+    ],
+    "partial": [],
+    "h1": "خاصية التوزيع: <span class=\"math\">k × (a − b) = k × a − k × b</span>.",
+    "h2": "<span class=\"math\">15 × 20 − 15 × 1</span>.",
+    "steps": [
+     "<span class=\"math\">15 × 19 = 15 × (20 − 1)</span>",
+     "<span class=\"math\">= 15 × 20 − 15 × 1</span>",
+     "<span class=\"math\">= 300 − 15</span>",
+     "<span class=\"math\">= 285</span>",
+     "النتيجة: <span class=\"math\">285</span>"
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">15 × 20 − 15 × 1</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">285</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "7-2"
+   }
+  ]
+ },
+ {
+  "id": 8,
+  "pts": 1,
+  "title": "التمرين 08: تخفيض في متجر رياضي (المورد 2: الخاصية التوزيعية في الاتجاهين)",
+  "context": "في متجر بعنابة ثمن الحذاء الرياضي <span class=\"math\">3200 DA</span>، وعليه تخفيض <span class=\"math\">400 DA</span>. اشترى نادٍ رياضي <span class=\"math\">15</span> حذاء.",
+  "questions": [
+   {
+    "text": "1) ما المبلغ الذي دفعه النادي؟",
+    "exact": [
+     "42000"
+    ],
+    "partial": [
+     "48000"
+    ],
+    "h1": "ثمن الحذاء بعد التخفيض <span class=\"math\">3200 − 400</span>، ثم اضرب في <span class=\"math\">15</span>.",
+    "h2": "السلسلة: <span class=\"math\">15 × (3200 − 400)</span>.",
+    "steps": [
+     "<span class=\"math\">15 × (3200 − 400)</span>",
+     "<span class=\"math\">= 15 × 2800</span>",
+     "<span class=\"math\">= 42000</span>",
+     "أو: <span class=\"math\">15 × 3200 − 15 × 400</span>",
+     "<span class=\"math\">= 48000 − 6000 = 42000</span>",
+     "النتيجة: <span class=\"math\">42000 DA</span>"
+    ],
+    "rubric": [
+     {
+      "step": "كتابة <span class=\"math\">15 × (3200 − 400)</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">42000 DA</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "هذا الثمن دون تخفيض.",
+    "partialZero": true,
+    "qId": "8-1"
+   },
+   {
+    "text": "2) ما قيمة التخفيض الذي استفاد منه النادي في المجموع؟",
+    "exact": [
+     "6000"
+    ],
+    "partial": [],
+    "h1": "التخفيض الكلي = عدد الأحذية × تخفيض الحذاء الواحد.",
+    "h2": "<span class=\"math\">15 × 400</span>.",
+    "steps": [
+     "<span class=\"math\">15 × 400</span>",
+     "<span class=\"math\">= 6000</span>",
+     "نتحقق: <span class=\"math\">48000 − 42000 = 6000</span>",
+     "النتيجة: <span class=\"math\">6000 DA</span>"
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">15 × 400</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">6000 DA</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "8-2"
+   }
+  ]
+ },
+ {
+  "id": 9,
+  "pts": 1,
+  "title": "التمرين 09: مربعات بأعواد الثقاب (المورد 3: عبارة جبرية تترجم وضعية منتظمة)",
+  "context": "نصنع صفا من مربعات متلاصقة بأعواد الثقاب: مربع واحد يحتاج <span class=\"math\">4</span> أعواد، مربعان <span class=\"math\">7</span> أعواد، ثلاثة مربعات <span class=\"math\">10</span> أعواد، وهكذا (كل مربع جديد يضيف <span class=\"math\">3</span> أعواد).",
+  "questions": [
+   {
+    "text": "1) كم عودا نحتاج لصنع <span class=\"math\">5</span> مربعات؟",
+    "exact": [
+     "16"
+    ],
+    "partial": [
+     "20"
+    ],
+    "h1": "كل مربع جديد يضيف <span class=\"math\">3</span> أعواد.",
+    "h2": "من <span class=\"math\">10</span> أعواد (3 مربعات) أضف <span class=\"math\">3</span> ثم <span class=\"math\">3</span>.",
+    "steps": [
+     "<span class=\"math\">3</span> مربعات: <span class=\"math\">10</span> أعواد",
+     "<span class=\"math\">4</span> مربعات: <span class=\"math\">10 + 3</span>",
+     "<span class=\"math\">= 13</span>",
+     "<span class=\"math\">5</span> مربعات: <span class=\"math\">13 + 3</span>",
+     "<span class=\"math\">= 16</span>",
+     "أو: <span class=\"math\">3 × 5 + 1 = 16</span>",
+     "النتيجة: <span class=\"math\">16</span> عودا"
+    ],
+    "rubric": [
+     {
+      "step": "إضافة <span class=\"math\">3</span> أعواد لكل مربع",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">16</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "المربعات متلاصقة: الضلع المشترك لا يُعدّ مرتين.",
+    "partialZero": true,
+    "qId": "9-1"
+   },
+   {
+    "text": "2) اكتب عبارة عدد الأعواد اللازمة لصنع <span class=\"math\">n</span> مربعا.",
+    "exact": [
+     "3n+1",
+     "1+3n",
+     "3×n+1",
+     "1+3×n",
+     "n×3+1"
+    ],
+    "partial": [
+     "4n",
+     "3n",
+     "n+3"
+    ],
+    "h1": "العود الأول، ثم <span class=\"math\">3</span> أعواد لكل مربع.",
+    "h2": "تحقق من عبارتك: من أجل <span class=\"math\">n = 1</span> يجب أن تعطي <span class=\"math\">4</span>، ومن أجل <span class=\"math\">n = 2</span> تعطي <span class=\"math\">7</span>.",
+    "steps": [
+     "عود أول + <span class=\"math\">3</span> أعواد لكل مربع",
+     "عدد الأعواد <span class=\"math\">= 3 × n + 1</span>",
+     "نتحقق: <span class=\"math\">n = 2</span> يعطي <span class=\"math\">3 × 2 + 1 = 7</span>",
+     "النتيجة: <span class=\"math\">3n + 1</span>"
+    ],
+    "rubric": [
+     {
+      "step": "الحد <span class=\"math\">3n</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "الحد الثابت <span class=\"math\">+ 1</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "جرّب عبارتك من أجل <span class=\"math\">n = 2</span>: يجب أن تعطي <span class=\"math\">7</span>.",
+    "partialZero": true,
+    "qId": "9-2"
+   }
+  ]
+ },
+ {
+  "id": 10,
+  "pts": 1,
+  "title": "التمرين 10: تذاكر الحافلة (المورد 3: عبارة جبرية تترجم وضعية منتظمة)",
+  "context": "ثمن تذكرة الحافلة في مدينة سطيف <span class=\"math\">25 DA</span>. يشتري أحمد <span class=\"math\">n</span> تذكرة.",
+  "questions": [
+   {
+    "text": "1) اكتب عبارة المبلغ الذي يدفعه أحمد بدلالة <span class=\"math\">n</span>.",
+    "exact": [
+     "25n",
+     "25×n",
+     "n×25"
+    ],
+    "partial": [
+     "n25",
+     "25+n"
+    ],
+    "h1": "المبلغ = عدد التذاكر × ثمن التذكرة.",
+    "h2": "استعمل الحرف <span class=\"math\">n</span> مكان عدد التذاكر واحذف علامة <span class=\"math\">×</span>.",
+    "steps": [
+     "المبلغ <span class=\"math\">= 25 × n</span>",
+     "<span class=\"math\">= 25n</span>",
+     "النتيجة: <span class=\"math\">25n</span>"
+    ],
+    "rubric": [
+     {
+      "step": "الجداء <span class=\"math\">25 × n</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "الكتابة <span class=\"math\">25n</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "المبلغ جداء وليس مجموعا، والعدد يكتب قبل الحرف.",
+    "partialZero": true,
+    "qId": "10-1"
+   },
+   {
+    "text": "2) احسب هذا المبلغ من أجل <span class=\"math\">n = 12</span>.",
+    "exact": [
+     "300"
+    ],
+    "partial": [
+     "2512",
+     "37"
+    ],
+    "h1": "عوض <span class=\"math\">n</span> بـ <span class=\"math\">12</span> في <span class=\"math\">25n</span>.",
+    "h2": "<span class=\"math\">25 × 12</span> = <span class=\"math\">25 × 10 + 25 × 2</span>.",
+    "steps": [
+     "<span class=\"math\">25n = 25 × 12</span>",
+     "<span class=\"math\">= 250 + 50</span>",
+     "<span class=\"math\">= 300</span>",
+     "النتيجة: <span class=\"math\">300 DA</span>"
+    ],
+    "rubric": [
+     {
+      "step": "التعويض <span class=\"math\">25 × 12</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">300 DA</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "<span class=\"math\">25n</span> تعني <span class=\"math\">25 × n</span>.",
+    "partialZero": true,
+    "qId": "10-2"
+   }
+  ]
+ },
+ {
+  "id": 11,
+  "pts": 1,
+  "title": "التمرين 11: حذف علامة الضرب (المورد 4: تحويرات على عبارات جبرية)",
+  "context": "اكتب كل جداء دون علامة الضرب.",
+  "questions": [
+   {
+    "text": "1) <span class=\"math\">5 × a</span>",
+    "exact": [
+     "5a"
+    ],
+    "partial": [
+     "a5"
+    ],
+    "h1": "يمكن حذف علامة <span class=\"math\">×</span> بين عدد وحرف.",
+    "h2": "العدد يُكتب قبل الحرف.",
+    "steps": [
+     "<span class=\"math\">5 × a = 5a</span>",
+     "النتيجة: <span class=\"math\">5a</span>"
+    ],
+    "rubric": [
+     {
+      "step": "حذف <span class=\"math\">×</span> وكتابة العدد أولا",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "العدد يُكتب قبل الحرف.",
+    "partialZero": true,
+    "qId": "11-1"
+   },
+   {
+    "text": "2) <span class=\"math\">3 × (x + 2)</span>",
+    "exact": [
+     "3(x+2)"
+    ],
+    "partial": [
+     "3x+2"
+    ],
+    "h1": "يمكن حذف علامة <span class=\"math\">×</span> بين عدد وقوس.",
+    "h2": "احتفظ بالقوسين كما هما.",
+    "steps": [
+     "<span class=\"math\">3 × (x + 2) = 3(x + 2)</span>",
+     "النتيجة: <span class=\"math\">3(x + 2)</span>"
+    ],
+    "rubric": [
+     {
+      "step": "حذف <span class=\"math\">×</span> مع الاحتفاظ بالقوسين",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "لا تحذف القوسين: <span class=\"math\">3x + 2</span> عبارة مختلفة.",
+    "partialZero": true,
+    "qId": "11-2"
+   }
+  ]
+ },
+ {
+  "id": 12,
+  "pts": 1,
+  "title": "التمرين 12: حساب قيمة عبارة (المورد 4: تحويرات على عبارات جبرية)",
+  "context": "نعتبر العبارة <span class=\"math\">E = 4x + 3</span>.",
+  "questions": [
+   {
+    "text": "1) احسب <span class=\"math\">E</span> من أجل <span class=\"math\">x = 5</span>.",
+    "exact": [
+     "23"
+    ],
+    "partial": [
+     "48",
+     "32"
+    ],
+    "h1": "<span class=\"math\">4x</span> تعني <span class=\"math\">4 × x</span>، والضرب قبل الجمع.",
+    "h2": "عوض: <span class=\"math\">E = 4 × 5 + 3</span>.",
+    "steps": [
+     "<span class=\"math\">E = 4 × 5 + 3</span>",
+     "<span class=\"math\">E = 20 + 3</span>",
+     "<span class=\"math\">E = 23</span>",
+     "النتيجة: <span class=\"math\">E = 23</span>"
+    ],
+    "rubric": [
+     {
+      "step": "التعويض <span class=\"math\">4 × 5 + 3</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">23</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "<span class=\"math\">4x</span> تعني <span class=\"math\">4 × x</span> والضرب قبل الجمع.",
+    "partialZero": true,
+    "qId": "12-1"
+   },
+   {
+    "text": "2) احسب <span class=\"math\">E</span> من أجل <span class=\"math\">x = 2,5</span>.",
+    "exact": [
+     "13"
+    ],
+    "partial": [],
+    "h1": "عوض <span class=\"math\">x</span> بـ <span class=\"math\">2,5</span> في <span class=\"math\">4 × x + 3</span>.",
+    "h2": "<span class=\"math\">4 × 2,5 = 10</span>.",
+    "steps": [
+     "<span class=\"math\">E = 4 × 2,5 + 3</span>",
+     "<span class=\"math\">E = 10 + 3</span>",
+     "<span class=\"math\">E = 13</span>",
+     "النتيجة: <span class=\"math\">E = 13</span>"
+    ],
+    "rubric": [
+     {
+      "step": "التعويض <span class=\"math\">4 × 2,5 + 3</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">13</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "12-2"
+   }
+  ]
+ },
+ {
+  "id": 13,
+  "pts": 1,
+  "title": "التمرين 13: النشر (المورد 4: تحويرات على عبارات جبرية)",
+  "context": "انشر كل عبارة (اكتبها دون أقواس).",
+  "questions": [
+   {
+    "text": "1) <span class=\"math\">6(x + 4)</span>",
+    "exact": [
+     "6x+24",
+     "24+6x"
+    ],
+    "partial": [
+     "6x+4"
+    ],
+    "h1": "اضرب <span class=\"math\">6</span> في كل حد داخل القوسين.",
+    "h2": "<span class=\"math\">6 × x + 6 × 4</span>.",
+    "steps": [
+     "<span class=\"math\">6(x + 4) = 6 × x + 6 × 4</span>",
+     "<span class=\"math\">= 6x + 24</span>",
+     "النتيجة: <span class=\"math\">6x + 24</span>"
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">6 × x + 6 × 4</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">6x + 24</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "لم تضرب <span class=\"math\">6</span> في الحد الثاني <span class=\"math\">4</span>.",
+    "partialZero": true,
+    "qId": "13-1"
+   },
+   {
+    "text": "2) <span class=\"math\">3(2a + 5)</span>",
+    "exact": [
+     "6a+15",
+     "15+6a"
+    ],
+    "partial": [
+     "6a+5",
+     "5a+15",
+     "32a+15"
+    ],
+    "h1": "اضرب <span class=\"math\">3</span> في <span class=\"math\">2a</span> ثم في <span class=\"math\">5</span>.",
+    "h2": "<span class=\"math\">3 × 2a = 6a</span>.",
+    "steps": [
+     "<span class=\"math\">3(2a + 5)</span>",
+     "<span class=\"math\">= 3 × 2a + 3 × 5</span>",
+     "<span class=\"math\">= 6a + 15</span>",
+     "النتيجة: <span class=\"math\">6a + 15</span>"
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">3 × 2a + 3 × 5</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">6a + 15</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "اضرب <span class=\"math\">3</span> في كل حد، و<span class=\"math\">3 × 2a = 6a</span>.",
+    "partialZero": true,
+    "qId": "13-2"
+   }
+  ]
+ },
+ {
+  "id": 14,
+  "pts": 1,
+  "title": "التمرين 14: تقدير ثمن المشتريات (المورد 5: التقدير الذهني لنتيجة حساب)",
+  "context": "اشترت سلمى من مكتبة بالبويرة ثلاثة كتب أثمانها: <span class=\"math\">395 DA</span> و<span class=\"math\">612 DA</span> و<span class=\"math\">189 DA</span>.",
+  "questions": [
+   {
+    "text": "1) قدّر ذهنيا ثمن الكتب الثلاثة بتدوير كل ثمن إلى أقرب مئة.",
+    "exact": [
+     "1200"
+    ],
+    "partial": [
+     "1196"
+    ],
+    "h1": "أقرب مئة إلى <span class=\"math\">395</span> هي <span class=\"math\">400</span>.",
+    "h2": "<span class=\"math\">612 ≈ 600</span> و<span class=\"math\">189 ≈ 200</span>؛ اجمع القيم المدورة.",
+    "steps": [
+     "<span class=\"math\">395 ≈ 400</span>",
+     "<span class=\"math\">612 ≈ 600</span>",
+     "<span class=\"math\">189 ≈ 200</span>",
+     "<span class=\"math\">400 + 600 + 200 = 1200</span>",
+     "النتيجة: <span class=\"math\">1200 DA</span> تقريبا"
+    ],
+    "rubric": [
+     {
+      "step": "تدوير الأثمان الثلاثة",
+      "mark": "0,25"
+     },
+     {
+      "step": "التقدير <span class=\"math\">1200 DA</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "هذا المجموع المضبوط، والمطلوب تقدير ذهني بالتدوير.",
+    "partialZero": true,
+    "qId": "14-1"
+   },
+   {
+    "text": "2) احسب الثمن المضبوط.",
+    "exact": [
+     "1196"
+    ],
+    "partial": [],
+    "h1": "اجمع الأثمان الثلاثة.",
+    "h2": "<span class=\"math\">395 + 612 = 1007</span>.",
+    "steps": [
+     "<span class=\"math\">395 + 612 = 1007</span>",
+     "<span class=\"math\">1007 + 189 = 1196</span>",
+     "نقارن مع التقدير: <span class=\"math\">1196</span> قريب من <span class=\"math\">1200</span>",
+     "النتيجة: <span class=\"math\">1196 DA</span>"
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">395 + 612 = 1007</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">1196 DA</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "qId": "14-2"
+   }
+  ]
+ },
+ {
+  "id": 15,
+  "pts": 1,
+  "title": "التمرين 15: رتبة مقدار جداء (المورد 5: التقدير الذهني لنتيجة حساب)",
+  "context": "قدّر ذهنيا نتيجة كل جداء دون حسابه بدقة.",
+  "questions": [
+   {
+    "text": "1) <span class=\"math\">49 × 31</span> (دوّر كل عدد إلى أقرب عشرة)",
+    "exact": [
+     "1500"
+    ],
+    "partial": [
+     "1519"
+    ],
+    "h1": "أقرب عشرة إلى <span class=\"math\">49</span> هي <span class=\"math\">50</span>.",
+    "h2": "<span class=\"math\">31 ≈ 30</span>؛ احسب <span class=\"math\">50 × 30</span>.",
+    "steps": [
+     "<span class=\"math\">49 ≈ 50</span>",
+     "<span class=\"math\">31 ≈ 30</span>",
+     "<span class=\"math\">50 × 30 = 1500</span>",
+     "النتيجة: <span class=\"math\">1500</span>"
+    ],
+    "rubric": [
+     {
+      "step": "التدوير <span class=\"math\">50</span> و<span class=\"math\">30</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "التقدير <span class=\"math\">1500</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "هذه النتيجة المضبوطة، والمطلوب التقدير.",
+    "partialZero": true,
+    "qId": "15-1"
+   },
+   {
+    "text": "2) <span class=\"math\">7,9 × 20,2</span> (دوّر كل عدد إلى الوحدة)",
+    "exact": [
+     "160"
+    ],
+    "partial": [
+     "159,58",
+     "140"
+    ],
+    "h1": "أقرب عدد طبيعي إلى <span class=\"math\">7,9</span> هو <span class=\"math\">8</span>.",
+    "h2": "<span class=\"math\">20,2 ≈ 20</span>؛ احسب <span class=\"math\">8 × 20</span>.",
+    "steps": [
+     "<span class=\"math\">7,9 ≈ 8</span>",
+     "<span class=\"math\">20,2 ≈ 20</span>",
+     "<span class=\"math\">8 × 20 = 160</span>",
+     "النتيجة: <span class=\"math\">160</span>"
+    ],
+    "rubric": [
+     {
+      "step": "التدوير <span class=\"math\">8</span> و<span class=\"math\">20</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "التقدير <span class=\"math\">160</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "دوّر <span class=\"math\">7,9</span> إلى <span class=\"math\">8</span> و<span class=\"math\">20,2</span> إلى <span class=\"math\">20</span> ثم اضرب.",
+    "partialZero": true,
+    "qId": "15-2"
+   }
+  ]
+ },
+ {
+  "id": 16,
+  "pts": 1,
+  "title": "التمرين 16: جداء كسرين (المورد 6: جداء كسرين)",
+  "context": "احسب واكتب النتيجة على شكل كسر غير قابل للاختزال.",
+  "questions": [
+   {
+    "text": "1) <span class=\"math\">2/3 × 4/5</span>",
+    "exact": [
+     "8/15"
+    ],
+    "partial": [
+     "6/8",
+     "10/12",
+     "22/15"
+    ],
+    "h1": "جداء كسرين: نضرب البسطين معا والمقامين معا.",
+    "h2": "<span class=\"math\">(2 × 4)/(3 × 5)</span>.",
+    "steps": [
+     "<span class=\"math\">2/3 × 4/5</span>",
+     "<span class=\"math\">= (2 × 4)/(3 × 5)</span>",
+     "<span class=\"math\">= 8/15</span>",
+     "النتيجة: <span class=\"math\">8/15</span>"
+    ],
+    "rubric": [
+     {
+      "step": "ضرب البسطين والمقامين",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">8/15</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "في الضرب نضرب البسط في البسط والمقام في المقام.",
+    "partialZero": true,
+    "qId": "16-1"
+   },
+   {
+    "text": "2) <span class=\"math\">3/4 × 8/9</span>",
+    "exact": [
+     "2/3"
+    ],
+    "partial": [
+     "24/36",
+     "12/18",
+     "6/9",
+     "8/12",
+     "4/6"
+    ],
+    "h1": "اضرب البسطين والمقامين ثم اختزل.",
+    "h2": "<span class=\"math\">24/36</span>: قسّم البسط والمقام على <span class=\"math\">12</span>.",
+    "steps": [
+     "<span class=\"math\">3/4 × 8/9</span>",
+     "<span class=\"math\">= (3 × 8)/(4 × 9)</span>",
+     "<span class=\"math\">= 24/36</span>",
+     "<span class=\"math\">24 ÷ 12</span>",
+     "<span class=\"math\">= 2</span> و<span class=\"math\">36 ÷ 12 = 3</span>",
+     "<span class=\"math\">= 2/3</span>",
+     "النتيجة: <span class=\"math\">2/3</span>"
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">24/36</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "الاختزال <span class=\"math\">2/3</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "النتيجة صحيحة لكن اختزل الكسر إلى أبسط شكل.",
+    "qId": "16-2"
+   }
+  ]
+ },
+ {
+  "id": 17,
+  "pts": 1,
+  "title": "التمرين 17: حديقة الخضر (المورد 6: جداء كسرين)",
+  "context": "خصص فلاح من البليدة <span class=\"math\">3/5</span> مساحة أرضه للخضر، وزرع الطماطم في <span class=\"math\">2/3</span> مساحة الخضر.",
+  "questions": [
+   {
+    "text": "1) ما الكسر الذي يمثل مساحة الطماطم من كل الأرض؟ (كسر غير قابل للاختزال)",
+    "exact": [
+     "2/5"
+    ],
+    "partial": [
+     "6/15"
+    ],
+    "h1": "«<span class=\"math\">2/3</span> من <span class=\"math\">3/5</span>» تعني <span class=\"math\">2/3 × 3/5</span>.",
+    "h2": "احسب <span class=\"math\">6/15</span> ثم اختزل على <span class=\"math\">3</span>.",
+    "steps": [
+     "<span class=\"math\">2/3 × 3/5</span>",
+     "<span class=\"math\">= (2 × 3)/(3 × 5)</span>",
+     "<span class=\"math\">= 6/15</span>",
+     "<span class=\"math\">= 2/5</span>",
+     "النتيجة: <span class=\"math\">2/5</span>"
+    ],
+    "rubric": [
+     {
+      "step": "الجداء <span class=\"math\">2/3 × 3/5</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">2/5</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "النتيجة صحيحة لكن اختزل الكسر إلى أبسط شكل.",
+    "qId": "17-1"
+   },
+   {
+    "text": "2) مساحة الأرض <span class=\"math\">1500 m²</span>. ما مساحة الطماطم؟",
+    "exact": [
+     "600"
+    ],
+    "partial": [
+     "900",
+     "1000"
+    ],
+    "h1": "مساحة الطماطم = <span class=\"math\">2/5</span> من <span class=\"math\">1500</span>.",
+    "h2": "<span class=\"math\">1500 ÷ 5 = 300</span> ثم اضرب في <span class=\"math\">2</span>.",
+    "steps": [
+     "<span class=\"math\">2/5 × 1500</span>",
+     "<span class=\"math\">1500 ÷ 5 = 300</span>",
+     "<span class=\"math\">300 × 2 = 600</span>",
+     "النتيجة: <span class=\"math\">600 m²</span>"
+    ],
+    "rubric": [
+     {
+      "step": "العملية <span class=\"math\">2/5 × 1500</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">600 m²</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "استعمل الكسر <span class=\"math\">2/5</span> الذي وجدته في السؤال الأول.",
+    "partialZero": true,
+    "qId": "17-2"
+   }
+  ]
+ },
+ {
+  "id": 18,
+  "pts": 1,
+  "title": "التمرين 18: مقارنة كسرين (المورد 7: مقارنة كسرين وجمعهما وطرحهما (مقام أحدهما مضاعف للآخر))",
+  "context": "لمقارنة كسرين نوحد مقاميهما.",
+  "questions": [
+   {
+    "text": "1) أي الكسرين أكبر: <span class=\"math\">5/6</span> أم <span class=\"math\">7/12</span>؟ (اكتب الكسر الأكبر)",
+    "exact": [
+     "5/6"
+    ],
+    "partial": [
+     "7/12",
+     "10/12"
+    ],
+    "h1": "<span class=\"math\">12</span> مضاعف لـ <span class=\"math\">6</span>: اكتب <span class=\"math\">5/6</span> بالمقام <span class=\"math\">12</span>.",
+    "h2": "<span class=\"math\">5/6 = 10/12</span>؛ قارن <span class=\"math\">10/12</span> و<span class=\"math\">7/12</span>.",
+    "steps": [
+     "<span class=\"math\">5/6</span>",
+     "<span class=\"math\">= (5 × 2)/(6 × 2) = 10/12</span>",
+     "<span class=\"math\">10/12 &gt; 7/12</span>",
+     "<span class=\"math\">5/6 &gt; 7/12</span>",
+     "النتيجة: <span class=\"math\">5/6</span>"
+    ],
+    "rubric": [
+     {
+      "step": "توحيد المقامين <span class=\"math\">10/12</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">5/6</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "وحّد المقامين ثم قارن البسطين، واكتب الكسر كما ورد في السؤال.",
+    "partialZero": true,
+    "qId": "18-1"
+   },
+   {
+    "text": "2) أي الكسرين أصغر: <span class=\"math\">3/4</span> أم <span class=\"math\">13/16</span>؟ (اكتب الكسر الأصغر)",
+    "exact": [
+     "3/4"
+    ],
+    "partial": [
+     "13/16",
+     "12/16"
+    ],
+    "h1": "<span class=\"math\">16</span> مضاعف لـ <span class=\"math\">4</span>.",
+    "h2": "<span class=\"math\">3/4 = 12/16</span>؛ قارن <span class=\"math\">12/16</span> و<span class=\"math\">13/16</span>.",
+    "steps": [
+     "<span class=\"math\">3/4</span>",
+     "<span class=\"math\">= (3 × 4)/(4 × 4) = 12/16</span>",
+     "<span class=\"math\">12/16 &lt; 13/16</span>",
+     "<span class=\"math\">3/4 &lt; 13/16</span>",
+     "النتيجة: <span class=\"math\">3/4</span>"
+    ],
+    "rubric": [
+     {
+      "step": "توحيد المقامين <span class=\"math\">12/16</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">3/4</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "وحّد المقامين ثم قارن البسطين، واكتب الكسر كما ورد في السؤال.",
+    "partialZero": true,
+    "qId": "18-2"
+   }
+  ]
+ },
+ {
+  "id": 19,
+  "pts": 1,
+  "title": "التمرين 19: جمع وطرح كسرين (المورد 7: مقارنة كسرين وجمعهما وطرحهما (مقام أحدهما مضاعف للآخر))",
+  "context": "احسب واكتب النتيجة على شكل كسر غير قابل للاختزال.",
+  "questions": [
+   {
+    "text": "1) <span class=\"math\">2/5 + 3/10</span>",
+    "exact": [
+     "7/10"
+    ],
+    "partial": [
+     "5/15",
+     "1/3"
+    ],
+    "h1": "وحّد المقامين: <span class=\"math\">10</span> مضاعف لـ <span class=\"math\">5</span>.",
+    "h2": "<span class=\"math\">2/5 = 4/10</span>؛ ثم اجمع البسطين.",
+    "steps": [
+     "<span class=\"math\">2/5 = 4/10</span>",
+     "<span class=\"math\">4/10 + 3/10 = (4 + 3)/10</span>",
+     "<span class=\"math\">= 7/10</span>",
+     "النتيجة: <span class=\"math\">7/10</span>"
+    ],
+    "rubric": [
+     {
+      "step": "توحيد المقامين",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">7/10</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "لا نجمع المقامات: نوحدها ثم نجمع البسطين فقط.",
+    "partialZero": true,
+    "qId": "19-1"
+   },
+   {
+    "text": "2) <span class=\"math\">5/6 − 1/3</span>",
+    "exact": [
+     "1/2"
+    ],
+    "partial": [
+     "3/6"
+    ],
+    "h1": "وحّد المقامين: <span class=\"math\">6</span> مضاعف لـ <span class=\"math\">3</span>.",
+    "h2": "<span class=\"math\">1/3 = 2/6</span>؛ اطرح ثم اختزل <span class=\"math\">3/6</span>.",
+    "steps": [
+     "<span class=\"math\">1/3 = 2/6</span>",
+     "<span class=\"math\">5/6 − 2/6 = 3/6</span>",
+     "<span class=\"math\">3/6 = 1/2</span>",
+     "النتيجة: <span class=\"math\">1/2</span>"
+    ],
+    "rubric": [
+     {
+      "step": "توحيد المقامين والطرح <span class=\"math\">3/6</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "الاختزال <span class=\"math\">1/2</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "النتيجة صحيحة لكن اختزل الكسر إلى أبسط شكل.",
+    "qId": "19-2"
+   }
+  ]
+ },
+ {
+  "id": 20,
+  "pts": 1,
+  "title": "التمرين 20: خزان الماء (المورد 7: مقارنة كسرين وجمعهما وطرحهما (مقام أحدهما مضاعف للآخر))",
+  "context": "كان خزان ماء ببيت في الجلفة مملوءا إلى <span class=\"math\">7/8</span> سعته، فاستُهلك منه ما يعادل <span class=\"math\">1/4</span> السعة.",
+  "questions": [
+   {
+    "text": "1) ما الكسر الذي يمثل الماء المتبقي من سعة الخزان؟",
+    "exact": [
+     "5/8"
+    ],
+    "partial": [
+     "6/4",
+     "3/2"
+    ],
+    "h1": "المتبقي = <span class=\"math\">7/8 − 1/4</span>.",
+    "h2": "<span class=\"math\">1/4 = 2/8</span>.",
+    "steps": [
+     "<span class=\"math\">1/4 = 2/8</span>",
+     "<span class=\"math\">7/8 − 2/8 = 5/8</span>",
+     "النتيجة: <span class=\"math\">5/8</span>"
+    ],
+    "rubric": [
+     {
+      "step": "توحيد المقامين <span class=\"math\">2/8</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">5/8</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "لا نطرح المقامات: نوحدها ثم نطرح البسطين.",
+    "partialZero": true,
+    "qId": "20-1"
+   },
+   {
+    "text": "2) سعة الخزان <span class=\"math\">2000 L</span>. كم لترا بقي فيه؟",
+    "exact": [
+     "1250"
+    ],
+    "partial": [
+     "1750",
+     "500"
+    ],
+    "h1": "الماء المتبقي = <span class=\"math\">5/8</span> من <span class=\"math\">2000</span>.",
+    "h2": "<span class=\"math\">2000 ÷ 8 = 250</span> ثم اضرب في <span class=\"math\">5</span>.",
+    "steps": [
+     "<span class=\"math\">5/8 × 2000</span>",
+     "<span class=\"math\">2000 ÷ 8 = 250</span>",
+     "<span class=\"math\">250 × 5 = 1250</span>",
+     "النتيجة: <span class=\"math\">1250 L</span>"
+    ],
+    "rubric": [
+     {
+      "step": "العملية <span class=\"math\">5/8 × 2000</span>",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة <span class=\"math\">1250 L</span>",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "partialMsg": "استعمل الكسر المتبقي <span class=\"math\">5/8</span>.",
+    "partialZero": true,
+    "qId": "20-2"
+   }
+  ]
+ }
+];
+
+        function exercisesCount() { return exercises.reduce((a, e) => a + e.questions.length, 0); }
+
+        function renderApp() {
+            totalQuestionsCount = exercisesCount();
+            const root = document.getElementById('exercisesRoot');
+            root.innerHTML = '';
+
+            exercises.forEach(ex => {
+                const card = document.createElement('div');
+                card.className = 'exercise-card';
+
+                let questionsHtml = '';
+                ex.questions.forEach(q => {
+                    attemptsLeft[q.qId] = 3;
+                    questionEarned[q.qId] = 0;
+                    questionLocked[q.qId] = false;
+
+                    let symHtml = '';
+                    symbols1AM.forEach(s => {
+                        symHtml += `<button type="button" class="sym-btn" onclick="pressSym('${q.qId}', '${s}')">${s}</button>`;
+                    });
+
+                    let stepsHtml = '';
+                    q.steps.forEach((st, idx) => {
+                        const isLast = (idx === q.steps.length - 1);
+                        stepsHtml += `<div class="${isLast ? 'sol-result' : 'sol-line'}">${st}</div>`;
+                    });
+
+                    let rubricRows = '';
+                    q.rubric.forEach(r => {
+                        rubricRows += `<tr><td>${r.step}</td><td><span class="math">${r.mark} ن</span></td></tr>`;
+                    });
+
+                    questionsHtml += `
+                        <div class="q-box" id="qbox-${q.qId}">
+                            <div class="q-title">
+                                <span>${q.text}</span>
+                                <span class="q-meta" id="meta-${q.qId}">المحاولات: <span class="math">3</span> | النقاط: <span class="math">${String(q.pts).replace('.', ',')}</span></span>
+                            </div>
+                            <div class="answer-area">
+                                <div class="input-line">
+                                    <input type="text" id="in-${q.qId}" placeholder="اكتب إجابتك هنا" autocomplete="off">
+                                    <button type="button" class="btn-check" id="btn-${q.qId}" onclick="checkAns(${ex.id}, '${q.qId}')">تحقق من الإجابة</button>
+                                </div>
+                                <div class="sym-toolbar">${symHtml}</div>
+                            </div>
+                            <div class="feedback-box" id="fb-${q.qId}"></div>
+                            <div class="model-solution" id="sol-${q.qId}">
+                                <h4>✔ الإجابة النموذجية المفصلة:</h4>
+                                ${stepsHtml}
+                                <table class="rubric-table">
+                                    <thead>
+                                        <tr><th>مراحل الحل (سلم التنقيط)</th><th>النقطة</th></tr>
+                                    </thead>
+                                    <tbody>${rubricRows}</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h2>${ex.title}</h2>
+                        <span class="pts-badge"><span class="math">${String(ex.pts).replace('.', ',')}</span> ${ex.pts === 1 ? 'نقطة' : 'نقاط'}</span>
+                    </div>
+                    <div class="context-box">${ex.context}</div>
+                    ${questionsHtml}
+                `;
+                root.appendChild(card);
+            });
+        }
+
+        function pressSym(qId, sym) {
+            const inp = document.getElementById(`in-${qId}`);
+            if (!inp || inp.disabled) return;
+            if (sym === '⌫') {
+                inp.value = inp.value.slice(0, -1);
+            } else {
+                inp.value += sym;
+            }
+            inp.focus();
+        }
+
+        function normalizeInput(raw) {
+            if (!raw) return '';
+            const arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+            let s = raw.toString().trim();
+            for (let i = 0; i < 10; i++) {
+                s = s.replace(new RegExp(arDigits[i], 'g'), i);
+            }
+            s = s.replace(/\s+/g, '');
+            s = s.replace(/^[a-zA-Z]\s*=/i, '');
+            s = s.replace(/،/g, ',').replace(/\./g, ',');
+            s = s.replace(/\*/g, '×').replace(/(\d)[xX](?=\d)/g, '$1×').replace(/[−–]/g, '-');
+            s = s.replace(/(da|دج|دينار|أوراق|ورقة|عشرة|عشرات|وحدة|متر|درجة|°c|c°|°|cm²|m²|m2|cm|m|kg|لتر|l)$/i, '');
+            s = s.replace(/-\((\d+\/\d+)\)/g, '-$1').replace(/\((-?\d+(?:,\d+)?)\)/g, '$1').replace(/^\((.*)\)$/, '$1').replace(/^\+(?=\d)/, '');
+            s = s.replace(/(\d),(\d*?)0+(?=$|[^\d])/g, (m, a, b) => b ? a + ',' + b : a);
+            return s.toLowerCase();
+        }
+
+        function updateHeaderStats() {
+            const formattedScore = String(Math.round(totalScore * 100) / 100).replace('.', ',');
+            document.getElementById('scoreVal').innerText = `${formattedScore} / 20`;
+            document.getElementById('starsVal').innerText = totalStars;
+            const pct = Math.min(100, Math.round((completedQuestions / totalQuestionsCount) * 100));
+            document.getElementById('progressBar').style.width = pct + '%';
+
+            if (completedQuestions === totalQuestionsCount) {
+                setTimeout(() => {
+                    document.getElementById('finalScoreText').innerText = `${formattedScore} / 20`;
+                    document.getElementById('finalTitle').innerText = totalScore >= 10 ? '🎉 أحسنت! أتممت جميع الأسئلة' : '💪 أتممت السلسلة! راجع الإجابات النموذجية وأعد المحاولة';
+                    document.getElementById('finalStarsText').innerText = `⭐ ${totalStars} نجمة`;
+                    document.getElementById('finalModal').style.display = 'flex';
+                }, 600);
+            }
+        }
+
+        function triggerShake(qId) {
+            const inp = document.getElementById(`in-${qId}`);
+            inp.classList.remove('shake');
+            void inp.offsetWidth;
+            inp.classList.add('shake');
+        }
+
+        function checkAns(exId, qId) {
+            if (questionLocked[qId]) return;
+            const ex = exercises.find(e => e.id === exId);
+            const q = ex.questions.find(item => item.qId === qId);
+            const inp = document.getElementById(`in-${qId}`);
+            const fb = document.getElementById(`fb-${qId}`);
+            const val = normalizeInput(inp.value);
+
+            if (!val) {
+                triggerShake(qId);
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = 'يرجى كتابة إجابتك أولاً في الخانة قبل الضغط على زر التحقق.';
+                return;
+            }
+
+            const isExactMatch = q.exact.some(ans => normalizeInput(ans) === val);
+            if (isExactMatch) {
+                const rem = attemptsLeft[qId];
+                const starsAwarded = (rem === 3) ? 3 : (rem === 2 ? 2 : 1);
+                const starIcons = '⭐'.repeat(starsAwarded);
+
+                const prevPts = questionEarned[qId] || 0;
+                totalScore += (q.pts - prevPts);
+                questionEarned[qId] = q.pts;
+                totalStars += starsAwarded;
+                questionLocked[qId] = true;
+                completedQuestions++;
+
+                playTone('success');
+                document.getElementById(`qbox-${qId}`).classList.add('solved');
+                inp.disabled = true;
+                document.getElementById(`btn-${qId}`).disabled = true;
+
+                fb.className = 'feedback-box success';
+                fb.innerHTML = `<span class="star-burst">${starIcons}</span> أحسنت يا بطل! إجابة صحيحة وممتازة. نلت العلامة الكاملة (<span class="math">${String(q.pts).replace('.', ',')} ن</span>).`;
+                document.getElementById(`sol-${qId}`).style.display = 'block';
+                updateHeaderStats();
+                return;
+            }
+
+            const isPartialMatch = q.partial && q.partial.some(ans => normalizeInput(ans) === val);
+            if (isPartialMatch) {
+                if (q.partialZero) { handleWrongAttempt(q, q.partialMsg); return; }
+                const halfPts = Math.round((q.pts / 2) * 100) / 100;
+                const prevPts = questionEarned[qId] || 0;
+                if (halfPts > prevPts) {
+                    totalScore += (halfPts - prevPts);
+                    questionEarned[qId] = halfPts;
+                }
+                handleWrongAttempt(q, `${q.partialMsg} (حصلت على نصف العلامة <span class="math">${String(halfPts).replace('.', ',')} ن</span>، صحّح الشكل لتنال العلامة الكاملة).`);
+                updateHeaderStats();
+                return;
+            }
+
+            handleWrongAttempt(q, null);
+        }
+
+        function handleWrongAttempt(q, customReason) {
+            const qId = q.qId;
+            attemptsLeft[qId]--;
+            const rem = attemptsLeft[qId];
+            const inp = document.getElementById(`in-${qId}`);
+            const fb = document.getElementById(`fb-${qId}`);
+
+            playTone('error');
+            triggerShake(qId);
+            document.getElementById(`meta-${qId}`).innerHTML = `المحاولات: <span class="math">${rem}</span> | النقاط: <span class="math">${String(q.pts).replace('.', ',')}</span>`;
+
+            if (rem === 2) {
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = `${customReason ? customReason + '<br>' : 'لا بأس، حاول مرة أخرى بتأنٍّ!<br>'}<strong>💡 التلميح 1:</strong> ${q.h1}`;
+            } else if (rem === 1) {
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = `${customReason ? customReason + '<br>' : 'قاربت على الوصول، ركّز جيداً في هذه المحاولة الأخيرة!<br>'}<strong>💡 التلميح 2:</strong> ${q.h2}`;
+            } else {
+                questionLocked[qId] = true;
+                completedQuestions++;
+                inp.disabled = true;
+                document.getElementById(`btn-${qId}`).disabled = true;
+                document.getElementById(`qbox-${qId}`).classList.add('failed');
+
+                fb.className = 'feedback-box fail';
+                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 محاولة طيبة! لا تحزن، التعلم يأتي بالمحاولة. اقرأ الإجابة النموذجية وسلم التنقيط بتمعن لتتقن الفكرة في المرة القادمة.';
+                document.getElementById(`sol-${qId}`).style.display = 'block';
+                updateHeaderStats();
+            }
+        }
+
+        window.onload = renderApp;
+    </script>
+</body>
+</html>
