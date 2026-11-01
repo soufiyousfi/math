@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>رياضيات التعليم المتوسط</title>
 <meta name="description" content="سلاسل تمارين، فروض، واجبات واختبارات في الرياضيات للتعليم المتوسط">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:url" content="https://soufiyousfi.github.io/math/">
+<meta property="og:title" content="رياضيات المتوسط — سلاسل، فروض، واجبات واختبارات">
+<meta property="og:description" content="كل تمارين الرياضيات للسنوات الأولى إلى الرابعة متوسط في رابط واحد.">
+<meta property="og:image" content="https://soufiyousfi.github.io/math/cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -94,6 +103,33 @@ nav.terms button[aria-pressed="true"]{background:var(--brand-soft);border-color:
 
 .status{color:var(--muted);text-align:center;padding:30px 0}
 footer{color:var(--muted);font-size:.85rem;text-align:center;padding:30px 0 40px}
+
+/* Teacher mode (activated once with ?prof) */
+.card li{display:flex;align-items:center}
+.card li a{flex:1;min-width:0}
+.share{display:none;flex:none;margin-inline-end:10px;font:inherit;font-size:.8rem;font-weight:700;cursor:pointer;
+  color:#fff;background:#1877f2;border:0;border-radius:8px;padding:4px 10px}
+body.prof .share{display:inline-block}
+.prof-bar{display:none;margin-top:12px;font-size:.85rem;font-weight:700;color:var(--brand);background:var(--brand-soft);
+  border-radius:10px;padding:6px 12px}
+body.prof .prof-bar{display:block}
+dialog{border:1px solid var(--line);border-radius:16px;padding:0;width:min(560px,calc(100vw - 32px));
+  background:var(--paper);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.25)}
+dialog::backdrop{background:rgba(10,20,25,.5)}
+.dlg{padding:18px}
+.dlg h2{margin:0 0 4px;font-size:1.1rem}
+.dlg p{margin:0 0 10px;color:var(--muted);font-size:.88rem}
+.dlg textarea{width:100%;min-height:220px;font:inherit;font-size:.95rem;line-height:1.6;color:var(--ink);background:var(--bg);
+  border:1px solid var(--line);border-radius:10px;padding:10px;resize:vertical}
+.dlg .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.dlg button{font:inherit;font-weight:700;cursor:pointer;border-radius:10px;padding:8px 14px;border:1px solid var(--line);
+  background:var(--paper);color:var(--ink)}
+.dlg .fb{background:#1877f2;border-color:#1877f2;color:#fff;flex:1 1 100%}
+.dlg .row button:not(.fb){flex:1}
+.toast{position:fixed;inset-inline:16px;bottom:20px;margin:auto;max-width:420px;text-align:center;font-weight:700;
+  background:var(--ink);color:var(--bg);border-radius:12px;padding:10px 14px;opacity:0;transform:translateY(10px);
+  transition:.25s;pointer-events:none;z-index:10}
+.toast.on{opacity:1;transform:none}
 </style>
 </head>
 <body>
@@ -102,6 +138,7 @@ footer{color:var(--muted);font-size:.85rem;text-align:center;padding:30px 0 40px
     <div class="eyebrow">التعليم المتوسط</div>
     <h1>رياضيات المتوسط</h1>
     <p class="sub">سلاسل التمارين، الفروض، الواجبات المنزلية والاختبارات — في رابط واحد.</p>
+    <div class="prof-bar">وضع الأستاذ مفعّل على هذا الجهاز: زر «شارك» يظهر لك وحدك.</div>
   </header>
 
   <section class="recent" id="recent" hidden>
@@ -115,6 +152,20 @@ footer{color:var(--muted);font-size:.85rem;text-align:center;padding:30px 0 40px
   <main id="content"><p class="status">جارٍ التحميل…</p></main>
 
   <footer>احفظ هذا الرابط: كل جديد يظهر هنا تلقائيًا.</footer>
+
+  <dialog id="dlg">
+    <div class="dlg">
+      <h2>مشاركة على فيسبوك</h2>
+      <p>عدّل الرسالة إن أردت، ثم اضغط الزر الأزرق واختر المجموعة، والصق الرسالة في المنشور.</p>
+      <textarea id="msg"></textarea>
+      <div class="row">
+        <button type="button" class="fb" id="go">انسخ الرسالة وافتح فيسبوك</button>
+        <button type="button" id="other">رسالة أخرى</button>
+        <button type="button" id="close">إغلاق</button>
+      </div>
+    </div>
+  </dialog>
+  <div class="toast" id="toast" role="status"></div>
 </div>
 
 <script>
@@ -190,7 +241,7 @@ function renderContent() {
   document.getElementById("content").innerHTML = `<div class="grid">` + SECTIONS.map(([id, name]) => {
     const list = here.filter(i => i.section === id).sort(byDateDesc);
     const body = list.length
-      ? `<ul>${list.map(it => `<li>${itemLink(it, true)}</li>`).join("")}</ul>`
+      ? `<ul>${list.map(it => `<li>${itemLink(it, true)}<button type="button" class="share" data-share="${state.items.indexOf(it)}">شارك</button></li>`).join("")}</ul>`
       : `<p class="empty">لا يوجد محتوى بعد.</p>`;
     return `<section class="card s-${id}"><h3>${name}<span class="count">${list.length}</span></h3>${body}</section>`;
   }).join("") + `</div>`;
@@ -242,6 +293,75 @@ async function loadItems() {
   }
   return items;
 }
+
+// ---------- Teacher mode & Facebook sharing ----------
+(function () {
+  const qs = new URLSearchParams(location.search);
+  if (qs.has("prof")) {
+    try { localStorage.setItem("math-prof", qs.get("prof") === "0" ? "" : "1"); } catch (e) {}
+    history.replaceState(null, "", location.pathname + location.hash);
+  }
+  try { if (localStorage.getItem("math-prof") === "1") document.body.classList.add("prof"); } catch (e) {}
+})();
+
+const MSGS = {
+  series: [
+    "📚 أعزائي تلاميذ {level}\n\nسلسلة تمارين جديدة على الموقع:\n«{title}»\n\n✅ حاولوا حلّ كل تمرين بأنفسكم قبل رؤية الحل.\n💡 الخطأ جزء من التعلّم، فلا تستسلموا من أول محاولة.\n🎯 كل تمرين تحلّونه اليوم خطوة نحو النجاح.\n\nبالتوفيق للجميع 💪\n{link}",
+    "🌟 تحدٍّ جديد لتلاميذ {level}!\n\n«{title}»\n\n📌 اقرأ السؤال جيدًا، اكتب جوابك، ثم تحقّق.\n📌 إن أخطأت استعمل التلميح وأعد المحاولة.\n📌 من يصل إلى 20/20؟ 😉\n\nالمثابرة سرّ التفوّق 💪\n{link}",
+  ],
+  wadjib: [
+    "📝 أعزائي تلاميذ {level}\n\nالواجب المنزلي متاح الآن على الموقع:\n«{title}»\n\n⏰ أنجزوه قبل الحصة القادمة.\n✍️ حاولوا وحدكم أولًا، فالواجب لكم وليس للعلامة فقط.\n❓ ما لم تفهموه، اكتبوه ونناقشه معًا في القسم.\n\nأنا واثق من قدرتكم 💪\n{link}",
+    "🏠 واجب جديد لتلاميذ {level}\n\n«{title}»\n\n✅ خصّصوا له وقتًا هادئًا بعيدًا عن الهاتف.\n✅ راجعوا الدرس قبل البدء.\n✅ الأخطاء مفيدة: نتعلّم منها جميعًا.\n\nبالتوفيق 🌟\n{link}",
+  ],
+  fard: [
+    "📖 أعزائي تلاميذ {level}\n\nاستعدادًا للفرض، هذا نموذج للتدرّب:\n«{title}»\n\n🕐 حلّوه في وقت محدّد كأنكم في القسم.\n✅ صحّحوا أخطاءكم وراجعوا القواعد المرتبطة بها.\n\nالتحضير الجيد نصف النجاح 💪\n{link}",
+  ],
+  ikhtibar: [
+    "🎓 أعزائي تلاميذ {level}\n\nللتحضير للاختبار، هذا موضوع للمراجعة:\n«{title}»\n\n📅 نظّموا وقتكم وراجعوا درسًا كل يوم.\n✅ حلّوا الموضوع كاملًا ثم قارنوا مع الحل.\n😌 ثقوا بأنفسكم، فقد عملتم جيدًا طوال الفصل.\n\nبالتوفيق والنجاح للجميع 🌟\n{link}",
+  ],
+};
+
+let shareItem = null, msgIdx = 0;
+const dlg = document.getElementById("dlg"), msgBox = document.getElementById("msg");
+
+function itemUrl(it) { return new URL(it.url, location.href).href; }
+function buildMsg(it) {
+  const list = MSGS[it.section] || MSGS.series;
+  return list[msgIdx % list.length]
+    .replace("{level}", LEVEL_NAME[it.level]).replace("{title}", it.title).replace("{link}", itemUrl(it));
+}
+function toast(t) {
+  const el = document.getElementById("toast");
+  el.textContent = t; el.classList.add("on");
+  clearTimeout(toast._t); toast._t = setTimeout(() => el.classList.remove("on"), 3500);
+}
+function copyText(t) {
+  msgBox.value = t; msgBox.select();
+  let ok = false;
+  try { ok = document.execCommand("copy"); } catch (e) {}
+  if (navigator.clipboard) navigator.clipboard.writeText(t).catch(() => {});
+  return ok || !!navigator.clipboard;
+}
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-share]");
+  if (!b) return;
+  shareItem = state.items[+b.dataset.share]; msgIdx = 0;
+  msgBox.value = buildMsg(shareItem);
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open", "");
+  msgBox.scrollTop = 0;
+});
+document.getElementById("other").onclick = () => { msgIdx++; msgBox.value = buildMsg(shareItem); };
+document.getElementById("close").onclick = () => dlg.close();
+document.getElementById("go").onclick = () => {
+  const link = itemUrl(shareItem);
+  copyText(msgBox.value);
+  toast("✓ تم نسخ الرسالة — الصقها في منشور فيسبوك");
+  const mobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
+  if (mobile && navigator.share) navigator.share({ url: link }).catch(() => {});
+  else window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(link), "_blank", "noopener");
+  dlg.close();
+};
 
 loadPrefs(); render();
 loadItems()
