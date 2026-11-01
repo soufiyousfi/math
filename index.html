@@ -126,6 +126,16 @@ dialog::backdrop{background:rgba(10,20,25,.5)}
   background:var(--paper);color:var(--ink)}
 .dlg .fb{background:#1877f2;border-color:#1877f2;color:#fff;flex:1 1 100%}
 .dlg .row button:not(.fb){flex:1}
+.dests{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.dests .d{display:flex;gap:6px}
+.dests .go{flex:1;text-align:start;font:inherit;font-weight:700;cursor:pointer;color:#fff;background:#1877f2;border:0;border-radius:10px;padding:10px 14px}
+.dests .del{font:inherit;cursor:pointer;background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:10px;padding:0 12px}
+.dests .none{color:var(--muted);font-size:.9rem;margin:0}
+.add{margin-top:10px;border:1px dashed var(--line);border-radius:10px;padding:8px 12px}
+.add summary{cursor:pointer;font-weight:700;color:var(--brand)}
+.add input{display:block;width:100%;margin-top:8px;font:inherit;font-size:.95rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px}
+.add button{margin-top:8px;font:inherit;font-weight:700;cursor:pointer;border-radius:8px;padding:6px 16px;border:0;background:var(--brand);color:var(--on-brand)}
+.add .hint{margin:8px 0 0;font-size:.82rem}
 .toast{position:fixed;inset-inline:16px;bottom:20px;margin:auto;max-width:420px;text-align:center;font-weight:700;
   background:var(--ink);color:var(--bg);border-radius:12px;padding:10px 14px;opacity:0;transform:translateY(10px);
   transition:.25s;pointer-events:none;z-index:10}
@@ -156,10 +166,17 @@ dialog::backdrop{background:rgba(10,20,25,.5)}
   <dialog id="dlg">
     <div class="dlg">
       <h2>مشاركة على فيسبوك</h2>
-      <p>عدّل الرسالة إن أردت، ثم اضغط الزر الأزرق واختر المجموعة، والصق الرسالة في المنشور.</p>
+      <p>عدّل الرسالة إن أردت، ثم اختر أين تنشر: تُنسخ الرسالة وتُفتح المجموعة أو الصفحة، فاضغط «اكتب شيئًا» والصق.</p>
       <textarea id="msg"></textarea>
+      <div class="dests" id="dests"></div>
+      <details class="add" id="add">
+        <summary>+ إضافة مجموعة أو صفحة</summary>
+        <input id="dname" placeholder="الاسم، مثال: مجموعة 4م1">
+        <input id="durl" placeholder="رابط المجموعة أو الصفحة" dir="ltr" inputmode="url">
+        <button type="button" id="dadd">حفظ</button>
+        <p class="hint">لنسخ الرابط: افتح المجموعة أو الصفحة في فيسبوك ← «مشاركة» ← «نسخ الرابط».</p>
+      </details>
       <div class="row">
-        <button type="button" class="fb" id="go">انسخ الرسالة وافتح فيسبوك</button>
         <button type="button" id="other">رسالة أخرى</button>
         <button type="button" id="close">إغلاق</button>
       </div>
@@ -348,19 +365,46 @@ document.addEventListener("click", e => {
   if (!b) return;
   shareItem = state.items[+b.dataset.share]; msgIdx = 0;
   msgBox.value = buildMsg(shareItem);
+  renderDests();
   dlg.showModal ? dlg.showModal() : dlg.setAttribute("open", "");
   msgBox.scrollTop = 0;
 });
 document.getElementById("other").onclick = () => { msgIdx++; msgBox.value = buildMsg(shareItem); };
 document.getElementById("close").onclick = () => dlg.close();
-document.getElementById("go").onclick = () => {
-  const link = itemUrl(shareItem);
-  copyText(msgBox.value);
-  toast("✓ تم نسخ الرسالة — الصقها في منشور فيسبوك");
-  const mobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
-  if (mobile && navigator.share) navigator.share({ url: link }).catch(() => {});
-  else window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(link), "_blank", "noopener");
-  dlg.close();
+// Saved destinations (groups / page) — stored on the teacher's device only
+function getDests() { try { return JSON.parse(localStorage.getItem("math-dests") || "[]"); } catch (e) { return []; } }
+function setDests(d) { try { localStorage.setItem("math-dests", JSON.stringify(d)); } catch (e) {} }
+function renderDests() {
+  const d = getDests(), box = document.getElementById("dests");
+  box.innerHTML = d.length
+    ? d.map((x, i) => `<div class="d"><button type="button" class="go" data-dest="${i}">انشر في: ${esc(x.name)}</button>` +
+        `<button type="button" class="del" data-del="${i}" aria-label="حذف">×</button></div>`).join("")
+    : `<p class="none">لم تحفظ أي مجموعة أو صفحة بعد. أضفها مرة واحدة من الأسفل.</p>`;
+  document.getElementById("add").open = !d.length;
+}
+document.getElementById("dests").addEventListener("click", e => {
+  const g = e.target.closest("[data-dest]"), x = e.target.closest("[data-del]");
+  if (g) {
+    const dest = getDests()[+g.dataset.dest];
+    copyText(msgBox.value);
+    toast("✓ تم نسخ الرسالة — اضغط «اكتب شيئًا» والصق");
+    window.open(dest.url, "_blank", "noopener");
+    dlg.close();
+  } else if (x) {
+    const d = getDests(), name = d[+x.dataset.del].name;
+    if (confirm("حذف «" + name + "» من القائمة؟")) { d.splice(+x.dataset.del, 1); setDests(d); renderDests(); }
+  }
+});
+document.getElementById("dadd").onclick = () => {
+  const name = document.getElementById("dname").value.trim();
+  let url = document.getElementById("durl").value.trim();
+  const m = url.match(/https?:\/\/\S+/); if (m) url = m[0];
+  if (!name || !/^https?:\/\/([\w-]+\.)*(facebook\.com|fb\.com|fb\.me)\//i.test(url)) {
+    toast("أدخل اسمًا ورابط فيسبوك صحيحًا"); return;
+  }
+  const d = getDests(); d.push({ name, url }); setDests(d);
+  document.getElementById("dname").value = ""; document.getElementById("durl").value = "";
+  renderDests(); toast("✓ تم الحفظ");
 };
 
 loadPrefs(); render();

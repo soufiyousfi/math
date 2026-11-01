@@ -20,6 +20,36 @@ EXTS = {".html": "html", ".htm": "html", ".pdf": "pdf",
 
 TITLE_RE = re.compile(r"<title[^>]*>(.*?)</title>", re.I | re.S)
 
+LEVEL_AR = {"1m": "السنة الأولى متوسط", "2m": "السنة الثانية متوسط",
+            "3m": "السنة الثالثة متوسط", "4m": "السنة الرابعة متوسط"}
+SECTION_AR = {"series": "سلسلة تمارين", "fard": "فرض", "wadjib": "واجب منزلي", "ikhtibar": "اختبار"}
+
+
+def site_base():
+    owner, _, repo = os.environ.get("GITHUB_REPOSITORY", "soufiyousfi/math").partition("/")
+    return f"https://{owner}.github.io/{repo}/"
+
+
+def inject_og(path, item):
+    """Add Facebook preview tags to the DEPLOYED copy of a page (CI only).
+    The files in the repository are never changed."""
+    with open(path, encoding="utf-8", errors="ignore") as f:
+        page = f.read()
+    if 'property="og:image"' in page:
+        return
+    base = site_base()
+    esc = lambda t: html.escape(t, quote=True)
+    tags = (f'\n<meta property="og:type" content="website">'
+            f'\n<meta property="og:title" content="{esc(item["title"])}">'
+            f'\n<meta property="og:description" content="{esc(LEVEL_AR[item["level"]] + " · " + SECTION_AR[item["section"]] + " — رياضيات المتوسط")}">'
+            f'\n<meta property="og:image" content="{base}cover.png">'
+            f'\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">'
+            f'\n<meta property="og:url" content="{base}{item["url"]}">\n')
+    m = re.search(r"<head[^>]*>", page, re.I)
+    page = page[:m.end()] + tags + page[m.end():] if m else tags + page
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(page)
+
 
 def html_title(path):
     try:
@@ -78,6 +108,10 @@ def main():
                         date = last_commit_date(full)
                     items.append({"level": lv, "term": tm, "section": sec,
                                   "title": title, "url": url, "type": kind, "date": date})
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        for it in items:
+            if it["type"] == "html":
+                inject_og(it["url"] + "index.html" if it["url"].endswith("/") else it["url"], it)
     with open("files.json", "w", encoding="utf-8") as f:
         json.dump({"items": items}, f, ensure_ascii=False, indent=1)
     print(f"files.json: {len(items)} items")
