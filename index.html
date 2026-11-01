@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>رياضيات التعليم المتوسط</title>
+<meta name="description" content="سلاسل تمارين، فروض، واجبات واختبارات في الرياضيات للتعليم المتوسط">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f3ec; --paper:#fffdf8; --ink:#1d2a33; --muted:#5d6b75; --line:#e4ddcf;
+  --brand:#0f5f6b; --brand-soft:#e1efef; --on-brand:#ffffff;
+  --series:#2563a6; --series-soft:#e6eef8;
+  --fard:#b4690e; --fard-soft:#fbf0e0;
+  --wadjib:#2f7d4a; --wadjib-soft:#e5f3ea;
+  --ikhtibar:#b23a3a; --ikhtibar-soft:#f8e6e6;
+  --new:#c2410c;
+  --shadow:0 1px 2px rgba(29,42,51,.06),0 4px 14px rgba(29,42,51,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#12181c; --paper:#1a2227; --ink:#e8ecee; --muted:#9aa8b1; --line:#2b363d;
+    --brand:#5fb7c2; --brand-soft:#1d3236; --on-brand:#0d1a1d;
+    --series:#7fb0e8; --series-soft:#1c2a3a;
+    --fard:#e3a24f; --fard-soft:#33281a;
+    --wadjib:#74c493; --wadjib-soft:#1b2f23;
+    --ikhtibar:#e98282; --ikhtibar-soft:#352022;
+    --new:#fb923c;
+    --shadow:0 1px 2px rgba(0,0,0,.3);
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:"Tajawal",system-ui,sans-serif; font-size:17px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:880px;margin:0 auto;padding:0 16px}
+header{padding:28px 0 8px}
+.eyebrow{color:var(--brand);font-weight:700;font-size:.9rem;letter-spacing:.02em}
+h1{margin:2px 0 4px;font-size:clamp(1.6rem,5vw,2.2rem);font-weight:800;line-height:1.25}
+.sub{color:var(--muted);margin:0}
+
+.recent{margin:22px 0 4px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow)}
+.recent h2{font-size:1rem;margin:0 0 6px;color:var(--brand)}
+.recent ul{list-style:none;margin:0;padding:0}
+.recent li{border-top:1px dashed var(--line)}
+.recent li:first-child{border-top:0}
+.recent a{display:flex;gap:10px;align-items:baseline;justify-content:space-between;padding:8px 0;color:inherit;text-decoration:none}
+.recent a:hover .t{text-decoration:underline}
+.recent .meta{color:var(--muted);font-size:.82rem;white-space:nowrap}
+@media (max-width:520px){.recent a{flex-direction:column;align-items:flex-start;gap:0}}
+
+nav.levels{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:22px 0 10px}
+nav.levels button{
+  font:inherit;font-weight:700;cursor:pointer;
+  background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:12px;
+  padding:10px 6px;line-height:1.25;
+}
+nav.levels button small{display:block;font-weight:500;color:var(--muted);font-size:.78rem}
+nav.levels button[aria-pressed="true"]{background:var(--brand);color:var(--on-brand);border-color:var(--brand)}
+nav.levels button[aria-pressed="true"] small{color:var(--on-brand);opacity:.85}
+@media (max-width:520px){nav.levels{grid-template-columns:repeat(2,1fr)}}
+
+nav.terms{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+nav.terms button{
+  font:inherit;font-size:.92rem;cursor:pointer;border-radius:999px;padding:5px 14px;
+  background:transparent;color:var(--ink);border:1px solid var(--line);
+}
+nav.terms button[aria-pressed="true"]{background:var(--brand-soft);border-color:var(--brand);color:var(--brand);font-weight:700}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:640px){.grid{grid-template-columns:1fr}}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.card h3{margin:0;padding:11px 16px;font-size:1.02rem;display:flex;align-items:center;gap:8px;background:var(--soft);color:var(--c)}
+.card h3 .count{margin-inline-start:auto;font-size:.8rem;font-weight:700;background:var(--paper);color:var(--c);border-radius:999px;padding:0 9px}
+.card ul{list-style:none;margin:0;padding:4px 0}
+.card li a{display:flex;align-items:center;gap:10px;padding:9px 16px;color:inherit;text-decoration:none}
+.card li a:hover{background:var(--soft)}
+.card li .t{flex:1}
+.card li .d{color:var(--muted);font-size:.8rem;white-space:nowrap}
+.card .empty{color:var(--muted);font-size:.92rem;padding:14px 16px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none}
+.badge{font-size:.72rem;font-weight:800;color:#fff;background:var(--new);border-radius:6px;padding:0 6px;line-height:1.6}
+.kind{font-size:.72rem;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:0 5px}
+
+.s-series{--c:var(--series);--soft:var(--series-soft)}
+.s-fard{--c:var(--fard);--soft:var(--fard-soft)}
+.s-wadjib{--c:var(--wadjib);--soft:var(--wadjib-soft)}
+.s-ikhtibar{--c:var(--ikhtibar);--soft:var(--ikhtibar-soft)}
+
+.status{color:var(--muted);text-align:center;padding:30px 0}
+footer{color:var(--muted);font-size:.85rem;text-align:center;padding:30px 0 40px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">التعليم المتوسط</div>
+    <h1>رياضيات المتوسط</h1>
+    <p class="sub">سلاسل التمارين، الفروض، الواجبات المنزلية والاختبارات — في رابط واحد.</p>
+  </header>
+
+  <section class="recent" id="recent" hidden>
+    <h2>آخر ما أُضيف</h2>
+    <ul id="recent-list"></ul>
+  </section>
+
+  <nav class="levels" id="levels" aria-label="المستوى"></nav>
+  <nav class="terms" id="terms" aria-label="الفصل"></nav>
+
+  <main id="content"><p class="status">جارٍ التحميل…</p></main>
+
+  <footer>احفظ هذا الرابط: كل جديد يظهر هنا تلقائيًا.</footer>
+</div>
+
+<script>
+const CONFIG = { user: "soufiyousfi", repo: "math", branch: "main", newDays: 7 };
+
+const LEVELS = [
+  ["1m", "الأولى", "السنة الأولى متوسط"],
+  ["2m", "الثانية", "السنة الثانية متوسط"],
+  ["3m", "الثالثة", "السنة الثالثة متوسط"],
+  ["4m", "الرابعة", "السنة الرابعة متوسط"],
+];
+const TERMS = [["t1", "الفصل الأول"], ["t2", "الفصل الثاني"], ["t3", "الفصل الثالث"]];
+const SECTIONS = [
+  ["series", "سلاسل التمارين"],
+  ["fard", "الفروض"],
+  ["wadjib", "الواجبات المنزلية"],
+  ["ikhtibar", "الاختبارات"],
+];
+const KIND = { pdf: "PDF", image: "صورة" };
+const LEVEL_NAME = Object.fromEntries(LEVELS.map(l => [l[0], l[2]]));
+const TERM_NAME = Object.fromEntries(TERMS);
+const SECTION_NAME = Object.fromEntries(SECTIONS);
+
+// Current trimester by school calendar: Sep–Dec → 1, Jan–Mar → 2, Apr–Aug → 3
+function currentTerm() {
+  const m = new Date().getMonth() + 1;
+  return m >= 9 ? "t1" : m <= 3 ? "t2" : "t3";
+}
+
+const state = { level: "1m", term: currentTerm(), items: [] };
+
+function readHash() {
+  const m = location.hash.match(/^#([1-4]m)(?:-(t[1-3]))?$/);
+  if (m) { state.level = m[1]; if (m[2]) state.term = m[2]; return true; }
+  return false;
+}
+function savePrefs() {
+  history.replaceState(null, "", "#" + state.level + "-" + state.term);
+  try { localStorage.setItem("math-level", state.level); } catch (e) {}
+}
+function loadPrefs() {
+  if (readHash()) return;
+  try { const l = localStorage.getItem("math-level"); if (l && LEVEL_NAME[l]) state.level = l; } catch (e) {}
+}
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+function isNew(d) { return d && (Date.now() - new Date(d)) / 864e5 <= CONFIG.newDays; }
+function fmtDate(d) {
+  if (!d) return "";
+  try { return new Date(d).toLocaleDateString("ar-DZ", { day: "numeric", month: "long" }); } catch (e) { return ""; }
+}
+function byDateDesc(a, b) { return (b.date || "").localeCompare(a.date || "") || a.title.localeCompare(b.title, "ar"); }
+
+function renderNav() {
+  document.getElementById("levels").innerHTML = LEVELS.map(([id, short, full]) =>
+    `<button type="button" data-level="${id}" aria-pressed="${id === state.level}" title="${full}">
+       السنة ${short}<small>متوسط</small></button>`).join("");
+  document.getElementById("terms").innerHTML = TERMS.map(([id, name]) =>
+    `<button type="button" data-term="${id}" aria-pressed="${id === state.term}">${name}</button>`).join("");
+}
+
+function itemLink(it, withDate) {
+  const kind = KIND[it.type] ? `<span class="kind">${KIND[it.type]}</span>` : "";
+  const badge = isNew(it.date) ? `<span class="badge">جديد</span>` : "";
+  const date = withDate && it.date ? `<span class="d">${fmtDate(it.date)}</span>` : "";
+  return `<a href="${esc(it.url)}" target="_blank" rel="noopener"><span class="dot"></span><span class="t">${esc(it.title)}</span>${badge}${kind}${date}</a>`;
+}
+
+function renderContent() {
+  const here = state.items.filter(i => i.level === state.level && i.term === state.term);
+  document.getElementById("content").innerHTML = `<div class="grid">` + SECTIONS.map(([id, name]) => {
+    const list = here.filter(i => i.section === id).sort(byDateDesc);
+    const body = list.length
+      ? `<ul>${list.map(it => `<li>${itemLink(it, true)}</li>`).join("")}</ul>`
+      : `<p class="empty">لا يوجد محتوى بعد.</p>`;
+    return `<section class="card s-${id}"><h3>${name}<span class="count">${list.length}</span></h3>${body}</section>`;
+  }).join("") + `</div>`;
+}
+
+function renderRecent() {
+  const dated = state.items.filter(i => i.date).sort(byDateDesc).slice(0, 5);
+  const box = document.getElementById("recent");
+  if (!dated.length) { box.hidden = true; return; }
+  document.getElementById("recent-list").innerHTML = dated.map(it =>
+    `<li class="s-${it.section}"><a href="${esc(it.url)}" target="_blank" rel="noopener">
+       <span class="t">${esc(it.title)}</span>
+       <span class="meta">${LEVEL_NAME[it.level]} · ${SECTION_NAME[it.section]}</span></a></li>`).join("");
+  box.hidden = false;
+}
+
+function render() { renderNav(); renderContent(); }
+
+document.addEventListener("click", e => {
+  const lb = e.target.closest("[data-level]"), tb = e.target.closest("[data-term]");
+  if (lb) state.level = lb.dataset.level;
+  else if (tb) state.term = tb.dataset.term;
+  else return;
+  savePrefs(); render();
+});
+window.addEventListener("hashchange", () => { if (readHash()) render(); });
+
+// Main source: files.json (built by GitHub Actions). Fallback: GitHub API listing.
+async function loadItems() {
+  try {
+    const r = await fetch("files.json", { cache: "no-cache" });
+    if (r.ok) return (await r.json()).items || [];
+  } catch (e) {}
+  const api = `https://api.github.com/repos/${CONFIG.user}/${CONFIG.repo}/git/trees/${CONFIG.branch}?recursive=1`;
+  const r = await fetch(api);
+  if (!r.ok) throw new Error("api " + r.status);
+  const tree = (await r.json()).tree || [];
+  const items = [];
+  const re = /^([1-4]m)\/(t[1-3])\/(series|fard|wadjib|ikhtibar)\/([^/]+?)(\/index\.html)?$/;
+  for (const n of tree) {
+    const m = n.path.match(re);
+    if (!m || n.type !== "blob" || m[4].startsWith(".")) continue;
+    const ext = (m[4].match(/\.(\w+)$/) || [])[1];
+    if (!m[5] && !/^(html?|pdf|png|jpe?g|webp)$/i.test(ext || "")) continue;
+    const type = m[5] || /^html?$/i.test(ext) ? "html" : /pdf/i.test(ext) ? "pdf" : "image";
+    items.push({ level: m[1], term: m[2], section: m[3], type, date: null,
+      title: m[4].replace(/\.\w+$/, "").replace(/[-_]+/g, " "),
+      url: m[5] ? `${m[1]}/${m[2]}/${m[3]}/${m[4]}/` : n.path });
+  }
+  return items;
+}
+
+loadPrefs(); render();
+loadItems()
+  .then(items => { state.items = items; renderContent(); renderRecent(); })
+  .catch(() => {
+    document.getElementById("content").innerHTML =
+      `<p class="status">تعذّر تحميل القائمة. حاول مرة أخرى بعد قليل.</p>`;
+  });
+</script>
+</body>
+</html>
