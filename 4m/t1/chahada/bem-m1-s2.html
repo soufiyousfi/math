@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المقطع الأول — الجزء 4: تمارين تجمع موارد المقطع</title>
+    <title>المقطع الأول — السلسلة الثانية: كسور وجذور والقاسم المشترك الأكبر ، تمارين تجمع موارد المقطع ، مسائل ووضعيات</title>
     <style>
         :root {
             --primary: #1e3a8a;
@@ -498,20 +498,21 @@
             .input-line { flex-direction: column; }
             input[type="text"], .btn-check { width: 100%; }
         }
-    </style>
+    .part-head{margin:26px 4px 10px;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,#0f766e,#1e3a8a);color:#fff;font-weight:800;font-size:1.08rem}
+</style>
 </head>
 <body>
 
     <header>
         <div class="school-title">متوسطة العربي بن مهيدي — الأستاذ: يوسفي السوفي</div>
-        <h1>تمارين الشهادة — المقطع الأول — الجزء الرابع</h1>
-        <div class="sub-info">السنة الرابعة متوسط | تمارين تجمع موارد المقطع | 5 تمارين على 20<br>حلّ على الورقة أولا، ثم صحّح هنا</div>
+        <h1>تمارين الشهادة — المقطع الأول — السلسلة الثانية</h1>
+        <div class="sub-info">السنة الرابعة متوسط | 3 أجزاء مستقلة، كل جزء 4 تمارين على 20<br>حلّ على الورقة أولا، ثم صحّح هنا</div>
     </header>
 
     <div class="sticky-bar">
         <div class="sticky-inner">
             <div class="stat-group">
-                <span class="score-badge">العلامة: <span class="math" id="scoreVal" style="background:transparent;color:#fff;padding:0;">0 / 20</span></span>
+                <span class="score-badge">العلامة: <span class="math" id="scoreVal" style="background:transparent;color:#fff;padding:0;">0 / 60</span></span>
                 <span class="stars-badge">⭐ <span class="math" id="starsVal" style="background:transparent;color:#b45309;padding:0;">0</span></span>
                 <button type="button" class="sound-btn" id="soundToggle" onclick="toggleSound()" title="تشغيل/كتم الصوت">🔊</button>
             </div>
@@ -526,8 +527,8 @@
     <div class="modal-overlay" id="finalModal">
         <div class="modal-card">
             <h3 id="finalTitle">🎉 أحسنت! أتممت جميع الأسئلة</h3>
-            <p>لقد أنهيت تمارين الشهادة — المقطع الأول — الجزء الرابع</p>
-            <div class="modal-score" id="finalScoreText">0 / 20</div>
+            <p>لقد أنهيت تمارين الشهادة — المقطع الأول — السلسلة الثانية</p>
+            <div class="modal-score" id="finalScoreText">0 / 60</div>
             <div class="modal-stars" id="finalStarsText">⭐ 0 نجمة</div>
             <button type="button" class="btn-close-modal" onclick="document.getElementById('finalModal').style.display='none'">مراجعة إجاباتي</button>
         </div>
@@ -583,12 +584,270 @@
         const exercises = [
  {
   "id": 1,
-  "pts": 4,
-  "title": "التمرين 1: القاسم المشترك الأكبر والجذور",
-  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2016، التمرين الأول)</span><br>",
+  "pts": 5,
+  "title": "التمرين 1: كسور، كتابة علمية وجذور",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2014، التمرين الأول)</span><br>إليك الأعداد <span class=\"math\">A</span> ، <span class=\"math\">B</span> ، <span class=\"math\">C</span> حيث:<br><span class=\"math\">A = 3/5 + 2/5 × 7/4</span> ، <span class=\"math\">B = (1,2 × 10⁻² × 7)/(12,5 × 10³)</span> ، <span class=\"math\">C = √175 − √112 + 6√7</span>.",
   "questions": [
    {
     "qId": "1-1",
+    "text": "1) احسب <span class=\"math\">A</span> واكتبه على الشكل العشري.",
+    "exact": [
+     "1,3"
+    ],
+    "partial": [
+     "13/10",
+     "26/20"
+    ],
+    "h1": "الضرب أولا: <span class=\"math\">2/5 × 7/4 = 14/20</span>.",
+    "h2": "<span class=\"math\">3/5 = 12/20</span>.",
+    "steps": [
+     "<span class=\"math\">2/5 × 7/4 = 14/20</span>",
+     "<span class=\"math\">A = 12/20 + 14/20 = 26/20</span>",
+     "النتيجة: <span class=\"math\">A = 1,3</span>"
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "0,5"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1.25,
+    "partialMsg": "المطلوب الكتابة العشرية."
+   },
+   {
+    "qId": "1-2",
+    "text": "2) أعط الكتابة العلمية للعدد <span class=\"math\">B</span> (اكتب مثل: <span class=\"math\">2,5×10^-3</span>).",
+    "exact": [
+     "6,72×10^-6",
+     "6,72×10^(-6)",
+     "6,72×10⁻⁶"
+    ],
+    "partial": [
+     "0,672×10^-5",
+     "0,672×10^(-5)",
+     "67,2×10^-7"
+    ],
+    "h1": "<span class=\"math\">1,2 × 7 = 8,4</span> و<span class=\"math\">8,4 ÷ 12,5 = 0,672</span>.",
+    "h2": "<span class=\"math\">10⁻² ÷ 10³ = 10⁻⁵</span>.",
+    "steps": [
+     "<span class=\"math\">B = (8,4/12,5) × 10⁻²⁻³</span>",
+     "<span class=\"math\">B = 0,672 × 10⁻⁵</span>",
+     "<span class=\"math\">0,672 = 6,72 × 10⁻¹</span>",
+     "النتيجة: <span class=\"math\">B = 6,72 × 10⁻⁶</span>"
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "1"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 2.0,
+    "partialMsg": "في الكتابة العلمية يكون الجزء العشري بين <span class=\"math\">1</span> و<span class=\"math\">10</span>."
+   },
+   {
+    "qId": "1-3",
+    "text": "3) اكتب <span class=\"math\">C</span> على أبسط شكل.",
+    "exact": [
+     "7√7"
+    ],
+    "partial": [
+     "√7",
+     "15√7"
+    ],
+    "h1": "<span class=\"math\">√175 = 5√7</span> و<span class=\"math\">√112 = 4√7</span>.",
+    "h2": "<span class=\"math\">C = 5√7 − 4√7 + 6√7</span>.",
+    "steps": [
+     "<span class=\"math\">√175 = √(25 × 7) = 5√7</span>",
+     "<span class=\"math\">√112 = √(16 × 7) = 4√7</span>",
+     "<span class=\"math\">C = 5√7 − 4√7 + 6√7</span>",
+     "النتيجة: <span class=\"math\">C = 7√7</span>"
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "1"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1.75,
+    "partialMsg": "انتبه للإشارات.",
+    "partialZero": true
+   }
+  ],
+  "partHead": "الجزء الأول: كسور وجذور والقاسم المشترك الأكبر (4 تمارين — على 20)",
+  "part": "الجزء الأول"
+ },
+ {
+  "id": 2,
+  "pts": 5,
+  "title": "التمرين 2: جذور ومقام ناطق",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2022، التمرين الأول)</span><br><span class=\"math\">A</span> و<span class=\"math\">B</span> عددان حيث: <span class=\"math\">A = √80 + 2√125 − 3√20</span> و<span class=\"math\">B = (2 + √2)/√2</span>.",
+  "questions": [
+   {
+    "qId": "2-1",
+    "text": "1) اكتب <span class=\"math\">A</span> على الشكل <span class=\"math\">a√5</span>.",
+    "exact": [
+     "8√5"
+    ],
+    "partial": [
+     "3√5",
+     "√185"
+    ],
+    "h1": "<span class=\"math\">√80 = 4√5</span> ؛ <span class=\"math\">√125 = 5√5</span> ؛ <span class=\"math\">√20 = 2√5</span>.",
+    "h2": "<span class=\"math\">A = 4√5 + 10√5 − 6√5</span>.",
+    "steps": [
+     "<span class=\"math\">√80 = 4√5</span>",
+     "<span class=\"math\">2√125 = 10√5</span>",
+     "<span class=\"math\">3√20 = 6√5</span>",
+     "<span class=\"math\">A = 4√5 + 10√5 − 6√5</span>",
+     "النتيجة: <span class=\"math\">A = 8√5</span>"
+    ],
+    "rubric": [
+     {
+      "step": "التبسيط",
+      "mark": "1"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 1.5,
+    "partialMsg": "انتبه للمعاملين <span class=\"math\">2</span> و<span class=\"math\">3</span>.",
+    "partialZero": true
+   },
+   {
+    "qId": "2-2",
+    "text": "2) اكتب <span class=\"math\">B</span> بمقام ناطق ثم بسّط.",
+    "exact": [
+     "√2+1",
+     "1+√2",
+     "(2√2+2)/2",
+     "(2+2√2)/2"
+    ],
+    "partial": [],
+    "h1": "اضرب البسط والمقام في <span class=\"math\">√2</span>.",
+    "h2": "البسط <span class=\"math\">(2 + √2)√2 = 2√2 + 2</span>.",
+    "steps": [
+     "<span class=\"math\">B = (2 + √2)√2 / 2</span>",
+     "<span class=\"math\">= (2√2 + 2)/2</span>",
+     "النتيجة: <span class=\"math\">B = √2 + 1</span>"
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "1"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 2.0
+   },
+   {
+    "qId": "2-3",
+    "text": "3) احسب <span class=\"math\">B × (√2 − 1)</span>.",
+    "exact": [
+     "1"
+    ],
+    "partial": [
+     "3",
+     "-1"
+    ],
+    "h1": "<span class=\"math\">(√2 + 1)(√2 − 1)</span>: انشر.",
+    "h2": "<span class=\"math\">2 − √2 + √2 − 1</span>.",
+    "steps": [
+     "<span class=\"math\">B × (√2 − 1) = 2 − √2 + √2 − 1</span>",
+     "النتيجة: <span class=\"math\">1</span>"
+    ],
+    "rubric": [
+     {
+      "step": "النشر",
+      "mark": "1"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 1.5,
+    "partialMsg": "راجع النشر.",
+    "partialZero": true
+   }
+  ],
+  "part": "الجزء الأول"
+ },
+ {
+  "id": 3,
+  "pts": 5,
+  "title": "التمرين 3: القاسم المشترك الأكبر",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2025، التمرين الثاني، السؤال 1)</span><br>",
+  "questions": [
+   {
+    "qId": "3-1",
+    "text": "1) احسب <span class=\"math\">PGCD(1352 ; 507)</span> مع كتابة المراحل.",
+    "exact": [
+     "169"
+    ],
+    "partial": [
+     "13",
+     "338",
+     "1"
+    ],
+    "h1": "ابدأ بـ <span class=\"math\">1352 = 507 × 2 + …</span>.",
+    "h2": "الباقي الأول <span class=\"math\">338</span>، ثم اقسم <span class=\"math\">507</span> على <span class=\"math\">338</span>.",
+    "steps": [
+     "<span class=\"math\">1352 = 507 × 2 + 338</span>",
+     "<span class=\"math\">507 = 338 × 1 + 169</span>",
+     "<span class=\"math\">338 = 169 × 2 + 0</span>",
+     "آخر باق غير معدوم <span class=\"math\">169</span>",
+     "النتيجة: <span class=\"math\">PGCD(1352 ; 507) = 169</span>"
+    ],
+    "rubric": [
+     {
+      "step": "القسمة الأولى",
+      "mark": "1,25"
+     },
+     {
+      "step": "القسمة الثانية",
+      "mark": "1,25"
+     },
+     {
+      "step": "القسمة الثالثة (باق معدوم)",
+      "mark": "1,25"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "1,25"
+     }
+    ],
+    "pts": 5.0,
+    "partialMsg": "هذا ليس آخر باق غير معدوم.",
+    "partialZero": true
+   }
+  ],
+  "part": "الجزء الأول"
+ },
+ {
+  "id": 4,
+  "pts": 5,
+  "title": "التمرين 4: القاسم المشترك الأكبر والجذور",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2016، التمرين الأول)</span><br>",
+  "questions": [
+   {
+    "qId": "4-1",
     "text": "1) احسب <span class=\"math\">PGCD(1053 ; 832)</span>.",
     "exact": [
      "13"
@@ -612,19 +871,19 @@
     "rubric": [
      {
       "step": "القسمات المتتالية",
-      "mark": "1"
+      "mark": "1,25"
      },
      {
       "step": "النتيجة",
       "mark": "0,25"
      }
     ],
-    "pts": 1.25,
+    "pts": 1.5,
     "partialMsg": "هذا باق وسيط، تابع الخوارزمية.",
     "partialZero": true
    },
    {
-    "qId": "1-2",
+    "qId": "4-2",
     "text": "2) اكتب <span class=\"math\">1053/832</span> على شكل كسر غير قابل للاختزال.",
     "exact": [
      "81/64"
@@ -639,17 +898,17 @@
     "rubric": [
      {
       "step": "القسمة",
-      "mark": "0,75"
+      "mark": "1"
      },
      {
       "step": "النتيجة",
       "mark": "0,5"
      }
     ],
-    "pts": 1.25
+    "pts": 1.5
    },
    {
-    "qId": "1-3",
+    "qId": "4-3",
     "text": "3) عيّن <span class=\"math\">a</span> حيث <span class=\"math\">A = a√13</span>.",
     "exact": [
      "1",
@@ -672,27 +931,28 @@
     "rubric": [
      {
       "step": "خطوات الحل",
-      "mark": "0,75"
+      "mark": "1"
      },
      {
       "step": "النتيجة",
-      "mark": "0,75"
+      "mark": "1"
      }
     ],
-    "pts": 1.5,
+    "pts": 2.0,
     "partialMsg": "استعمل نتائج السؤالين السابقين: <span class=\"math\">1053 = 81 × 13</span> و<span class=\"math\">832 = 64 × 13</span>.",
     "partialZero": true
    }
-  ]
+  ],
+  "part": "الجزء الأول"
  },
  {
-  "id": 2,
-  "pts": 4,
-  "title": "التمرين 2: كسور وجذور",
+  "id": 5,
+  "pts": 5,
+  "title": "التمرين 1: كسور وجذور",
   "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2020، التمرين الأول)</span><br>إليك العددين <span class=\"math\">A</span> و<span class=\"math\">B</span> حيث: <span class=\"math\">A = 2/3 + 7/3 × 5/14</span> و<span class=\"math\">B = 2√112 − 3√28 + √7</span>.",
   "questions": [
    {
-    "qId": "2-1",
+    "qId": "5-1",
     "text": "1) اكتب <span class=\"math\">A</span> على شكل كسر غير قابل للاختزال.",
     "exact": [
      "3/2"
@@ -711,18 +971,18 @@
     "rubric": [
      {
       "step": "خطوات الحل",
-      "mark": "0,75"
+      "mark": "1"
      },
      {
       "step": "النتيجة",
-      "mark": "0,75"
+      "mark": "1"
      }
     ],
-    "pts": 1.5,
+    "pts": 2.0,
     "partialMsg": "اختزل."
    },
    {
-    "qId": "2-2",
+    "qId": "5-2",
     "text": "2) اكتب <span class=\"math\">B</span> على الشكل <span class=\"math\">a√7</span>.",
     "exact": [
      "3√7"
@@ -742,27 +1002,29 @@
     "rubric": [
      {
       "step": "خطوات الحل",
-      "mark": "1,25"
+      "mark": "1,5"
      },
      {
       "step": "النتيجة",
-      "mark": "1,25"
+      "mark": "1,5"
      }
     ],
-    "pts": 2.5,
+    "pts": 3.0,
     "partialMsg": "انتبه للمعاملين والإشارات.",
     "partialZero": true
    }
-  ]
+  ],
+  "partHead": "الجزء الثاني: تمارين تجمع موارد المقطع (4 تمارين — على 20)",
+  "part": "الجزء الثاني"
  },
  {
-  "id": 3,
-  "pts": 4,
-  "title": "التمرين 3: القاسم المشترك الأكبر، الجذور ومعادلة",
+  "id": 6,
+  "pts": 5,
+  "title": "التمرين 2: القاسم المشترك الأكبر، الجذور ومعادلة",
   "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2021، التمرين الأول)</span><br>",
   "questions": [
    {
-    "qId": "3-1",
+    "qId": "6-1",
     "text": "1) احسب <span class=\"math\">PGCD(567 ; 448)</span>.",
     "exact": [
      "7"
@@ -789,15 +1051,15 @@
      },
      {
       "step": "النتيجة",
-      "mark": "0,5"
+      "mark": "0,75"
      }
     ],
-    "pts": 1,
+    "pts": 1.25,
     "partialMsg": "تابع الخوارزمية حتى باق معدوم.",
     "partialZero": true
    },
    {
-    "qId": "3-2",
+    "qId": "6-2",
     "text": "2) اكتب <span class=\"math\">A</span> على الشكل <span class=\"math\">a + b√7</span>.",
     "exact": [
      "4-√7",
@@ -821,15 +1083,15 @@
      },
      {
       "step": "النتيجة",
-      "mark": "0,5"
+      "mark": "0,75"
      }
     ],
-    "pts": 1,
+    "pts": 1.25,
     "partialMsg": "انتبه للإشارة.",
     "partialZero": true
    },
    {
-    "qId": "3-3",
+    "qId": "6-3",
     "text": "3) اكتب <span class=\"math\">B</span> على الشكل <span class=\"math\">a + b√7</span>.",
     "exact": [
      "4+√7",
@@ -851,15 +1113,15 @@
      },
      {
       "step": "النتيجة",
-      "mark": "0,5"
+      "mark": "0,75"
      }
     ],
-    "pts": 1,
+    "pts": 1.25,
     "partialMsg": "انتبه للإشارة.",
     "partialZero": true
    },
    {
-    "qId": "3-4",
+    "qId": "6-4",
     "text": "4) جد قيم <span class=\"math\">x</span> (اكتب القيمتين مفصولتين بـ ;).",
     "exact": [
      "3;-3",
@@ -884,22 +1146,23 @@
      },
      {
       "step": "النتيجة",
-      "mark": "0,5"
+      "mark": "0,75"
      }
     ],
-    "pts": 1,
+    "pts": 1.25,
     "partialMsg": "للمعادلة <span class=\"math\">x² = 9</span> حلان متعاكسان."
    }
-  ]
+  ],
+  "part": "الجزء الثاني"
  },
  {
-  "id": 4,
-  "pts": 4,
-  "title": "التمرين 4: كسر وجذور",
+  "id": 7,
+  "pts": 5,
+  "title": "التمرين 3: كسر وجذور",
   "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2023، التمرين الأول)</span><br>لتكن الأعداد <span class=\"math\">A</span> ، <span class=\"math\">B</span> ، <span class=\"math\">C</span> حيث: <span class=\"math\">A = 756/216</span> ، <span class=\"math\">B = √117 + 3√52 − √637</span> ، <span class=\"math\">C = 3√13/√3</span>.",
   "questions": [
    {
-    "qId": "4-1",
+    "qId": "7-1",
     "text": "1) اكتب <span class=\"math\">A = 756/216</span> على شكل كسر غير قابل للاختزال.",
     "exact": [
      "7/2"
@@ -923,14 +1186,14 @@
      },
      {
       "step": "النتيجة",
-      "mark": "0,5"
+      "mark": "0,75"
      }
     ],
-    "pts": 1,
+    "pts": 1.25,
     "partialMsg": "الكسر ما زال قابلا للاختزال."
    },
    {
-    "qId": "4-2",
+    "qId": "7-2",
     "text": "2) اكتب <span class=\"math\">B</span> على الشكل <span class=\"math\">a√13</span>.",
     "exact": [
      "2√13"
@@ -950,19 +1213,19 @@
     "rubric": [
      {
       "step": "خطوات الحل",
-      "mark": "0,75"
+      "mark": "1"
      },
      {
       "step": "النتيجة",
-      "mark": "0,75"
+      "mark": "1"
      }
     ],
-    "pts": 1.5,
+    "pts": 2.0,
     "partialMsg": "راجع المعامل <span class=\"math\">3</span> والإشارات.",
     "partialZero": true
    },
    {
-    "qId": "4-3",
+    "qId": "7-3",
     "text": "3) احسب <span class=\"math\">B × C</span>.",
     "exact": [
      "26√3"
@@ -981,26 +1244,27 @@
     "rubric": [
      {
       "step": "خطوات الحل",
-      "mark": "0,75"
+      "mark": "1"
      },
      {
       "step": "النتيجة",
       "mark": "0,75"
      }
     ],
-    "pts": 1.5,
+    "pts": 1.75,
     "partialMsg": "اجعل المقام ناطقا ثم بسّط."
    }
-  ]
+  ],
+  "part": "الجزء الثاني"
  },
  {
-  "id": 5,
-  "pts": 4,
-  "title": "التمرين 5: القاسم المشترك الأكبر والجذور",
+  "id": 8,
+  "pts": 5,
+  "title": "التمرين 4: القاسم المشترك الأكبر والجذور",
   "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2026، التمرين الأول)</span><br><span class=\"math\">A</span> ، <span class=\"math\">B</span> و<span class=\"math\">C</span> أعداد حيث: <span class=\"math\">A = PGCD(77 ; 65)</span> ، <span class=\"math\">B = √48 − √75 + √147</span> ، <span class=\"math\">C = (√5 + 4)/√5</span>.",
   "questions": [
    {
-    "qId": "5-1",
+    "qId": "8-1",
     "text": "1) احسب <span class=\"math\">A = PGCD(77 ; 65)</span>.",
     "exact": [
      "1"
@@ -1024,19 +1288,19 @@
     "rubric": [
      {
       "step": "الحساب",
-      "mark": "0,75"
+      "mark": "1"
      },
      {
       "step": "الاستنتاج: أوليان فيما بينهما",
       "mark": "0,5"
      }
     ],
-    "pts": 1.25,
+    "pts": 1.5,
     "partialMsg": "هذا باق وسيط.",
     "partialZero": true
    },
    {
-    "qId": "5-2",
+    "qId": "8-2",
     "text": "2) اكتب <span class=\"math\">B</span> على الشكل <span class=\"math\">a√3</span>.",
     "exact": [
      "6√3"
@@ -1056,19 +1320,19 @@
     "rubric": [
      {
       "step": "التبسيط",
-      "mark": "0,75"
+      "mark": "1"
      },
      {
       "step": "النتيجة",
       "mark": "0,5"
      }
     ],
-    "pts": 1.25,
+    "pts": 1.5,
     "partialMsg": "لا نجمع ما تحت الجذور.",
     "partialZero": true
    },
    {
-    "qId": "5-3",
+    "qId": "8-3",
     "text": "3) اكتب <span class=\"math\">C</span> بمقام ناطق.",
     "exact": [
      "(5+4√5)/5",
@@ -1087,17 +1351,371 @@
     "rubric": [
      {
       "step": "خطوات الحل",
-      "mark": "0,75"
+      "mark": "1"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 2.0,
+    "partialMsg": "انشر البسط."
+   }
+  ],
+  "part": "الجزء الثاني"
+ },
+ {
+  "id": 9,
+  "pts": 5,
+  "title": "التمرين 1: غرس الأشجار حول قطعة أرض",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2020، الجزء الثاني (الوضعية الإدماجية))</span><br>يريد عمي محمود إحاطة قطعة أرض مستطيلة بُعداها <span class=\"math\">60 m</span> و<span class=\"math\">42 m</span> بأشجار، المسافة بين كل شجرتين متتاليتين متساوية وأكبر ما يمكن، وفي كل ركن شجرة.<br>ثمن الشجيرة بين <span class=\"math\">200 DA</span> و<span class=\"math\">1000 DA</span>. تكلفة غرس كل شجيرة <span class=\"math\">125%</span> من ثمنها، ومصاريف النقل <span class=\"math\">1400 DA</span>، ومعه <span class=\"math\">32000 DA</span>.",
+  "questions": [
+   {
+    "qId": "9-1",
+    "text": "1) ما المسافة بين كل شجرتين متتاليتين (بـ m)؟",
+    "exact": [
+     "6"
+    ],
+    "partial": [
+     "2",
+     "3",
+     "18"
+    ],
+    "h1": "المسافة قاسم مشترك للعددين <span class=\"math\">60</span> و<span class=\"math\">42</span>، وأكبر ما يمكن.",
+    "h2": "<span class=\"math\">60 = 42 × 1 + 18</span> ثم تابع.",
+    "steps": [
+     "<span class=\"math\">60 = 42 × 1 + 18</span>",
+     "<span class=\"math\">42 = 18 × 2 + 6</span>",
+     "<span class=\"math\">18 = 6 × 3 + 0</span>",
+     "النتيجة: <span class=\"math\">PGCD(60 ; 42) = 6</span> أي <span class=\"math\">6 m</span>"
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "0,5"
      },
      {
       "step": "النتيجة",
       "mark": "0,75"
      }
     ],
-    "pts": 1.5,
-    "partialMsg": "انشر البسط."
+    "pts": 1.25,
+    "partialMsg": "هذا قاسم مشترك وليس الأكبر.",
+    "partialZero": true
+   },
+   {
+    "qId": "9-2",
+    "text": "2) ما عدد الأشجار اللازمة؟",
+    "exact": [
+     "34"
+    ],
+    "partial": [
+     "35",
+     "17",
+     "38"
+    ],
+    "h1": "الأشجار على المحيط، ومحيط المستطيل <span class=\"math\">2 × (60 + 42)</span>.",
+    "h2": "<span class=\"math\">204 ÷ 6</span>.",
+    "steps": [
+     "المحيط <span class=\"math\">2 × (60 + 42) = 204 m</span>",
+     "<span class=\"math\">204 ÷ 6 = 34</span>",
+     "النتيجة: <span class=\"math\">34</span> شجرة"
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "0,5"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1.25,
+    "partialMsg": "على محيط مغلق: عدد الأشجار = المحيط ÷ المسافة.",
+    "partialZero": true
+   },
+   {
+    "qId": "9-3",
+    "text": "3) ما أكبر ثمن ممكن للشجيرة (بـ DA)؟",
+    "exact": [
+     "400"
+    ],
+    "partial": [
+     "900",
+     "720"
+    ],
+    "h1": "إذا كان ثمن الشجيرة <span class=\"math\">x</span>: التكلفة <span class=\"math\">34x + 1,25 × 34x + 1400</span>.",
+    "h2": "<span class=\"math\">76,5x + 1400 ≤ 32000</span>.",
+    "steps": [
+     "<span class=\"math\">34x + 42,5x + 1400 ≤ 32000</span>",
+     "<span class=\"math\">76,5x ≤ 30600</span>",
+     "<span class=\"math\">x ≤ 400</span>",
+     "النتيجة: ثمن الشجيرة لا يتجاوز <span class=\"math\">400 DA</span>"
+    ],
+    "rubric": [
+     {
+      "step": "كتابة المتراجحة",
+      "mark": "1,25"
+     },
+     {
+      "step": "الحل",
+      "mark": "0,5"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 2.5,
+    "partialMsg": "لا تنس تكلفة الغرس <span class=\"math\">125%</span> ومصاريف النقل.",
+    "partialZero": true
    }
-  ]
+  ],
+  "partHead": "الجزء الثالث: مسائل ووضعيات (4 تمارين — على 20)",
+  "part": "الجزء الثالث"
+ },
+ {
+  "id": 10,
+  "pts": 5,
+  "title": "التمرين 2: صناديق البطاطا والجزر",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2022، الجزء الثاني، السؤال 1)</span><br>خصص فلاح قطعة أرض لإنتاج البطاطا والجزر، فكان المحصول: <span class=\"math\">1188</span> صندوقا من البطاطا و<span class=\"math\">528</span> صندوقا من الجزر. قصد مساعدة دور العجزة ومراكز الأيتام وذوي الاحتياجات الخاصة، يريد هذا الفلاح أن يُجمّع الصناديق في تشكيلات متماثلة من حيث النوع والعدد.",
+  "questions": [
+   {
+    "qId": "10-1",
+    "text": "1) ما أكبر عدد من التشكيلات؟",
+    "exact": [
+     "132"
+    ],
+    "partial": [
+     "66",
+     "44",
+     "12",
+     "4"
+    ],
+    "h1": "العدد قاسم مشترك للعددين <span class=\"math\">1188</span> و<span class=\"math\">528</span>، وأكبر ما يمكن.",
+    "h2": "<span class=\"math\">1188 = 528 × 2 + 132</span>.",
+    "steps": [
+     "<span class=\"math\">1188 = 528 × 2 + 132</span>",
+     "<span class=\"math\">528 = 132 × 4 + 0</span>",
+     "النتيجة: <span class=\"math\">PGCD = 132</span> أي <span class=\"math\">132</span> تشكيلة"
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "1,25"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "1,25"
+     }
+    ],
+    "pts": 2.5,
+    "partialMsg": "هذا قاسم مشترك وليس الأكبر.",
+    "partialZero": true
+   },
+   {
+    "qId": "10-2",
+    "text": "2) كم صندوق بطاطا في كل تشكيلة؟",
+    "exact": [
+     "9"
+    ],
+    "partial": [],
+    "h1": "<span class=\"math\">1188 ÷ 132</span>.",
+    "h2": "اقسم عدد صناديق البطاطا على عدد التشكيلات.",
+    "steps": [
+     "<span class=\"math\">1188 ÷ 132 = 9</span>",
+     "النتيجة: <span class=\"math\">9</span> صناديق بطاطا"
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "0,5"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1.25
+   },
+   {
+    "qId": "10-3",
+    "text": "3) كم صندوق جزر في كل تشكيلة؟",
+    "exact": [
+     "4"
+    ],
+    "partial": [],
+    "h1": "<span class=\"math\">528 ÷ 132</span>.",
+    "h2": "اقسم عدد صناديق الجزر على عدد التشكيلات.",
+    "steps": [
+     "<span class=\"math\">528 ÷ 132 = 4</span>",
+     "النتيجة: <span class=\"math\">4</span> صناديق جزر"
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "0,5"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1.25
+   }
+  ],
+  "part": "الجزء الثالث"
+ },
+ {
+  "id": 11,
+  "pts": 5,
+  "title": "التمرين 3: بعدا حظيرة السيارات",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2008، الجزء الثاني، السؤال 1)</span><br>قطعة أرض مستطيلة الشكل مساحتها <span class=\"math\">2400 m²</span> وعرضها يساوي ثلثي طولها، أراد صاحب هذه القطعة استخدامها كحظيرة للسيارات وللشاحنات ذات الحجم الصغير.",
+  "questions": [
+   {
+    "qId": "11-1",
+    "text": "1) احسب طول القطعة (بـ m).",
+    "exact": [
+     "60"
+    ],
+    "partial": [
+     "3600",
+     "1600",
+     "40"
+    ],
+    "h1": "إذا كان الطول <span class=\"math\">L</span> فالعرض <span class=\"math\">2/3 L</span> والمساحة <span class=\"math\">L × 2/3 L</span>.",
+    "h2": "<span class=\"math\">2/3 L² = 2400</span> أي <span class=\"math\">L² = 3600</span>.",
+    "steps": [
+     "<span class=\"math\">L × (2/3)L = 2400</span>",
+     "<span class=\"math\">L² = 2400 × 3/2 = 3600</span>",
+     "<span class=\"math\">L &gt; 0</span> إذن <span class=\"math\">L = √3600</span>",
+     "النتيجة: <span class=\"math\">L = 60 m</span>"
+    ],
+    "rubric": [
+     {
+      "step": "المعادلة <span class=\"math\">(2/3)L² = 2400</span>",
+      "mark": "1,25"
+     },
+     {
+      "step": "<span class=\"math\">L² = 3600</span>",
+      "mark": "1"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 3.0,
+    "partialMsg": "المساحة = الطول × العرض، والعرض <span class=\"math\">2/3</span> الطول.",
+    "partialZero": true
+   },
+   {
+    "qId": "11-2",
+    "text": "2) احسب عرض القطعة (بـ m).",
+    "exact": [
+     "40"
+    ],
+    "partial": [
+     "90"
+    ],
+    "h1": "العرض = <span class=\"math\">2/3</span> الطول.",
+    "h2": "<span class=\"math\">2/3 × 60</span>.",
+    "steps": [
+     "<span class=\"math\">l = (2/3) × 60</span>",
+     "النتيجة: <span class=\"math\">l = 40 m</span>"
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "1"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 2.0,
+    "partialMsg": "العرض أصغر من الطول.",
+    "partialZero": true
+   }
+  ],
+  "part": "الجزء الثالث"
+ },
+ {
+  "id": 12,
+  "pts": 5,
+  "title": "التمرين 4: بعدا أرض عمي أحمد",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2015، الجزء الثاني (بداية الوضعية))</span><br>لعمّي أحمد قطعة أرض مستطيلة الشكل مساحتها <span class=\"math\">1000 m²</span> وعرضها خُمسا (<span class=\"math\">2/5</span>) طولها.",
+  "questions": [
+   {
+    "qId": "12-1",
+    "text": "1) احسب طول القطعة (بـ m).",
+    "exact": [
+     "50"
+    ],
+    "partial": [
+     "2500",
+     "400",
+     "20"
+    ],
+    "h1": "إذا كان الطول <span class=\"math\">L</span> فالعرض <span class=\"math\">(2/5)L</span>.",
+    "h2": "<span class=\"math\">(2/5)L² = 1000</span> أي <span class=\"math\">L² = 2500</span>.",
+    "steps": [
+     "<span class=\"math\">L × (2/5)L = 1000</span>",
+     "<span class=\"math\">L² = 1000 × 5/2 = 2500</span>",
+     "<span class=\"math\">L &gt; 0</span> إذن <span class=\"math\">L = √2500</span>",
+     "النتيجة: <span class=\"math\">L = 50 m</span>"
+    ],
+    "rubric": [
+     {
+      "step": "المعادلة",
+      "mark": "1,25"
+     },
+     {
+      "step": "<span class=\"math\">L² = 2500</span>",
+      "mark": "1"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 3.0,
+    "partialMsg": "العرض <span class=\"math\">2/5</span> الطول.",
+    "partialZero": true
+   },
+   {
+    "qId": "12-2",
+    "text": "2) احسب عرض القطعة (بـ m).",
+    "exact": [
+     "20"
+    ],
+    "partial": [
+     "125"
+    ],
+    "h1": "<span class=\"math\">(2/5) × 50</span>.",
+    "h2": "العرض = خُمسا الطول.",
+    "steps": [
+     "<span class=\"math\">l = (2/5) × 50</span>",
+     "النتيجة: <span class=\"math\">l = 20 m</span>"
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "1"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 2.0,
+    "partialMsg": "العرض أصغر من الطول.",
+    "partialZero": true
+   }
+  ],
+  "part": "الجزء الثالث"
  }
 ];
 
@@ -1109,6 +1727,7 @@
             root.innerHTML = '';
 
             exercises.forEach(ex => {
+                if (ex.partHead) { const h = document.createElement('div'); h.className = 'part-head'; h.innerHTML = ex.partHead; root.appendChild(h); }
                 const card = document.createElement('div');
                 card.className = 'exercise-card';
 
@@ -1202,17 +1821,22 @@
             return s.toLowerCase();
         }
 
+        function partScores() {
+            const by = {};
+            exercises.forEach(ex => { if (!ex.part) return; by[ex.part] = (by[ex.part] || 0) + ex.questions.reduce((s, q) => s + (questionEarned[q.qId] || 0), 0); });
+            return '<div style="font-size:.55em;line-height:1.7;margin-top:6px">' + Object.keys(by).map(k => k + ': ' + String(Math.round(by[k] * 100) / 100).replace('.', ',') + ' / 20').join('<br>') + '</div>';
+        }
         function updateHeaderStats() {
             const formattedScore = String(Math.round(totalScore * 100) / 100).replace('.', ',');
-            document.getElementById('scoreVal').innerText = `${formattedScore} / 20`;
+            document.getElementById('scoreVal').innerText = `${formattedScore} / 60`;
             document.getElementById('starsVal').innerText = totalStars;
             const pct = Math.min(100, Math.round((completedQuestions / totalQuestionsCount) * 100));
             document.getElementById('progressBar').style.width = pct + '%';
 
             if (completedQuestions === totalQuestionsCount) {
                 setTimeout(() => {
-                    document.getElementById('finalScoreText').innerText = `${formattedScore} / 20`;
-                    document.getElementById('finalTitle').innerText = totalScore >= 10 ? '🎉 أحسنت! أتممت جميع الأسئلة' : '💪 أتممت السلسلة! راجع الإجابات النموذجية وأعد المحاولة';
+                    document.getElementById('finalScoreText').innerHTML = `${formattedScore} / 60` + partScores();
+                    document.getElementById('finalTitle').innerText = totalScore >= 30.0 ? '🎉 أحسنت! أتممت جميع الأسئلة' : '💪 أتممت السلسلة! راجع الإجابات النموذجية وأعد المحاولة';
                     document.getElementById('finalStarsText').innerText = `⭐ ${totalStars} نجمة`;
                     document.getElementById('finalModal').style.display = 'flex';
                 }, 600);
