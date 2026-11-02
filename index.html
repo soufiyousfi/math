@@ -263,10 +263,11 @@ function itemLink(it, withDate) {
   return `<a href="${esc(it.url)}" target="_blank" rel="noopener"><span class="dot"></span><span class="t">${esc(it.title)}</span>${badge}${kind}${date}</a>`;
 }
 
-// Sections whose items are grouped by sequence (file names like bem-m1-p3.html = sequence 1, part 3)
+// Sections whose items are grouped by sequence (file names like bem-m1-s2.html = sequence 1, series 2)
 const GROUPED = { chahada: true };
 const SEQ_NAME = ["", "الأول", "الثاني", "الثالث", "الرابع", "الخامس", "السادس", "السابع", "الثامن"];
-function seqOf(it) { const m = it.url.match(/-m(\d+)-p(\d+)/); return m ? [+m[1], +m[2]] : [99, 0]; }
+function seqOf(it) { const m = it.url.match(/-m(\d+)-[ps](\d+)/); return m ? [+m[1], +m[2]] : [99, 0]; }
+const PACKS = [];
 function groupBySeq(list, li) {
   const groups = {};
   for (const it of list) (groups[seqOf(it)[0]] = groups[seqOf(it)[0]] || []).push(it);
@@ -274,11 +275,16 @@ function groupBySeq(list, li) {
     const items = groups[k].sort((a, b) => seqOf(a)[1] - seqOf(b)[1])
       .map(it => li(Object.assign({}, it, { title: it.title.replace(/^المقطع \S+ — /, "") })).replace(/data-share="-1"/, `data-share="${state.items.indexOf(it)}"`));
     const name = k === 99 ? "أخرى" : "المقطع " + (SEQ_NAME[k] || k);
-    return `<details class="grp" open><summary>${name}<span class="count">${items.length}</span></summary><ul>${items.join("")}</ul></details>`;
+    // whole-sequence page (4m/bem/bem-mK.html) so the teacher can share one link per sequence
+    const pi = PACKS.push({ level: state.level, term: state.term, section: "chahada", type: "html",
+      title: `سلاسل الشهادة — ${name} (${items.length === 2 ? "سلسلتان" : items.length + " سلاسل"})`, url: `${state.level}/bem/bem-m${k}.html` }) - 1;
+    const btn = k === 99 ? "" : `<button type="button" class="share" data-share="" data-pack="${pi}">شارك المقطع</button>`;
+    return `<details class="grp" open><summary>${name}<span class="count">${items.length}</span>${btn}</summary><ul>${items.join("")}</ul></details>`;
   }).join("");
 }
 
 function renderContent() {
+  PACKS.length = 0;
   const here = state.items.filter(i => i.level === state.level && i.term === state.term);
   document.getElementById("content").innerHTML = `<div class="grid">` + SECTIONS.filter(([id]) => !ONLY[id] || ONLY[id].includes(state.level)).map(([id, name]) => {
     const list = here.filter(i => i.section === id).sort(byDateDesc);
@@ -392,7 +398,8 @@ function copyText(t) {
 document.addEventListener("click", e => {
   const b = e.target.closest("[data-share]");
   if (!b) return;
-  shareItem = state.items[+b.dataset.share]; msgIdx = 0;
+  if (b.dataset.pack) e.preventDefault();
+  shareItem = b.dataset.pack ? PACKS[+b.dataset.pack] : state.items[+b.dataset.share]; msgIdx = 0;
   msgBox.value = buildMsg(shareItem);
   renderDests();
   dlg.showModal ? dlg.showModal() : dlg.setAttribute("open", "");
