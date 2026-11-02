@@ -25,6 +25,7 @@
   --fard:#b4690e; --fard-soft:#fbf0e0;
   --wadjib:#2f7d4a; --wadjib-soft:#e5f3ea;
   --ikhtibar:#b23a3a; --ikhtibar-soft:#f8e6e6;
+  --chahada:#6d28d9; --chahada-soft:#efe9fb;
   --new:#c2410c;
   --shadow:0 1px 2px rgba(29,42,51,.06),0 4px 14px rgba(29,42,51,.06);
 }
@@ -36,6 +37,7 @@
     --fard:#e3a24f; --fard-soft:#33281a;
     --wadjib:#74c493; --wadjib-soft:#1b2f23;
     --ikhtibar:#e98282; --ikhtibar-soft:#352022;
+    --chahada:#b79cf2; --chahada-soft:#2a2238;
     --new:#fb923c;
     --shadow:0 1px 2px rgba(0,0,0,.3);
   }
@@ -100,6 +102,7 @@ nav.terms button[aria-pressed="true"]{background:var(--brand-soft);border-color:
 .s-fard{--c:var(--fard);--soft:var(--fard-soft)}
 .s-wadjib{--c:var(--wadjib);--soft:var(--wadjib-soft)}
 .s-ikhtibar{--c:var(--ikhtibar);--soft:var(--ikhtibar-soft)}
+.s-chahada{--c:var(--chahada);--soft:var(--chahada-soft)}
 
 .status{color:var(--muted);text-align:center;padding:30px 0}
 footer{color:var(--muted);font-size:.85rem;text-align:center;padding:30px 0 40px}
@@ -200,7 +203,10 @@ const SECTIONS = [
   ["fard", "الفروض"],
   ["wadjib", "الواجبات المنزلية"],
   ["ikhtibar", "الاختبارات"],
+  ["chahada", "سلاسل الشهادة (BEM)"],
 ];
+// Sections shown only for some levels
+const ONLY = { chahada: ["4m"] };
 const KIND = { pdf: "PDF", image: "صورة" };
 const LEVEL_NAME = Object.fromEntries(LEVELS.map(l => [l[0], l[2]]));
 const TERM_NAME = Object.fromEntries(TERMS);
@@ -255,7 +261,7 @@ function itemLink(it, withDate) {
 
 function renderContent() {
   const here = state.items.filter(i => i.level === state.level && i.term === state.term);
-  document.getElementById("content").innerHTML = `<div class="grid">` + SECTIONS.map(([id, name]) => {
+  document.getElementById("content").innerHTML = `<div class="grid">` + SECTIONS.filter(([id]) => !ONLY[id] || ONLY[id].includes(state.level)).map(([id, name]) => {
     const list = here.filter(i => i.section === id).sort(byDateDesc);
     const body = list.length
       ? `<ul>${list.map(it => `<li>${itemLink(it, true)}<button type="button" class="share" data-share="${state.items.indexOf(it)}">شارك</button></li>`).join("")}</ul>`
@@ -297,7 +303,7 @@ async function loadItems() {
   if (!r.ok) throw new Error("api " + r.status);
   const tree = (await r.json()).tree || [];
   const items = [];
-  const re = /^([1-4]m)\/(t[1-3])\/(series|fard|wadjib|ikhtibar)\/([^/]+?)(\/index\.html)?$/;
+  const re = /^([1-4]m)\/(t[1-3])\/(series|fard|wadjib|ikhtibar|chahada)\/([^/]+?)(\/index\.html)?$/;
   for (const n of tree) {
     const m = n.path.match(re);
     if (!m || n.type !== "blob" || m[4].startsWith(".")) continue;
@@ -332,6 +338,9 @@ const MSGS = {
   ],
   fard: [
     "📖 أعزائي تلاميذ {level}\n\nاستعدادًا للفرض، هذا نموذج للتدرّب:\n«{title}»\n\n🕐 حلّوه في وقت محدّد كأنكم في القسم.\n✅ صحّحوا أخطاءكم وراجعوا القواعد المرتبطة بها.\n\nالتحضير الجيد نصف النجاح 💪\n{link}",
+  ],
+  chahada: [
+    "🎓 أعزائي تلاميذ {level}\n\nاستعدادًا لشهادة التعليم المتوسط، سلسلة من تمارين الشهادة:\n«{title}»\n\n✅ حلّوا على الورقة أولًا، ثم صحّحوا على الموقع.\n📌 هذه تمارين حقيقية من مواضيع السنوات السابقة.\n\nبالتوفيق في الشهادة 💪\n{link}",
   ],
   ikhtibar: [
     "🎓 أعزائي تلاميذ {level}\n\nللتحضير للاختبار، هذا موضوع للمراجعة:\n«{title}»\n\n📅 نظّموا وقتكم وراجعوا درسًا كل يوم.\n✅ حلّوا الموضوع كاملًا ثم قارنوا مع الحل.\n😌 ثقوا بأنفسكم، فقد عملتم جيدًا طوال الفصل.\n\nبالتوفيق والنجاح للجميع 🌟\n{link}",
