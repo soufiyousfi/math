@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سلسلة الشهادة - 4 متوسط - المقطع الأول - الجزء 4</title>
+    <title>المقطع الأول — الجزء 2: تبسيط الجذور التربيعية</title>
     <style>
         :root {
             --primary: #1e3a8a;
@@ -504,8 +504,8 @@
 
     <header>
         <div class="school-title">متوسطة العربي بن مهيدي — الأستاذ: يوسفي السوفي</div>
-        <h1>تمارين الشهادة — المقطع الأول — الجزء الرابع</h1>
-        <div class="sub-info">السنة الرابعة متوسط | تمارين تجمع موارد المقطع | 5 تمارين على 20<br>حلّ على الورقة أولا، ثم صحّح هنا</div>
+        <h1>تمارين الشهادة — المقطع الأول — الجزء الثاني</h1>
+        <div class="sub-info">السنة الرابعة متوسط | تبسيط الجذور التربيعية | 5 تمارين على 20<br>حلّ على الورقة أولا، ثم صحّح هنا</div>
     </header>
 
     <div class="sticky-bar">
@@ -526,7 +526,7 @@
     <div class="modal-overlay" id="finalModal">
         <div class="modal-card">
             <h3 id="finalTitle">🎉 أحسنت! أتممت جميع الأسئلة</h3>
-            <p>لقد أنهيت تمارين الشهادة — المقطع الأول — الجزء الرابع</p>
+            <p>لقد أنهيت تمارين الشهادة — المقطع الأول — الجزء الثاني</p>
             <div class="modal-score" id="finalScoreText">0 / 20</div>
             <div class="modal-stars" id="finalStarsText">⭐ 0 نجمة</div>
             <button type="button" class="btn-close-modal" onclick="document.getElementById('finalModal').style.display='none'">مراجعة إجاباتي</button>
@@ -584,90 +584,28 @@
  {
   "id": 1,
   "pts": 4,
-  "title": "التمرين 1: القاسم المشترك الأكبر والجذور",
-  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2016، التمرين الأول)</span><br>",
+  "title": "التمرين 1: جذور وكسور",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2007، التمرين الأول)</span><br>ليكن العددان <span class=\"math\">A</span> و<span class=\"math\">B</span> حيث: <span class=\"math\">A = √98 + 3√32 − √128</span> ، <span class=\"math\">B = 3/2 + 5/4 × 2/3</span>.",
   "questions": [
    {
     "qId": "1-1",
-    "text": "1) احسب <span class=\"math\">PGCD(1053 ; 832)</span>.",
+    "text": "1) اكتب <span class=\"math\">A</span> على الشكل <span class=\"math\">a√2</span>.",
     "exact": [
-     "13"
+     "11√2"
     ],
     "partial": [
-     "221",
-     "169",
-     "52",
-     "1"
+     "√2",
+     "3√2",
+     "-√2"
     ],
-    "h1": "<span class=\"math\">1053 = 832 × 1 + 221</span>.",
-    "h2": "تابع: <span class=\"math\">832 = 221 × 3 + 169</span> ...",
+    "h1": "اكتب كل جذر على الشكل <span class=\"math\">a√2</span>.",
+    "h2": "<span class=\"math\">√98 = 7√2</span> ؛ <span class=\"math\">√32 = 4√2</span> ؛ <span class=\"math\">√128 = 8√2</span>.",
     "steps": [
-     "<span class=\"math\">1053 = 832 × 1 + 221</span>",
-     "<span class=\"math\">832 = 221 × 3 + 169</span>",
-     "<span class=\"math\">221 = 169 × 1 + 52</span>",
-     "<span class=\"math\">169 = 52 × 3 + 13</span>",
-     "<span class=\"math\">52 = 13 × 4 + 0</span>",
-     "النتيجة: <span class=\"math\">PGCD = 13</span>"
-    ],
-    "rubric": [
-     {
-      "step": "القسمات المتتالية",
-      "mark": "1"
-     },
-     {
-      "step": "النتيجة",
-      "mark": "0,25"
-     }
-    ],
-    "pts": 1.25,
-    "partialMsg": "هذا باق وسيط، تابع الخوارزمية.",
-    "partialZero": true
-   },
-   {
-    "qId": "1-2",
-    "text": "2) اكتب <span class=\"math\">1053/832</span> على شكل كسر غير قابل للاختزال.",
-    "exact": [
-     "81/64"
-    ],
-    "partial": [],
-    "h1": "اقسم على <span class=\"math\">13</span>.",
-    "h2": "<span class=\"math\">1053 ÷ 13</span> و<span class=\"math\">832 ÷ 13</span>.",
-    "steps": [
-     "<span class=\"math\">1053 ÷ 13 = 81</span> و<span class=\"math\">832 ÷ 13 = 64</span>",
-     "النتيجة: <span class=\"math\">81/64</span>"
-    ],
-    "rubric": [
-     {
-      "step": "القسمة",
-      "mark": "0,75"
-     },
-     {
-      "step": "النتيجة",
-      "mark": "0,5"
-     }
-    ],
-    "pts": 1.25
-   },
-   {
-    "qId": "1-3",
-    "text": "3) عيّن <span class=\"math\">a</span> حيث <span class=\"math\">A = a√13</span>.",
-    "exact": [
-     "1",
-     "√13"
-    ],
-    "partial": [
-     "49",
-     "-1",
-     "17"
-    ],
-    "h1": "<span class=\"math\">1053 = 81 × 13</span> ؛ <span class=\"math\">832 = 64 × 13</span> ؛ <span class=\"math\">117 = 9 × 13</span>.",
-    "h2": "<span class=\"math\">A = 9√13 + 16√13 − 24√13</span>.",
-    "steps": [
-     "<span class=\"math\">√1053 = 9√13</span>",
-     "<span class=\"math\">2√832 = 2 × 8√13 = 16√13</span>",
-     "<span class=\"math\">8√117 = 8 × 3√13 = 24√13</span>",
-     "<span class=\"math\">A = (9 + 16 − 24)√13</span>",
-     "النتيجة: <span class=\"math\">A = √13</span> أي <span class=\"math\">a = 1</span>"
+     "<span class=\"math\">√98 = √(49 × 2) = 7√2</span>",
+     "<span class=\"math\">3√32 = 3 × 4√2 = 12√2</span>",
+     "<span class=\"math\">√128 = 8√2</span>",
+     "<span class=\"math\">A = 7√2 + 12√2 − 8√2</span>",
+     "النتيجة: <span class=\"math\">A = 11√2</span>"
     ],
     "rubric": [
      {
@@ -680,33 +618,92 @@
      }
     ],
     "pts": 1.5,
-    "partialMsg": "استعمل نتائج السؤالين السابقين: <span class=\"math\">1053 = 81 × 13</span> و<span class=\"math\">832 = 64 × 13</span>.",
+    "partialMsg": "لا تنس المعامل <span class=\"math\">3</span> ولا تجمع ما تحت الجذور.",
     "partialZero": true
+   },
+   {
+    "qId": "1-2",
+    "text": "2) بسّط <span class=\"math\">B</span> (كسر غير قابل للاختزال).",
+    "exact": [
+     "7/3"
+    ],
+    "partial": [
+     "14/6",
+     "28/12"
+    ],
+    "h1": "الضرب أولا: <span class=\"math\">5/4 × 2/3</span>.",
+    "h2": "<span class=\"math\">5/4 × 2/3 = 10/12 = 5/6</span> ثم اجمع مع <span class=\"math\">3/2</span>.",
+    "steps": [
+     "<span class=\"math\">5/4 × 2/3 = 5/6</span>",
+     "<span class=\"math\">B = 9/6 + 5/6 = 14/6</span>",
+     "النتيجة: <span class=\"math\">B = 7/3</span>"
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "0,5"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 1,
+    "partialMsg": "اختزل الكسر."
+   },
+   {
+    "qId": "1-3",
+    "text": "3) احسب <span class=\"math\">A²/33 − 3B</span>.",
+    "exact": [
+     "1/3"
+    ],
+    "partial": [],
+    "h1": "<span class=\"math\">A² = (11√2)² = 121 × 2</span>.",
+    "h2": "<span class=\"math\">242/33 = 22/3</span> و<span class=\"math\">3B = 7</span>.",
+    "steps": [
+     "<span class=\"math\">A² = 121 × 2 = 242</span>",
+     "<span class=\"math\">242/33 = 22/3</span>",
+     "<span class=\"math\">3B = 3 × 7/3 = 7</span>",
+     "<span class=\"math\">22/3 − 21/3 = 1/3</span>",
+     "النتيجة: <span class=\"math\">A²/33 − 3B = 1/3</span>"
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "0,75"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1.5
    }
   ]
  },
  {
   "id": 2,
   "pts": 4,
-  "title": "التمرين 2: كسور وجذور",
-  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2020، التمرين الأول)</span><br>إليك العددين <span class=\"math\">A</span> و<span class=\"math\">B</span> حيث: <span class=\"math\">A = 2/3 + 7/3 × 5/14</span> و<span class=\"math\">B = 2√112 − 3√28 + √7</span>.",
+  "title": "التمرين 2: الحساب على الجذور",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2009، التمرين الأول)</span><br>لتكن الأعداد <span class=\"math\">A</span> ، <span class=\"math\">B</span> ، <span class=\"math\">C</span> حيث: <span class=\"math\">A = √80</span> ، <span class=\"math\">B = 2√45</span> ، <span class=\"math\">C = √5 + 1</span>.",
   "questions": [
    {
     "qId": "2-1",
-    "text": "1) اكتب <span class=\"math\">A</span> على شكل كسر غير قابل للاختزال.",
+    "text": "1) اكتب <span class=\"math\">A + B</span> على الشكل <span class=\"math\">a√5</span>.",
     "exact": [
-     "3/2"
+     "10√5"
     ],
     "partial": [
-     "9/6",
-     "27/18"
+     "√125",
+     "7√5"
     ],
-    "h1": "الضرب أولا: <span class=\"math\">7/3 × 5/14 = 35/42 = 5/6</span>.",
-    "h2": "<span class=\"math\">2/3 = 4/6</span>.",
+    "h1": "<span class=\"math\">√80 = 4√5</span>.",
+    "h2": "<span class=\"math\">√45 = 3√5</span> إذن <span class=\"math\">B = 6√5</span>.",
     "steps": [
-     "<span class=\"math\">7/3 × 5/14 = 5/6</span>",
-     "<span class=\"math\">A = 4/6 + 5/6 = 9/6</span>",
-     "النتيجة: <span class=\"math\">A = 3/2</span>"
+     "<span class=\"math\">A = √(16 × 5) = 4√5</span>",
+     "<span class=\"math\">B = 2 × 3√5 = 6√5</span>",
+     "<span class=\"math\">A + B = 4√5 + 6√5</span>",
+     "النتيجة: <span class=\"math\">A + B = 10√5</span>"
     ],
     "rubric": [
      {
@@ -719,202 +716,168 @@
      }
     ],
     "pts": 1.5,
-    "partialMsg": "اختزل."
+    "partialMsg": "لا تنس المعامل <span class=\"math\">2</span> في <span class=\"math\">B</span>.",
+    "partialZero": true
    },
    {
     "qId": "2-2",
-    "text": "2) اكتب <span class=\"math\">B</span> على الشكل <span class=\"math\">a√7</span>.",
+    "text": "2) احسب <span class=\"math\">A × B</span>.",
     "exact": [
-     "3√7"
+     "120"
     ],
     "partial": [
-     "√7",
-     "15√7"
+     "24√5",
+     "24"
     ],
-    "h1": "<span class=\"math\">√112 = 4√7</span> و<span class=\"math\">√28 = 2√7</span>.",
-    "h2": "<span class=\"math\">B = 8√7 − 6√7 + √7</span>.",
+    "h1": "<span class=\"math\">4√5 × 6√5 = 24 × (√5)²</span>.",
+    "h2": "<span class=\"math\">(√5)² = 5</span>.",
     "steps": [
-     "<span class=\"math\">2√112 = 2 × 4√7 = 8√7</span>",
-     "<span class=\"math\">3√28 = 3 × 2√7 = 6√7</span>",
-     "<span class=\"math\">B = 8√7 − 6√7 + √7</span>",
-     "النتيجة: <span class=\"math\">B = 3√7</span>"
+     "<span class=\"math\">A × B = 4√5 × 6√5</span>",
+     "<span class=\"math\">= 24 × 5</span>",
+     "النتيجة: <span class=\"math\">A × B = 120</span> عدد طبيعي"
     ],
     "rubric": [
      {
       "step": "خطوات الحل",
-      "mark": "1,25"
+      "mark": "0,5"
      },
      {
       "step": "النتيجة",
-      "mark": "1,25"
+      "mark": "0,5"
      }
     ],
-    "pts": 2.5,
-    "partialMsg": "انتبه للمعاملين والإشارات.",
+    "pts": 1,
+    "partialMsg": "<span class=\"math\">√5 × √5 = 5</span>.",
     "partialZero": true
+   },
+   {
+    "qId": "2-3",
+    "text": "3) اكتب <span class=\"math\">C²/√5</span> بمقام ناطق.",
+    "exact": [
+     "(6√5+10)/5",
+     "(10+6√5)/5",
+     "2+6√5/5",
+     "6√5/5+2"
+    ],
+    "partial": [
+     "(6+2√5)/√5",
+     "(6√5+10)/√5"
+    ],
+    "h1": "احسب أولا <span class=\"math\">C² = (√5 + 1)(√5 + 1)</span>.",
+    "h2": "<span class=\"math\">C² = 6 + 2√5</span>، ثم اضرب البسط والمقام في <span class=\"math\">√5</span>.",
+    "steps": [
+     "<span class=\"math\">C² = 5 + √5 + √5 + 1 = 6 + 2√5</span>",
+     "<span class=\"math\">C²/√5 = (6 + 2√5) × √5 / (√5 × √5)</span>",
+     "النتيجة: <span class=\"math\">C²/√5 = (6√5 + 10)/5</span>"
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "0,75"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1.5,
+    "partialMsg": "المقام ما زال غير ناطق، أو لم تضرب البسط كله في <span class=\"math\">√5</span>."
    }
   ]
  },
  {
   "id": 3,
   "pts": 4,
-  "title": "التمرين 3: القاسم المشترك الأكبر، الجذور ومعادلة",
-  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2021، التمرين الأول)</span><br>",
+  "title": "التمرين 3: الحساب على الجذور",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2011، التمرين الثاني، السؤال 1)</span><br>",
   "questions": [
    {
     "qId": "3-1",
-    "text": "1) احسب <span class=\"math\">PGCD(567 ; 448)</span>.",
+    "text": "1) اكتب <span class=\"math\">A = √125 + √45 − √20</span> على الشكل <span class=\"math\">a√5</span>.",
     "exact": [
-     "7"
+     "6√5"
     ],
     "partial": [
-     "119",
-     "91",
-     "28"
+     "√150",
+     "10√5"
     ],
-    "h1": "<span class=\"math\">567 = 448 × 1 + 119</span>.",
-    "h2": "تابع: <span class=\"math\">448 = 119 × 3 + 91</span> ...",
+    "h1": "ابحث عن أكبر مربع تام في <span class=\"math\">125</span> ، <span class=\"math\">45</span> ، <span class=\"math\">20</span>.",
+    "h2": "<span class=\"math\">√125 = 5√5</span> ؛ <span class=\"math\">√45 = 3√5</span> ؛ <span class=\"math\">√20 = 2√5</span>.",
     "steps": [
-     "<span class=\"math\">567 = 448 × 1 + 119</span>",
-     "<span class=\"math\">448 = 119 × 3 + 91</span>",
-     "<span class=\"math\">119 = 91 × 1 + 28</span>",
-     "<span class=\"math\">91 = 28 × 3 + 7</span>",
-     "<span class=\"math\">28 = 7 × 4 + 0</span>",
-     "النتيجة: <span class=\"math\">PGCD = 7</span>"
+     "<span class=\"math\">√125 = 5√5</span>",
+     "<span class=\"math\">√45 = 3√5</span>",
+     "<span class=\"math\">√20 = 2√5</span>",
+     "<span class=\"math\">A = 5√5 + 3√5 − 2√5</span>",
+     "النتيجة: <span class=\"math\">A = 6√5</span>"
     ],
     "rubric": [
      {
       "step": "خطوات الحل",
-      "mark": "0,5"
+      "mark": "1"
      },
      {
       "step": "النتيجة",
-      "mark": "0,5"
+      "mark": "1"
      }
     ],
-    "pts": 1,
-    "partialMsg": "تابع الخوارزمية حتى باق معدوم.",
+    "pts": 2,
+    "partialMsg": "لا نجمع ما تحت الجذور.",
     "partialZero": true
    },
    {
     "qId": "3-2",
-    "text": "2) اكتب <span class=\"math\">A</span> على الشكل <span class=\"math\">a + b√7</span>.",
+    "text": "2) احسب <span class=\"math\">A × √5/30</span>.",
     "exact": [
-     "4-√7",
-     "-√7+4"
+     "1"
     ],
     "partial": [
-     "4+√7",
-     "4-17√7"
+     "30/30",
+     "6/30"
     ],
-    "h1": "<span class=\"math\">√2 × √8 = √16 = 4</span> ؛ <span class=\"math\">448 = 64 × 7</span> ؛ <span class=\"math\">567 = 81 × 7</span>.",
-    "h2": "<span class=\"math\">A = 4 + 8√7 − 9√7</span>.",
+    "h1": "<span class=\"math\">6√5 × √5 = 6 × 5</span>.",
+    "h2": "<span class=\"math\">30/30</span>.",
     "steps": [
-     "<span class=\"math\">√2 × √8 = 4</span>",
-     "<span class=\"math\">√448 = 8√7</span> و<span class=\"math\">√567 = 9√7</span>",
-     "النتيجة: <span class=\"math\">A = 4 − √7</span>"
+     "<span class=\"math\">A × √5/30 = 6√5 × √5 / 30</span>",
+     "<span class=\"math\">= 30/30</span>",
+     "النتيجة: <span class=\"math\">A × √5/30 = 1</span>"
     ],
     "rubric": [
      {
       "step": "خطوات الحل",
-      "mark": "0,5"
+      "mark": "1"
      },
      {
       "step": "النتيجة",
-      "mark": "0,5"
+      "mark": "1"
      }
     ],
-    "pts": 1,
-    "partialMsg": "انتبه للإشارة.",
-    "partialZero": true
-   },
-   {
-    "qId": "3-3",
-    "text": "3) اكتب <span class=\"math\">B</span> على الشكل <span class=\"math\">a + b√7</span>.",
-    "exact": [
-     "4+√7",
-     "√7+4"
-    ],
-    "partial": [
-     "4+5√7"
-    ],
-    "h1": "<span class=\"math\">√63 = 3√7</span> و<span class=\"math\">√28 = 2√7</span>.",
-    "h2": "<span class=\"math\">B = 3√7 − 2√7 + 4</span>.",
-    "steps": [
-     "<span class=\"math\">B = 3√7 − 2√7 + 4</span>",
-     "النتيجة: <span class=\"math\">B = 4 + √7</span>"
-    ],
-    "rubric": [
-     {
-      "step": "خطوات الحل",
-      "mark": "0,5"
-     },
-     {
-      "step": "النتيجة",
-      "mark": "0,5"
-     }
-    ],
-    "pts": 1,
-    "partialMsg": "انتبه للإشارة.",
-    "partialZero": true
-   },
-   {
-    "qId": "3-4",
-    "text": "4) جد قيم <span class=\"math\">x</span> (اكتب القيمتين مفصولتين بـ ;).",
-    "exact": [
-     "3;-3",
-     "-3;3",
-     "±3"
-    ],
-    "partial": [
-     "3",
-     "9"
-    ],
-    "h1": "الجداءان المتصالبان: <span class=\"math\">x × x = (4 + √7)(4 − √7)</span>.",
-    "h2": "<span class=\"math\">(4 + √7)(4 − √7) = 16 − 7</span>.",
-    "steps": [
-     "<span class=\"math\">x² = (4 + √7)(4 − √7) = 16 − 7 = 9</span>",
-     "<span class=\"math\">x = 3</span> أو <span class=\"math\">x = −3</span>",
-     "النتيجة: <span class=\"math\">x = 3</span> أو <span class=\"math\">x = −3</span>"
-    ],
-    "rubric": [
-     {
-      "step": "خطوات الحل",
-      "mark": "0,5"
-     },
-     {
-      "step": "النتيجة",
-      "mark": "0,5"
-     }
-    ],
-    "pts": 1,
-    "partialMsg": "للمعادلة <span class=\"math\">x² = 9</span> حلان متعاكسان."
+    "pts": 2,
+    "partialMsg": "بسّط."
    }
   ]
  },
  {
   "id": 4,
   "pts": 4,
-  "title": "التمرين 4: كسر وجذور",
-  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2023، التمرين الأول)</span><br>لتكن الأعداد <span class=\"math\">A</span> ، <span class=\"math\">B</span> ، <span class=\"math\">C</span> حيث: <span class=\"math\">A = 756/216</span> ، <span class=\"math\">B = √117 + 3√52 − √637</span> ، <span class=\"math\">C = 3√13/√3</span>.",
+  "title": "التمرين 4: كسور، كتابة علمية وجذور",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2014، التمرين الأول)</span><br>إليك الأعداد <span class=\"math\">A</span> ، <span class=\"math\">B</span> ، <span class=\"math\">C</span> حيث:<br><span class=\"math\">A = 3/5 + 2/5 × 7/4</span> ، <span class=\"math\">B = (1,2 × 10⁻² × 7)/(12,5 × 10³)</span> ، <span class=\"math\">C = √175 − √112 + 6√7</span>.",
   "questions": [
    {
     "qId": "4-1",
-    "text": "1) اكتب <span class=\"math\">A = 756/216</span> على شكل كسر غير قابل للاختزال.",
+    "text": "1) احسب <span class=\"math\">A</span> واكتبه على الشكل العشري.",
     "exact": [
-     "7/2"
+     "1,3"
     ],
     "partial": [
-     "378/108",
-     "63/18",
-     "21/6"
+     "13/10",
+     "26/20"
     ],
-    "h1": "<span class=\"math\">PGCD(756 ; 216)</span>: <span class=\"math\">756 = 216 × 3 + 108</span>.",
-    "h2": "<span class=\"math\">216 = 108 × 2 + 0</span>.",
+    "h1": "الضرب أولا: <span class=\"math\">2/5 × 7/4 = 14/20</span>.",
+    "h2": "<span class=\"math\">3/5 = 12/20</span>.",
     "steps": [
-     "<span class=\"math\">PGCD(756 ; 216) = 108</span>",
-     "<span class=\"math\">756 ÷ 108 = 7</span> و<span class=\"math\">216 ÷ 108 = 2</span>",
-     "النتيجة: <span class=\"math\">A = 7/2</span>"
+     "<span class=\"math\">2/5 × 7/4 = 14/20</span>",
+     "<span class=\"math\">A = 12/20 + 14/20 = 26/20</span>",
+     "النتيجة: <span class=\"math\">A = 1,3</span>"
     ],
     "rubric": [
      {
@@ -927,25 +890,28 @@
      }
     ],
     "pts": 1,
-    "partialMsg": "الكسر ما زال قابلا للاختزال."
+    "partialMsg": "المطلوب الكتابة العشرية."
    },
    {
     "qId": "4-2",
-    "text": "2) اكتب <span class=\"math\">B</span> على الشكل <span class=\"math\">a√13</span>.",
+    "text": "2) أعط الكتابة العلمية للعدد <span class=\"math\">B</span> (اكتب مثل: <span class=\"math\">2,5×10^-3</span>).",
     "exact": [
-     "2√13"
+     "6,72×10^-6",
+     "6,72×10^(-6)",
+     "6,72×10⁻⁶"
     ],
     "partial": [
-     "16√13",
-     "-√13"
+     "0,672×10^-5",
+     "0,672×10^(-5)",
+     "67,2×10^-7"
     ],
-    "h1": "<span class=\"math\">117 = 9 × 13</span> ؛ <span class=\"math\">52 = 4 × 13</span> ؛ <span class=\"math\">637 = 49 × 13</span>.",
-    "h2": "<span class=\"math\">B = 3√13 + 6√13 − 7√13</span>.",
+    "h1": "<span class=\"math\">1,2 × 7 = 8,4</span> و<span class=\"math\">8,4 ÷ 12,5 = 0,672</span>.",
+    "h2": "<span class=\"math\">10⁻² ÷ 10³ = 10⁻⁵</span>.",
     "steps": [
-     "<span class=\"math\">√117 = 3√13</span>",
-     "<span class=\"math\">3√52 = 3 × 2√13 = 6√13</span>",
-     "<span class=\"math\">√637 = 7√13</span>",
-     "النتيجة: <span class=\"math\">B = 2√13</span>"
+     "<span class=\"math\">B = (8,4/12,5) × 10⁻²⁻³</span>",
+     "<span class=\"math\">B = 0,672 × 10⁻⁵</span>",
+     "<span class=\"math\">0,672 = 6,72 × 10⁻¹</span>",
+     "النتيجة: <span class=\"math\">B = 6,72 × 10⁻⁶</span>"
     ],
     "rubric": [
      {
@@ -958,25 +924,25 @@
      }
     ],
     "pts": 1.5,
-    "partialMsg": "راجع المعامل <span class=\"math\">3</span> والإشارات.",
-    "partialZero": true
+    "partialMsg": "في الكتابة العلمية يكون الجزء العشري بين <span class=\"math\">1</span> و<span class=\"math\">10</span>."
    },
    {
     "qId": "4-3",
-    "text": "3) احسب <span class=\"math\">B × C</span>.",
+    "text": "3) اكتب <span class=\"math\">C</span> على أبسط شكل.",
     "exact": [
-     "26√3"
+     "7√7"
     ],
     "partial": [
-     "78/√3",
-     "78√3/3"
+     "√7",
+     "15√7"
     ],
-    "h1": "<span class=\"math\">2√13 × 3√13 = 6 × 13</span>.",
-    "h2": "<span class=\"math\">78/√3</span> ثم اجعل المقام ناطقا.",
+    "h1": "<span class=\"math\">√175 = 5√7</span> و<span class=\"math\">√112 = 4√7</span>.",
+    "h2": "<span class=\"math\">C = 5√7 − 4√7 + 6√7</span>.",
     "steps": [
-     "<span class=\"math\">B × C = 2√13 × 3√13 / √3 = 78/√3</span>",
-     "<span class=\"math\">78/√3 = 78√3/3</span>",
-     "النتيجة: <span class=\"math\">B × C = 26√3</span>"
+     "<span class=\"math\">√175 = √(25 × 7) = 5√7</span>",
+     "<span class=\"math\">√112 = √(16 × 7) = 4√7</span>",
+     "<span class=\"math\">C = 5√7 − 4√7 + 6√7</span>",
+     "النتيجة: <span class=\"math\">C = 7√7</span>"
     ],
     "rubric": [
      {
@@ -989,51 +955,46 @@
      }
     ],
     "pts": 1.5,
-    "partialMsg": "اجعل المقام ناطقا ثم بسّط."
+    "partialMsg": "انتبه للإشارات.",
+    "partialZero": true
    }
   ]
  },
  {
   "id": 5,
   "pts": 4,
-  "title": "التمرين 5: القاسم المشترك الأكبر والجذور",
-  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2026، التمرين الأول)</span><br><span class=\"math\">A</span> ، <span class=\"math\">B</span> و<span class=\"math\">C</span> أعداد حيث: <span class=\"math\">A = PGCD(77 ; 65)</span> ، <span class=\"math\">B = √48 − √75 + √147</span> ، <span class=\"math\">C = (√5 + 4)/√5</span>.",
+  "title": "التمرين 5: الحساب على الجذور",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2018، التمرين الأول)</span><br><span class=\"math\">A</span> و<span class=\"math\">B</span> عددان حيث: <span class=\"math\">A = 3√8 × √2</span> و<span class=\"math\">B = 2√27 − 2√3 + √12</span>.",
   "questions": [
    {
     "qId": "5-1",
-    "text": "1) احسب <span class=\"math\">A = PGCD(77 ; 65)</span>.",
+    "text": "1) احسب <span class=\"math\">A</span>.",
     "exact": [
-     "1"
+     "12"
     ],
     "partial": [
-     "12",
-     "5",
-     "2"
+     "3√16",
+     "6√4"
     ],
-    "h1": "<span class=\"math\">77 = 65 × 1 + 12</span>.",
-    "h2": "تابع حتى باق معدوم.",
+    "h1": "<span class=\"math\">√8 × √2 = √16</span>.",
+    "h2": "<span class=\"math\">√16 = 4</span>.",
     "steps": [
-     "<span class=\"math\">77 = 65 × 1 + 12</span>",
-     "<span class=\"math\">65 = 12 × 5 + 5</span>",
-     "<span class=\"math\">12 = 5 × 2 + 2</span>",
-     "<span class=\"math\">5 = 2 × 2 + 1</span>",
-     "<span class=\"math\">2 = 1 × 2 + 0</span>",
-     "العددان <span class=\"math\">77</span> و<span class=\"math\">65</span> أوليان فيما بينهما",
-     "النتيجة: <span class=\"math\">A = 1</span>"
+     "<span class=\"math\">A = 3√(8 × 2) = 3√16</span>",
+     "<span class=\"math\">= 3 × 4</span>",
+     "النتيجة: <span class=\"math\">A = 12</span>"
     ],
     "rubric": [
      {
-      "step": "الحساب",
-      "mark": "0,75"
+      "step": "خطوات الحل",
+      "mark": "0,5"
      },
      {
-      "step": "الاستنتاج: أوليان فيما بينهما",
+      "step": "النتيجة",
       "mark": "0,5"
      }
     ],
-    "pts": 1.25,
-    "partialMsg": "هذا باق وسيط.",
-    "partialZero": true
+    "pts": 1,
+    "partialMsg": "بسّط الجذر."
    },
    {
     "qId": "5-2",
@@ -1042,47 +1003,16 @@
      "6√3"
     ],
     "partial": [
-     "16√3",
-     "√120"
+     "2√3",
+     "4√3"
     ],
-    "h1": "<span class=\"math\">√48 = 4√3</span> ؛ <span class=\"math\">√75 = 5√3</span> ؛ <span class=\"math\">√147 = 7√3</span>.",
-    "h2": "<span class=\"math\">B = 4√3 − 5√3 + 7√3</span>.",
+    "h1": "<span class=\"math\">√27 = 3√3</span> و<span class=\"math\">√12 = 2√3</span>.",
+    "h2": "<span class=\"math\">B = 6√3 − 2√3 + 2√3</span>.",
     "steps": [
-     "<span class=\"math\">√48 = 4√3</span>",
-     "<span class=\"math\">√75 = 5√3</span>",
-     "<span class=\"math\">√147 = 7√3</span>",
+     "<span class=\"math\">2√27 = 2 × 3√3 = 6√3</span>",
+     "<span class=\"math\">√12 = 2√3</span>",
+     "<span class=\"math\">B = 6√3 − 2√3 + 2√3</span>",
      "النتيجة: <span class=\"math\">B = 6√3</span>"
-    ],
-    "rubric": [
-     {
-      "step": "التبسيط",
-      "mark": "0,75"
-     },
-     {
-      "step": "النتيجة",
-      "mark": "0,5"
-     }
-    ],
-    "pts": 1.25,
-    "partialMsg": "لا نجمع ما تحت الجذور.",
-    "partialZero": true
-   },
-   {
-    "qId": "5-3",
-    "text": "3) اكتب <span class=\"math\">C</span> بمقام ناطق.",
-    "exact": [
-     "(5+4√5)/5",
-     "(4√5+5)/5",
-     "1+4√5/5"
-    ],
-    "partial": [
-     "(√5+4)√5/5"
-    ],
-    "h1": "اضرب البسط والمقام في <span class=\"math\">√5</span>.",
-    "h2": "البسط: <span class=\"math\">(√5 + 4)√5 = 5 + 4√5</span>.",
-    "steps": [
-     "<span class=\"math\">C = (√5 + 4)√5 / (√5 × √5)</span>",
-     "النتيجة: <span class=\"math\">C = (5 + 4√5)/5</span>"
     ],
     "rubric": [
      {
@@ -1095,7 +1025,38 @@
      }
     ],
     "pts": 1.5,
-    "partialMsg": "انشر البسط."
+    "partialMsg": "انتبه للمعامل <span class=\"math\">2</span> أمام <span class=\"math\">√27</span>.",
+    "partialZero": true
+   },
+   {
+    "qId": "5-3",
+    "text": "3) اكتب <span class=\"math\">A/B</span> على شكل نسبة مقامها عدد ناطق.",
+    "exact": [
+     "2√3/3"
+    ],
+    "partial": [
+     "2/√3",
+     "12/(6√3)"
+    ],
+    "h1": "<span class=\"math\">12/(6√3) = 2/√3</span>.",
+    "h2": "اضرب البسط والمقام في <span class=\"math\">√3</span>.",
+    "steps": [
+     "<span class=\"math\">A/B = 12/(6√3) = 2/√3</span>",
+     "<span class=\"math\">= 2√3/(√3 × √3)</span>",
+     "النتيجة: <span class=\"math\">A/B = 2√3/3</span>"
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "0,75"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1.5,
+    "partialMsg": "المقام ما زال غير ناطق."
    }
   ]
  }
