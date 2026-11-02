@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الفرض الثاني - السنة الثالثة متوسط - الفصل الأول</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #0f766e;
+            --primary-light: #eff6ff;
+            --accent: #fbbf24;
+            --success: #15803d;
+            --success-bg: #dcfce7;
+            --warning: #b45309;
+            --warning-bg: #fef3c7;
+            --danger: #b91c1c;
+            --danger-bg: #fee2e2;
+            --dark: #0f172a;
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --border: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+        }
+
+        html, body {
+            background-color: var(--bg);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            width: 100%;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%);
+            color: #ffffff;
+            padding: 20px 12px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        header .school-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fef08a;
+            margin-bottom: 6px;
+        }
+
+        header h1 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 6px 0;
+            color: #ffffff;
+        }
+
+        header .sub-info {
+            font-size: 0.92rem;
+            opacity: 0.95;
+            background: rgba(255, 255, 255, 0.14);
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-top: 4px;
+        }
+
+        .sticky-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(6px);
+            border-bottom: 2px solid var(--border);
+            padding: 8px 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .sticky-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .stars-badge {
+            background: #fef3c7;
+            color: #b45309;
+            border: 1px solid #f59e0b;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .sound-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .progress-wrap {
+            flex: 1;
+            min-width: 110px;
+            max-width: 240px;
+            background: #e2e8f0;
+            height: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #0f766e, #15803d);
+            width: 0%;
+            height: 100%;
+            transition: width 0.35s ease;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 18px auto 0 auto;
+            padding: 0 10px;
+        }
+
+        .exercise-card {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 16px 14px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-light);
+            padding: 10px 12px;
+            border-radius: 10px;
+            border-right: 4px solid var(--primary);
+            margin-bottom: 12px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .card-header h2 {
+            font-size: 1.08rem;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .pts-badge {
+            background: #ffffff;
+            color: var(--primary);
+            border: 1px solid #bfdbfe;
+            padding: 3px 10px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .context-box {
+            background: #f8fafc;
+            border: 1px dashed #94a3b8;
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin-bottom: 14px;
+            font-size: 0.96rem;
+        }
+
+        .math {
+            direction: ltr;
+            unicode-bidi: isolate;
+            display: inline-block;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 700;
+            background: #e2e8f0;
+            padding: 1px 6px;
+            border-radius: 5px;
+            margin: 0 2px;
+            color: #0f172a;
+        }
+
+        .q-box {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 14px;
+            background: #ffffff;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .q-box.solved {
+            border-color: #86efac;
+            background: #f0fdf4;
+        }
+
+        .q-box.failed {
+            border-color: #fca5a5;
+            background: #fef2f2;
+        }
+
+        .q-title {
+            font-weight: 700;
+            font-size: 0.98rem;
+            margin-bottom: 10px;
+            color: #1e293b;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .q-meta {
+            font-size: 0.78rem;
+            background: #f1f5f9;
+            color: #475569;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .answer-area {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-line {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            min-width: 170px;
+            padding: 9px 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.98rem;
+            font-weight: 700;
+            direction: ltr;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary);
+        }
+
+        .sym-toolbar {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 4px;
+        }
+
+        .sym-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            color: #0f172a;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            direction: ltr;
+            unicode-bidi: isolate;
+            user-select: none;
+        }
+
+        .sym-btn { flex: 1 1 0; min-width: 0; padding: 6px 0; text-align: center; }
+
+        .sym-btn:hover {
+            background: #cbd5e1;
+        }
+
+        .sym-btn:active {
+            transform: scale(0.96);
+        }
+
+        .btn-check {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .btn-check:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-check:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        @keyframes shakeField {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        .shake {
+            animation: shakeField 0.35s ease;
+            border-color: var(--danger) !important;
+        }
+
+        .feedback-box {
+            margin-top: 10px;
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            display: none;
+        }
+
+        .feedback-box.success {
+            display: block;
+            background: var(--success-bg);
+            color: var(--success);
+            border-right: 4px solid var(--success);
+        }
+
+        .feedback-box.hint {
+            display: block;
+            background: var(--warning-bg);
+            color: var(--warning);
+            border-right: 4px solid var(--warning);
+        }
+
+        .feedback-box.fail {
+            display: block;
+            background: var(--danger-bg);
+            color: var(--danger);
+            border-right: 4px solid var(--danger);
+        }
+
+        .model-solution {
+            margin-top: 12px;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-right: 4px solid var(--secondary);
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+            font-size: 0.93rem;
+        }
+
+        .model-solution h4 {
+            color: var(--secondary);
+            margin-bottom: 8px;
+            font-size: 0.98rem;
+        }
+
+        .sol-line {
+            padding: 3px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .sol-result {
+            margin-top: 6px;
+            font-weight: 800;
+            color: var(--primary);
+            background: #eff6ff;
+            padding: 5px 8px;
+            border-radius: 6px;
+        }
+
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.86rem;
+            background: #ffffff;
+        }
+
+        .rubric-table td .math { white-space: nowrap; }
+        .rubric-table th, .rubric-table td {
+            border: 1px solid #cbd5e1;
+            padding: 6px 8px;
+            text-align: right;
+        }
+
+        .rubric-table th {
+            background: #e2e8f0;
+            color: #1e293b;
+            font-weight: 800;
+        }
+
+        .star-burst {
+            display: inline-block;
+            animation: popStars 0.6s ease forwards;
+        }
+
+        @keyframes popStars {
+            0% { transform: scale(0.4); opacity: 0; }
+            60% { transform: scale(1.25); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.65);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 15px;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            max-width: 420px;
+            width: 100%;
+            border-radius: 16px;
+            padding: 24px 18px;
+            text-align: center;
+            border-top: 6px solid var(--accent);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .modal-score {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin: 10px 0;
+        }
+
+        .modal-stars {
+            font-size: 1.4rem;
+            color: #d97706;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .btn-close-modal {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 9px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        @media (max-width: 420px) {
+            header .school-title { font-size: 0.98rem; }
+            header h1 { font-size: 1.12rem; }
+            .input-line { flex-direction: column; }
+            input[type="text"], .btn-check { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="school-title">متوسطة العربي بن مهيدي — الأستاذ: يوسفي السوفي</div>
+        <h1>الفرض الثاني التفاعلي في الرياضيات</h1>
+        <div class="sub-info">المستوى: السنة الثالثة متوسط | المقطع الأول + الموردان 1 و2 من المقطع الثاني<br>للتصحيح الذاتي بعد إنجاز الفرض على الورقة</div>
+    </header>
+
+    <div class="sticky-bar">
+        <div class="sticky-inner">
+            <div class="stat-group">
+                <span class="score-badge">العلامة: <span class="math" id="scoreVal" style="background:transparent;color:#fff;padding:0;">0 / 20</span></span>
+                <span class="stars-badge">⭐ <span class="math" id="starsVal" style="background:transparent;color:#b45309;padding:0;">0</span></span>
+                <button type="button" class="sound-btn" id="soundToggle" onclick="toggleSound()" title="تشغيل/كتم الصوت">🔊</button>
+            </div>
+            <div class="progress-wrap" title="شريط التقدم">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="exercisesRoot"></div>
+
+    <div class="modal-overlay" id="finalModal">
+        <div class="modal-card">
+            <h3 id="finalTitle">🎉 أحسنت! أتممت جميع الأسئلة</h3>
+            <p>لقد أنهيت الفرض الثاني التفاعلي في الرياضيات</p>
+            <div class="modal-score" id="finalScoreText">0 / 20</div>
+            <div class="modal-stars" id="finalStarsText">⭐ 0 نجمة</div>
+            <button type="button" class="btn-close-modal" onclick="document.getElementById('finalModal').style.display='none'">مراجعة إجاباتي</button>
+        </div>
+    </div>
+
+    <script>
+        let soundEnabled = true;
+        let totalScore = 0;
+        let totalStars = 0;
+        let completedQuestions = 0;
+        let totalQuestionsCount = 0;
+
+        const attemptsLeft = {};
+        const questionEarned = {};
+        const questionLocked = {};
+
+        const symbols1AM = ["−", "+", "×", "÷", ",", "/", "<", ">", ";", "⌫"];
+
+        function playTone(type) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'success') {
+                    osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+                    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.09);
+                    osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.18);
+                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.35);
+                } else {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, ctx.currentTime);
+                    osc.frequency.setValueAtTime(180, ctx.currentTime + 0.1);
+                    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.25);
+                }
+            } catch (e) {}
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            document.getElementById('soundToggle').innerText = soundEnabled ? '🔊' : '🔇';
+        }
+
+        const exercises = [
+ {
+  "id": 1,
+  "pts": 5,
+  "title": "التمرين 1: الأعداد النسبية والناطقة",
+  "context": "احسب واكتب النتائج على أبسط شكل.",
+  "questions": [
+   {
+    "qId": "1-1",
+    "text": "1) <span class=\"math\">(−8) × (−0,5)</span>",
+    "exact": [
+     "4"
+    ],
+    "partial": [
+     "-4"
+    ],
+    "h1": "عددان سالبان.",
+    "h2": "جداء عددين من نفس الإشارة موجب.",
+    "steps": [
+     "نفس الإشارة: الجداء موجب",
+     "<span class=\"math\">8 × 0,5 = 4</span>",
+     "النتيجة: <span class=\"math\">4</span>"
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialMsg": "راجع الإشارة.",
+    "partialZero": true
+   },
+   {
+    "qId": "1-2",
+    "text": "2) <span class=\"math\">(+45) ÷ (−9)</span>",
+    "exact": [
+     "-5"
+    ],
+    "partial": [
+     "5"
+    ],
+    "h1": "إشارتان مختلفتان.",
+    "h2": "حاصل قسمة عددين مختلفي الإشارة سالب.",
+    "steps": [
+     "إشارتان مختلفتان: سالب",
+     "<span class=\"math\">45 ÷ 9 = 5</span>",
+     "النتيجة: <span class=\"math\">−5</span>"
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialMsg": "راجع الإشارة.",
+    "partialZero": true
+   },
+   {
+    "qId": "1-3",
+    "text": "3) <span class=\"math\">(−3/8) ÷ (9/4)</span>",
+    "exact": [
+     "-1/6",
+     "1/-6",
+     "-(1/6)"
+    ],
+    "partial": [
+     "-12/72",
+     "-6/36",
+     "-2/12",
+     "-4/24",
+     "-3/18"
+    ],
+    "h1": "اضرب في مقلوب <span class=\"math\">9/4</span>.",
+    "h2": "<span class=\"math\">(−3/8) × (4/9) = −12/72</span> ثم اختزل.",
+    "steps": [
+     "<span class=\"math\">(−3/8) × (4/9)</span>",
+     "<span class=\"math\">= −12/72 = −1/6</span>",
+     "النتيجة: <span class=\"math\">−1/6</span>"
+    ],
+    "rubric": [
+     {
+      "step": "الضرب في المقلوب",
+      "mark": "0,5"
+     },
+     {
+      "step": "الإشارة",
+      "mark": "0,5"
+     },
+     {
+      "step": "الاختزال",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 1.5,
+    "partialMsg": "النتيجة صحيحة لكن اختزل الكسر."
+   },
+   {
+    "qId": "1-4",
+    "text": "4) <span class=\"math\">2/3 − 5/6 × 4/5</span>",
+    "exact": [
+     "0"
+    ],
+    "partial": [
+     "-2/15",
+     "-4/30"
+    ],
+    "h1": "الضرب قبل الطرح.",
+    "h2": "<span class=\"math\">5/6 × 4/5 = 20/30 = 2/3</span>.",
+    "steps": [
+     "<span class=\"math\">5/6 × 4/5 = 20/30 = 2/3</span>",
+     "<span class=\"math\">2/3 − 2/3 = 0</span>",
+     "النتيجة: <span class=\"math\">0</span>"
+    ],
+    "rubric": [
+     {
+      "step": "الضرب أولا",
+      "mark": "0,75"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1.5,
+    "partialMsg": "لم تحترم أولوية الضرب على الطرح.",
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 2,
+  "pts": 5,
+  "title": "التمرين 2: وضعية: خزان ماء",
+  "context": "خزان ماء فيه ماء يملأ <span class=\"math\">3/4</span> من سعته. استُهلك <span class=\"math\">2/5</span> من الماء الذي كان فيه. سعة الخزان <span class=\"math\">1200 L</span>.",
+  "questions": [
+   {
+    "qId": "2-1",
+    "text": "1) ما الكسر من سعة الخزان الذي يمثل الماء المستهلك؟",
+    "exact": [
+     "3/10"
+    ],
+    "partial": [
+     "6/20"
+    ],
+    "h1": "أخذ <span class=\"math\">2/5</span> من <span class=\"math\">3/4</span> يعني الضرب.",
+    "h2": "احسب <span class=\"math\">2/5 × 3/4</span> واختزل.",
+    "steps": [
+     "<span class=\"math\">2/5 × 3/4 = 6/20</span>",
+     "<span class=\"math\">= 3/10</span>",
+     "النتيجة: <span class=\"math\">3/10</span> من السعة"
+    ],
+    "rubric": [
+     {
+      "step": "كتابة الجداء",
+      "mark": "0,5"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1.5,
+    "partialMsg": "النتيجة صحيحة لكن اختزل الكسر."
+   },
+   {
+    "qId": "2-2",
+    "text": "2) ما الكسر من سعة الخزان الذي يمثل الماء الباقي؟",
+    "exact": [
+     "9/20"
+    ],
+    "partial": [
+     "3/5",
+     "7/20"
+    ],
+    "h1": "الباقي = الموجود − المستهلك.",
+    "h2": "احسب <span class=\"math\">3/4 − 3/10</span> بمقام <span class=\"math\">20</span>.",
+    "steps": [
+     "<span class=\"math\">3/4 = 15/20</span> و<span class=\"math\">3/10 = 6/20</span>",
+     "<span class=\"math\">15/20 − 6/20 = 9/20</span>",
+     "النتيجة: <span class=\"math\">9/20</span> من السعة"
+    ],
+    "rubric": [
+     {
+      "step": "توحيد المقامين",
+      "mark": "0,5"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1.5,
+    "partialMsg": "انطلق من <span class=\"math\">3/4</span> (ما كان في الخزان) واستعمل جوابك السابق.",
+    "partialZero": true
+   },
+   {
+    "qId": "2-3",
+    "text": "3) احسب حجم الماء الباقي في الخزان (بـ L).",
+    "exact": [
+     "540"
+    ],
+    "partial": [
+     "360",
+     "900"
+    ],
+    "h1": "الحجم = الكسر × السعة.",
+    "h2": "احسب <span class=\"math\">9/20 × 1200</span>.",
+    "steps": [
+     "<span class=\"math\">9/20 × 1200</span>",
+     "<span class=\"math\">= 9 × 60</span>",
+     "<span class=\"math\">= 540</span>",
+     "النتيجة: <span class=\"math\">540 L</span>"
+    ],
+    "rubric": [
+     {
+      "step": "كتابة الجداء",
+      "mark": "0,75"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "1,25"
+     }
+    ],
+    "pts": 2,
+    "partialMsg": "استعمل كسر الماء الباقي من السعة.",
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 3,
+  "pts": 5,
+  "title": "التمرين 3: حالات تقايس المثلثات",
+  "context": "المثلثان <span class=\"math\">ABC</span> و<span class=\"math\">DEF</span> حيث: <span class=\"math\">AB = DE = 5 cm</span> ؛ <span class=\"math\">BC = EF = 7 cm</span> ؛ الزاويتان <span class=\"math\">ABC</span> و<span class=\"math\">DEF</span> قيس كل منهما <span class=\"math\">48°</span> ؛ قيس الزاوية <span class=\"math\">BAC</span> هو <span class=\"math\">70°</span> ؛ <span class=\"math\">AC = 5,2 cm</span>. (الشكل غير مرسوم بالأبعاد الحقيقية)<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 520 190\" width=\"520\" height=\"190\" style=\"max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff\" font-family=\"Arial\" font-size=\"16\"><rect width=\"520\" height=\"190\" fill=\"#fff\"/><polygon points=\"30,160 230,160 90,40\" fill=\"none\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><circle cx=\"90\" cy=\"40\" r=\"3\" fill=\"#111\"/><text x=\"84\" y=\"32\" font-weight=\"bold\">A</text><circle cx=\"30\" cy=\"160\" r=\"3\" fill=\"#111\"/><text x=\"14\" y=\"178\" font-weight=\"bold\">B</text><circle cx=\"230\" cy=\"160\" r=\"3\" fill=\"#111\"/><text x=\"236\" y=\"178\" font-weight=\"bold\">C</text><text x=\"130\" y=\"180\" font-size=\"15\" fill=\"#111\" text-anchor=\"middle\">7 cm</text><text x=\"45\" y=\"95\" font-size=\"14\" fill=\"#111\" text-anchor=\"end\">5 cm</text><text x=\"52\" y=\"150\" font-size=\"13\" fill=\"#b91c1c\" text-anchor=\"middle\">48°</text><text x=\"110\" y=\"70\" font-size=\"13\" fill=\"#b91c1c\" text-anchor=\"middle\">70°</text><polygon points=\"300,160 500,160 360,40\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><circle cx=\"360\" cy=\"40\" r=\"3\" fill=\"#111\"/><text x=\"354\" y=\"32\" font-weight=\"bold\">D</text><circle cx=\"300\" cy=\"160\" r=\"3\" fill=\"#111\"/><text x=\"284\" y=\"178\" font-weight=\"bold\">E</text><circle cx=\"500\" cy=\"160\" r=\"3\" fill=\"#111\"/><text x=\"506\" y=\"178\" font-weight=\"bold\">F</text><text x=\"400\" y=\"180\" font-size=\"15\" fill=\"#111\" text-anchor=\"middle\">7 cm</text><text x=\"315\" y=\"95\" font-size=\"14\" fill=\"#111\" text-anchor=\"end\">5 cm</text><text x=\"322\" y=\"150\" font-size=\"13\" fill=\"#b91c1c\" text-anchor=\"middle\">48°</text></svg>",
+  "questions": [
+   {
+    "qId": "3-1",
+    "text": "1) المثلثان متقايسان. اكتب رقم حالة التقايس: <span class=\"math\">1</span> ثلاثة أضلاع متقايسة، <span class=\"math\">2</span> ضلعان وزاوية محصورة بينهما، <span class=\"math\">3</span> زاويتان وضلع محصور بينهما.",
+    "exact": [
+     "2"
+    ],
+    "partial": [
+     "1",
+     "3"
+    ],
+    "h1": "ما العناصر المتقايسة المعطاة؟",
+    "h2": "الزاوية <span class=\"math\">48°</span> محصورة بين الضلعين <span class=\"math\">5 cm</span> و<span class=\"math\">7 cm</span>.",
+    "steps": [
+     "<span class=\"math\">AB = DE</span> و<span class=\"math\">BC = EF</span>",
+     "والزاويتان المحصورتان <span class=\"math\">ABC = DEF</span>",
+     "النتيجة: الحالة <span class=\"math\">2</span>"
+    ],
+    "rubric": [
+     {
+      "step": "الحالة مع ذكر العناصر",
+      "mark": "1,5"
+     }
+    ],
+    "pts": 1.5,
+    "partialMsg": "لم نعرف الضلع الثالث في <span class=\"math\">DEF</span>، وعندنا زاوية واحدة متقايسة.",
+    "partialZero": true
+   },
+   {
+    "qId": "3-2",
+    "text": "2) استنتج الطول <span class=\"math\">DF</span> (بـ cm).",
+    "exact": [
+     "5,2"
+    ],
+    "partial": [],
+    "h1": "في مثلثين متقايسين، الأضلاع المتماثلة متقايسة.",
+    "h2": "<span class=\"math\">DF</span> يقابل <span class=\"math\">AC</span>.",
+    "steps": [
+     "المثلثان متقايسان و<span class=\"math\">DF</span> يماثل <span class=\"math\">AC</span>",
+     "النتيجة: <span class=\"math\">DF = 5,2 cm</span>"
+    ],
+    "rubric": [
+     {
+      "step": "الضلع المماثل",
+      "mark": "0,5"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1.5
+   },
+   {
+    "qId": "3-3",
+    "text": "3) احسب قيس الزاوية <span class=\"math\">DFE</span> (بالدرجات).",
+    "exact": [
+     "62"
+    ],
+    "partial": [
+     "70",
+     "48"
+    ],
+    "h1": "احسب أولا <span class=\"math\">ACB</span> في المثلث <span class=\"math\">ABC</span>.",
+    "h2": "مجموع زوايا مثلث <span class=\"math\">180°</span>: <span class=\"math\">180 − 70 − 48</span>.",
+    "steps": [
+     "<span class=\"math\">ACB = 180 − 70 − 48 = 62</span>",
+     "<span class=\"math\">DFE</span> تماثل <span class=\"math\">ACB</span>",
+     "النتيجة: <span class=\"math\">DFE = 62°</span>"
+    ],
+    "rubric": [
+     {
+      "step": "حساب <span class=\"math\">ACB</span>",
+      "mark": "1"
+     },
+     {
+      "step": "الزاوية المماثلة",
+      "mark": "1"
+     }
+    ],
+    "pts": 2,
+    "partialMsg": "حدّد الزاوية المماثلة لـ <span class=\"math\">DFE</span> في <span class=\"math\">ABC</span>.",
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 4,
+  "pts": 5,
+  "title": "التمرين 4: مستقيم المنتصفين",
+  "context": "<span class=\"math\">ABC</span> مثلث حيث <span class=\"math\">AB = 6 cm</span> ؛ <span class=\"math\">AC = 8 cm</span> ؛ <span class=\"math\">BC = 9,4 cm</span>. <span class=\"math\">I</span> منتصف <span class=\"math\">[AB]</span> و<span class=\"math\">J</span> منتصف <span class=\"math\">[AC]</span>. (الشكل غير مرسوم بالأبعاد الحقيقية)<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 380 220\" width=\"380\" height=\"220\" style=\"max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff\" font-family=\"Arial\" font-size=\"16\"><rect width=\"380\" height=\"220\" fill=\"#fff\"/><polygon points=\"190,20 30,190 350,190\" fill=\"none\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><line x1=\"110\" y1=\"105\" x2=\"270\" y2=\"105\" stroke=\"#0f766e\" stroke-width=\"2\"/><circle cx=\"190\" cy=\"20\" r=\"3\" fill=\"#111\"/><text x=\"184\" y=\"14\" font-weight=\"bold\">A</text><circle cx=\"30\" cy=\"190\" r=\"3\" fill=\"#111\"/><text x=\"14\" y=\"208\" font-weight=\"bold\">B</text><circle cx=\"350\" cy=\"190\" r=\"3\" fill=\"#111\"/><text x=\"356\" y=\"208\" font-weight=\"bold\">C</text><circle cx=\"110\" cy=\"105\" r=\"3\" fill=\"#111\"/><text x=\"92\" y=\"105\" font-weight=\"bold\">I</text><circle cx=\"270\" cy=\"105\" r=\"3\" fill=\"#111\"/><text x=\"278\" y=\"105\" font-weight=\"bold\">J</text><text x=\"148\" y=\"64\" font-size=\"15\" fill=\"#b91c1c\" text-anchor=\"middle\">/</text><text x=\"72\" y=\"150\" font-size=\"15\" fill=\"#b91c1c\" text-anchor=\"middle\">/</text><text x=\"230\" y=\"64\" font-size=\"15\" fill=\"#b91c1c\" text-anchor=\"middle\">//</text><text x=\"312\" y=\"150\" font-size=\"15\" fill=\"#b91c1c\" text-anchor=\"middle\">//</text></svg>",
+  "questions": [
+   {
+    "qId": "4-1",
+    "text": "1) احسب <span class=\"math\">IJ</span> (بـ cm).",
+    "exact": [
+     "4,7"
+    ],
+    "partial": [
+     "18,8"
+    ],
+    "h1": "في مثلث، طول القطعة الواصلة بين منتصفي ضلعين...",
+    "h2": "... يساوي نصف طول الضلع الثالث.",
+    "steps": [
+     "<span class=\"math\">I</span> و<span class=\"math\">J</span> منتصفا <span class=\"math\">[AB]</span> و<span class=\"math\">[AC]</span>",
+     "<span class=\"math\">IJ = BC ÷ 2 = 9,4 ÷ 2</span>",
+     "النتيجة: <span class=\"math\">IJ = 4,7 cm</span>"
+    ],
+    "rubric": [
+     {
+      "step": "الخاصية",
+      "mark": "0,5"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1.5,
+    "partialMsg": "الطول نصف <span class=\"math\">BC</span> لا ضعفه.",
+    "partialZero": true
+   },
+   {
+    "qId": "4-2",
+    "text": "2) ما وضعية المستقيمين <span class=\"math\">(IJ)</span> و<span class=\"math\">(BC)</span>؟ اكتب <span class=\"math\">1</span> متوازيان، <span class=\"math\">2</span> متعامدان، <span class=\"math\">3</span> متقاطعان غير متعامدين.",
+    "exact": [
+     "1"
+    ],
+    "partial": [],
+    "h1": "تذكّر خاصية مستقيم المنتصفين.",
+    "h2": "المستقيم المار بمنتصفي ضلعين يوازي الضلع الثالث.",
+    "steps": [
+     "<span class=\"math\">(IJ)</span> يشمل منتصفي ضلعين",
+     "النتيجة: <span class=\"math\">(IJ) // (BC)</span> (<span class=\"math\">1</span>)"
+    ],
+    "rubric": [
+     {
+      "step": "الجواب مع الخاصية",
+      "mark": "1"
+     }
+    ],
+    "pts": 1
+   },
+   {
+    "qId": "4-3",
+    "text": "3) المستقيم الذي يشمل <span class=\"math\">I</span> ويوازي <span class=\"math\">(BC)</span> يقطع <span class=\"math\">[AC]</span> في <span class=\"math\">K</span>. احسب <span class=\"math\">AK</span> (بـ cm).",
+    "exact": [
+     "4"
+    ],
+    "partial": [],
+    "h1": "المستقيم المار بمنتصف ضلع ويوازي ضلعا ثانيا...",
+    "h2": "... يقطع الضلع الثالث في منتصفه.",
+    "steps": [
+     "المستقيم يشمل منتصف <span class=\"math\">[AB]</span> ويوازي <span class=\"math\">(BC)</span>",
+     "إذن <span class=\"math\">K</span> منتصف <span class=\"math\">[AC]</span>",
+     "<span class=\"math\">AK = 8 ÷ 2 = 4</span>",
+     "النتيجة: <span class=\"math\">AK = 4 cm</span>"
+    ],
+    "rubric": [
+     {
+      "step": "الخاصية العكسية",
+      "mark": "0,75"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1.5
+   },
+   {
+    "qId": "4-4",
+    "text": "4) احسب محيط المثلث <span class=\"math\">AIJ</span> (بـ cm).",
+    "exact": [
+     "11,7"
+    ],
+    "partial": [],
+    "h1": "المحيط = <span class=\"math\">AI + AJ + IJ</span>.",
+    "h2": "<span class=\"math\">AI = 3</span> و<span class=\"math\">AJ = 4</span> و<span class=\"math\">IJ</span> من السؤال الأول.",
+    "steps": [
+     "<span class=\"math\">AI = 3</span> ؛ <span class=\"math\">AJ = 4</span> ؛ <span class=\"math\">IJ = 4,7</span>",
+     "<span class=\"math\">3 + 4 + 4,7 = 11,7</span>",
+     "النتيجة: <span class=\"math\">11,7 cm</span>"
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1
+   }
+  ]
+ }
+];
+
+        function exercisesCount() { return exercises.reduce((a, e) => a + e.questions.length, 0); }
+
+        function renderApp() {
+            totalQuestionsCount = exercisesCount();
+            const root = document.getElementById('exercisesRoot');
+            root.innerHTML = '';
+
+            exercises.forEach(ex => {
+                const card = document.createElement('div');
+                card.className = 'exercise-card';
+
+                let questionsHtml = '';
+                ex.questions.forEach(q => {
+                    attemptsLeft[q.qId] = 3;
+                    questionEarned[q.qId] = 0;
+                    questionLocked[q.qId] = false;
+
+                    let symHtml = '';
+                    symbols1AM.forEach(s => {
+                        symHtml += `<button type="button" class="sym-btn" onclick="pressSym('${q.qId}', '${s}')">${s}</button>`;
+                    });
+
+                    let stepsHtml = '';
+                    q.steps.forEach((st, idx) => {
+                        const isLast = (idx === q.steps.length - 1);
+                        stepsHtml += `<div class="${isLast ? 'sol-result' : 'sol-line'}">${st}</div>`;
+                    });
+
+                    let rubricRows = '';
+                    q.rubric.forEach(r => {
+                        rubricRows += `<tr><td>${r.step}</td><td><span class="math">${r.mark} ن</span></td></tr>`;
+                    });
+
+                    questionsHtml += `
+                        <div class="q-box" id="qbox-${q.qId}">
+                            <div class="q-title">
+                                <span>${q.text}</span>
+                                <span class="q-meta" id="meta-${q.qId}">المحاولات: <span class="math">3</span> | النقاط: <span class="math">${String(q.pts).replace('.', ',')}</span></span>
+                            </div>
+                            <div class="answer-area">
+                                <div class="input-line">
+                                    <input type="text" id="in-${q.qId}" placeholder="اكتب إجابتك هنا" autocomplete="off">
+                                    <button type="button" class="btn-check" id="btn-${q.qId}" onclick="checkAns(${ex.id}, '${q.qId}')">تحقق من الإجابة</button>
+                                </div>
+                                <div class="sym-toolbar">${symHtml}</div>
+                            </div>
+                            <div class="feedback-box" id="fb-${q.qId}"></div>
+                            <div class="model-solution" id="sol-${q.qId}">
+                                <h4>✔ الإجابة النموذجية المفصلة:</h4>
+                                ${stepsHtml}
+                                <table class="rubric-table">
+                                    <thead>
+                                        <tr><th>مراحل الحل (سلم التنقيط)</th><th>النقطة</th></tr>
+                                    </thead>
+                                    <tbody>${rubricRows}</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h2>${ex.title}</h2>
+                        <span class="pts-badge"><span class="math">${String(ex.pts).replace('.', ',')}</span> ${ex.pts === 1 ? 'نقطة' : 'نقاط'}</span>
+                    </div>
+                    <div class="context-box">${ex.context}</div>
+                    ${questionsHtml}
+                `;
+                root.appendChild(card);
+            });
+        }
+
+        function pressSym(qId, sym) {
+            const inp = document.getElementById(`in-${qId}`);
+            if (!inp || inp.disabled) return;
+            if (sym === '⌫') {
+                inp.value = inp.value.slice(0, -1);
+            } else {
+                inp.value += sym;
+            }
+            inp.focus();
+        }
+
+        function normalizeInput(raw) {
+            if (!raw) return '';
+            const arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+            let s = raw.toString().trim();
+            for (let i = 0; i < 10; i++) {
+                s = s.replace(new RegExp(arDigits[i], 'g'), i);
+            }
+            s = s.replace(/\s+/g, '');
+            s = s.replace(/^[a-zA-Z]\s*=/i, '');
+            s = s.replace(/،/g, ',').replace(/\./g, ',');
+            s = s.replace(/\*/g, '×').replace(/(\d)[xX](?=\d)/g, '$1×').replace(/[−–]/g, '-');
+            s = s.replace(/(da|دج|دينار|أوراق|ورقة|عشرة|عشرات|وحدة|متر|درجة|°c|c°|°|cm²|m²|m2|cm|m|kg|لتر|l)$/i, '');
+            s = s.replace(/-\((\d+\/\d+)\)/g, '-$1').replace(/\((-?\d+(?:,\d+)?)\)/g, '$1').replace(/^\((.*)\)$/, '$1').replace(/^\+(?=\d)/, '');
+            s = s.replace(/(\d),(\d*?)0+(?=$|[^\d])/g, (m, a, b) => b ? a + ',' + b : a);
+            return s.toLowerCase();
+        }
+
+        function updateHeaderStats() {
+            const formattedScore = String(Math.round(totalScore * 100) / 100).replace('.', ',');
+            document.getElementById('scoreVal').innerText = `${formattedScore} / 20`;
+            document.getElementById('starsVal').innerText = totalStars;
+            const pct = Math.min(100, Math.round((completedQuestions / totalQuestionsCount) * 100));
+            document.getElementById('progressBar').style.width = pct + '%';
+
+            if (completedQuestions === totalQuestionsCount) {
+                setTimeout(() => {
+                    document.getElementById('finalScoreText').innerText = `${formattedScore} / 20`;
+                    document.getElementById('finalTitle').innerText = totalScore >= 10 ? '🎉 أحسنت! أتممت جميع الأسئلة' : '💪 أتممت الفرض! راجع الإجابات النموذجية وأعد المحاولة';
+                    document.getElementById('finalStarsText').innerText = `⭐ ${totalStars} نجمة`;
+                    document.getElementById('finalModal').style.display = 'flex';
+                }, 600);
+            }
+        }
+
+        function triggerShake(qId) {
+            const inp = document.getElementById(`in-${qId}`);
+            inp.classList.remove('shake');
+            void inp.offsetWidth;
+            inp.classList.add('shake');
+        }
+
+        function checkAns(exId, qId) {
+            if (questionLocked[qId]) return;
+            const ex = exercises.find(e => e.id === exId);
+            const q = ex.questions.find(item => item.qId === qId);
+            const inp = document.getElementById(`in-${qId}`);
+            const fb = document.getElementById(`fb-${qId}`);
+            const val = normalizeInput(inp.value);
+
+            if (!val) {
+                triggerShake(qId);
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = 'يرجى كتابة إجابتك أولاً في الخانة قبل الضغط على زر التحقق.';
+                return;
+            }
+
+            const isExactMatch = q.exact.some(ans => normalizeInput(ans) === val);
+            if (isExactMatch) {
+                const rem = attemptsLeft[qId];
+                const starsAwarded = (rem === 3) ? 3 : (rem === 2 ? 2 : 1);
+                const starIcons = '⭐'.repeat(starsAwarded);
+
+                const prevPts = questionEarned[qId] || 0;
+                totalScore += (q.pts - prevPts);
+                questionEarned[qId] = q.pts;
+                totalStars += starsAwarded;
+                questionLocked[qId] = true;
+                completedQuestions++;
+
+                playTone('success');
+                document.getElementById(`qbox-${qId}`).classList.add('solved');
+                inp.disabled = true;
+                document.getElementById(`btn-${qId}`).disabled = true;
+
+                fb.className = 'feedback-box success';
+                fb.innerHTML = `<span class="star-burst">${starIcons}</span> أحسنت يا بطل! إجابة صحيحة وممتازة. نلت العلامة الكاملة (<span class="math">${String(q.pts).replace('.', ',')} ن</span>).`;
+                document.getElementById(`sol-${qId}`).style.display = 'block';
+                updateHeaderStats();
+                return;
+            }
+
+            const isPartialMatch = q.partial && q.partial.some(ans => normalizeInput(ans) === val);
+            if (isPartialMatch) {
+                if (q.partialZero) { handleWrongAttempt(q, q.partialMsg); return; }
+                const halfPts = Math.round((q.pts / 2) * 100) / 100;
+                const prevPts = questionEarned[qId] || 0;
+                if (halfPts > prevPts) {
+                    totalScore += (halfPts - prevPts);
+                    questionEarned[qId] = halfPts;
+                }
+                handleWrongAttempt(q, `${q.partialMsg} (حصلت على نصف العلامة <span class="math">${String(halfPts).replace('.', ',')} ن</span>، صحّح الشكل لتنال العلامة الكاملة).`);
+                updateHeaderStats();
+                return;
+            }
+
+            handleWrongAttempt(q, null);
+        }
+
+        function handleWrongAttempt(q, customReason) {
+            const qId = q.qId;
+            attemptsLeft[qId]--;
+            const rem = attemptsLeft[qId];
+            const inp = document.getElementById(`in-${qId}`);
+            const fb = document.getElementById(`fb-${qId}`);
+
+            playTone('error');
+            triggerShake(qId);
+            document.getElementById(`meta-${qId}`).innerHTML = `المحاولات: <span class="math">${rem}</span> | النقاط: <span class="math">${String(q.pts).replace('.', ',')}</span>`;
+
+            if (rem === 2) {
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = `${customReason ? customReason + '<br>' : 'لا بأس، حاول مرة أخرى بتأنٍّ!<br>'}<strong>💡 التلميح 1:</strong> ${q.h1}`;
+            } else if (rem === 1) {
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = `${customReason ? customReason + '<br>' : 'قاربت على الوصول، ركّز جيداً في هذه المحاولة الأخيرة!<br>'}<strong>💡 التلميح 2:</strong> ${q.h2}`;
+            } else {
+                questionLocked[qId] = true;
+                completedQuestions++;
+                inp.disabled = true;
+                document.getElementById(`btn-${qId}`).disabled = true;
+                document.getElementById(`qbox-${qId}`).classList.add('failed');
+
+                fb.className = 'feedback-box fail';
+                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 محاولة طيبة! لا تحزن، التعلم يأتي بالمحاولة. اقرأ الإجابة النموذجية وسلم التنقيط بتمعن لتتقن الفكرة في المرة القادمة.';
+                document.getElementById(`sol-${qId}`).style.display = 'block';
+                updateHeaderStats();
+            }
+        }
+
+        window.onload = renderApp;
+    </script>
+</body>
+</html>
