@@ -93,6 +93,10 @@ nav.terms button[aria-pressed="true"]{background:var(--brand-soft);border-color:
 .card li a:hover{background:var(--soft)}
 .card li .t{flex:1}
 .card li .d{color:var(--muted);font-size:.8rem;white-space:nowrap}
+.card details.grp{border-top:1px solid var(--line)}
+.card details.grp:first-of-type{border-top:0}
+.card details.grp summary{cursor:pointer;padding:9px 16px;font-weight:700;color:var(--c);display:flex;align-items:center;gap:8px}
+.card details.grp summary .count{margin-inline-start:auto;font-size:.78rem;background:var(--soft);border-radius:999px;padding:0 8px}
 .card .empty{color:var(--muted);font-size:.92rem;padding:14px 16px}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none}
 .badge{font-size:.72rem;font-weight:800;color:#fff;background:var(--new);border-radius:6px;padding:0 6px;line-height:1.6}
@@ -259,13 +263,29 @@ function itemLink(it, withDate) {
   return `<a href="${esc(it.url)}" target="_blank" rel="noopener"><span class="dot"></span><span class="t">${esc(it.title)}</span>${badge}${kind}${date}</a>`;
 }
 
+// Sections whose items are grouped by sequence (file names like bem-m1-p3.html = sequence 1, part 3)
+const GROUPED = { chahada: true };
+const SEQ_NAME = ["", "الأول", "الثاني", "الثالث", "الرابع", "الخامس", "السادس", "السابع", "الثامن"];
+function seqOf(it) { const m = it.url.match(/-m(\d+)-p(\d+)/); return m ? [+m[1], +m[2]] : [99, 0]; }
+function groupBySeq(list, li) {
+  const groups = {};
+  for (const it of list) (groups[seqOf(it)[0]] = groups[seqOf(it)[0]] || []).push(it);
+  return Object.keys(groups).map(Number).sort((a, b) => a - b).map(k => {
+    const items = groups[k].sort((a, b) => seqOf(a)[1] - seqOf(b)[1])
+      .map(it => li(Object.assign({}, it, { title: it.title.replace(/^المقطع \S+ — /, "") })).replace(/data-share="-1"/, `data-share="${state.items.indexOf(it)}"`));
+    const name = k === 99 ? "أخرى" : "المقطع " + (SEQ_NAME[k] || k);
+    return `<details class="grp" open><summary>${name}<span class="count">${items.length}</span></summary><ul>${items.join("")}</ul></details>`;
+  }).join("");
+}
+
 function renderContent() {
   const here = state.items.filter(i => i.level === state.level && i.term === state.term);
   document.getElementById("content").innerHTML = `<div class="grid">` + SECTIONS.filter(([id]) => !ONLY[id] || ONLY[id].includes(state.level)).map(([id, name]) => {
     const list = here.filter(i => i.section === id).sort(byDateDesc);
-    const body = list.length
-      ? `<ul>${list.map(it => `<li>${itemLink(it, true)}<button type="button" class="share" data-share="${state.items.indexOf(it)}">شارك</button></li>`).join("")}</ul>`
-      : `<p class="empty">لا يوجد محتوى بعد.</p>`;
+    const li = it => `<li>${itemLink(it, true)}<button type="button" class="share" data-share="${state.items.indexOf(it)}">شارك</button></li>`;
+    const body = !list.length ? `<p class="empty">لا يوجد محتوى بعد.</p>`
+      : GROUPED[id] ? groupBySeq(list, li)
+      : `<ul>${list.map(li).join("")}</ul>`;
     return `<section class="card s-${id}"><h3>${name}<span class="count">${list.length}</span></h3>${body}</section>`;
   }).join("") + `</div>`;
 }
