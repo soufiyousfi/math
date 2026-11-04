@@ -30,6 +30,12 @@ def site_base():
     return f"https://{owner}.github.io/{repo}/"
 
 
+def og_image(item):
+    """Share image fitted to the type of exercises: og/<level>-<section>.jpg (cover.png if missing)."""
+    name = f'og/{item["level"]}-{item["section"]}.jpg'
+    return name if os.path.isfile(name) else "cover.png"
+
+
 def inject_og(path, item):
     """Add Facebook preview tags to the DEPLOYED copy of a page (CI only).
     The files in the repository are never changed."""
@@ -42,8 +48,10 @@ def inject_og(path, item):
     tags = (f'\n<meta property="og:type" content="website">'
             f'\n<meta property="og:title" content="{esc(item["title"])}">'
             f'\n<meta property="og:description" content="{esc(LEVEL_AR[item["level"]] + " · " + SECTION_AR[item["section"]] + " — رياضيات المتوسط")}">'
-            f'\n<meta property="og:image" content="{base}cover.png">'
+            f'\n<meta property="og:image" content="{base}{og_image(item)}">'
             f'\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">'
+            f'\n<meta property="og:image:alt" content="{esc(SECTION_AR[item["section"]] + " · " + LEVEL_AR[item["level"]])}">'
+            f'\n<meta name="twitter:card" content="summary_large_image">'
             f'\n<meta property="og:url" content="{base}{item["url"]}">\n')
     m = re.search(r"<head[^>]*>", page, re.I)
     page = page[:m.end()] + tags + page[m.end():] if m else tags + page
