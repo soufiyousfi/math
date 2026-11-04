@@ -52,7 +52,7 @@ def inject_og(path, item):
             f'\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">'
             f'\n<meta property="og:image:alt" content="{esc(SECTION_AR[item["section"]] + " · " + LEVEL_AR[item["level"]])}">'
             f'\n<meta name="twitter:card" content="summary_large_image">'
-            f'\n<meta property="og:url" content="{base}{item["url"]}">\n')
+            f'\n<meta property="og:image:type" content="image/jpeg">\n')
     m = re.search(r"<head[^>]*>", page, re.I)
     page = page[:m.end()] + tags + page[m.end():] if m else tags + page
     with open(path, "w", encoding="utf-8") as f:
