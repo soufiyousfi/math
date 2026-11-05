@@ -617,11 +617,13 @@
     "h1": "القواسم المشتركة لعددين هي نفسها قواسم قاسمهما المشترك الأكبر.",
     "h2": "ابحث عن كل قواسم العدد 18: جرّب القسمة على 1، 2، 3، …",
     "steps": [
+     "<b>الطريقة:</b> خاصية: القواسم المشتركة لعددين هي قواسم قاسمهما المشترك الأكبر. نكتب 18 على شكل جداء عددين بكل الطرق الممكنة.",
      "القواسم المشتركة للعددين <span class=\"math\">a</span> و <span class=\"math\">b</span> هي قواسم <span class=\"math\">PGCD(a ; b) = 18</span>.",
      "<span class=\"math\">18 = 1 × 18</span>",
      "<span class=\"math\">18 = 2 × 9</span>",
      "<span class=\"math\">18 = 3 × 6</span>",
-     "النتيجة: مجموعة القواسم المشتركة هي <span class=\"math\">{1 ; 2 ; 3 ; 6 ; 9 ; 18}</span>"
+     "النتيجة: مجموعة القواسم المشتركة هي <span class=\"math\">{1 ; 2 ; 3 ; 6 ; 9 ; 18}</span>",
+     "<b>الاستنتاج:</b> القواسم المشتركة للعددين a وb هي: 1 ; 2 ; 3 ; 6 ; 9 ; 18."
     ],
     "rubric": [
      {
@@ -633,7 +635,14 @@
       "mark": "3"
      }
     ],
-    "pts": 6
+    "pts": 6,
+    "steps0": [
+     "القواسم المشتركة للعددين <span class=\"math\">a</span> و <span class=\"math\">b</span> هي قواسم <span class=\"math\">PGCD(a ; b) = 18</span>.",
+     "<span class=\"math\">18 = 1 × 18</span>",
+     "<span class=\"math\">18 = 2 × 9</span>",
+     "<span class=\"math\">18 = 3 × 6</span>",
+     "النتيجة: مجموعة القواسم المشتركة هي <span class=\"math\">{1 ; 2 ; 3 ; 6 ; 9 ; 18}</span>"
+    ]
    },
    {
     "qId": "1-2",
@@ -646,6 +655,7 @@
     "h1": "بما أن 18 يقسم <span class=\"math\">a</span> و <span class=\"math\">b</span>، اكتب <span class=\"math\">a = 18k</span> و <span class=\"math\">b = 18m</span>.",
     "h2": "عوّض في <span class=\"math\">a + b = 90</span>: تجد <span class=\"math\">k + m = 5</span> مع <span class=\"math\">k</span> و <span class=\"math\">m</span> أوليين فيما بينهما و <span class=\"math\">k &lt; m</span>.",
     "steps": [
+     "<b>الطريقة:</b> خاصية: إذا كان <span class=\"math\">PGCD(a ; b) = 18</span> فإن <span class=\"math\">a = 18k</span> و<span class=\"math\">b = 18m</span> حيث k وm أوليان فيما بينهما. نعوّض في <span class=\"math\">a + b = 90</span> فنحصل على <span class=\"math\">k + m = 5</span>.",
      "<span class=\"math\">a = 18k</span> و <span class=\"math\">b = 18m</span> حيث <span class=\"math\">k</span> و <span class=\"math\">m</span> أوليان فيما بينهما و <span class=\"math\">k &lt; m</span>.",
      "<span class=\"math\">18k + 18m = 90</span>",
      "<span class=\"math\">k + m = 5</span>",
@@ -653,7 +663,8 @@
      "<span class=\"math\">a = 18 × 1 = 18</span>",
      "<span class=\"math\">b = 18 × 4 = 72</span>",
      "تحقق: <span class=\"math\">PGCD(18 ; 72) = 18</span> و <span class=\"math\">18 + 72 = 90</span>.",
-     "النتيجة: <span class=\"math\">(a ; b) = (18 ; 72)</span>"
+     "النتيجة: <span class=\"math\">(a ; b) = (18 ; 72)</span>",
+     "<b>الاستنتاج:</b> الثنائية التي يكون فيها a أصغر ما يمكن هي (18 ; 72)."
     ],
     "rubric": [
      {
@@ -665,7 +676,17 @@
       "mark": "2,5"
      }
     ],
-    "pts": 5
+    "pts": 5,
+    "steps0": [
+     "<span class=\"math\">a = 18k</span> و <span class=\"math\">b = 18m</span> حيث <span class=\"math\">k</span> و <span class=\"math\">m</span> أوليان فيما بينهما و <span class=\"math\">k &lt; m</span>.",
+     "<span class=\"math\">18k + 18m = 90</span>",
+     "<span class=\"math\">k + m = 5</span>",
+     "أصغر قيمة: <span class=\"math\">k = 1</span> و <span class=\"math\">m = 4</span> (1 و 4 أوليان فيما بينهما).",
+     "<span class=\"math\">a = 18 × 1 = 18</span>",
+     "<span class=\"math\">b = 18 × 4 = 72</span>",
+     "تحقق: <span class=\"math\">PGCD(18 ; 72) = 18</span> و <span class=\"math\">18 + 72 = 90</span>.",
+     "النتيجة: <span class=\"math\">(a ; b) = (18 ; 72)</span>"
+    ]
    },
    {
     "qId": "1-3",
@@ -678,12 +699,14 @@
     "h1": "ابحث عن قيمة أخرى لـ <span class=\"math\">k</span> مع <span class=\"math\">k + m = 5</span> و <span class=\"math\">k &lt; m</span>.",
     "h2": "جرّب <span class=\"math\">k = 2</span>: هل 2 و 3 أوليان فيما بينهما؟",
     "steps": [
+     "<b>الطريقة:</b> نبحث عن كل الثنائيات (k ; m) حيث <span class=\"math\">k + m = 5</span> و<span class=\"math\">k &lt; m</span> وk وm أوليان فيما بينهما، ثم نضرب في 18.",
      "<span class=\"math\">k + m = 5</span> و <span class=\"math\">k &lt; m</span>: الإمكانيتان <span class=\"math\">k = 1 ; m = 4</span> أو <span class=\"math\">k = 2 ; m = 3</span>.",
      "2 و 3 أوليان فيما بينهما.",
      "<span class=\"math\">a = 18 × 2 = 36</span>",
      "<span class=\"math\">b = 18 × 3 = 54</span>",
      "تحقق: <span class=\"math\">PGCD(36 ; 54) = 18</span> و <span class=\"math\">36 + 54 = 90</span>.",
-     "النتيجة: <span class=\"math\">(a ; b) = (36 ; 54)</span>"
+     "النتيجة: <span class=\"math\">(a ; b) = (36 ; 54)</span>",
+     "<b>الاستنتاج:</b> الثنائية الأخرى هي (36 ; 54)، وللمسألة حلان فقط."
     ],
     "rubric": [
      {
@@ -695,7 +718,15 @@
       "mark": "2,5"
      }
     ],
-    "pts": 5
+    "pts": 5,
+    "steps0": [
+     "<span class=\"math\">k + m = 5</span> و <span class=\"math\">k &lt; m</span>: الإمكانيتان <span class=\"math\">k = 1 ; m = 4</span> أو <span class=\"math\">k = 2 ; m = 3</span>.",
+     "2 و 3 أوليان فيما بينهما.",
+     "<span class=\"math\">a = 18 × 2 = 36</span>",
+     "<span class=\"math\">b = 18 × 3 = 54</span>",
+     "تحقق: <span class=\"math\">PGCD(36 ; 54) = 18</span> و <span class=\"math\">36 + 54 = 90</span>.",
+     "النتيجة: <span class=\"math\">(a ; b) = (36 ; 54)</span>"
+    ]
    },
    {
     "qId": "1-4",
@@ -711,10 +742,12 @@
     "h1": "العدد 18 يقسم <span class=\"math\">a</span> و يقسم <span class=\"math\">b</span>، فماذا عن <span class=\"math\">a + b</span>؟",
     "h2": "هل 100 مضاعف للعدد 18؟ احسب <span class=\"math\">100 ÷ 18</span>.",
     "steps": [
+     "<b>الطريقة:</b> خاصية: إذا قسم عدد عددين فإنه يقسم مجموعهما. إذن 18 يقسم <span class=\"math\">a + b</span>. نتحقق هل 18 يقسم 100 بالقسمة الإقليدية.",
      "18 يقسم <span class=\"math\">a</span> و <span class=\"math\">b</span> إذن 18 يقسم <span class=\"math\">a + b</span>.",
      "<span class=\"math\">100 = 18 × 5 + 10</span>",
      "الباقي 10، إذن 18 لا يقسم 100.",
-     "النتيجة: لا، لا يمكن أن يكون <span class=\"math\">a + b = 100</span>"
+     "النتيجة: لا، لا يمكن أن يكون <span class=\"math\">a + b = 100</span>",
+     "<b>الاستنتاج:</b> لا، لأن 100 ليس مضاعفا لـ 18."
     ],
     "rubric": [
      {
@@ -726,7 +759,13 @@
       "mark": "2"
      }
     ],
-    "pts": 4
+    "pts": 4,
+    "steps0": [
+     "18 يقسم <span class=\"math\">a</span> و <span class=\"math\">b</span> إذن 18 يقسم <span class=\"math\">a + b</span>.",
+     "<span class=\"math\">100 = 18 × 5 + 10</span>",
+     "الباقي 10، إذن 18 لا يقسم 100.",
+     "النتيجة: لا، لا يمكن أن يكون <span class=\"math\">a + b = 100</span>"
+    ]
    }
   ]
  }

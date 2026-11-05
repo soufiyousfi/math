@@ -616,10 +616,12 @@
     "h1": "ابدأ بقسمة <span class=\"math\">1386</span> على <span class=\"math\">1188</span>.",
     "h2": "الباقي الأول <span class=\"math\">198</span>؛ هل يقسم <span class=\"math\">198</span> العدد <span class=\"math\">1188</span>؟",
     "steps": [
+     "<b>الطريقة:</b> خوارزمية إقليدس: نقسم العدد الأكبر على الأصغر، ثم نقسم القاسم على الباقي، ونكرر حتى نحصل على باق معدوم. القاسم المشترك الأكبر هو آخر باق غير معدوم.",
      "<span class=\"math\">1386 = 1188 × 1 + 198</span>",
      "<span class=\"math\">1188 = 198 × 6 + 0</span>",
      "آخر باق غير معدوم <span class=\"math\">198</span>",
-     "النتيجة: <span class=\"math\">PGCD = 198</span>"
+     "النتيجة: <span class=\"math\">PGCD = 198</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">PGCD(1386 ; 1188) = 198</span>."
     ],
     "rubric": [
      {
@@ -633,7 +635,13 @@
     ],
     "pts": 2,
     "partialMsg": "هذا قاسم مشترك لكنه ليس الأكبر.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">1386 = 1188 × 1 + 198</span>",
+     "<span class=\"math\">1188 = 198 × 6 + 0</span>",
+     "آخر باق غير معدوم <span class=\"math\">198</span>",
+     "النتيجة: <span class=\"math\">PGCD = 198</span>"
+    ]
    },
    {
     "qId": "1-2",
@@ -652,8 +660,11 @@
     "h1": "اقسم على <span class=\"math\">PGCD</span>.",
     "h2": "<span class=\"math\">1188 ÷ 198</span> و<span class=\"math\">1386 ÷ 198</span>.",
     "steps": [
+     "<b>الطريقة:</b> خاصية: بقسمة البسط والمقام على قاسمهما المشترك الأكبر نحصل على كسر غير قابل للاختزال.",
+     "من السؤال 1: <span class=\"math\">PGCD(1188 ; 1386) = 198</span>",
      "<span class=\"math\">1188 ÷ 198 = 6</span> و<span class=\"math\">1386 ÷ 198 = 7</span>",
-     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>6</span><span>7</span></span></span>"
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>1188</span><span>1386</span></span> = <span class=\"fr\"><span>6</span><span>7</span></span></span>",
+     "<b>الاستنتاج:</b> <span class=\"math\"><span class=\"fr\"><span>1188</span><span>1386</span></span> = <span class=\"fr\"><span>6</span><span>7</span></span></span>."
     ],
     "rubric": [
      {
@@ -662,7 +673,11 @@
      }
     ],
     "pts": 1.5,
-    "partialMsg": "الكسر ما زال قابلا للاختزال."
+    "partialMsg": "الكسر ما زال قابلا للاختزال.",
+    "steps0": [
+     "<span class=\"math\">1188 ÷ 198 = 6</span> و<span class=\"math\">1386 ÷ 198 = 7</span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>6</span><span>7</span></span></span>"
+    ]
    },
    {
     "qId": "1-3",
@@ -674,9 +689,11 @@
     "h1": "ما القواسم المشتركة لـ <span class=\"math\">6</span> و<span class=\"math\">7</span>؟",
     "h2": "قواسم <span class=\"math\">7</span>: <span class=\"math\">1</span> و<span class=\"math\">7</span> فقط.",
     "steps": [
-     "القاسم المشترك الوحيد <span class=\"math\">1</span>",
-     "<span class=\"math\">6</span> و<span class=\"math\">7</span> أوليان فيما بينهما",
-     "النتيجة: <span class=\"math\">PGCD(6 ; 7) = 1</span>"
+     "<b>الطريقة:</b> يكون عددان أوليين فيما بينهما إذا كان قاسمهما المشترك الأكبر يساوي 1.",
+     "قواسم 6: 1 ; 2 ; 3 ; 6 وقواسم 7: 1 ; 7",
+     "القاسم المشترك الوحيد هو 1",
+     "النتيجة: <span class=\"math\">PGCD(6 ; 7) = 1</span>",
+     "<b>الاستنتاج:</b> 6 و7 أوليان فيما بينهما، لذلك <span class=\"math\"><span class=\"fr\"><span>6</span><span>7</span></span></span> غير قابل للاختزال."
     ],
     "rubric": [
      {
@@ -688,7 +705,12 @@
       "mark": "0,75"
      }
     ],
-    "pts": 1.5
+    "pts": 1.5,
+    "steps0": [
+     "القاسم المشترك الوحيد <span class=\"math\">1</span>",
+     "<span class=\"math\">6</span> و<span class=\"math\">7</span> أوليان فيما بينهما",
+     "النتيجة: <span class=\"math\">PGCD(6 ; 7) = 1</span>"
+    ]
    }
   ]
  },
@@ -711,11 +733,13 @@
     "h1": "اكتب كل جذر على الشكل <span class=\"math\">a√2</span>.",
     "h2": "<span class=\"math\">√50 = 5√2</span> ؛ <span class=\"math\">√8 = 2√2</span> ؛ <span class=\"math\">√18 = 3√2</span>.",
     "steps": [
-     "<span class=\"math\">√50 = 5√2</span>",
-     "<span class=\"math\">3√8 = 3 × 2√2 = 6√2</span>",
-     "<span class=\"math\">√18 = 3√2</span>",
-     "<span class=\"math\">A = 5√2 + 6√2 − 3√2</span>",
-     "النتيجة: <span class=\"math\">A = 8√2</span>"
+     "<b>الطريقة:</b> خاصية: <span class=\"math\">√(a × b) = √a × √b</span>. نكتب العدد تحت الجذر على شكل جداء مربع تام في 2، ثم نجمع الحدود التي لها نفس الجذر.",
+     "<span class=\"math\">√50 = √(25 × 2) = 5√2</span>",
+     "<span class=\"math\">3√8 = 3 × √(4 × 2) = 3 × 2√2 = 6√2</span>",
+     "<span class=\"math\">√18 = √(9 × 2) = 3√2</span>",
+     "<span class=\"math\">A = 5√2 + 6√2 − 3√2 = (5 + 6 − 3)√2</span>",
+     "النتيجة: <span class=\"math\">A = 8√2</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">A = 8√2</span>."
     ],
     "rubric": [
      {
@@ -729,7 +753,14 @@
     ],
     "pts": 1.5,
     "partialMsg": "انتبه للمعامل <span class=\"math\">3</span> ولا تجمع ما تحت الجذور.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">√50 = 5√2</span>",
+     "<span class=\"math\">3√8 = 3 × 2√2 = 6√2</span>",
+     "<span class=\"math\">√18 = 3√2</span>",
+     "<span class=\"math\">A = 5√2 + 6√2 − 3√2</span>",
+     "النتيجة: <span class=\"math\">A = 8√2</span>"
+    ]
    },
    {
     "qId": "2-2",
@@ -744,10 +775,12 @@
     "h1": "وزّع <span class=\"math\">√3</span> على الحدين.",
     "h2": "<span class=\"math\">√3 × √27 = √81</span> و<span class=\"math\">√3 × √3 = 3</span>.",
     "steps": [
+     "<b>الطريقة:</b> خاصية توزيع الضرب على الطرح <span class=\"math\">k(a − b) = ka − kb</span>، ثم <span class=\"math\">√a × √b = √(a × b)</span> و<span class=\"math\">√3 × √3 = 3</span>.",
      "<span class=\"math\">B = √3 × √27 − √3 × √3</span>",
      "<span class=\"math\">B = √81 − 3</span>",
      "<span class=\"math\">B = 9 − 3</span>",
-     "النتيجة: <span class=\"math\">B = 6</span>"
+     "النتيجة: <span class=\"math\">B = 6</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">B = 6</span> عدد طبيعي."
     ],
     "rubric": [
      {
@@ -761,11 +794,17 @@
     ],
     "pts": 1.5,
     "partialMsg": "لا تطرح ما تحت الجذرين؛ وزّع.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">B = √3 × √27 − √3 × √3</span>",
+     "<span class=\"math\">B = √81 − 3</span>",
+     "<span class=\"math\">B = 9 − 3</span>",
+     "النتيجة: <span class=\"math\">B = 6</span>"
+    ]
    },
    {
     "qId": "2-3",
-    "text": "3) اكتب <span class=\"math\">C = 10/√5</span> بمقام عدد ناطق، ثم بسّط.",
+    "text": "3) اكتب <span class=\"math\">C = <span class=\"fr\"><span>10</span><span>√5</span></span></span> بمقام عدد ناطق، ثم بسّط.",
     "exact": [
      "2√5"
     ],
@@ -773,11 +812,13 @@
      "10√5/5"
     ],
     "h1": "اضرب البسط والمقام في <span class=\"math\">√5</span>.",
-    "h2": "<span class=\"math\">10√<span class=\"fr\"><span>5</span><span>5</span></span></span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>10√5</span><span>5</span></span></span>.",
     "steps": [
-     "<span class=\"math\">C = <span class=\"fr\"><span>10 × √5</span><span>√5 × √5</span></span></span>",
-     "<span class=\"math\">C = 10√<span class=\"fr\"><span>5</span><span>5</span></span></span>",
-     "النتيجة: <span class=\"math\">C = 2√5</span>"
+     "<b>الطريقة:</b> لجعل المقام ناطقا نضرب البسط والمقام في <span class=\"math\">√5</span> لأن <span class=\"math\">√5 × √5 = 5</span>، ثم نختزل.",
+     "<span class=\"math\">C = <span class=\"fr\"><span>10 × √5</span><span>√5 × √5</span></span> = <span class=\"fr\"><span>10√5</span><span>5</span></span></span>",
+     "<span class=\"math\">10 ÷ 5 = 2</span>",
+     "النتيجة: <span class=\"math\">C = 2√5</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">C = 2√5</span>."
     ],
     "rubric": [
      {
@@ -790,7 +831,12 @@
      }
     ],
     "pts": 2,
-    "partialMsg": "بسّط <span class=\"math\"><span class=\"fr\"><span>10</span><span>5</span></span></span>."
+    "partialMsg": "بسّط <span class=\"math\"><span class=\"fr\"><span>10</span><span>5</span></span></span>.",
+    "steps0": [
+     "<span class=\"math\">C = <span class=\"fr\"><span>10 × √5</span><span>√5 × √5</span></span></span>",
+     "<span class=\"math\">C = <span class=\"fr\"><span>10√5</span><span>5</span></span></span>",
+     "النتيجة: <span class=\"math\">C = 2√5</span>"
+    ]
    }
   ]
  },
@@ -810,14 +856,16 @@
      "5,625",
      "1,6"
     ],
-    "h1": "اكتب نسب خاصية طالس: <span class=\"math\">AM/AB = AN/AC = MN/BC</span>.",
-    "h2": "استعمل <span class=\"math\">AM/AB = AN/AC</span>: <span class=\"math\"><span class=\"fr\"><span>3</span><span>7,5</span></span> = 4/AC</span>.",
+    "h1": "اكتب نسب خاصية طالس: <span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = <span class=\"fr\"><span>AN</span><span>AC</span></span> = <span class=\"fr\"><span>MN</span><span>BC</span></span></span>.",
+    "h2": "استعمل <span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = <span class=\"fr\"><span>AN</span><span>AC</span></span></span>: <span class=\"math\"><span class=\"fr\"><span>3</span><span>7,5</span></span> = <span class=\"fr\"><span>4</span><span>AC</span></span></span>.",
     "steps": [
-     "<span class=\"math\">(MN) // (BC)</span> و<span class=\"math\">M ∈ [AB]</span> و<span class=\"math\">N ∈ [AC]</span>",
-     "حسب خاصية طالس: <span class=\"math\">AM/AB = AN/AC = MN/BC</span>",
-     "<span class=\"math\"><span class=\"fr\"><span>3</span><span>7,5</span></span> = 4/AC</span>",
-     "<span class=\"math\">AC = 4 × 7,5 ÷ 3</span>",
-     "النتيجة: <span class=\"math\">AC = 10 cm</span>"
+     "<b>الطريقة:</b> خاصية طالس: في المثلث ABC، إذا كانت M من [AB] وN من [AC] و<span class=\"math\">(MN) // (BC)</span>، فإن: <span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = <span class=\"fr\"><span>AN</span><span>AC</span></span> = <span class=\"fr\"><span>MN</span><span>BC</span></span></span>.",
+     "<span class=\"math\">(MN) // (BC)</span> و<span class=\"math\">M ∈ [AB]</span> و<span class=\"math\">N ∈ [AC]</span>: الشروط محققة",
+     "<span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = <span class=\"fr\"><span>AN</span><span>AC</span></span> = <span class=\"fr\"><span>MN</span><span>BC</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>3</span><span>7,5</span></span> = <span class=\"fr\"><span>4</span><span>AC</span></span></span>",
+     "الجداءان المتصالبان: <span class=\"math\">AC = <span class=\"fr\"><span>4 × 7,5</span><span>3</span></span> = <span class=\"fr\"><span>30</span><span>3</span></span></span>",
+     "النتيجة: <span class=\"math\">AC = 10 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">AC = 10 cm</span>."
     ],
     "rubric": [
      {
@@ -831,7 +879,14 @@
     ],
     "pts": 2,
     "partialMsg": "راجع ترتيب النسب: بسط كل نسبة من المثلث الصغير <span class=\"math\">AMN</span>.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">(MN) // (BC)</span> و<span class=\"math\">M ∈ [AB]</span> و<span class=\"math\">N ∈ [AC]</span>",
+     "حسب خاصية طالس: <span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = <span class=\"fr\"><span>AN</span><span>AC</span></span> = <span class=\"fr\"><span>MN</span><span>BC</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>3</span><span>7,5</span></span> = <span class=\"fr\"><span>4</span><span>AC</span></span></span>",
+     "<span class=\"math\">AC = 4 × 7,5 ÷ 3</span>",
+     "النتيجة: <span class=\"math\">AC = 10 cm</span>"
+    ]
    },
    {
     "qId": "3-2",
@@ -842,12 +897,14 @@
     "partial": [
      "25"
     ],
-    "h1": "استعمل <span class=\"math\">AM/AB = MN/BC</span>.",
-    "h2": "<span class=\"math\"><span class=\"fr\"><span>3</span><span>7,5</span></span> = MN/10</span>.",
+    "h1": "استعمل <span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = <span class=\"fr\"><span>MN</span><span>BC</span></span></span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>3</span><span>7,5</span></span> = <span class=\"fr\"><span>MN</span><span>10</span></span></span>.",
     "steps": [
-     "<span class=\"math\"><span class=\"fr\"><span>3</span><span>7,5</span></span> = MN/10</span>",
-     "<span class=\"math\">MN = 3 × 10 ÷ 7,5</span>",
-     "النتيجة: <span class=\"math\">MN = 4 cm</span>"
+     "<b>الطريقة:</b> خاصية طالس: في المثلث ABC، إذا كانت M من [AB] وN من [AC] و<span class=\"math\">(MN) // (BC)</span>، فإن: <span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = <span class=\"fr\"><span>AN</span><span>AC</span></span> = <span class=\"fr\"><span>MN</span><span>BC</span></span></span>.",
+     "<span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = <span class=\"fr\"><span>MN</span><span>BC</span></span></span> أي <span class=\"math\"><span class=\"fr\"><span>3</span><span>7,5</span></span> = <span class=\"fr\"><span>MN</span><span>10</span></span></span>",
+     "الجداءان المتصالبان: <span class=\"math\">MN = <span class=\"fr\"><span>3 × 10</span><span>7,5</span></span> = <span class=\"fr\"><span>30</span><span>7,5</span></span></span>",
+     "النتيجة: <span class=\"math\">MN = 4 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">MN = 4 cm</span>."
     ],
     "rubric": [
      {
@@ -861,11 +918,16 @@
     ],
     "pts": 2,
     "partialMsg": "راجع ترتيب النسب.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\"><span class=\"fr\"><span>3</span><span>7,5</span></span> = <span class=\"fr\"><span>MN</span><span>10</span></span></span>",
+     "<span class=\"math\">MN = 3 × 10 ÷ 7,5</span>",
+     "النتيجة: <span class=\"math\">MN = 4 cm</span>"
+    ]
    },
    {
     "qId": "3-3",
-    "text": "3) اكتب النسبة <span class=\"math\">AM/AB</span> على شكل كسر غير قابل للاختزال.",
+    "text": "3) اكتب النسبة <span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span></span> على شكل كسر غير قابل للاختزال.",
     "exact": [
      "2/5"
     ],
@@ -877,9 +939,11 @@
     "h1": "<span class=\"math\"><span class=\"fr\"><span>3</span><span>7,5</span></span> = <span class=\"fr\"><span>30</span><span>75</span></span></span>.",
     "h2": "اقسم على <span class=\"math\">15</span>.",
     "steps": [
-     "<span class=\"math\">AM/AB = <span class=\"fr\"><span>3</span><span>7,5</span></span> = <span class=\"fr\"><span>30</span><span>75</span></span></span>",
-     "<span class=\"math\"><span class=\"fr\"><span>30</span><span>75</span></span> = <span class=\"fr\"><span>2</span><span>5</span></span></span>",
-     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>2</span><span>5</span></span></span>"
+     "<b>الطريقة:</b> نتخلص من الفاصلة بضرب البسط والمقام في 10، ثم نختزل بالقسمة على القاسم المشترك الأكبر (15).",
+     "<span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = <span class=\"fr\"><span>3</span><span>7,5</span></span> = <span class=\"fr\"><span>3 × 10</span><span>7,5 × 10</span></span> = <span class=\"fr\"><span>30</span><span>75</span></span></span>",
+     "<span class=\"math\">PGCD(30 ; 75) = 15</span>: <span class=\"math\">30 ÷ 15 = 2</span> و<span class=\"math\">75 ÷ 15 = 5</span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>2</span><span>5</span></span></span>",
+     "<b>الاستنتاج:</b> <span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = <span class=\"fr\"><span>2</span><span>5</span></span></span>."
     ],
     "rubric": [
      {
@@ -888,7 +952,12 @@
      }
     ],
     "pts": 1,
-    "partialMsg": "اختزل الكسر."
+    "partialMsg": "اختزل الكسر.",
+    "steps0": [
+     "<span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = <span class=\"fr\"><span>3</span><span>7,5</span></span> = <span class=\"fr\"><span>30</span><span>75</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>30</span><span>75</span></span> = <span class=\"fr\"><span>2</span><span>5</span></span></span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>2</span><span>5</span></span></span>"
+    ]
    }
   ]
  },
@@ -911,9 +980,11 @@
     "h1": "الجيب = الضلع المقابل ÷ الوتر.",
     "h2": "الضلع المقابل للزاوية <span class=\"math\">E</span> هو <span class=\"math\">FG</span>.",
     "steps": [
-     "<span class=\"math\">sin FEG = FG/EG</span>",
+     "<b>الطريقة:</b> في المثلث القائم: جيب الزاوية <span class=\"math\">sin</span> = الضلع المقابل ÷ الوتر. الوتر EG والمقابل للزاوية E هو FG.",
+     "<span class=\"math\">sin FEG = <span class=\"fr\"><span>FG</span><span>EG</span></span></span>",
      "<span class=\"math\">= <span class=\"fr\"><span>8</span><span>10</span></span></span>",
-     "النتيجة: <span class=\"math\">sin FEG = <span class=\"fr\"><span>4</span><span>5</span></span></span>"
+     "النتيجة: <span class=\"math\">sin FEG = <span class=\"fr\"><span>4</span><span>5</span></span></span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">sin FEG = <span class=\"fr\"><span>4</span><span>5</span></span> = 0,8</span>."
     ],
     "rubric": [
      {
@@ -926,7 +997,12 @@
      }
     ],
     "pts": 1.5,
-    "partialMsg": "اختزل الكسر."
+    "partialMsg": "اختزل الكسر.",
+    "steps0": [
+     "<span class=\"math\">sin FEG = <span class=\"fr\"><span>FG</span><span>EG</span></span></span>",
+     "<span class=\"math\">= <span class=\"fr\"><span>8</span><span>10</span></span></span>",
+     "النتيجة: <span class=\"math\">sin FEG = <span class=\"fr\"><span>4</span><span>5</span></span></span>"
+    ]
    },
    {
     "qId": "4-2",
@@ -940,9 +1016,11 @@
     "h1": "الظل = الضلع المقابل ÷ الضلع المجاور.",
     "h2": "المجاور للزاوية <span class=\"math\">E</span> هو <span class=\"math\">EF</span>.",
     "steps": [
-     "<span class=\"math\">tan FEG = FG/EF</span>",
+     "<b>الطريقة:</b> في المثلث القائم: ظل الزاوية <span class=\"math\">tan</span> = الضلع المقابل ÷ الضلع المجاور. المقابل للزاوية E هو FG والمجاور EF.",
+     "<span class=\"math\">tan FEG = <span class=\"fr\"><span>FG</span><span>EF</span></span></span>",
      "<span class=\"math\">= <span class=\"fr\"><span>8</span><span>6</span></span></span>",
-     "النتيجة: <span class=\"math\">tan FEG = <span class=\"fr\"><span>4</span><span>3</span></span></span>"
+     "النتيجة: <span class=\"math\">tan FEG = <span class=\"fr\"><span>4</span><span>3</span></span></span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">tan FEG = <span class=\"fr\"><span>4</span><span>3</span></span></span>."
     ],
     "rubric": [
      {
@@ -955,7 +1033,12 @@
      }
     ],
     "pts": 1.5,
-    "partialMsg": "اختزل الكسر."
+    "partialMsg": "اختزل الكسر.",
+    "steps0": [
+     "<span class=\"math\">tan FEG = <span class=\"fr\"><span>FG</span><span>EF</span></span></span>",
+     "<span class=\"math\">= <span class=\"fr\"><span>8</span><span>6</span></span></span>",
+     "النتيجة: <span class=\"math\">tan FEG = <span class=\"fr\"><span>4</span><span>3</span></span></span>"
+    ]
    },
    {
     "qId": "4-3",
@@ -968,10 +1051,12 @@
      "6/10"
     ],
     "h1": "جيب التمام = المجاور ÷ الوتر.",
-    "h2": "<span class=\"math\">EF/EG</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>EF</span><span>EG</span></span></span>.",
     "steps": [
-     "<span class=\"math\">cos FEG = EF/EG = <span class=\"fr\"><span>6</span><span>10</span></span></span>",
-     "النتيجة: <span class=\"math\">cos FEG = <span class=\"fr\"><span>3</span><span>5</span></span></span>"
+     "<b>الطريقة:</b> في المثلث القائم: جيب التمام <span class=\"math\">cos</span> = الضلع المجاور ÷ الوتر.",
+     "<span class=\"math\">cos FEG = <span class=\"fr\"><span>EF</span><span>EG</span></span> = <span class=\"fr\"><span>6</span><span>10</span></span></span>",
+     "النتيجة: <span class=\"math\">cos FEG = <span class=\"fr\"><span>3</span><span>5</span></span></span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">cos FEG = <span class=\"fr\"><span>3</span><span>5</span></span> = 0,6</span>، ونتحقق: <span class=\"math\">0,6² + 0,8² = 1</span>."
     ],
     "rubric": [
      {
@@ -980,7 +1065,11 @@
      }
     ],
     "pts": 1,
-    "partialMsg": "اختزل الكسر."
+    "partialMsg": "اختزل الكسر.",
+    "steps0": [
+     "<span class=\"math\">cos FEG = <span class=\"fr\"><span>EF</span><span>EG</span></span> = <span class=\"fr\"><span>6</span><span>10</span></span></span>",
+     "النتيجة: <span class=\"math\">cos FEG = <span class=\"fr\"><span>3</span><span>5</span></span></span>"
+    ]
    },
    {
     "qId": "4-4",
@@ -995,8 +1084,10 @@
     "h1": "بالنسبة للزاوية <span class=\"math\">G</span>، الضلع المقابل هو <span class=\"math\">EF</span>.",
     "h2": "المجاور للزاوية <span class=\"math\">G</span> هو <span class=\"math\">FG</span>.",
     "steps": [
-     "<span class=\"math\">tan EGF = EF/FG = <span class=\"fr\"><span>6</span><span>8</span></span></span>",
-     "النتيجة: <span class=\"math\">tan EGF = <span class=\"fr\"><span>3</span><span>4</span></span></span>"
+     "<b>الطريقة:</b> للزاوية G: المقابل هو EF والمجاور هو FG، و<span class=\"math\">tan</span> = المقابل ÷ المجاور.",
+     "<span class=\"math\">tan EGF = <span class=\"fr\"><span>EF</span><span>FG</span></span> = <span class=\"fr\"><span>6</span><span>8</span></span></span>",
+     "النتيجة: <span class=\"math\">tan EGF = <span class=\"fr\"><span>3</span><span>4</span></span></span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">tan EGF = <span class=\"fr\"><span>3</span><span>4</span></span></span>، وهو مقلوب <span class=\"math\">tan FEG</span> لأن الزاويتين متتامتان."
     ],
     "rubric": [
      {
@@ -1005,7 +1096,11 @@
      }
     ],
     "pts": 1,
-    "partialMsg": "اختزل الكسر."
+    "partialMsg": "اختزل الكسر.",
+    "steps0": [
+     "<span class=\"math\">tan EGF = <span class=\"fr\"><span>EF</span><span>FG</span></span> = <span class=\"fr\"><span>6</span><span>8</span></span></span>",
+     "النتيجة: <span class=\"math\">tan EGF = <span class=\"fr\"><span>3</span><span>4</span></span></span>"
+    ]
    }
   ]
  }

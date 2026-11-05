@@ -504,6 +504,8 @@
                background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
         .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
         .vop .ln { border-top: 2px solid #0f172a; }
+        .sym-toolbar { flex-wrap: nowrap !important; gap: 4px !important; }
+        .sym-btn { flex: 1 1 0; min-width: 0; padding: 6px 0; text-align: center; }
     </style>
 </head>
 <body>
@@ -602,8 +604,11 @@
     "h1": "المتبقي = الكمية الكلية − الكمية المبيعة.",
     "h2": "اطرح العدد الأصغر من العدد الأكبر عموديا، وانتبه إلى الاستلاف.",
     "steps": [
+     "<b>الطريقة:</b> الكتلة الباقية = الكتلة المجنية − الكتلة المبيعة، فنستعمل الطرح بوضع عمودي (الآحاد تحت الآحاد) مع الاستلاف.",
      "<div class=\"vop\"><div>  2345</div><div>− 1870</div><div class=\"ln\">   475</div></div>",
-     "النتيجة: <span class=\"math\">475 kg</span>"
+     "النتيجة: <span class=\"math\">475 kg</span>",
+     "تحقق بالجمع: <span class=\"math\">475 + 1870 = 2345</span>",
+     "<b>الاستنتاج:</b> بقيت عند الفلاح 475 kg، يهدي جزءا منها للعائلات المحتاجة."
     ],
     "rubric": [
      {
@@ -616,7 +621,11 @@
      }
     ],
     "pts": 0.5,
-    "qId": "1-1"
+    "qId": "1-1",
+    "steps0": [
+     "<div class=\"vop\"><div>  2345</div><div>− 1870</div><div class=\"ln\">   475</div></div>",
+     "النتيجة: <span class=\"math\">475 kg</span>"
+    ]
    },
    {
     "text": "2) باع الكيلوغرام الواحد بـ <span class=\"math\">45 DA</span>. ما ثمن الطماطم المبيعة؟",
@@ -627,8 +636,10 @@
     "h1": "الثمن = الكتلة المبيعة × ثمن الكيلوغرام الواحد.",
     "h2": "احسب <span class=\"math\">1870 × 45</span> عموديا: اضرب في <span class=\"math\">5</span> ثم في <span class=\"math\">4</span> عشرات.",
     "steps": [
+     "<b>الطريقة:</b> الثمن = الكتلة المبيعة × ثمن الكيلوغرام، فنستعمل الضرب العمودي: نضرب في رقم الآحاد ثم في رقم العشرات (مع إزاحة مرتبة)، ثم نجمع الجداءين.",
      "<div class=\"vop\"><div>  1870</div><div>  × 45</div><div class=\"ln\">  9350</div><div> 7480 </div><div class=\"ln\"> 84150</div></div>",
-     "النتيجة: <span class=\"math\">84150 DA</span>"
+     "النتيجة: <span class=\"math\">84150 DA</span>",
+     "<b>الاستنتاج:</b> ثمن الطماطم المبيعة 84150 DA."
     ],
     "rubric": [
      {
@@ -641,7 +652,11 @@
      }
     ],
     "pts": 0.5,
-    "qId": "1-2"
+    "qId": "1-2",
+    "steps0": [
+     "<div class=\"vop\"><div>  1870</div><div>  × 45</div><div class=\"ln\">  9350</div><div> 7480 </div><div class=\"ln\"> 84150</div></div>",
+     "النتيجة: <span class=\"math\">84150 DA</span>"
+    ]
    }
   ]
  },
@@ -662,9 +677,11 @@
     "h1": "عدد أوراق <span class=\"math\">100 DA</span> هو عدد المئات الكاملة في <span class=\"math\">2385</span>.",
     "h2": "اكتب <span class=\"math\">2385</span> على الشكل <span class=\"math\">... × 100 + ...</span>.",
     "steps": [
+     "<b>الطريقة:</b> عدد الأوراق من فئة 100 DA هو عدد المئات في 2385، نقرؤه من خانة المئات إلى اليسار.",
      "<span class=\"math\">2385 = 2300 + 85</span>",
      "<span class=\"math\">2385 = 23 × 100 + 85</span>",
-     "النتيجة: <span class=\"math\">23</span> ورقة"
+     "النتيجة: <span class=\"math\">23</span> ورقة",
+     "<b>الاستنتاج:</b> يأخذ أنس 23 ورقة من فئة 100 DA."
     ],
     "rubric": [
      {
@@ -679,7 +696,12 @@
     "pts": 0.5,
     "partialMsg": "عدد الأوراق لا يكون عددا عشريا.",
     "partialZero": true,
-    "qId": "2-1"
+    "qId": "2-1",
+    "steps0": [
+     "<span class=\"math\">2385 = 2300 + 85</span>",
+     "<span class=\"math\">2385 = 23 × 100 + 85</span>",
+     "النتيجة: <span class=\"math\">23</span> ورقة"
+    ]
    },
    {
     "text": "2) ما المبلغ الذي يبقى عنده قطعا نقدية؟",
@@ -690,9 +712,11 @@
     "h1": "المبلغ الباقي هو ما لا يكفي لتكوين ورقة من <span class=\"math\">100 DA</span>.",
     "h2": "استعمل التفكيك السابق: ما العدد الذي يبقى بعد المئات؟",
     "steps": [
+     "<b>الطريقة:</b> المبلغ الباقي = المبلغ الكلي − قيمة الأوراق (عدد الأوراق × 100).",
      "<span class=\"math\">23 × 100 = 2300</span>",
      "<span class=\"math\">2385 − 2300 = 85</span>",
-     "النتيجة: <span class=\"math\">85 DA</span>"
+     "النتيجة: <span class=\"math\">85 DA</span>",
+     "<b>الاستنتاج:</b> يبقى عنده 85 DA قطعا نقدية يتبرع بها."
     ],
     "rubric": [
      {
@@ -705,7 +729,12 @@
      }
     ],
     "pts": 0.5,
-    "qId": "2-2"
+    "qId": "2-2",
+    "steps0": [
+     "<span class=\"math\">23 × 100 = 2300</span>",
+     "<span class=\"math\">2385 − 2300 = 85</span>",
+     "النتيجة: <span class=\"math\">85 DA</span>"
+    ]
    }
   ]
  },
@@ -726,8 +755,10 @@
     "h1": "رقم المئات هو الرقم الثالث من اليمين.",
     "h2": "ضع الأرقام في جدول المراتب: آحاد، عشرات، مئات، آلاف، عشرات الآلاف.",
     "steps": [
+     "<b>الطريقة:</b> رقم المئات هو الرقم الواحد الموجود في خانة المئات (المرتبة الثالثة من اليمين).",
      "آحاد <span class=\"math\">2</span>، عشرات <span class=\"math\">8</span>، مئات <span class=\"math\">3</span>، آلاف <span class=\"math\">7</span>، عشرات الآلاف <span class=\"math\">4</span>",
-     "النتيجة: <span class=\"math\">3</span>"
+     "النتيجة: <span class=\"math\">3</span>",
+     "<b>الاستنتاج:</b> رقم المئات في 47382 هو 3."
     ],
     "rubric": [
      {
@@ -738,7 +769,11 @@
     "pts": 0.5,
     "partialMsg": "هذا عدد المئات، والسؤال عن رقم المئات.",
     "partialZero": true,
-    "qId": "3-1"
+    "qId": "3-1",
+    "steps0": [
+     "آحاد <span class=\"math\">2</span>، عشرات <span class=\"math\">8</span>، مئات <span class=\"math\">3</span>، آلاف <span class=\"math\">7</span>، عشرات الآلاف <span class=\"math\">4</span>",
+     "النتيجة: <span class=\"math\">3</span>"
+    ]
    },
    {
     "text": "2) ما عدد المئات في هذا العدد؟",
@@ -751,8 +786,10 @@
     "h1": "عدد المئات نقرؤه من خانة المئات إلى اليسار.",
     "h2": "احذف رقمي العشرات والآحاد من العدد.",
     "steps": [
+     "<b>الطريقة:</b> عدد المئات نقرؤه من خانة المئات إلى اليسار (كم مئة في العدد كله).",
      "<span class=\"math\">47382 = 473 × 100 + 82</span>",
-     "النتيجة: <span class=\"math\">473</span>"
+     "النتيجة: <span class=\"math\">473</span>",
+     "<b>الاستنتاج:</b> عدد المئات في 47382 هو 473 (لا نخلط بينه وبين رقم المئات 3)."
     ],
     "rubric": [
      {
@@ -767,7 +804,11 @@
     "pts": 0.5,
     "partialMsg": "هذا رقم المئات، والسؤال عن عدد المئات.",
     "partialZero": true,
-    "qId": "3-2"
+    "qId": "3-2",
+    "steps0": [
+     "<span class=\"math\">47382 = 473 × 100 + 82</span>",
+     "النتيجة: <span class=\"math\">473</span>"
+    ]
    }
   ]
  },
@@ -786,8 +827,10 @@
     "h1": "عدد المقاعد = عدد الحافلات × عدد مقاعد الحافلة.",
     "h2": "احسب <span class=\"math\">3 × 48</span>.",
     "steps": [
+     "<b>الطريقة:</b> عدد المقاعد = عدد الحافلات × عدد المقاعد في كل حافلة، فنستعمل الضرب العمودي.",
      "<div class=\"vop\"><div>  48</div><div> × 3</div><div class=\"ln\"> 144</div></div>",
-     "النتيجة: <span class=\"math\">144</span> مقعدا"
+     "النتيجة: <span class=\"math\">144</span> مقعدا",
+     "<b>الاستنتاج:</b> في الحافلات الثلاث 144 مقعدا."
     ],
     "rubric": [
      {
@@ -800,7 +843,11 @@
      }
     ],
     "pts": 0.5,
-    "qId": "4-1"
+    "qId": "4-1",
+    "steps0": [
+     "<div class=\"vop\"><div>  48</div><div> × 3</div><div class=\"ln\"> 144</div></div>",
+     "النتيجة: <span class=\"math\">144</span> مقعدا"
+    ]
    },
    {
     "text": "2) ما عدد المقاعد الشاغرة؟",
@@ -811,8 +858,10 @@
     "h1": "المقاعد الشاغرة = عدد المقاعد − عدد التلاميذ.",
     "h2": "اطرح <span class=\"math\">131</span> من عدد المقاعد الذي وجدته.",
     "steps": [
+     "<b>الطريقة:</b> المقاعد الشاغرة = عدد المقاعد − عدد التلاميذ، فنستعمل الطرح العمودي.",
      "<div class=\"vop\"><div>  144</div><div>− 131</div><div class=\"ln\">   13</div></div>",
-     "النتيجة: <span class=\"math\">13</span> مقعدا"
+     "النتيجة: <span class=\"math\">13</span> مقعدا",
+     "<b>الاستنتاج:</b> تبقى 13 مقعدا شاغرا، والحافلات تكفي كل التلاميذ."
     ],
     "rubric": [
      {
@@ -825,7 +874,11 @@
      }
     ],
     "pts": 0.5,
-    "qId": "4-2"
+    "qId": "4-2",
+    "steps0": [
+     "<div class=\"vop\"><div>  144</div><div>− 131</div><div class=\"ln\">   13</div></div>",
+     "النتيجة: <span class=\"math\">13</span> مقعدا"
+    ]
    }
   ]
  },
@@ -844,9 +897,11 @@
     "h1": "عدد الأصفار في المقام يساوي عدد الأرقام بعد الفاصلة.",
     "h2": "المقام <span class=\"math\">100</span> فيه صفران: ضع رقمين بعد الفاصلة.",
     "steps": [
+     "<b>الطريقة:</b> في الكسر العشري، عدد الأصفار في المقام يساوي عدد الأرقام بعد الفاصلة في الكتابة العشرية. المقام 100 فيه صفران: رقمان بعد الفاصلة.",
      "المقام <span class=\"math\">100</span>: رقمان بعد الفاصلة",
      "<span class=\"math\"><span class=\"fr\"><span>3257</span><span>100</span></span> = 32,57</span>",
-     "النتيجة: <span class=\"math\">32,57</span>"
+     "النتيجة: <span class=\"math\">32,57</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\"><span class=\"fr\"><span>3257</span><span>100</span></span> = 32,57</span>."
     ],
     "rubric": [
      {
@@ -859,7 +914,12 @@
      }
     ],
     "pts": 0.5,
-    "qId": "5-1"
+    "qId": "5-1",
+    "steps0": [
+     "المقام <span class=\"math\">100</span>: رقمان بعد الفاصلة",
+     "<span class=\"math\"><span class=\"fr\"><span>3257</span><span>100</span></span> = 32,57</span>",
+     "النتيجة: <span class=\"math\">32,57</span>"
+    ]
    },
    {
     "text": "2) <span class=\"math\"><span class=\"fr\"><span>49</span><span>1000</span></span></span>",
@@ -870,10 +930,12 @@
     "h1": "المقام <span class=\"math\">1000</span> فيه ثلاثة أصفار: ثلاثة أرقام بعد الفاصلة.",
     "h2": "البسط فيه رقمان فقط: أكمل بصفر قبله لتحصل على ثلاثة أرقام بعد الفاصلة.",
     "steps": [
+     "<b>الطريقة:</b> في الكسر العشري، عدد الأصفار في المقام يساوي عدد الأرقام بعد الفاصلة في الكتابة العشرية. المقام 1000: ثلاثة أرقام بعد الفاصلة، ونضيف صفرا على اليسار إن لزم.",
      "المقام <span class=\"math\">1000</span>: ثلاثة أرقام بعد الفاصلة",
      "<span class=\"math\">49 = 049</span>",
      "<span class=\"math\"><span class=\"fr\"><span>49</span><span>1000</span></span> = 0,049</span>",
-     "النتيجة: <span class=\"math\">0,049</span>"
+     "النتيجة: <span class=\"math\">0,049</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\"><span class=\"fr\"><span>49</span><span>1000</span></span> = 0,049</span>."
     ],
     "rubric": [
      {
@@ -886,7 +948,13 @@
      }
     ],
     "pts": 0.5,
-    "qId": "5-2"
+    "qId": "5-2",
+    "steps0": [
+     "المقام <span class=\"math\">1000</span>: ثلاثة أرقام بعد الفاصلة",
+     "<span class=\"math\">49 = 049</span>",
+     "<span class=\"math\"><span class=\"fr\"><span>49</span><span>1000</span></span> = 0,049</span>",
+     "النتيجة: <span class=\"math\">0,049</span>"
+    ]
    }
   ]
  },
@@ -907,9 +975,11 @@
     "h1": "رقم واحد بعد الفاصلة: المقام <span class=\"math\">10</span>.",
     "h2": "اكتب العدد دون فاصلة في البسط.",
     "steps": [
+     "<b>الطريقة:</b> في الكسر العشري، عدد الأصفار في المقام يساوي عدد الأرقام بعد الفاصلة في الكتابة العشرية. البسط هو العدد مكتوبا دون فاصلة.",
      "رقم واحد بعد الفاصلة: المقام <span class=\"math\">10</span>",
      "البسط: <span class=\"math\">78</span>",
-     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>78</span><span>10</span></span></span>"
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>78</span><span>10</span></span></span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">7,8 = <span class=\"fr\"><span>78</span><span>10</span></span></span>."
     ],
     "rubric": [
      {
@@ -923,7 +993,12 @@
     ],
     "pts": 0.5,
     "partialMsg": "الكسر صحيح القيمة، لكن المطلوب مقامه <span class=\"math\">10</span>.",
-    "qId": "6-1"
+    "qId": "6-1",
+    "steps0": [
+     "رقم واحد بعد الفاصلة: المقام <span class=\"math\">10</span>",
+     "البسط: <span class=\"math\">78</span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>78</span><span>10</span></span></span>"
+    ]
    },
    {
     "text": "2) <span class=\"math\">0,305</span>",
@@ -936,9 +1011,11 @@
     "h1": "كم رقما بعد الفاصلة؟ يحدد ذلك عدد أصفار المقام.",
     "h2": "ثلاثة أرقام بعد الفاصلة: المقام <span class=\"math\">1000</span>.",
     "steps": [
+     "<b>الطريقة:</b> في الكسر العشري، عدد الأصفار في المقام يساوي عدد الأرقام بعد الفاصلة في الكتابة العشرية. البسط هو العدد مكتوبا دون فاصلة (305).",
      "ثلاثة أرقام بعد الفاصلة: المقام <span class=\"math\">1000</span>",
      "البسط: <span class=\"math\">305</span>",
-     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>305</span><span>1000</span></span></span>"
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>305</span><span>1000</span></span></span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">0,305 = <span class=\"fr\"><span>305</span><span>1000</span></span></span>."
     ],
     "rubric": [
      {
@@ -952,7 +1029,12 @@
     ],
     "pts": 0.5,
     "partialMsg": "الكسر صحيح القيمة، لكن اختر أصغر مقام مناسب.",
-    "qId": "6-2"
+    "qId": "6-2",
+    "steps0": [
+     "ثلاثة أرقام بعد الفاصلة: المقام <span class=\"math\">1000</span>",
+     "البسط: <span class=\"math\">305</span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>305</span><span>1000</span></span></span>"
+    ]
    }
   ]
  },
@@ -973,10 +1055,12 @@
     "h1": "العدد الطبيعي هو الجزء الصحيح، ثم الأعشار ثم الأجزاء من مائة.",
     "h2": "بعد الفاصلة: رقم الأعشار أولا ثم رقم الأجزاء من مائة.",
     "steps": [
+     "<b>الطريقة:</b> نكتب كل كسر عشري بالفاصلة: <span class=\"math\"><span class=\"fr\"><span>4</span><span>10</span></span></span> = 4 أعشار و<span class=\"math\"><span class=\"fr\"><span>9</span><span>100</span></span></span> = 9 أجزاء من مائة، ثم نجمع.",
      "<span class=\"math\"><span class=\"fr\"><span>4</span><span>10</span></span> = 0,4</span>",
      "<span class=\"math\"><span class=\"fr\"><span>9</span><span>100</span></span> = 0,09</span>",
      "<span class=\"math\">6 + 0,4 + 0,09 = 6,49</span>",
-     "النتيجة: <span class=\"math\">6,49</span>"
+     "النتيجة: <span class=\"math\">6,49</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">6 + <span class=\"fr\"><span>4</span><span>10</span></span> + <span class=\"fr\"><span>9</span><span>100</span></span> = 6,49</span>."
     ],
     "rubric": [
      {
@@ -990,7 +1074,13 @@
     ],
     "pts": 0.5,
     "partialMsg": "القيمة صحيحة، لكن المطلوب الكتابة بالفاصلة.",
-    "qId": "7-1"
+    "qId": "7-1",
+    "steps0": [
+     "<span class=\"math\"><span class=\"fr\"><span>4</span><span>10</span></span> = 0,4</span>",
+     "<span class=\"math\"><span class=\"fr\"><span>9</span><span>100</span></span> = 0,09</span>",
+     "<span class=\"math\">6 + 0,4 + 0,09 = 6,49</span>",
+     "النتيجة: <span class=\"math\">6,49</span>"
+    ]
    },
    {
     "text": "2) اكتب <span class=\"math\"><span class=\"fr\"><span>52</span><span>10</span></span></span> على شكل مجموع عدد طبيعي وكسر عشري أصغر من <span class=\"math\">1</span>.",
@@ -1005,10 +1095,12 @@
     "h1": "فكك البسط إلى مضاعف لـ <span class=\"math\">10</span> وباق.",
     "h2": "اكتب <span class=\"math\">52 = 50 + 2</span> ثم قسم كل حد على <span class=\"math\">10</span>.",
     "steps": [
+     "<b>الطريقة:</b> نفكك البسط: <span class=\"math\">52 = 50 + 2</span>، ثم نستعمل <span class=\"math\"><span class=\"fr\"><span>a + b</span><span>c</span></span> = <span class=\"fr\"><span>a</span><span>c</span></span> + <span class=\"fr\"><span>b</span><span>c</span></span></span> و<span class=\"math\"><span class=\"fr\"><span>50</span><span>10</span></span> = 5</span>.",
      "<span class=\"math\"><span class=\"fr\"><span>52</span><span>10</span></span> = <span class=\"fr\"><span>50 + 2</span><span>10</span></span></span>",
      "<span class=\"math\">= <span class=\"fr\"><span>50</span><span>10</span></span> + <span class=\"fr\"><span>2</span><span>10</span></span></span>",
      "<span class=\"math\">= 5 + <span class=\"fr\"><span>2</span><span>10</span></span></span>",
-     "النتيجة: <span class=\"math\">5 + <span class=\"fr\"><span>2</span><span>10</span></span></span>"
+     "النتيجة: <span class=\"math\">5 + <span class=\"fr\"><span>2</span><span>10</span></span></span>",
+     "<b>الاستنتاج:</b> <span class=\"math\"><span class=\"fr\"><span>52</span><span>10</span></span> = 5 + <span class=\"fr\"><span>2</span><span>10</span></span></span>."
     ],
     "rubric": [
      {
@@ -1022,7 +1114,13 @@
     ],
     "pts": 0.5,
     "partialMsg": "القيمة صحيحة، لكن المطلوب: عدد طبيعي + كسر عشري أصغر من <span class=\"math\">1</span>.",
-    "qId": "7-2"
+    "qId": "7-2",
+    "steps0": [
+     "<span class=\"math\"><span class=\"fr\"><span>52</span><span>10</span></span> = <span class=\"fr\"><span>50 + 2</span><span>10</span></span></span>",
+     "<span class=\"math\">= <span class=\"fr\"><span>50</span><span>10</span></span> + <span class=\"fr\"><span>2</span><span>10</span></span></span>",
+     "<span class=\"math\">= 5 + <span class=\"fr\"><span>2</span><span>10</span></span></span>",
+     "النتيجة: <span class=\"math\">5 + <span class=\"fr\"><span>2</span><span>10</span></span></span>"
+    ]
    }
   ]
  },
@@ -1041,12 +1139,15 @@
     "h1": "احسب الجزء الصحيح أولا، ثم الجزء العشري.",
     "h2": "لا يوجد عشرات ولا أجزاء من مائة: ضع <span class=\"math\">0</span> في خانتيهما.",
     "steps": [
+     "<b>الطريقة:</b> المفكوك النموذجي: كل رقم يُضرب في قيمة مرتبته (100، 10، 1، 0,1، 0,01، 0,001). نحسب كل جداء ثم نجمع، ونضع 0 في المراتب الغائبة.",
      "<span class=\"math\">3 × 100 + 7 × 1 = 300 + 7 = 307</span>",
      "<span class=\"math\">2 × 0,1 = 0,2</span>",
      "<span class=\"math\">5 × 0,001 = 0,005</span>",
      "<span class=\"math\">0,2 + 0,005 = 0,205</span>",
      "<span class=\"math\">307 + 0,205 = 307,205</span>",
-     "النتيجة: <span class=\"math\">307,205</span>"
+     "النتيجة: <span class=\"math\">307,205</span>",
+     "المراتب الغائبة: العشرات (0) والأجزاء من مائة (0)",
+     "<b>الاستنتاج:</b> الكتابة العشرية هي 307,205."
     ],
     "rubric": [
      {
@@ -1067,7 +1168,15 @@
      }
     ],
     "pts": 1,
-    "qId": "8-1"
+    "qId": "8-1",
+    "steps0": [
+     "<span class=\"math\">3 × 100 + 7 × 1 = 300 + 7 = 307</span>",
+     "<span class=\"math\">2 × 0,1 = 0,2</span>",
+     "<span class=\"math\">5 × 0,001 = 0,005</span>",
+     "<span class=\"math\">0,2 + 0,005 = 0,205</span>",
+     "<span class=\"math\">307 + 0,205 = 307,205</span>",
+     "النتيجة: <span class=\"math\">307,205</span>"
+    ]
    }
   ]
  },
@@ -1086,8 +1195,10 @@
     "h1": "الأجزاء من مائة هي المرتبة الثانية بعد الفاصلة.",
     "h2": "بعد الفاصلة: <span class=\"math\">2</span> أعشار، ثم الرقم الذي يليه.",
     "steps": [
+     "<b>الطريقة:</b> نضع أرقام الجزء العشري في جدول المراتب: الأعشار ثم الأجزاء من مائة ثم الأجزاء من ألف.",
      "بعد الفاصلة: أعشار <span class=\"math\">2</span>، أجزاء من مائة <span class=\"math\">4</span>، أجزاء من ألف <span class=\"math\">7</span>",
-     "النتيجة: <span class=\"math\">4</span>"
+     "النتيجة: <span class=\"math\">4</span>",
+     "<b>الاستنتاج:</b> رقم الأجزاء من مائة في 1806,247 هو 4."
     ],
     "rubric": [
      {
@@ -1096,7 +1207,11 @@
      }
     ],
     "pts": 0.5,
-    "qId": "9-1"
+    "qId": "9-1",
+    "steps0": [
+     "بعد الفاصلة: أعشار <span class=\"math\">2</span>، أجزاء من مائة <span class=\"math\">4</span>، أجزاء من ألف <span class=\"math\">7</span>",
+     "النتيجة: <span class=\"math\">4</span>"
+    ]
    },
    {
     "text": "2) في المفكوك النموذجي، في أي عدد عشري يضرب الرقم <span class=\"math\">7</span>؟",
@@ -1108,8 +1223,10 @@
     "h1": "حدد مرتبة الرقم <span class=\"math\">7</span> بعد الفاصلة.",
     "h2": "المرتبة الأولى بعد الفاصلة تقابل <span class=\"math\">0,1</span>، والثانية <span class=\"math\">0,01</span>، والثالثة <span class=\"math\">0,001</span>.",
     "steps": [
+     "<b>الطريقة:</b> في المفكوك النموذجي، الرقم الثالث بعد الفاصلة (رقم الأجزاء من ألف) يُضرب في 0,001.",
      "<span class=\"math\">1806,247 = 1 × 1000 + 8 × 100 + 6 × 1 + 2 × 0,1 + 4 × 0,01 + 7 × 0,001</span>",
-     "النتيجة: <span class=\"math\">0,001</span>"
+     "النتيجة: <span class=\"math\">0,001</span>",
+     "<b>الاستنتاج:</b> الرقم 7 يُضرب في 0,001."
     ],
     "rubric": [
      {
@@ -1122,7 +1239,11 @@
      }
     ],
     "pts": 0.5,
-    "qId": "9-2"
+    "qId": "9-2",
+    "steps0": [
+     "<span class=\"math\">1806,247 = 1 × 1000 + 8 × 100 + 6 × 1 + 2 × 0,1 + 4 × 0,01 + 7 × 0,001</span>",
+     "النتيجة: <span class=\"math\">0,001</span>"
+    ]
    }
   ]
  },
@@ -1141,9 +1262,11 @@
     "h1": "الضرب في <span class=\"math\">100</span>: نزيح الفاصلة إلى اليمين.",
     "h2": "أزح الفاصلة مرتبتين إلى اليمين.",
     "steps": [
+     "<b>الطريقة:</b> للضرب في 10 أو 100 أو 1000 نزيح الفاصلة نحو اليمين مرتبة أو مرتبتين أو ثلاث مراتب (ونضيف أصفارا عند الحاجة).",
      "الضرب في <span class=\"math\">100</span>: الفاصلة مرتبتان إلى اليمين",
      "<span class=\"math\">4,56 × 100 = 456</span>",
-     "النتيجة: <span class=\"math\">456</span>"
+     "النتيجة: <span class=\"math\">456</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">4,56 × 100 = 456</span>."
     ],
     "rubric": [
      {
@@ -1156,7 +1279,12 @@
      }
     ],
     "pts": 0.5,
-    "qId": "10-1"
+    "qId": "10-1",
+    "steps0": [
+     "الضرب في <span class=\"math\">100</span>: الفاصلة مرتبتان إلى اليمين",
+     "<span class=\"math\">4,56 × 100 = 456</span>",
+     "النتيجة: <span class=\"math\">456</span>"
+    ]
    },
    {
     "text": "2) <span class=\"math\">0,73 × 1000</span>",
@@ -1169,9 +1297,11 @@
     "h1": "الضرب في <span class=\"math\">1000</span>: ثلاث مراتب إلى اليمين.",
     "h2": "بعد الفاصلة رقمان فقط: أضف صفرا عند الحاجة.",
     "steps": [
+     "<b>الطريقة:</b> للضرب في 10 أو 100 أو 1000 نزيح الفاصلة نحو اليمين مرتبة أو مرتبتين أو ثلاث مراتب (ونضيف أصفارا عند الحاجة).",
      "<span class=\"math\">0,73 = 0,730</span>",
      "ثلاث مراتب إلى اليمين: <span class=\"math\">730</span>",
-     "النتيجة: <span class=\"math\">730</span>"
+     "النتيجة: <span class=\"math\">730</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">0,73 × 1000 = 730</span>."
     ],
     "rubric": [
      {
@@ -1186,7 +1316,12 @@
     "pts": 0.5,
     "partialMsg": "انتبه: ثلاث مراتب وليس مرتبتين.",
     "partialZero": true,
-    "qId": "10-2"
+    "qId": "10-2",
+    "steps0": [
+     "<span class=\"math\">0,73 = 0,730</span>",
+     "ثلاث مراتب إلى اليمين: <span class=\"math\">730</span>",
+     "النتيجة: <span class=\"math\">730</span>"
+    ]
    }
   ]
  },
@@ -1207,9 +1342,11 @@
     "h1": "الضرب في <span class=\"math\">0,1</span> يعني القسمة على <span class=\"math\">10</span>.",
     "h2": "أزح الفاصلة مرتبة واحدة إلى اليسار.",
     "steps": [
+     "<b>الطريقة:</b> الضرب في 0,1 يعني القسمة على 10: نزيح الفاصلة مرتبة واحدة نحو اليسار.",
      "<span class=\"math\">352 × 0,1 = 352 ÷ 10</span>",
      "<span class=\"math\">= 35,2</span>",
-     "النتيجة: <span class=\"math\">35,2</span>"
+     "النتيجة: <span class=\"math\">35,2</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">352 × 0,1 = 35,2</span>."
     ],
     "rubric": [
      {
@@ -1224,7 +1361,12 @@
     "pts": 0.5,
     "partialMsg": "الضرب في <span class=\"math\">0,1</span> يصغر العدد ولا يكبره.",
     "partialZero": true,
-    "qId": "11-1"
+    "qId": "11-1",
+    "steps0": [
+     "<span class=\"math\">352 × 0,1 = 352 ÷ 10</span>",
+     "<span class=\"math\">= 35,2</span>",
+     "النتيجة: <span class=\"math\">35,2</span>"
+    ]
    },
    {
     "text": "2) <span class=\"math\">48,6 × 0,01</span>",
@@ -1235,9 +1377,11 @@
     "h1": "الضرب في <span class=\"math\">0,01</span> يعني القسمة على <span class=\"math\">100</span>.",
     "h2": "أزح الفاصلة مرتبتين إلى اليسار وأكمل بصفر.",
     "steps": [
+     "<b>الطريقة:</b> الضرب في 0,01 يعني القسمة على 100: نزيح الفاصلة مرتبتين نحو اليسار.",
      "<span class=\"math\">48,6 × 0,01 = 48,6 ÷ 100</span>",
      "<span class=\"math\">= 0,486</span>",
-     "النتيجة: <span class=\"math\">0,486</span>"
+     "النتيجة: <span class=\"math\">0,486</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">48,6 × 0,01 = 0,486</span>."
     ],
     "rubric": [
      {
@@ -1250,7 +1394,12 @@
      }
     ],
     "pts": 0.5,
-    "qId": "11-2"
+    "qId": "11-2",
+    "steps0": [
+     "<span class=\"math\">48,6 × 0,01 = 48,6 ÷ 100</span>",
+     "<span class=\"math\">= 0,486</span>",
+     "النتيجة: <span class=\"math\">0,486</span>"
+    ]
    }
   ]
  },
@@ -1269,9 +1418,11 @@
     "h1": "القسمة على <span class=\"math\">10</span>: الفاصلة مرتبة واحدة إلى اليسار.",
     "h2": "الفاصلة بين <span class=\"math\">8</span> و <span class=\"math\">7</span>.",
     "steps": [
+     "<b>الطريقة:</b> للقسمة على 10 أو 100 أو 1000 نزيح الفاصلة نحو اليسار مرتبة أو مرتبتين أو ثلاث مراتب (ونضيف أصفارا على اليسار عند الحاجة).",
      "القسمة على <span class=\"math\">10</span>: مرتبة واحدة إلى اليسار",
      "<span class=\"math\">87,5 ÷ 10 = 8,75</span>",
-     "النتيجة: <span class=\"math\">8,75</span>"
+     "النتيجة: <span class=\"math\">8,75</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">87,5 ÷ 10 = 8,75</span>."
     ],
     "rubric": [
      {
@@ -1284,7 +1435,12 @@
      }
     ],
     "pts": 0.5,
-    "qId": "12-1"
+    "qId": "12-1",
+    "steps0": [
+     "القسمة على <span class=\"math\">10</span>: مرتبة واحدة إلى اليسار",
+     "<span class=\"math\">87,5 ÷ 10 = 8,75</span>",
+     "النتيجة: <span class=\"math\">8,75</span>"
+    ]
    },
    {
     "text": "2) <span class=\"math\">3,2 ÷ 100</span>",
@@ -1295,9 +1451,11 @@
     "h1": "القسمة على <span class=\"math\">100</span>: مرتبتان إلى اليسار.",
     "h2": "لا يوجد ما يكفي من الأرقام: أضف أصفارا على اليسار.",
     "steps": [
+     "<b>الطريقة:</b> للقسمة على 10 أو 100 أو 1000 نزيح الفاصلة نحو اليسار مرتبة أو مرتبتين أو ثلاث مراتب (ونضيف أصفارا على اليسار عند الحاجة).",
      "<span class=\"math\">3,2 = 003,2</span>",
      "مرتبتان إلى اليسار: <span class=\"math\">0,032</span>",
-     "النتيجة: <span class=\"math\">0,032</span>"
+     "النتيجة: <span class=\"math\">0,032</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">3,2 ÷ 100 = 0,032</span>."
     ],
     "rubric": [
      {
@@ -1310,7 +1468,12 @@
      }
     ],
     "pts": 0.5,
-    "qId": "12-2"
+    "qId": "12-2",
+    "steps0": [
+     "<span class=\"math\">3,2 = 003,2</span>",
+     "مرتبتان إلى اليسار: <span class=\"math\">0,032</span>",
+     "النتيجة: <span class=\"math\">0,032</span>"
+    ]
    }
   ]
  },
@@ -1331,9 +1494,11 @@
     "h1": "القسمة على <span class=\"math\">0,1</span> تعني الضرب في <span class=\"math\">10</span>.",
     "h2": "أزح الفاصلة مرتبة واحدة إلى اليمين.",
     "steps": [
+     "<b>الطريقة:</b> القسمة على 0,1 تعني الضرب في 10: نزيح الفاصلة مرتبة واحدة نحو اليمين.",
      "<span class=\"math\">6,4 ÷ 0,1 = 6,4 × 10</span>",
      "<span class=\"math\">= 64</span>",
-     "النتيجة: <span class=\"math\">64</span>"
+     "النتيجة: <span class=\"math\">64</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">6,4 ÷ 0,1 = 64</span>."
     ],
     "rubric": [
      {
@@ -1348,7 +1513,12 @@
     "pts": 0.5,
     "partialMsg": "القسمة على <span class=\"math\">0,1</span> تكبر العدد ولا تصغره.",
     "partialZero": true,
-    "qId": "13-1"
+    "qId": "13-1",
+    "steps0": [
+     "<span class=\"math\">6,4 ÷ 0,1 = 6,4 × 10</span>",
+     "<span class=\"math\">= 64</span>",
+     "النتيجة: <span class=\"math\">64</span>"
+    ]
    },
    {
     "text": "2) <span class=\"math\">0,25 ÷ 0,01</span>",
@@ -1359,9 +1529,11 @@
     "h1": "القسمة على <span class=\"math\">0,01</span> تعني الضرب في <span class=\"math\">100</span>.",
     "h2": "أزح الفاصلة مرتبتين إلى اليمين.",
     "steps": [
+     "<b>الطريقة:</b> القسمة على 0,01 تعني الضرب في 100: نزيح الفاصلة مرتبتين نحو اليمين.",
      "<span class=\"math\">0,25 ÷ 0,01 = 0,25 × 100</span>",
      "<span class=\"math\">= 25</span>",
-     "النتيجة: <span class=\"math\">25</span>"
+     "النتيجة: <span class=\"math\">25</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">0,25 ÷ 0,01 = 25</span>."
     ],
     "rubric": [
      {
@@ -1374,7 +1546,12 @@
      }
     ],
     "pts": 0.5,
-    "qId": "13-2"
+    "qId": "13-2",
+    "steps0": [
+     "<span class=\"math\">0,25 ÷ 0,01 = 0,25 × 100</span>",
+     "<span class=\"math\">= 25</span>",
+     "النتيجة: <span class=\"math\">25</span>"
+    ]
    }
   ]
  },
@@ -1393,10 +1570,12 @@
     "h1": "الضرب في <span class=\"math\">100</span>: كم مرتبة نزيح الفاصلة؟ وإلى أي جهة؟",
     "h2": "الضرب في <span class=\"math\">100</span>: الفاصلة مرتبتان إلى اليمين، أضف صفرا.",
     "steps": [
+     "<b>الطريقة:</b> ثمن 100 قلم = ثمن القلم × 100، ثم للضرب في 10 أو 100 أو 1000 نزيح الفاصلة نحو اليمين مرتبة أو مرتبتين أو ثلاث مراتب (ونضيف أصفارا عند الحاجة).",
      "<span class=\"math\">35,5 × 100</span>",
      "<span class=\"math\">35,5 = 35,50</span>",
      "<span class=\"math\">35,50 × 100 = 3550</span>",
-     "النتيجة: <span class=\"math\">3550 DA</span>"
+     "النتيجة: <span class=\"math\">3550 DA</span>",
+     "<b>الاستنتاج:</b> ثمن 100 قلم هو 3550 DA."
     ],
     "rubric": [
      {
@@ -1409,7 +1588,13 @@
      }
     ],
     "pts": 0.5,
-    "qId": "14-1"
+    "qId": "14-1",
+    "steps0": [
+     "<span class=\"math\">35,5 × 100</span>",
+     "<span class=\"math\">35,5 = 35,50</span>",
+     "<span class=\"math\">35,50 × 100 = 3550</span>",
+     "النتيجة: <span class=\"math\">3550 DA</span>"
+    ]
    },
    {
     "text": "2) ما ثمن الكراس الواحد؟",
@@ -1420,8 +1605,10 @@
     "h1": "لإيجاد ثمن كراس واحد نقسم ثمن الكراريس على عددها.",
     "h2": "القسمة على <span class=\"math\">10</span>: الفاصلة مرتبة واحدة إلى اليسار.",
     "steps": [
+     "<b>الطريقة:</b> ثمن الكراس الواحد = ثمن 10 كراريس ÷ 10، ثم للقسمة على 10 أو 100 أو 1000 نزيح الفاصلة نحو اليسار مرتبة أو مرتبتين أو ثلاث مراتب (ونضيف أصفارا على اليسار عند الحاجة).",
      "<span class=\"math\">452 ÷ 10 = 45,2</span>",
-     "النتيجة: <span class=\"math\">45,2 DA</span>"
+     "النتيجة: <span class=\"math\">45,2 DA</span>",
+     "<b>الاستنتاج:</b> ثمن الكراس الواحد 45,2 DA."
     ],
     "rubric": [
      {
@@ -1434,7 +1621,11 @@
      }
     ],
     "pts": 0.5,
-    "qId": "14-2"
+    "qId": "14-2",
+    "steps0": [
+     "<span class=\"math\">452 ÷ 10 = 45,2</span>",
+     "النتيجة: <span class=\"math\">45,2 DA</span>"
+    ]
    }
   ]
  },
@@ -1455,10 +1646,12 @@
     "h1": "الجزآن الصحيحان متساويان: قارن الأعشار.",
     "h2": "اكتب <span class=\"math\">12,4 = 12,40</span> ثم قارن <span class=\"math\">40</span> و <span class=\"math\">38</span> جزءا من مائة.",
     "steps": [
+     "<b>الطريقة:</b> لمقارنة عددين عشريين: نقارن الجزأين الصحيحين، فإن تساويا نكتب لهما نفس عدد الأرقام بعد الفاصلة (بإضافة أصفار) ونقارن الأجزاء العشرية.",
      "<span class=\"math\">12,4 = 12,40</span>",
      "<span class=\"math\">40 &gt; 38</span>",
      "<span class=\"math\">12,4 &gt; 12,38</span>",
-     "النتيجة: <span class=\"math\">&gt;</span>"
+     "النتيجة: <span class=\"math\">&gt;</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">12,4 &gt; 12,38</span> (لا نقارن عدد الأرقام: 38 أكثر أرقاما لكن 40 > 38)."
     ],
     "rubric": [
      {
@@ -1471,7 +1664,13 @@
      }
     ],
     "pts": 0.5,
-    "qId": "15-1"
+    "qId": "15-1",
+    "steps0": [
+     "<span class=\"math\">12,4 = 12,40</span>",
+     "<span class=\"math\">40 &gt; 38</span>",
+     "<span class=\"math\">12,4 &gt; 12,38</span>",
+     "النتيجة: <span class=\"math\">&gt;</span>"
+    ]
    },
    {
     "text": "2) <span class=\"math\">0,7 ... 0,70</span>",
@@ -1484,8 +1683,10 @@
     "h1": "الصفر في آخر الجزء العشري لا يغير العدد.",
     "h2": "قارن <span class=\"math\">70</span> جزءا من مائة مع <span class=\"math\">70</span> جزءا من مائة.",
     "steps": [
+     "<b>الطريقة:</b> إضافة صفر في آخر الجزء العشري لا تغيّر العدد.",
      "<span class=\"math\">0,7 = 0,70</span>",
-     "النتيجة: <span class=\"math\">=</span>"
+     "النتيجة: <span class=\"math\">=</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">0,7 = 0,70</span>."
     ],
     "rubric": [
      {
@@ -1498,7 +1699,11 @@
      }
     ],
     "pts": 0.5,
-    "qId": "15-2"
+    "qId": "15-2",
+    "steps0": [
+     "<span class=\"math\">0,7 = 0,70</span>",
+     "النتيجة: <span class=\"math\">=</span>"
+    ]
    }
   ]
  },
@@ -1519,11 +1724,13 @@
     "h1": "وحد عدد الأرقام بعد الفاصلة بإضافة أصفار.",
     "h2": "اكتبها: <span class=\"math\">3,450 ; 3,500 ; 3,405 ; 3,054</span> ثم قارن الأجزاء من ألف.",
     "steps": [
+     "<b>الطريقة:</b> الترتيب التصاعدي من الأصغر إلى الأكبر. لمقارنة عددين عشريين: نقارن الجزأين الصحيحين، فإن تساويا نكتب لهما نفس عدد الأرقام بعد الفاصلة (بإضافة أصفار) ونقارن الأجزاء العشرية.",
      "<span class=\"math\">3,45 = 3,450</span>",
      "<span class=\"math\">3,5 = 3,500</span>",
      "<span class=\"math\">054 &lt; 405 &lt; 450 &lt; 500</span>",
      "<span class=\"math\">3,054 &lt; 3,405 &lt; 3,45 &lt; 3,5</span>",
-     "النتيجة: <span class=\"math\">3,054 &lt; 3,405 &lt; 3,45 &lt; 3,5</span>"
+     "النتيجة: <span class=\"math\">3,054 &lt; 3,405 &lt; 3,45 &lt; 3,5</span>",
+     "<b>الاستنتاج:</b> الترتيب: <span class=\"math\">3,054 &lt; 3,405 &lt; 3,45 &lt; 3,5</span>، فأطول قفزة 3,5 m."
     ],
     "rubric": [
      {
@@ -1541,7 +1748,14 @@
     ],
     "pts": 1,
     "partialMsg": "الترتيب صحيح لكنه تنازلي، والمطلوب تصاعدي بالرمز <span class=\"math\">&lt;</span>.",
-    "qId": "16-1"
+    "qId": "16-1",
+    "steps0": [
+     "<span class=\"math\">3,45 = 3,450</span>",
+     "<span class=\"math\">3,5 = 3,500</span>",
+     "<span class=\"math\">054 &lt; 405 &lt; 450 &lt; 500</span>",
+     "<span class=\"math\">3,054 &lt; 3,405 &lt; 3,45 &lt; 3,5</span>",
+     "النتيجة: <span class=\"math\">3,054 &lt; 3,405 &lt; 3,45 &lt; 3,5</span>"
+    ]
    }
   ]
  },
@@ -1561,9 +1775,11 @@
     "h1": "الجزء الصحيح هو العدد الطبيعي الأصغر.",
     "h2": "الحد الأكبر هو العدد الطبيعي الذي يلي <span class=\"math\">17</span>.",
     "steps": [
+     "<b>الطريقة:</b> حصر عدد عشري بين عددين طبيعيين متتاليين: الأصغر هو جزؤه الصحيح، والأكبر هو الجزء الصحيح + 1.",
      "الجزء الصحيح: <span class=\"math\">17</span>",
      "العدد الطبيعي الموالي: <span class=\"math\">18</span>",
-     "النتيجة: <span class=\"math\">17 &lt; 17,63 &lt; 18</span>"
+     "النتيجة: <span class=\"math\">17 &lt; 17,63 &lt; 18</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">17 &lt; 17,63 &lt; 18</span>."
     ],
     "rubric": [
      {
@@ -1576,7 +1792,12 @@
      }
     ],
     "pts": 0.5,
-    "qId": "17-1"
+    "qId": "17-1",
+    "steps0": [
+     "الجزء الصحيح: <span class=\"math\">17</span>",
+     "العدد الطبيعي الموالي: <span class=\"math\">18</span>",
+     "النتيجة: <span class=\"math\">17 &lt; 17,63 &lt; 18</span>"
+    ]
    },
    {
     "text": "2) احصر <span class=\"math\">4,268</span> بين عددين عشريين متتاليين لكل منهما رقم واحد بعد الفاصلة.",
@@ -1588,9 +1809,11 @@
     "h1": "احتفظ برقم واحد بعد الفاصلة للحد الأصغر.",
     "h2": "الحد الأصغر <span class=\"math\">4,2</span>، والأكبر يزيد عليه <span class=\"math\">0,1</span>.",
     "steps": [
+     "<b>الطريقة:</b> الحصر برقم واحد بعد الفاصلة: نحتفظ بالرقم الأول بعد الفاصلة (الحد الأصغر)، ثم نضيف 0,1 لنحصل على الحد الأكبر.",
      "الحد الأصغر: <span class=\"math\">4,2</span>",
      "<span class=\"math\">4,2 + 0,1 = 4,3</span>",
-     "النتيجة: <span class=\"math\">4,2 &lt; 4,268 &lt; 4,3</span>"
+     "النتيجة: <span class=\"math\">4,2 &lt; 4,268 &lt; 4,3</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">4,2 &lt; 4,268 &lt; 4,3</span>."
     ],
     "rubric": [
      {
@@ -1603,7 +1826,12 @@
      }
     ],
     "pts": 0.5,
-    "qId": "17-2"
+    "qId": "17-2",
+    "steps0": [
+     "الحد الأصغر: <span class=\"math\">4,2</span>",
+     "<span class=\"math\">4,2 + 0,1 = 4,3</span>",
+     "النتيجة: <span class=\"math\">4,2 &lt; 4,268 &lt; 4,3</span>"
+    ]
    }
   ]
  },
@@ -1622,8 +1850,10 @@
     "h1": "اجمع المبلغين مع وضع الفواصل تحت بعضها.",
     "h2": "اجمع الأجزاء من مائة ثم الأعشار ثم الأجزاء الصحيحة مع الاحتفاظ.",
     "steps": [
+     "<b>الطريقة:</b> ثمن المشتريات = ثمن الخضر + ثمن الفواكه. جمع عددين عشريين بوضع عمودي: الفاصلة تحت الفاصلة.",
      "<div class=\"vop\"><div>  245,50</div><div>+ 312,75</div><div class=\"ln\">  558,25</div></div>",
-     "النتيجة: <span class=\"math\">558,25 DA</span>"
+     "النتيجة: <span class=\"math\">558,25 DA</span>",
+     "<b>الاستنتاج:</b> ثمن المشتريات 558,25 DA."
     ],
     "rubric": [
      {
@@ -1636,7 +1866,11 @@
      }
     ],
     "pts": 0.5,
-    "qId": "18-1"
+    "qId": "18-1",
+    "steps0": [
+     "<div class=\"vop\"><div>  245,50</div><div>+ 312,75</div><div class=\"ln\">  558,25</div></div>",
+     "النتيجة: <span class=\"math\">558,25 DA</span>"
+    ]
    },
    {
     "text": "2) كم يعيد لها البائع؟",
@@ -1647,8 +1881,11 @@
     "h1": "المبلغ المعاد = المبلغ المدفوع − ثمن المشتريات.",
     "h2": "اكتب <span class=\"math\">1000 = 1000,00</span> ثم اطرح.",
     "steps": [
+     "<b>الطريقة:</b> ما يعيده البائع = المبلغ المدفوع − ثمن المشتريات (طرح عمودي، الفاصلة تحت الفاصلة، ونكتب 1000 = 1000,00).",
      "<div class=\"vop\"><div>  1000,00</div><div>−  558,25</div><div class=\"ln\">   441,75</div></div>",
-     "النتيجة: <span class=\"math\">441,75 DA</span>"
+     "النتيجة: <span class=\"math\">441,75 DA</span>",
+     "تحقق: <span class=\"math\">558,25 + 441,75 = 1000</span>",
+     "<b>الاستنتاج:</b> يعيد البائع لمريم 441,75 DA."
     ],
     "rubric": [
      {
@@ -1661,7 +1898,11 @@
      }
     ],
     "pts": 0.5,
-    "qId": "18-2"
+    "qId": "18-2",
+    "steps0": [
+     "<div class=\"vop\"><div>  1000,00</div><div>−  558,25</div><div class=\"ln\">   441,75</div></div>",
+     "النتيجة: <span class=\"math\">441,75 DA</span>"
+    ]
    }
   ]
  },
@@ -1683,10 +1924,12 @@
     "h1": "اضرب العددين أولا دون فاصلة، ثم فكّر في موضعها.",
     "h2": "احسب <span class=\"math\">36 × 25</span> ثم ضع رقمين بعد الفاصلة.",
     "steps": [
+     "<b>الطريقة:</b> ضرب عددين عشريين: نضرب دون فاصلة، ثم نضع في الناتج عدد أرقام بعد الفاصلة يساوي مجموع أرقام العاملين بعد الفاصلة (1 + 1 = 2).",
      "<div class=\"vop\"><div>   36</div><div> × 25</div><div class=\"ln\">  180</div><div>  72 </div><div class=\"ln\">  900</div></div>",
      "رقمان بعد الفاصلة: <span class=\"math\">9,00</span>",
      "<span class=\"math\">9,00 = 9</span>",
-     "النتيجة: <span class=\"math\">9</span>"
+     "النتيجة: <span class=\"math\">9</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">3,6 × 2,5 = 9</span>."
     ],
     "rubric": [
      {
@@ -1701,7 +1944,13 @@
     "pts": 0.5,
     "partialMsg": "انتبه إلى موضع الفاصلة: رقمان بعد الفاصلة في الناتج.",
     "partialZero": true,
-    "qId": "19-1"
+    "qId": "19-1",
+    "steps0": [
+     "<div class=\"vop\"><div>   36</div><div> × 25</div><div class=\"ln\">  180</div><div>  72 </div><div class=\"ln\">  900</div></div>",
+     "رقمان بعد الفاصلة: <span class=\"math\">9,00</span>",
+     "<span class=\"math\">9,00 = 9</span>",
+     "النتيجة: <span class=\"math\">9</span>"
+    ]
    },
    {
     "text": "2) ثمن المتر من قماش <span class=\"math\">650 DA</span>. ما ثمن <span class=\"math\">4,2 m</span>؟",
@@ -1712,10 +1961,12 @@
     "h1": "الثمن = الطول × ثمن المتر الواحد.",
     "h2": "احسب <span class=\"math\">42 × 650</span> ثم ضع رقما واحدا بعد الفاصلة.",
     "steps": [
+     "<b>الطريقة:</b> الثمن = الطول × ثمن المتر. نضرب دون فاصلة، ثم نضع في الناتج رقما واحدا بعد الفاصلة.",
      "<span class=\"math\">4,2 × 650</span>",
      "<div class=\"vop\"><div>   650</div><div>  × 42</div><div class=\"ln\">  1300</div><div> 2600 </div><div class=\"ln\"> 27300</div></div>",
      "رقم واحد بعد الفاصلة: <span class=\"math\">2730,0</span>",
-     "النتيجة: <span class=\"math\">2730 DA</span>"
+     "النتيجة: <span class=\"math\">2730 DA</span>",
+     "<b>الاستنتاج:</b> ثمن 4,2 m من القماش هو 2730 DA."
     ],
     "rubric": [
      {
@@ -1728,7 +1979,13 @@
      }
     ],
     "pts": 0.5,
-    "qId": "19-2"
+    "qId": "19-2",
+    "steps0": [
+     "<span class=\"math\">4,2 × 650</span>",
+     "<div class=\"vop\"><div>   650</div><div>  × 42</div><div class=\"ln\">  1300</div><div> 2600 </div><div class=\"ln\"> 27300</div></div>",
+     "رقم واحد بعد الفاصلة: <span class=\"math\">2730,0</span>",
+     "النتيجة: <span class=\"math\">2730 DA</span>"
+    ]
    }
   ]
  },
@@ -1749,10 +2006,12 @@
     "h1": "أقرب مئة إلى <span class=\"math\">398</span>، ثم أقرب مئة إلى <span class=\"math\">207</span>.",
     "h2": "<span class=\"math\">398</span> قريب من <span class=\"math\">400</span>، و<span class=\"math\">207</span> قريب من <span class=\"math\">200</span>.",
     "steps": [
+     "<b>الطريقة:</b> رتبة مقدار مجموع: نعوّض كل عدد بأقرب مئة إليه، ثم نحسب ذهنيا.",
      "<span class=\"math\">398 ≈ 400</span>",
      "<span class=\"math\">207 ≈ 200</span>",
      "<span class=\"math\">400 + 200 = 600</span>",
-     "النتيجة: <span class=\"math\">600</span>"
+     "النتيجة: <span class=\"math\">600</span>",
+     "<b>الاستنتاج:</b> رتبة مقدار المجموع هي 600 (المجموع الحقيقي 605 قريب منها)."
     ],
     "rubric": [
      {
@@ -1767,7 +2026,13 @@
     "pts": 0.5,
     "partialMsg": "هذه النتيجة المضبوطة، والمطلوب رتبة المقدار.",
     "partialZero": true,
-    "qId": "20-1"
+    "qId": "20-1",
+    "steps0": [
+     "<span class=\"math\">398 ≈ 400</span>",
+     "<span class=\"math\">207 ≈ 200</span>",
+     "<span class=\"math\">400 + 200 = 600</span>",
+     "النتيجة: <span class=\"math\">600</span>"
+    ]
    },
    {
     "text": "2) أعط رتبة مقدار للجداء <span class=\"math\">49 × 21</span> باستبدال كل عدد بأقرب عشرة إليه.",
@@ -1780,10 +2045,12 @@
     "h1": "أقرب عشرة إلى <span class=\"math\">49</span>، ثم أقرب عشرة إلى <span class=\"math\">21</span>.",
     "h2": "<span class=\"math\">49</span> قريب من <span class=\"math\">50</span>، و<span class=\"math\">21</span> قريب من <span class=\"math\">20</span>.",
     "steps": [
+     "<b>الطريقة:</b> رتبة مقدار جداء: نعوّض كل عدد بأقرب عشرة إليه، ثم نحسب ذهنيا.",
      "<span class=\"math\">49 ≈ 50</span>",
      "<span class=\"math\">21 ≈ 20</span>",
      "<span class=\"math\">50 × 20 = 1000</span>",
-     "النتيجة: <span class=\"math\">1000</span>"
+     "النتيجة: <span class=\"math\">1000</span>",
+     "<b>الاستنتاج:</b> رتبة مقدار الجداء هي 1000 (الجداء الحقيقي 1029 قريب منها)."
     ],
     "rubric": [
      {
@@ -1798,7 +2065,13 @@
     "pts": 0.5,
     "partialMsg": "هذه النتيجة المضبوطة، والمطلوب رتبة المقدار.",
     "partialZero": true,
-    "qId": "20-2"
+    "qId": "20-2",
+    "steps0": [
+     "<span class=\"math\">49 ≈ 50</span>",
+     "<span class=\"math\">21 ≈ 20</span>",
+     "<span class=\"math\">50 × 20 = 1000</span>",
+     "النتيجة: <span class=\"math\">1000</span>"
+    ]
    }
   ]
  }
@@ -1929,7 +2202,8 @@
         }
 
         const FBMSG = {"ok": ["أحسنت! تركيزك أوصلك إلى الجواب الصحيح.", "ممتاز! أخذت وقتك وفكّرت جيدا، وهذه هي النتيجة.", "برافو! التأنّي في الحساب يصنع النجاح.", "رائع! جهدك يستحق هذه النجوم.", "إجابة صحيحة! واصل بنفس الهدوء والتركيز.", "أحسنت! من يقرأ السؤال جيدا يصل إلى الحل.", "عمل متقن! الدقة أهم من السرعة، وأنت أثبتّ ذلك.", "بارك الله فيك! تقدّم خطوة بخطوة كما فعلت الآن."], "w1": ["لا بأس، الخطأ جزء من التعلّم. أعد قراءة السؤال بهدوء.", "تمهّل قليلا: كلما أسرعت قلّ تركيزك. خذ وقتك.", "محاولة جيدة! راجع حسابك خطوة بخطوة.", "كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.", "لا تستعجل. اقرأ المعطيات من جديد ثم فكّر.", "أنت قريب. أعطِ هذا السؤال الوقت الذي يحتاجه.", "الخطأ ليس فشلا بل خطوة نحو الفهم. حاول مجددا.", "هدّئ السرعة وزِد التركيز، وستجد الطريق."], "w2": ["محاولة أخيرة: اكتب الحساب على ورقة قبل أن تجيب.", "لا تيأس! التركيز يأتي مع الهدوء. اقرأ التلميح جيدا.", "السرعة والتركيز لا يجتمعان: تمهّل في هذه المحاولة الأخيرة.", "ابذل جهدا إضافيا صغيرا، فالحل قريب منك.", "راجع كل خطوة على حدة، ولا تتسرّع.", "كل العلماء أخطؤوا قبل أن ينجحوا. ركّز في هذه المحاولة."], "fail": ["لا تحزن، الخطأ جزء من التعلّم. اقرأ الإجابة النموذجية وسلم التنقيط بتمعّن.", "تعلّمنا شيئا جديدا اليوم! تأمّل خطوات الحل، وأعد التمرين غدا بهدوء.", "لا بأس، الفهم يحتاج وقتا وجهدا. راجع الحل خطوة بخطوة.", "المهم أن نفهم لماذا أخطأنا. اقرأ الحل، ثم حاول إعادته وحدك على ورقة.", "الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة."]};
-        function fbPick(kind, qId) { const a = FBMSG[kind]; const p = String(qId).split('-'); const n = (+p[0]) * 3 + (+p[1] || 0) + kind.length; return a[n % a.length]; }
+        function fbPick(kind, qId) { const a = FBMSG[kind]; const p = String(qId).split('-'); let n = (+p[0]) * 3 + (+p[1] || 0) + kind.length;
+            if (isNaN(n)) { n = kind.length; for (const c of String(qId)) n = (n * 7 + c.charCodeAt(0)) % 9973; } return a[n % a.length]; }
         function checkAns(exId, qId) {
             if (questionLocked[qId]) return;
             const ex = exercises.find(e => e.id === exId);
