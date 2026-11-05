@@ -1390,7 +1390,7 @@
      "3550"
     ],
     "partial": [],
-    "h1": "الثمن = <span class=\"math\">35,5 × 100</span>.",
+    "h1": "الضرب في <span class=\"math\">100</span>: كم مرتبة نزيح الفاصلة؟ وإلى أي جهة؟",
     "h2": "الضرب في <span class=\"math\">100</span>: الفاصلة مرتبتان إلى اليمين، أضف صفرا.",
     "steps": [
      "<span class=\"math\">35,5 × 100</span>",
@@ -1417,7 +1417,7 @@
      "45,2"
     ],
     "partial": [],
-    "h1": "ثمن الكراس = <span class=\"math\">452 ÷ 10</span>.",
+    "h1": "لإيجاد ثمن كراس واحد نقسم ثمن الكراريس على عددها.",
     "h2": "القسمة على <span class=\"math\">10</span>: الفاصلة مرتبة واحدة إلى اليسار.",
     "steps": [
      "<span class=\"math\">452 ÷ 10 = 45,2</span>",
@@ -1680,7 +1680,7 @@
      "900",
      "90"
     ],
-    "h1": "اضرب دون فاصلة، ثم ضع في الناتج عدد أرقام بعد الفاصلة يساوي مجموعها في العاملين.",
+    "h1": "اضرب العددين أولا دون فاصلة، ثم فكّر في موضعها.",
     "h2": "احسب <span class=\"math\">36 × 25</span> ثم ضع رقمين بعد الفاصلة.",
     "steps": [
      "<div class=\"vop\"><div>   36</div><div> × 25</div><div class=\"ln\">  180</div><div>  72 </div><div class=\"ln\">  900</div></div>",
@@ -1709,7 +1709,7 @@
      "2730"
     ],
     "partial": [],
-    "h1": "الثمن = الطول × ثمن المتر.",
+    "h1": "الثمن = الطول × ثمن المتر الواحد.",
     "h2": "احسب <span class=\"math\">42 × 650</span> ثم ضع رقما واحدا بعد الفاصلة.",
     "steps": [
      "<span class=\"math\">4,2 × 650</span>",
@@ -1928,6 +1928,8 @@
             inp.classList.add('shake');
         }
 
+        const FBMSG = {"ok": ["أحسنت! تركيزك أوصلك إلى الجواب الصحيح.", "ممتاز! أخذت وقتك وفكّرت جيدا، وهذه هي النتيجة.", "برافو! التأنّي في الحساب يصنع النجاح.", "رائع! جهدك يستحق هذه النجوم.", "إجابة صحيحة! واصل بنفس الهدوء والتركيز.", "أحسنت! من يقرأ السؤال جيدا يصل إلى الحل.", "عمل متقن! الدقة أهم من السرعة، وأنت أثبتّ ذلك.", "بارك الله فيك! تقدّم خطوة بخطوة كما فعلت الآن."], "w1": ["لا بأس، الخطأ جزء من التعلّم. أعد قراءة السؤال بهدوء.", "تمهّل قليلا: كلما أسرعت قلّ تركيزك. خذ وقتك.", "محاولة جيدة! راجع حسابك خطوة بخطوة.", "كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.", "لا تستعجل. اقرأ المعطيات من جديد ثم فكّر.", "أنت قريب. أعطِ هذا السؤال الوقت الذي يحتاجه.", "الخطأ ليس فشلا بل خطوة نحو الفهم. حاول مجددا.", "هدّئ السرعة وزِد التركيز، وستجد الطريق."], "w2": ["محاولة أخيرة: اكتب الحساب على ورقة قبل أن تجيب.", "لا تيأس! التركيز يأتي مع الهدوء. اقرأ التلميح جيدا.", "السرعة والتركيز لا يجتمعان: تمهّل في هذه المحاولة الأخيرة.", "ابذل جهدا إضافيا صغيرا، فالحل قريب منك.", "راجع كل خطوة على حدة، ولا تتسرّع.", "كل العلماء أخطؤوا قبل أن ينجحوا. ركّز في هذه المحاولة."], "fail": ["لا تحزن، الخطأ جزء من التعلّم. اقرأ الإجابة النموذجية وسلم التنقيط بتمعّن.", "تعلّمنا شيئا جديدا اليوم! تأمّل خطوات الحل، وأعد التمرين غدا بهدوء.", "لا بأس، الفهم يحتاج وقتا وجهدا. راجع الحل خطوة بخطوة.", "المهم أن نفهم لماذا أخطأنا. اقرأ الحل، ثم حاول إعادته وحدك على ورقة.", "الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة."]};
+        function fbPick(kind, qId) { const a = FBMSG[kind]; const p = String(qId).split('-'); const n = (+p[0]) * 3 + (+p[1] || 0) + kind.length; return a[n % a.length]; }
         function checkAns(exId, qId) {
             if (questionLocked[qId]) return;
             const ex = exercises.find(e => e.id === exId);
@@ -1962,7 +1964,7 @@
                 document.getElementById(`btn-${qId}`).disabled = true;
 
                 fb.className = 'feedback-box success';
-                fb.innerHTML = `<span class="star-burst">${starIcons}</span> أحسنت يا بطل! إجابة صحيحة وممتازة. نلت العلامة الكاملة (<span class="math">${String(q.pts).replace('.', ',')} ن</span>).`;
+                fb.innerHTML = `<span class="star-burst">${starIcons}</span> ${fbPick('ok', qId)} نلت العلامة الكاملة (<span class="math">${String(q.pts).replace('.', ',')} ن</span>).`;
                 document.getElementById(`sol-${qId}`).style.display = 'block';
                 updateHeaderStats();
                 return;
@@ -1998,10 +2000,10 @@
 
             if (rem === 2) {
                 fb.className = 'feedback-box hint';
-                fb.innerHTML = `${customReason ? customReason + '<br>' : 'لا بأس، حاول مرة أخرى بتأنٍّ!<br>'}<strong>💡 التلميح 1:</strong> ${q.h1}`;
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w1', qId) + '<br>'}<strong>💡 التلميح 1:</strong> ${q.h1}`;
             } else if (rem === 1) {
                 fb.className = 'feedback-box hint';
-                fb.innerHTML = `${customReason ? customReason + '<br>' : 'قاربت على الوصول، ركّز جيداً في هذه المحاولة الأخيرة!<br>'}<strong>💡 التلميح 2:</strong> ${q.h2}`;
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w2', qId) + '<br>'}<strong>💡 التلميح 2:</strong> ${q.h2}`;
             } else {
                 questionLocked[qId] = true;
                 completedQuestions++;
@@ -2010,7 +2012,7 @@
                 document.getElementById(`qbox-${qId}`).classList.add('failed');
 
                 fb.className = 'feedback-box fail';
-                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 محاولة طيبة! لا تحزن، التعلم يأتي بالمحاولة. اقرأ الإجابة النموذجية وسلم التنقيط بتمعن لتتقن الفكرة في المرة القادمة.';
+                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 ' + fbPick('fail', qId);
                 document.getElementById(`sol-${qId}`).style.display = 'block';
                 updateHeaderStats();
             }
