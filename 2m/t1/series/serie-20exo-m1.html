@@ -498,6 +498,14 @@
             .input-line { flex-direction: column; }
             input[type="text"], .btn-check { width: 100%; }
         }
+    
+        .fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; line-height: 1.05; margin: 0 2px; font-size: .92em; }
+        .fr > span:first-child { border-bottom: 2px solid currentColor; padding: 0 3px 1px; }
+        .fr > span:last-child { padding: 1px 3px 0; }
+        .vop { display: inline-block; direction: ltr; unicode-bidi: isolate; font-family: 'Courier New', Courier, monospace; font-weight: 700;
+               background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
+        .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
+        .vop .ln { border-top: 2px solid #0f172a; }
     </style>
 </head>
 <body>
@@ -797,7 +805,7 @@
   "id": 4,
   "pts": 1,
   "title": "التمرين 04: رحلة مدرسية (المورد 1: سلسلة عمليات مع احترام الأولويات والأقواس)",
-  "context": "نظمت متوسطة بتلمسان رحلة لـ <span class=\"math\">45</span> تلميذا و<span class=\"math\">5</span> أساتذة. ثمن التذكرة للفرد الواحد <span class=\"math\">120 DA</span>.",
+  "context": "نظمت متوسطة ببوشقوف رحلة إلى المسرح الروماني بقالمة لـ <span class=\"math\">45</span> تلميذا و<span class=\"math\">5</span> أساتذة. ثمن التذكرة للفرد الواحد <span class=\"math\">120 DA</span>.",
   "questions": [
    {
     "text": "1) ما المبلغ الكلي للتذاكر؟",
@@ -1060,7 +1068,7 @@
   "id": 8,
   "pts": 1,
   "title": "التمرين 08: تخفيض في متجر رياضي (المورد 2: الخاصية التوزيعية في الاتجاهين)",
-  "context": "في متجر بعنابة ثمن الحذاء الرياضي <span class=\"math\">3200 DA</span>، وعليه تخفيض <span class=\"math\">400 DA</span>. اشترى نادٍ رياضي <span class=\"math\">15</span> حذاء.",
+  "context": "في متجر بقالمة ثمن الحذاء الرياضي <span class=\"math\">3200 DA</span>، وعليه تخفيض <span class=\"math\">400 DA</span>. اشترى نادٍ رياضي <span class=\"math\">15</span> حذاء.",
   "questions": [
    {
     "text": "1) ما المبلغ الذي دفعه النادي؟",
@@ -1207,7 +1215,7 @@
   "id": 10,
   "pts": 1,
   "title": "التمرين 10: تذاكر الحافلة (المورد 3: عبارة جبرية تترجم وضعية منتظمة)",
-  "context": "ثمن تذكرة الحافلة في مدينة سطيف <span class=\"math\">25 DA</span>. يشتري أحمد <span class=\"math\">n</span> تذكرة.",
+  "context": "ثمن تذكرة الحافلة داخل مدينة قالمة <span class=\"math\">25 DA</span>. يشتري أحمد <span class=\"math\">n</span> تذكرة.",
   "questions": [
    {
     "text": "1) اكتب عبارة المبلغ الذي يدفعه أحمد بدلالة <span class=\"math\">n</span>.",
@@ -1478,7 +1486,7 @@
   "id": 14,
   "pts": 1,
   "title": "التمرين 14: تقدير ثمن المشتريات (المورد 5: التقدير الذهني لنتيجة حساب)",
-  "context": "اشترت سلمى من مكتبة بالبويرة ثلاثة كتب أثمانها: <span class=\"math\">395 DA</span> و<span class=\"math\">612 DA</span> و<span class=\"math\">189 DA</span>.",
+  "context": "اشترت سلمى من مكتبة ببوشقوف ثلاثة كتب أثمانها: <span class=\"math\">395 DA</span> و<span class=\"math\">612 DA</span> و<span class=\"math\">189 DA</span>.",
   "questions": [
    {
     "text": "1) قدّر ذهنيا ثمن الكتب الثلاثة بتدوير كل ثمن إلى أقرب مئة.",
@@ -1619,7 +1627,7 @@
   "context": "احسب واكتب النتيجة على شكل كسر غير قابل للاختزال.",
   "questions": [
    {
-    "text": "1) <span class=\"math\">2/3 × 4/5</span>",
+    "text": "1) <span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span> × <span class=\"fr\"><span>4</span><span>5</span></span></span>",
     "exact": [
      "8/15"
     ],
@@ -1629,12 +1637,12 @@
      "22/15"
     ],
     "h1": "جداء كسرين: نضرب البسطين معا والمقامين معا.",
-    "h2": "<span class=\"math\">(2 × 4)/(3 × 5)</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>2 × 4</span><span>3 × 5</span></span></span>.",
     "steps": [
-     "<span class=\"math\">2/3 × 4/5</span>",
-     "<span class=\"math\">= (2 × 4)/(3 × 5)</span>",
-     "<span class=\"math\">= 8/15</span>",
-     "النتيجة: <span class=\"math\">8/15</span>"
+     "<span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span> × <span class=\"fr\"><span>4</span><span>5</span></span></span>",
+     "<span class=\"math\">= <span class=\"fr\"><span>2 × 4</span><span>3 × 5</span></span></span>",
+     "<span class=\"math\">= <span class=\"fr\"><span>8</span><span>15</span></span></span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>8</span><span>15</span></span></span>"
     ],
     "rubric": [
      {
@@ -1642,7 +1650,7 @@
       "mark": "0,25"
      },
      {
-      "step": "النتيجة <span class=\"math\">8/15</span>",
+      "step": "النتيجة <span class=\"math\"><span class=\"fr\"><span>8</span><span>15</span></span></span>",
       "mark": "0,25"
      }
     ],
@@ -1652,7 +1660,7 @@
     "qId": "16-1"
    },
    {
-    "text": "2) <span class=\"math\">3/4 × 8/9</span>",
+    "text": "2) <span class=\"math\"><span class=\"fr\"><span>3</span><span>4</span></span> × <span class=\"fr\"><span>8</span><span>9</span></span></span>",
     "exact": [
      "2/3"
     ],
@@ -1664,23 +1672,23 @@
      "4/6"
     ],
     "h1": "اضرب البسطين والمقامين ثم اختزل.",
-    "h2": "<span class=\"math\">24/36</span>: قسّم البسط والمقام على <span class=\"math\">12</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>24</span><span>36</span></span></span>: قسّم البسط والمقام على <span class=\"math\">12</span>.",
     "steps": [
-     "<span class=\"math\">3/4 × 8/9</span>",
-     "<span class=\"math\">= (3 × 8)/(4 × 9)</span>",
-     "<span class=\"math\">= 24/36</span>",
+     "<span class=\"math\"><span class=\"fr\"><span>3</span><span>4</span></span> × <span class=\"fr\"><span>8</span><span>9</span></span></span>",
+     "<span class=\"math\">= <span class=\"fr\"><span>3 × 8</span><span>4 × 9</span></span></span>",
+     "<span class=\"math\">= <span class=\"fr\"><span>24</span><span>36</span></span></span>",
      "<span class=\"math\">24 ÷ 12</span>",
      "<span class=\"math\">= 2</span> و<span class=\"math\">36 ÷ 12 = 3</span>",
-     "<span class=\"math\">= 2/3</span>",
-     "النتيجة: <span class=\"math\">2/3</span>"
+     "<span class=\"math\">= <span class=\"fr\"><span>2</span><span>3</span></span></span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span></span>"
     ],
     "rubric": [
      {
-      "step": "<span class=\"math\">24/36</span>",
+      "step": "<span class=\"math\"><span class=\"fr\"><span>24</span><span>36</span></span></span>",
       "mark": "0,25"
      },
      {
-      "step": "الاختزال <span class=\"math\">2/3</span>",
+      "step": "الاختزال <span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span></span>",
       "mark": "0,25"
      }
     ],
@@ -1694,7 +1702,7 @@
   "id": 17,
   "pts": 1,
   "title": "التمرين 17: حديقة الخضر (المورد 6: جداء كسرين)",
-  "context": "خصص فلاح من البليدة <span class=\"math\">3/5</span> مساحة أرضه للخضر، وزرع الطماطم في <span class=\"math\">2/3</span> مساحة الخضر.",
+  "context": "خصص فلاح من بوشقوف <span class=\"math\"><span class=\"fr\"><span>3</span><span>5</span></span></span> مساحة أرضه للخضر، وزرع الطماطم في <span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span></span> مساحة الخضر.",
   "questions": [
    {
     "text": "1) ما الكسر الذي يمثل مساحة الطماطم من كل الأرض؟ (كسر غير قابل للاختزال)",
@@ -1704,22 +1712,22 @@
     "partial": [
      "6/15"
     ],
-    "h1": "«<span class=\"math\">2/3</span> من <span class=\"math\">3/5</span>» تعني <span class=\"math\">2/3 × 3/5</span>.",
-    "h2": "احسب <span class=\"math\">6/15</span> ثم اختزل على <span class=\"math\">3</span>.",
+    "h1": "«<span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span></span> من <span class=\"math\"><span class=\"fr\"><span>3</span><span>5</span></span></span>» تعني <span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span> × <span class=\"fr\"><span>3</span><span>5</span></span></span>.",
+    "h2": "احسب <span class=\"math\"><span class=\"fr\"><span>6</span><span>15</span></span></span> ثم اختزل على <span class=\"math\">3</span>.",
     "steps": [
-     "<span class=\"math\">2/3 × 3/5</span>",
-     "<span class=\"math\">= (2 × 3)/(3 × 5)</span>",
-     "<span class=\"math\">= 6/15</span>",
-     "<span class=\"math\">= 2/5</span>",
-     "النتيجة: <span class=\"math\">2/5</span>"
+     "<span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span> × <span class=\"fr\"><span>3</span><span>5</span></span></span>",
+     "<span class=\"math\">= <span class=\"fr\"><span>2 × 3</span><span>3 × 5</span></span></span>",
+     "<span class=\"math\">= <span class=\"fr\"><span>6</span><span>15</span></span></span>",
+     "<span class=\"math\">= <span class=\"fr\"><span>2</span><span>5</span></span></span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>2</span><span>5</span></span></span>"
     ],
     "rubric": [
      {
-      "step": "الجداء <span class=\"math\">2/3 × 3/5</span>",
+      "step": "الجداء <span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span> × <span class=\"fr\"><span>3</span><span>5</span></span></span>",
       "mark": "0,25"
      },
      {
-      "step": "النتيجة <span class=\"math\">2/5</span>",
+      "step": "النتيجة <span class=\"math\"><span class=\"fr\"><span>2</span><span>5</span></span></span>",
       "mark": "0,25"
      }
     ],
@@ -1736,17 +1744,17 @@
      "900",
      "1000"
     ],
-    "h1": "مساحة الطماطم = <span class=\"math\">2/5</span> من <span class=\"math\">1500</span>.",
+    "h1": "مساحة الطماطم = <span class=\"math\"><span class=\"fr\"><span>2</span><span>5</span></span></span> من <span class=\"math\">1500</span>.",
     "h2": "<span class=\"math\">1500 ÷ 5 = 300</span> ثم اضرب في <span class=\"math\">2</span>.",
     "steps": [
-     "<span class=\"math\">2/5 × 1500</span>",
+     "<span class=\"math\"><span class=\"fr\"><span>2</span><span>5</span></span> × 1500</span>",
      "<span class=\"math\">1500 ÷ 5 = 300</span>",
      "<span class=\"math\">300 × 2 = 600</span>",
      "النتيجة: <span class=\"math\">600 m²</span>"
     ],
     "rubric": [
      {
-      "step": "العملية <span class=\"math\">2/5 × 1500</span>",
+      "step": "العملية <span class=\"math\"><span class=\"fr\"><span>2</span><span>5</span></span> × 1500</span>",
       "mark": "0,25"
      },
      {
@@ -1755,7 +1763,7 @@
      }
     ],
     "pts": 0.5,
-    "partialMsg": "استعمل الكسر <span class=\"math\">2/5</span> الذي وجدته في السؤال الأول.",
+    "partialMsg": "استعمل الكسر <span class=\"math\"><span class=\"fr\"><span>2</span><span>5</span></span></span> الذي وجدته في السؤال الأول.",
     "partialZero": true,
     "qId": "17-2"
    }
@@ -1768,7 +1776,7 @@
   "context": "لمقارنة كسرين نوحد مقاميهما.",
   "questions": [
    {
-    "text": "1) أي الكسرين أكبر: <span class=\"math\">5/6</span> أم <span class=\"math\">7/12</span>؟ (اكتب الكسر الأكبر)",
+    "text": "1) أي الكسرين أكبر: <span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span></span> أم <span class=\"math\"><span class=\"fr\"><span>7</span><span>12</span></span></span>؟ (اكتب الكسر الأكبر)",
     "exact": [
      "5/6"
     ],
@@ -1776,22 +1784,22 @@
      "7/12",
      "10/12"
     ],
-    "h1": "<span class=\"math\">12</span> مضاعف لـ <span class=\"math\">6</span>: اكتب <span class=\"math\">5/6</span> بالمقام <span class=\"math\">12</span>.",
-    "h2": "<span class=\"math\">5/6 = 10/12</span>؛ قارن <span class=\"math\">10/12</span> و<span class=\"math\">7/12</span>.",
+    "h1": "<span class=\"math\">12</span> مضاعف لـ <span class=\"math\">6</span>: اكتب <span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span></span> بالمقام <span class=\"math\">12</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span> = <span class=\"fr\"><span>10</span><span>12</span></span></span>؛ قارن <span class=\"math\"><span class=\"fr\"><span>10</span><span>12</span></span></span> و<span class=\"math\"><span class=\"fr\"><span>7</span><span>12</span></span></span>.",
     "steps": [
-     "<span class=\"math\">5/6</span>",
-     "<span class=\"math\">= (5 × 2)/(6 × 2) = 10/12</span>",
-     "<span class=\"math\">10/12 &gt; 7/12</span>",
-     "<span class=\"math\">5/6 &gt; 7/12</span>",
-     "النتيجة: <span class=\"math\">5/6</span>"
+     "<span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span></span>",
+     "<span class=\"math\">= <span class=\"fr\"><span>5 × 2</span><span>6 × 2</span></span> = <span class=\"fr\"><span>10</span><span>12</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>10</span><span>12</span></span> &gt; <span class=\"fr\"><span>7</span><span>12</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span> &gt; <span class=\"fr\"><span>7</span><span>12</span></span></span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span></span>"
     ],
     "rubric": [
      {
-      "step": "توحيد المقامين <span class=\"math\">10/12</span>",
+      "step": "توحيد المقامين <span class=\"math\"><span class=\"fr\"><span>10</span><span>12</span></span></span>",
       "mark": "0,25"
      },
      {
-      "step": "النتيجة <span class=\"math\">5/6</span>",
+      "step": "النتيجة <span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span></span>",
       "mark": "0,25"
      }
     ],
@@ -1801,7 +1809,7 @@
     "qId": "18-1"
    },
    {
-    "text": "2) أي الكسرين أصغر: <span class=\"math\">3/4</span> أم <span class=\"math\">13/16</span>؟ (اكتب الكسر الأصغر)",
+    "text": "2) أي الكسرين أصغر: <span class=\"math\"><span class=\"fr\"><span>3</span><span>4</span></span></span> أم <span class=\"math\"><span class=\"fr\"><span>13</span><span>16</span></span></span>؟ (اكتب الكسر الأصغر)",
     "exact": [
      "3/4"
     ],
@@ -1810,21 +1818,21 @@
      "12/16"
     ],
     "h1": "<span class=\"math\">16</span> مضاعف لـ <span class=\"math\">4</span>.",
-    "h2": "<span class=\"math\">3/4 = 12/16</span>؛ قارن <span class=\"math\">12/16</span> و<span class=\"math\">13/16</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>3</span><span>4</span></span> = <span class=\"fr\"><span>12</span><span>16</span></span></span>؛ قارن <span class=\"math\"><span class=\"fr\"><span>12</span><span>16</span></span></span> و<span class=\"math\"><span class=\"fr\"><span>13</span><span>16</span></span></span>.",
     "steps": [
-     "<span class=\"math\">3/4</span>",
-     "<span class=\"math\">= (3 × 4)/(4 × 4) = 12/16</span>",
-     "<span class=\"math\">12/16 &lt; 13/16</span>",
-     "<span class=\"math\">3/4 &lt; 13/16</span>",
-     "النتيجة: <span class=\"math\">3/4</span>"
+     "<span class=\"math\"><span class=\"fr\"><span>3</span><span>4</span></span></span>",
+     "<span class=\"math\">= <span class=\"fr\"><span>3 × 4</span><span>4 × 4</span></span> = <span class=\"fr\"><span>12</span><span>16</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>12</span><span>16</span></span> &lt; <span class=\"fr\"><span>13</span><span>16</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>3</span><span>4</span></span> &lt; <span class=\"fr\"><span>13</span><span>16</span></span></span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>3</span><span>4</span></span></span>"
     ],
     "rubric": [
      {
-      "step": "توحيد المقامين <span class=\"math\">12/16</span>",
+      "step": "توحيد المقامين <span class=\"math\"><span class=\"fr\"><span>12</span><span>16</span></span></span>",
       "mark": "0,25"
      },
      {
-      "step": "النتيجة <span class=\"math\">3/4</span>",
+      "step": "النتيجة <span class=\"math\"><span class=\"fr\"><span>3</span><span>4</span></span></span>",
       "mark": "0,25"
      }
     ],
@@ -1842,7 +1850,7 @@
   "context": "احسب واكتب النتيجة على شكل كسر غير قابل للاختزال.",
   "questions": [
    {
-    "text": "1) <span class=\"math\">2/5 + 3/10</span>",
+    "text": "1) <span class=\"math\"><span class=\"fr\"><span>2</span><span>5</span></span> + <span class=\"fr\"><span>3</span><span>10</span></span></span>",
     "exact": [
      "7/10"
     ],
@@ -1851,12 +1859,12 @@
      "1/3"
     ],
     "h1": "وحّد المقامين: <span class=\"math\">10</span> مضاعف لـ <span class=\"math\">5</span>.",
-    "h2": "<span class=\"math\">2/5 = 4/10</span>؛ ثم اجمع البسطين.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>2</span><span>5</span></span> = <span class=\"fr\"><span>4</span><span>10</span></span></span>؛ ثم اجمع البسطين.",
     "steps": [
-     "<span class=\"math\">2/5 = 4/10</span>",
-     "<span class=\"math\">4/10 + 3/10 = (4 + 3)/10</span>",
-     "<span class=\"math\">= 7/10</span>",
-     "النتيجة: <span class=\"math\">7/10</span>"
+     "<span class=\"math\"><span class=\"fr\"><span>2</span><span>5</span></span> = <span class=\"fr\"><span>4</span><span>10</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>4</span><span>10</span></span> + <span class=\"fr\"><span>3</span><span>10</span></span> = <span class=\"fr\"><span>4 + 3</span><span>10</span></span></span>",
+     "<span class=\"math\">= <span class=\"fr\"><span>7</span><span>10</span></span></span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>7</span><span>10</span></span></span>"
     ],
     "rubric": [
      {
@@ -1864,7 +1872,7 @@
       "mark": "0,25"
      },
      {
-      "step": "النتيجة <span class=\"math\">7/10</span>",
+      "step": "النتيجة <span class=\"math\"><span class=\"fr\"><span>7</span><span>10</span></span></span>",
       "mark": "0,25"
      }
     ],
@@ -1874,7 +1882,7 @@
     "qId": "19-1"
    },
    {
-    "text": "2) <span class=\"math\">5/6 − 1/3</span>",
+    "text": "2) <span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span> − <span class=\"fr\"><span>1</span><span>3</span></span></span>",
     "exact": [
      "1/2"
     ],
@@ -1882,20 +1890,20 @@
      "3/6"
     ],
     "h1": "وحّد المقامين: <span class=\"math\">6</span> مضاعف لـ <span class=\"math\">3</span>.",
-    "h2": "<span class=\"math\">1/3 = 2/6</span>؛ اطرح ثم اختزل <span class=\"math\">3/6</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>1</span><span>3</span></span> = <span class=\"fr\"><span>2</span><span>6</span></span></span>؛ اطرح ثم اختزل <span class=\"math\"><span class=\"fr\"><span>3</span><span>6</span></span></span>.",
     "steps": [
-     "<span class=\"math\">1/3 = 2/6</span>",
-     "<span class=\"math\">5/6 − 2/6 = 3/6</span>",
-     "<span class=\"math\">3/6 = 1/2</span>",
-     "النتيجة: <span class=\"math\">1/2</span>"
+     "<span class=\"math\"><span class=\"fr\"><span>1</span><span>3</span></span> = <span class=\"fr\"><span>2</span><span>6</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span> − <span class=\"fr\"><span>2</span><span>6</span></span> = <span class=\"fr\"><span>3</span><span>6</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>3</span><span>6</span></span> = <span class=\"fr\"><span>1</span><span>2</span></span></span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>1</span><span>2</span></span></span>"
     ],
     "rubric": [
      {
-      "step": "توحيد المقامين والطرح <span class=\"math\">3/6</span>",
+      "step": "توحيد المقامين والطرح <span class=\"math\"><span class=\"fr\"><span>3</span><span>6</span></span></span>",
       "mark": "0,25"
      },
      {
-      "step": "الاختزال <span class=\"math\">1/2</span>",
+      "step": "الاختزال <span class=\"math\"><span class=\"fr\"><span>1</span><span>2</span></span></span>",
       "mark": "0,25"
      }
     ],
@@ -1909,7 +1917,7 @@
   "id": 20,
   "pts": 1,
   "title": "التمرين 20: خزان الماء (المورد 7: مقارنة كسرين وجمعهما وطرحهما (مقام أحدهما مضاعف للآخر))",
-  "context": "كان خزان ماء ببيت في الجلفة مملوءا إلى <span class=\"math\">7/8</span> سعته، فاستُهلك منه ما يعادل <span class=\"math\">1/4</span> السعة.",
+  "context": "كان خزان ماء ببيت في وادي فراغة مملوءا إلى <span class=\"math\"><span class=\"fr\"><span>7</span><span>8</span></span></span> سعته، فاستُهلك منه ما يعادل <span class=\"math\"><span class=\"fr\"><span>1</span><span>4</span></span></span> السعة.",
   "questions": [
    {
     "text": "1) ما الكسر الذي يمثل الماء المتبقي من سعة الخزان؟",
@@ -1920,20 +1928,20 @@
      "6/4",
      "3/2"
     ],
-    "h1": "المتبقي = <span class=\"math\">7/8 − 1/4</span>.",
-    "h2": "<span class=\"math\">1/4 = 2/8</span>.",
+    "h1": "المتبقي = <span class=\"math\"><span class=\"fr\"><span>7</span><span>8</span></span> − <span class=\"fr\"><span>1</span><span>4</span></span></span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>1</span><span>4</span></span> = <span class=\"fr\"><span>2</span><span>8</span></span></span>.",
     "steps": [
-     "<span class=\"math\">1/4 = 2/8</span>",
-     "<span class=\"math\">7/8 − 2/8 = 5/8</span>",
-     "النتيجة: <span class=\"math\">5/8</span>"
+     "<span class=\"math\"><span class=\"fr\"><span>1</span><span>4</span></span> = <span class=\"fr\"><span>2</span><span>8</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>7</span><span>8</span></span> − <span class=\"fr\"><span>2</span><span>8</span></span> = <span class=\"fr\"><span>5</span><span>8</span></span></span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>5</span><span>8</span></span></span>"
     ],
     "rubric": [
      {
-      "step": "توحيد المقامين <span class=\"math\">2/8</span>",
+      "step": "توحيد المقامين <span class=\"math\"><span class=\"fr\"><span>2</span><span>8</span></span></span>",
       "mark": "0,25"
      },
      {
-      "step": "النتيجة <span class=\"math\">5/8</span>",
+      "step": "النتيجة <span class=\"math\"><span class=\"fr\"><span>5</span><span>8</span></span></span>",
       "mark": "0,25"
      }
     ],
@@ -1951,17 +1959,17 @@
      "1750",
      "500"
     ],
-    "h1": "الماء المتبقي = <span class=\"math\">5/8</span> من <span class=\"math\">2000</span>.",
+    "h1": "الماء المتبقي = <span class=\"math\"><span class=\"fr\"><span>5</span><span>8</span></span></span> من <span class=\"math\">2000</span>.",
     "h2": "<span class=\"math\">2000 ÷ 8 = 250</span> ثم اضرب في <span class=\"math\">5</span>.",
     "steps": [
-     "<span class=\"math\">5/8 × 2000</span>",
+     "<span class=\"math\"><span class=\"fr\"><span>5</span><span>8</span></span> × 2000</span>",
      "<span class=\"math\">2000 ÷ 8 = 250</span>",
      "<span class=\"math\">250 × 5 = 1250</span>",
      "النتيجة: <span class=\"math\">1250 L</span>"
     ],
     "rubric": [
      {
-      "step": "العملية <span class=\"math\">5/8 × 2000</span>",
+      "step": "العملية <span class=\"math\"><span class=\"fr\"><span>5</span><span>8</span></span> × 2000</span>",
       "mark": "0,25"
      },
      {
@@ -1970,7 +1978,7 @@
      }
     ],
     "pts": 0.5,
-    "partialMsg": "استعمل الكسر المتبقي <span class=\"math\">5/8</span>.",
+    "partialMsg": "استعمل الكسر المتبقي <span class=\"math\"><span class=\"fr\"><span>5</span><span>8</span></span></span>.",
     "partialZero": true,
     "qId": "20-2"
    }
