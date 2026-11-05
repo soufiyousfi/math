@@ -499,7 +499,15 @@
             input[type="text"], .btn-check { width: 100%; }
         }
     .part-head{margin:26px 4px 10px;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,#0f766e,#1e3a8a);color:#fff;font-weight:800;font-size:1.08rem}
-</style>
+
+        .fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; line-height: 1.05; margin: 0 2px; font-size: .92em; }
+        .fr > span:first-child { border-bottom: 2px solid currentColor; padding: 0 3px 1px; }
+        .fr > span:last-child { padding: 1px 3px 0; }
+        .vop { display: inline-block; direction: ltr; unicode-bidi: isolate; font-family: 'Courier New', Courier, monospace; font-weight: 700;
+               background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
+        .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
+        .vop .ln { border-top: 2px solid #0f172a; }
+    </style>
 </head>
 <body>
 
@@ -586,7 +594,7 @@
   "id": 1,
   "pts": 5,
   "title": "التمرين 1: كسور، كتابة علمية وجذور",
-  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2014، التمرين الأول)</span><br>إليك الأعداد <span class=\"math\">A</span> ، <span class=\"math\">B</span> ، <span class=\"math\">C</span> حيث:<br><span class=\"math\">A = 3/5 + 2/5 × 7/4</span> ، <span class=\"math\">B = (1,2 × 10⁻² × 7)/(12,5 × 10³)</span> ، <span class=\"math\">C = √175 − √112 + 6√7</span>.",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2014، التمرين الأول)</span><br>إليك الأعداد <span class=\"math\">A</span> ، <span class=\"math\">B</span> ، <span class=\"math\">C</span> حيث:<br><span class=\"math\">A = <span class=\"fr\"><span>3</span><span>5</span></span> + <span class=\"fr\"><span>2</span><span>5</span></span> × <span class=\"fr\"><span>7</span><span>4</span></span></span> ، <span class=\"math\">B = <span class=\"fr\"><span>1,2 × 10⁻² × 7</span><span>12,5 × 10³</span></span></span> ، <span class=\"math\">C = √175 − √112 + 6√7</span>.",
   "questions": [
    {
     "qId": "1-1",
@@ -598,11 +606,11 @@
      "13/10",
      "26/20"
     ],
-    "h1": "الضرب أولا: <span class=\"math\">2/5 × 7/4 = 14/20</span>.",
-    "h2": "<span class=\"math\">3/5 = 12/20</span>.",
+    "h1": "الضرب أولا: <span class=\"math\"><span class=\"fr\"><span>2</span><span>5</span></span> × <span class=\"fr\"><span>7</span><span>4</span></span> = <span class=\"fr\"><span>14</span><span>20</span></span></span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>3</span><span>5</span></span> = <span class=\"fr\"><span>12</span><span>20</span></span></span>.",
     "steps": [
-     "<span class=\"math\">2/5 × 7/4 = 14/20</span>",
-     "<span class=\"math\">A = 12/20 + 14/20 = 26/20</span>",
+     "<span class=\"math\"><span class=\"fr\"><span>2</span><span>5</span></span> × <span class=\"fr\"><span>7</span><span>4</span></span> = <span class=\"fr\"><span>14</span><span>20</span></span></span>",
+     "<span class=\"math\">A = <span class=\"fr\"><span>12</span><span>20</span></span> + <span class=\"fr\"><span>14</span><span>20</span></span> = <span class=\"fr\"><span>26</span><span>20</span></span></span>",
      "النتيجة: <span class=\"math\">A = 1,3</span>"
     ],
     "rubric": [
@@ -634,7 +642,7 @@
     "h1": "<span class=\"math\">1,2 × 7 = 8,4</span> و<span class=\"math\">8,4 ÷ 12,5 = 0,672</span>.",
     "h2": "<span class=\"math\">10⁻² ÷ 10³ = 10⁻⁵</span>.",
     "steps": [
-     "<span class=\"math\">B = (8,4/12,5) × 10⁻²⁻³</span>",
+     "<span class=\"math\">B = (<span class=\"fr\"><span>8,4</span><span>12,5</span></span>) × 10⁻²⁻³</span>",
      "<span class=\"math\">B = 0,672 × 10⁻⁵</span>",
      "<span class=\"math\">0,672 = 6,72 × 10⁻¹</span>",
      "النتيجة: <span class=\"math\">B = 6,72 × 10⁻⁶</span>"
@@ -741,7 +749,7 @@
     "h2": "البسط <span class=\"math\">(2 + √2)√2 = 2√2 + 2</span>.",
     "steps": [
      "<span class=\"math\">B = (2 + √2)√2 / 2</span>",
-     "<span class=\"math\">= (2√2 + 2)/2</span>",
+     "<span class=\"math\">= <span class=\"fr\"><span>2√2 + 2</span><span>2</span></span></span>",
      "النتيجة: <span class=\"math\">B = √2 + 1</span>"
     ],
     "rubric": [
@@ -884,7 +892,7 @@
    },
    {
     "qId": "4-2",
-    "text": "2) اكتب <span class=\"math\">1053/832</span> على شكل كسر غير قابل للاختزال.",
+    "text": "2) اكتب <span class=\"math\"><span class=\"fr\"><span>1053</span><span>832</span></span></span> على شكل كسر غير قابل للاختزال.",
     "exact": [
      "81/64"
     ],
@@ -893,7 +901,7 @@
     "h2": "<span class=\"math\">1053 ÷ 13</span> و<span class=\"math\">832 ÷ 13</span>.",
     "steps": [
      "<span class=\"math\">1053 ÷ 13 = 81</span> و<span class=\"math\">832 ÷ 13 = 64</span>",
-     "النتيجة: <span class=\"math\">81/64</span>"
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>81</span><span>64</span></span></span>"
     ],
     "rubric": [
      {
@@ -949,7 +957,7 @@
   "id": 5,
   "pts": 5,
   "title": "التمرين 1: كسور وجذور",
-  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2020، التمرين الأول)</span><br>إليك العددين <span class=\"math\">A</span> و<span class=\"math\">B</span> حيث: <span class=\"math\">A = 2/3 + 7/3 × 5/14</span> و<span class=\"math\">B = 2√112 − 3√28 + √7</span>.",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2020، التمرين الأول)</span><br>إليك العددين <span class=\"math\">A</span> و<span class=\"math\">B</span> حيث: <span class=\"math\">A = <span class=\"fr\"><span>2</span><span>3</span></span> + <span class=\"fr\"><span>7</span><span>3</span></span> × <span class=\"fr\"><span>5</span><span>14</span></span></span> و<span class=\"math\">B = 2√112 − 3√28 + √7</span>.",
   "questions": [
    {
     "qId": "5-1",
@@ -961,12 +969,12 @@
      "9/6",
      "27/18"
     ],
-    "h1": "الضرب أولا: <span class=\"math\">7/3 × 5/14 = 35/42 = 5/6</span>.",
-    "h2": "<span class=\"math\">2/3 = 4/6</span>.",
+    "h1": "الضرب أولا: <span class=\"math\"><span class=\"fr\"><span>7</span><span>3</span></span> × <span class=\"fr\"><span>5</span><span>14</span></span> = <span class=\"fr\"><span>35</span><span>42</span></span> = <span class=\"fr\"><span>5</span><span>6</span></span></span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span> = <span class=\"fr\"><span>4</span><span>6</span></span></span>.",
     "steps": [
-     "<span class=\"math\">7/3 × 5/14 = 5/6</span>",
-     "<span class=\"math\">A = 4/6 + 5/6 = 9/6</span>",
-     "النتيجة: <span class=\"math\">A = 3/2</span>"
+     "<span class=\"math\"><span class=\"fr\"><span>7</span><span>3</span></span> × <span class=\"fr\"><span>5</span><span>14</span></span> = <span class=\"fr\"><span>5</span><span>6</span></span></span>",
+     "<span class=\"math\">A = <span class=\"fr\"><span>4</span><span>6</span></span> + <span class=\"fr\"><span>5</span><span>6</span></span> = <span class=\"fr\"><span>9</span><span>6</span></span></span>",
+     "النتيجة: <span class=\"math\">A = <span class=\"fr\"><span>3</span><span>2</span></span></span>"
     ],
     "rubric": [
      {
@@ -1159,11 +1167,11 @@
   "id": 7,
   "pts": 5,
   "title": "التمرين 3: كسر وجذور",
-  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2023، التمرين الأول)</span><br>لتكن الأعداد <span class=\"math\">A</span> ، <span class=\"math\">B</span> ، <span class=\"math\">C</span> حيث: <span class=\"math\">A = 756/216</span> ، <span class=\"math\">B = √117 + 3√52 − √637</span> ، <span class=\"math\">C = 3√13/√3</span>.",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2023، التمرين الأول)</span><br>لتكن الأعداد <span class=\"math\">A</span> ، <span class=\"math\">B</span> ، <span class=\"math\">C</span> حيث: <span class=\"math\">A = <span class=\"fr\"><span>756</span><span>216</span></span></span> ، <span class=\"math\">B = √117 + 3√52 − √637</span> ، <span class=\"math\">C = 3√13/√3</span>.",
   "questions": [
    {
     "qId": "7-1",
-    "text": "1) اكتب <span class=\"math\">A = 756/216</span> على شكل كسر غير قابل للاختزال.",
+    "text": "1) اكتب <span class=\"math\">A = <span class=\"fr\"><span>756</span><span>216</span></span></span> على شكل كسر غير قابل للاختزال.",
     "exact": [
      "7/2"
     ],
@@ -1177,7 +1185,7 @@
     "steps": [
      "<span class=\"math\">PGCD(756 ; 216) = 108</span>",
      "<span class=\"math\">756 ÷ 108 = 7</span> و<span class=\"math\">216 ÷ 108 = 2</span>",
-     "النتيجة: <span class=\"math\">A = 7/2</span>"
+     "النتيجة: <span class=\"math\">A = <span class=\"fr\"><span>7</span><span>2</span></span></span>"
     ],
     "rubric": [
      {
@@ -1238,7 +1246,7 @@
     "h2": "<span class=\"math\">78/√3</span> ثم اجعل المقام ناطقا.",
     "steps": [
      "<span class=\"math\">B × C = 2√13 × 3√13 / √3 = 78/√3</span>",
-     "<span class=\"math\">78/√3 = 78√3/3</span>",
+     "<span class=\"math\">78/√3 = 78√<span class=\"fr\"><span>3</span><span>3</span></span></span>",
      "النتيجة: <span class=\"math\">B × C = 26√3</span>"
     ],
     "rubric": [
@@ -1274,7 +1282,7 @@
      "5",
      "2"
     ],
-    "h1": "<span class=\"math\">77 = 65 × 1 + 12</span>.",
+    "h1": "استعمل خوارزمية إقليدس: ابدأ بقسمة <span class=\"math\">77</span> على <span class=\"math\">65</span>.",
     "h2": "تابع حتى باق معدوم.",
     "steps": [
      "<span class=\"math\">77 = 65 × 1 + 12</span>",
@@ -1346,7 +1354,7 @@
     "h2": "البسط: <span class=\"math\">(√5 + 4)√5 = 5 + 4√5</span>.",
     "steps": [
      "<span class=\"math\">C = (√5 + 4)√5 / (√5 × √5)</span>",
-     "النتيجة: <span class=\"math\">C = (5 + 4√5)/5</span>"
+     "النتيجة: <span class=\"math\">C = <span class=\"fr\"><span>5 + 4√5</span><span>5</span></span></span>"
     ],
     "rubric": [
      {
@@ -1584,17 +1592,17 @@
      "1600",
      "40"
     ],
-    "h1": "إذا كان الطول <span class=\"math\">L</span> فالعرض <span class=\"math\">2/3 L</span> والمساحة <span class=\"math\">L × 2/3 L</span>.",
-    "h2": "<span class=\"math\">2/3 L² = 2400</span> أي <span class=\"math\">L² = 3600</span>.",
+    "h1": "إذا كان الطول <span class=\"math\">L</span> فالعرض <span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span> L</span> والمساحة <span class=\"math\">L × <span class=\"fr\"><span>2</span><span>3</span></span> L</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span> L² = 2400</span> أي <span class=\"math\">L² = 3600</span>.",
     "steps": [
-     "<span class=\"math\">L × (2/3)L = 2400</span>",
-     "<span class=\"math\">L² = 2400 × 3/2 = 3600</span>",
+     "<span class=\"math\">L × (<span class=\"fr\"><span>2</span><span>3</span></span>)L = 2400</span>",
+     "<span class=\"math\">L² = 2400 × <span class=\"fr\"><span>3</span><span>2</span></span> = 3600</span>",
      "<span class=\"math\">L &gt; 0</span> إذن <span class=\"math\">L = √3600</span>",
      "النتيجة: <span class=\"math\">L = 60 m</span>"
     ],
     "rubric": [
      {
-      "step": "المعادلة <span class=\"math\">(2/3)L² = 2400</span>",
+      "step": "المعادلة <span class=\"math\">(<span class=\"fr\"><span>2</span><span>3</span></span>)L² = 2400</span>",
       "mark": "1,25"
      },
      {
@@ -1607,7 +1615,7 @@
      }
     ],
     "pts": 3.0,
-    "partialMsg": "المساحة = الطول × العرض، والعرض <span class=\"math\">2/3</span> الطول.",
+    "partialMsg": "المساحة = الطول × العرض، والعرض <span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span></span> الطول.",
     "partialZero": true
    },
    {
@@ -1619,10 +1627,10 @@
     "partial": [
      "90"
     ],
-    "h1": "العرض = <span class=\"math\">2/3</span> الطول.",
-    "h2": "<span class=\"math\">2/3 × 60</span>.",
+    "h1": "العرض = <span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span></span> الطول.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span> × 60</span>.",
     "steps": [
-     "<span class=\"math\">l = (2/3) × 60</span>",
+     "<span class=\"math\">l = (<span class=\"fr\"><span>2</span><span>3</span></span>) × 60</span>",
      "النتيجة: <span class=\"math\">l = 40 m</span>"
     ],
     "rubric": [
@@ -1646,7 +1654,7 @@
   "id": 12,
   "pts": 5,
   "title": "التمرين 4: بعدا أرض عمي أحمد",
-  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2015، الجزء الثاني (بداية الوضعية))</span><br>لعمّي أحمد قطعة أرض مستطيلة الشكل مساحتها <span class=\"math\">1000 m²</span> وعرضها خُمسا (<span class=\"math\">2/5</span>) طولها.",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2015، الجزء الثاني (بداية الوضعية))</span><br>لعمّي أحمد قطعة أرض مستطيلة الشكل مساحتها <span class=\"math\">1000 m²</span> وعرضها خُمسا (<span class=\"math\"><span class=\"fr\"><span>2</span><span>5</span></span></span>) طولها.",
   "questions": [
    {
     "qId": "12-1",
@@ -1659,11 +1667,11 @@
      "400",
      "20"
     ],
-    "h1": "إذا كان الطول <span class=\"math\">L</span> فالعرض <span class=\"math\">(2/5)L</span>.",
-    "h2": "<span class=\"math\">(2/5)L² = 1000</span> أي <span class=\"math\">L² = 2500</span>.",
+    "h1": "إذا كان الطول <span class=\"math\">L</span> فالعرض <span class=\"math\">(<span class=\"fr\"><span>2</span><span>5</span></span>)L</span>.",
+    "h2": "<span class=\"math\">(<span class=\"fr\"><span>2</span><span>5</span></span>)L² = 1000</span> أي <span class=\"math\">L² = 2500</span>.",
     "steps": [
-     "<span class=\"math\">L × (2/5)L = 1000</span>",
-     "<span class=\"math\">L² = 1000 × 5/2 = 2500</span>",
+     "<span class=\"math\">L × (<span class=\"fr\"><span>2</span><span>5</span></span>)L = 1000</span>",
+     "<span class=\"math\">L² = 1000 × <span class=\"fr\"><span>5</span><span>2</span></span> = 2500</span>",
      "<span class=\"math\">L &gt; 0</span> إذن <span class=\"math\">L = √2500</span>",
      "النتيجة: <span class=\"math\">L = 50 m</span>"
     ],
@@ -1682,7 +1690,7 @@
      }
     ],
     "pts": 3.0,
-    "partialMsg": "العرض <span class=\"math\">2/5</span> الطول.",
+    "partialMsg": "العرض <span class=\"math\"><span class=\"fr\"><span>2</span><span>5</span></span></span> الطول.",
     "partialZero": true
    },
    {
@@ -1694,10 +1702,10 @@
     "partial": [
      "125"
     ],
-    "h1": "<span class=\"math\">(2/5) × 50</span>.",
+    "h1": "<span class=\"math\">(<span class=\"fr\"><span>2</span><span>5</span></span>) × 50</span>.",
     "h2": "العرض = خُمسا الطول.",
     "steps": [
-     "<span class=\"math\">l = (2/5) × 50</span>",
+     "<span class=\"math\">l = (<span class=\"fr\"><span>2</span><span>5</span></span>) × 50</span>",
      "النتيجة: <span class=\"math\">l = 20 m</span>"
     ],
     "rubric": [
@@ -1850,6 +1858,8 @@
             inp.classList.add('shake');
         }
 
+        const FBMSG = {"ok": ["أحسنت! تركيزك أوصلك إلى الجواب الصحيح.", "ممتاز! أخذت وقتك وفكّرت جيدا، وهذه هي النتيجة.", "برافو! التأنّي في الحساب يصنع النجاح.", "رائع! جهدك يستحق هذه النجوم.", "إجابة صحيحة! واصل بنفس الهدوء والتركيز.", "أحسنت! من يقرأ السؤال جيدا يصل إلى الحل.", "عمل متقن! الدقة أهم من السرعة، وأنت أثبتّ ذلك.", "بارك الله فيك! تقدّم خطوة بخطوة كما فعلت الآن."], "w1": ["لا بأس، الخطأ جزء من التعلّم. أعد قراءة السؤال بهدوء.", "تمهّل قليلا: كلما أسرعت قلّ تركيزك. خذ وقتك.", "محاولة جيدة! راجع حسابك خطوة بخطوة.", "كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.", "لا تستعجل. اقرأ المعطيات من جديد ثم فكّر.", "أنت قريب. أعطِ هذا السؤال الوقت الذي يحتاجه.", "الخطأ ليس فشلا بل خطوة نحو الفهم. حاول مجددا.", "هدّئ السرعة وزِد التركيز، وستجد الطريق."], "w2": ["محاولة أخيرة: اكتب الحساب على ورقة قبل أن تجيب.", "لا تيأس! التركيز يأتي مع الهدوء. اقرأ التلميح جيدا.", "السرعة والتركيز لا يجتمعان: تمهّل في هذه المحاولة الأخيرة.", "ابذل جهدا إضافيا صغيرا، فالحل قريب منك.", "راجع كل خطوة على حدة، ولا تتسرّع.", "كل العلماء أخطؤوا قبل أن ينجحوا. ركّز في هذه المحاولة."], "fail": ["لا تحزن، الخطأ جزء من التعلّم. اقرأ الإجابة النموذجية وسلم التنقيط بتمعّن.", "تعلّمنا شيئا جديدا اليوم! تأمّل خطوات الحل، وأعد التمرين غدا بهدوء.", "لا بأس، الفهم يحتاج وقتا وجهدا. راجع الحل خطوة بخطوة.", "المهم أن نفهم لماذا أخطأنا. اقرأ الحل، ثم حاول إعادته وحدك على ورقة.", "الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة."]};
+        function fbPick(kind, qId) { const a = FBMSG[kind]; const p = String(qId).split('-'); const n = (+p[0]) * 3 + (+p[1] || 0) + kind.length; return a[n % a.length]; }
         function checkAns(exId, qId) {
             if (questionLocked[qId]) return;
             const ex = exercises.find(e => e.id === exId);
@@ -1884,7 +1894,7 @@
                 document.getElementById(`btn-${qId}`).disabled = true;
 
                 fb.className = 'feedback-box success';
-                fb.innerHTML = `<span class="star-burst">${starIcons}</span> أحسنت يا بطل! إجابة صحيحة وممتازة. نلت العلامة الكاملة (<span class="math">${String(q.pts).replace('.', ',')} ن</span>).`;
+                fb.innerHTML = `<span class="star-burst">${starIcons}</span> ${fbPick('ok', qId)} نلت العلامة الكاملة (<span class="math">${String(q.pts).replace('.', ',')} ن</span>).`;
                 document.getElementById(`sol-${qId}`).style.display = 'block';
                 updateHeaderStats();
                 return;
@@ -1920,10 +1930,10 @@
 
             if (rem === 2) {
                 fb.className = 'feedback-box hint';
-                fb.innerHTML = `${customReason ? customReason + '<br>' : 'لا بأس، حاول مرة أخرى بتأنٍّ!<br>'}<strong>💡 التلميح 1:</strong> ${q.h1}`;
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w1', qId) + '<br>'}<strong>💡 التلميح 1:</strong> ${q.h1}`;
             } else if (rem === 1) {
                 fb.className = 'feedback-box hint';
-                fb.innerHTML = `${customReason ? customReason + '<br>' : 'قاربت على الوصول، ركّز جيداً في هذه المحاولة الأخيرة!<br>'}<strong>💡 التلميح 2:</strong> ${q.h2}`;
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w2', qId) + '<br>'}<strong>💡 التلميح 2:</strong> ${q.h2}`;
             } else {
                 questionLocked[qId] = true;
                 completedQuestions++;
@@ -1932,7 +1942,7 @@
                 document.getElementById(`qbox-${qId}`).classList.add('failed');
 
                 fb.className = 'feedback-box fail';
-                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 محاولة طيبة! لا تحزن، التعلم يأتي بالمحاولة. اقرأ الإجابة النموذجية وسلم التنقيط بتمعن لتتقن الفكرة في المرة القادمة.';
+                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 ' + fbPick('fail', qId);
                 document.getElementById(`sol-${qId}`).style.display = 'block';
                 updateHeaderStats();
             }

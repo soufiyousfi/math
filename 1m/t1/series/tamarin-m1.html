@@ -60,6 +60,14 @@ button{font:inherit;cursor:pointer;border-radius:8px;border:1px solid var(--line
 .reset{background:var(--card);color:var(--ink);padding:7px 16px;margin-top:8px}
 .ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
 @media (max-width:520px){body{font-size:16px} .keys button{min-width:38px}}
+
+        .fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; line-height: 1.05; margin: 0 2px; font-size: .92em; }
+        .fr > span:first-child { border-bottom: 2px solid currentColor; padding: 0 3px 1px; }
+        .fr > span:last-child { padding: 1px 3px 0; }
+        .vop { display: inline-block; direction: ltr; unicode-bidi: isolate; font-family: 'Courier New', Courier, monospace; font-weight: 700;
+               background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
+        .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
+        .vop .ln { border-top: 2px solid #0f172a; }
 </style>
 </head>
 <body>
@@ -94,9 +102,9 @@ button{font:inherit;cursor:pointer;border-radius:8px;border:1px solid var(--line
 */
 const DATA = [
  {title:"التمرين الأول", sub:"جمع وطرح وضرب الأعداد الطبيعية",
-  ctx:"باع فلاح من بسكرة يوم السبت 1245 kg من التمر، وباع يوم الأحد 2378 kg.",
+  ctx:"باع فلاح من بوشقوف يوم السبت 1245 kg من الزيتون، وباع يوم الأحد 2378 kg.",
   qs:[
-   {q:"1) ما هي كمية التمر التي باعها الفلاح في اليومين؟",
+   {q:"1) ما هي كمية الزيتون التي باعها الفلاح في اليومين؟",
     steps:[
      {label:"اكتب العملية المناسبة", type:"expr", ans:3623, pts:0.5,
       hints:["نبحث عن الكمية الكلية: هل نجمع أم نطرح؟","اجمع كمية السبت وكمية الأحد: 1245 + ..."],
@@ -116,7 +124,7 @@ const DATA = [
       expl:"الآحاد 8−5=3، العشرات 7−4=3، المئات 3−2=1، الآلاف 2−1=1. للتحقق: 1245 + 1133 = 2378.",
       calc:"2378 − 1245 = 1133\nيزيد بـ 1133 kg"}
     ]},
-   {q:"3) باع الفلاح تمر يوم الأحد بسعر 350 DA للكيلوغرام الواحد. ما هو المبلغ الذي تحصّل عليه يوم الأحد؟",
+   {q:"3) باع الفلاح زيتون يوم الأحد بسعر 350 DA للكيلوغرام الواحد. ما هو المبلغ الذي تحصّل عليه يوم الأحد؟",
     steps:[
      {label:"اكتب العملية المناسبة", type:"expr", ans:832300, pts:1,
       hints:["ثمن كيلوغرام واحد معلوم، ونريد ثمن عدة كيلوغرامات: أي عملية؟","نضرب الكمية في ثمن الكيلوغرام الواحد: 2378 × ..."],
@@ -152,7 +160,7 @@ const DATA = [
       expl:"ضرب عدد في 0,1 يعطي نفس نتيجة قسمته على 10.", calc:"25 × 0,1 = 25 ÷ 10 = 2,5"}]}
   ]},
  {title:"التمرين الثالث", sub:"مقارنة وترتيب الأعداد العشرية",
-  ctx:"في حصة التربية البدنية بمتوسطة في الجلفة، قفز أمين 3,45 m، وقفز ياسين 3,5 m، وقفزت رانية 3,405 m.",
+  ctx:"في حصة التربية البدنية بمتوسطة في وادي فراغة، قفز أمين 3,45 m، وقفز ياسين 3,5 m، وقفزت رانية 3,405 m.",
   qs:[
    {q:"1) ضع الرمز المناسب (< أو > أو =) بين العددين: 7,5 … 7,48",
     steps:[{label:"الرمز", type:"cmp", ans:">", pts:1,
@@ -175,7 +183,7 @@ const DATA = [
       calc:"4,6 < 4,65 < 4,7"}]}
   ]},
  {title:"التمرين الرابع", sub:"العمليات على الأعداد العشرية ورتبة مقدار نتيجة حساب",
-  ctx:"في سوق سطيف، اشترت سلمى 2,5 kg من الطماطم بسعر 85,40 DA للكيلوغرام، و 1,2 kg من البطاطا بسعر 64,5 DA للكيلوغرام، ودفعت للبائع ورقة 500 DA.",
+  ctx:"في سوق بوشقوف، اشترت سلمى 2,5 kg من الطماطم بسعر 85,40 DA للكيلوغرام، و 1,2 kg من البطاطا بسعر 64,5 DA للكيلوغرام، ودفعت للبائع ورقة 500 DA.",
   qs:[
    {q:"1) أعط رتبة مقدار لثمن الطماطم (بدون حساب دقيق).",
     steps:[{label:"رتبة المقدار (بالدينار)", type:"range", lo:199.99, hi:270.01, nlo:150, nhi:320, pts:1,
@@ -332,6 +340,9 @@ function build(){
           else { inp.value = inp.value.slice(0,p) + k + inp.value.slice(q2); inp.setSelectionRange(p+k.length, p+k.length); }
           inp.focus();
         }));
+        const FBMSG = {"ok": ["أحسنت! تركيزك أوصلك إلى الجواب الصحيح.", "ممتاز! أخذت وقتك وفكّرت جيدا، وهذه هي النتيجة.", "برافو! التأنّي في الحساب يصنع النجاح.", "رائع! جهدك يستحق هذه النجوم.", "إجابة صحيحة! واصل بنفس الهدوء والتركيز.", "أحسنت! من يقرأ السؤال جيدا يصل إلى الحل.", "عمل متقن! الدقة أهم من السرعة، وأنت أثبتّ ذلك.", "بارك الله فيك! تقدّم خطوة بخطوة كما فعلت الآن."], "w1": ["لا بأس، الخطأ جزء من التعلّم. أعد قراءة السؤال بهدوء.", "تمهّل قليلا: كلما أسرعت قلّ تركيزك. خذ وقتك.", "محاولة جيدة! راجع حسابك خطوة بخطوة.", "كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.", "لا تستعجل. اقرأ المعطيات من جديد ثم فكّر.", "أنت قريب. أعطِ هذا السؤال الوقت الذي يحتاجه.", "الخطأ ليس فشلا بل خطوة نحو الفهم. حاول مجددا.", "هدّئ السرعة وزِد التركيز، وستجد الطريق."], "w2": ["محاولة أخيرة: اكتب الحساب على ورقة قبل أن تجيب.", "لا تيأس! التركيز يأتي مع الهدوء. اقرأ التلميح جيدا.", "السرعة والتركيز لا يجتمعان: تمهّل في هذه المحاولة الأخيرة.", "ابذل جهدا إضافيا صغيرا، فالحل قريب منك.", "راجع كل خطوة على حدة، ولا تتسرّع.", "كل العلماء أخطؤوا قبل أن ينجحوا. ركّز في هذه المحاولة."], "fail": ["لا تحزن، الخطأ جزء من التعلّم. اقرأ الإجابة النموذجية وسلم التنقيط بتمعّن.", "تعلّمنا شيئا جديدا اليوم! تأمّل خطوات الحل، وأعد التمرين غدا بهدوء.", "لا بأس، الفهم يحتاج وقتا وجهدا. راجع الحل خطوة بخطوة.", "المهم أن نفهم لماذا أخطأنا. اقرأ الحل، ثم حاول إعادته وحدك على ورقة.", "الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة."]};
+        function fbPick(kind, qId) { const a = FBMSG[kind]; const p = String(qId).split('-'); let n = (+p[0]) * 3 + (+p[1] || 0) + kind.length;
+            if (isNaN(n)) { n = kind.length; for (const c of String(qId)) n = (n * 7 + c.charCodeAt(0)) % 9973; } return a[n % a.length]; }
         const say = (cls, html) => { msg.className = "msg show " + cls; msg.innerHTML = html; };
         const finish = (pts) => {
           const S = state[id]; S.done = true; S.pts = pts;
@@ -345,11 +356,11 @@ function build(){
           if(r === "plain"){ say("hint", "المطلوب في هذه الخطوة هو كتابة <b>العملية</b> (مثلا: عدد + عدد) وليس النتيجة فقط."); return; }
           S.tries++;
           const m = MULT[S.tries-1];
-          if(r === "ok"){ say("good", `أحسنت! جواب صحيح. حصلت على ${fmtPts(st.pts*m)} من ${fmtPts(st.pts)}.`); finish(st.pts*m); return; }
+          if(r === "ok"){ say("good", `${fbPick('ok', id)} حصلت على ${fmtPts(st.pts*m)} من ${fmtPts(st.pts)}.`); finish(st.pts*m); return; }
           if(r === "near"){ say("hint", `جوابك قريب من الصحيح ويُقبل بعلامة أقل: ${fmtPts(st.pts*m*NEAR)} من ${fmtPts(st.pts)}. الجواب الدقيق في الشرح أسفله.`); finish(st.pts*m*NEAR); return; }
           if(S.tries < 3){ tr.textContent = "المحاولات المتبقية: " + (3 - S.tries);
-            say("bad", `جواب غير صحيح. <b>تلميح:</b> ${st.hints[S.tries-1]}`); inp.select(); return; }
-          say("bad", "انتهت المحاولات الثلاث. اقرأ الشرح المفصل جيدا ثم انتقل إلى الخطوة التالية."); tr.textContent = ""; finish(0);
+            say("bad", `${fbPick(S.tries === 1 ? 'w1' : 'w2', id)}<br><b>تلميح:</b> ${st.hints[S.tries-1]}`); inp.select(); return; }
+          say("bad", "انتهت المحاولات الثلاث. " + fbPick('fail', id)); tr.textContent = ""; finish(0);
         };
         btn.addEventListener("click", check);
         inp.addEventListener("keydown", ev => { if(ev.key === "Enter") check(); });

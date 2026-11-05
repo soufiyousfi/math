@@ -499,7 +499,15 @@
             input[type="text"], .btn-check { width: 100%; }
         }
     .part-head{margin:26px 4px 10px;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,#0f766e,#1e3a8a);color:#fff;font-weight:800;font-size:1.08rem}
-</style>
+
+        .fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; line-height: 1.05; margin: 0 2px; font-size: .92em; }
+        .fr > span:first-child { border-bottom: 2px solid currentColor; padding: 0 3px 1px; }
+        .fr > span:last-child { padding: 1px 3px 0; }
+        .vop { display: inline-block; direction: ltr; unicode-bidi: isolate; font-family: 'Courier New', Courier, monospace; font-weight: 700;
+               background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
+        .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
+        .vop .ln { border-top: 2px solid #0f172a; }
+    </style>
 </head>
 <body>
 
@@ -600,10 +608,10 @@
      "66/44"
     ],
     "h1": "خاصية طالس: <span class=\"math\">OA/OB = OC/OD</span>.",
-    "h2": "<span class=\"math\">66/44</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>66</span><span>44</span></span></span>.",
     "steps": [
-     "<span class=\"math\">OA/OB = OC/OD = 66/44</span>",
-     "النتيجة: <span class=\"math\">OA/OB = 3/2 = 1,5</span>"
+     "<span class=\"math\">OA/OB = OC/OD = <span class=\"fr\"><span>66</span><span>44</span></span></span>",
+     "النتيجة: <span class=\"math\">OA/OB = <span class=\"fr\"><span>3</span><span>2</span></span> = 1,5</span>"
     ],
     "rubric": [
      {
@@ -731,10 +739,10 @@
      "8/6"
     ],
     "h1": "<span class=\"math\">tan x = sin x / cos x</span>.",
-    "h2": "<span class=\"math\">0,8/0,6</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>0,8</span><span>0,6</span></span></span>.",
     "steps": [
-     "<span class=\"math\">tan x = 0,8/0,6 = 8/6</span>",
-     "النتيجة: <span class=\"math\">tan x = 4/3</span>"
+     "<span class=\"math\">tan x = <span class=\"fr\"><span>0,8</span><span>0,6</span></span> = <span class=\"fr\"><span>8</span><span>6</span></span></span>",
+     "النتيجة: <span class=\"math\">tan x = <span class=\"fr\"><span>4</span><span>3</span></span></span>"
     ],
     "rubric": [
      {
@@ -760,9 +768,9 @@
      "6,25"
     ],
     "h1": "السلم وتر مثلث قائم، والارتفاع هو الضلع المقابل للزاوية <span class=\"math\">x</span>.",
-    "h2": "<span class=\"math\">sin x = h/5</span>.",
+    "h2": "<span class=\"math\">sin x = <span class=\"fr\"><span>h</span><span>5</span></span></span>.",
     "steps": [
-     "<span class=\"math\">sin x = h/5</span>",
+     "<span class=\"math\">sin x = <span class=\"fr\"><span>h</span><span>5</span></span></span>",
      "<span class=\"math\">h = 5 × 0,8</span>",
      "النتيجة: <span class=\"math\">h = 4 m</span>"
     ],
@@ -787,7 +795,7 @@
   "id": 3,
   "pts": 5,
   "title": "التمرين 3: ظل زاوية وعكس طالس",
-  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2021، التمرين الثالث)</span><br>وحدة الطول هي السنتيمتر. <span class=\"math\">BEM</span> مثلث قائم في <span class=\"math\">B</span> حيث: <span class=\"math\">BE = 4,8</span> و<span class=\"math\">tan M = 4/3</span>.",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2021، التمرين الثالث)</span><br>وحدة الطول هي السنتيمتر. <span class=\"math\">BEM</span> مثلث قائم في <span class=\"math\">B</span> حيث: <span class=\"math\">BE = 4,8</span> و<span class=\"math\">tan M = <span class=\"fr\"><span>4</span><span>3</span></span></span>.",
   "questions": [
    {
     "qId": "3-1",
@@ -799,7 +807,7 @@
      "6,4"
     ],
     "h1": "<span class=\"math\">tan M = BE/BM</span>.",
-    "h2": "<span class=\"math\">4/3 = 4,8/BM</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>4</span><span>3</span></span> = 4,8/BM</span>.",
     "steps": [
      "<span class=\"math\">BM = 4,8 × 3 ÷ 4</span>",
      "النتيجة: <span class=\"math\">BM = 3,6 cm</span>"
@@ -857,13 +865,13 @@
     "partial": [
      "2/6"
     ],
-    "h1": "<span class=\"math\">2/6</span> و<span class=\"math\">1,6/4,8</span>.",
+    "h1": "<span class=\"math\"><span class=\"fr\"><span>2</span><span>6</span></span></span> و<span class=\"math\"><span class=\"fr\"><span>1,6</span><span>4,8</span></span></span>.",
     "h2": "اختزل كلا منهما.",
     "steps": [
-     "<span class=\"math\">EK/EM = 2/6 = 1/3</span>",
-     "<span class=\"math\">EL/EB = 1,6/4,8 = 1/3</span>",
+     "<span class=\"math\">EK/EM = <span class=\"fr\"><span>2</span><span>6</span></span> = <span class=\"fr\"><span>1</span><span>3</span></span></span>",
+     "<span class=\"math\">EL/EB = <span class=\"fr\"><span>1,6</span><span>4,8</span></span> = <span class=\"fr\"><span>1</span><span>3</span></span></span>",
      "النقط <span class=\"math\">E ، K ، M</span> و<span class=\"math\">E ، L ، B</span> في نفس الترتيب: <span class=\"math\">(KL) // (BM)</span>",
-     "النتيجة: <span class=\"math\">1/3</span> إذن <span class=\"math\">(KL) // (BM)</span>"
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>1</span><span>3</span></span></span> إذن <span class=\"math\">(KL) // (BM)</span>"
     ],
     "rubric": [
      {
@@ -929,7 +937,7 @@
      "53,13"
     ],
     "h1": "<span class=\"math\">cos MBA = BM/BA</span>.",
-    "h2": "<span class=\"math\">6/10 = 0,6</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>6</span><span>10</span></span> = 0,6</span>.",
     "steps": [
      "<span class=\"math\">cos MBA = 0,6</span>",
      "<span class=\"math\">MBA ≈ 53,13°</span>",
@@ -960,7 +968,7 @@
      "14,28"
     ],
     "h1": "<span class=\"math\">(EF) // (AM)</span> لأنهما عموديان على <span class=\"math\">(BM)</span>.",
-    "h2": "<span class=\"math\">BF/BA = BE/BM</span> أي <span class=\"math\">BF/10 = 4,2/6</span>.",
+    "h2": "<span class=\"math\">BF/BA = BE/BM</span> أي <span class=\"math\">BF/10 = <span class=\"fr\"><span>4,2</span><span>6</span></span></span>.",
     "steps": [
      "<span class=\"math\">(EF) // (AM)</span>",
      "<span class=\"math\">BF = 10 × 4,2 ÷ 6</span>",
@@ -1069,8 +1077,8 @@
     "h2": "<span class=\"math\">NK/JM = IK/IM</span> مع <span class=\"math\">IM = 4 + 3 = 7</span>.",
     "steps": [
      "<span class=\"math\">IM = 7</span>",
-     "<span class=\"math\">NK/5 = 4/7</span>",
-     "النتيجة: <span class=\"math\">NK = 20/7 ≈ 2,86 cm</span>"
+     "<span class=\"math\">NK/5 = <span class=\"fr\"><span>4</span><span>7</span></span></span>",
+     "النتيجة: <span class=\"math\">NK = <span class=\"fr\"><span>20</span><span>7</span></span> ≈ 2,86 cm</span>"
     ],
     "rubric": [
      {
@@ -1093,7 +1101,7 @@
   "id": 6,
   "pts": 5,
   "title": "التمرين 2: جيب زاوية وعلاقة بين طولين",
-  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2026، التمرين الثالث)</span><br>(الشكل مرسوم بأطوال غير حقيقية، لا يُطلب إعادة رسمه). <span class=\"math\">EFG</span> مثلث قائم في <span class=\"math\">E</span> حيث: <span class=\"math\">GF = 12 cm</span> و<span class=\"math\">sin EGF = 3/4</span>.<br><span class=\"math\">M</span> و<span class=\"math\">N</span> نقطتان من القطعتين <span class=\"math\">[GF]</span> و<span class=\"math\">[EF]</span> على الترتيب حيث: <span class=\"math\">(MN)</span> عمودي على <span class=\"math\">(EF)</span>.<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 328 300\" width=\"328\" height=\"300\" style=\"max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff\" font-family=\"Arial\"><rect width=\"328\" height=\"300\" fill=\"#fff\"/><line x1=\"46.0\" y1=\"254.0\" x2=\"282.0\" y2=\"254.0\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><line x1=\"282.0\" y1=\"254.0\" x2=\"46.0\" y2=\"46.0\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><line x1=\"46.0\" y1=\"46.0\" x2=\"46.0\" y2=\"254.0\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><line x1=\"177.1\" y1=\"161.5\" x2=\"177.1\" y2=\"254.0\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><polyline points=\"46.0,243.0 57.0,243.0 57.0,254.0\" fill=\"none\" stroke=\"#b91c1c\" stroke-width=\"1.5\"/><polyline points=\"177.1,243.0 188.1,243.0 188.1,254.0\" fill=\"none\" stroke=\"#b91c1c\" stroke-width=\"1.5\"/><circle cx=\"46.0\" cy=\"254.0\" r=\"2.6\" fill=\"#111\"/><text x=\"33.2\" y=\"261.7\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">E</text><circle cx=\"282.0\" cy=\"254.0\" r=\"2.6\" fill=\"#111\"/><text x=\"295.7\" y=\"260.0\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">F</text><circle cx=\"46.0\" cy=\"46.0\" r=\"2.6\" fill=\"#111\"/><text x=\"37.6\" y=\"33.6\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">G</text><circle cx=\"177.1\" cy=\"161.5\" r=\"2.6\" fill=\"#111\"/><text x=\"187.5\" y=\"150.8\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">M</text><circle cx=\"177.1\" cy=\"254.0\" r=\"2.6\" fill=\"#111\"/><text x=\"184.0\" y=\"267.3\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">N</text></svg>",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2026، التمرين الثالث)</span><br>(الشكل مرسوم بأطوال غير حقيقية، لا يُطلب إعادة رسمه). <span class=\"math\">EFG</span> مثلث قائم في <span class=\"math\">E</span> حيث: <span class=\"math\">GF = 12 cm</span> و<span class=\"math\">sin EGF = <span class=\"fr\"><span>3</span><span>4</span></span></span>.<br><span class=\"math\">M</span> و<span class=\"math\">N</span> نقطتان من القطعتين <span class=\"math\">[GF]</span> و<span class=\"math\">[EF]</span> على الترتيب حيث: <span class=\"math\">(MN)</span> عمودي على <span class=\"math\">(EF)</span>.<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 328 300\" width=\"328\" height=\"300\" style=\"max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff\" font-family=\"Arial\"><rect width=\"328\" height=\"300\" fill=\"#fff\"/><line x1=\"46.0\" y1=\"254.0\" x2=\"282.0\" y2=\"254.0\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><line x1=\"282.0\" y1=\"254.0\" x2=\"46.0\" y2=\"46.0\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><line x1=\"46.0\" y1=\"46.0\" x2=\"46.0\" y2=\"254.0\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><line x1=\"177.1\" y1=\"161.5\" x2=\"177.1\" y2=\"254.0\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><polyline points=\"46.0,243.0 57.0,243.0 57.0,254.0\" fill=\"none\" stroke=\"#b91c1c\" stroke-width=\"1.5\"/><polyline points=\"177.1,243.0 188.1,243.0 188.1,254.0\" fill=\"none\" stroke=\"#b91c1c\" stroke-width=\"1.5\"/><circle cx=\"46.0\" cy=\"254.0\" r=\"2.6\" fill=\"#111\"/><text x=\"33.2\" y=\"261.7\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">E</text><circle cx=\"282.0\" cy=\"254.0\" r=\"2.6\" fill=\"#111\"/><text x=\"295.7\" y=\"260.0\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">F</text><circle cx=\"46.0\" cy=\"46.0\" r=\"2.6\" fill=\"#111\"/><text x=\"37.6\" y=\"33.6\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">G</text><circle cx=\"177.1\" cy=\"161.5\" r=\"2.6\" fill=\"#111\"/><text x=\"187.5\" y=\"150.8\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">M</text><circle cx=\"177.1\" cy=\"254.0\" r=\"2.6\" fill=\"#111\"/><text x=\"184.0\" y=\"267.3\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">N</text></svg>",
   "questions": [
    {
     "qId": "6-1",
@@ -1105,9 +1113,9 @@
      "16"
     ],
     "h1": "<span class=\"math\">sin EGF = EF/GF</span>.",
-    "h2": "<span class=\"math\">3/4 = EF/12</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>3</span><span>4</span></span> = EF/12</span>.",
     "steps": [
-     "<span class=\"math\">EF = 12 × 3/4</span>",
+     "<span class=\"math\">EF = 12 × <span class=\"fr\"><span>3</span><span>4</span></span></span>",
      "النتيجة: <span class=\"math\">EF = 9 cm</span>"
     ],
     "rubric": [
@@ -1135,12 +1143,12 @@
      "12/9"
     ],
     "h1": "<span class=\"math\">(MN) // (GE)</span> لأنهما عموديان على <span class=\"math\">(EF)</span>.",
-    "h2": "طالس: <span class=\"math\">FN/FE = FM/FG</span> أي <span class=\"math\">FM/FN = FG/FE = 12/9</span>.",
+    "h2": "طالس: <span class=\"math\">FN/FE = FM/FG</span> أي <span class=\"math\">FM/FN = FG/FE = <span class=\"fr\"><span>12</span><span>9</span></span></span>.",
     "steps": [
      "<span class=\"math\">(MN) // (GE)</span>",
      "<span class=\"math\">FN/9 = FM/12</span>",
      "<span class=\"math\">12 FN = 9 FM</span> أي <span class=\"math\">4FN = 3FM</span>",
-     "النتيجة: <span class=\"math\">FM/FN = 4/3</span> أي <span class=\"math\">3FM = 4FN</span>"
+     "النتيجة: <span class=\"math\">FM/FN = <span class=\"fr\"><span>4</span><span>3</span></span></span> أي <span class=\"math\">3FM = 4FN</span>"
     ],
     "rubric": [
      {
@@ -1177,9 +1185,9 @@
      "21"
     ],
     "h1": "المثلث <span class=\"math\">ABC</span> قائم في <span class=\"math\">C</span> (<span class=\"math\">[AB]</span> قطر).",
-    "h2": "<span class=\"math\">sin BAC = BC/AB = 3/8</span>.",
+    "h2": "<span class=\"math\">sin BAC = BC/AB = <span class=\"fr\"><span>3</span><span>8</span></span></span>.",
     "steps": [
-     "<span class=\"math\">sin BAC = 3/8 = 0,375</span>",
+     "<span class=\"math\">sin BAC = <span class=\"fr\"><span>3</span><span>8</span></span> = 0,375</span>",
      "<span class=\"math\">BAC ≈ 22,02°</span>",
      "النتيجة: <span class=\"math\">BAC ≈ 22°</span>"
     ],
@@ -1208,10 +1216,10 @@
      "6"
     ],
     "h1": "<span class=\"math\">BF = OB = 4</span> إذن <span class=\"math\">AF = 12</span>.",
-    "h2": "<span class=\"math\">(DF) // (BC)</span>: <span class=\"math\">AB/AF = BC/FD</span> أي <span class=\"math\">8/12 = 3/FD</span>.",
+    "h2": "<span class=\"math\">(DF) // (BC)</span>: <span class=\"math\">AB/AF = BC/FD</span> أي <span class=\"math\"><span class=\"fr\"><span>8</span><span>12</span></span> = 3/FD</span>.",
     "steps": [
      "<span class=\"math\">AF = 8 + 4 = 12</span>",
-     "<span class=\"math\">8/12 = 3/DF</span>",
+     "<span class=\"math\"><span class=\"fr\"><span>8</span><span>12</span></span> = 3/DF</span>",
      "النتيجة: <span class=\"math\">DF = 4,5 cm</span>"
     ],
     "rubric": [
@@ -1283,7 +1291,7 @@
     "h2": "<span class=\"math\">13 × TH ÷ 2 = 30</span>، أو <span class=\"math\">sin TIC = TC/CI = TH/TI</span>.",
     "steps": [
      "<span class=\"math\">13 × TH = 60</span>",
-     "<span class=\"math\">TH = 60/13 ≈ 4,615</span>",
+     "<span class=\"math\">TH = <span class=\"fr\"><span>60</span><span>13</span></span> ≈ 4,615</span>",
      "النتيجة: <span class=\"math\">TH ≈ 4,6 cm</span>"
     ],
     "rubric": [
@@ -1322,8 +1330,8 @@
     "h2": "<span class=\"math\">MA/MN = MD/MC</span> و<span class=\"math\">MC = 50 − 20</span>.",
     "steps": [
      "<span class=\"math\">MC = 30 m</span>",
-     "<span class=\"math\">MA/MN = MD/MC = 20/30</span>",
-     "النتيجة: <span class=\"math\">MA/MN = 2/3</span>"
+     "<span class=\"math\">MA/MN = MD/MC = <span class=\"fr\"><span>20</span><span>30</span></span></span>",
+     "النتيجة: <span class=\"math\">MA/MN = <span class=\"fr\"><span>2</span><span>3</span></span></span>"
     ],
     "rubric": [
      {
@@ -1349,10 +1357,10 @@
      "60",
      "80"
     ],
-    "h1": "<span class=\"math\">AD/CN = 2/3</span> أي <span class=\"math\">40/CN = 2/3</span>.",
+    "h1": "<span class=\"math\">AD/CN = <span class=\"fr\"><span>2</span><span>3</span></span></span> أي <span class=\"math\">40/CN = <span class=\"fr\"><span>2</span><span>3</span></span></span>.",
     "h2": "<span class=\"math\">BN = BC + CN</span>.",
     "steps": [
-     "<span class=\"math\">CN = 40 × 3/2 = 60 m</span>",
+     "<span class=\"math\">CN = 40 × <span class=\"fr\"><span>3</span><span>2</span></span> = 60 m</span>",
      "<span class=\"math\">BN = 40 + 60</span>",
      "النتيجة: <span class=\"math\">BN = 100 m</span>"
     ],
@@ -1381,7 +1389,7 @@
      "26,57"
     ],
     "h1": "المثلث <span class=\"math\">ADM</span> قائم في <span class=\"math\">D</span>.",
-    "h2": "<span class=\"math\">tan MAD = DM/AD = 20/40</span>.",
+    "h2": "<span class=\"math\">tan MAD = DM/AD = <span class=\"fr\"><span>20</span><span>40</span></span></span>.",
     "steps": [
      "<span class=\"math\">tan MAD = 0,5</span>",
      "<span class=\"math\">MAD ≈ 26,57°</span>",
@@ -1484,7 +1492,7 @@
     "h1": "العرض هو المسافة بين المستقيمين <span class=\"math\">(AC)</span> و<span class=\"math\">(EF)</span>، أي طول العمود النازل من <span class=\"math\">E</span> على <span class=\"math\">(AC)</span>.",
     "h2": "في المثلث القائم الذي وتره <span class=\"math\">AE</span>: العرض <span class=\"math\">= AE × sin BAC</span> و<span class=\"math\">sin BAC = BC/AC = 0,6</span>.",
     "steps": [
-     "<span class=\"math\">sin BAC = 60/100 = 0,6</span>",
+     "<span class=\"math\">sin BAC = <span class=\"fr\"><span>60</span><span>100</span></span> = 0,6</span>",
      "العرض <span class=\"math\">= 16 × 0,6 = 9,6</span>",
      "النتيجة: عرض الممر <span class=\"math\">≈ 10 m</span>"
     ],
@@ -1610,10 +1618,10 @@
      "7650"
     ],
     "h1": "احسب <span class=\"math\">EF</span> بفيثاغورس، ثم <span class=\"math\">DG</span> بطالس في المثلث <span class=\"math\">DAC</span>.",
-    "h2": "<span class=\"math\">EF = 2000</span> ؛ <span class=\"math\">DG/DA = DF/DC = 300/1500</span> أي <span class=\"math\">DG = 225</span>.",
+    "h2": "<span class=\"math\">EF = 2000</span> ؛ <span class=\"math\">DG/DA = DF/DC = <span class=\"fr\"><span>300</span><span>1500</span></span></span> أي <span class=\"math\">DG = 225</span>.",
     "steps": [
      "<span class=\"math\">EF² = 1600² + 1200² = 4000000</span> و<span class=\"math\">EF = 2000 m</span>",
-     "<span class=\"math\">DG/1125 = 300/1500</span> إذن <span class=\"math\">DG = 225 m</span>",
+     "<span class=\"math\">DG/1125 = <span class=\"fr\"><span>300</span><span>1500</span></span></span> إذن <span class=\"math\">DG = 225 m</span>",
      "<span class=\"math\">4225 + 2000 + 300 + 225</span>",
      "النتيجة: <span class=\"math\">6750 m</span>"
     ],
@@ -1686,7 +1694,7 @@
     "h1": "قطر المستطيل <span class=\"math\">15 m</span> و<span class=\"math\">cos α = 0,8</span>.",
     "h2": "الطول = <span class=\"math\">15 × 0,8</span>.",
     "steps": [
-     "<span class=\"math\">cos α = L/15</span>",
+     "<span class=\"math\">cos α = <span class=\"fr\"><span>L</span><span>15</span></span></span>",
      "النتيجة: <span class=\"math\">L = 12 m</span>"
     ],
     "rubric": [
@@ -1894,6 +1902,8 @@
             inp.classList.add('shake');
         }
 
+        const FBMSG = {"ok": ["أحسنت! تركيزك أوصلك إلى الجواب الصحيح.", "ممتاز! أخذت وقتك وفكّرت جيدا، وهذه هي النتيجة.", "برافو! التأنّي في الحساب يصنع النجاح.", "رائع! جهدك يستحق هذه النجوم.", "إجابة صحيحة! واصل بنفس الهدوء والتركيز.", "أحسنت! من يقرأ السؤال جيدا يصل إلى الحل.", "عمل متقن! الدقة أهم من السرعة، وأنت أثبتّ ذلك.", "بارك الله فيك! تقدّم خطوة بخطوة كما فعلت الآن."], "w1": ["لا بأس، الخطأ جزء من التعلّم. أعد قراءة السؤال بهدوء.", "تمهّل قليلا: كلما أسرعت قلّ تركيزك. خذ وقتك.", "محاولة جيدة! راجع حسابك خطوة بخطوة.", "كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.", "لا تستعجل. اقرأ المعطيات من جديد ثم فكّر.", "أنت قريب. أعطِ هذا السؤال الوقت الذي يحتاجه.", "الخطأ ليس فشلا بل خطوة نحو الفهم. حاول مجددا.", "هدّئ السرعة وزِد التركيز، وستجد الطريق."], "w2": ["محاولة أخيرة: اكتب الحساب على ورقة قبل أن تجيب.", "لا تيأس! التركيز يأتي مع الهدوء. اقرأ التلميح جيدا.", "السرعة والتركيز لا يجتمعان: تمهّل في هذه المحاولة الأخيرة.", "ابذل جهدا إضافيا صغيرا، فالحل قريب منك.", "راجع كل خطوة على حدة، ولا تتسرّع.", "كل العلماء أخطؤوا قبل أن ينجحوا. ركّز في هذه المحاولة."], "fail": ["لا تحزن، الخطأ جزء من التعلّم. اقرأ الإجابة النموذجية وسلم التنقيط بتمعّن.", "تعلّمنا شيئا جديدا اليوم! تأمّل خطوات الحل، وأعد التمرين غدا بهدوء.", "لا بأس، الفهم يحتاج وقتا وجهدا. راجع الحل خطوة بخطوة.", "المهم أن نفهم لماذا أخطأنا. اقرأ الحل، ثم حاول إعادته وحدك على ورقة.", "الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة."]};
+        function fbPick(kind, qId) { const a = FBMSG[kind]; const p = String(qId).split('-'); const n = (+p[0]) * 3 + (+p[1] || 0) + kind.length; return a[n % a.length]; }
         function checkAns(exId, qId) {
             if (questionLocked[qId]) return;
             const ex = exercises.find(e => e.id === exId);
@@ -1928,7 +1938,7 @@
                 document.getElementById(`btn-${qId}`).disabled = true;
 
                 fb.className = 'feedback-box success';
-                fb.innerHTML = `<span class="star-burst">${starIcons}</span> أحسنت يا بطل! إجابة صحيحة وممتازة. نلت العلامة الكاملة (<span class="math">${String(q.pts).replace('.', ',')} ن</span>).`;
+                fb.innerHTML = `<span class="star-burst">${starIcons}</span> ${fbPick('ok', qId)} نلت العلامة الكاملة (<span class="math">${String(q.pts).replace('.', ',')} ن</span>).`;
                 document.getElementById(`sol-${qId}`).style.display = 'block';
                 updateHeaderStats();
                 return;
@@ -1964,10 +1974,10 @@
 
             if (rem === 2) {
                 fb.className = 'feedback-box hint';
-                fb.innerHTML = `${customReason ? customReason + '<br>' : 'لا بأس، حاول مرة أخرى بتأنٍّ!<br>'}<strong>💡 التلميح 1:</strong> ${q.h1}`;
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w1', qId) + '<br>'}<strong>💡 التلميح 1:</strong> ${q.h1}`;
             } else if (rem === 1) {
                 fb.className = 'feedback-box hint';
-                fb.innerHTML = `${customReason ? customReason + '<br>' : 'قاربت على الوصول، ركّز جيداً في هذه المحاولة الأخيرة!<br>'}<strong>💡 التلميح 2:</strong> ${q.h2}`;
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w2', qId) + '<br>'}<strong>💡 التلميح 2:</strong> ${q.h2}`;
             } else {
                 questionLocked[qId] = true;
                 completedQuestions++;
@@ -1976,7 +1986,7 @@
                 document.getElementById(`qbox-${qId}`).classList.add('failed');
 
                 fb.className = 'feedback-box fail';
-                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 محاولة طيبة! لا تحزن، التعلم يأتي بالمحاولة. اقرأ الإجابة النموذجية وسلم التنقيط بتمعن لتتقن الفكرة في المرة القادمة.';
+                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 ' + fbPick('fail', qId);
                 document.getElementById(`sol-${qId}`).style.display = 'block';
                 updateHeaderStats();
             }
