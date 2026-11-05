@@ -598,7 +598,7 @@
   "questions": [
    {
     "qId": "1-1",
-    "text": "1) احسب <span class=\"math\">OA/OB</span>.",
+    "text": "1) احسب <span class=\"math\"><span class=\"fr\"><span>OA</span><span>OB</span></span></span>.",
     "exact": [
      "3/2",
      "1,5"
@@ -607,11 +607,15 @@
      "2/3",
      "66/44"
     ],
-    "h1": "خاصية طالس: <span class=\"math\">OA/OB = OC/OD</span>.",
+    "h1": "خاصية طالس: <span class=\"math\"><span class=\"fr\"><span>OA</span><span>OB</span></span> = <span class=\"fr\"><span>OC</span><span>OD</span></span></span>.",
     "h2": "<span class=\"math\"><span class=\"fr\"><span>66</span><span>44</span></span></span>.",
     "steps": [
-     "<span class=\"math\">OA/OB = OC/OD = <span class=\"fr\"><span>66</span><span>44</span></span></span>",
-     "النتيجة: <span class=\"math\">OA/OB = <span class=\"fr\"><span>3</span><span>2</span></span> = 1,5</span>"
+     "<b>الطريقة:</b> خاصية طالس (وضعية الفراشة): إذا تقاطع المستقيمان (AB) و(CD) في O وكان <span class=\"math\">(AC) // (BD)</span>، فإن: <span class=\"math\"><span class=\"fr\"><span>OA</span><span>OB</span></span> = <span class=\"fr\"><span>OC</span><span>OD</span></span> = <span class=\"fr\"><span>AC</span><span>BD</span></span></span>.",
+     "المستقيمان (AB) و(CD) يتقاطعان في O و<span class=\"math\">(AC) // (BD)</span>",
+     "<span class=\"math\"><span class=\"fr\"><span>OA</span><span>OB</span></span> = <span class=\"fr\"><span>OC</span><span>OD</span></span> = <span class=\"fr\"><span>66</span><span>44</span></span></span>",
+     "نختزل بالقسمة على 22: <span class=\"math\"><span class=\"fr\"><span>66</span><span>44</span></span> = <span class=\"fr\"><span>3</span><span>2</span></span></span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>OA</span><span>OB</span></span> = <span class=\"fr\"><span>3</span><span>2</span></span> = 1,5</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\"><span class=\"fr\"><span>OA</span><span>OB</span></span> = 1,5</span> أي <span class=\"math\">OA = 1,5 × OB</span>."
     ],
     "rubric": [
      {
@@ -624,7 +628,11 @@
      }
     ],
     "pts": 1.25,
-    "partialMsg": "اختزل، وانتبه للترتيب."
+    "partialMsg": "اختزل، وانتبه للترتيب.",
+    "steps0": [
+     "<span class=\"math\"><span class=\"fr\"><span>OA</span><span>OB</span></span> = <span class=\"fr\"><span>OC</span><span>OD</span></span> = <span class=\"fr\"><span>66</span><span>44</span></span></span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>OA</span><span>OB</span></span> = <span class=\"fr\"><span>3</span><span>2</span></span> = 1,5</span>"
+    ]
    },
    {
     "qId": "1-2",
@@ -639,9 +647,12 @@
     "h1": "<span class=\"math\">OA + OB = AB = 90</span> و<span class=\"math\">OA = 1,5 OB</span>.",
     "h2": "<span class=\"math\">2,5 OB = 90</span>.",
     "steps": [
+     "<b>الطريقة:</b> O نقطة من [AB]، إذن <span class=\"math\">OA + OB = AB</span>. نعوّض <span class=\"math\">OA = 1,5 × OB</span> (من السؤال 1) فنحصل على معادلة من الدرجة الأولى.",
+     "<span class=\"math\">OA + OB = 90</span> و<span class=\"math\">OA = 1,5 OB</span>",
      "<span class=\"math\">1,5 OB + OB = 90</span>",
-     "<span class=\"math\">2,5 OB = 90</span>",
-     "النتيجة: <span class=\"math\">OB = 36 mm</span>"
+     "<span class=\"math\">2,5 OB = 90</span> إذن <span class=\"math\">OB = 90 ÷ 2,5</span>",
+     "النتيجة: <span class=\"math\">OB = 36 mm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">OB = 36 mm</span>."
     ],
     "rubric": [
      {
@@ -655,7 +666,12 @@
     ],
     "pts": 2.0,
     "partialMsg": "هذا <span class=\"math\">OA</span> أو راجع المعادلة.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">1,5 OB + OB = 90</span>",
+     "<span class=\"math\">2,5 OB = 90</span>",
+     "النتيجة: <span class=\"math\">OB = 36 mm</span>"
+    ]
    },
    {
     "qId": "1-3",
@@ -669,8 +685,11 @@
     "h1": "<span class=\"math\">OA = 90 − OB</span>.",
     "h2": "أو <span class=\"math\">OA = 1,5 × OB</span>.",
     "steps": [
+     "<b>الطريقة:</b> <span class=\"math\">OA = AB − OB</span> لأن O نقطة من [AB].",
      "<span class=\"math\">OA = 90 − 36</span>",
-     "النتيجة: <span class=\"math\">OA = 54 mm</span>"
+     "النتيجة: <span class=\"math\">OA = 54 mm</span>",
+     "تحقق: <span class=\"math\">54 ÷ 36 = 1,5</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">OA = 54 mm</span>."
     ],
     "rubric": [
      {
@@ -684,7 +703,11 @@
     ],
     "pts": 1.75,
     "partialMsg": "هذا <span class=\"math\">OB</span>.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">OA = 90 − 36</span>",
+     "النتيجة: <span class=\"math\">OA = 54 mm</span>"
+    ]
    }
   ],
   "partHead": "الجزء الأول: تمارين متنوعة (4 تمارين — على 20)",
@@ -710,9 +733,12 @@
     "h1": "<span class=\"math\">cos² x + sin² x = 1</span>.",
     "h2": "<span class=\"math\">sin² x = 1 − 0,36</span>.",
     "steps": [
-     "<span class=\"math\">sin² x = 1 − 0,6² = 0,64</span>",
-     "<span class=\"math\">sin x &gt; 0</span> (زاوية حادة)",
-     "النتيجة: <span class=\"math\">sin x = 0,8</span>"
+     "<b>الطريقة:</b> العلاقة: <span class=\"math\">cos² x + sin² x = 1</span>، والزاوية حادة إذن <span class=\"math\">sin x &gt; 0</span>.",
+     "<span class=\"math\">sin² x = 1 − cos² x = 1 − 0,6²</span>",
+     "<span class=\"math\">sin² x = 1 − 0,36 = 0,64</span>",
+     "الزاوية حادة إذن <span class=\"math\">sin x &gt; 0</span>: <span class=\"math\">sin x = √0,64</span>",
+     "النتيجة: <span class=\"math\">sin x = 0,8</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">sin x = 0,8</span>."
     ],
     "rubric": [
      {
@@ -726,7 +752,12 @@
     ],
     "pts": 2.0,
     "partialMsg": "خذ الجذر التربيعي لـ <span class=\"math\">1 − 0,36</span>.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">sin² x = 1 − 0,6² = 0,64</span>",
+     "<span class=\"math\">sin x &gt; 0</span> (زاوية حادة)",
+     "النتيجة: <span class=\"math\">sin x = 0,8</span>"
+    ]
    },
    {
     "qId": "2-2",
@@ -741,8 +772,11 @@
     "h1": "<span class=\"math\">tan x = sin x / cos x</span>.",
     "h2": "<span class=\"math\"><span class=\"fr\"><span>0,8</span><span>0,6</span></span></span>.",
     "steps": [
+     "<b>الطريقة:</b> العلاقة: <span class=\"math\">tan x = <span class=\"fr\"><span>sin x</span><span>cos x</span></span></span>.",
      "<span class=\"math\">tan x = <span class=\"fr\"><span>0,8</span><span>0,6</span></span> = <span class=\"fr\"><span>8</span><span>6</span></span></span>",
-     "النتيجة: <span class=\"math\">tan x = <span class=\"fr\"><span>4</span><span>3</span></span></span>"
+     "نختزل بالقسمة على 2",
+     "النتيجة: <span class=\"math\">tan x = <span class=\"fr\"><span>4</span><span>3</span></span></span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">tan x = <span class=\"fr\"><span>4</span><span>3</span></span></span>."
     ],
     "rubric": [
      {
@@ -755,11 +789,15 @@
      }
     ],
     "pts": 1.25,
-    "partialMsg": "اختزل، وانتبه: الجيب في البسط."
+    "partialMsg": "اختزل، وانتبه: الجيب في البسط.",
+    "steps0": [
+     "<span class=\"math\">tan x = <span class=\"fr\"><span>0,8</span><span>0,6</span></span> = <span class=\"fr\"><span>8</span><span>6</span></span></span>",
+     "النتيجة: <span class=\"math\">tan x = <span class=\"fr\"><span>4</span><span>3</span></span></span>"
+    ]
    },
    {
     "qId": "2-3",
-    "text": "3) احسب الارتفاع الذي يبلغه أعلى السلم (بـ m).",
+    "text": "3) سُلّم طوله <span class=\"math\">5 m</span> يستند إلى حائط شاقولي ويصنع مع الأرض الأفقية زاوية قيسها <span class=\"math\">x</span>. احسب الارتفاع الذي يبلغه أعلى السلم على الحائط (بـ m).",
     "exact": [
      "4"
     ],
@@ -770,9 +808,11 @@
     "h1": "السلم وتر مثلث قائم، والارتفاع هو الضلع المقابل للزاوية <span class=\"math\">x</span>.",
     "h2": "<span class=\"math\">sin x = <span class=\"fr\"><span>h</span><span>5</span></span></span>.",
     "steps": [
+     "<b>الطريقة:</b> السلم والحائط والأرض يشكلون مثلثا قائما وتره السلم. <span class=\"math\">sin x</span> = الضلع المقابل (الارتفاع h) ÷ الوتر (طول السلم).",
      "<span class=\"math\">sin x = <span class=\"fr\"><span>h</span><span>5</span></span></span>",
-     "<span class=\"math\">h = 5 × 0,8</span>",
-     "النتيجة: <span class=\"math\">h = 4 m</span>"
+     "<span class=\"math\">h = 5 × sin x = 5 × 0,8</span>",
+     "النتيجة: <span class=\"math\">h = 4 m</span>",
+     "<b>الاستنتاج:</b> يبلغ أعلى السلم ارتفاع 4 m على الحائط."
     ],
     "rubric": [
      {
@@ -786,7 +826,12 @@
     ],
     "pts": 1.75,
     "partialMsg": "الارتفاع يقابل الزاوية <span class=\"math\">x</span>: استعمل الجيب.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">sin x = <span class=\"fr\"><span>h</span><span>5</span></span></span>",
+     "<span class=\"math\">h = 5 × 0,8</span>",
+     "النتيجة: <span class=\"math\">h = 4 m</span>"
+    ]
    }
   ],
   "part": "الجزء الأول"
@@ -806,11 +851,15 @@
     "partial": [
      "6,4"
     ],
-    "h1": "<span class=\"math\">tan M = BE/BM</span>.",
-    "h2": "<span class=\"math\"><span class=\"fr\"><span>4</span><span>3</span></span> = 4,8/BM</span>.",
+    "h1": "<span class=\"math\">tan M = <span class=\"fr\"><span>BE</span><span>BM</span></span></span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>4</span><span>3</span></span> = <span class=\"fr\"><span>4,8</span><span>BM</span></span></span>.",
     "steps": [
-     "<span class=\"math\">BM = 4,8 × 3 ÷ 4</span>",
-     "النتيجة: <span class=\"math\">BM = 3,6 cm</span>"
+     "<b>الطريقة:</b> في المثلث القائم: <span class=\"math\">tan</span> الزاوية = الضلع المقابل ÷ الضلع المجاور. المقابل للزاوية M هو BE والمجاور BM.",
+     "<span class=\"math\">tan M = <span class=\"fr\"><span>BE</span><span>BM</span></span></span> أي <span class=\"math\"><span class=\"fr\"><span>4</span><span>3</span></span> = <span class=\"fr\"><span>4,8</span><span>BM</span></span></span>",
+     "الجداءان المتصالبان: <span class=\"math\">4 × BM = 3 × 4,8</span>",
+     "<span class=\"math\">BM = 14,4 ÷ 4</span>",
+     "النتيجة: <span class=\"math\">BM = 3,6 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">BM = 3,6 cm</span>."
     ],
     "rubric": [
      {
@@ -824,7 +873,11 @@
     ],
     "pts": 1.25,
     "partialMsg": "الظل = المقابل ÷ المجاور.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">BM = 4,8 × 3 ÷ 4</span>",
+     "النتيجة: <span class=\"math\">BM = 3,6 cm</span>"
+    ]
    },
    {
     "qId": "3-2",
@@ -839,8 +892,12 @@
     "h1": "فيثاغورس: <span class=\"math\">ME² = BE² + BM²</span>.",
     "h2": "<span class=\"math\">23,04 + 12,96</span>.",
     "steps": [
-     "<span class=\"math\">ME² = 4,8² + 3,6² = 36</span>",
-     "النتيجة: <span class=\"math\">ME = 6 cm</span>"
+     "<b>الطريقة:</b> خاصية فيثاغورس: في المثلث القائم، مربع طول الوتر يساوي مجموع مربعي طولي الضلعين الآخرين. الوتر هو ME.",
+     "<span class=\"math\">ME² = BE² + BM² = 4,8² + 3,6²</span>",
+     "<span class=\"math\">ME² = 23,04 + 12,96 = 36</span>",
+     "<span class=\"math\">ME = √36 = 6</span>",
+     "النتيجة: <span class=\"math\">ME = 6 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">ME = 6 cm</span>."
     ],
     "rubric": [
      {
@@ -854,11 +911,15 @@
     ],
     "pts": 1.25,
     "partialMsg": "خذ الجذر التربيعي.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">ME² = 4,8² + 3,6² = 36</span>",
+     "النتيجة: <span class=\"math\">ME = 6 cm</span>"
+    ]
    },
    {
     "qId": "3-3",
-    "text": "3) احسب <span class=\"math\">EK/EM</span> و<span class=\"math\">EL/EB</span> (اكتب الكسر المشترك).",
+    "text": "3) K نقطة من [EM] بحيث <span class=\"math\">EK = 2</span> وL نقطة من [BE] بحيث <span class=\"math\">EL = 1,6</span>. احسب <span class=\"math\"><span class=\"fr\"><span>EK</span><span>EM</span></span></span> و<span class=\"math\"><span class=\"fr\"><span>EL</span><span>EB</span></span></span> (اكتب الكسر المشترك).",
     "exact": [
      "1/3"
     ],
@@ -868,10 +929,12 @@
     "h1": "<span class=\"math\"><span class=\"fr\"><span>2</span><span>6</span></span></span> و<span class=\"math\"><span class=\"fr\"><span>1,6</span><span>4,8</span></span></span>.",
     "h2": "اختزل كلا منهما.",
     "steps": [
-     "<span class=\"math\">EK/EM = <span class=\"fr\"><span>2</span><span>6</span></span> = <span class=\"fr\"><span>1</span><span>3</span></span></span>",
-     "<span class=\"math\">EL/EB = <span class=\"fr\"><span>1,6</span><span>4,8</span></span> = <span class=\"fr\"><span>1</span><span>3</span></span></span>",
-     "النقط <span class=\"math\">E ، K ، M</span> و<span class=\"math\">E ، L ، B</span> في نفس الترتيب: <span class=\"math\">(KL) // (BM)</span>",
-     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>1</span><span>3</span></span></span> إذن <span class=\"math\">(KL) // (BM)</span>"
+     "<b>الطريقة:</b> الخاصية العكسية لخاصية طالس: إذا كانت النقط A، E، B والنقط A، F، C في استقامية وبنفس الترتيب، وكان <span class=\"math\"><span class=\"fr\"><span>AE</span><span>AB</span></span> = <span class=\"fr\"><span>AF</span><span>AC</span></span></span>، فإن <span class=\"math\">(EF) // (BC)</span>.",
+     "<span class=\"math\"><span class=\"fr\"><span>EK</span><span>EM</span></span> = <span class=\"fr\"><span>2</span><span>6</span></span> = <span class=\"fr\"><span>1</span><span>3</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>EL</span><span>EB</span></span> = <span class=\"fr\"><span>1,6</span><span>4,8</span></span> = <span class=\"fr\"><span>16</span><span>48</span></span> = <span class=\"fr\"><span>1</span><span>3</span></span></span>",
+     "النسبتان متساويتان، والنقط E، K، M والنقط E، L، B بنفس الترتيب",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>1</span><span>3</span></span></span>",
+     "<b>الاستنتاج:</b> حسب الخاصية العكسية لخاصية طالس: <span class=\"math\">(KL) // (BM)</span>."
     ],
     "rubric": [
      {
@@ -884,7 +947,13 @@
      }
     ],
     "pts": 2.5,
-    "partialMsg": "اختزل."
+    "partialMsg": "اختزل.",
+    "steps0": [
+     "<span class=\"math\"><span class=\"fr\"><span>EK</span><span>EM</span></span> = <span class=\"fr\"><span>2</span><span>6</span></span> = <span class=\"fr\"><span>1</span><span>3</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>EL</span><span>EB</span></span> = <span class=\"fr\"><span>1,6</span><span>4,8</span></span> = <span class=\"fr\"><span>1</span><span>3</span></span></span>",
+     "النقط <span class=\"math\">E ، K ، M</span> و<span class=\"math\">E ، L ، B</span> في نفس الترتيب: <span class=\"math\">(KL) // (BM)</span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>1</span><span>3</span></span></span> إذن <span class=\"math\">(KL) // (BM)</span>"
+    ]
    }
   ],
   "part": "الجزء الأول"
@@ -908,9 +977,12 @@
     "h1": "المثلث <span class=\"math\">MBA</span> قائم في <span class=\"math\">M</span> لأن <span class=\"math\">[AB]</span> قطر.",
     "h2": "<span class=\"math\">AM² = 10² − 6²</span>.",
     "steps": [
-     "المثلث <span class=\"math\">MBA</span> قائم في <span class=\"math\">M</span>",
-     "<span class=\"math\">AM² = 100 − 36 = 64</span>",
-     "النتيجة: <span class=\"math\">AM = 8 cm</span>"
+     "<b>الطريقة:</b> خاصية الدائرة: إذا كانت M نقطة من دائرة قطرها [AB] فالمثلث MBA قائم في M. ثم خاصية فيثاغورس: في المثلث القائم، مربع طول الوتر يساوي مجموع مربعي طولي الضلعين الآخرين.",
+     "M من الدائرة التي قطرها [AB] إذن المثلث MBA قائم في M",
+     "<span class=\"math\">AB² = AM² + BM²</span> إذن <span class=\"math\">AM² = 10² − 6² = 100 − 36 = 64</span>",
+     "<span class=\"math\">AM = √64 = 8</span>",
+     "النتيجة: <span class=\"math\">AM = 8 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">AM = 8 cm</span>."
     ],
     "rubric": [
      {
@@ -924,7 +996,12 @@
     ],
     "pts": 1.25,
     "partialMsg": "الوتر <span class=\"math\">AB</span>.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "المثلث <span class=\"math\">MBA</span> قائم في <span class=\"math\">M</span>",
+     "<span class=\"math\">AM² = 100 − 36 = 64</span>",
+     "النتيجة: <span class=\"math\">AM = 8 cm</span>"
+    ]
    },
    {
     "qId": "4-2",
@@ -936,12 +1013,14 @@
      "37",
      "53,13"
     ],
-    "h1": "<span class=\"math\">cos MBA = BM/BA</span>.",
+    "h1": "<span class=\"math\">cos MBA = <span class=\"fr\"><span>BM</span><span>BA</span></span></span>.",
     "h2": "<span class=\"math\"><span class=\"fr\"><span>6</span><span>10</span></span> = 0,6</span>.",
     "steps": [
-     "<span class=\"math\">cos MBA = 0,6</span>",
-     "<span class=\"math\">MBA ≈ 53,13°</span>",
-     "النتيجة: <span class=\"math\">MBA ≈ 53°</span>"
+     "<b>الطريقة:</b> في المثلث القائم: <span class=\"math\">cos</span> = المجاور ÷ الوتر، ثم الحاسبة (الزر <span class=\"math\">cos⁻¹</span>).",
+     "<span class=\"math\">cos MBA = <span class=\"fr\"><span>BM</span><span>AB</span></span> = <span class=\"fr\"><span>6</span><span>10</span></span> = 0,6</span>",
+     "بالحاسبة: <span class=\"math\">MBA ≈ 53,13°</span>",
+     "النتيجة: <span class=\"math\">MBA ≈ 53°</span>",
+     "<b>الاستنتاج:</b> قيس الزاوية <span class=\"math\">MBA</span> بالتدوير إلى الوحدة هو 53°."
     ],
     "rubric": [
      {
@@ -955,11 +1034,16 @@
     ],
     "pts": 2.0,
     "partialMsg": "المجاور للزاوية <span class=\"math\">B</span> هو <span class=\"math\">BM</span>، ودوّر.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">cos MBA = 0,6</span>",
+     "<span class=\"math\">MBA ≈ 53,13°</span>",
+     "النتيجة: <span class=\"math\">MBA ≈ 53°</span>"
+    ]
    },
    {
     "qId": "4-3",
-    "text": "3) احسب <span class=\"math\">BF</span> (بـ cm).",
+    "text": "3) E نقطة من [BM] حيث <span class=\"math\">BE = 4,2 cm</span>. المستقيم الذي يشمل E ويعامد (BM) يقطع [AB] في F. احسب <span class=\"math\">BF</span> (بـ cm).",
     "exact": [
      "7"
     ],
@@ -968,11 +1052,14 @@
      "14,28"
     ],
     "h1": "<span class=\"math\">(EF) // (AM)</span> لأنهما عموديان على <span class=\"math\">(BM)</span>.",
-    "h2": "<span class=\"math\">BF/BA = BE/BM</span> أي <span class=\"math\">BF/10 = <span class=\"fr\"><span>4,2</span><span>6</span></span></span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>BF</span><span>BA</span></span> = <span class=\"fr\"><span>BE</span><span>BM</span></span></span> أي <span class=\"math\"><span class=\"fr\"><span>BF</span><span>10</span></span> = <span class=\"fr\"><span>4,2</span><span>6</span></span></span>.",
     "steps": [
-     "<span class=\"math\">(EF) // (AM)</span>",
-     "<span class=\"math\">BF = 10 × 4,2 ÷ 6</span>",
-     "النتيجة: <span class=\"math\">BF = 7 cm</span>"
+     "<b>الطريقة:</b> خاصية: مستقيمان عموديان على نفس المستقيم متوازيان. ثم خاصية طالس: في المثلث ABC، إذا كانت E من (AB) وF من (AC) و(EF) // (BC)، فإن: <span class=\"math\"><span class=\"fr\"><span>AE</span><span>AB</span></span> = <span class=\"fr\"><span>AF</span><span>AC</span></span> = <span class=\"fr\"><span>EF</span><span>BC</span></span></span>.",
+     "<span class=\"math\">(EF) ⊥ (BM)</span> و<span class=\"math\">(AM) ⊥ (BM)</span> إذن <span class=\"math\">(EF) // (AM)</span>",
+     "خاصية طالس في المثلث BMA: <span class=\"math\"><span class=\"fr\"><span>BF</span><span>BA</span></span> = <span class=\"fr\"><span>BE</span><span>BM</span></span></span> أي <span class=\"math\"><span class=\"fr\"><span>BF</span><span>10</span></span> = <span class=\"fr\"><span>4,2</span><span>6</span></span></span>",
+     "<span class=\"math\">BF = <span class=\"fr\"><span>10 × 4,2</span><span>6</span></span> = <span class=\"fr\"><span>42</span><span>6</span></span></span>",
+     "النتيجة: <span class=\"math\">BF = 7 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">BF = 7 cm</span>."
     ],
     "rubric": [
      {
@@ -985,8 +1072,13 @@
      }
     ],
     "pts": 1.75,
-    "partialMsg": "راجع النسب: <span class=\"math\">BE/BM = BF/BA</span>.",
-    "partialZero": true
+    "partialMsg": "راجع النسب: <span class=\"math\"><span class=\"fr\"><span>BE</span><span>BM</span></span> = <span class=\"fr\"><span>BF</span><span>BA</span></span></span>.",
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">(EF) // (AM)</span>",
+     "<span class=\"math\">BF = 10 × 4,2 ÷ 6</span>",
+     "النتيجة: <span class=\"math\">BF = 7 cm</span>"
+    ]
    }
   ],
   "part": "الجزء الأول"
@@ -1010,10 +1102,12 @@
     "h1": "<span class=\"math\">4² + 3²</span>.",
     "h2": "إذا كان <span class=\"math\">JK² + KM² = JM²</span> فالمثلث <span class=\"math\">JKM</span> قائم في <span class=\"math\">K</span>.",
     "steps": [
-     "<span class=\"math\">JK² + KM² = 16 + 9 = 25</span>",
-     "<span class=\"math\">JM² = 25</span>",
-     "حسب الخاصية العكسية لخاصية فيثاغورس <span class=\"math\">JKM</span> قائم في <span class=\"math\">K</span>: <span class=\"math\">(JK) ⊥ (IM)</span>",
-     "النتيجة: <span class=\"math\">25 = JM²</span> إذن <span class=\"math\">(JK) ⊥ (IM)</span>"
+     "<b>الطريقة:</b> الخاصية العكسية لخاصية فيثاغورس: إذا كان مربع أطول ضلع يساوي مجموع مربعي الضلعين الآخرين، فالمثلث قائم.",
+     "<span class=\"math\">JK² + KM² = 4² + 3² = 16 + 9 = 25</span>",
+     "<span class=\"math\">JM² = 5² = 25</span>",
+     "<span class=\"math\">JM² = JK² + KM²</span> إذن المثلث JKM قائم في K",
+     "النتيجة: 25",
+     "<b>الاستنتاج:</b> المثلث JKM قائم في K، إذن <span class=\"math\">(JK) ⊥ (IM)</span>."
     ],
     "rubric": [
      {
@@ -1027,7 +1121,13 @@
     ],
     "pts": 1.25,
     "partialMsg": "ربّع كل طول ثم اجمع.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">JK² + KM² = 16 + 9 = 25</span>",
+     "<span class=\"math\">JM² = 25</span>",
+     "حسب الخاصية العكسية لخاصية فيثاغورس <span class=\"math\">JKM</span> قائم في <span class=\"math\">K</span>: <span class=\"math\">(JK) ⊥ (IM)</span>",
+     "النتيجة: <span class=\"math\">25 = JM²</span> إذن <span class=\"math\">(JK) ⊥ (IM)</span>"
+    ]
    },
    {
     "qId": "5-2",
@@ -1040,11 +1140,13 @@
      "2,83"
     ],
     "h1": "المثلث <span class=\"math\">JKI</span> قائم في <span class=\"math\">K</span> و<span class=\"math\">JIK = 45°</span>.",
-    "h2": "<span class=\"math\">tan 45° = JK/IK = 1</span>.",
+    "h2": "<span class=\"math\">tan 45° = <span class=\"fr\"><span>JK</span><span>IK</span></span> = 1</span>.",
     "steps": [
-     "<span class=\"math\">tan 45° = JK/IK</span>",
-     "<span class=\"math\">1 = 4/IK</span>",
-     "النتيجة: <span class=\"math\">IK = 4 cm</span>"
+     "<b>الطريقة:</b> في المثلث IKJ القائم في K: <span class=\"math\">tan</span> = المقابل ÷ المجاور، و<span class=\"math\">tan 45° = 1</span>.",
+     "<span class=\"math\">tan 45° = <span class=\"fr\"><span>JK</span><span>IK</span></span></span>",
+     "<span class=\"math\">1 = <span class=\"fr\"><span>4</span><span>IK</span></span></span> إذن <span class=\"math\">IK = 4</span>",
+     "النتيجة: <span class=\"math\">IK = 4 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">IK = 4 cm</span> (المثلث IKJ قائم ومتساوي الساقين)."
     ],
     "rubric": [
      {
@@ -1058,11 +1160,16 @@
     ],
     "pts": 2.0,
     "partialMsg": "<span class=\"math\">tan 45° = 1</span>.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">tan 45° = <span class=\"fr\"><span>JK</span><span>IK</span></span></span>",
+     "<span class=\"math\">1 = <span class=\"fr\"><span>4</span><span>IK</span></span></span>",
+     "النتيجة: <span class=\"math\">IK = 4 cm</span>"
+    ]
    },
    {
     "qId": "5-3",
-    "text": "3) احسب <span class=\"math\">NK</span> (كسرا أو مدورا إلى <span class=\"math\">0,01</span>).",
+    "text": "3) المستقيم الموازي لـ (JM) والذي يشمل K يقطع [IJ] في N. احسب <span class=\"math\">NK</span> (كسرا أو مدورا إلى 0,01).",
     "exact": [
      "20/7",
      "2,86"
@@ -1074,11 +1181,14 @@
      "2,9"
     ],
     "h1": "<span class=\"math\">(KN) // (MJ)</span>، طالس في المثلث <span class=\"math\">IMJ</span>.",
-    "h2": "<span class=\"math\">NK/JM = IK/IM</span> مع <span class=\"math\">IM = 4 + 3 = 7</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>NK</span><span>JM</span></span> = <span class=\"fr\"><span>IK</span><span>IM</span></span></span> مع <span class=\"math\">IM = 4 + 3 = 7</span>.",
     "steps": [
-     "<span class=\"math\">IM = 7</span>",
-     "<span class=\"math\">NK/5 = <span class=\"fr\"><span>4</span><span>7</span></span></span>",
-     "النتيجة: <span class=\"math\">NK = <span class=\"fr\"><span>20</span><span>7</span></span> ≈ 2,86 cm</span>"
+     "<b>الطريقة:</b> خاصية طالس: في المثلث ABC، إذا كانت E من (AB) وF من (AC) و(EF) // (BC)، فإن: <span class=\"math\"><span class=\"fr\"><span>AE</span><span>AB</span></span> = <span class=\"fr\"><span>AF</span><span>AC</span></span> = <span class=\"fr\"><span>EF</span><span>BC</span></span></span>.",
+     "<span class=\"math\">IM = IK + KM = 4 + 3 = 7</span>",
+     "<span class=\"math\">(NK) // (JM)</span>: خاصية طالس في المثلث IJM: <span class=\"math\"><span class=\"fr\"><span>NK</span><span>JM</span></span> = <span class=\"fr\"><span>IK</span><span>IM</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>NK</span><span>5</span></span> = <span class=\"fr\"><span>4</span><span>7</span></span></span> إذن <span class=\"math\">NK = <span class=\"fr\"><span>5 × 4</span><span>7</span></span> = <span class=\"fr\"><span>20</span><span>7</span></span></span>",
+     "النتيجة: <span class=\"math\">NK = <span class=\"fr\"><span>20</span><span>7</span></span> ≈ 2,86 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">NK = <span class=\"fr\"><span>20</span><span>7</span></span> cm</span> أي حوالي 2,86 cm."
     ],
     "rubric": [
      {
@@ -1091,7 +1201,12 @@
      }
     ],
     "pts": 1.75,
-    "partialMsg": "راجع: <span class=\"math\">IM = IK + KM = 7</span>، ودوّر إلى <span class=\"math\">0,01</span>."
+    "partialMsg": "راجع: <span class=\"math\">IM = IK + KM = 7</span>، ودوّر إلى <span class=\"math\">0,01</span>.",
+    "steps0": [
+     "<span class=\"math\">IM = 7</span>",
+     "<span class=\"math\"><span class=\"fr\"><span>NK</span><span>5</span></span> = <span class=\"fr\"><span>4</span><span>7</span></span></span>",
+     "النتيجة: <span class=\"math\">NK = <span class=\"fr\"><span>20</span><span>7</span></span> ≈ 2,86 cm</span>"
+    ]
    }
   ],
   "partHead": "الجزء الثاني: طالس وحساب المثلثات (4 تمارين — على 20)",
@@ -1112,11 +1227,14 @@
     "partial": [
      "16"
     ],
-    "h1": "<span class=\"math\">sin EGF = EF/GF</span>.",
-    "h2": "<span class=\"math\"><span class=\"fr\"><span>3</span><span>4</span></span> = EF/12</span>.",
+    "h1": "<span class=\"math\">sin EGF = <span class=\"fr\"><span>EF</span><span>GF</span></span></span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>3</span><span>4</span></span> = <span class=\"fr\"><span>EF</span><span>12</span></span></span>.",
     "steps": [
+     "<b>الطريقة:</b> في المثلث القائم: <span class=\"math\">sin</span> = المقابل ÷ الوتر. الوتر GF والمقابل للزاوية G هو EF.",
+     "<span class=\"math\">sin EGF = <span class=\"fr\"><span>EF</span><span>GF</span></span></span> أي <span class=\"math\"><span class=\"fr\"><span>3</span><span>4</span></span> = <span class=\"fr\"><span>EF</span><span>12</span></span></span>",
      "<span class=\"math\">EF = 12 × <span class=\"fr\"><span>3</span><span>4</span></span></span>",
-     "النتيجة: <span class=\"math\">EF = 9 cm</span>"
+     "النتيجة: <span class=\"math\">EF = 9 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">EF = 9 cm</span>."
     ],
     "rubric": [
      {
@@ -1130,11 +1248,15 @@
     ],
     "pts": 2.5,
     "partialMsg": "الجيب = المقابل ÷ الوتر.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">EF = 12 × <span class=\"fr\"><span>3</span><span>4</span></span></span>",
+     "النتيجة: <span class=\"math\">EF = 9 cm</span>"
+    ]
    },
    {
     "qId": "6-2",
-    "text": "2) احسب <span class=\"math\">FM/FN</span> (كسر غير قابل للاختزال).",
+    "text": "2) احسب <span class=\"math\"><span class=\"fr\"><span>FM</span><span>FN</span></span></span> (كسر غير قابل للاختزال).",
     "exact": [
      "4/3"
     ],
@@ -1143,12 +1265,14 @@
      "12/9"
     ],
     "h1": "<span class=\"math\">(MN) // (GE)</span> لأنهما عموديان على <span class=\"math\">(EF)</span>.",
-    "h2": "طالس: <span class=\"math\">FN/FE = FM/FG</span> أي <span class=\"math\">FM/FN = FG/FE = <span class=\"fr\"><span>12</span><span>9</span></span></span>.",
+    "h2": "طالس: <span class=\"math\"><span class=\"fr\"><span>FN</span><span>FE</span></span> = <span class=\"fr\"><span>FM</span><span>FG</span></span></span> أي <span class=\"math\"><span class=\"fr\"><span>FM</span><span>FN</span></span> = <span class=\"fr\"><span>FG</span><span>FE</span></span> = <span class=\"fr\"><span>12</span><span>9</span></span></span>.",
     "steps": [
-     "<span class=\"math\">(MN) // (GE)</span>",
-     "<span class=\"math\">FN/9 = FM/12</span>",
-     "<span class=\"math\">12 FN = 9 FM</span> أي <span class=\"math\">4FN = 3FM</span>",
-     "النتيجة: <span class=\"math\">FM/FN = <span class=\"fr\"><span>4</span><span>3</span></span></span> أي <span class=\"math\">3FM = 4FN</span>"
+     "<b>الطريقة:</b> خاصية: مستقيمان عموديان على نفس المستقيم متوازيان. ثم خاصية طالس: في المثلث ABC، إذا كانت E من (AB) وF من (AC) و(EF) // (BC)، فإن: <span class=\"math\"><span class=\"fr\"><span>AE</span><span>AB</span></span> = <span class=\"fr\"><span>AF</span><span>AC</span></span> = <span class=\"fr\"><span>EF</span><span>BC</span></span></span>.",
+     "<span class=\"math\">(MN) ⊥ (EF)</span> و<span class=\"math\">(GE) ⊥ (EF)</span> إذن <span class=\"math\">(MN) // (GE)</span>",
+     "خاصية طالس في المثلث FEG: <span class=\"math\"><span class=\"fr\"><span>FN</span><span>FE</span></span> = <span class=\"fr\"><span>FM</span><span>FG</span></span></span> أي <span class=\"math\"><span class=\"fr\"><span>FN</span><span>9</span></span> = <span class=\"fr\"><span>FM</span><span>12</span></span></span>",
+     "الجداءان المتصالبان: <span class=\"math\">12 FN = 9 FM</span> أي <span class=\"math\">4 FN = 3 FM</span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>FM</span><span>FN</span></span> = <span class=\"fr\"><span>12</span><span>9</span></span> = <span class=\"fr\"><span>4</span><span>3</span></span></span>",
+     "<b>الاستنتاج:</b> <span class=\"math\"><span class=\"fr\"><span>FM</span><span>FN</span></span> = <span class=\"fr\"><span>4</span><span>3</span></span></span> أي <span class=\"math\">3FM = 4FN</span>."
     ],
     "rubric": [
      {
@@ -1162,7 +1286,13 @@
     ],
     "pts": 2.5,
     "partialMsg": "اختزل وانتبه للترتيب.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">(MN) // (GE)</span>",
+     "<span class=\"math\"><span class=\"fr\"><span>FN</span><span>9</span></span> = <span class=\"fr\"><span>FM</span><span>12</span></span></span>",
+     "<span class=\"math\">12 FN = 9 FM</span> أي <span class=\"math\">4FN = 3FM</span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>FM</span><span>FN</span></span> = <span class=\"fr\"><span>4</span><span>3</span></span></span> أي <span class=\"math\">3FM = 4FN</span>"
+    ]
    }
   ],
   "part": "الجزء الثاني"
@@ -1185,11 +1315,14 @@
      "21"
     ],
     "h1": "المثلث <span class=\"math\">ABC</span> قائم في <span class=\"math\">C</span> (<span class=\"math\">[AB]</span> قطر).",
-    "h2": "<span class=\"math\">sin BAC = BC/AB = <span class=\"fr\"><span>3</span><span>8</span></span></span>.",
+    "h2": "<span class=\"math\">sin BAC = <span class=\"fr\"><span>BC</span><span>AB</span></span> = <span class=\"fr\"><span>3</span><span>8</span></span></span>.",
     "steps": [
-     "<span class=\"math\">sin BAC = <span class=\"fr\"><span>3</span><span>8</span></span> = 0,375</span>",
-     "<span class=\"math\">BAC ≈ 22,02°</span>",
-     "النتيجة: <span class=\"math\">BAC ≈ 22°</span>"
+     "<b>الطريقة:</b> C من الدائرة التي قطرها [AB]، إذن المثلث ABC قائم في C. <span class=\"math\">sin</span> = المقابل ÷ الوتر، ثم الحاسبة (الزر <span class=\"math\">sin⁻¹</span>).",
+     "المثلث ABC قائم في C، وتره <span class=\"math\">AB = 8</span>",
+     "<span class=\"math\">sin BAC = <span class=\"fr\"><span>BC</span><span>AB</span></span> = <span class=\"fr\"><span>3</span><span>8</span></span> = 0,375</span>",
+     "بالحاسبة: <span class=\"math\">BAC ≈ 22,02°</span>",
+     "النتيجة: <span class=\"math\">BAC ≈ 22°</span>",
+     "<b>الاستنتاج:</b> قيس الزاوية <span class=\"math\">BAC</span> بالتدوير إلى الوحدة هو 22°."
     ],
     "rubric": [
      {
@@ -1203,7 +1336,12 @@
     ],
     "pts": 2.5,
     "partialMsg": "الضلع المقابل للزاوية <span class=\"math\">A</span> هو <span class=\"math\">BC</span>، ودوّر.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">sin BAC = <span class=\"fr\"><span>3</span><span>8</span></span> = 0,375</span>",
+     "<span class=\"math\">BAC ≈ 22,02°</span>",
+     "النتيجة: <span class=\"math\">BAC ≈ 22°</span>"
+    ]
    },
    {
     "qId": "7-2",
@@ -1216,11 +1354,14 @@
      "6"
     ],
     "h1": "<span class=\"math\">BF = OB = 4</span> إذن <span class=\"math\">AF = 12</span>.",
-    "h2": "<span class=\"math\">(DF) // (BC)</span>: <span class=\"math\">AB/AF = BC/FD</span> أي <span class=\"math\"><span class=\"fr\"><span>8</span><span>12</span></span> = 3/FD</span>.",
+    "h2": "<span class=\"math\">(DF) // (BC)</span>: <span class=\"math\"><span class=\"fr\"><span>AB</span><span>AF</span></span> = <span class=\"fr\"><span>BC</span><span>FD</span></span></span> أي <span class=\"math\"><span class=\"fr\"><span>8</span><span>12</span></span> = <span class=\"fr\"><span>3</span><span>FD</span></span></span>.",
     "steps": [
-     "<span class=\"math\">AF = 8 + 4 = 12</span>",
-     "<span class=\"math\"><span class=\"fr\"><span>8</span><span>12</span></span> = 3/DF</span>",
-     "النتيجة: <span class=\"math\">DF = 4,5 cm</span>"
+     "<b>الطريقة:</b> الانسحاب الذي شعاعه <span class=\"math\">OB→</span> ينقل B إلى F حيث <span class=\"math\">BF = OB</span>. ثم خاصية طالس: في المثلث ABC، إذا كانت E من (AB) وF من (AC) و(EF) // (BC)، فإن: <span class=\"math\"><span class=\"fr\"><span>AE</span><span>AB</span></span> = <span class=\"fr\"><span>AF</span><span>AC</span></span> = <span class=\"fr\"><span>EF</span><span>BC</span></span></span>.",
+     "<span class=\"math\">OB = 8 ÷ 2 = 4</span> إذن <span class=\"math\">BF = 4</span> و<span class=\"math\">AF = AB + BF = 8 + 4 = 12</span>",
+     "<span class=\"math\">(DF) // (BC)</span>: خاصية طالس في المثلث AFD: <span class=\"math\"><span class=\"fr\"><span>AB</span><span>AF</span></span> = <span class=\"fr\"><span>BC</span><span>FD</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>8</span><span>12</span></span> = <span class=\"fr\"><span>3</span><span>DF</span></span></span> إذن <span class=\"math\">DF = <span class=\"fr\"><span>3 × 12</span><span>8</span></span> = <span class=\"fr\"><span>36</span><span>8</span></span></span>",
+     "النتيجة: <span class=\"math\">DF = 4,5 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">DF = 4,5 cm</span>."
     ],
     "rubric": [
      {
@@ -1234,7 +1375,12 @@
     ],
     "pts": 2.5,
     "partialMsg": "راجع: <span class=\"math\">AF = AB + BF</span> و<span class=\"math\">BF = OB = 4</span>.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">AF = 8 + 4 = 12</span>",
+     "<span class=\"math\"><span class=\"fr\"><span>8</span><span>12</span></span> = <span class=\"fr\"><span>3</span><span>DF</span></span></span>",
+     "النتيجة: <span class=\"math\">DF = 4,5 cm</span>"
+    ]
    }
   ],
   "part": "الجزء الثاني"
@@ -1258,9 +1404,12 @@
     "h1": "<span class=\"math\">25 + 144 = 169</span>: قائم في <span class=\"math\">T</span>.",
     "h2": "المساحة = <span class=\"math\">TI × TC ÷ 2</span>.",
     "steps": [
-     "<span class=\"math\">TI² + TC² = 169 = CI²</span>: قائم في <span class=\"math\">T</span>",
-     "<span class=\"math\">5 × 12 ÷ 2</span>",
-     "النتيجة: <span class=\"math\">30 cm²</span>"
+     "<b>الطريقة:</b> الخاصية العكسية لخاصية فيثاغورس تثبت أن المثلث قائم في T، ثم مساحة المثلث القائم = جداء الضلعين القائمين ÷ 2.",
+     "<span class=\"math\">TI² + TC² = 25 + 144 = 169</span> و<span class=\"math\">CI² = 13² = 169</span>",
+     "إذن المثلث TIC قائم في T",
+     "المساحة: <span class=\"math\">5 × 12 ÷ 2 = 60 ÷ 2</span>",
+     "النتيجة: 30 cm²",
+     "<b>الاستنتاج:</b> مساحة المثلث TIC هي 30 cm²."
     ],
     "rubric": [
      {
@@ -1274,11 +1423,16 @@
     ],
     "pts": 2.5,
     "partialMsg": "الضلعان القائمان هما <span class=\"math\">TI</span> و<span class=\"math\">TC</span>.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">TI² + TC² = 169 = CI²</span>: قائم في <span class=\"math\">T</span>",
+     "<span class=\"math\">5 × 12 ÷ 2</span>",
+     "النتيجة: <span class=\"math\">30 cm²</span>"
+    ]
    },
    {
     "qId": "8-2",
-    "text": "2) احسب <span class=\"math\">TH</span> بالتدوير إلى <span class=\"math\">0,1</span> (بـ cm).",
+    "text": "2) [TH] الارتفاع المتعلق بالوتر [CI]. احسب <span class=\"math\">TH</span> بالتدوير إلى 0,1 (بـ cm).",
     "exact": [
      "4,6"
     ],
@@ -1288,11 +1442,14 @@
      "4,62"
     ],
     "h1": "المساحة أيضا <span class=\"math\">CI × TH ÷ 2</span>.",
-    "h2": "<span class=\"math\">13 × TH ÷ 2 = 30</span>، أو <span class=\"math\">sin TIC = TC/CI = TH/TI</span>.",
+    "h2": "<span class=\"math\">13 × TH ÷ 2 = 30</span>، أو <span class=\"math\">sin TIC = <span class=\"fr\"><span>TC</span><span>CI</span></span> = <span class=\"fr\"><span>TH</span><span>TI</span></span></span>.",
     "steps": [
+     "<b>الطريقة:</b> نكتب مساحة المثلث بطريقتين: <span class=\"math\">(CI × TH) ÷ 2</span> (القاعدة [CI] والارتفاع [TH]) وتساوي 30 cm² من السؤال 1.",
+     "<span class=\"math\">(13 × TH) ÷ 2 = 30</span>",
      "<span class=\"math\">13 × TH = 60</span>",
      "<span class=\"math\">TH = <span class=\"fr\"><span>60</span><span>13</span></span> ≈ 4,615</span>",
-     "النتيجة: <span class=\"math\">TH ≈ 4,6 cm</span>"
+     "النتيجة: <span class=\"math\">TH ≈ 4,6 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">TH ≈ 4,6 cm</span> بالتدوير إلى 0,1."
     ],
     "rubric": [
      {
@@ -1305,7 +1462,12 @@
      }
     ],
     "pts": 2.5,
-    "partialMsg": "دوّر إلى <span class=\"math\">0,1</span>."
+    "partialMsg": "دوّر إلى <span class=\"math\">0,1</span>.",
+    "steps0": [
+     "<span class=\"math\">13 × TH = 60</span>",
+     "<span class=\"math\">TH = <span class=\"fr\"><span>60</span><span>13</span></span> ≈ 4,615</span>",
+     "النتيجة: <span class=\"math\">TH ≈ 4,6 cm</span>"
+    ]
    }
   ],
   "part": "الجزء الثاني"
@@ -1318,7 +1480,7 @@
   "questions": [
    {
     "qId": "9-1",
-    "text": "1) احسب <span class=\"math\">MA/MN</span>.",
+    "text": "1) احسب <span class=\"math\"><span class=\"fr\"><span>MA</span><span>MN</span></span></span>.",
     "exact": [
      "2/3"
     ],
@@ -1327,11 +1489,15 @@
      "3/2"
     ],
     "h1": "<span class=\"math\">(AD) // (CN)</span>: خاصية طالس في الشكل <span class=\"math\">AMD</span> و<span class=\"math\">NMC</span>.",
-    "h2": "<span class=\"math\">MA/MN = MD/MC</span> و<span class=\"math\">MC = 50 − 20</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>MA</span><span>MN</span></span> = <span class=\"fr\"><span>MD</span><span>MC</span></span></span> و<span class=\"math\">MC = 50 − 20</span>.",
     "steps": [
-     "<span class=\"math\">MC = 30 m</span>",
-     "<span class=\"math\">MA/MN = MD/MC = <span class=\"fr\"><span>20</span><span>30</span></span></span>",
-     "النتيجة: <span class=\"math\">MA/MN = <span class=\"fr\"><span>2</span><span>3</span></span></span>"
+     "<b>الطريقة:</b> مستقيمان عموديان على (DC) متوازيان: <span class=\"math\">(AD) // (CN)</span>. ثم خاصية طالس (وضعية الفراشة): إذا تقاطع المستقيمان (AB) و(CD) في O وكان <span class=\"math\">(AC) // (BD)</span>، فإن: <span class=\"math\"><span class=\"fr\"><span>OA</span><span>OB</span></span> = <span class=\"fr\"><span>OC</span><span>OD</span></span> = <span class=\"fr\"><span>AC</span><span>BD</span></span></span>.",
+     "<span class=\"math\">MC = DC − DM = 50 − 20 = 30</span> m",
+     "<span class=\"math\">(AD) ⊥ (DC)</span> و<span class=\"math\">(CN) ⊥ (DC)</span> إذن <span class=\"math\">(AD) // (CN)</span>",
+     "المستقيمان (AN) و(DC) يتقاطعان في M: <span class=\"math\"><span class=\"fr\"><span>MA</span><span>MN</span></span> = <span class=\"fr\"><span>MD</span><span>MC</span></span> = <span class=\"fr\"><span>AD</span><span>NC</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>MA</span><span>MN</span></span> = <span class=\"fr\"><span>20</span><span>30</span></span> = <span class=\"fr\"><span>2</span><span>3</span></span></span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>MA</span><span>MN</span></span> = <span class=\"fr\"><span>2</span><span>3</span></span></span>",
+     "<b>الاستنتاج:</b> <span class=\"math\"><span class=\"fr\"><span>MA</span><span>MN</span></span> = <span class=\"fr\"><span>2</span><span>3</span></span></span>."
     ],
     "rubric": [
      {
@@ -1345,7 +1511,12 @@
     ],
     "pts": 2.0,
     "partialMsg": "اختزل وانتبه للترتيب.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">MC = 30 m</span>",
+     "<span class=\"math\"><span class=\"fr\"><span>MA</span><span>MN</span></span> = <span class=\"fr\"><span>MD</span><span>MC</span></span> = <span class=\"fr\"><span>20</span><span>30</span></span></span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>MA</span><span>MN</span></span> = <span class=\"fr\"><span>2</span><span>3</span></span></span>"
+    ]
    },
    {
     "qId": "9-2",
@@ -1357,12 +1528,15 @@
      "60",
      "80"
     ],
-    "h1": "<span class=\"math\">AD/CN = <span class=\"fr\"><span>2</span><span>3</span></span></span> أي <span class=\"math\">40/CN = <span class=\"fr\"><span>2</span><span>3</span></span></span>.",
+    "h1": "<span class=\"math\"><span class=\"fr\"><span>AD</span><span>CN</span></span> = <span class=\"fr\"><span>2</span><span>3</span></span></span> أي <span class=\"math\"><span class=\"fr\"><span>40</span><span>CN</span></span> = <span class=\"fr\"><span>2</span><span>3</span></span></span>.",
     "h2": "<span class=\"math\">BN = BC + CN</span>.",
     "steps": [
-     "<span class=\"math\">CN = 40 × <span class=\"fr\"><span>3</span><span>2</span></span> = 60 m</span>",
-     "<span class=\"math\">BN = 40 + 60</span>",
-     "النتيجة: <span class=\"math\">BN = 100 m</span>"
+     "<b>الطريقة:</b> من نفس التناسب (خاصية طالس): <span class=\"math\"><span class=\"fr\"><span>AD</span><span>NC</span></span> = <span class=\"fr\"><span>MD</span><span>MC</span></span></span>، ثم <span class=\"math\">BN = BC + CN</span> لأن C بين B وN.",
+     "<span class=\"math\"><span class=\"fr\"><span>40</span><span>CN</span></span> = <span class=\"fr\"><span>20</span><span>30</span></span></span> إذن <span class=\"math\">CN = <span class=\"fr\"><span>40 × 30</span><span>20</span></span> = 60</span> m",
+     "<span class=\"math\">BC = AD = 40</span> m",
+     "<span class=\"math\">BN = BC + CN = 40 + 60</span>",
+     "النتيجة: <span class=\"math\">BN = 100 m</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">BN = 100 m</span>."
     ],
     "rubric": [
      {
@@ -1376,7 +1550,12 @@
     ],
     "pts": 2.0,
     "partialMsg": "<span class=\"math\">BN = BC + CN</span>.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">CN = 40 × <span class=\"fr\"><span>3</span><span>2</span></span> = 60 m</span>",
+     "<span class=\"math\">BN = 40 + 60</span>",
+     "النتيجة: <span class=\"math\">BN = 100 m</span>"
+    ]
    },
    {
     "qId": "9-3",
@@ -1389,11 +1568,13 @@
      "26,57"
     ],
     "h1": "المثلث <span class=\"math\">ADM</span> قائم في <span class=\"math\">D</span>.",
-    "h2": "<span class=\"math\">tan MAD = DM/AD = <span class=\"fr\"><span>20</span><span>40</span></span></span>.",
+    "h2": "<span class=\"math\">tan MAD = <span class=\"fr\"><span>DM</span><span>AD</span></span> = <span class=\"fr\"><span>20</span><span>40</span></span></span>.",
     "steps": [
-     "<span class=\"math\">tan MAD = 0,5</span>",
-     "<span class=\"math\">MAD ≈ 26,57°</span>",
-     "النتيجة: <span class=\"math\">MAD ≈ 27°</span>"
+     "<b>الطريقة:</b> في المثلث MAD القائم في D: <span class=\"math\">tan</span> = المقابل ÷ المجاور، ثم الحاسبة (الزر <span class=\"math\">tan⁻¹</span>).",
+     "<span class=\"math\">tan MAD = <span class=\"fr\"><span>MD</span><span>AD</span></span> = <span class=\"fr\"><span>20</span><span>40</span></span> = 0,5</span>",
+     "بالحاسبة: <span class=\"math\">MAD ≈ 26,57°</span>",
+     "النتيجة: <span class=\"math\">MAD ≈ 27°</span>",
+     "<b>الاستنتاج:</b> قيس الزاوية <span class=\"math\">MAD</span> بالتدوير إلى الوحدة هو 27°."
     ],
     "rubric": [
      {
@@ -1407,7 +1588,12 @@
     ],
     "pts": 1.0,
     "partialMsg": "المقابل للزاوية <span class=\"math\">A</span> هو <span class=\"math\">DM</span>، ودوّر.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">tan MAD = 0,5</span>",
+     "<span class=\"math\">MAD ≈ 26,57°</span>",
+     "النتيجة: <span class=\"math\">MAD ≈ 27°</span>"
+    ]
    }
   ],
   "partHead": "الجزء الثالث: مسائل ووضعيات (4 تمارين — على 20)",
@@ -1431,8 +1617,12 @@
     "h1": "المثلث <span class=\"math\">ABC</span> قائم في <span class=\"math\">B</span>.",
     "h2": "<span class=\"math\">AC² = 80² + 60²</span>.",
     "steps": [
+     "<b>الطريقة:</b> خاصية فيثاغورس: في المثلث القائم، مربع طول الوتر يساوي مجموع مربعي طولي الضلعين الآخرين. المثلث ABC قائم في B (ABCD مستطيل).",
+     "<span class=\"math\">AC² = AB² + BC² = 80² + 60²</span>",
      "<span class=\"math\">AC² = 6400 + 3600 = 10000</span>",
-     "النتيجة: <span class=\"math\">AC = 100 m</span>"
+     "<span class=\"math\">AC = √10000 = 100</span>",
+     "النتيجة: <span class=\"math\">AC = 100 m</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">AC = 100 m</span>."
     ],
     "rubric": [
      {
@@ -1446,7 +1636,11 @@
     ],
     "pts": 1.25,
     "partialMsg": "خذ الجذر التربيعي.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">AC² = 6400 + 3600 = 10000</span>",
+     "النتيجة: <span class=\"math\">AC = 100 m</span>"
+    ]
    },
    {
     "qId": "10-2",
@@ -1461,8 +1655,10 @@
     "h1": "<span class=\"math\">AB = DC = 80</span>.",
     "h2": "<span class=\"math\">AE = AB − EB</span>.",
     "steps": [
+     "<b>الطريقة:</b> E نقطة من [AB]، إذن <span class=\"math\">AE = AB − EB</span>.",
      "<span class=\"math\">AE = 80 − 64</span>",
-     "النتيجة: <span class=\"math\">AE = 16 m</span>"
+     "النتيجة: <span class=\"math\">AE = 16 m</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">AE = 16 m</span>."
     ],
     "rubric": [
      {
@@ -1476,7 +1672,11 @@
     ],
     "pts": 1.25,
     "partialMsg": "<span class=\"math\">AE = AB − EB</span>.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">AE = 80 − 64</span>",
+     "النتيجة: <span class=\"math\">AE = 16 m</span>"
+    ]
    },
    {
     "qId": "10-3",
@@ -1490,11 +1690,14 @@
      "12,8"
     ],
     "h1": "العرض هو المسافة بين المستقيمين <span class=\"math\">(AC)</span> و<span class=\"math\">(EF)</span>، أي طول العمود النازل من <span class=\"math\">E</span> على <span class=\"math\">(AC)</span>.",
-    "h2": "في المثلث القائم الذي وتره <span class=\"math\">AE</span>: العرض <span class=\"math\">= AE × sin BAC</span> و<span class=\"math\">sin BAC = BC/AC = 0,6</span>.",
+    "h2": "في المثلث القائم الذي وتره <span class=\"math\">AE</span>: العرض <span class=\"math\">= AE × sin BAC</span> و<span class=\"math\">sin BAC = <span class=\"fr\"><span>BC</span><span>AC</span></span> = 0,6</span>.",
     "steps": [
-     "<span class=\"math\">sin BAC = <span class=\"fr\"><span>60</span><span>100</span></span> = 0,6</span>",
-     "العرض <span class=\"math\">= 16 × 0,6 = 9,6</span>",
-     "النتيجة: عرض الممر <span class=\"math\">≈ 10 m</span>"
+     "<b>الطريقة:</b> عرض الممر هو المسافة بين المستقيمين المتوازيين (AC) و(EF)، أي طول العمود [EH] النازل من E على (AC). في المثلث AHE القائم في H: <span class=\"math\">sin</span> = المقابل ÷ الوتر، والزاوية <span class=\"math\">EAH</span> هي <span class=\"math\">BAC</span>.",
+     "في المثلث ABC: <span class=\"math\">sin BAC = <span class=\"fr\"><span>BC</span><span>AC</span></span> = <span class=\"fr\"><span>60</span><span>100</span></span> = 0,6</span>",
+     "في المثلث AHE: <span class=\"math\">sin EAH = <span class=\"fr\"><span>EH</span><span>AE</span></span></span> إذن <span class=\"math\">EH = AE × sin BAC</span>",
+     "<span class=\"math\">EH = 16 × 0,6 = 9,6</span>",
+     "النتيجة: عرض الممر ≈ 10 m",
+     "<b>الاستنتاج:</b> عرض الممر حوالي 10 m (بالتدوير إلى الوحدة)."
     ],
     "rubric": [
      {
@@ -1511,7 +1714,12 @@
      }
     ],
     "pts": 2.5,
-    "partialMsg": "دوّر إلى الوحدة، واستعمل الجيب لا جيب التمام."
+    "partialMsg": "دوّر إلى الوحدة، واستعمل الجيب لا جيب التمام.",
+    "steps0": [
+     "<span class=\"math\">sin BAC = <span class=\"fr\"><span>60</span><span>100</span></span> = 0,6</span>",
+     "العرض <span class=\"math\">= 16 × 0,6 = 9,6</span>",
+     "النتيجة: عرض الممر <span class=\"math\">≈ 10 m</span>"
+    ]
    }
   ],
   "part": "الجزء الثالث"
@@ -1534,8 +1742,10 @@
     "h1": "<span class=\"math\">AB + BC</span>.",
     "h2": "<span class=\"math\">1500 + 1125</span>.",
     "steps": [
+     "<b>الطريقة:</b> المسافة التي تقطعها الفئة (أ) هي مجموع أطوال القطع المتتابعة في المسار: <span class=\"math\">AB + BC</span>.",
      "<span class=\"math\">AB + BC = 1500 + 1125</span>",
-     "النتيجة: <span class=\"math\">2625 m</span>"
+     "النتيجة: 2625 m",
+     "<b>الاستنتاج:</b> تقطع الفئة (أ) مسافة 2625 m."
     ],
     "rubric": [
      {
@@ -1549,7 +1759,11 @@
     ],
     "pts": 1.25,
     "partialMsg": "المسار يمر بـ <span class=\"math\">B</span>.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">AB + BC = 1500 + 1125</span>",
+     "النتيجة: <span class=\"math\">2625 m</span>"
+    ]
    },
    {
     "qId": "11-2",
@@ -1562,11 +1776,14 @@
      "1125"
     ],
     "h1": "<span class=\"math\">CF = CD − FD = 1500 − 300</span>.",
-    "h2": "في المثلث <span class=\"math\">CEF</span> القائم في <span class=\"math\">C</span>: <span class=\"math\">tan CEF = CF/CE</span>.",
+    "h2": "في المثلث <span class=\"math\">CEF</span> القائم في <span class=\"math\">C</span>: <span class=\"math\">tan CEF = <span class=\"fr\"><span>CF</span><span>CE</span></span></span>.",
     "steps": [
-     "<span class=\"math\">CF = 1200 m</span>",
-     "<span class=\"math\">0,75 = 1200/CE</span>",
-     "النتيجة: <span class=\"math\">CE = 1600 m</span>"
+     "<b>الطريقة:</b> في المثلث CEF القائم في C: <span class=\"math\">tan CEF</span> = المقابل (CF) ÷ المجاور (CE).",
+     "<span class=\"math\">DC = AB = 1500</span> m (مستطيل) و<span class=\"math\">CF = DC − DF = 1500 − 300 = 1200</span> m",
+     "<span class=\"math\">tan CEF = <span class=\"fr\"><span>CF</span><span>CE</span></span></span> أي <span class=\"math\">0,75 = <span class=\"fr\"><span>1200</span><span>CE</span></span></span>",
+     "<span class=\"math\">CE = 1200 ÷ 0,75</span>",
+     "النتيجة: <span class=\"math\">CE = 1600 m</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">CE = 1600 m</span>."
     ],
     "rubric": [
      {
@@ -1580,7 +1797,12 @@
     ],
     "pts": 1.25,
     "partialMsg": "الظل = المقابل ÷ المجاور؛ المقابل للزاوية <span class=\"math\">E</span> هو <span class=\"math\">CF</span>.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">CF = 1200 m</span>",
+     "<span class=\"math\">0,75 = <span class=\"fr\"><span>1200</span><span>CE</span></span></span>",
+     "النتيجة: <span class=\"math\">CE = 1600 m</span>"
+    ]
    },
    {
     "qId": "11-3",
@@ -1592,8 +1814,10 @@
     "h1": "<span class=\"math\">AB + BC + CE</span>.",
     "h2": "<span class=\"math\">2625 + 1600</span>.",
     "steps": [
+     "<b>الطريقة:</b> مسافة الفئة (ب) = مسافة الفئة (أ) + CE.",
      "<span class=\"math\">2625 + 1600</span>",
-     "النتيجة: <span class=\"math\">4225 m</span>"
+     "النتيجة: 4225 m",
+     "<b>الاستنتاج:</b> تقطع الفئة (ب) مسافة 4225 m."
     ],
     "rubric": [
      {
@@ -1605,7 +1829,11 @@
       "mark": "0,25"
      }
     ],
-    "pts": 0.5
+    "pts": 0.5,
+    "steps0": [
+     "<span class=\"math\">2625 + 1600</span>",
+     "النتيجة: <span class=\"math\">4225 m</span>"
+    ]
    },
    {
     "qId": "11-4",
@@ -1618,12 +1846,15 @@
      "7650"
     ],
     "h1": "احسب <span class=\"math\">EF</span> بفيثاغورس، ثم <span class=\"math\">DG</span> بطالس في المثلث <span class=\"math\">DAC</span>.",
-    "h2": "<span class=\"math\">EF = 2000</span> ؛ <span class=\"math\">DG/DA = DF/DC = <span class=\"fr\"><span>300</span><span>1500</span></span></span> أي <span class=\"math\">DG = 225</span>.",
+    "h2": "<span class=\"math\">EF = 2000</span> ؛ <span class=\"math\"><span class=\"fr\"><span>DG</span><span>DA</span></span> = <span class=\"fr\"><span>DF</span><span>DC</span></span> = <span class=\"fr\"><span>300</span><span>1500</span></span></span> أي <span class=\"math\">DG = 225</span>.",
     "steps": [
-     "<span class=\"math\">EF² = 1600² + 1200² = 4000000</span> و<span class=\"math\">EF = 2000 m</span>",
-     "<span class=\"math\">DG/1125 = <span class=\"fr\"><span>300</span><span>1500</span></span></span> إذن <span class=\"math\">DG = 225 m</span>",
-     "<span class=\"math\">4225 + 2000 + 300 + 225</span>",
-     "النتيجة: <span class=\"math\">6750 m</span>"
+     "<b>الطريقة:</b> خاصية فيثاغورس: في المثلث القائم، مربع طول الوتر يساوي مجموع مربعي طولي الضلعين الآخرين. (لحساب EF)، ثم خاصية طالس في المثلث DAC لأن <span class=\"math\">(FG) // (AC)</span> (لحساب DG)، ثم نجمع أطوال المسار.",
+     "<span class=\"math\">EF² = CE² + CF² = 1600² + 1200² = 4000000</span> إذن <span class=\"math\">EF = 2000</span> m",
+     "خاصية طالس في المثلث DCA: <span class=\"math\"><span class=\"fr\"><span>DG</span><span>DA</span></span> = <span class=\"fr\"><span>DF</span><span>DC</span></span></span> أي <span class=\"math\"><span class=\"fr\"><span>DG</span><span>1125</span></span> = <span class=\"fr\"><span>300</span><span>1500</span></span></span>",
+     "<span class=\"math\">DG = <span class=\"fr\"><span>1125 × 300</span><span>1500</span></span> = 225</span> m",
+     "المسار: <span class=\"math\">4225 + EF + FD + DG = 4225 + 2000 + 300 + 225</span>",
+     "النتيجة: 6750 m",
+     "<b>الاستنتاج:</b> تقطع الفئة (ج) مسافة 6750 m."
     ],
     "rubric": [
      {
@@ -1641,7 +1872,13 @@
     ],
     "pts": 2.0,
     "partialMsg": "المسار: <span class=\"math\">A→B→C→E→F→D→G</span>.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">EF² = 1600² + 1200² = 4000000</span> و<span class=\"math\">EF = 2000 m</span>",
+     "<span class=\"math\"><span class=\"fr\"><span>DG</span><span>1125</span></span> = <span class=\"fr\"><span>300</span><span>1500</span></span></span> إذن <span class=\"math\">DG = 225 m</span>",
+     "<span class=\"math\">4225 + 2000 + 300 + 225</span>",
+     "النتيجة: <span class=\"math\">6750 m</span>"
+    ]
    }
   ],
   "part": "الجزء الثالث"
@@ -1665,8 +1902,11 @@
     "h1": "قطر المربع <span class=\"math\">d</span>، قطر المستطيل <span class=\"math\">d + 2</span>، ومجموعهما <span class=\"math\">28</span>.",
     "h2": "<span class=\"math\">d + d + 2 = 28</span>.",
     "steps": [
-     "<span class=\"math\">2d + 2 = 28</span>",
-     "النتيجة: <span class=\"math\">d = 13 m</span>"
+     "<b>الطريقة:</b> نترجم المعطيات إلى معادلة: نرمز لقطر المربع بـ <span class=\"math\">d</span>، فقطر المستطيل <span class=\"math\">d + 2</span>، ومجموعهما 28.",
+     "<span class=\"math\">d + (d + 2) = 28</span>",
+     "<span class=\"math\">2d + 2 = 28</span> إذن <span class=\"math\">2d = 26</span>",
+     "النتيجة: <span class=\"math\">d = 13 m</span>",
+     "<b>الاستنتاج:</b> طول قطر المربع 13 m، وقطر المستطيل <span class=\"math\">13 + 2 = 15</span> m."
     ],
     "rubric": [
      {
@@ -1680,11 +1920,15 @@
     ],
     "pts": 1.25,
     "partialMsg": "قطر المستطيل هو الأطول.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">2d + 2 = 28</span>",
+     "النتيجة: <span class=\"math\">d = 13 m</span>"
+    ]
    },
    {
     "qId": "12-2",
-    "text": "2) احسب طول المستطيل (بـ m).",
+    "text": "2) احسب طول المستطيل (بـ m) علما أن <span class=\"math\">cos α = 0,8</span>.",
     "exact": [
      "12"
     ],
@@ -1694,8 +1938,12 @@
     "h1": "قطر المستطيل <span class=\"math\">15 m</span> و<span class=\"math\">cos α = 0,8</span>.",
     "h2": "الطول = <span class=\"math\">15 × 0,8</span>.",
     "steps": [
-     "<span class=\"math\">cos α = <span class=\"fr\"><span>L</span><span>15</span></span></span>",
-     "النتيجة: <span class=\"math\">L = 12 m</span>"
+     "<b>الطريقة:</b> قطر المستطيل يقسمه إلى مثلثين قائمين وتر كل منهما القطر (15 m). <span class=\"math\">cos α</span> = المجاور (الطول L) ÷ الوتر.",
+     "قطر المستطيل: <span class=\"math\">13 + 2 = 15</span> m",
+     "<span class=\"math\">cos α = <span class=\"fr\"><span>L</span><span>15</span></span></span> أي <span class=\"math\">0,8 = <span class=\"fr\"><span>L</span><span>15</span></span></span>",
+     "<span class=\"math\">L = 15 × 0,8</span>",
+     "النتيجة: <span class=\"math\">L = 12 m</span>",
+     "<b>الاستنتاج:</b> طول المستطيل 12 m."
     ],
     "rubric": [
      {
@@ -1705,7 +1953,11 @@
     ],
     "pts": 1.0,
     "partialMsg": "قطر المستطيل <span class=\"math\">13 + 2 = 15</span>.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">cos α = <span class=\"fr\"><span>L</span><span>15</span></span></span>",
+     "النتيجة: <span class=\"math\">L = 12 m</span>"
+    ]
    },
    {
     "qId": "12-3",
@@ -1720,8 +1972,11 @@
     "h1": "فيثاغورس: <span class=\"math\">l² = 15² − 12²</span>.",
     "h2": "<span class=\"math\">225 − 144</span>.",
     "steps": [
-     "<span class=\"math\">l² = 225 − 144 = 81</span>",
-     "النتيجة: <span class=\"math\">l = 9 m</span>"
+     "<b>الطريقة:</b> خاصية فيثاغورس: في المثلث القائم، مربع طول الوتر يساوي مجموع مربعي طولي الضلعين الآخرين. الوتر هو قطر المستطيل.",
+     "<span class=\"math\">15² = 12² + l²</span> إذن <span class=\"math\">l² = 225 − 144 = 81</span>",
+     "<span class=\"math\">l = √81 = 9</span>",
+     "النتيجة: <span class=\"math\">l = 9 m</span>",
+     "<b>الاستنتاج:</b> عرض المستطيل 9 m."
     ],
     "rubric": [
      {
@@ -1731,7 +1986,11 @@
     ],
     "pts": 1.0,
     "partialMsg": "خذ الجذر التربيعي.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">l² = 225 − 144 = 81</span>",
+     "النتيجة: <span class=\"math\">l = 9 m</span>"
+    ]
    },
    {
     "qId": "12-4",
@@ -1746,11 +2005,14 @@
     "h1": "مساحة المربع: <span class=\"math\">a² + a² = 13²</span> أي <span class=\"math\">a² = 84,5</span>.",
     "h2": "المستطيل <span class=\"math\">12 × 9</span>، ونصف القرص قطره <span class=\"math\">12</span>: <span class=\"math\">3,14 × 6² ÷ 2</span>.",
     "steps": [
-     "المربع: <span class=\"math\">2a² = 169</span> إذن <span class=\"math\">84,5 m²</span>",
-     "المستطيل: <span class=\"math\">108 m²</span> ؛ نصف القرص: <span class=\"math\">56,52 m²</span>",
-     "المجموع <span class=\"math\">249,02 m²</span>",
-     "<span class=\"math\">249,02 × 800</span>",
-     "النتيجة: <span class=\"math\">199216 DA</span>"
+     "<b>الطريقة:</b> المساحة الكلية = مساحة المربع + مساحة المستطيل + مساحة نصف القرص، ثم السعر = المساحة × 800. مساحة المربع بدلالة قطره: <span class=\"math\">d² ÷ 2</span>. مساحة نصف القرص: <span class=\"math\">π × r² ÷ 2</span> (قطره طول المستطيل 12 m).",
+     "المربع: <span class=\"math\">13² ÷ 2 = 169 ÷ 2 = 84,5</span> m²",
+     "المستطيل: <span class=\"math\">12 × 9 = 108</span> m²",
+     "نصف القرص: <span class=\"math\">r = 6</span> و<span class=\"math\">3,14 × 6² ÷ 2 = 56,52</span> m²",
+     "المجموع: <span class=\"math\">84,5 + 108 + 56,52 = 249,02</span> m²",
+     "السعر: <span class=\"math\">249,02 × 800 = 199216</span>",
+     "النتيجة: 199216 DA",
+     "<b>الاستنتاج:</b> السعر الإجمالي للبلاط هو 199216 DA."
     ],
     "rubric": [
      {
@@ -1763,8 +2025,15 @@
      }
     ],
     "pts": 1.75,
-    "partialMsg": "راجع مساحة المربع (<span class=\"math\">d²/2</span>) ونصف القرص (نصف قطره <span class=\"math\">6</span>).",
-    "partialZero": true
+    "partialMsg": "راجع مساحة المربع (<span class=\"math\"><span class=\"fr\"><span>d²</span><span>2</span></span></span>) ونصف القرص (نصف قطره <span class=\"math\">6</span>).",
+    "partialZero": true,
+    "steps0": [
+     "المربع: <span class=\"math\">2a² = 169</span> إذن <span class=\"math\">84,5 m²</span>",
+     "المستطيل: <span class=\"math\">108 m²</span> ؛ نصف القرص: <span class=\"math\">56,52 m²</span>",
+     "المجموع <span class=\"math\">249,02 m²</span>",
+     "<span class=\"math\">249,02 × 800</span>",
+     "النتيجة: <span class=\"math\">199216 DA</span>"
+    ]
    }
   ],
   "part": "الجزء الثالث"

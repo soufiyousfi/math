@@ -608,8 +608,11 @@
     "h1": "ابحث عن الجداءات التي تساوي <span class=\"math\">28</span>.",
     "h2": "<span class=\"math\">28 = 1 × 28 = 2 × 14 = 4 × 7</span>.",
     "steps": [
+     "<b>الطريقة:</b> قواسم عدد: نكتب العدد على شكل جداء عددين طبيعيين بكل الطرق الممكنة (نجرب القسمة على 1، 2، 3… حتى يتجاوز العدد المجرب الجذر)، ثم نرتب القواسم.",
      "<span class=\"math\">28 = 1 × 28 = 2 × 14 = 4 × 7</span>",
-     "النتيجة: <span class=\"math\">1 ; 2 ; 4 ; 7 ; 14 ; 28</span>"
+     "3 و5 و6 لا تقسم 28، و<span class=\"math\">6 × 6 &gt; 28</span> فنتوقف",
+     "النتيجة: 1 ; 2 ; 4 ; 7 ; 14 ; 28",
+     "<b>الاستنتاج:</b> للعدد 28 ستة قواسم: 1 ; 2 ; 4 ; 7 ; 14 ; 28."
     ],
     "rubric": [
      {
@@ -619,7 +622,11 @@
     ],
     "pts": 1,
     "partialMsg": "نسيت قاسما على الأقل (العدد <span class=\"math\">1</span> والعدد نفسه قاسمان).",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">28 = 1 × 28 = 2 × 14 = 4 × 7</span>",
+     "النتيجة: <span class=\"math\">1 ; 2 ; 4 ; 7 ; 14 ; 28</span>"
+    ]
    },
    {
     "qId": "1-2",
@@ -639,11 +646,13 @@
     "h1": "ابدأ بقسمة <span class=\"math\">546</span> على <span class=\"math\">390</span>.",
     "h2": "البواقي المتتالية: <span class=\"math\">156</span> ثم ... ؛ القاسم المشترك الأكبر هو آخر باق غير معدوم.",
     "steps": [
+     "<b>الطريقة:</b> خوارزمية إقليدس: نقسم العدد الأكبر على الأصغر، ثم نقسم القاسم على الباقي، ونكرر حتى نحصل على باق معدوم. القاسم المشترك الأكبر هو آخر باق غير معدوم.",
      "<span class=\"math\">546 = 390 × 1 + 156</span>",
      "<span class=\"math\">390 = 156 × 2 + 78</span>",
      "<span class=\"math\">156 = 78 × 2 + 0</span>",
      "آخر باق غير معدوم <span class=\"math\">78</span>",
-     "النتيجة: <span class=\"math\">PGCD(546 ; 390) = 78</span>"
+     "النتيجة: <span class=\"math\">PGCD(546 ; 390) = 78</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">PGCD(546 ; 390) = 78</span>."
     ],
     "rubric": [
      {
@@ -657,7 +666,14 @@
     ],
     "pts": 2,
     "partialMsg": "هذا قاسم مشترك أو باق، وليس آخر باق غير معدوم.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">546 = 390 × 1 + 156</span>",
+     "<span class=\"math\">390 = 156 × 2 + 78</span>",
+     "<span class=\"math\">156 = 78 × 2 + 0</span>",
+     "آخر باق غير معدوم <span class=\"math\">78</span>",
+     "النتيجة: <span class=\"math\">PGCD(546 ; 390) = 78</span>"
+    ]
    },
    {
     "qId": "1-3",
@@ -675,8 +691,11 @@
     "h1": "اقسم البسط والمقام على <span class=\"math\">PGCD</span>.",
     "h2": "<span class=\"math\">390 ÷ 78</span> و<span class=\"math\">546 ÷ 78</span>.",
     "steps": [
+     "<b>الطريقة:</b> خاصية: بقسمة البسط والمقام على قاسمهما المشترك الأكبر نحصل على كسر غير قابل للاختزال.",
+     "من السؤال 2: <span class=\"math\">PGCD(390 ; 546) = 78</span>",
      "<span class=\"math\">390 ÷ 78 = 5</span> و<span class=\"math\">546 ÷ 78 = 7</span>",
-     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>390</span><span>546</span></span> = <span class=\"fr\"><span>5</span><span>7</span></span></span>"
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>390</span><span>546</span></span> = <span class=\"fr\"><span>5</span><span>7</span></span></span>",
+     "<b>الاستنتاج:</b> <span class=\"math\"><span class=\"fr\"><span>5</span><span>7</span></span></span> غير قابل للاختزال لأن <span class=\"math\">PGCD(5 ; 7) = 1</span>."
     ],
     "rubric": [
      {
@@ -689,7 +708,11 @@
      }
     ],
     "pts": 2,
-    "partialMsg": "الكسر لم يصبح غير قابل للاختزال: اقسم على القاسم المشترك الأكبر."
+    "partialMsg": "الكسر لم يصبح غير قابل للاختزال: اقسم على القاسم المشترك الأكبر.",
+    "steps0": [
+     "<span class=\"math\">390 ÷ 78 = 5</span> و<span class=\"math\">546 ÷ 78 = 7</span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>390</span><span>546</span></span> = <span class=\"fr\"><span>5</span><span>7</span></span></span>"
+    ]
    }
   ]
  },
@@ -711,9 +734,11 @@
     "h1": "ابحث عن أكبر مربع تام يقسم <span class=\"math\">75</span>.",
     "h2": "<span class=\"math\">75 = 25 × 3</span>.",
     "steps": [
+     "<b>الطريقة:</b> خاصية: <span class=\"math\">√(a × b) = √a × √b</span> حيث a وb موجبان. نكتب العدد تحت الجذر على شكل جداء مربع تام (أكبر ما يمكن) في عدد آخر. هنا 25 مربع تام و<span class=\"math\">75 = 25 × 3</span>.",
      "<span class=\"math\">√75 = √(25 × 3)</span>",
      "<span class=\"math\">= √25 × √3</span>",
-     "النتيجة: <span class=\"math\">√75 = 5√3</span>"
+     "النتيجة: <span class=\"math\">√75 = 5√3</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">√75 = 5√3</span> أي <span class=\"math\">a = 5</span> و<span class=\"math\">b = 3</span>."
     ],
     "rubric": [
      {
@@ -726,7 +751,12 @@
      }
     ],
     "pts": 1,
-    "partialMsg": "أكمل: <span class=\"math\">√25 = 5</span>."
+    "partialMsg": "أكمل: <span class=\"math\">√25 = 5</span>.",
+    "steps0": [
+     "<span class=\"math\">√75 = √(25 × 3)</span>",
+     "<span class=\"math\">= √25 × √3</span>",
+     "النتيجة: <span class=\"math\">√75 = 5√3</span>"
+    ]
    },
    {
     "qId": "2-2",
@@ -742,11 +772,13 @@
     "h1": "اكتب كل جذر على الشكل <span class=\"math\">a√3</span>.",
     "h2": "<span class=\"math\">√12 = 2√3</span> ؛ <span class=\"math\">√27 = 3√3</span> ؛ <span class=\"math\">√48 = 4√3</span>.",
     "steps": [
-     "<span class=\"math\">2√12 = 2 × 2√3 = 4√3</span>",
-     "<span class=\"math\">√27 = 3√3</span>",
-     "<span class=\"math\">√48 = 4√3</span>",
-     "<span class=\"math\">A = 4√3 − 3√3 + 4√3</span>",
-     "النتيجة: <span class=\"math\">A = 5√3</span>"
+     "<b>الطريقة:</b> خاصية: <span class=\"math\">√(a × b) = √a × √b</span> حيث a وb موجبان. نكتب العدد تحت الجذر على شكل جداء مربع تام (أكبر ما يمكن) في عدد آخر. ثم نجمع الحدود التي لها نفس الجذر <span class=\"math\">√3</span>.",
+     "<span class=\"math\">2√12 = 2 × √(4 × 3) = 2 × 2√3 = 4√3</span>",
+     "<span class=\"math\">√27 = √(9 × 3) = 3√3</span>",
+     "<span class=\"math\">√48 = √(16 × 3) = 4√3</span>",
+     "<span class=\"math\">A = 4√3 − 3√3 + 4√3 = (4 − 3 + 4)√3</span>",
+     "النتيجة: <span class=\"math\">A = 5√3</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">A = 5√3</span>."
     ],
     "rubric": [
      {
@@ -760,7 +792,14 @@
     ],
     "pts": 1.5,
     "partialMsg": "لا نجمع ما تحت الجذور؛ اكتب كل جذر على الشكل <span class=\"math\">a√3</span> وانتبه للمعامل <span class=\"math\">2</span>.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">2√12 = 2 × 2√3 = 4√3</span>",
+     "<span class=\"math\">√27 = 3√3</span>",
+     "<span class=\"math\">√48 = 4√3</span>",
+     "<span class=\"math\">A = 4√3 − 3√3 + 4√3</span>",
+     "النتيجة: <span class=\"math\">A = 5√3</span>"
+    ]
    },
    {
     "qId": "2-3",
@@ -775,9 +814,11 @@
     "h1": "<span class=\"math\">√a × √b = √(a × b)</span>.",
     "h2": "<span class=\"math\">6 × 24 = 144</span>.",
     "steps": [
+     "<b>الطريقة:</b> خاصية: <span class=\"math\">√a × √b = √(a × b)</span>، ثم نتعرف على المربع التام <span class=\"math\">144 = 12²</span>.",
      "<span class=\"math\">B = √(6 × 24)</span>",
      "<span class=\"math\">B = √144</span>",
-     "النتيجة: <span class=\"math\">B = 12</span>"
+     "النتيجة: <span class=\"math\">B = 12</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">B = 12</span> عدد طبيعي."
     ],
     "rubric": [
      {
@@ -786,11 +827,16 @@
      }
     ],
     "pts": 1,
-    "partialMsg": "بسّط: <span class=\"math\">√144</span> عدد طبيعي."
+    "partialMsg": "بسّط: <span class=\"math\">√144</span> عدد طبيعي.",
+    "steps0": [
+     "<span class=\"math\">B = √(6 × 24)</span>",
+     "<span class=\"math\">B = √144</span>",
+     "النتيجة: <span class=\"math\">B = 12</span>"
+    ]
    },
    {
     "qId": "2-4",
-    "text": "4) اكتب <span class=\"math\">C = 12/√6</span> بمقام عدد ناطق، ثم بسّط.",
+    "text": "4) اكتب <span class=\"math\">C = <span class=\"fr\"><span>12</span><span>√6</span></span></span> بمقام عدد ناطق، ثم بسّط.",
     "exact": [
      "2√6"
     ],
@@ -798,11 +844,13 @@
      "12√6/6"
     ],
     "h1": "اضرب البسط والمقام في <span class=\"math\">√6</span>.",
-    "h2": "<span class=\"math\">12√<span class=\"fr\"><span>6</span><span>6</span></span></span> ثم بسّط.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>12√6</span><span>6</span></span></span> ثم بسّط.",
     "steps": [
-     "<span class=\"math\">C = <span class=\"fr\"><span>12 × √6</span><span>√6 × √6</span></span></span>",
-     "<span class=\"math\">C = 12√<span class=\"fr\"><span>6</span><span>6</span></span></span>",
-     "النتيجة: <span class=\"math\">C = 2√6</span>"
+     "<b>الطريقة:</b> لجعل المقام ناطقا نضرب البسط والمقام في <span class=\"math\">√6</span> لأن <span class=\"math\">√6 × √6 = 6</span>، ثم نختزل.",
+     "<span class=\"math\">C = <span class=\"fr\"><span>12 × √6</span><span>√6 × √6</span></span> = <span class=\"fr\"><span>12√6</span><span>6</span></span></span>",
+     "<span class=\"math\">12 ÷ 6 = 2</span>",
+     "النتيجة: <span class=\"math\">C = 2√6</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">C = 2√6</span> ومقامه 1 (عدد ناطق)."
     ],
     "rubric": [
      {
@@ -815,7 +863,12 @@
      }
     ],
     "pts": 1.5,
-    "partialMsg": "بسّط <span class=\"math\"><span class=\"fr\"><span>12</span><span>6</span></span></span>."
+    "partialMsg": "بسّط <span class=\"math\"><span class=\"fr\"><span>12</span><span>6</span></span></span>.",
+    "steps0": [
+     "<span class=\"math\">C = <span class=\"fr\"><span>12 × √6</span><span>√6 × √6</span></span></span>",
+     "<span class=\"math\">C = <span class=\"fr\"><span>12√6</span><span>6</span></span></span>",
+     "النتيجة: <span class=\"math\">C = 2√6</span>"
+    ]
    }
   ]
  },
@@ -843,10 +896,12 @@
     "h1": "للمعادلة <span class=\"math\">x² = a</span> حيث <span class=\"math\">a &gt; 0</span> حلان متعاكسان.",
     "h2": "<span class=\"math\">√80 = √(16 × 5)</span>.",
     "steps": [
+     "<b>الطريقة:</b> المعادلة <span class=\"math\">x² = a</span> حيث <span class=\"math\">a &gt; 0</span> تقبل حلين متعاكسين: <span class=\"math\">x = √a</span> أو <span class=\"math\">x = −√a</span>.",
      "<span class=\"math\">80 &gt; 0</span>: للمعادلة حلان",
      "<span class=\"math\">x = √80</span> أو <span class=\"math\">x = −√80</span>",
-     "<span class=\"math\">√80 = 4√5</span>",
-     "النتيجة: <span class=\"math\">4√5</span> و<span class=\"math\">−4√5</span>"
+     "<span class=\"math\">√80 = √(16 × 5) = 4√5</span>",
+     "النتيجة: <span class=\"math\">4√5</span> و<span class=\"math\">−4√5</span>",
+     "<b>الاستنتاج:</b> حلا المعادلة هما <span class=\"math\">4√5</span> و<span class=\"math\">−4√5</span>."
     ],
     "rubric": [
      {
@@ -859,7 +914,13 @@
      }
     ],
     "pts": 1.5,
-    "partialMsg": "تحقق من وجود الحلين ومن تبسيط <span class=\"math\">√80</span>."
+    "partialMsg": "تحقق من وجود الحلين ومن تبسيط <span class=\"math\">√80</span>.",
+    "steps0": [
+     "<span class=\"math\">80 &gt; 0</span>: للمعادلة حلان",
+     "<span class=\"math\">x = √80</span> أو <span class=\"math\">x = −√80</span>",
+     "<span class=\"math\">√80 = 4√5</span>",
+     "النتيجة: <span class=\"math\">4√5</span> و<span class=\"math\">−4√5</span>"
+    ]
    },
    {
     "qId": "3-2",
@@ -874,9 +935,11 @@
     "h1": "هل يمكن أن يكون مربع عدد سالبا؟",
     "h2": "مربع أي عدد موجب أو معدوم.",
     "steps": [
+     "<b>الطريقة:</b> مربع أي عدد موجب أو معدوم، إذن المعادلة <span class=\"math\">x² = a</span> حيث <span class=\"math\">a &lt; 0</span> لا تقبل أي حل.",
      "<span class=\"math\">x² ≥ 0</span> لكل عدد <span class=\"math\">x</span>",
      "<span class=\"math\">−9 &lt; 0</span>",
-     "النتيجة: المعادلة لا تقبل حلا (<span class=\"math\">0</span>)"
+     "النتيجة: المعادلة لا تقبل حلا (<span class=\"math\">0</span>)",
+     "<b>الاستنتاج:</b> المعادلة <span class=\"math\">x² = −9</span> لا تقبل حلا، فاكتب 0."
     ],
     "rubric": [
      {
@@ -886,7 +949,12 @@
     ],
     "pts": 1.5,
     "partialMsg": "مربع عدد لا يكون سالبا.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">x² ≥ 0</span> لكل عدد <span class=\"math\">x</span>",
+     "<span class=\"math\">−9 &lt; 0</span>",
+     "النتيجة: المعادلة لا تقبل حلا (<span class=\"math\">0</span>)"
+    ]
    },
    {
     "qId": "3-3",
@@ -901,8 +969,10 @@
     "h1": "<span class=\"math\">√16 = 4</span>.",
     "h2": "<span class=\"math\">√9 = 3</span>.",
     "steps": [
+     "<b>الطريقة:</b> الجذر التربيعي لعدد موجب a هو العدد الموجب الذي مربعه a: <span class=\"math\">√16 = 4</span> لأن <span class=\"math\">4² = 16</span>.",
      "<span class=\"math\">√16 = 4</span> و<span class=\"math\">√9 = 3</span>",
-     "النتيجة: <span class=\"math\">√16 + √9 = 7</span>"
+     "النتيجة: <span class=\"math\">√16 + √9 = 7</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">√16 + √9 = 7</span>."
     ],
     "rubric": [
      {
@@ -912,7 +982,11 @@
     ],
     "pts": 1,
     "partialMsg": "احسب كل جذر وحده ثم اجمع.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">√16 = 4</span> و<span class=\"math\">√9 = 3</span>",
+     "النتيجة: <span class=\"math\">√16 + √9 = 7</span>"
+    ]
    },
    {
     "qId": "3-4",
@@ -926,10 +1000,12 @@
     "h1": "قارن جوابك السابق بـ <span class=\"math\">√25</span>.",
     "h2": "<span class=\"math\">√25 = 5</span>.",
     "steps": [
+     "<b>الطريقة:</b> للتحقق من مساواة نحسب طرفيها كلا على حدة ونقارن. (الجذر لا يتوزع على الجمع: <span class=\"math\">√(a + b) ≠ √a + √b</span> عموما).",
      "<span class=\"math\">√16 + √9 = 7</span>",
      "<span class=\"math\">√(16 + 9) = √25 = 5</span>",
      "<span class=\"math\">7 ≠ 5</span>",
-     "النتيجة: المساواة خاطئة (<span class=\"math\">2</span>)"
+     "النتيجة: المساواة خاطئة (<span class=\"math\">2</span>)",
+     "<b>الاستنتاج:</b> المساواة خاطئة، فاكتب 2."
     ],
     "rubric": [
      {
@@ -939,7 +1015,13 @@
     ],
     "pts": 1,
     "partialMsg": "احسب الطرفين وقارن.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">√16 + √9 = 7</span>",
+     "<span class=\"math\">√(16 + 9) = √25 = 5</span>",
+     "<span class=\"math\">7 ≠ 5</span>",
+     "النتيجة: المساواة خاطئة (<span class=\"math\">2</span>)"
+    ]
    }
   ]
  },
@@ -947,7 +1029,7 @@
   "id": 4,
   "pts": 5,
   "title": "التمرين 4: وضعية: أنبوب السقي",
-  "context": "قطعة أرض مربعة الشكل بعين الدفلى مساحتها <span class=\"math\">98 m²</span>. يريد صاحبها مدّ أنبوب سقي على طول أحد قطريها، ثمن المتر الواحد من الأنبوب <span class=\"math\">250 DA</span>.",
+  "context": "قطعة أرض مربعة الشكل بهواري بومدين مساحتها <span class=\"math\">98 m²</span>. يريد صاحبها مدّ أنبوب سقي على طول أحد قطريها، ثمن المتر الواحد من الأنبوب <span class=\"math\">250 DA</span>.",
   "questions": [
    {
     "qId": "4-1",
@@ -961,9 +1043,11 @@
     "h1": "مساحة المربع = الضلع × الضلع.",
     "h2": "الضلع <span class=\"math\">√98</span> و<span class=\"math\">98 = 49 × 2</span>.",
     "steps": [
+     "<b>الطريقة:</b> مساحة المربع = <span class=\"math\">c²</span>، فنحصل على المعادلة <span class=\"math\">c² = 98</span> ونأخذ الحل الموجب، ثم نبسّط الجذر: خاصية: <span class=\"math\">√(a × b) = √a × √b</span> حيث a وb موجبان. نكتب العدد تحت الجذر على شكل جداء مربع تام (أكبر ما يمكن) في عدد آخر.",
      "<span class=\"math\">c² = 98</span> و<span class=\"math\">c &gt; 0</span>",
      "<span class=\"math\">c = √98 = √(49 × 2)</span>",
-     "النتيجة: <span class=\"math\">c = 7√2 m</span>"
+     "النتيجة: <span class=\"math\">c = 7√2 m</span>",
+     "<b>الاستنتاج:</b> طول ضلع الأرض <span class=\"math\">7√2</span> m."
     ],
     "rubric": [
      {
@@ -976,7 +1060,12 @@
      }
     ],
     "pts": 1.5,
-    "partialMsg": "اكتب <span class=\"math\">√98</span> على الشكل <span class=\"math\">a√b</span>."
+    "partialMsg": "اكتب <span class=\"math\">√98</span> على الشكل <span class=\"math\">a√b</span>.",
+    "steps0": [
+     "<span class=\"math\">c² = 98</span> و<span class=\"math\">c &gt; 0</span>",
+     "<span class=\"math\">c = √98 = √(49 × 2)</span>",
+     "النتيجة: <span class=\"math\">c = 7√2 m</span>"
+    ]
    },
    {
     "qId": "4-2",
@@ -991,9 +1080,11 @@
     "h1": "القطر وتر مثلث قائم ضلعاه القائمان ضلعا المربع.",
     "h2": "استعمل خاصية فيثاغورس: <span class=\"math\">d² = c² + c²</span>.",
     "steps": [
+     "<b>الطريقة:</b> خاصية فيثاغورس: القطر يقسم المربع إلى مثلثين قائمين ومتساويي الساقين، وتر كل منهما هو القطر: <span class=\"math\">d² = c² + c²</span>.",
      "<span class=\"math\">d² = c² + c² = 98 + 98 = 196</span>",
      "<span class=\"math\">d = √196</span>",
-     "النتيجة: <span class=\"math\">d = 14 m</span>"
+     "النتيجة: <span class=\"math\">d = 14 m</span>",
+     "<b>الاستنتاج:</b> طول قطر الأرض 14 m."
     ],
     "rubric": [
      {
@@ -1006,7 +1097,12 @@
      }
     ],
     "pts": 2,
-    "partialMsg": "تحقق: <span class=\"math\">d² = 98 + 98</span>."
+    "partialMsg": "تحقق: <span class=\"math\">d² = 98 + 98</span>.",
+    "steps0": [
+     "<span class=\"math\">d² = c² + c² = 98 + 98 = 196</span>",
+     "<span class=\"math\">d = √196</span>",
+     "النتيجة: <span class=\"math\">d = 14 m</span>"
+    ]
    },
    {
     "qId": "4-3",
@@ -1020,9 +1116,11 @@
     "h1": "الثمن = الطول × ثمن المتر.",
     "h2": "استعمل طول القطر.",
     "steps": [
+     "<b>الطريقة:</b> الثمن = طول الأنبوب (طول القطر) × ثمن المتر الواحد.",
      "<span class=\"math\">14 × 250</span>",
      "<span class=\"math\">= 3500</span>",
-     "النتيجة: <span class=\"math\">3500 DA</span>"
+     "النتيجة: <span class=\"math\">3500 DA</span>",
+     "<b>الاستنتاج:</b> ثمن الأنبوب 3500 DA، والسقي على طول القطر يقتصد في الماء والأنبوب."
     ],
     "rubric": [
      {
@@ -1032,7 +1130,12 @@
     ],
     "pts": 1.5,
     "partialMsg": "الأنبوب على القطر لا على الضلع.",
-    "partialZero": true
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">14 × 250</span>",
+     "<span class=\"math\">= 3500</span>",
+     "النتيجة: <span class=\"math\">3500 DA</span>"
+    ]
    }
   ]
  }
