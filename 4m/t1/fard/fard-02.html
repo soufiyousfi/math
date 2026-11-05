@@ -498,6 +498,14 @@
             .input-line { flex-direction: column; }
             input[type="text"], .btn-check { width: 100%; }
         }
+    
+        .fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; line-height: 1.05; margin: 0 2px; font-size: .92em; }
+        .fr > span:first-child { border-bottom: 2px solid currentColor; padding: 0 3px 1px; }
+        .fr > span:last-child { padding: 1px 3px 0; }
+        .vop { display: inline-block; direction: ltr; unicode-bidi: isolate; font-family: 'Courier New', Courier, monospace; font-weight: 700;
+               background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
+        .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
+        .vop .ln { border-top: 2px solid #0f172a; }
     </style>
 </head>
 <body>
@@ -629,7 +637,7 @@
    },
    {
     "qId": "1-2",
-    "text": "2) اكتب <span class=\"math\">1188/1386</span> على شكل كسر غير قابل للاختزال.",
+    "text": "2) اكتب <span class=\"math\"><span class=\"fr\"><span>1188</span><span>1386</span></span></span> على شكل كسر غير قابل للاختزال.",
     "exact": [
      "6/7"
     ],
@@ -645,7 +653,7 @@
     "h2": "<span class=\"math\">1188 ÷ 198</span> و<span class=\"math\">1386 ÷ 198</span>.",
     "steps": [
      "<span class=\"math\">1188 ÷ 198 = 6</span> و<span class=\"math\">1386 ÷ 198 = 7</span>",
-     "النتيجة: <span class=\"math\">6/7</span>"
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>6</span><span>7</span></span></span>"
     ],
     "rubric": [
      {
@@ -765,10 +773,10 @@
      "10√5/5"
     ],
     "h1": "اضرب البسط والمقام في <span class=\"math\">√5</span>.",
-    "h2": "<span class=\"math\">10√5/5</span>.",
+    "h2": "<span class=\"math\">10√<span class=\"fr\"><span>5</span><span>5</span></span></span>.",
     "steps": [
-     "<span class=\"math\">C = (10 × √5)/(√5 × √5)</span>",
-     "<span class=\"math\">C = 10√5/5</span>",
+     "<span class=\"math\">C = <span class=\"fr\"><span>10 × √5</span><span>√5 × √5</span></span></span>",
+     "<span class=\"math\">C = 10√<span class=\"fr\"><span>5</span><span>5</span></span></span>",
      "النتيجة: <span class=\"math\">C = 2√5</span>"
     ],
     "rubric": [
@@ -782,7 +790,7 @@
      }
     ],
     "pts": 2,
-    "partialMsg": "بسّط <span class=\"math\">10/5</span>."
+    "partialMsg": "بسّط <span class=\"math\"><span class=\"fr\"><span>10</span><span>5</span></span></span>."
    }
   ]
  },
@@ -803,11 +811,11 @@
      "1,6"
     ],
     "h1": "اكتب نسب خاصية طالس: <span class=\"math\">AM/AB = AN/AC = MN/BC</span>.",
-    "h2": "استعمل <span class=\"math\">AM/AB = AN/AC</span>: <span class=\"math\">3/7,5 = 4/AC</span>.",
+    "h2": "استعمل <span class=\"math\">AM/AB = AN/AC</span>: <span class=\"math\"><span class=\"fr\"><span>3</span><span>7,5</span></span> = 4/AC</span>.",
     "steps": [
      "<span class=\"math\">(MN) // (BC)</span> و<span class=\"math\">M ∈ [AB]</span> و<span class=\"math\">N ∈ [AC]</span>",
      "حسب خاصية طالس: <span class=\"math\">AM/AB = AN/AC = MN/BC</span>",
-     "<span class=\"math\">3/7,5 = 4/AC</span>",
+     "<span class=\"math\"><span class=\"fr\"><span>3</span><span>7,5</span></span> = 4/AC</span>",
      "<span class=\"math\">AC = 4 × 7,5 ÷ 3</span>",
      "النتيجة: <span class=\"math\">AC = 10 cm</span>"
     ],
@@ -835,9 +843,9 @@
      "25"
     ],
     "h1": "استعمل <span class=\"math\">AM/AB = MN/BC</span>.",
-    "h2": "<span class=\"math\">3/7,5 = MN/10</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>3</span><span>7,5</span></span> = MN/10</span>.",
     "steps": [
-     "<span class=\"math\">3/7,5 = MN/10</span>",
+     "<span class=\"math\"><span class=\"fr\"><span>3</span><span>7,5</span></span> = MN/10</span>",
      "<span class=\"math\">MN = 3 × 10 ÷ 7,5</span>",
      "النتيجة: <span class=\"math\">MN = 4 cm</span>"
     ],
@@ -866,12 +874,12 @@
      "6/15",
      "10/25"
     ],
-    "h1": "<span class=\"math\">3/7,5 = 30/75</span>.",
+    "h1": "<span class=\"math\"><span class=\"fr\"><span>3</span><span>7,5</span></span> = <span class=\"fr\"><span>30</span><span>75</span></span></span>.",
     "h2": "اقسم على <span class=\"math\">15</span>.",
     "steps": [
-     "<span class=\"math\">AM/AB = 3/7,5 = 30/75</span>",
-     "<span class=\"math\">30/75 = 2/5</span>",
-     "النتيجة: <span class=\"math\">2/5</span>"
+     "<span class=\"math\">AM/AB = <span class=\"fr\"><span>3</span><span>7,5</span></span> = <span class=\"fr\"><span>30</span><span>75</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>30</span><span>75</span></span> = <span class=\"fr\"><span>2</span><span>5</span></span></span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>2</span><span>5</span></span></span>"
     ],
     "rubric": [
      {
@@ -904,8 +912,8 @@
     "h2": "الضلع المقابل للزاوية <span class=\"math\">E</span> هو <span class=\"math\">FG</span>.",
     "steps": [
      "<span class=\"math\">sin FEG = FG/EG</span>",
-     "<span class=\"math\">= 8/10</span>",
-     "النتيجة: <span class=\"math\">sin FEG = 4/5</span>"
+     "<span class=\"math\">= <span class=\"fr\"><span>8</span><span>10</span></span></span>",
+     "النتيجة: <span class=\"math\">sin FEG = <span class=\"fr\"><span>4</span><span>5</span></span></span>"
     ],
     "rubric": [
      {
@@ -933,8 +941,8 @@
     "h2": "المجاور للزاوية <span class=\"math\">E</span> هو <span class=\"math\">EF</span>.",
     "steps": [
      "<span class=\"math\">tan FEG = FG/EF</span>",
-     "<span class=\"math\">= 8/6</span>",
-     "النتيجة: <span class=\"math\">tan FEG = 4/3</span>"
+     "<span class=\"math\">= <span class=\"fr\"><span>8</span><span>6</span></span></span>",
+     "النتيجة: <span class=\"math\">tan FEG = <span class=\"fr\"><span>4</span><span>3</span></span></span>"
     ],
     "rubric": [
      {
@@ -962,8 +970,8 @@
     "h1": "جيب التمام = المجاور ÷ الوتر.",
     "h2": "<span class=\"math\">EF/EG</span>.",
     "steps": [
-     "<span class=\"math\">cos FEG = EF/EG = 6/10</span>",
-     "النتيجة: <span class=\"math\">cos FEG = 3/5</span>"
+     "<span class=\"math\">cos FEG = EF/EG = <span class=\"fr\"><span>6</span><span>10</span></span></span>",
+     "النتيجة: <span class=\"math\">cos FEG = <span class=\"fr\"><span>3</span><span>5</span></span></span>"
     ],
     "rubric": [
      {
@@ -987,8 +995,8 @@
     "h1": "بالنسبة للزاوية <span class=\"math\">G</span>، الضلع المقابل هو <span class=\"math\">EF</span>.",
     "h2": "المجاور للزاوية <span class=\"math\">G</span> هو <span class=\"math\">FG</span>.",
     "steps": [
-     "<span class=\"math\">tan EGF = EF/FG = 6/8</span>",
-     "النتيجة: <span class=\"math\">tan EGF = 3/4</span>"
+     "<span class=\"math\">tan EGF = EF/FG = <span class=\"fr\"><span>6</span><span>8</span></span></span>",
+     "النتيجة: <span class=\"math\">tan EGF = <span class=\"fr\"><span>3</span><span>4</span></span></span>"
     ],
     "rubric": [
      {
@@ -1128,6 +1136,8 @@
             inp.classList.add('shake');
         }
 
+        const FBMSG = {"ok": ["أحسنت! تركيزك أوصلك إلى الجواب الصحيح.", "ممتاز! أخذت وقتك وفكّرت جيدا، وهذه هي النتيجة.", "برافو! التأنّي في الحساب يصنع النجاح.", "رائع! جهدك يستحق هذه النجوم.", "إجابة صحيحة! واصل بنفس الهدوء والتركيز.", "أحسنت! من يقرأ السؤال جيدا يصل إلى الحل.", "عمل متقن! الدقة أهم من السرعة، وأنت أثبتّ ذلك.", "بارك الله فيك! تقدّم خطوة بخطوة كما فعلت الآن."], "w1": ["لا بأس، الخطأ جزء من التعلّم. أعد قراءة السؤال بهدوء.", "تمهّل قليلا: كلما أسرعت قلّ تركيزك. خذ وقتك.", "محاولة جيدة! راجع حسابك خطوة بخطوة.", "كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.", "لا تستعجل. اقرأ المعطيات من جديد ثم فكّر.", "أنت قريب. أعطِ هذا السؤال الوقت الذي يحتاجه.", "الخطأ ليس فشلا بل خطوة نحو الفهم. حاول مجددا.", "هدّئ السرعة وزِد التركيز، وستجد الطريق."], "w2": ["محاولة أخيرة: اكتب الحساب على ورقة قبل أن تجيب.", "لا تيأس! التركيز يأتي مع الهدوء. اقرأ التلميح جيدا.", "السرعة والتركيز لا يجتمعان: تمهّل في هذه المحاولة الأخيرة.", "ابذل جهدا إضافيا صغيرا، فالحل قريب منك.", "راجع كل خطوة على حدة، ولا تتسرّع.", "كل العلماء أخطؤوا قبل أن ينجحوا. ركّز في هذه المحاولة."], "fail": ["لا تحزن، الخطأ جزء من التعلّم. اقرأ الإجابة النموذجية وسلم التنقيط بتمعّن.", "تعلّمنا شيئا جديدا اليوم! تأمّل خطوات الحل، وأعد التمرين غدا بهدوء.", "لا بأس، الفهم يحتاج وقتا وجهدا. راجع الحل خطوة بخطوة.", "المهم أن نفهم لماذا أخطأنا. اقرأ الحل، ثم حاول إعادته وحدك على ورقة.", "الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة."]};
+        function fbPick(kind, qId) { const a = FBMSG[kind]; const p = String(qId).split('-'); const n = (+p[0]) * 3 + (+p[1] || 0) + kind.length; return a[n % a.length]; }
         function checkAns(exId, qId) {
             if (questionLocked[qId]) return;
             const ex = exercises.find(e => e.id === exId);
@@ -1162,7 +1172,7 @@
                 document.getElementById(`btn-${qId}`).disabled = true;
 
                 fb.className = 'feedback-box success';
-                fb.innerHTML = `<span class="star-burst">${starIcons}</span> أحسنت يا بطل! إجابة صحيحة وممتازة. نلت العلامة الكاملة (<span class="math">${String(q.pts).replace('.', ',')} ن</span>).`;
+                fb.innerHTML = `<span class="star-burst">${starIcons}</span> ${fbPick('ok', qId)} نلت العلامة الكاملة (<span class="math">${String(q.pts).replace('.', ',')} ن</span>).`;
                 document.getElementById(`sol-${qId}`).style.display = 'block';
                 updateHeaderStats();
                 return;
@@ -1198,10 +1208,10 @@
 
             if (rem === 2) {
                 fb.className = 'feedback-box hint';
-                fb.innerHTML = `${customReason ? customReason + '<br>' : 'لا بأس، حاول مرة أخرى بتأنٍّ!<br>'}<strong>💡 التلميح 1:</strong> ${q.h1}`;
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w1', qId) + '<br>'}<strong>💡 التلميح 1:</strong> ${q.h1}`;
             } else if (rem === 1) {
                 fb.className = 'feedback-box hint';
-                fb.innerHTML = `${customReason ? customReason + '<br>' : 'قاربت على الوصول، ركّز جيداً في هذه المحاولة الأخيرة!<br>'}<strong>💡 التلميح 2:</strong> ${q.h2}`;
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w2', qId) + '<br>'}<strong>💡 التلميح 2:</strong> ${q.h2}`;
             } else {
                 questionLocked[qId] = true;
                 completedQuestions++;
@@ -1210,7 +1220,7 @@
                 document.getElementById(`qbox-${qId}`).classList.add('failed');
 
                 fb.className = 'feedback-box fail';
-                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 محاولة طيبة! لا تحزن، التعلم يأتي بالمحاولة. اقرأ الإجابة النموذجية وسلم التنقيط بتمعن لتتقن الفكرة في المرة القادمة.';
+                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 ' + fbPick('fail', qId);
                 document.getElementById(`sol-${qId}`).style.display = 'block';
                 updateHeaderStats();
             }

@@ -499,7 +499,15 @@
             input[type="text"], .btn-check { width: 100%; }
         }
     .part-head{margin:26px 4px 10px;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,#0f766e,#1e3a8a);color:#fff;font-weight:800;font-size:1.08rem}
-</style>
+
+        .fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; line-height: 1.05; margin: 0 2px; font-size: .92em; }
+        .fr > span:first-child { border-bottom: 2px solid currentColor; padding: 0 3px 1px; }
+        .fr > span:last-child { padding: 1px 3px 0; }
+        .vop { display: inline-block; direction: ltr; unicode-bidi: isolate; font-family: 'Courier New', Courier, monospace; font-weight: 700;
+               background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
+        .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
+        .vop .ln { border-top: 2px solid #0f172a; }
+    </style>
 </head>
 <body>
 
@@ -604,8 +612,8 @@
     "steps": [
      "حسب خاصية طالس: <span class=\"math\">AE/AB = AF/AC = EF/BC</span>",
      "<span class=\"math\">AB = 3 + 2 = 5</span>",
-     "<span class=\"math\">2/5 = EF/7</span>",
-     "النتيجة: <span class=\"math\">EF = 14/5 = 2,8</span>"
+     "<span class=\"math\"><span class=\"fr\"><span>2</span><span>5</span></span> = EF/7</span>",
+     "النتيجة: <span class=\"math\">EF = <span class=\"fr\"><span>14</span><span>5</span></span> = 2,8</span>"
     ],
     "rubric": [
      {
@@ -632,9 +640,9 @@
      "1,6"
     ],
     "h1": "احسب أولا <span class=\"math\">AC</span> من <span class=\"math\">AE/AB = AF/AC</span>.",
-    "h2": "<span class=\"math\">2/5 = 4/AC</span> ثم <span class=\"math\">FC = AC − AF</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>2</span><span>5</span></span> = 4/AC</span> ثم <span class=\"math\">FC = AC − AF</span>.",
     "steps": [
-     "<span class=\"math\">2/5 = 4/AC</span> إذن <span class=\"math\">AC = 10</span>",
+     "<span class=\"math\"><span class=\"fr\"><span>2</span><span>5</span></span> = 4/AC</span> إذن <span class=\"math\">AC = 10</span>",
      "<span class=\"math\">FC = AC − AF = 10 − 4</span>",
      "النتيجة: <span class=\"math\">FC = 6</span>"
     ],
@@ -702,13 +710,13 @@
      "2/3",
      "2/6"
     ],
-    "h1": "<span class=\"math\">DC = (2/3) × 6 = 4</span> إذن <span class=\"math\">AD = 2</span>.",
-    "h2": "<span class=\"math\">AD/AC = 2/6</span>.",
+    "h1": "<span class=\"math\">DC = (<span class=\"fr\"><span>2</span><span>3</span></span>) × 6 = 4</span> إذن <span class=\"math\">AD = 2</span>.",
+    "h2": "<span class=\"math\">AD/AC = <span class=\"fr\"><span>2</span><span>6</span></span></span>.",
     "steps": [
-     "<span class=\"math\">AE = 4,5 ÷ 3 = 1,5</span> و<span class=\"math\">AE/AB = 1,5/4,5 = 1/3</span>",
-     "<span class=\"math\">DC = 4</span> و<span class=\"math\">AD = 6 − 4 = 2</span> و<span class=\"math\">AD/AC = 2/6 = 1/3</span>",
+     "<span class=\"math\">AE = 4,5 ÷ 3 = 1,5</span> و<span class=\"math\">AE/AB = <span class=\"fr\"><span>1,5</span><span>4,5</span></span> = <span class=\"fr\"><span>1</span><span>3</span></span></span>",
+     "<span class=\"math\">DC = 4</span> و<span class=\"math\">AD = 6 − 4 = 2</span> و<span class=\"math\">AD/AC = <span class=\"fr\"><span>2</span><span>6</span></span> = <span class=\"fr\"><span>1</span><span>3</span></span></span>",
      "النسبتان متساويتان والنقط في نفس الترتيب: <span class=\"math\">(DE) // (BC)</span> (الخاصية العكسية لخاصية طالس)",
-     "النتيجة: <span class=\"math\">AD/AC = AE/AB = 1/3</span> إذن <span class=\"math\">(DE) // (BC)</span>"
+     "النتيجة: <span class=\"math\">AD/AC = AE/AB = <span class=\"fr\"><span>1</span><span>3</span></span></span> إذن <span class=\"math\">(DE) // (BC)</span>"
     ],
     "rubric": [
      {
@@ -734,9 +742,9 @@
      "22,5"
     ],
     "h1": "<span class=\"math\">(DE) // (BC)</span>: خاصية طالس.",
-    "h2": "<span class=\"math\">DE/BC = AE/AB = 1/3</span>.",
+    "h2": "<span class=\"math\">DE/BC = AE/AB = <span class=\"fr\"><span>1</span><span>3</span></span></span>.",
     "steps": [
-     "<span class=\"math\">DE/BC = 1/3</span>",
+     "<span class=\"math\">DE/BC = <span class=\"fr\"><span>1</span><span>3</span></span></span>",
      "<span class=\"math\">DE = 7,5 ÷ 3</span>",
      "النتيجة: <span class=\"math\">DE = 2,5 cm</span>"
     ],
@@ -751,7 +759,7 @@
      }
     ],
     "pts": 1.75,
-    "partialMsg": "النسبة <span class=\"math\">1/3</span>.",
+    "partialMsg": "النسبة <span class=\"math\"><span class=\"fr\"><span>1</span><span>3</span></span></span>.",
     "partialZero": true
    }
   ],
@@ -773,13 +781,13 @@
      "7,5/18",
      "15/36"
     ],
-    "h1": "<span class=\"math\">OC/OA = 5/12</span>.",
-    "h2": "<span class=\"math\">7,5/18 = 75/180</span> ثم اختزل.",
+    "h1": "عوّض <span class=\"math\">OD</span> و<span class=\"math\">OB</span> بقيمتيهما، ثم اختزل الكسر.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>7,5</span><span>18</span></span> = <span class=\"fr\"><span>75</span><span>180</span></span></span> ثم اختزل.",
     "steps": [
-     "<span class=\"math\">OC/OA = 5/12</span>",
-     "<span class=\"math\">OD/OB = 7,5/18 = 5/12</span>",
+     "<span class=\"math\">OC/OA = <span class=\"fr\"><span>5</span><span>12</span></span></span>",
+     "<span class=\"math\">OD/OB = <span class=\"fr\"><span>7,5</span><span>18</span></span> = <span class=\"fr\"><span>5</span><span>12</span></span></span>",
      "النسبتان متساويتان والنقط <span class=\"math\">A ، O ، C</span> و<span class=\"math\">B ، O ، D</span> في نفس الترتيب: <span class=\"math\">(AB) // (CD)</span>",
-     "النتيجة: <span class=\"math\">OD/OB = OC/OA = 5/12</span> إذن <span class=\"math\">(AB) // (CD)</span>"
+     "النتيجة: <span class=\"math\">OD/OB = OC/OA = <span class=\"fr\"><span>5</span><span>12</span></span></span> إذن <span class=\"math\">(AB) // (CD)</span>"
     ],
     "rubric": [
      {
@@ -846,13 +854,13 @@
      "28/36",
      "21/27"
     ],
-    "h1": "<span class=\"math\">28/36</span> و<span class=\"math\">21/27</span>.",
+    "h1": "<span class=\"math\"><span class=\"fr\"><span>28</span><span>36</span></span></span> و<span class=\"math\"><span class=\"fr\"><span>21</span><span>27</span></span></span>.",
     "h2": "اختزل كلا منهما.",
     "steps": [
-     "<span class=\"math\">MU/MI = 28/36 = 7/9</span>",
-     "<span class=\"math\">MO/MA = 21/27 = 7/9</span>",
+     "<span class=\"math\">MU/MI = <span class=\"fr\"><span>28</span><span>36</span></span> = <span class=\"fr\"><span>7</span><span>9</span></span></span>",
+     "<span class=\"math\">MO/MA = <span class=\"fr\"><span>21</span><span>27</span></span> = <span class=\"fr\"><span>7</span><span>9</span></span></span>",
      "النقط <span class=\"math\">U ، M ، I</span> و<span class=\"math\">O ، M ، A</span> في نفس الترتيب: <span class=\"math\">(OU) // (AI)</span>",
-     "النتيجة: <span class=\"math\">7/9</span>، إذن <span class=\"math\">(OU) // (AI)</span>"
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>7</span><span>9</span></span></span>، إذن <span class=\"math\">(OU) // (AI)</span>"
     ],
     "rubric": [
      {
@@ -878,9 +886,9 @@
      "36,87"
     ],
     "h1": "المثلث <span class=\"math\">AMI</span> قائم في <span class=\"math\">M</span>.",
-    "h2": "<span class=\"math\">tan AIM = MA/MI = 27/36</span>.",
+    "h2": "<span class=\"math\">tan AIM = MA/MI = <span class=\"fr\"><span>27</span><span>36</span></span></span>.",
     "steps": [
-     "<span class=\"math\">tan AIM = MA/MI = 27/36 = 0,75</span>",
+     "<span class=\"math\">tan AIM = MA/MI = <span class=\"fr\"><span>27</span><span>36</span></span> = 0,75</span>",
      "بالحاسبة <span class=\"math\">AIM ≈ 36,87°</span>",
      "النتيجة: <span class=\"math\">AIM ≈ 37°</span>"
     ],
@@ -1124,9 +1132,9 @@
      "36,87"
     ],
     "h1": "من الزاوية <span class=\"math\">R</span>: المقابل <span class=\"math\">TS</span> والمجاور <span class=\"math\">RS</span>.",
-    "h2": "<span class=\"math\">tan TRS = 3√5/(4√5) = 3/4</span>.",
+    "h2": "<span class=\"math\">tan TRS = 3√<span class=\"fr\"><span>5</span><span>4√5</span></span> = <span class=\"fr\"><span>3</span><span>4</span></span></span>.",
     "steps": [
-     "<span class=\"math\">tan TRS = TS/RS = 3/4 = 0,75</span>",
+     "<span class=\"math\">tan TRS = TS/RS = <span class=\"fr\"><span>3</span><span>4</span></span> = 0,75</span>",
      "بالحاسبة <span class=\"math\">TRS ≈ 36,87°</span>",
      "النتيجة: <span class=\"math\">TRS ≈ 37°</span>"
     ],
@@ -1299,12 +1307,12 @@
      "3,3"
     ],
     "h1": "<span class=\"math\">(EM) ⊥ (AB)</span> و<span class=\"math\">(AC) ⊥ (AB)</span> إذن <span class=\"math\">(EM) // (AC)</span>.",
-    "h2": "<span class=\"math\">BE = 2</span> و<span class=\"math\">BM/BC = BE/BA = 2/3</span>.",
+    "h2": "<span class=\"math\">BE = 2</span> و<span class=\"math\">BM/BC = BE/BA = <span class=\"fr\"><span>2</span><span>3</span></span></span>.",
     "steps": [
      "<span class=\"math\">(EM) // (AC)</span>",
      "<span class=\"math\">BE = 3 − 1 = 2</span>",
-     "خاصية طالس: <span class=\"math\">BM/BC = BE/BA</span> أي <span class=\"math\">BM/5 = 2/3</span>",
-     "النتيجة: <span class=\"math\">BM = 10/3 ≈ 3,33 cm</span>"
+     "خاصية طالس: <span class=\"math\">BM/BC = BE/BA</span> أي <span class=\"math\">BM/5 = <span class=\"fr\"><span>2</span><span>3</span></span></span>",
+     "النتيجة: <span class=\"math\">BM = <span class=\"fr\"><span>10</span><span>3</span></span> ≈ 3,33 cm</span>"
     ],
     "rubric": [
      {
@@ -1333,7 +1341,7 @@
     "h1": "المجاور ÷ الوتر في المثلث <span class=\"math\">ABC</span>.",
     "h2": "<span class=\"math\">AB/BC</span>.",
     "steps": [
-     "<span class=\"math\">cos ABC = 3/5</span>",
+     "<span class=\"math\">cos ABC = <span class=\"fr\"><span>3</span><span>5</span></span></span>",
      "النتيجة: <span class=\"math\">cos ABC = 0,6</span>"
     ],
     "rubric": [
@@ -1406,7 +1414,7 @@
     "steps": [
      "<span class=\"math\">BM = 8 ÷ 4 = 2</span> و<span class=\"math\">CM = 6</span>",
      "<span class=\"math\">(MH) // (AB)</span>",
-     "خاصية طالس: <span class=\"math\">6/8 = MH/4</span>",
+     "خاصية طالس: <span class=\"math\"><span class=\"fr\"><span>6</span><span>8</span></span> = MH/4</span>",
      "النتيجة: <span class=\"math\">MH = 3 cm</span>"
     ],
     "rubric": [
@@ -1436,7 +1444,7 @@
     "h1": "في المثلث <span class=\"math\">ABM</span> القائم في <span class=\"math\">B</span>.",
     "h2": "<span class=\"math\">tan AMB = AB/BM</span>.",
     "steps": [
-     "<span class=\"math\">tan AMB = 4/2</span>",
+     "<span class=\"math\">tan AMB = <span class=\"fr\"><span>4</span><span>2</span></span></span>",
      "النتيجة: <span class=\"math\">tan AMB = 2</span>"
     ],
     "rubric": [
@@ -1534,10 +1542,10 @@
      "1,5/8"
     ],
     "h1": "<span class=\"math\">BA = DC = 8</span> و<span class=\"math\">BC = AD = 6</span>.",
-    "h2": "<span class=\"math\">2/8</span> و<span class=\"math\">1,5/6</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>2</span><span>8</span></span></span> و<span class=\"math\"><span class=\"fr\"><span>1,5</span><span>6</span></span></span>.",
     "steps": [
-     "<span class=\"math\">BE/BA = 2/8 = 0,25</span>",
-     "<span class=\"math\">BF/BC = 1,5/6 = 0,25</span>",
+     "<span class=\"math\">BE/BA = <span class=\"fr\"><span>2</span><span>8</span></span> = 0,25</span>",
+     "<span class=\"math\">BF/BC = <span class=\"fr\"><span>1,5</span><span>6</span></span> = 0,25</span>",
      "النقط في نفس الترتيب: <span class=\"math\">(EF) // (AC)</span> (الخاصية العكسية لخاصية طالس)",
      "النتيجة: <span class=\"math\">0,25</span> إذن <span class=\"math\">(EF) // (AC)</span>"
     ],
@@ -1566,7 +1574,7 @@
      "36,87"
     ],
     "h1": "المثلث <span class=\"math\">BEF</span> قائم في <span class=\"math\">B</span>.",
-    "h2": "<span class=\"math\">tan BEF = BF/BE = 1,5/2</span>.",
+    "h2": "<span class=\"math\">tan BEF = BF/BE = <span class=\"fr\"><span>1,5</span><span>2</span></span></span>.",
     "steps": [
      "<span class=\"math\">tan BEF = 0,75</span>",
      "<span class=\"math\">BEF ≈ 36,87°</span>",
@@ -1667,11 +1675,11 @@
      "12"
     ],
     "h1": "<span class=\"math\">(MN) // (RS)</span> لأنهما عموديان على <span class=\"math\">(TR)</span>.",
-    "h2": "<span class=\"math\">TM/TR = MN/RS</span> أي <span class=\"math\">4/6 = MN/8</span>.",
+    "h2": "<span class=\"math\">TM/TR = MN/RS</span> أي <span class=\"math\"><span class=\"fr\"><span>4</span><span>6</span></span> = MN/8</span>.",
     "steps": [
      "<span class=\"math\">(MN) // (RS)</span>",
-     "خاصية طالس: <span class=\"math\">4/6 = MN/8</span>",
-     "<span class=\"math\">MN = 32/6 ≈ 5,33</span>",
+     "خاصية طالس: <span class=\"math\"><span class=\"fr\"><span>4</span><span>6</span></span> = MN/8</span>",
+     "<span class=\"math\">MN = <span class=\"fr\"><span>32</span><span>6</span></span> ≈ 5,33</span>",
      "النتيجة: <span class=\"math\">MN ≈ 5 cm</span>"
     ],
     "rubric": [
@@ -1685,7 +1693,7 @@
      }
     ],
     "pts": 2.5,
-    "partialMsg": "دوّر إلى الوحدة، وتحقق من النسبة <span class=\"math\">4/6</span>."
+    "partialMsg": "دوّر إلى الوحدة، وتحقق من النسبة <span class=\"math\"><span class=\"fr\"><span>4</span><span>6</span></span></span>."
    }
   ],
   "part": "الجزء الثالث"
@@ -1823,6 +1831,8 @@
             inp.classList.add('shake');
         }
 
+        const FBMSG = {"ok": ["أحسنت! تركيزك أوصلك إلى الجواب الصحيح.", "ممتاز! أخذت وقتك وفكّرت جيدا، وهذه هي النتيجة.", "برافو! التأنّي في الحساب يصنع النجاح.", "رائع! جهدك يستحق هذه النجوم.", "إجابة صحيحة! واصل بنفس الهدوء والتركيز.", "أحسنت! من يقرأ السؤال جيدا يصل إلى الحل.", "عمل متقن! الدقة أهم من السرعة، وأنت أثبتّ ذلك.", "بارك الله فيك! تقدّم خطوة بخطوة كما فعلت الآن."], "w1": ["لا بأس، الخطأ جزء من التعلّم. أعد قراءة السؤال بهدوء.", "تمهّل قليلا: كلما أسرعت قلّ تركيزك. خذ وقتك.", "محاولة جيدة! راجع حسابك خطوة بخطوة.", "كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.", "لا تستعجل. اقرأ المعطيات من جديد ثم فكّر.", "أنت قريب. أعطِ هذا السؤال الوقت الذي يحتاجه.", "الخطأ ليس فشلا بل خطوة نحو الفهم. حاول مجددا.", "هدّئ السرعة وزِد التركيز، وستجد الطريق."], "w2": ["محاولة أخيرة: اكتب الحساب على ورقة قبل أن تجيب.", "لا تيأس! التركيز يأتي مع الهدوء. اقرأ التلميح جيدا.", "السرعة والتركيز لا يجتمعان: تمهّل في هذه المحاولة الأخيرة.", "ابذل جهدا إضافيا صغيرا، فالحل قريب منك.", "راجع كل خطوة على حدة، ولا تتسرّع.", "كل العلماء أخطؤوا قبل أن ينجحوا. ركّز في هذه المحاولة."], "fail": ["لا تحزن، الخطأ جزء من التعلّم. اقرأ الإجابة النموذجية وسلم التنقيط بتمعّن.", "تعلّمنا شيئا جديدا اليوم! تأمّل خطوات الحل، وأعد التمرين غدا بهدوء.", "لا بأس، الفهم يحتاج وقتا وجهدا. راجع الحل خطوة بخطوة.", "المهم أن نفهم لماذا أخطأنا. اقرأ الحل، ثم حاول إعادته وحدك على ورقة.", "الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة."]};
+        function fbPick(kind, qId) { const a = FBMSG[kind]; const p = String(qId).split('-'); const n = (+p[0]) * 3 + (+p[1] || 0) + kind.length; return a[n % a.length]; }
         function checkAns(exId, qId) {
             if (questionLocked[qId]) return;
             const ex = exercises.find(e => e.id === exId);
@@ -1857,7 +1867,7 @@
                 document.getElementById(`btn-${qId}`).disabled = true;
 
                 fb.className = 'feedback-box success';
-                fb.innerHTML = `<span class="star-burst">${starIcons}</span> أحسنت يا بطل! إجابة صحيحة وممتازة. نلت العلامة الكاملة (<span class="math">${String(q.pts).replace('.', ',')} ن</span>).`;
+                fb.innerHTML = `<span class="star-burst">${starIcons}</span> ${fbPick('ok', qId)} نلت العلامة الكاملة (<span class="math">${String(q.pts).replace('.', ',')} ن</span>).`;
                 document.getElementById(`sol-${qId}`).style.display = 'block';
                 updateHeaderStats();
                 return;
@@ -1893,10 +1903,10 @@
 
             if (rem === 2) {
                 fb.className = 'feedback-box hint';
-                fb.innerHTML = `${customReason ? customReason + '<br>' : 'لا بأس، حاول مرة أخرى بتأنٍّ!<br>'}<strong>💡 التلميح 1:</strong> ${q.h1}`;
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w1', qId) + '<br>'}<strong>💡 التلميح 1:</strong> ${q.h1}`;
             } else if (rem === 1) {
                 fb.className = 'feedback-box hint';
-                fb.innerHTML = `${customReason ? customReason + '<br>' : 'قاربت على الوصول، ركّز جيداً في هذه المحاولة الأخيرة!<br>'}<strong>💡 التلميح 2:</strong> ${q.h2}`;
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w2', qId) + '<br>'}<strong>💡 التلميح 2:</strong> ${q.h2}`;
             } else {
                 questionLocked[qId] = true;
                 completedQuestions++;
@@ -1905,7 +1915,7 @@
                 document.getElementById(`qbox-${qId}`).classList.add('failed');
 
                 fb.className = 'feedback-box fail';
-                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 محاولة طيبة! لا تحزن، التعلم يأتي بالمحاولة. اقرأ الإجابة النموذجية وسلم التنقيط بتمعن لتتقن الفكرة في المرة القادمة.';
+                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 ' + fbPick('fail', qId);
                 document.getElementById(`sol-${qId}`).style.display = 'block';
                 updateHeaderStats();
             }
