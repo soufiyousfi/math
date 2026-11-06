@@ -1,0 +1,1387 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>درس تفاعلي: الأشكال المستوية والمساحات (المقطع 2)</title>
+<meta name="description" content="رحلة تفاعلية للسنة الأولى متوسط: المستقيم والتوازي والتعامد، المثلثات والرباعيات، الدائرة، المساحة والمحيط. شرح مرحلي، محاكاة، ألعاب، أسئلة بتصحيح فوري وشهادة إنجاز.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="📐 درس تفاعلي للأولى متوسط: الأشكال والمساحات">
+<meta property="og:description" content="اشرح، جرّب، العب واجمع النجوم: 11 محطة من المستقيم إلى محيط الدائرة، وفي النهاية شهادة إنجاز باسمك!">
+<meta property="og:image" content="https://soufiyousfi.github.io/math/1m/t1/dars/img/dars-m2-fb.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://soufiyousfi.github.io/math/1m/t1/dars/dars-m2-ashkal.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://soufiyousfi.github.io/math/1m/t1/dars/img/dars-m2-fb.png">
+<meta name="theme-color" content="#0f5f8b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef6fb; --card:#ffffff; --ink:#18303f; --muted:#5b7080; --line:#d6e4ee;
+  --c1:#0f5f8b; --c2:#0ea5a4; --yel:#facc15; --ok:#16a34a; --ok-soft:#e3f6e9;
+  --bad:#dc2626; --bad-soft:#fde8e8; --hint:#b45309; --hint-soft:#fff4dc;
+  --sum:#ea580c; --sum-soft:#fff1e6; --vio:#7c3aed; --vio-soft:#f1eafe;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:"Cairo",Tahoma,sans-serif;font-size:17px;line-height:1.75;-webkit-tap-highlight-color:transparent}
+button{font-family:inherit;font-size:inherit;cursor:pointer}
+.m{font-family:"Cairo",Tahoma,sans-serif;white-space:nowrap;unicode-bidi:isolate;font-weight:700;color:#0b4a6f}
+.fr{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 3px;line-height:1.25;font-weight:700;color:#0b4a6f}
+.fr>span:first-child{border-bottom:2px solid currentColor;padding:0 4px}
+.fr>span:last-child{padding:0 4px}
+/* header */
+.top{background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;padding:14px 16px 12px;border-bottom:5px solid var(--yel);text-align:center}
+.top .school{font-size:.8rem;opacity:.95;font-weight:700}
+.top h1{margin:4px 0 0;font-size:1.45rem;font-weight:900;line-height:1.4}
+.top .sub{font-size:.85rem;opacity:.95}
+.bar{position:sticky;top:0;z-index:20;background:#fff;box-shadow:0 2px 10px rgba(15,95,139,.15);padding:6px 10px;display:flex;align-items:center;gap:6px;flex-wrap:nowrap}
+.bar .pill{background:var(--bg);border-radius:999px;padding:0 8px;font-size:.92rem;font-weight:800;white-space:nowrap}
+.bar .prog{flex:1;min-width:40px;height:10px;background:#e2ecf3;border-radius:6px;overflow:hidden}
+.bar .prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--c2),var(--ok));transition:width .5s}
+.bar .snd{border:0;background:var(--bg);border-radius:999px;padding:0 10px;font-size:1rem}
+nav.tabs{display:flex;gap:6px;overflow-x:auto;padding:10px 12px 4px;max-width:900px;margin:0 auto;scrollbar-width:none}
+nav.tabs button{flex:none;border:2px solid var(--line);background:#fff;border-radius:12px;padding:4px 12px;font-weight:800;color:var(--c1)}
+nav.tabs button.on{background:var(--c1);color:#fff;border-color:var(--c1)}
+main{max-width:900px;margin:0 auto;padding:8px 16px 60px}
+.card{background:var(--card);border-radius:16px;box-shadow:0 2px 12px rgba(15,95,139,.08);padding:14px 16px;margin:12px 0;border:1px solid var(--line)}
+h2{font-size:1.2rem;margin:4px 0 8px;color:var(--c1);font-weight:900}
+h3{font-size:1.05rem;margin:4px 0 6px;color:var(--c1);font-weight:800}
+.muted{color:var(--muted);font-size:.9rem}
+.btn{border:0;border-radius:12px;padding:7px 16px;font-weight:800;background:var(--c1);color:#fff;box-shadow:0 3px 0 rgba(0,0,0,.15)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.alt{background:#fff;color:var(--c1);border:2px solid var(--c1);box-shadow:none}
+.btn.green{background:var(--ok)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+/* home */
+.goals li{margin:2px 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--vio-soft);color:var(--vio);border-radius:999px;padding:0 10px;font-weight:700;font-size:.88rem}
+.map{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.stn{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:right;position:relative;min-height:96px}
+.stn .ic{font-size:1.6rem;line-height:1}
+.stn .nm{font-weight:800;font-size:.92rem;line-height:1.4;display:block;margin-top:4px}
+.stn .st{position:absolute;top:6px;left:8px;font-size:.8rem;font-weight:800}
+.stn.done{border-color:var(--ok);background:var(--ok-soft)}
+.grp-t{font-weight:900;color:var(--c2);margin:14px 0 4px}
+/* lesson */
+.lhead{display:flex;gap:10px;align-items:center}
+.lhead .ic{font-size:2rem}
+.stages{display:flex;gap:6px;margin:8px 0}
+.stages button{flex:1;border:2px solid var(--line);background:#fff;border-radius:12px;padding:4px 2px;font-weight:800;color:var(--muted);font-size:.9rem}
+.stages button.on{border-color:var(--c2);color:#fff;background:var(--c2)}
+.step{border-right:6px solid var(--c2);animation:pop .35s}
+.step.sum{border-right-color:var(--sum);background:var(--sum-soft)}
+.step h3 .n{display:inline-block;background:var(--yel);color:#3b2f00;border-radius:8px;padding:0 8px;margin-left:6px;font-size:.85rem}
+.key{background:var(--sum-soft);border:2px dashed var(--sum);border-radius:12px;padding:6px 10px;margin:6px 0;font-weight:700}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* sim */
+.sim-svg{width:100%;height:auto;display:block;background:#fbfdff;border-radius:12px;border:1px solid var(--line);touch-action:none;user-select:none;-webkit-user-select:none;direction:ltr}
+.sim-svg text{font-family:"Cairo",Tahoma,sans-serif;font-weight:800}
+.readout{background:#f3f8fc;border-radius:12px;padding:6px 10px;margin-top:8px;font-weight:700;min-height:2em}
+.missions{margin-top:8px;display:flex;flex-direction:column;gap:4px}
+.mis{border:2px dashed var(--line);border-radius:10px;padding:2px 10px;font-weight:700;font-size:.92rem}
+.mis.ok{border-style:solid;border-color:var(--ok);background:var(--ok-soft)}
+.mis.ok::before{content:"✅ "}
+.mis:not(.ok)::before{content:"🎯 "}
+.sl{display:flex;align-items:center;gap:8px;margin:4px 0;font-weight:700}
+.sl input{flex:1;accent-color:var(--c2)}
+.sl output{min-width:58px;text-align:center;background:var(--bg);border-radius:8px}
+/* questions */
+.qc{border-right:6px solid var(--c1)}
+.qc.ok{border-right-color:var(--ok)}
+.qc.lost{border-right-color:var(--hint)}
+.qh{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.qh b{color:var(--c1)}
+.qh .pts{margin-inline-start:auto;background:var(--yel);color:#3b2f00;border-radius:999px;padding:0 10px;font-weight:800;font-size:.85rem}
+.qh .tries{font-size:.85rem;color:var(--muted)}
+.qt{margin-bottom:6px}
+.ch{display:flex;flex-direction:column;gap:6px}
+.opt{border:2px solid var(--line);background:#fff;border-radius:12px;padding:6px 12px;text-align:right;font-weight:700}
+.opt:disabled{cursor:default}
+.opt.bad{border-color:var(--bad);background:var(--bad-soft);text-decoration:line-through;opacity:.7}
+.opt.good{border-color:var(--ok);background:var(--ok-soft)}
+.ans{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ans input{flex:1;min-width:120px;max-width:220px;font:inherit;font-weight:800;font-size:1.1rem;padding:5px 10px;border:2px solid var(--line);border-radius:12px;text-align:center;direction:ltr}
+.ans input:focus{outline:none;border-color:var(--c2)}
+.unit{font-weight:800;color:var(--c1)}
+.keys{display:flex;gap:6px;margin-top:6px}
+.keys button{border:2px solid var(--line);background:#f6fafc;border-radius:10px;min-width:44px;padding:0 10px;font-weight:900;font-size:1.1rem}
+.fb{margin-top:6px;font-weight:700}
+.fb .w{background:var(--bad-soft);color:#991b1b;border-radius:10px;padding:4px 10px;display:block}
+.fb .h{background:var(--hint-soft);color:#7c3a00;border-radius:10px;padding:4px 10px;display:block;margin-top:4px}
+.fb .g{background:var(--ok-soft);color:#14532d;border-radius:10px;padding:4px 10px;display:block}
+.model{background:#f5fbff;border:2px solid #bfdbef;border-radius:12px;padding:8px 12px;margin-top:8px}
+.model h4{margin:0 0 4px;color:var(--c1)}
+.model .ln{padding:1px 0}
+.model .ccl{background:var(--ok-soft);border-radius:8px;padding:2px 8px;margin:6px 0}
+details.sol summary{cursor:pointer;font-weight:800;color:var(--c1);margin-top:6px}
+table.sc{border-collapse:collapse;width:100%;margin-top:6px;font-size:.9rem}
+table.sc th,table.sc td{border:1px solid #cfe0ec;padding:2px 8px}
+table.sc th{background:#e6f1f8}
+table.sc td:last-child{text-align:center;width:70px}
+table.sc tr.tot td{font-weight:900;background:#fff7d6}
+table.vop{border-collapse:collapse;margin:4px 0;font-weight:800;font-size:1.05rem;direction:ltr;display:inline-table;color:#0b4a6f}
+table.vop td{padding:0 4px;text-align:right;letter-spacing:3px}
+table.vop tr.rl td{border-top:2px solid #0b4a6f}
+.shake{animation:shk .45s}
+@keyframes shk{0%,100%{transform:none}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+/* toast & stars */
+#toast{position:fixed;right:12px;bottom:18px;z-index:60;max-width:min(330px,calc(100% - 24px));display:flex;flex-direction:column;gap:6px;pointer-events:none}
+#toast div{background:#fff;border-radius:14px;padding:8px 12px;font-weight:800;box-shadow:0 6px 24px rgba(0,0,0,.18);border-right:6px solid var(--ok);animation:pop .3s}
+#toast div.w{border-right-color:var(--hint)}
+.burst{position:fixed;z-index:70;pointer-events:none;font-size:26px;animation:fly 1s ease-out forwards}
+@keyframes fly{to{transform:translate(var(--dx),var(--dy)) scale(.4);opacity:0}}
+.modal{position:fixed;inset:0;background:rgba(10,30,45,.55);z-index:80;display:flex;align-items:center;justify-content:center;padding:16px}
+.modal .card{max-width:420px;width:100%;text-align:center;animation:pop .3s}
+.modal .big{font-size:3rem;line-height:1.2}
+/* games */
+.mt{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mt .col{display:flex;flex-direction:column;gap:6px}
+.tile{border:2px solid var(--line);background:#fff;border-radius:12px;padding:6px;font-weight:800;min-height:46px}
+.tile.sel{border-color:var(--c2);background:#e0f7f6}
+.tile.done{border-color:var(--ok);background:var(--ok-soft);opacity:.75}
+.big2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.big2 button{border:0;border-radius:14px;padding:14px 6px;font-weight:900;font-size:1.1rem;color:#fff}
+.stmt{font-size:1.1rem;font-weight:800;background:#f3f8fc;border-radius:12px;padding:10px;text-align:center;min-height:3.2em}
+.opts4{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+/* certificate */
+canvas#cv{width:100%;height:auto;border-radius:10px;box-shadow:0 4px 18px rgba(0,0,0,.15);display:block}
+.namebox{font:inherit;font-weight:800;font-size:1.1rem;padding:6px 10px;border:2px solid var(--line);border-radius:12px;width:100%;max-width:340px}
+.lock{font-size:2.4rem}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:20px 16px 40px}
+@media print{
+  body *{visibility:hidden}
+  #cv,#cv *{visibility:visible}
+  #cv{position:fixed;inset:0;width:100%;box-shadow:none}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="school">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
+  <h1>📐 رحلة الأشكال والمساحات</h1>
+  <div class="sub">السنة الأولى متوسط — المقطع 2: إنجاز مماثلات أشكال مستوية بسيطة، السطوح المستوية: الأطوال، المحيطات، المساحات</div>
+</header>
+<div class="bar">
+  <span class="pill">⭐ <b id="stars">0</b> / <span id="maxs">0</span></span>
+  <span class="pill">🏅 <b id="badges">0</b> / 11</span>
+  <span class="prog" title="التقدم"><i id="progi"></i></span>
+  <button class="snd" id="snd" aria-label="الصوت">🔊</button>
+</div>
+<nav class="tabs" id="tabs">
+  <button data-v="home">🏠 الرئيسية</button>
+  <button data-v="lessons">📚 المحطات</button>
+  <button data-v="games">🎮 الألعاب</button>
+  <button data-v="final">🏡 التحدي النهائي</button>
+  <button data-v="cert">🎓 الشهادة</button>
+</nav>
+<main id="app"></main>
+<div id="toast"></div>
+<footer>متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي<br>المراجع: منهاج السنة الأولى متوسط 2016، المخطط السنوي، الكتاب المدرسي (الأبواب 9 و 10 و 11).</footer>
+
+<script>
+"use strict";
+/* ================= helpers ================= */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const M = t => `<bdi class="m" dir="ltr">${t}</bdi>`;
+const F = (a, b) => `<span class="fr" dir="ltr"><span>${a}</span><span>${b}</span></span>`;
+function V(a, op, b, r) {
+  return `<table class="vop" dir="ltr"><tr><td></td><td>${a}</td></tr><tr><td>${op}</td><td>${b}</td></tr><tr class="rl"><td></td><td>${r}</td></tr></table>`;
+}
+const fmt = (x, d = 2) => { const p = Math.pow(10, d); return String(Math.round(x * p) / p).replace('.', ','); };
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+function hashStr(s) { let n = 7; for (const c of String(s)) n = (n * 31 + c.charCodeAt(0)) % 99991; return n; }
+
+/* ================= messages (vary per question) ================= */
+const MSG = {
+  ok: ['أحسنت! تركيزك أوصلك إلى الجواب الصحيح.', 'ممتاز! أخذت وقتك وفكّرت جيدا، وهذه هي النتيجة.', 'برافو! التأنّي يصنع النجاح.', 'رائع! جهدك يستحق هذه النجوم.', 'إجابة صحيحة! واصل بنفس الهدوء والتركيز.', 'أحسنت! من يقرأ السؤال جيدا يصل إلى الحل.', 'عمل متقن! الدقة أهم من السرعة، وأنت أثبتّ ذلك.', 'بارك الله فيك! تقدّم خطوة بخطوة كما فعلت الآن.'],
+  w1: ['لا بأس، الخطأ جزء من التعلّم. أعد قراءة السؤال بهدوء.', 'تمهّل قليلا: كلما أسرعت قلّ تركيزك. خذ وقتك.', 'محاولة جيدة! راجع عملك خطوة بخطوة.', 'كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.', 'لا تستعجل. اقرأ المعطيات من جديد ثم فكّر.', 'أنت قريب. أعطِ هذا السؤال الوقت الذي يحتاجه.', 'الخطأ ليس فشلا بل خطوة نحو الفهم. حاول مجددا.', 'هدّئ السرعة وزِد التركيز، وستجد الطريق.'],
+  w2: ['محاولة أخيرة: ارسم أو اكتب الحساب على ورقة قبل أن تجيب.', 'لا تيأس! التركيز يأتي مع الهدوء. اقرأ التلميح جيدا.', 'السرعة والتركيز لا يجتمعان: تمهّل في هذه المحاولة الأخيرة.', 'ابذل جهدا إضافيا صغيرا، فالحل قريب منك.', 'راجع كل خطوة على حدة، ولا تتسرّع.', 'كل العلماء أخطؤوا قبل أن ينجحوا. ركّز في هذه المحاولة.'],
+  fail: ['لا تحزن، الخطأ جزء من التعلّم. اقرأ الإجابة النموذجية بتمعّن.', 'تعلّمنا شيئا جديدا اليوم! تأمّل خطوات الحل، وأعد السؤال غدا بهدوء.', 'لا بأس، الفهم يحتاج وقتا وجهدا. راجع الحل خطوة بخطوة.', 'المهم أن نفهم لماذا أخطأنا. اقرأ الحل، ثم أعده وحدك على ورقة.', 'الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة.']
+};
+const pick = (k, id) => MSG[k][(hashStr(id) + k.length) % MSG[k].length];
+
+/* ================= state ================= */
+const KEY = 'dars_1m_m2_v1';
+let S = { q: {}, mis: {}, g: {}, name: '', snd: true };
+try { const t = localStorage.getItem(KEY); if (t) S = Object.assign(S, JSON.parse(t)); } catch (e) {}
+function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+
+/* ================= sound & effects ================= */
+let AC = null;
+function tone(fs, dur = .12) {
+  if (!S.snd) return;
+  try {
+    AC = AC || new (window.AudioContext || window.webkitAudioContext)();
+    fs.forEach((f, i) => {
+      const o = AC.createOscillator(), g = AC.createGain();
+      o.frequency.value = f; o.type = 'sine';
+      g.gain.setValueAtTime(.18, AC.currentTime + i * dur);
+      g.gain.exponentialRampToValueAtTime(.001, AC.currentTime + (i + 1) * dur);
+      o.connect(g); g.connect(AC.destination);
+      o.start(AC.currentTime + i * dur); o.stop(AC.currentTime + (i + 1) * dur);
+    });
+  } catch (e) {}
+}
+const sOk = () => tone([660, 880, 1100]);
+const sBad = () => tone([260, 200], .16);
+function toast(t, warn) {
+  const d = document.createElement('div'); d.className = warn ? 'w' : ''; d.innerHTML = t;
+  $('#toast').appendChild(d); setTimeout(() => d.remove(), 3200);
+}
+function burst(el, n = 3) {
+  const r = el.getBoundingClientRect();
+  for (let i = 0; i < 6 + n * 2; i++) {
+    const s = document.createElement('span'); s.className = 'burst'; s.textContent = i % 3 ? '⭐' : '✨';
+    s.style.left = (r.left + r.width / 2) + 'px'; s.style.top = (r.top + 20) + 'px';
+    s.style.setProperty('--dx', (Math.random() * 240 - 120) + 'px'); s.style.setProperty('--dy', (-60 - Math.random() * 140) + 'px');
+    document.body.appendChild(s); setTimeout(() => s.remove(), 1000);
+  }
+}
+function shake(el) { el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake'); }
+function modal(html) {
+  const m = document.createElement('div'); m.className = 'modal';
+  m.innerHTML = `<div class="card">${html}<div class="row" style="justify-content:center;margin-top:10px"><button class="btn" data-close>حسنا 👍</button></div></div>`;
+  m.addEventListener('click', e => { if (e.target === m || e.target.closest('[data-close]')) m.remove(); });
+  document.body.appendChild(m); return m;
+}
+
+/* ================= SVG helpers ================= */
+const NS = 'http://www.w3.org/2000/svg';
+function E(tag, at, par) { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); if (par) par.appendChild(e); return e; }
+function mkSvg(host, w, h) { const s = E('svg', { viewBox: `0 0 ${w} ${h}`, class: 'sim-svg' }); host.appendChild(s); return s; }
+function svgPt(svg, ev) { const p = svg.createSVGPoint(); p.x = ev.clientX; p.y = ev.clientY; return p.matrixTransform(svg.getScreenCTM().inverse()); }
+function grid(svg, w, h, step, col = '#e4eef5') { const g = E('g', {}, svg); for (let x = 0; x <= w; x += step) E('line', { x1: x, y1: 0, x2: x, y2: h, stroke: col, 'stroke-width': 1 }, g); for (let y = 0; y <= h; y += step) E('line', { x1: 0, y1: y, x2: w, y2: y, stroke: col, 'stroke-width': 1 }, g); return g; }
+function drag(svg, el, onMove, onEnd) {
+  el.style.cursor = 'grab';
+  el.addEventListener('pointerdown', e => {
+    e.preventDefault(); try { el.setPointerCapture(e.pointerId); } catch (_) {}
+    const mv = ev => { const p = svgPt(svg, ev); onMove(p.x, p.y); };
+    const up = () => { el.removeEventListener('pointermove', mv); el.removeEventListener('pointerup', up); el.removeEventListener('pointercancel', up); if (onEnd) onEnd(); };
+    el.addEventListener('pointermove', mv); el.addEventListener('pointerup', up); el.addEventListener('pointercancel', up);
+  });
+}
+function handle(svg, label, color) {
+  const g = E('g', {}, svg);
+  E('circle', { r: 16, fill: color, 'fill-opacity': .15 }, g);
+  E('circle', { r: 6, fill: color }, g);
+  const t = E('text', { 'font-size': 16, fill: color, x: 9, y: -9 }, g); t.textContent = label;
+  g.place = (x, y) => g.setAttribute('transform', `translate(${x},${y})`);
+  return g;
+}
+function rightMark(par, P, u, v, s = 12, col = '#dc2626') {
+  // small square at P along unit vectors u and v
+  const a = [P.x + u.x * s, P.y + u.y * s], b = [P.x + (u.x + v.x) * s, P.y + (u.y + v.y) * s], c = [P.x + v.x * s, P.y + v.y * s];
+  return E('polyline', { points: `${a} ${b} ${c}`, fill: 'none', stroke: col, 'stroke-width': 2 }, par);
+}
+function tick(par, P, Q, n = 1, col = '#7c3aed') {
+  const mx = (P.x + Q.x) / 2, my = (P.y + Q.y) / 2, L = Math.hypot(Q.x - P.x, Q.y - P.y) || 1;
+  const ux = (Q.x - P.x) / L, uy = (Q.y - P.y) / L, nx = -uy, ny = ux;
+  for (let i = 0; i < n; i++) {
+    const o = (i - (n - 1) / 2) * 5;
+    E('line', { x1: mx + ux * o + nx * 7, y1: my + uy * o + ny * 7, x2: mx + ux * o - nx * 7, y2: my + uy * o - ny * 7, stroke: col, 'stroke-width': 2.5 }, par);
+  }
+}
+
+/* ================= missions ================= */
+function misHTML(L) { return L.mis.map((t, k) => `<div class="mis ${S.mis[L.id + '-' + k] ? 'ok' : ''}" id="mis-${L.id}-${k}">${t}</div>`).join(''); }
+function misDone(L, k) {
+  const id = L.id + '-' + k; if (S.mis[id]) return;
+  S.mis[id] = 1; save(); updBar();
+  const el = $('#mis-' + id); if (el) { el.classList.add('ok'); burst(el, 1); }
+  sOk(); toast('🎯 مهمة منجزة! ⭐ +1');
+}
+
+/* ================= lesson data ================= */
+const NUM_SC = [['كتابة القاعدة أو الطريقة', 1], ['الحساب الصحيح', 1], ['النتيجة مع الوحدة', 1]];
+const MCQ_SC = [['معرفة التعريف أو الخاصية', 1], ['الاختيار الصحيح', 2]];
+
+const LESSONS = [
+{ id: 1, ic: '📏', g: 1, t: 'المستقيم ونصف المستقيم والقطعة',
+  goal: 'أستعمل المصطلحات والرموز: مستقيم، نصف مستقيم، قطعة، منتصف، استقامية، توازي، تعامد.',
+  steps: [
+    { h: 'المستقيم ' + M('(AB)'), b: `خط مستقيم يمر بالنقطتين ${M('A')} و ${M('B')}، <b>لا بداية له ولا نهاية</b>.<div class="key">من نقطتين متمايزتين يمر مستقيم واحد فقط.</div>${fig1('line')}` },
+    { h: 'نصف المستقيم ' + M('[AB)'), b: `مبدؤه ${M('A')} ويشمل ${M('B')}: <b>محدود من جهة ${M('A')}</b> فقط، ويمتد دون نهاية بعد ${M('B')}.${fig1('ray')}` },
+    { h: 'القطعة ' + M('[AB]') + ' وطولها ' + M('AB'), b: `قطعة مستقيم <b>محدودة من الجهتين</b> بطرفيها ${M('A')} و ${M('B')}.<div class="key">${M('[AB]')} شكل نرسمه، و ${M('AB')} عدد هو طولها، مثلا ${M('AB = 4 cm')}.</div>${fig1('seg')}` },
+    { h: 'منتصف قطعة', b: `${M('M')} منتصف ${M('[AB]')} معناه: ${M('M ∈ [AB]')} و ${M('MA = MB')}.<br>الرمز ${M('∈')} يُقرأ «ينتمي إلى»، والرمز ${M('∉')} يُقرأ «لا ينتمي إلى».` },
+    { h: 'الاستقامية، التقاطع، التعامد، التوازي', sum: 1, b: `• ثلاث نقط <b>في استقامية</b> إذا كانت على مستقيم واحد.<br>• مستقيمان <b>متقاطعان</b>: لهما نقطة مشتركة واحدة فقط.<br>• مستقيمان <b>متعامدان</b>: متقاطعان ويشكّلان زاوية قائمة: ${M('(d) ⊥ (d\')')}.<br>• مستقيمان <b>متوازيان</b>: لا يتقاطعان: ${M('(d) ∥ (d\')')}.` }
+  ],
+  sim: 'simTerms', simHelp: 'اسحب النقط A و B و C. اختر نوع الشكل من الأزرار، ولاحظ الترميز والطول.',
+  mis: ['ضع النقطة C على استقامة واحدة مع A و B', 'اجعل C تنتمي إلى القطعة [AB]', 'اجعل C منتصف القطعة [AB]'],
+  qs: [
+    { id: '1-1', type: 'mcq', q: `ماذا يعني الترميز ${M('[AB)')}؟`, ch: ['المستقيم الذي يشمل A و B', 'نصف المستقيم الذي مبدؤه A ويشمل B', 'القطعة التي طرفاها A و B', 'طول القطعة التي طرفاها A و B'], a: 1,
+      h1: 'انظر إلى الرمز [ : عند أي نقطة يوجد؟', h2: 'الرمز [ يدل على بداية الشكل، والقوس ) يدل على أنه يمتد دون نهاية.',
+      m: 'نستعمل ترميز الكائنات الهندسية (الكتاب ص 121).',
+      s: [`${M('(AB)')}: مستقيم غير محدود من الجهتين.`, `${M('[AB)')}: محدود من جهة ${M('A')} فقط، ويمتد بعد ${M('B')} دون نهاية.`, `${M('[AB]')}: قطعة محدودة من الجهتين، و ${M('AB')} دون أقواس عدد هو طولها.`],
+      c: `${M('[AB)')} هو نصف المستقيم الذي مبدؤه ${M('A')} ويشمل ${M('B')}.` },
+    { id: '1-2', type: 'num', unit: 'km', a: 3.5, q: `مزرعتان ${M('A')} و ${M('B')} في وادي فراغة يربطهما طريق مستقيم، و ${M('AB = 7 km')}. نضع خزان ماء مشتركا في ${M('M')} منتصف ${M('[AB]')} حتى تستفيد منه المزرعتان بالعدل. احسب المسافة ${M('MA')}.`,
+      h1: 'ما معنى أن تكون M منتصف القطعة؟', h2: 'M منتصف [AB] يعني MA = MB، والمسافتان معا تساويان AB.',
+      m: `تعريف منتصف قطعة: ${M('M ∈ [AB]')} و ${M('MA = MB')}.`,
+      s: [`${M('MA + MB = AB = 7 km')} و ${M('MA = MB')}`, `إذن ${M('MA = 7 ÷ 2')}`, `${M('7 ÷ 2 = 3,5')}`],
+      c: `المسافة ${M('MA = 3,5 km')}. 🌱 الماء نعمة نتقاسمها بالعدل.` },
+    { id: '1-3', type: 'mcq', q: 'خطّا السكة الحديدية التي تعبر ولاية قالمة لا يلتقيان أبدا مهما امتدّا. نقول إن الخطين:', ch: ['متعامدان', 'متقاطعان', 'متوازيان'], a: 2,
+      h1: 'هل للخطين نقطة مشتركة؟', h2: 'المستقيمان اللذان ليس لهما أي نقطة مشتركة لهما اسم خاص، ورمزه ∥.',
+      m: 'تعريف المستقيمين المتوازيين: مستقيمان لا يتقاطعان.',
+      s: ['الخطان ليس لهما أي نقطة مشتركة، إذن هما غير متقاطعين.', 'المتعامدان متقاطعان بزاوية قائمة، فالخطان ليسا متعامدين.'],
+      c: `الخطان متوازيان: ${M('(d) ∥ (d\')')}.` },
+    { id: '1-4', type: 'mcq', q: `النقط ${M('A')} و ${M('B')} و ${M('C')} في استقامية، و ${M('C')} تقع بعد ${M('B')} (خارج القطعة ${M('[AB]')}). أي عبارة صحيحة؟`, ch: [M('C ∈ [AB]'), M('C ∈ [AB)'), M('C ∉ (AB)')], a: 1,
+      h1: 'ارسم مستقيما وضع عليه A ثم B ثم C بعدها.', h2: 'نصف المستقيم [AB) يبدأ من A ويمتد بعد B دون نهاية.',
+      m: 'نستعمل الاستقامية والرمزين ∈ و ∉.',
+      s: [`النقط في استقامية، إذن ${M('C ∈ (AB)')}: العبارة الثالثة خاطئة.`, `${M('C')} بعد ${M('B')}، إذن هي خارج القطعة: ${M('C ∉ [AB]')}، العبارة الأولى خاطئة.`, `نصف المستقيم ${M('[AB)')} يمتد بعد ${M('B')} فيشمل ${M('C')}.`],
+      c: `العبارة الصحيحة: ${M('C ∈ [AB)')}.` }
+  ] },
+{ id: 2, ic: '📐', g: 1, t: 'رسم العمودي والموازي',
+  goal: 'أرسم بالكوس والمسطرة مستقيما عموديا أو موازيا لمستقيم معلوم ويشمل نقطة، وأنقل طولا بالمدور.',
+  steps: [
+    { h: 'رسم المستقيم العمودي على (d) ويشمل A', b: 'نضع أحد ضلعي الزاوية القائمة للكوس على المستقيم (d)، ثم نسحب الكوس حتى يلمس ضلعه الآخر النقطة A، ونرسم المستقيم.' },
+    { h: 'رسم المستقيم الموازي لـ (d) ويشمل A', b: 'نضع أحد ضلعي الزاوية القائمة للكوس على (d)، والمسطرة على الضلع الآخر. نزلق الكوس على المسطرة حتى يصل إلى A، ثم نرسم.<div class="key">أو: نعيّن بالكوس نقطتين على نفس البعد من (d)، لأن المسافة بين مستقيمين متوازيين ثابتة.</div>' },
+    { h: 'خاصيتان مهمتان', sum: 1, b: `<b>خاصية 1:</b> إذا كان مستقيمان متوازيين، فإن كل مستقيم عمودي على أحدهما يكون عموديا على الآخر.<br><b>خاصية 2:</b> إذا كان مستقيمان عموديين على مستقيم ثالث، فإنهما متوازيان.<div class="key">${M('(d1) ⊥ (d)')} و ${M('(d2) ⊥ (d)')} ⟸ ${M('(d1) ∥ (d2)')}</div>` },
+    { h: 'نقل طول وتعيين منتصف', b: 'ننقل طول قطعة بالمدور: نفتحه بطول القطعة ثم نضع رأسه على المستقيم الجديد. ونعيّن منتصف قطعة بالمسطرة المدرّجة: نقيس طولها ثم نأخذ نصفه.' }
+  ],
+  sim: 'simPerp', simHelp: 'اسحب المقبضين الأزرق والأخضر لتدوير المستقيمين (d1) و (d2). ستظهر علامة الزاوية القائمة عندما يصبح المستقيم عموديا على (d).',
+  mis: ['اجعل (d1) عموديا على (d)', 'اجعل (d2) عموديا على (d)', 'اجعلهما عموديين معا على (d) ولاحظ أنهما متوازيان'],
+  qs: [
+    { id: '2-1', type: 'mcq', q: `${M('(d1) ⊥ (d)')} و ${M('(d2) ⊥ (d)')}. ماذا نستنتج؟`, ch: [M('(d1) ⊥ (d2)'), M('(d1) ∥ (d2)'), 'لا نستطيع أن نستنتج شيئا'], a: 1,
+      h1: 'المستقيمان عموديان على نفس المستقيم. تذكّر الخاصية 2.', h2: 'جرّب ذلك في المحاكاة: اجعل المستقيمين عموديين على (d) ولاحظ.',
+      m: 'الخاصية 2: إذا كان مستقيمان عموديين على مستقيم ثالث فإنهما متوازيان.',
+      s: [`المعطيات: ${M('(d1) ⊥ (d)')} و ${M('(d2) ⊥ (d)')}.`, 'المستقيمان (d1) و (d2) عموديان على نفس المستقيم (d).'],
+      c: `حسب الخاصية 2: ${M('(d1) ∥ (d2)')}.` },
+    { id: '2-2', type: 'mcq', q: `${M('(d) ∥ (d\')')} و ${M('(L) ⊥ (d)')}. ماذا نستنتج عن ${M('(L)')} و ${M('(d\')')}؟`, ch: [M("(L) ∥ (d')"), M("(L) ⊥ (d')"), 'لا يتقاطعان'], a: 1,
+      h1: 'لدينا مستقيمان متوازيان ومستقيم عمودي على أحدهما. أي خاصية تناسب؟', h2: 'الخاصية 1: العمودي على أحد مستقيمين متوازيين يكون عموديا على ...',
+      m: 'الخاصية 1: إذا كان مستقيمان متوازيين فإن كل مستقيم عمودي على أحدهما يكون عموديا على الآخر.',
+      s: [`المعطيات: ${M("(d) ∥ (d')")} و ${M('(L) ⊥ (d)')}.`, `${M('(L)')} عمودي على أحد المستقيمين المتوازيين.`],
+      c: `حسب الخاصية 1: ${M("(L) ⊥ (d')")}.` },
+    { id: '2-3', type: 'mcq', q: 'لرسم المستقيم العمودي على (d) والذي يشمل النقطة A على ورقة غير مسطرة، نستعمل:', ch: ['الكوس والمسطرة', 'المدور وحده', 'المسطرة المدرّجة وحدها'], a: 0,
+      h1: 'أي أداة فيها زاوية قائمة؟', h2: 'العمودي يصنع زاوية قائمة مع (d)، والأداة التي تحمل الزاوية القائمة هي ...',
+      m: 'طريقة رسم العمودي (الكتاب ص 122).',
+      s: ['المستقيم العمودي يشكّل زاوية قائمة مع (d).', 'الكوس يحمل زاوية قائمة: نضع أحد ضلعيها على (d) ونسحبه حتى A، والمسطرة تساعد على رسم خط طويل.'],
+      c: 'نستعمل الكوس والمسطرة.' },
+    { id: '2-4', type: 'mcq', q: 'نريد نقل طول قطعة [AB] على مستقيم آخر دون قياسها بالمسطرة. نستعمل:', ch: ['المدور', 'الكوس', 'المنقلة'], a: 0,
+      h1: 'أي أداة نفتحها فتحفظ مسافة ثابتة؟', h2: 'نفتح هذه الأداة من A إلى B، ثم ننقل الفتحة نفسها.',
+      m: 'نقل طول بالمدور (الكتاب ص 120).',
+      s: ['نفتح المدور من A إلى B فتصبح فتحته تساوي AB.', 'نضع رأس المدور على نقطة من المستقيم الجديد ونرسم قوسا يقطعه.'],
+      c: 'ننقل الطول بالمدور.' }
+  ] },
+{ id: 3, ic: '🔺', g: 2, t: 'المثلثات الخاصة ومثيل مثلث',
+  goal: 'أتعرّف على المثلث المتساوي الساقين والمتقايس الأضلاع والقائم، وأنجز مثيلا لمثلث بالمدور.',
+  steps: [
+    { h: 'المثلث المتساوي الساقين', b: 'مثلث له <b>ضلعان متقايسان</b> (لهما نفس الطول)، وزاويتا قاعدته متقايستان. الرأس هو النقطة المشتركة بين الضلعين المتقايسين.' },
+    { h: 'المثلث المتقايس الأضلاع', b: 'مثلث <b>أضلاعه الثلاثة متقايسة</b>، وكل زواياه متقايسة. وهو أيضا متساوي الساقين.' },
+    { h: 'المثلث القائم', b: 'مثلث <b>إحدى زواياه قائمة</b>. الضلع المقابل للزاوية القائمة يسمّى <b>الوتر</b>.<div class="key">المثلث القائم المتساوي الساقين: قائم ومتساوي الساقين في آن واحد.</div>' },
+    { h: 'إنشاء مثيل لمثلث ABC بالمدور', sum: 1, b: `① نرسم ${M("[A'B']")} طولها ${M('AB')}.<br>② نرسم قوسا مركزه ${M("A'")} ونصف قطره ${M('AC')}.<br>③ نرسم قوسا مركزه ${M("B'")} ونصف قطره ${M('BC')}.<br>④ نقطة تقاطع القوسين هي ${M("C'")}، ونرسم المثلث ${M("A'B'C'")}.<div class="muted">في المحاكاة زر يعرض هذه الخطوات واحدة بواحدة.</div>` }
+  ],
+  sim: 'simTri', simHelp: 'اسحب رؤوس المثلث (كل مربع صغير = 0,5 cm). تظهر الأطوال ونوع المثلث. ثم شاهد خطوات إنشاء المثيل بالمدور.',
+  mis: ['اصنع مثلثا قائما', 'اصنع مثلثا متساوي الساقين', 'اصنع مثلثا متقايس الأضلاع (تقريبا على المرصوفة)'],
+  qs: [
+    { id: '3-1', type: 'mcq', q: `مثلث أطوال أضلاعه ${M('5 cm')} و ${M('5 cm')} و ${M('5 cm')}. نوعه:`, ch: ['متقايس الأضلاع', 'قائم', 'كيفي (أضلاعه مختلفة)'], a: 0,
+      h1: 'قارن أطوال الأضلاع الثلاثة.', h2: 'إذا كانت الأضلاع الثلاثة لها نفس الطول فالمثلث ...',
+      m: 'تعريف المثلث المتقايس الأضلاع: أضلاعه الثلاثة متقايسة.',
+      s: [`الأضلاع الثلاثة لها نفس الطول ${M('5 cm')}.`],
+      c: 'المثلث متقايس الأضلاع (وهو أيضا متساوي الساقين).' },
+    { id: '3-2', type: 'mcq', q: `في المثلث ${M('RST')}: ${M('RS = RT = 4 cm')} و ${M('ST = 6 cm')}. نوعه:`, ch: ['متقايس الأضلاع', `متساوي الساقين رأسه ${M('R')}`, `قائم في ${M('R')}`], a: 1,
+      h1: 'كم ضلعا متقايسا في هذا المثلث؟', h2: 'الضلعان المتقايسان هما [RS] و [RT]، وهما يشتركان في نقطة واحدة.',
+      m: 'تعريف المثلث المتساوي الساقين: له ضلعان متقايسان، ورأسه النقطة المشتركة بينهما.',
+      s: [`${M('RS = RT = 4 cm')}: ضلعان متقايسان.`, `${M('ST = 6 cm')} مختلف، فالمثلث ليس متقايس الأضلاع.`, `الضلعان ${M('[RS]')} و ${M('[RT]')} يشتركان في ${M('R')}.`],
+      c: `المثلث ${M('RST')} متساوي الساقين رأسه ${M('R')}.` },
+    { id: '3-3', type: 'mcq', q: `المثلث ${M('EFG')} قائم في ${M('E')}. الضلع ${M('[FG]')} يسمّى:`, ch: ['الوتر', 'القاعدة', 'الرأس'], a: 0,
+      h1: 'الضلع [FG] يقابل أي زاوية؟', h2: 'الضلع المقابل للزاوية القائمة له اسم خاص في المثلث القائم.',
+      m: 'في المثلث القائم، الضلع المقابل للزاوية القائمة يسمّى الوتر (الكتاب ص 137).',
+      s: [`الزاوية القائمة في ${M('E')}.`, `الضلع المقابل لـ ${M('E')} هو ${M('[FG]')}.`],
+      c: `${M('[FG]')} هو وتر المثلث القائم ${M('EFG')}.` },
+    { id: '3-4', type: 'mcq', q: `لإنشاء مثيل للمثلث ${M('ABC')} بالمدور، ما هي الخطوة الأولى؟`, ch: [`نرسم قطعة ${M("[A'B']")} طولها ${M('AB')}`, `نرسم قوسا مركزه ${M('C')}`, 'نرسم دائرة كاملة'], a: 0,
+      h1: 'نبدأ دائما بضلع من أضلاع المثلث.', h2: 'نرسم أولا القاعدة، ثم نبحث عن الرأس الثالث بالقوسين.',
+      m: 'طريقة إنشاء مثيل لمثلث (الكتاب ص 138).',
+      s: [`① نرسم ${M("[A'B']")} طولها ${M('AB')}.`, `② قوس مركزه ${M("A'")} ونصف قطره ${M('AC')}، و③ قوس مركزه ${M("B'")} ونصف قطره ${M('BC')}.`, `④ تقاطع القوسين هو ${M("C'")}.`],
+      c: `الخطوة الأولى: رسم ${M("[A'B']")} طولها ${M('AB')}.` },
+    { id: '3-5', type: 'mcq', q: `بعد رسم ${M("[A'B']")} ورسم قوس مركزه ${M("A'")} ونصف قطره ${M('AC')}، نرسم قوسا مركزه ${M("B'")} ونصف قطره:`, ch: [M('AB'), M('BC'), M('AC')], a: 1,
+      h1: 'النقطة C تبعد عن B بأي طول؟', h2: 'C\' يجب أن تبعد عن B\' بنفس بعد C عن B.',
+      m: 'في المثيل تبقى الأطوال نفسها: A\'C\' = AC و B\'C\' = BC.',
+      s: [`القوس الأول يضمن ${M("A'C' = AC")}.`, `نحتاج أيضا ${M("B'C' = BC")}، فنفتح المدور بطول ${M('BC')}.`],
+      c: `نصف قطر القوس الثاني هو ${M('BC')}.` }
+  ] },
+{ id: 4, ic: '🔷', g: 2, t: 'المستطيل والمربع والمعيّن',
+  goal: 'أتعرّف على خواص المستطيل والمربع والمعيّن (الأضلاع والقطران)، وأستعملها لإنجاز مثيل.',
+  steps: [
+    { h: 'المعيّن', b: 'رباعي <b>أضلاعه الأربعة متقايسة</b>. كل ضلعين متقابلين متوازيان، و<b>قطراه متعامدان ومتناصفان</b>.' },
+    { h: 'المستطيل', b: 'رباعي <b>زواياه الأربع قائمة</b>. كل ضلعين متقابلين متقايسان ومتوازيان، و<b>قطراه متقايسان ومتناصفان</b>.' },
+    { h: 'المربع', b: 'رباعي أضلاعه الأربعة متقايسة وزواياه الأربع قائمة: <b>هو معيّن ومستطيل في آن واحد</b>. قطراه متقايسان ومتناصفان ومتعامدان.' },
+    { h: 'كيف ننجز مثيلا؟', sum: 1, b: 'مثيل معيّن: بأحد قطريه وأحد أضلاعه، أو بتعامد القطرين وتناصفهما.<br>مثيل مستطيل: بالطول والعرض والزاوية القائمة، أو بتقايس القطرين وتناصفهما وأحد البعدين.<div class="key">القطران «متناصفان» معناه: لهما نفس المنتصف.</div>' }
+  ],
+  sim: 'simQuad', simHelp: 'غيّر طولي القطرين والزاوية بينهما (القطران متناصفان دائما هنا). لاحظ متى يصبح الرباعي مستطيلا أو معيّنا أو مربعا.',
+  mis: ['اصنع مستطيلا ليس مربعا', 'اصنع معيّنا ليس مربعا', 'اصنع مربعا'],
+  qs: [
+    { id: '4-1', type: 'mcq', q: 'رباعي قطراه متقايسان ومتناصفان ومتعامدان. هو:', ch: ['مستطيل فقط', 'معيّن فقط', 'مربع'], a: 2,
+      h1: 'جرّب ذلك في المحاكاة.', h2: 'القطران المتقايسان يعطيان مستطيلا، والمتعامدان يعطيان معيّنا. وإذا اجتمع الشرطان؟',
+      m: 'خواص قطري المستطيل والمعيّن والمربع (الكتاب ص 139).',
+      s: ['قطران متقايسان ومتناصفان: الرباعي مستطيل.', 'قطران متعامدان ومتناصفان: الرباعي معيّن.', 'معيّن ومستطيل في آن واحد هو المربع.'],
+      c: 'الرباعي مربع.' },
+    { id: '4-2', type: 'mcq', q: 'قطرا المعيّن:', ch: ['متقايسان دائما', 'متعامدان ومتناصفان', 'متوازيان'], a: 1,
+      h1: 'تذكّر خواص قطري المعيّن في الشرح.', h2: 'قطرا المعيّن يتقاطعان في منتصفهما ويشكّلان زاوية قائمة.',
+      m: 'خاصية المعيّن: قطراه متعامدان ومتناصفان.',
+      s: ['القطران يتقاطعان في منتصفهما: متناصفان.', 'ويشكّلان زاوية قائمة: متعامدان.', 'لا يكونان متقايسين إلا إذا كان المعيّن مربعا.'],
+      c: 'قطرا المعيّن متعامدان ومتناصفان.' },
+    { id: '4-3', type: 'num', unit: 'cm', a: 50, q: `بلاطة مستطيلة ${M('ABCD')} في ساحة متوسطتنا، طول قطرها ${M('AC = 50 cm')}. احسب طول قطرها الآخر ${M('BD')}.`,
+      h1: 'ماذا تعرف عن قطري المستطيل؟', h2: 'قطرا المستطيل متقايسان: لهما نفس الطول.',
+      m: 'خاصية المستطيل: قطراه متقايسان.',
+      s: [`${M('ABCD')} مستطيل، إذن ${M('BD = AC')}.`, `${M('AC = 50 cm')}.`],
+      c: `${M('BD = 50 cm')}.` },
+    { id: '4-4', type: 'num', unit: 'cm', a: 25, q: `قطرا البلاطة السابقة يتقاطعان في ${M('O')}. احسب ${M('OB')}.`,
+      h1: 'O هي نقطة تقاطع القطرين. أين تقع على القطر [BD]؟', h2: 'قطرا المستطيل متناصفان: O منتصف [BD].',
+      m: 'خاصية المستطيل: قطراه متناصفان، فـ O منتصف كل قطر.',
+      s: [`${M('O')} منتصف ${M('[BD]')}، إذن ${M('OB = BD ÷ 2')}.`, `${M('50 ÷ 2 = 25')}`],
+      c: `${M('OB = 25 cm')}.` }
+  ] },
+{ id: 5, ic: '⭕', g: 2, t: 'رسم دائرة: داخلها وخارجها',
+  goal: 'أرسم دائرة بالمدور، وأحدّد إن كانت نقطة داخلها أو عليها أو خارجها، وأنجز مثيلا لقوس.',
+  steps: [
+    { h: 'ما هي الدائرة؟', b: 'الدائرة هي مجموعة النقط التي <b>تبعد بنفس المسافة</b> عن نقطة تسمّى <b>المركز</b>. هذه المسافة هي <b>نصف القطر</b>. نرمز للدائرة بحرف بين قوسين مثل (C).' },
+    { h: 'رسم دائرة بالمدور', b: 'نفتح المدور بطول نصف القطر، نضع رأسه المعدني على المركز، وندير القلم دورة كاملة.' },
+    { h: 'داخل الدائرة أو عليها أو خارجها', sum: 1, b: `(C) دائرة مركزها ${M('O')} ونصف قطرها ${M('r')}:<br>• ${M('OL < r')} ⟸ ${M('L')} داخل الدائرة.<br>• ${M('OT = r')} ⟸ ${M('T')} تنتمي إلى الدائرة.<br>• ${M('OR > r')} ⟸ ${M('R')} خارج الدائرة.` },
+    { h: 'مثيل قوس', b: 'لرسم قوس تقايس قوسا MB من دائرة معطاة: نرسم مثيلا للدائرة (نفس نصف القطر)، نعيّن عليها نقطة A، ثم بالمدور نقطة D حيث AD = MB. الوتران متساويان فالقوسان متقايسان.' }
+  ],
+  sim: 'simCircle', simHelp: 'رشّاش ماء 💧 في حقل طماطم ببوشقوف يسقي كل النباتات داخل الدائرة الزرقاء. غيّر نصف القطر واسحب النبتة 🌱.',
+  mis: ['ضع النبتة داخل منطقة السقي', 'ضع النبتة على الدائرة تماما', 'ضع النبتة خارج الدائرة'],
+  qs: [
+    { id: '5-1', type: 'mcq', q: `(C) دائرة مركزها ${M('O')} ونصف قطرها ${M('5 cm')}، والنقطة ${M('R')} حيث ${M('OR = 7 cm')}. موقع ${M('R')}:`, ch: ['داخل الدائرة', 'على الدائرة', 'خارج الدائرة'], a: 2,
+      h1: 'قارن OR بنصف القطر.', h2: 'إذا كانت المسافة إلى المركز أكبر من نصف القطر فالنقطة ...',
+      m: 'نقارن بعد النقطة عن المركز بنصف القطر (الكتاب ص 135).',
+      s: [`${M('OR = 7 cm')} و ${M('r = 5 cm')}.`, `${M('7 > 5')}، إذن ${M('OR > r')}.`],
+      c: `${M('R')} خارج الدائرة.` },
+    { id: '5-2', type: 'mcq', q: `في حقل طماطم ببوشقوف، رشّاش يسقي كل نبتة تبعد عنه ${M('4 m')} على الأكثر. نبتة تبعد عنه ${M('3 m')}:`, ch: ['تُسقى لأنها داخل الدائرة', 'لا تُسقى لأنها خارج الدائرة', 'تقع على الدائرة تماما'], a: 0,
+      h1: 'منطقة السقي دائرة مركزها الرشّاش. ما نصف قطرها؟', h2: 'قارن 3 m بنصف القطر 4 m.',
+      m: 'نقارن بعد النقطة عن المركز بنصف القطر.',
+      s: [`نصف قطر منطقة السقي ${M('r = 4 m')}، وبعد النبتة ${M('3 m')}.`, `${M('3 < 4')}، إذن النبتة داخل الدائرة.`],
+      c: 'النبتة تُسقى. 🌱 السقي الدقيق يحفظ الماء ويعطي محصولا أفضل.' },
+    { id: '5-3', type: 'num', unit: 'cm', a: 4, q: `نريد رسم دائرة قطرها ${M('8 cm')}. بكم نفتح المدور؟`,
+      h1: 'فتحة المدور تساوي نصف القطر.', h2: 'نصف القطر هو نصف القطر الكامل (القطر).',
+      m: 'نفتح المدور بطول نصف القطر، ونصف القطر = القطر ÷ 2.',
+      s: [`${M('r = 8 ÷ 2')}`, `${M('8 ÷ 2 = 4')}`],
+      c: `نفتح المدور بـ ${M('4 cm')}.` },
+    { id: '5-4', type: 'mcq', q: 'لرسم قوس تقايس قوسا MB من دائرة معطاة، نستعمل المدور ونأخذ:', ch: ['وترين متساويين يشدّان القوسين', 'مركزين مختلفين', 'نصفي قطر مختلفين'], a: 0,
+      h1: 'القوس يحدّده طرفاه على الدائرة. ما القطعة التي تصل بينهما؟', h2: 'القطعة [MB] وتر. ننقل طوله بالمدور على دائرة لها نفس نصف القطر.',
+      m: 'طريقة مثيل قوس (الكتاب ص 136): دائرتان لهما نفس نصف القطر، ووتران متساويان.',
+      s: ['نرسم مثيلا للدائرة بنفس نصف القطر.', 'نعيّن نقطة A ثم بالمدور نقطة D حيث AD = MB.'],
+      c: 'نأخذ وترين متساويين يشدّان القوسين.' }
+  ] },
+{ id: 6, ic: '🎯', g: 2, t: 'مصطلحات الدائرة',
+  goal: 'أستعمل المصطلحات: مركز، نصف قطر، قطر، وتر، قوس.',
+  steps: [
+    { h: 'المركز ونصف القطر', b: `نصف القطر قطعة طرفاها <b>المركز ونقطة من الدائرة</b>، مثل ${M('[OE]')}، وهو أيضا طول هذه القطعة.` },
+    { h: 'الوتر', b: `الوتر قطعة مستقيم <b>طرفاها نقطتان من الدائرة</b>، مثل ${M('[MN]')}.` },
+    { h: 'القطر', b: `القطر وتر <b>يشمل المركز</b>، مثل ${M('[AB]')}. طوله يسمّى أيضا قطرا.<div class="key">القطر = 2 × نصف القطر، والقطر أطول وتر في الدائرة.</div>` },
+    { h: 'القوس', sum: 1, b: 'قوس الدائرة جزء من الدائرة محدّد بنقطتين منها.<br>مثال: في دائرة نصف قطرها 3 cm، القطر طوله 6 cm.' }
+  ],
+  sim: 'simVocab', simHelp: 'المس أي جزء من الشكل لتعرف اسمه. ثم أنجز الجولة: المس العنصر المطلوب.',
+  mis: ['أنهِ جولة كاملة (5 عناصر)', 'أنهِ جولة كاملة دون أي خطأ'],
+  qs: [
+    { id: '6-1', type: 'num', unit: 'cm', a: 6, q: `دائرة نصف قطرها ${M('3 cm')}. ما طول قطرها؟`,
+      h1: 'القطر يتكوّن من نصفي قطر.', h2: 'القطر = 2 × نصف القطر.',
+      m: 'القطر = 2 × نصف القطر.',
+      s: [`${M('d = 2 × 3')}`, `${M('2 × 3 = 6')}`],
+      c: `قطر الدائرة ${M('6 cm')}.` },
+    { id: '6-2', type: 'mcq', q: 'الوتر الذي يشمل مركز الدائرة يسمّى:', ch: ['نصف قطر', 'قطرا', 'قوسا'], a: 1,
+      h1: 'هذا الوتر يقسم الدائرة إلى نصفين.', h2: 'اسمه قريب من «نصف القطر» لكنه ضعفه.',
+      m: 'تعريف القطر (الكتاب ص 135).',
+      s: ['الوتر قطعة طرفاها من الدائرة.', 'إذا شمل الوتر المركز سمّيناه قطرا.'],
+      c: 'الوتر الذي يشمل المركز قطر.' },
+    { id: '6-3', type: 'num', unit: 'm', a: 1.2, q: `حوض ماء دائري في حديقة المتوسطة قطره ${M('2,4 m')}. ما نصف قطره؟`,
+      h1: 'نصف القطر هو نصف القطر الكامل.', h2: 'نقسم القطر على 2.',
+      m: 'نصف القطر = القطر ÷ 2.',
+      s: [`${M('r = 2,4 ÷ 2')}`, `${M('2,4 ÷ 2 = 1,2')}`],
+      c: `نصف قطر الحوض ${M('1,2 m')}.` },
+    { id: '6-4', type: 'mcq', q: `${M('[MN]')} قطعة طرفاها نقطتان من الدائرة ولا تشمل المركز. تسمّى:`, ch: ['وترا', 'قطرا', 'نصف قطر'], a: 0,
+      h1: 'هل أحد طرفيها هو المركز؟', h2: 'قطعة طرفاها من الدائرة ولا تمر بالمركز.',
+      m: 'تعريف الوتر ونصف القطر والقطر.',
+      s: ['طرفاها من الدائرة، إذن ليست نصف قطر.', 'لا تشمل المركز، إذن ليست قطرا.'],
+      c: `${M('[MN]')} وتر.` }
+  ] },
+{ id: 7, ic: '🟩', g: 3, t: 'المساحة بالرصف',
+  goal: 'أعيّن مساحة سطح بعدّ الوحدات على مرصوفة، وأعبّر عنها بوحدتين مختلفتين.',
+  steps: [
+    { h: 'وحدة المساحة', b: 'كل مربع طول ضلعه وحدة طول يمكن اعتبار مساحته <b>وحدة مساحة</b>. نسمّيه هنا الوحدة ①.' },
+    { h: 'نعدّ المربعات', b: 'لتعيين مساحة سطح على مرصوفة <b>نعدّ</b> وحدات المساحة التي يغطيها. نجمع المربعات الكاملة، ونصف مربع يُحسب نصف وحدة.' },
+    { h: 'نغيّر الوحدة', sum: 1, b: `إذا كانت الوحدة ② تساوي <b>وحدتين ①</b>، فإن المساحة بالوحدة ② هي نصف المساحة بالوحدة ①.<div class="key">مثال: شكل مساحته 21 وحدة ①، مساحته بالوحدة ② هي ${M('21 ÷ 2 = 10,5')}.</div>` }
+  ],
+  sim: 'simGrid7', simHelp: 'المس المربعات (أو اسحب إصبعك) لتلوين شكل. الوحدة ① مربع واحد، والوحدة ② مستطيل من مربعين.',
+  mis: ['لوّن شكلا مساحته 12 وحدة ①', 'لوّن شكلا مساحته 5 وحدات ② (كم مربعا؟)'],
+  qs: [
+    { id: '7-1', type: 'num', unit: 'وحدة ①', a: 21, q: `ما مساحة هذا الشكل بالوحدة ① (المربع الصغير)؟<br>${gridFig([[0, 0, 5, 3], [0, 3, 3, 2]], 6, 5)}`,
+      h1: 'قسّم الشكل إلى جزأين مستطيلين وعدّ مربعات كل جزء.', h2: 'الجزء العلوي فيه 3 صفوف، والجزء السفلي فيه صفان.',
+      m: 'نعتمد على العدّ في الرصف، ونجزّئ الشكل إلى جزأين.',
+      s: [`الجزء العلوي: 3 صفوف من 5 مربعات: ${M('5 × 3 = 15')}`, `الجزء السفلي: صفان من 3 مربعات: ${M('3 × 2 = 6')}`, V('15', '+', '6', '21')],
+      c: 'مساحة الشكل 21 وحدة ①.' },
+    { id: '7-2', type: 'num', unit: 'وحدة ②', a: 10.5, q: 'الوحدة ② مستطيل يتكوّن من مربعين. ما مساحة الشكل نفسه بالوحدة ②؟',
+      h1: 'كم وحدة ① في الوحدة ② ؟', h2: 'كل وحدة ② تساوي وحدتين ①، فنقسم 21 على 2.',
+      m: 'نستعمل العلاقة بين الوحدتين: الوحدة ② = 2 وحدة ①.',
+      s: ['المساحة بالوحدة ①: 21.', `${M('21 ÷ 2 = 10,5')}`],
+      c: 'مساحة الشكل 10,5 وحدة ②.' },
+    { id: '7-3', type: 'num', unit: 'بلاطة', a: 12, q: 'أرضية مخزن قمح في مزرعة بوادي الزناتي تغطيها 48 بلاطة صغيرة. نستبدلها ببلاطات كبيرة، كل بلاطة كبيرة تغطي مساحة 4 بلاطات صغيرة. كم بلاطة كبيرة نحتاج؟',
+      h1: 'البلاطة الكبيرة وحدة مساحة جديدة. كم بلاطة صغيرة فيها؟', h2: 'نقسم عدد البلاطات الصغيرة على 4.',
+      m: 'تغيير وحدة المساحة: الوحدة الكبيرة = 4 وحدات صغيرة.',
+      s: ['المساحة بالبلاطات الصغيرة: 48.', `${M('48 ÷ 4 = 12')}`],
+      c: 'نحتاج 12 بلاطة كبيرة.' }
+  ] },
+{ id: 8, ic: '⚖️', g: 3, t: 'مقارنة المساحات والمحيطات',
+  goal: 'أقارن مساحتي سطحين بالعدّ أو التطابق أو القص واللصق، وأميّز بين المساحة والمحيط.',
+  steps: [
+    { h: 'المساحة والمحيط مقداران مختلفان', b: '<b>المحيط</b> طول حدود الشكل (نقيسه بوحدة طول). <b>المساحة</b> قياس السطح داخل الشكل (نقيسها بوحدة مساحة).' },
+    { h: 'ثلاث حالات ممكنة', sum: 1, b: 'أ) سطوح مختلفة لها نفس المساحة ونفس المحيط.<br>ب) سطوح مختلفة لها نفس المساحة ومحيطات مختلفة.<br>ج) سطوح مختلفة لها نفس المحيط ومساحات مختلفة.' },
+    { h: 'كيف نقارن مساحتين؟', b: '• بعدّ وحدات نفس الرصف.<br>• بالتطابق: نضع أحد السطحين على الآخر.<br>• بالقص واللصق: تفكيك سطح وإعادة تركيبه <b>لا يغيّر مساحته</b>.' }
+  ],
+  sim: 'simGrid8', simHelp: 'لوّن أشكالا على المرصوفة، وراقب المساحة والمحيط معا. المحيط = عدد أضلاع المربعات على حدود الشكل.',
+  mis: ['شكل مساحته 12 ومحيطه 14', 'شكل مساحته 12 ومحيطه 16', 'شكل مساحته 16 ومحيطه 16'],
+  qs: [
+    { id: '8-1', type: 'mcq', q: 'سطحان لهما نفس المساحة. هل لهما حتما نفس المحيط؟', ch: ['نعم، دائما', 'لا، ليس بالضرورة'], a: 1,
+      h1: 'جرّب في المحاكاة: شكلان مساحتهما 12، هل محيطاهما متساويان؟', h2: 'مستطيل 3 × 4 ومستطيل 2 × 6 لهما نفس المساحة. قارن محيطيهما.',
+      m: 'الحوصلة (ب): سطوح مختلفة قد يكون لها نفس المساحة ومحيطات مختلفة (الكتاب ص 151).',
+      s: [`مستطيل ${M('3 × 4')}: المساحة 12، المحيط ${M('2 × (3 + 4) = 14')}.`, `مستطيل ${M('2 × 6')}: المساحة 12، المحيط ${M('2 × (2 + 6) = 16')}.`],
+      c: 'ليس بالضرورة: نفس المساحة لا تعني نفس المحيط.' },
+    { id: '8-2', type: 'num', unit: 'وحدة طول', a: 14, q: `ما محيط هذا المستطيل (ضلع المربع الصغير = وحدة طول)؟<br>${gridFig([[0, 0, 5, 2]], 6, 3)}`,
+      h1: 'عدّ أضلاع المربعات الموجودة على حدود الشكل فقط.', h2: 'الطول 5 وحدات والعرض 2، ودُر حول الشكل كله.',
+      m: 'المحيط طول حدود الشكل: نجمع أطوال كل أضلاعه.',
+      s: ['الطول 5 والعرض 2.', `${M('5 + 2 + 5 + 2 = 14')}`],
+      c: 'محيط المستطيل 14 وحدة طول.' },
+    { id: '8-3', type: 'mcq', q: `قارن الشكلين: مربع ${M('4 × 4')} ومستطيل ${M('2 × 8')} (بالمربعات).<br>${gridFig([[0, 0, 4, 4], [5, 1, 8, 2]], 13, 4)}`, ch: ['لهما نفس المساحة ونفس المحيط', 'لهما نفس المساحة ومحيطان مختلفان', 'لهما مساحتان مختلفتان ونفس المحيط'], a: 1,
+      h1: 'احسب مساحة كل شكل أولا، ثم محيطه.', h2: 'المساحتان: 4 × 4 و 2 × 8. المحيطان: 4 + 4 + 4 + 4 و 8 + 2 + 8 + 2.',
+      m: 'نقارن المساحتين بالعدّ، ثم نقارن المحيطين.',
+      s: [`المربع: المساحة ${M('4 × 4 = 16')}، المحيط ${M('4 + 4 + 4 + 4 = 16')}.`, `المستطيل: المساحة ${M('2 × 8 = 16')}، المحيط ${M('8 + 2 + 8 + 2 = 20')}.`],
+      c: 'لهما نفس المساحة 16 ومحيطان مختلفان (16 و 20).' },
+    { id: '8-4', type: 'mcq', q: 'قصصنا مثلثا من الورق إلى قطع، ثم ركّبنا القطع كلها دون تراكب فصنعنا مستطيلا. مساحة المستطيل:', ch: ['أكبر من مساحة المثلث', 'تساوي مساحة المثلث', 'أصغر من مساحة المثلث'], a: 1,
+      h1: 'هل أضفنا ورقا أو نزعنا ورقا؟', h2: 'القص واللصق لا يغيّر كمية الورق.',
+      m: 'المقارنة بالقص واللصق: التفكيك وإعادة التركيب لا يغيّر المساحة.',
+      s: ['استعملنا القطع نفسها كلها دون زيادة ولا نقصان ودون تراكب.'],
+      c: 'مساحة المستطيل تساوي مساحة المثلث.' }
+  ] },
+{ id: 9, ic: '🍅', g: 3, t: 'محيط ومساحة المستطيل',
+  goal: 'أحسب محيط مستطيل ومساحته (والمربع)، بعد توحيد الوحدات.',
+  steps: [
+    { h: 'تنبيه مهم', b: 'قبل حساب محيط أو مساحة، نتأكد أن <b>كل الأطوال بنفس الوحدة</b>.' },
+    { h: 'محيط المستطيل', b: `المحيط مجموع أطوال الأضلاع. إذا كان طوله ${M('a')} وعرضه ${M('b')}:<div class="key">${M('P = 2 × (a + b)')}</div>` },
+    { h: 'مساحة المستطيل', b: `المساحة جداء الطول في العرض:<div class="key">${M('A = a × b')}</div>` },
+    { h: 'المربع', sum: 1, b: `المربع مستطيل طوله يساوي عرضه. إذا كان ضلعه ${M('a')}:<div class="key">${M('P = 4 × a')} &nbsp; و &nbsp; ${M('A = a × a')}</div>` }
+  ],
+  sim: 'simRect', simHelp: 'حقل طماطم مستطيل في بوشقوف 🍅. غيّر الطول والعرض، ولاحظ كيف يتغيّر المحيط (السياج) والمساحة (الأرض المزروعة).',
+  mis: ['اجعل مساحة الحقل 24 m²', 'اجعل محيط الحقل 20 m', 'اصنع حقلا مربعا مساحته 16 m²'],
+  qs: [
+    { id: '9-1', type: 'num', unit: 'm', a: 200, q: `حقل طماطم في بوشقوف مستطيل طوله ${M('60 m')} وعرضه ${M('40 m')}. نحيطه بسياج يحمي المحصول. احسب محيطه.`,
+      h1: 'المحيط = 2 × (الطول + العرض).', h2: 'اجمع الطول والعرض أولا، ثم اضرب في 2.',
+      m: `قاعدة محيط المستطيل: ${M('P = 2 × (a + b)')}.`,
+      s: [`${M('P = 2 × (60 + 40)')}`, V('60', '+', '40', '100'), `${M('P = 2 × 100 = 200')}`],
+      c: `محيط الحقل ${M('200 m')}.` },
+    { id: '9-2', type: 'num', unit: 'm²', a: 2400, q: 'احسب مساحة الحقل نفسه.',
+      h1: 'المساحة = الطول × العرض.', h2: 'اضرب 60 في 40 عموديا.',
+      m: `قاعدة مساحة المستطيل: ${M('A = a × b')}.`,
+      s: [`${M('A = 60 × 40')}`, V('6 0', '×', '4 0', '2 4 0 0')],
+      c: `مساحة الحقل ${M('2400 m²')}.` },
+    { id: '9-3', type: 'num', unit: 'cm²', a: 49, q: `بلاطة مربعة ضلعها ${M('7 cm')}. احسب مساحتها.`,
+      h1: 'المربع مستطيل طوله يساوي عرضه.', h2: 'مساحة المربع = الضلع × الضلع.',
+      m: `قاعدة مساحة المربع: ${M('A = a × a')}.`,
+      s: [`${M('A = 7 × 7')}`, `${M('7 × 7 = 49')}`],
+      c: `مساحة البلاطة ${M('49 cm²')}.` },
+    { id: '9-4', type: 'num', unit: 'cm', a: 500, q: `لوحة مستطيلة في قسمنا طولها ${M('2 m')} وعرضها ${M('50 cm')}. نزيّن حوافها بشريط. احسب طول الشريط <b>بالسنتيمتر</b>.`,
+      h1: 'انتبه: الطول والعرض ليسا بنفس الوحدة.', h2: 'حوّل 2 m إلى cm أولا: 1 m = 100 cm.',
+      m: `نوحّد الوحدات ثم نطبّق قاعدة المحيط ${M('P = 2 × (a + b)')}.`,
+      s: [`${M('2 m = 200 cm')}`, `${M('P = 2 × (200 + 50)')}`, V('200', '+', '50', '250'), `${M('P = 2 × 250 = 500')}`],
+      c: `طول الشريط ${M('500 cm')}.` }
+  ] },
+{ id: 10, ic: '📐', g: 3, t: 'مساحة المثلث القائم',
+  goal: 'أحسب مساحة مثلث قائم كنصف مساحة مستطيل، وأحسب محيط مثلث، وأجزّئ سطحا إلى أشكال مألوفة.',
+  steps: [
+    { h: 'المثلث القائم نصف مستطيل', b: 'إذا رسمنا قطر مستطيل، قسمه إلى <b>مثلثين قائمين متقايسين</b>. إذن مساحة المثلث القائم نصف مساحة المستطيل.' },
+    { h: 'القاعدة', sum: 1, b: `مثلث قائم طولا ضلعي زاويته القائمة ${M('a')} و ${M('b')}:<div class="key">${M('A =')} ${F('a × b', '2')}</div>` },
+    { h: 'محيط مثلث', b: 'محيط مثلث هو <b>مجموع أطوال أضلاعه الثلاثة</b>.' },
+    { h: 'التجزئة', b: 'لحساب مساحة سطح غير مألوف نجزّئه إلى أشكال مألوفة (مربع، مستطيل، مثلث)، ثم <b>نجمع</b> أو <b>نطرح</b> المساحات.' }
+  ],
+  sim: 'simRTri', simHelp: 'غيّر ضلعي الزاوية القائمة، ثم اضغط «أكمل المستطيل» لترى أن المثلث نصف المستطيل.',
+  mis: ['أكمل المستطيل بنسخة المثلث', 'اصنع مثلثا قائما مساحته 6 cm²', 'اصنع مثلثا قائما مساحته 10 cm²'],
+  qs: [
+    { id: '10-1', type: 'num', unit: 'cm²', a: 12, q: `مثلث قائم طولا ضلعي زاويته القائمة ${M('6 cm')} و ${M('4 cm')}. احسب مساحته.`,
+      h1: 'المثلث القائم نصف مستطيل بعداه 6 cm و 4 cm.', h2: 'احسب مساحة المستطيل ثم خذ نصفها.',
+      m: `قاعدة مساحة المثلث القائم: ${M('A =')} ${F('a × b', '2')}.`,
+      s: [`${M('A =')} ${F('6 × 4', '2')}`, `${M('6 × 4 = 24')}`, `${M('A =')} ${F('24', '2')} ${M('= 12')}`],
+      c: `مساحة المثلث ${M('12 cm²')}.` },
+    { id: '10-2', type: 'num', unit: 'm²', a: 3, q: `في حديقة المتوسطة حوض ورود على شكل مثلث قائم، ضلعا زاويته القائمة ${M('3 m')} و ${M('2 m')}. احسب مساحته. 🌹 الحديقة الجميلة مسؤولية الجميع.`,
+      h1: 'استعمل قاعدة مساحة المثلث القائم.', h2: 'اضرب الضلعين ثم اقسم على 2.',
+      m: `قاعدة مساحة المثلث القائم: ${M('A =')} ${F('a × b', '2')}.`,
+      s: [`${M('A =')} ${F('3 × 2', '2')}`, `${M('A =')} ${F('6', '2')} ${M('= 3')}`],
+      c: `مساحة حوض الورود ${M('3 m²')}.` },
+    { id: '10-3', type: 'num', unit: 'm²', a: 37, q: `أرض الحديقة مستطيل ${M('8 m')} في ${M('5 m')}، وفيها حوض الورود السابق. ما مساحة الجزء الذي يُزرع عشبا (كل الأرض ما عدا الحوض)؟`,
+      h1: 'جزّئ: مساحة الأرض كلها، ثم انزع منها مساحة الحوض.', h2: 'مساحة المستطيل 8 × 5، ومساحة الحوض وجدتها في السؤال السابق.',
+      m: 'التجزئة: نطرح مساحة الحوض من مساحة المستطيل.',
+      s: [`مساحة الأرض: ${M('8 × 5 = 40')}`, 'مساحة الحوض: 3', V('40', '−', '3', '37')],
+      c: `مساحة العشب ${M('37 m²')}.` },
+    { id: '10-4', type: 'num', unit: 'cm', a: 12, q: `مثلث قائم أطوال أضلاعه ${M('3 cm')} و ${M('4 cm')} و ${M('5 cm')}. احسب محيطه.`,
+      h1: 'المحيط ليس المساحة: لا نقسم على 2 هنا.', h2: 'محيط المثلث = مجموع أطوال أضلاعه الثلاثة.',
+      m: 'محيط مثلث = مجموع أطوال أضلاعه.',
+      s: [`${M('P = 3 + 4 + 5')}`, `${M('3 + 4 + 5 = 12')}`],
+      c: `محيط المثلث ${M('12 cm')}.` }
+  ] },
+{ id: 11, ic: '🚲', g: 3, t: 'محيط الدائرة',
+  goal: 'أحسب طول الدائرة (محيط القرص) بالقاعدة، باستعمال 3,14 كقيمة مقرّبة للعدد π.',
+  steps: [
+    { h: 'ماذا نقصد بمحيط القرص؟', b: 'محيط القرص هو <b>طول الدائرة</b> التي تحدّه. لو قصصنا الدائرة وفردناها لأعطتنا قطعة مستقيم.' },
+    { h: 'العدد π', b: `طول أي دائرة يساوي قطرها مضروبا في عدد ثابت اسمه ${M('π')} (يُقرأ «بي»). نأخذ <b>3,14</b> قيمة مقرّبة له. في الآلة الحاسبة اللمسة ${M('π')} تعطي ${M('3,141592654')}.` },
+    { h: 'القاعدة', sum: 1, b: `إذا كان ${M('r')} نصف القطر و ${M('d')} القطر:<div class="key">${M('P = 2 × π × r')} &nbsp; أو &nbsp; ${M('P = π × d')}</div>نأخذ ${M('π ≈ 3,14')}.` }
+  ],
+  sim: 'simRoll', simHelp: 'اختر نصف قطر العجلة، ثم دحرجها دورة كاملة. طول الأثر الأحمر هو محيط الدائرة.',
+  mis: ['دحرج العجلة دورة كاملة', 'دحرج عجلتين: نصف قطر 1 ثم نصف قطر 2، ولاحظ أن المحيط تضاعف'],
+  qs: [
+    { id: '11-1', type: 'num', unit: 'cm', a: 31.4, tol: .05, q: `دائرة نصف قطرها ${M('5 cm')}. احسب طولها (نأخذ ${M('π ≈ 3,14')}).`,
+      h1: 'نعرف نصف القطر: أي قاعدة نستعمل؟', h2: 'P = 2 × π × r: اضرب 2 في 3,14 ثم في 5.',
+      m: `قاعدة طول الدائرة: ${M('P = 2 × π × r')}.`,
+      s: [`${M('P = 2 × 3,14 × 5')}`, `${M('2 × 3,14 = 6,28')}`, V('6,28', '×', '5', '31,40')],
+      c: `طول الدائرة ${M('31,4 cm')}.` },
+    { id: '11-2', type: 'num', unit: 'm', a: 6.28, tol: .01, q: `حوض ماء دائري قطره ${M('2 m')}، نحيطه بإطار من الحجارة. احسب طول الإطار.`,
+      h1: 'نعرف القطر هذه المرة.', h2: 'P = π × d.',
+      m: `قاعدة طول الدائرة بالقطر: ${M('P = π × d')}.`,
+      s: [`${M('P = 3,14 × 2')}`, `${M('3,14 × 2 = 6,28')}`],
+      c: `طول الإطار الحجري ${M('6,28 m')}.` },
+    { id: '11-3', type: 'num', unit: 'cm', a: 157, tol: .1, q: `أنس يقود دراجته في طريق حمام دباغ. قطر عجلتها ${M('50 cm')}. كم سنتيمترا تقطع العجلة في دورة واحدة؟ 🚲 الدراجة صديقة البيئة!`,
+      h1: 'في دورة واحدة تقطع العجلة مسافة تساوي محيطها.', h2: 'P = π × d، و d = 50 cm.',
+      m: `في دورة واحدة تقطع العجلة طول الدائرة: ${M('P = π × d')}.`,
+      s: [`${M('P = 3,14 × 50')}`, V('3,14', '×', '50', '157,00')],
+      c: `تقطع العجلة ${M('157 cm')} في الدورة الواحدة.` },
+    { id: '11-4', type: 'num', unit: 'm', a: 62.8, tol: .05, q: `نافورة في ساحة دائرية نصف قطرها ${M('10 m')} في مدينة قالمة. نريد غرس شجيرات على طول حدّها. احسب طول هذا الحد.`,
+      h1: 'الحد هو الدائرة. أي قاعدة نستعمل مع نصف القطر؟', h2: 'P = 2 × π × r = 2 × 3,14 × 10.',
+      m: `قاعدة طول الدائرة: ${M('P = 2 × π × r')}.`,
+      s: [`${M('P = 2 × 3,14 × 10')}`, `${M('2 × 3,14 = 6,28')}`, `${M('6,28 × 10 = 62,8')}`],
+      c: `طول حدّ الساحة ${M('62,8 m')}. 🌳 الشجيرات تجمّل مدينتنا.` }
+  ] }
+];
+
+const FINAL = { id: 'F', qs: [
+  { id: 'F-1', type: 'num', unit: 'm', a: 28.5, tol: .01, q: `طول السياج اللازم حول الفناء، مع ترك المدخل (${M('1,5 m')}) دون سياج.`,
+    h1: 'ابدأ بمحيط الفناء المستطيل.', h2: 'محيط الفناء 2 × (9 + 6)، ثم اطرح عرض المدخل.',
+    m: `قاعدة محيط المستطيل ${M('P = 2 × (a + b)')}، ثم نطرح المدخل.`,
+    s: [`${M('P = 2 × (9 + 6) = 2 × 15 = 30')}`, V('30,0', '−', '1,5', '28,5')],
+    c: `طول السياج ${M('28,5 m')}.` },
+  { id: 'F-2', type: 'num', unit: 'DA', a: 18525, q: `ثمن المتر الواحد من السياج ${M('650 DA')}. احسب تكلفة السياج.`,
+    h1: 'التكلفة = الطول × ثمن المتر.', h2: 'اضرب 28,5 في 650 عموديا، ولا تنس الفاصلة.',
+    m: 'التكلفة = طول السياج × ثمن المتر الواحد.',
+    s: [V('28,5', '×', '650', '18525,0')],
+    c: `تكلفة السياج ${M('18525 DA')}.` },
+  { id: 'F-3', type: 'num', unit: 'm²', a: 6, q: `مساحة حوض الأزهار المثلث ${M('AEF')} القائم في ${M('A')}.`,
+    h1: 'الحوض مثلث قائم ضلعا زاويته القائمة AE و AF.', h2: 'A = (AE × AF) ÷ 2.',
+    m: `قاعدة مساحة المثلث القائم ${M('A =')} ${F('a × b', '2')}.`,
+    s: [`${M('A =')} ${F('4 × 3', '2')} ${M('=')} ${F('12', '2')} ${M('= 6')}`],
+    c: `مساحة الحوض ${M('6 m²')}.` },
+  { id: 'F-4', type: 'num', unit: 'm²', a: 48, q: 'مساحة الجزء المبلّط (الفناء كله ما عدا الحوض).',
+    h1: 'جزّئ: مساحة الفناء ناقص مساحة الحوض.', h2: 'مساحة الفناء 9 × 6.',
+    m: 'التجزئة: مساحة المستطيل ناقص مساحة المثلث.',
+    s: [`${M('9 × 6 = 54')}`, V('54', '−', '6', '48')],
+    c: `المساحة المبلّطة ${M('48 m²')}.` },
+  { id: 'F-5', type: 'num', unit: 'بلاطة', a: 192, q: `البلاطات مربعة ضلعها ${M('50 cm')}. كم بلاطة نحتاج؟`,
+    h1: 'وحّد الوحدات: 50 cm = 0,5 m.', h2: 'مساحة البلاطة 0,5 × 0,5 = 0,25 m²، أي 4 بلاطات في كل 1 m².',
+    m: 'نوحّد الوحدات، نحسب مساحة البلاطة، ثم نحسب عدد البلاطات في المساحة المبلّطة.',
+    s: [`${M('50 cm = 0,5 m')}`, `مساحة البلاطة: ${M('0,5 × 0,5 = 0,25 m²')}، إذن ${M('1 m²')} فيه 4 بلاطات.`, V('48', '×', '4', '192')],
+    c: 'نحتاج 192 بلاطة.' },
+  { id: 'F-6', type: 'num', unit: 'm', a: 6.28, tol: .01, q: `البركة دائرية نصف قطرها ${M('1 m')}. احسب طول الإطار الحجري حولها.`,
+    h1: 'الإطار يدور حول البركة: هو طول الدائرة.', h2: 'P = 2 × π × r = 2 × 3,14 × 1.',
+    m: `قاعدة طول الدائرة ${M('P = 2 × π × r')}.`,
+    s: [`${M('P = 2 × 3,14 × 1 = 6,28')}`],
+    c: `طول الإطار الحجري ${M('6,28 m')}. 💧 البركة تحفظ ماء المطر لسقي الأزهار.` }
+] };
+
+/* static figures used in the lesson text */
+function fig1(kind) {
+  const w = 300, h = 70, A = [90, 40], B = [210, 40];
+  let ln = '';
+  if (kind === 'line') ln = `<line x1="10" y1="40" x2="290" y2="40" stroke="#0f5f8b" stroke-width="3"/>`;
+  if (kind === 'ray') ln = `<line x1="90" y1="40" x2="290" y2="40" stroke="#0f5f8b" stroke-width="3"/><line x1="90" y1="28" x2="90" y2="52" stroke="#0f5f8b" stroke-width="3"/>`;
+  if (kind === 'seg') ln = `<line x1="90" y1="40" x2="210" y2="40" stroke="#0f5f8b" stroke-width="3"/><line x1="90" y1="28" x2="90" y2="52" stroke="#0f5f8b" stroke-width="3"/><line x1="210" y1="28" x2="210" y2="52" stroke="#0f5f8b" stroke-width="3"/>`;
+  return `<svg viewBox="0 0 ${w} ${h}" style="width:100%;max-width:340px;display:block;margin:4px auto">${ln}<circle cx="${A[0]}" cy="${A[1]}" r="5" fill="#dc2626"/><circle cx="${B[0]}" cy="${B[1]}" r="5" fill="#dc2626"/><text x="84" y="22" font-size="16" font-weight="800" fill="#18303f">A</text><text x="204" y="22" font-size="16" font-weight="800" fill="#18303f">B</text></svg>`;
+}
+function gridFig(rects, cols, rows) {
+  const c = 26, w = cols * c + 2, h = rows * c + 2;
+  let s = `<svg viewBox="0 0 ${w} ${h}" style="width:100%;max-width:${Math.min(360, w * 1.2)}px;display:block;margin:6px auto;direction:ltr">`;
+  for (let x = 0; x <= cols; x++) s += `<line x1="${x * c + 1}" y1="1" x2="${x * c + 1}" y2="${h - 1}" stroke="#dbe7f0"/>`;
+  for (let y = 0; y <= rows; y++) s += `<line x1="1" y1="${y * c + 1}" x2="${w - 1}" y2="${y * c + 1}" stroke="#dbe7f0"/>`;
+  rects.forEach(([x, y, wd, ht]) => { s += `<rect x="${x * c + 1}" y="${y * c + 1}" width="${wd * c}" height="${ht * c}" fill="#86efac" fill-opacity=".75" stroke="#15803d" stroke-width="2"/>`; for (let i = 1; i < wd; i++) s += `<line x1="${(x + i) * c + 1}" y1="${y * c + 1}" x2="${(x + i) * c + 1}" y2="${(y + ht) * c + 1}" stroke="#15803d" stroke-opacity=".35"/>`; for (let j = 1; j < ht; j++) s += `<line x1="${x * c + 1}" y1="${(y + j) * c + 1}" x2="${(x + wd) * c + 1}" y2="${(y + j) * c + 1}" stroke="#15803d" stroke-opacity=".35"/>`; });
+  return s + '</svg>';
+}
+
+/* ================= scoring ================= */
+const ALLQ = LESSONS.flatMap(L => L.qs).concat(FINAL.qs);
+const GAMES_MAX = { g1: 6, g2: 8, g3: 10 };
+const MIS_MAX = LESSONS.reduce((n, L) => n + L.mis.length, 0);
+const MAXS = ALLQ.length * 3 + MIS_MAX + Object.values(GAMES_MAX).reduce((a, b) => a + b, 0);
+function totalStars() {
+  let n = 0; for (const k in S.q) n += S.q[k].st || 0;
+  n += Object.keys(S.mis).length; for (const k in S.g) n += S.g[k] || 0; return n;
+}
+const lessonDone = L => L.qs.every(q => S.q[q.id] && S.q[q.id].done);
+const finalDone = () => FINAL.qs.every(q => S.q[q.id] && S.q[q.id].done);
+function updBar() {
+  $('#stars').textContent = totalStars(); $('#maxs').textContent = MAXS;
+  $('#badges').textContent = LESSONS.filter(lessonDone).length;
+  const items = ALLQ.length + MIS_MAX + 3;
+  const done = ALLQ.filter(q => S.q[q.id] && S.q[q.id].done).length + Object.keys(S.mis).length + Object.keys(S.g).length;
+  $('#progi').style.width = Math.round(100 * done / items) + '%';
+  $('#snd').textContent = S.snd ? '🔊' : '🔇';
+}
+
+/* ================= question engine ================= */
+function parseNum(t) {
+  t = String(t).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[٫,]/g, '.').replace(/\s+/g, '').replace(/[^\d.\-]/g, '');
+  if (!/^-?\d*\.?\d+$/.test(t)) return NaN; return parseFloat(t);
+}
+function modelHTML(q) {
+  const sc = q.sc || (q.type === 'mcq' ? MCQ_SC : NUM_SC);
+  return `<h4>📘 الإجابة النموذجية</h4><div><b>الطريقة:</b> ${q.m}</div>${q.s.map(x => `<div class="ln">${x}</div>`).join('')}<div class="ccl"><b>الاستنتاج:</b> ${q.c}</div>
+  <table class="sc"><tr><th>سلم التنقيط (على الورقة)</th><th>النقاط</th></tr>${sc.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('')}<tr class="tot"><td>المجموع</td><td>${sc.reduce((a, r) => a + r[1], 0)}</td></tr></table>`;
+}
+function qHTML(q, i) {
+  let inp;
+  if (q.type === 'mcq') inp = `<div class="ch">${q.ch.map((c, k) => `<button class="opt" data-k="${k}">${c}</button>`).join('')}</div>`;
+  else inp = `<div class="ans"><input type="text" inputmode="decimal" autocomplete="off" aria-label="الجواب"><span class="unit">${q.unit || ''}</span><button class="btn chk">تحقّق ✓</button></div>
+    <div class="keys"><button data-key=",">,</button><button data-key="×">×</button><button data-key="⌫">⌫</button></div>`;
+  return `<div class="card qc" id="q-${q.id}"><div class="qh"><b>السؤال ${i + 1}</b><span class="tries"></span><span class="pts">حتى 3 ⭐</span></div><div class="qt">${q.q}</div>${inp}<div class="fb" aria-live="polite"></div><div class="mdl"></div></div>`;
+}
+function renderQs(list, host) {
+  host.innerHTML = list.map(qHTML).join('');
+  list.forEach(q => bindQ(q));
+}
+function qState(q) { return S.q[q.id] || (S.q[q.id] = { t: 0, done: false, st: 0, dis: [] }); }
+function paintQ(q) {
+  const el = $('#q-' + q.id), st = S.q[q.id]; if (!el || !st) return;
+  el.querySelector('.tries').textContent = st.done ? (st.ok ? '⭐'.repeat(st.st) : 'انتهت المحاولات') : (st.t ? `المحاولة ${st.t + 1} من 3` : '');
+  if (q.type === 'mcq') (st.dis || []).forEach(k => { const b = el.querySelector(`.opt[data-k="${k}"]`); b.classList.add('bad'); b.disabled = true; });
+  if (st.done) {
+    el.classList.add(st.ok ? 'ok' : 'lost');
+    $$('input,button.opt,button.chk,.keys button', el).forEach(b => b.disabled = true);
+    if (q.type === 'mcq') el.querySelector(`.opt[data-k="${q.a}"]`).classList.add('good');
+    else if (st.v != null) el.querySelector('input').value = st.v;
+    el.querySelector('.mdl').innerHTML = st.ok ? `<details class="sol"><summary>📘 اطّلع على الحل المفصّل</summary><div class="model">${modelHTML(q)}</div></details>` : `<div class="model">${modelHTML(q)}</div>`;
+  }
+}
+function bindQ(q) {
+  const el = $('#q-' + q.id);
+  paintQ(q);
+  if (q.type === 'mcq') $$('.opt', el).forEach(b => b.addEventListener('click', () => answer(q, +b.dataset.k, b)));
+  else {
+    const inp = el.querySelector('input');
+    el.querySelector('.chk').addEventListener('click', () => answer(q, inp.value));
+    inp.addEventListener('keydown', e => { if (e.key === 'Enter') answer(q, inp.value); });
+    $$('.keys button', el).forEach(b => b.addEventListener('click', () => {
+      const k = b.dataset.key; if (k === '⌫') inp.value = inp.value.slice(0, -1); else inp.value += k; inp.focus();
+    }));
+  }
+}
+function answer(q, v, btn) {
+  const st = qState(q); if (st.done) return;
+  const el = $('#q-' + q.id), fb = el.querySelector('.fb');
+  let ok;
+  if (q.type === 'mcq') ok = v === q.a;
+  else {
+    const x = parseNum(v);
+    if (isNaN(x)) { fb.innerHTML = '<span class="h">اكتب عددا (يمكنك استعمال الفاصلة ,).</span>'; shake(el); return; }
+    ok = Math.abs(x - q.a) <= (q.tol || 1e-9); st.v = v;
+  }
+  if (ok) {
+    st.done = true; st.ok = true; st.st = 3 - st.t; save();
+    fb.innerHTML = `<span class="g">✅ ${pick('ok', q.id)} ${'⭐'.repeat(st.st)}</span>`;
+    sOk(); burst(el, st.st); toast(`${pick('ok', q.id + 'x')} ⭐ +${st.st}`);
+  } else {
+    st.t++; sBad(); shake(el);
+    if (q.type === 'mcq') { st.dis = st.dis || []; st.dis.push(v); }
+    if (st.t >= 3) {
+      st.done = true; st.ok = false; st.st = 0;
+      fb.innerHTML = `<span class="w">🌱 ${pick('fail', q.id)}</span>`; toast('🌱 ' + pick('fail', q.id + 'y'), 1);
+    } else if (st.t === 1) {
+      fb.innerHTML = `<span class="w">${pick('w1', q.id)}</span><span class="h">💡 تلميح 1: ${q.h1}</span>`; toast(pick('w1', q.id + 'z'), 1);
+    } else {
+      fb.innerHTML = `<span class="w">${pick('w2', q.id)}</span><span class="h">💡 تلميح 2: ${q.h2}</span>`; toast(pick('w2', q.id + 'z'), 1);
+    }
+    save();
+  }
+  paintQ(q); updBar(); afterQ(q);
+}
+function afterQ(q) {
+  const L = LESSONS.find(l => l.qs.includes(q));
+  if (L && lessonDone(L) && !S['bdg' + L.id]) {
+    S['bdg' + L.id] = 1; save();
+    const st = L.qs.reduce((n, x) => n + (S.q[x.id].st || 0), 0);
+    setTimeout(() => modal(`<div class="big">🏅</div><h2>وسام المحطة ${L.id}</h2><p>أنهيت «${L.t}» وجمعت ${st} ⭐ من ${L.qs.length * 3}.</p><p class="muted">الخطأ جزء من التعلّم: أعد قراءة الحلول التي أخطأت فيها.</p>${L.id < 11 ? `<button class="btn green" onclick="this.closest('.modal').remove();go('lesson',${L.id + 1})">المحطة التالية ←</button>` : `<button class="btn green" onclick="this.closest('.modal').remove();go('final')">إلى التحدي النهائي 🏡</button>`}`), 700);
+  }
+  if (q.id.startsWith('F-') && finalDone() && !S.bdgF) { S.bdgF = 1; save(); setTimeout(() => modal(`<div class="big">🏡</div><h2>أنهيت التحدي النهائي!</h2><p>ساعدت الأب في وادي فراغة على تهيئة فنائه. اذهب الآن إلى الشهادة.</p><button class="btn green" onclick="this.closest('.modal').remove();go('cert')">🎓 الشهادة</button>`), 700); }
+}
+
+/* ================= simulations ================= */
+const SIMS = {};
+function simShell(host, L) {
+  host.innerHTML = `<div class="card"><h3>🧪 المحاكاة</h3><div class="muted">${L.simHelp}</div><div class="ctrl"></div><div class="svgwrap" style="margin-top:6px"></div><div class="readout"></div><div class="extra"></div><div class="missions">${misHTML(L)}</div></div>`;
+  return { ctrl: $('.ctrl', host), wrap: $('.svgwrap', host), out: $('.readout', host), extra: $('.extra', host) };
+}
+
+SIMS.simTerms = (host, L) => {
+  const H = simShell(host, L);
+  let mode = 'seg';
+  H.ctrl.innerHTML = `<div class="row" style="margin-top:6px"><button class="btn alt" data-m="line">مستقيم (AB)</button><button class="btn alt" data-m="ray">نصف مستقيم [AB)</button><button class="btn" data-m="seg">قطعة [AB]</button></div>`;
+  const svg = mkSvg(H.wrap, 360, 240); grid(svg, 360, 240, 20);
+  const A = { x: 80, y: 160 }, B = { x: 240, y: 120 }, C = { x: 290, y: 60 };
+  const main = E('line', { stroke: '#0f5f8b', 'stroke-width': 3, 'stroke-linecap': 'round' }, svg);
+  const decor = E('g', {}, svg);
+  const hA = handle(svg, 'A', '#dc2626'), hB = handle(svg, 'B', '#dc2626'), hC = handle(svg, 'C', '#16a34a');
+  function geo() { const dx = B.x - A.x, dy = B.y - A.y, L2 = Math.hypot(dx, dy) || 1; return { ux: dx / L2, uy: dy / L2, len: L2 }; }
+  function snapC() {
+    const { ux, uy, len } = geo(); const t = (C.x - A.x) * ux + (C.y - A.y) * uy;
+    const px = A.x + ux * t, py = A.y + uy * t, d = Math.hypot(C.x - px, C.y - py);
+    const mx = (A.x + B.x) / 2, my = (A.y + B.y) / 2;
+    if (Math.hypot(C.x - mx, C.y - my) < 10) { C.x = mx; C.y = my; } else if (d < 9) { C.x = px; C.y = py; }
+  }
+  function draw() {
+    const { ux, uy, len } = geo(), far = 1000;
+    let x1 = A.x, y1 = A.y, x2 = B.x, y2 = B.y;
+    if (mode === 'line') { x1 = A.x - ux * far; y1 = A.y - uy * far; x2 = B.x + ux * far; y2 = B.y + uy * far; }
+    if (mode === 'ray') { x2 = B.x + ux * far; y2 = B.y + uy * far; }
+    main.setAttribute('x1', x1); main.setAttribute('y1', y1); main.setAttribute('x2', x2); main.setAttribute('y2', y2);
+    decor.innerHTML = '';
+    const nx = -uy, ny = ux, br = (P) => E('line', { x1: P.x + nx * 11, y1: P.y + ny * 11, x2: P.x - nx * 11, y2: P.y - ny * 11, stroke: '#0f5f8b', 'stroke-width': 3 }, decor);
+    if (mode !== 'line') br(A); if (mode === 'seg') br(B);
+    const mx = (A.x + B.x) / 2, my = (A.y + B.y) / 2;
+    if (mode === 'seg') { tick(decor, A, { x: mx, y: my }, 2); tick(decor, { x: mx, y: my }, B, 2); E('circle', { cx: mx, cy: my, r: 4, fill: '#7c3aed' }, decor); const t = E('text', { x: mx + 8, y: my + 20, 'font-size': 14, fill: '#7c3aed' }, decor); t.textContent = 'M'; }
+    hA.place(A.x, A.y); hB.place(B.x, B.y); hC.place(C.x, C.y);
+    const t = (C.x - A.x) * ux + (C.y - A.y) * uy, d = Math.abs((C.x - A.x) * uy - (C.y - A.y) * ux);
+    const col = d < .5, onSeg = col && t >= -.5 && t <= len + .5, mid = Math.hypot(C.x - mx, C.y - my) < .5;
+    const name = { line: `المستقيم ${M('(AB)')}: غير محدود من الجهتين.`, ray: `نصف المستقيم ${M('[AB)')}: مبدؤه ${M('A')}، ويمتد دون نهاية بعد ${M('B')}.`, seg: `القطعة ${M('[AB]')}: طولها ${M('AB ≈ ' + fmt(len / 40, 1) + ' cm')}، ومنتصفها ${M('M')} حيث ${M('MA = MB ≈ ' + fmt(len / 80, 1) + ' cm')}.` }[mode];
+    H.out.innerHTML = name + '<br>' + (col ? `✅ ${M('A')} و ${M('B')} و ${M('C')} في استقامية${mid ? ` و ${M('C')} منتصف ${M('[AB]')}` : onSeg ? ` و ${M('C ∈ [AB]')}` : ` و ${M('C ∉ [AB]')}`}.` : `النقط ${M('A')} و ${M('B')} و ${M('C')} ليست في استقامية: ${M('C ∉ (AB)')}.`);
+    return { col, onSeg, mid };
+  }
+  const end = () => { const r = draw(); if (r.col) misDone(L, 0); if (r.onSeg && r.col) misDone(L, 1); if (r.mid) misDone(L, 2); };
+  drag(svg, hA, (x, y) => { A.x = clamp(x, 12, 348); A.y = clamp(y, 12, 228); draw(); }, end);
+  drag(svg, hB, (x, y) => { B.x = clamp(x, 12, 348); B.y = clamp(y, 12, 228); if (Math.hypot(B.x - A.x, B.y - A.y) < 30) { B.x = A.x + 30; } draw(); }, end);
+  drag(svg, hC, (x, y) => { C.x = clamp(x, 12, 348); C.y = clamp(y, 12, 228); snapC(); draw(); }, end);
+  $$('[data-m]', H.ctrl).forEach(b => b.addEventListener('click', () => { mode = b.dataset.m; $$('[data-m]', H.ctrl).forEach(x => x.className = 'btn' + (x === b ? '' : ' alt')); draw(); }));
+  draw();
+};
+
+SIMS.simPerp = (host, L) => {
+  const H = simShell(host, L);
+  const svg = mkSvg(H.wrap, 360, 250); grid(svg, 360, 250, 20);
+  const Y = 200, P = [{ x: 110, y: Y, a: 120, c: '#2563eb', n: 'd1' }, { x: 250, y: Y, a: 60, c: '#16a34a', n: 'd2' }];
+  E('line', { x1: 0, y1: Y, x2: 360, y2: Y, stroke: '#18303f', 'stroke-width': 3 }, svg);
+  const td = E('text', { x: 330, y: Y - 8, 'font-size': 15, fill: '#18303f' }, svg); td.textContent = '(d)';
+  P.forEach(p => {
+    p.ln = E('line', { stroke: p.c, 'stroke-width': 3 }, svg); p.mk = E('g', {}, svg);
+    p.lb = E('text', { 'font-size': 15, fill: p.c }, svg); p.lb.textContent = `(${p.n})`;
+    p.h = handle(svg, '', p.c);
+    drag(svg, p.h, (x, y) => { let a = Math.atan2(p.y - y, x - p.x) * 180 / Math.PI; a = clamp(a, 15, 165); if (Math.abs(a - 90) < 4) a = 90; p.a = a; draw(); }, () => { const r = draw(); if (r[0]) misDone(L, 0); if (r[1]) misDone(L, 1); if (r[0] && r[1]) misDone(L, 2); });
+  });
+  function draw() {
+    P.forEach(p => {
+      const r = p.a * Math.PI / 180, ux = Math.cos(r), uy = -Math.sin(r), R = 165;
+      p.ln.setAttribute('x1', p.x - ux * 60); p.ln.setAttribute('y1', p.y - uy * 60); p.ln.setAttribute('x2', p.x + ux * 400); p.ln.setAttribute('y2', p.y + uy * 400);
+      p.h.place(p.x + ux * R, p.y + uy * R);
+      p.lb.setAttribute('x', clamp(p.x + ux * R + 12, 4, 318)); p.lb.setAttribute('y', p.y + uy * R + 22);
+      p.mk.innerHTML = ''; if (p.a === 90) rightMark(p.mk, p, { x: 1, y: 0 }, { x: 0, y: -1 }, 14);
+    });
+    const r = P.map(p => p.a === 90);
+    let t = P.map((p, i) => `${M('(' + p.n + ')')} ${r[i] ? '⊥' : 'ليس عموديا على'} ${M('(d)')}`).join(' ؛ ');
+    if (r[0] && r[1]) t += `<br>✅ مستقيمان عموديان على نفس المستقيم، إذن ${M('(d1) ∥ (d2)')} (الخاصية 2).`;
+    H.out.innerHTML = t; return r;
+  }
+  draw();
+};
+
+SIMS.simTri = (host, L) => {
+  const H = simShell(host, L);
+  const svg = mkSvg(H.wrap, 360, 260); grid(svg, 360, 260, 20);
+  const V3 = [{ x: 80, y: 220, n: 'A' }, { x: 280, y: 220, n: 'B' }, { x: 160, y: 80, n: 'C' }];
+  const poly = E('polygon', { fill: '#bae6fd', 'fill-opacity': .5, stroke: '#0f5f8b', 'stroke-width': 3 }, svg);
+  const dec = E('g', {}, svg); const labs = E('g', {}, svg);
+  V3.forEach(v => { v.h = handle(svg, v.n, '#dc2626'); drag(svg, v.h, (x, y) => { v.x = clamp(Math.round(x / 20) * 20, 20, 340); v.y = clamp(Math.round(y / 20) * 20, 20, 240); draw(); }, check); });
+  const d = (p, q) => Math.hypot(p.x - q.x, p.y - q.y) / 40;
+  let last = {};
+  function draw() {
+    poly.setAttribute('points', V3.map(v => v.x + ',' + v.y).join(' '));
+    V3.forEach(v => v.h.place(v.x, v.y));
+    dec.innerHTML = ''; labs.innerHTML = '';
+    const [A, B, C] = V3, s = [[A, B], [B, C], [C, A]], len = s.map(([p, q]) => Math.round(d(p, q) * 10) / 10);
+    const area2 = (B.x - A.x) * (C.y - A.y) - (C.x - A.x) * (B.y - A.y);
+    if (Math.abs(area2) < 1) { H.out.innerHTML = 'النقط الثلاث في استقامية: هذا ليس مثلثا! حرّك رأسا.'; last = {}; return; }
+    s.forEach(([p, q], i) => { const t = E('text', { x: (p.x + q.x) / 2 + 4, y: (p.y + q.y) / 2 - 6, 'font-size': 13, fill: '#0b4a6f' }, labs); t.textContent = fmt(len[i], 1); });
+    const eq = (i, j) => len[i] === len[j];
+    const equi = eq(0, 1) && eq(1, 2), iso = eq(0, 1) || eq(1, 2) || eq(0, 2);
+    let right = null;
+    V3.forEach((v, i) => { const p = V3[(i + 1) % 3], q = V3[(i + 2) % 3]; const dot = (p.x - v.x) * (q.x - v.x) + (p.y - v.y) * (q.y - v.y); if (dot === 0) right = i; });
+    if (equi) s.forEach(([p, q]) => tick(dec, p, q, 1));
+    else if (iso) s.forEach(([p, q], i) => { if (len.filter(x => x === len[i]).length > 1) tick(dec, p, q, 1); });
+    if (right !== null) { const v = V3[right], p = V3[(right + 1) % 3], q = V3[(right + 2) % 3]; const u = (a) => { const l = Math.hypot(a.x - v.x, a.y - v.y); return { x: (a.x - v.x) / l, y: (a.y - v.y) / l }; }; rightMark(dec, v, u(p), u(q), 14); }
+    let type = 'مثلث كيفي (أضلاعه مختلفة)';
+    if (equi) type = 'مثلث متقايس الأضلاع (وهو أيضا متساوي الساقين)';
+    else if (right !== null && iso) type = `مثلث قائم في ${V3[right].n} ومتساوي الساقين`;
+    else if (right !== null) type = `مثلث قائم في ${V3[right].n}`;
+    else if (iso) type = 'مثلث متساوي الساقين';
+    H.out.innerHTML = `${M('AB ≈ ' + fmt(len[0], 1) + ' cm')} ، ${M('BC ≈ ' + fmt(len[1], 1) + ' cm')} ، ${M('CA ≈ ' + fmt(len[2], 1) + ' cm')}<br>النوع: <b>${type}</b>`;
+    last = { right: right !== null, iso: iso && !equi, equi };
+  }
+  function check() { draw(); if (last.right) misDone(L, 0); if (last.iso) misDone(L, 1); if (last.equi) misDone(L, 2); }
+  draw();
+  // construction demo
+  H.extra.innerHTML = `<h3 style="margin-top:12px">🧭 خطوات إنشاء مثيل بالمدور</h3><div class="cw"></div><div class="row" style="margin-top:6px"><button class="btn" id="cstep">الخطوة التالية ▶</button><span id="ctxt" class="muted"></span></div>`;
+  const s2 = mkSvg($('.cw', H.extra), 360, 180);
+  const o = { A: { x: 230, y: 150 }, B: { x: 330, y: 150 }, C: { x: 260, y: 70 } };
+  const k = { A: { x: 30, y: 150 }, B: { x: 130, y: 150 }, C: { x: 60, y: 70 } };
+  E('polygon', { points: `${o.A.x},${o.A.y} ${o.B.x},${o.B.y} ${o.C.x},${o.C.y}`, fill: '#fde68a', 'fill-opacity': .6, stroke: '#b45309', 'stroke-width': 2.5 }, s2);
+  ['A', 'B', 'C'].forEach(n => { const t = E('text', { x: o[n].x + (n === 'A' ? -16 : 6), y: o[n].y + (n === 'C' ? -6 : 18), 'font-size': 14, fill: '#b45309' }, s2); t.textContent = n; });
+  const AC = Math.hypot(o.C.x - o.A.x, o.C.y - o.A.y), BC = Math.hypot(o.C.x - o.B.x, o.C.y - o.B.y);
+  const arc = (c, r, ang) => { const a1 = (ang - 28) * Math.PI / 180, a2 = (ang + 28) * Math.PI / 180; return `M ${c.x + r * Math.cos(a1)} ${c.y - r * Math.sin(a1)} A ${r} ${r} 0 0 0 ${c.x + r * Math.cos(a2)} ${c.y - r * Math.sin(a2)}`; };
+  const angA = Math.atan2(k.A.y - k.C.y, k.C.x - k.A.x) * 180 / Math.PI, angB = Math.atan2(k.B.y - k.C.y, k.C.x - k.B.x) * 180 / Math.PI;
+  const parts = [
+    E('line', { x1: k.A.x, y1: k.A.y, x2: k.B.x, y2: k.B.y, stroke: '#0f5f8b', 'stroke-width': 3 }, s2),
+    E('path', { d: arc(k.A, AC, angA), fill: 'none', stroke: '#7c3aed', 'stroke-width': 2.5, 'stroke-dasharray': '6 4' }, s2),
+    E('path', { d: arc(k.B, BC, angB), fill: 'none', stroke: '#16a34a', 'stroke-width': 2.5, 'stroke-dasharray': '6 4' }, s2),
+    E('polygon', { points: `${k.A.x},${k.A.y} ${k.B.x},${k.B.y} ${k.C.x},${k.C.y}`, fill: '#bae6fd', 'fill-opacity': .6, stroke: '#0f5f8b', 'stroke-width': 3 }, s2)
+  ];
+  const kl = [["A'", k.A, -22, 18], ["B'", k.B, 4, 18], ["C'", k.C, -8, -8]].map(([n, p, dx, dy]) => { const t = E('text', { x: p.x + dx, y: p.y + dy, 'font-size': 14, fill: '#0f5f8b' }, s2); t.textContent = n; return t; });
+  const TX = ['المثلث الأصلي ABC (على اليمين). نريد مثيلا له.', "① نرسم [A'B'] طولها AB.", "② قوس مركزه A' ونصف قطره AC.", "③ قوس مركزه B' ونصف قطره BC.", "④ تقاطع القوسين هو C'. نرسم المثلث A'B'C': هو مثيل ABC."];
+  let stp = 0;
+  function show() { parts.forEach((p, i) => p.style.display = i < stp ? '' : 'none'); kl[0].style.display = kl[1].style.display = stp >= 1 ? '' : 'none'; kl[2].style.display = stp >= 4 ? '' : 'none'; $('#ctxt').textContent = TX[stp]; $('#cstep').textContent = stp >= 4 ? 'أعد من البداية ↺' : 'الخطوة التالية ▶'; }
+  $('#cstep').addEventListener('click', () => { stp = stp >= 4 ? 0 : stp + 1; show(); });
+  show();
+};
+
+SIMS.simQuad = (host, L) => {
+  const H = simShell(host, L);
+  H.ctrl.innerHTML = `<div class="sl">القطر [AC]: <input type="range" min="2" max="7" step="0.5" value="6" id="d1"><output id="o1"></output></div>
+    <div class="sl">القطر [BD]: <input type="range" min="2" max="7" step="0.5" value="4" id="d2"><output id="o2"></output></div>
+    <div class="sl">الزاوية بين القطرين: <input type="range" min="30" max="150" step="5" value="60" id="an"><output id="o3"></output></div>`;
+  const svg = mkSvg(H.wrap, 360, 260); grid(svg, 360, 260, 20);
+  const O = { x: 180, y: 130 }, sc = 30;
+  const poly = E('polygon', { fill: '#ddd6fe', 'fill-opacity': .6, stroke: '#7c3aed', 'stroke-width': 3 }, svg);
+  const dg = E('g', {}, svg), dec = E('g', {}, svg), lb = E('g', {}, svg);
+  function draw() {
+    const d1 = +$('#d1', H.ctrl).value, d2 = +$('#d2', H.ctrl).value, an = +$('#an', H.ctrl).value;
+    $('#o1', H.ctrl).textContent = fmt(d1, 1) + ' cm'; $('#o2', H.ctrl).textContent = fmt(d2, 1) + ' cm'; $('#o3', H.ctrl).textContent = an === 90 ? 'قائمة' : an + '°';
+    const r = an * Math.PI / 180, u = { x: 1, y: 0 }, v = { x: Math.cos(r), y: -Math.sin(r) };
+    const A = { x: O.x + u.x * d1 * sc / 2, y: O.y }, C = { x: O.x - u.x * d1 * sc / 2, y: O.y }, B = { x: O.x + v.x * d2 * sc / 2, y: O.y + v.y * d2 * sc / 2 }, D = { x: O.x - v.x * d2 * sc / 2, y: O.y - v.y * d2 * sc / 2 };
+    const pts = [A, B, C, D];
+    poly.setAttribute('points', pts.map(p => p.x + ',' + p.y).join(' '));
+    dg.innerHTML = ''; dec.innerHTML = ''; lb.innerHTML = '';
+    E('line', { x1: A.x, y1: A.y, x2: C.x, y2: C.y, stroke: '#0f5f8b', 'stroke-width': 2, 'stroke-dasharray': '6 4' }, dg);
+    E('line', { x1: B.x, y1: B.y, x2: D.x, y2: D.y, stroke: '#0f5f8b', 'stroke-width': 2, 'stroke-dasharray': '6 4' }, dg);
+    ['A', 'B', 'C', 'D'].forEach((n, i) => { const p = pts[i], t = E('text', { x: p.x + (p.x >= O.x ? 6 : -18), y: p.y + (p.y >= O.y ? 18 : -6), 'font-size': 15, fill: '#7c3aed' }, lb); t.textContent = n; });
+    const t = E('text', { x: O.x + 6, y: O.y + 16, 'font-size': 13, fill: '#0f5f8b' }, lb); t.textContent = 'O';
+    const eq = d1 === d2, perp = an === 90;
+    if (perp) rightMark(dec, O, u, { x: v.x, y: v.y }, 12);
+    if (eq) { tick(dec, O, A, 2, '#0f5f8b'); tick(dec, O, C, 2, '#0f5f8b'); tick(dec, O, B, 2, '#0f5f8b'); tick(dec, O, D, 2, '#0f5f8b'); }
+    else { tick(dec, O, A, 1, '#0f5f8b'); tick(dec, O, C, 1, '#0f5f8b'); tick(dec, O, B, 2, '#0f5f8b'); tick(dec, O, D, 2, '#0f5f8b'); }
+    let name = 'رباعي آخر (ليس مستطيلا ولا معيّنا)', why = 'القطران متناصفان فقط.';
+    if (eq && perp) { name = 'مربع 🟪'; why = 'القطران متقايسان ومتناصفان ومتعامدان.'; }
+    else if (eq) { name = 'مستطيل'; why = 'القطران متقايسان ومتناصفان.'; }
+    else if (perp) { name = 'معيّن 🔷'; why = 'القطران متعامدان ومتناصفان.'; }
+    H.out.innerHTML = `الرباعي ${M('ABCD')}: <b>${name}</b><br><span class="muted">${why}</span>`;
+    return { eq, perp };
+  }
+  $$('input', H.ctrl).forEach(i => i.addEventListener('input', () => { const r = draw(); if (r.eq && !r.perp) misDone(L, 0); if (r.perp && !r.eq) misDone(L, 1); if (r.eq && r.perp) misDone(L, 2); }));
+  draw();
+};
+
+SIMS.simCircle = (host, L) => {
+  const H = simShell(host, L);
+  H.ctrl.innerHTML = `<div class="sl">نصف قطر منطقة السقي: <input type="range" min="1" max="4" step="0.5" value="3" id="rr"><output id="ro"></output></div>`;
+  const svg = mkSvg(H.wrap, 360, 260); grid(svg, 360, 260, 20, '#e5efe3');
+  const O = { x: 180, y: 130 }, sc = 28, P = { x: 300, y: 60 };
+  const disk = E('circle', { cx: O.x, cy: O.y, fill: '#bfdbfe', 'fill-opacity': .55, stroke: '#2563eb', 'stroke-width': 3 }, svg);
+  const seg = E('line', { x1: O.x, y1: O.y, stroke: '#dc2626', 'stroke-width': 2, 'stroke-dasharray': '5 4' }, svg);
+  const so = E('text', { x: O.x - 12, y: O.y + 9, 'font-size': 22 }, svg); so.textContent = '💧';
+  const ol = E('text', { x: O.x - 6, y: O.y + 30, 'font-size': 14, fill: '#18303f' }, svg); ol.textContent = 'O';
+  const pg = E('g', {}, svg); E('circle', { r: 18, fill: '#16a34a', 'fill-opacity': .12 }, pg); const pe = E('text', { x: -11, y: 8, 'font-size': 22 }, pg); pe.textContent = '🌱';
+  const r = () => +$('#rr', H.ctrl).value;
+  let st = '';
+  function draw() {
+    $('#ro', H.ctrl).textContent = fmt(r(), 1) + ' m';
+    disk.setAttribute('r', r() * sc);
+    let op = Math.hypot(P.x - O.x, P.y - O.y) / sc;
+    if (Math.abs(op - r()) <= .12 && op > 0) { const k = r() / op; P.x = O.x + (P.x - O.x) * k; P.y = O.y + (P.y - O.y) * k; op = r(); }
+    pg.setAttribute('transform', `translate(${P.x},${P.y})`); seg.setAttribute('x2', P.x); seg.setAttribute('y2', P.y);
+    const opr = Math.round(op * 10) / 10;
+    st = opr < r() ? 'in' : opr === r() ? 'on' : 'out';
+    H.out.innerHTML = `${M('OP ≈ ' + fmt(opr, 1) + ' m')} و ${M('r = ' + fmt(r(), 1) + ' m')}: ` + (st === 'in' ? `${M('OP < r')} ⟸ النبتة <b>داخل</b> الدائرة: تُسقى 💧` : st === 'on' ? `${M('OP = r')} ⟸ النبتة <b>على</b> الدائرة: آخر نبتة يصلها الماء` : `${M('OP > r')} ⟸ النبتة <b>خارج</b> الدائرة: لا يصلها الماء`);
+  }
+  const end = () => { draw(); misDone(L, st === 'in' ? 0 : st === 'on' ? 1 : 2); };
+  drag(svg, pg, (x, y) => { P.x = clamp(x, 14, 346); P.y = clamp(y, 14, 246); draw(); }, end);
+  $('#rr', H.ctrl).addEventListener('input', end);
+  draw();
+};
+
+SIMS.simVocab = (host, L) => {
+  const H = simShell(host, L);
+  const svg = mkSvg(H.wrap, 360, 250);
+  const O = { x: 180, y: 125 }, R = 95, P = a => ({ x: O.x + R * Math.cos(a * Math.PI / 180), y: O.y - R * Math.sin(a * Math.PI / 180) });
+  E('circle', { cx: O.x, cy: O.y, r: R, fill: '#f0f9ff', stroke: '#0f5f8b', 'stroke-width': 3 }, svg);
+  const A = P(200), B = P(20), Ee = P(-60), Mm = P(70), N = P(140), Q1 = P(235), Q2 = P(290);
+  const el = {};
+  function hit(name, draw, attrs) { const g = E('g', { style: 'cursor:pointer' }, svg); const v = E(draw, Object.assign({ fill: 'none', 'stroke-width': 4 }, attrs), g); E(draw, Object.assign({}, attrs, { fill: draw === 'circle' ? 'transparent' : 'none', stroke: 'transparent', 'stroke-width': 22 }), g); g.vis = v; el[name] = g; g.addEventListener('click', () => tap(name)); return g; }
+  hit('قطر', 'line', { x1: A.x, y1: A.y, x2: B.x, y2: B.y, stroke: '#2563eb' });
+  hit('نصف قطر', 'line', { x1: O.x, y1: O.y, x2: Ee.x, y2: Ee.y, stroke: '#16a34a' });
+  hit('وتر', 'line', { x1: Mm.x, y1: Mm.y, x2: N.x, y2: N.y, stroke: '#ea580c' });
+  hit('قوس', 'path', { d: `M ${Q1.x} ${Q1.y} A ${R} ${R} 0 0 0 ${Q2.x} ${Q2.y}`, stroke: '#dc2626' });
+  const cg = E('g', { style: 'cursor:pointer' }, svg); E('circle', { cx: O.x, cy: O.y, r: 18, fill: 'transparent' }, cg); E('circle', { cx: O.x, cy: O.y, r: 5, fill: '#18303f' }, cg); el['المركز'] = cg; cg.addEventListener('click', () => tap('المركز'));
+  [['A', A, -18, 6], ['B', B, 6, 4], ['E', Ee, 4, 16], ['M', Mm, 4, -6], ['N', N, -16, -6], ['O', O, 6, -6]].forEach(([n, p, dx, dy]) => { const t = E('text', { x: p.x + dx, y: p.y + dy, 'font-size': 15, fill: '#18303f', 'pointer-events': 'none' }, svg); t.textContent = n; });
+  const DEF = { 'المركز': `${M('O')} مركز الدائرة: كل نقط الدائرة تبعد عنه بنفس المسافة.`, 'نصف قطر': `${M('[OE]')} نصف قطر: طرفاه المركز ونقطة من الدائرة.`, 'قطر': `${M('[AB]')} قطر: وتر يشمل المركز، طوله ضعف نصف القطر.`, 'وتر': `${M('[MN]')} وتر: طرفاه نقطتان من الدائرة.`, 'قوس': 'القوس الأحمر جزء من الدائرة محدود بنقطتين منها.' };
+  let order = shuffle(Object.keys(DEF)), idx = 0, errs = 0, playing = false;
+  H.extra.innerHTML = `<div class="row" style="margin-top:8px"><button class="btn" id="vgo">ابدأ الجولة 🎯</button><b id="vq"></b></div>`;
+  $('#vgo').addEventListener('click', () => { order = shuffle(Object.keys(DEF)); idx = 0; errs = 0; playing = true; ask(); });
+  function ask() { $('#vq').innerHTML = idx < 5 ? `المس على الشكل: <span style="color:#7c3aed">${order[idx]}</span> (${idx + 1}/5)` : ''; }
+  function flash(n, ok) { const g = el[n]; const v = g.vis || g; v.style.transition = 'opacity .2s'; g.style.opacity = .35; setTimeout(() => g.style.opacity = 1, 250); }
+  function tap(n) {
+    flash(n); H.out.innerHTML = DEF[n];
+    if (!playing) return;
+    if (n === order[idx]) { sOk(); idx++; if (idx >= 5) { playing = false; misDone(L, 0); if (!errs) misDone(L, 1); $('#vq').textContent = errs ? `أنهيت الجولة مع ${errs} خطأ. أعدها دون خطأ!` : 'جولة كاملة دون خطأ! 👏'; } else ask(); }
+    else { errs++; sBad(); H.out.innerHTML = `هذا <b>${n}</b> وليس ${order[idx]}. الخطأ جزء من التعلّم، حاول مجددا.<br>` + DEF[n]; }
+  }
+  H.out.innerHTML = 'المس أي عنصر لتتعرف على اسمه.';
+};
+
+function gridSim(host, L, onChange) {
+  const H = simShell(host, L);
+  const cols = 10, rows = 7, c = 34, ox = 10, oy = 10;
+  H.ctrl.innerHTML = `<div class="row" style="margin-top:6px"><button class="btn alt" id="gclr">🧽 امسح الكل</button><span class="muted">الوحدة ①: <span style="display:inline-block;width:16px;height:16px;background:#86efac;border:2px solid #15803d;vertical-align:middle"></span> ، الوحدة ②: <span style="display:inline-block;width:32px;height:16px;background:#fde68a;border:2px solid #b45309;vertical-align:middle"></span></span></div>`;
+  const svg = mkSvg(H.wrap, cols * c + 2 * ox, rows * c + 2 * oy);
+  const on = new Set(), cells = {};
+  for (let i = 0; i < cols; i++) for (let j = 0; j < rows; j++) cells[i + ',' + j] = E('rect', { x: ox + i * c, y: oy + j * c, width: c, height: c, fill: '#fff', stroke: '#d6e4ee' }, svg);
+  const border = E('path', { fill: 'none', stroke: '#15803d', 'stroke-width': 3, 'pointer-events': 'none' }, svg);
+  let paint = null;
+  const cellAt = ev => { const p = svgPt(svg, ev); const i = Math.floor((p.x - ox) / c), j = Math.floor((p.y - oy) / c); return i >= 0 && j >= 0 && i < cols && j < rows ? i + ',' + j : null; };
+  const set = k => { if (!k) return; if (paint) on.add(k); else on.delete(k); cells[k].setAttribute('fill', on.has(k) ? '#86efac' : '#fff'); };
+  svg.addEventListener('pointerdown', e => { e.preventDefault(); const k = cellAt(e); if (!k) return; paint = !on.has(k); set(k); upd(); try { svg.setPointerCapture(e.pointerId); } catch (_) {} });
+  svg.addEventListener('pointermove', e => { if (paint === null) return; set(cellAt(e)); upd(); });
+  const stop = () => { if (paint !== null) { paint = null; onChange(stats(), H); } };
+  svg.addEventListener('pointerup', stop); svg.addEventListener('pointercancel', stop);
+  $('#gclr', H.ctrl).addEventListener('click', () => { on.clear(); Object.values(cells).forEach(r => r.setAttribute('fill', '#fff')); upd(); });
+  function stats() {
+    let per = 0, d = '';
+    on.forEach(k => { const [i, j] = k.split(',').map(Number); const x = ox + i * c, y = oy + j * c;
+      if (!on.has(i + ',' + (j - 1))) { per++; d += `M${x} ${y}h${c}`; } if (!on.has(i + ',' + (j + 1))) { per++; d += `M${x} ${y + c}h${c}`; }
+      if (!on.has((i - 1) + ',' + j)) { per++; d += `M${x} ${y}v${c}`; } if (!on.has((i + 1) + ',' + j)) { per++; d += `M${x + c} ${y}v${c}`; } });
+    border.setAttribute('d', d); return { a: on.size, p: per };
+  }
+  function upd() { const s = stats(); H.out.innerHTML = L.id === 7 ? `المساحة: <b>${s.a}</b> وحدة ① = <b>${fmt(s.a / 2, 1)}</b> وحدة ② ${M('(' + s.a + ' ÷ 2 = ' + fmt(s.a / 2, 1) + ')')}` : `المساحة: <b>${s.a}</b> وحدة مساحة ، المحيط: <b>${s.p}</b> وحدة طول`; }
+  upd(); return H;
+}
+SIMS.simGrid7 = (host, L) => gridSim(host, L, s => { if (s.a === 12) misDone(L, 0); if (s.a === 10) misDone(L, 1); });
+SIMS.simGrid8 = (host, L) => gridSim(host, L, s => { if (s.a === 12 && s.p === 14) misDone(L, 0); if (s.a === 12 && s.p === 16) misDone(L, 1); if (s.a === 16 && s.p === 16) misDone(L, 2); });
+
+SIMS.simRect = (host, L) => {
+  const H = simShell(host, L);
+  H.ctrl.innerHTML = `<div class="sl">الطول a: <input type="range" min="1" max="10" step="1" value="6" id="ra"><output id="oa"></output></div><div class="sl">العرض b: <input type="range" min="1" max="7" step="1" value="3" id="rb"><output id="ob"></output></div>`;
+  const svg = mkSvg(H.wrap, 340, 250); const sc = 30, ox = 20, oy = 20;
+  const g = E('g', {}, svg);
+  function draw() {
+    const a = +$('#ra', H.ctrl).value, b = +$('#rb', H.ctrl).value;
+    $('#oa', H.ctrl).textContent = a + ' m'; $('#ob', H.ctrl).textContent = b + ' m';
+    g.innerHTML = '';
+    E('rect', { x: ox, y: oy, width: a * sc, height: b * sc, fill: '#bbf7d0', stroke: '#92400e', 'stroke-width': 4, 'stroke-dasharray': '10 4' }, g);
+    for (let i = 0; i < a; i++) for (let j = 0; j < b; j++) { const t = E('text', { x: ox + i * sc + 6, y: oy + j * sc + 22, 'font-size': 16 }, g); t.textContent = '🍅'; }
+    for (let i = 1; i < a; i++) E('line', { x1: ox + i * sc, y1: oy, x2: ox + i * sc, y2: oy + b * sc, stroke: '#15803d', 'stroke-opacity': .3 }, g);
+    for (let j = 1; j < b; j++) E('line', { x1: ox, y1: oy + j * sc, x2: ox + a * sc, y2: oy + j * sc, stroke: '#15803d', 'stroke-opacity': .3 }, g);
+    const ta = E('text', { x: ox + a * sc / 2 - 14, y: oy + b * sc + 20, 'font-size': 14, fill: '#0b4a6f' }, g); ta.textContent = a + ' m';
+    const P = 2 * (a + b), A = a * b;
+    H.out.innerHTML = `المحيط (السياج): ${M(`P = 2 × (${a} + ${b}) = 2 × ${a + b} = ${P} m`)}<br>المساحة (الأرض المزروعة): ${M(`A = ${a} × ${b} = ${A} m²`)}`;
+    return { a, b, P, A };
+  }
+  $$('input', H.ctrl).forEach(i => i.addEventListener('input', () => { const r = draw(); if (r.A === 24) misDone(L, 0); if (r.P === 20) misDone(L, 1); if (r.a === r.b && r.A === 16) misDone(L, 2); }));
+  draw();
+};
+
+SIMS.simRTri = (host, L) => {
+  const H = simShell(host, L);
+  H.ctrl.innerHTML = `<div class="sl">الضلع a: <input type="range" min="1" max="9" step="1" value="5" id="ta"><output id="toa"></output></div><div class="sl">الضلع b: <input type="range" min="1" max="6" step="1" value="3" id="tb"><output id="tob"></output></div><button class="btn" id="flip">🔄 أكمل المستطيل</button>`;
+  const svg = mkSvg(H.wrap, 340, 240); grid(svg, 340, 240, 32);
+  const sc = 32, ox = 30, oy = 220;
+  const rect = E('rect', { fill: 'none', stroke: '#94a3b8', 'stroke-width': 2, 'stroke-dasharray': '6 4' }, svg);
+  const t1 = E('polygon', { fill: '#fdba74', 'fill-opacity': .8, stroke: '#c2410c', 'stroke-width': 3 }, svg);
+  const t2 = E('polygon', { fill: '#93c5fd', 'fill-opacity': .8, stroke: '#1d4ed8', 'stroke-width': 3 }, svg);
+  const rm = E('g', {}, svg);
+  let anim = 0, shown = false;
+  function geom() { const a = +$('#ta', H.ctrl).value, b = +$('#tb', H.ctrl).value; return { a, b, W: a * sc, Hh: b * sc }; }
+  function draw(rot = shown ? 180 : null) {
+    const { a, b, W, Hh } = geom();
+    $('#toa', H.ctrl).textContent = a + ' cm'; $('#tob', H.ctrl).textContent = b + ' cm';
+    rect.setAttribute('x', ox); rect.setAttribute('y', oy - Hh); rect.setAttribute('width', W); rect.setAttribute('height', Hh);
+    const pts = `${ox},${oy} ${ox + W},${oy} ${ox},${oy - Hh}`;
+    t1.setAttribute('points', pts); t2.setAttribute('points', pts);
+    const cx = ox + W / 2, cy = oy - Hh / 2;
+    if (rot === null) t2.style.display = 'none'; else { t2.style.display = ''; t2.setAttribute('transform', `rotate(${rot} ${cx} ${cy})`); }
+    rm.innerHTML = ''; rightMark(rm, { x: ox, y: oy }, { x: 1, y: 0 }, { x: 0, y: -1 }, 14);
+    const A = a * b / 2;
+    H.out.innerHTML = `مساحة المستطيل: ${M(`${a} × ${b} = ${a * b} cm²`)}<br>مساحة المثلث القائم: ${M('A =')} ${F(`${a} × ${b}`, '2')} ${M('=')} ${F(a * b, '2')} ${M(`= ${fmt(A, 1)} cm²`)}`;
+    return A;
+  }
+  $('#flip', H.ctrl).addEventListener('click', () => {
+    cancelAnimationFrame(anim); const t0 = performance.now(); shown = true;
+    const stepf = now => { const k = Math.min(1, (now - t0) / 1200); draw(180 * (1 - Math.pow(1 - k, 3))); if (k < 1) anim = requestAnimationFrame(stepf); else misDone(L, 0); };
+    anim = requestAnimationFrame(stepf);
+  });
+  $$('input', H.ctrl).forEach(i => i.addEventListener('input', () => { const A = draw(); if (A === 6) misDone(L, 1); if (A === 10) misDone(L, 2); }));
+  draw();
+};
+
+SIMS.simRoll = (host, L) => {
+  const H = simShell(host, L);
+  H.ctrl.innerHTML = `<div class="sl">نصف القطر r: <input type="range" min="1" max="3" step="0.5" value="1" id="wr"><output id="wo"></output></div><button class="btn" id="roll">🛞 دحرج دورة كاملة</button>`;
+  const svg = mkSvg(H.wrap, 420, 190); const G = 170, x0 = 60, sc = 16;
+  E('line', { x1: 0, y1: G, x2: 420, y2: G, stroke: '#18303f', 'stroke-width': 2 }, svg);
+  const trail = E('line', { x1: x0, y1: G, x2: x0, y2: G, stroke: '#dc2626', 'stroke-width': 5, 'stroke-linecap': 'round' }, svg);
+  const wheel = E('g', {}, svg);
+  const wc = E('circle', { cx: 0, cy: 0, fill: '#e0f2fe', stroke: '#0f5f8b', 'stroke-width': 4 }, wheel);
+  const sp = E('line', { x1: 0, y1: 0, x2: 0, y2: 0, stroke: '#0f5f8b', 'stroke-width': 2 }, wheel);
+  const dot = E('circle', { r: 6, fill: '#dc2626' }, wheel);
+  const lab = E('text', { x: x0, y: G + 18, 'font-size': 13, fill: '#dc2626' }, svg);
+  let anim = 0; const rolled = new Set();
+  const r = () => +$('#wr', H.ctrl).value;
+  function place(t) {
+    const R = r() * sc, cx = x0 + t * 2 * Math.PI * R, ang = t * 360;
+    wc.setAttribute('r', R); sp.setAttribute('y2', R); dot.setAttribute('cy', R);
+    wheel.setAttribute('transform', `translate(${cx},${G - R}) rotate(${ang})`);
+    trail.setAttribute('x2', cx); lab.textContent = t > 0 ? `≈ ${fmt(2 * 3.14 * r() * t, 2)} cm` : '';
+    lab.setAttribute('x', x0 + (cx - x0) / 2 - 24);
+  }
+  function info() { $('#wo', H.ctrl).textContent = fmt(r(), 1) + ' cm'; H.out.innerHTML = `${M(`P = 2 × π × r ≈ 2 × 3,14 × ${fmt(r(), 1)} = ${fmt(6.28 * r(), 2)} cm`)}`; }
+  $('#wr', H.ctrl).addEventListener('input', () => { cancelAnimationFrame(anim); info(); place(0); });
+  $('#roll', H.ctrl).addEventListener('click', () => {
+    cancelAnimationFrame(anim); const t0 = performance.now();
+    const f = now => { const k = Math.min(1, (now - t0) / 2200); place(k); if (k < 1) anim = requestAnimationFrame(f); else { misDone(L, 0); rolled.add(r()); if (rolled.has(1) && rolled.has(2)) misDone(L, 1); H.out.innerHTML += `<br>✅ طول الأثر الأحمر = طول الدائرة.`; } };
+    anim = requestAnimationFrame(f);
+  });
+  info(); place(0);
+};
+
+/* ================= games ================= */
+const GAMES = {};
+function gameDone(id, n) { const prev = S.g[id]; if (prev === undefined || n > prev) { S.g[id] = n; save(); updBar(); } }
+GAMES.g1 = host => {
+  const P = [['(AB)', 'مستقيم'], ['[AB)', 'نصف مستقيم'], ['[AB]', 'قطعة مستقيم'], ['AB', 'طول القطعة'], ['∥', 'يوازي'], ['⊥', 'يعامد']];
+  let selL = null, score = 0, matched = 0; const wrong = new Set();
+  const L = shuffle(P.map((p, i) => ({ t: p[0], i }))), R = shuffle(P.map((p, i) => ({ t: p[1], i })));
+  host.innerHTML = `<p class="muted">المس ترميزا من العمود الأيمن، ثم معناه من العمود الأيسر. نجمة لكل زوج صحيح من أول محاولة.</p><div class="mt"><div class="col">${L.map(x => `<button class="tile" data-l="${x.i}">${M(x.t)}</button>`).join('')}</div><div class="col">${R.map(x => `<button class="tile" data-r="${x.i}">${x.t}</button>`).join('')}</div></div><div class="readout" id="g1o">النتيجة: 0 ⭐</div>`;
+  $$('[data-l]', host).forEach(b => b.addEventListener('click', () => { if (b.classList.contains('done')) return; $$('[data-l]', host).forEach(x => x.classList.remove('sel')); b.classList.add('sel'); selL = +b.dataset.l; }));
+  $$('[data-r]', host).forEach(b => b.addEventListener('click', () => {
+    if (selL === null || b.classList.contains('done')) return;
+    const lb = $(`[data-l="${selL}"]`, host);
+    if (+b.dataset.r === selL) { lb.classList.remove('sel'); lb.classList.add('done'); b.classList.add('done'); matched++; if (!wrong.has(selL)) score++; sOk(); burst(b, 1); selL = null; }
+    else { wrong.add(selL); sBad(); shake(b); toast('ليس هذا. الخطأ جزء من التعلّم، فكّر في شكل الرمز.', 1); }
+    $('#g1o').innerHTML = `النتيجة: ${score} ⭐` + (matched === 6 ? ` من 6. ${score === 6 ? 'ممتاز! 🎉' : 'أعد اللعبة لتتقنها 🔁'} <button class="btn" id="g1r">إعادة</button>` : '');
+    if (matched === 6) { gameDone('g1', score); $('#g1r').addEventListener('click', () => GAMES.g1(host)); }
+  }));
+};
+GAMES.g2 = host => {
+  const IT = shuffle([['طول السياج حول حقل', 'p', 'السياج يدور حول الحدود: هو طول، أي محيط.'], ['كمية البلاط لأرضية القسم', 's', 'البلاط يغطي السطح: مساحة.'], ['طول الإطار الحجري حول حوض دائري', 'p', 'الإطار على الحدود: محيط (طول الدائرة).'], ['كمية بذور العشب لحديقة المتوسطة', 's', 'البذور تغطي سطح الحديقة: مساحة.'], ['طول الشريط حول لوحة القسم', 'p', 'الشريط على حواف اللوحة: محيط.'], ['كمية الطلاء لجدار', 's', 'الطلاء يغطي سطح الجدار: مساحة.'], ['مسافة الجري حول ملعب المتوسطة', 'p', 'الجري حول الملعب طول الحدود: محيط.'], ['قطعة قماش لتغطية طاولة', 's', 'القماش يغطي سطح الطاولة: مساحة.']]);
+  let k = 0, score = 0;
+  function show() {
+    if (k >= IT.length) { gameDone('g2', score); host.innerHTML = `<div class="stmt">النتيجة: ${score} / 8 ⭐<br>${score >= 7 ? 'رائع! أنت تميّز جيدا بين المحيط والمساحة 🎉' : 'تذكّر: ما يدور حول الشكل محيط، وما يغطيه مساحة.'}</div><div class="row" style="justify-content:center;margin-top:8px"><button class="btn" id="g2r">إعادة 🔁</button></div>`; $('#g2r').addEventListener('click', () => GAMES.g2(host)); return; }
+    host.innerHTML = `<p class="muted">هل نحتاج إلى حساب <b>محيط</b> أم <b>مساحة</b>؟ (${k + 1}/8) — خذ وقتك، الدقة أهم من السرعة.</p><div class="stmt">${IT[k][0]}</div><div class="big2"><button style="background:#2563eb" data-a="p">📏 محيط</button><button style="background:#16a34a" data-a="s">🟩 مساحة</button></div><div class="readout" id="g2o">النقاط: ${score} ⭐</div>`;
+    $$('[data-a]', host).forEach(b => b.addEventListener('click', () => {
+      $$('[data-a]', host).forEach(x => x.disabled = true);
+      const ok = b.dataset.a === IT[k][1]; if (ok) { score++; sOk(); burst(b, 1); } else { sBad(); shake(b); }
+      $('#g2o').innerHTML = (ok ? '✅ صحيح! ' : '🌱 ليس هذا، والخطأ جزء من التعلّم. ') + IT[k][2] + ' <button class="btn" id="g2n">التالي ←</button>';
+      $('#g2n').addEventListener('click', () => { k++; show(); });
+    }));
+  }
+  show();
+};
+GAMES.g3 = host => {
+  const T = ['مربع', 'مستطيل', 'معيّن', 'مثلث متقايس الأضلاع', 'مثلث متساوي الساقين', 'مثلث قائم', 'دائرة'];
+  const WHY = { 'مربع': 'أربعة أضلاع متقايسة وزوايا قائمة.', 'مستطيل': 'زوايا قائمة وضلعان متقابلان مختلفان عن الآخرين.', 'معيّن': 'أربعة أضلاع متقايسة دون زوايا قائمة.', 'مثلث متقايس الأضلاع': 'ثلاثة أضلاع عليها نفس الترميز.', 'مثلث متساوي الساقين': 'ضلعان فقط عليهما نفس الترميز.', 'مثلث قائم': 'علامة الزاوية القائمة.', 'دائرة': 'كل نقطها على نفس البعد من المركز.' };
+  let k = 0, score = 0; const rounds = [];
+  for (let i = 0; i < 10; i++) rounds.push(T[i < 7 ? i : Math.floor(Math.random() * 7)]);
+  const order = shuffle(rounds);
+  function figure(t) {
+    const svg = `<svg viewBox="-110 -90 220 180" style="width:100%;max-width:300px;display:block;margin:auto;background:#fbfdff;border-radius:12px;border:1px solid var(--line)">`;
+    const rot = Math.floor(Math.random() * 60 - 30);
+    const tk = (p, q, n = 1) => { const mx = (p[0] + q[0]) / 2, my = (p[1] + q[1]) / 2, l = Math.hypot(q[0] - p[0], q[1] - p[1]), nx = -(q[1] - p[1]) / l, ny = (q[0] - p[0]) / l, ux = (q[0] - p[0]) / l, uy = (q[1] - p[1]) / l; let s = ''; for (let i = 0; i < n; i++) { const o = (i - (n - 1) / 2) * 5; s += `<line x1="${mx + ux * o + nx * 7}" y1="${my + uy * o + ny * 7}" x2="${mx + ux * o - nx * 7}" y2="${my + uy * o - ny * 7}" stroke="#7c3aed" stroke-width="3"/>`; } return s; };
+    const ra = (v, p, q, s = 12) => { const u = [(p[0] - v[0]), (p[1] - v[1])], w = [(q[0] - v[0]), (q[1] - v[1])], lu = Math.hypot(...u), lw = Math.hypot(...w); u[0] /= lu; u[1] /= lu; w[0] /= lw; w[1] /= lw; return `<polyline points="${v[0] + u[0] * s},${v[1] + u[1] * s} ${v[0] + (u[0] + w[0]) * s},${v[1] + (u[1] + w[1]) * s} ${v[0] + w[0] * s},${v[1] + w[1] * s}" fill="none" stroke="#dc2626" stroke-width="2.5"/>`; };
+    const poly = pts => `<polygon points="${pts.map(p => p.join(',')).join(' ')}" fill="#e0f2fe" stroke="#0f5f8b" stroke-width="3"/>`;
+    let b = '';
+    const s1 = 55 + Math.random() * 15;
+    if (t === 'مربع') { const p = [[-s1, -s1], [s1, -s1], [s1, s1], [-s1, s1]]; b = poly(p) + p.map((x, i) => tk(x, p[(i + 1) % 4])).join('') + ra(p[0], p[1], p[3]) + ra(p[2], p[1], p[3]); }
+    if (t === 'مستطيل') { const w = 85, h = 42; const p = [[-w, -h], [w, -h], [w, h], [-w, h]]; b = poly(p) + tk(p[0], p[1]) + tk(p[2], p[3]) + tk(p[1], p[2], 2) + tk(p[3], p[0], 2) + p.map((x, i) => ra(x, p[(i + 1) % 4], p[(i + 3) % 4])).join(''); }
+    if (t === 'معيّن') { const p = [[0, -70], [45, 0], [0, 70], [-45, 0]]; b = poly(p) + p.map((x, i) => tk(x, p[(i + 1) % 4])).join(''); }
+    if (t === 'مثلث متقايس الأضلاع') { const p = [[-70, 50], [70, 50], [0, 50 - 121]]; b = poly(p) + p.map((x, i) => tk(x, p[(i + 1) % 3])).join(''); }
+    if (t === 'مثلث متساوي الساقين') { const p = [[-45, 60], [45, 60], [0, -75]]; b = poly(p) + tk(p[0], p[2], 2) + tk(p[1], p[2], 2); }
+    if (t === 'مثلث قائم') { const p = [[-70, 55], [80, 55], [-70, -60]]; b = poly(p) + ra(p[0], p[1], p[2], 14); }
+    if (t === 'دائرة') b = `<circle r="${s1 + 5}" fill="#e0f2fe" stroke="#0f5f8b" stroke-width="3"/><circle r="4" fill="#18303f"/><line x1="0" y1="0" x2="${s1 + 5}" y2="0" stroke="#16a34a" stroke-width="2.5"/>`;
+    return svg + `<g transform="rotate(${rot})">${b}</g></svg>`;
+  }
+  function show() {
+    if (k >= 10) { gameDone('g3', score); host.innerHTML = `<div class="stmt">النتيجة: ${score} / 10 ⭐<br>${score >= 9 ? 'عين هندسية حادة! 🦅' : 'لاحظ الترميز جيدا: العلامات على الأضلاع والزوايا تخبرك بالنوع.'}</div><div class="row" style="justify-content:center;margin-top:8px"><button class="btn" id="g3r">إعادة 🔁</button></div>`; $('#g3r').addEventListener('click', () => GAMES.g3(host)); return; }
+    const t = order[k], opts = shuffle([t].concat(shuffle(T.filter(x => x !== t)).slice(0, 3)));
+    host.innerHTML = `<p class="muted">ما اسم هذا الشكل؟ اعتمد على <b>الترميز</b> (العلامات على الأضلاع والزوايا) لا على المظهر فقط. (${k + 1}/10)</p>${figure(t)}<div class="opts4">${opts.map(o => `<button class="opt" data-o="${o}">${o}</button>`).join('')}</div><div class="readout" id="g3o">النقاط: ${score} ⭐</div>`;
+    $$('[data-o]', host).forEach(b => b.addEventListener('click', () => {
+      $$('[data-o]', host).forEach(x => { x.disabled = true; if (x.dataset.o === t) x.classList.add('good'); });
+      const ok = b.dataset.o === t; if (ok) { score++; sOk(); burst(b, 1); } else { b.classList.add('bad'); sBad(); shake(b); }
+      $('#g3o').innerHTML = (ok ? '✅ أحسنت! ' : `🌱 إنه <b>${t}</b>. لا بأس، نتعلم من الخطأ. `) + WHY[t] + ' <button class="btn" id="g3n">التالي ←</button>';
+      $('#g3n').addEventListener('click', () => { k++; show(); });
+    }));
+  }
+  show();
+};
+
+/* ================= views ================= */
+const GRP = { 1: 'أ) المصطلحات والرسم', 2: 'ب) المثيلات والدائرة', 3: 'ج) المساحات والمحيطات' };
+function vHome() {
+  return `<div class="card"><h2>👋 مرحبا بك في رحلة الأشكال والمساحات!</h2>
+  <p>في هذا الموقع تتعلّم دروس المقطع الثاني خطوة بخطوة. لكل محطة ثلاث مراحل: <b>📖 أفهم</b> (شرح مبسط)، <b>🧪 أجرّب</b> (محاكاة تحرّك فيها الأشكال)، <b>✏️ أتدرّب</b> (أسئلة تصحَّح فورا). اجمع النجوم والأوسمة، ثم احصل على <b>شهادة إنجاز</b> باسمك.</p>
+  <div class="key">💡 لكل سؤال ثلاث محاولات: بعد الخطأ الأول تلميح، وبعد الثاني تلميح أوضح، وبعد الثالث الحل المفصّل. الخطأ جزء من التعلّم، والدقة أهم من السرعة.</div>
+  <div class="row"><button class="btn green" onclick="go('lesson',${firstOpen()})">${totalStars() ? 'واصل الرحلة ←' : 'ابدأ الرحلة ←'}</button></div></div>
+  <div class="card"><h2>🎯 أهداف المقطع</h2><p class="muted">في نهاية هذه الرحلة أكون قادرا على أن:</p><ol class="goals">${LESSONS.map(L => `<li>${L.goal}</li>`).join('')}</ol>
+  <h3>🧩 المفاهيم الأساسية</h3><div class="chips">${['مستقيم', 'نصف مستقيم', 'قطعة مستقيم', 'منتصف', 'استقامية', 'توازي ∥', 'تعامد ⊥', 'مثلث متساوي الساقين', 'مثلث متقايس الأضلاع', 'مثلث قائم ووتر', 'مستطيل', 'مربع', 'معيّن', 'قطران متناصفان', 'دائرة ومركز', 'نصف قطر وقطر', 'وتر وقوس', 'وحدة مساحة', 'مساحة', 'محيط', 'العدد π'].map(c => `<span class="chip">${c}</span>`).join('')}</div></div>
+  ${vMap()}`;
+}
+function vMap() {
+  let h = '<div class="card"><h2>🗺️ خريطة المحطات</h2>';
+  [1, 2, 3].forEach(g => {
+    h += `<div class="grp-t">${GRP[g]}</div><div class="map">` + LESSONS.filter(L => L.g === g).map(L => {
+      const d = lessonDone(L), st = L.qs.reduce((n, q) => n + ((S.q[q.id] || {}).st || 0), 0);
+      return `<button class="stn ${d ? 'done' : ''}" onclick="go('lesson',${L.id})"><span class="st">${d ? '🏅 ' + st + '⭐' : L.id}</span><span class="ic">${L.ic}</span><span class="nm">${L.t}</span></button>`;
+    }).join('') + '</div>';
+  });
+  return h + '</div>';
+}
+function firstOpen() { const L = LESSONS.find(L => !lessonDone(L)); return L ? L.id : 1; }
+let stage = 0, stepN = 1;
+function vLesson(id) {
+  const L = LESSONS.find(l => l.id === id);
+  const host = document.createElement('div');
+  host.innerHTML = `<div class="card"><div class="lhead"><span class="ic">${L.ic}</span><div><div class="muted">المحطة ${L.id} من 11 — ${GRP[L.g]}</div><h2 style="margin:0">${L.t}</h2></div></div>
+   <div class="muted" style="margin-top:4px">🎯 ${L.goal}</div>
+   <div class="stages"><button data-s="0">📖 أفهم</button><button data-s="1">🧪 أجرّب</button><button data-s="2">✏️ أتدرّب</button></div></div><div id="stage"></div>
+   <div class="row" style="justify-content:space-between">${id > 1 ? `<button class="btn alt" onclick="go('lesson',${id - 1})">→ المحطة السابقة</button>` : '<span></span>'}${id < 11 ? `<button class="btn alt" onclick="go('lesson',${id + 1})">المحطة التالية ←</button>` : `<button class="btn alt" onclick="go('final')">التحدي النهائي ←</button>`}</div>`;
+  const sh = host.querySelector('#stage');
+  function setStage(s) {
+    stage = s; $$('.stages button', host).forEach(b => b.classList.toggle('on', +b.dataset.s === s));
+    if (s === 0) {
+      const all = L.steps.length;
+      const draw = () => {
+        sh.innerHTML = L.steps.slice(0, stepN).map((st, i) => `<div class="card step ${st.sum ? 'sum' : ''}"><h3><span class="n">${st.sum ? 'حوصلة' : 'الخطوة ' + (i + 1)}</span>${st.h}</h3><div>${st.b}</div></div>`).join('') +
+          `<div class="row">${stepN < all ? `<button class="btn" id="nx">الخطوة التالية (${stepN}/${all}) ↓</button>` : `<button class="btn green" id="gs">فهمت! إلى المحاكاة 🧪</button>`}</div>`;
+        const nx = $('#nx', sh); if (nx) nx.addEventListener('click', () => { stepN++; draw(); sh.lastElementChild.previousElementSibling.scrollIntoView({ behavior: 'smooth', block: 'center' }); });
+        const gs = $('#gs', sh); if (gs) gs.addEventListener('click', () => { setStage(1); host.scrollIntoView({ behavior: 'smooth' }); });
+      };
+      draw();
+    } else if (s === 1) {
+      SIMS[L.sim](sh, L);
+      const r = document.createElement('div'); r.className = 'row'; r.innerHTML = '<button class="btn green">إلى الأسئلة ✏️</button>';
+      r.firstChild.addEventListener('click', () => { setStage(2); host.scrollIntoView({ behavior: 'smooth' }); }); sh.appendChild(r);
+    } else {
+      sh.innerHTML = '<div id="qs"></div>'; renderQs(L.qs, $('#qs', sh));
+    }
+  }
+  $$('.stages button', host).forEach(b => b.addEventListener('click', () => setStage(+b.dataset.s)));
+  stepN = 1; setTimeout(() => setStage(0));
+  return host;
+}
+function vGames() {
+  const host = document.createElement('div');
+  host.innerHTML = `<div class="card"><h2>🎮 الألعاب التعليمية</h2><p class="muted">ثلاث ألعاب للمراجعة. أفضل نتيجة لك في كل لعبة تُضاف إلى نجومك.</p>
+   <div class="row"><button class="btn" data-g="g1">🔗 طابق الترميز ${S.g.g1 != null ? '(' + S.g.g1 + '/6)' : ''}</button><button class="btn" data-g="g2">📏🟩 محيط أم مساحة؟ ${S.g.g2 != null ? '(' + S.g.g2 + '/8)' : ''}</button><button class="btn" data-g="g3">🦅 صائد الأشكال ${S.g.g3 != null ? '(' + S.g.g3 + '/10)' : ''}</button></div></div><div class="card" id="gbox"><p class="muted">اختر لعبة للبدء.</p></div>`;
+  $$('[data-g]', host).forEach(b => b.addEventListener('click', () => { const box = $('#gbox', host); GAMES[b.dataset.g](box); box.scrollIntoView({ behavior: 'smooth', block: 'start' }); }));
+  return host;
+}
+function patioFig() {
+  const s = 30, ox = 20, oy = 14, W = 9 * s, Hh = 6 * s;
+  // A top-left (plan), B top-right, D bottom-left; triangle AEF in corner A
+  return `<svg viewBox="0 0 ${W + 40} ${Hh + 40}" style="width:100%;max-width:380px;display:block;margin:6px auto;direction:ltr">
+   <rect x="${ox}" y="${oy}" width="${W}" height="${Hh}" fill="#f5f5f4" stroke="#78350f" stroke-width="3"/>
+   <polygon points="${ox},${oy} ${ox + 4 * s},${oy} ${ox},${oy + 3 * s}" fill="#fbcfe8" stroke="#be185d" stroke-width="2.5"/>
+   <circle cx="${ox + s}" cy="${oy + s}" r="${s}" fill="#93c5fd" stroke="#1d4ed8" stroke-width="2.5"/>
+   <line x1="${ox + W}" y1="${oy + 2 * s}" x2="${ox + W}" y2="${oy + 3.5 * s}" stroke="#f5f5f4" stroke-width="6"/>
+   <text x="${ox + W + 4}" y="${oy + 2.9 * s}" font-size="11" fill="#78350f">مدخل</text>
+   <text x="${ox - 14}" y="${oy + 4}" font-size="14" font-weight="800">A</text><text x="${ox + W + 4}" y="${oy + 4}" font-size="14" font-weight="800">B</text>
+   <text x="${ox + W + 4}" y="${oy + Hh + 6}" font-size="14" font-weight="800">C</text><text x="${ox - 14}" y="${oy + Hh + 6}" font-size="14" font-weight="800">D</text>
+   <text x="${ox + 4 * s - 4}" y="${oy - 2}" font-size="13" font-weight="800">E</text><text x="${ox - 14}" y="${oy + 3 * s + 4}" font-size="13" font-weight="800">F</text>
+   <text x="${ox + W / 2 - 14}" y="${oy + Hh + 22}" font-size="13" fill="#0b4a6f">9 m</text><text x="${ox + W - 60}" y="${oy + Hh / 2 + 30}" font-size="13" fill="#0b4a6f">6 m</text>
+   <text x="${ox + 1.6 * s}" y="${oy + 1.9 * s + 20}" font-size="11" fill="#be185d">AE = 4 m ، AF = 3 m</text>
+  </svg>`;
+}
+function vFinal() {
+  const host = document.createElement('div');
+  host.innerHTML = `<div class="card"><h2>🏡 التحدي النهائي: فناء المنزل في وادي فراغة</h2>
+   <p>فناء منزل مستطيل ${M('ABCD')} طوله ${M('AB = 9 m')} وعرضه ${M('BC = 6 m')}. في الركن ${M('A')} حوض أزهار على شكل مثلث ${M('AEF')} قائم في ${M('A')} حيث ${M('AE = 4 m')} و ${M('AF = 3 m')}. داخل الحوض بركة دائرية نصف قطرها ${M('1 m')} لحفظ ماء المطر.</p>
+   ${patioFig()}
+   <p>يريد الأب: إحاطة الفناء بسياج (مع ترك مدخل عرضه ${M('1,5 m')})، وتبليط الفناء ما عدا الحوض ببلاطات مربعة ضلعها ${M('50 cm')}، وإحاطة البركة بإطار من الحجارة. ساعده! 🤝</p>
+   <div class="muted">هذه الوضعية تجمع موارد المقطع كلها. اكتب كل حساب على ورقة قبل أن تجيب.</div></div><div id="fq"></div>`;
+  setTimeout(() => renderQs(FINAL.qs, $('#fq', host)));
+  return host;
+}
+function medal() { const p = totalStars() / MAXS; return p >= .85 ? ['🥇', 'الذهبية', '#b45309'] : p >= .6 ? ['🥈', 'الفضية', '#475569'] : ['🥉', 'البرونزية', '#9a3412']; }
+function vCert() {
+  const host = document.createElement('div');
+  const left = LESSONS.filter(L => !lessonDone(L)), fin = finalDone();
+  if (left.length || !fin) {
+    host.innerHTML = `<div class="card" style="text-align:center"><div class="lock">🔒</div><h2>الشهادة تنتظرك!</h2><p>لتحصل على شهادة الإنجاز أكمل أسئلة كل المحطات والتحدي النهائي.</p>
+     <p>${left.length ? `بقيت ${left.length} محطة: ${left.map(L => `<button class="chip" style="border:0" onclick="go('lesson',${L.id})">${L.id}. ${L.t}</button>`).join(' ')}` : '✅ كل المحطات منجزة.'}</p><p>${fin ? '✅ التحدي النهائي منجز.' : `<button class="btn" onclick="go('final')">🏡 التحدي النهائي</button>`}</p></div>${resetCard()}`;
+    setTimeout(() => bindReset(host)); return host;
+  }
+  const [ic, nm] = medal();
+  host.innerHTML = `<div class="card"><h2>🎓 شهادة الإنجاز ${ic}</h2><p>مبروك! أنهيت الرحلة كلها وجمعت <b>${totalStars()}</b> ⭐ من ${MAXS}، فاستحققت الشهادة <b>${nm}</b>.</p>
+    <label>اكتب اسمك ولقبك كما تريد أن يظهر في الشهادة:</label><br><input class="namebox" id="nm" maxlength="40" value="${(S.name || '').replace(/"/g, '')}"><div class="row" style="margin-top:8px"><button class="btn" id="mk">✨ أنشئ الشهادة</button><button class="btn alt" id="dl">⬇️ تحميل صورة</button><button class="btn alt" id="pr">🖨️ طباعة</button></div>
+    <canvas id="cv" width="1400" height="990" style="margin-top:10px"></canvas></div>${resetCard()}`;
+  setTimeout(() => {
+    bindReset(host);
+    const draw = async () => { S.name = $('#nm').value.trim(); save(); await drawCert(); };
+    $('#mk').addEventListener('click', draw); $('#nm').addEventListener('change', draw);
+    $('#dl').addEventListener('click', async () => { await draw(); const a = document.createElement('a'); a.download = 'شهادة_الأشكال_والمساحات.png'; try { a.href = $('#cv').toDataURL('image/png'); a.click(); } catch (e) { toast('تعذّر التحميل: استعمل زر الطباعة أو لقطة شاشة.', 1); } });
+    $('#pr').addEventListener('click', async () => { await draw(); window.print(); });
+    draw();
+  });
+  return host;
+}
+function resetCard() { return `<div class="card"><h3>🔁 إعادة الرحلة من البداية</h3><p class="muted">يمسح النجوم والإجابات المحفوظة في هذا الجهاز.</p><button class="btn alt" id="rst">إعادة البدء</button></div>`; }
+function bindReset(host) { const b = $('#rst', host); if (b) b.addEventListener('click', () => { if (b.dataset.c) { S = { q: {}, mis: {}, g: {}, name: S.name, snd: S.snd }; save(); updBar(); go('home'); } else { b.dataset.c = 1; b.textContent = 'اضغط مرة أخرى للتأكيد'; } }); }
+async function drawCert() {
+  const cv = $('#cv'), x = cv.getContext('2d'), W = cv.width, H = cv.height, [ic, nm, col] = medal();
+  try { await document.fonts.load('900 40px Cairo'); await document.fonts.load('700 30px Cairo'); } catch (e) {}
+  x.clearRect(0, 0, W, H);
+  const g = x.createLinearGradient(0, 0, W, H); g.addColorStop(0, '#fffdf3'); g.addColorStop(1, '#eef8ff'); x.fillStyle = g; x.fillRect(0, 0, W, H);
+  x.lineWidth = 14; x.strokeStyle = '#0f5f8b'; x.strokeRect(24, 24, W - 48, H - 48);
+  x.lineWidth = 4; x.strokeStyle = '#facc15'; x.strokeRect(48, 48, W - 96, H - 96);
+  x.direction = 'rtl'; x.textAlign = 'center'; x.fillStyle = '#18303f';
+  const T = (t, y, f, c = '#18303f') => { x.font = f; x.fillStyle = c; x.fillText(t, W / 2, y); };
+  T('الجمهورية الجزائرية الديمقراطية الشعبية', 110, '700 30px Cairo');
+  T('وزارة التربية الوطنية', 152, '700 26px Cairo', '#5b7080');
+  T('متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة', 196, '700 26px Cairo', '#5b7080');
+  T('شهادة إنجاز', 300, '900 84px Cairo', '#0f5f8b');
+  T('تُمنح هذه الشهادة للتلميذ(ة)', 380, '700 32px Cairo');
+  T(S.name || '..............................', 470, '900 64px Cairo', '#c2410c');
+  T('لإتمامه(ا) بنجاح «رحلة الأشكال والمساحات»', 545, '700 32px Cairo');
+  T('المقطع الثاني — السنة الأولى متوسط', 592, '700 28px Cairo', '#5b7080');
+  T(`مجموع النجوم: ${totalStars()} من ${MAXS} ⭐ — الأوسمة: 11 / 11 🏅`, 660, '800 32px Cairo', '#0b4a6f');
+  T(`${ic} الشهادة ${nm}`, 735, '900 46px Cairo', col);
+  const d = new Date(), ds = `${d.getDate()} / ${d.getMonth() + 1} / ${d.getFullYear()}`;
+  x.font = '700 26px Cairo'; x.fillStyle = '#18303f';
+  x.textAlign = 'right'; x.fillText('الأستاذ: يوسفي السوفي', W - 110, 860);
+  x.textAlign = 'left'; x.direction = 'rtl'; x.fillText('التاريخ: ' + ds, 110, 860);
+  x.textAlign = 'center'; x.font = '60px serif'; x.fillText('📐', W / 2, 880);
+}
+
+/* ================= router ================= */
+let cur = 'home';
+function go(v, arg) {
+  cur = v; const app = $('#app'); app.innerHTML = '';
+  $$('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.v === v || (v === 'lesson' && b.dataset.v === 'lessons')));
+  let node;
+  if (v === 'home') { app.innerHTML = vHome(); }
+  else if (v === 'lessons') { app.innerHTML = vMap(); }
+  else if (v === 'lesson') { node = vLesson(arg); }
+  else if (v === 'games') node = vGames();
+  else if (v === 'final') node = vFinal();
+  else if (v === 'cert') node = vCert();
+  if (node) app.appendChild(node);
+  try { history.replaceState(null, '', '#' + v + (arg ? '-' + arg : '')); } catch (e) {}
+  window.scrollTo({ top: 0 });
+}
+$$('#tabs button').forEach(b => b.addEventListener('click', () => go(b.dataset.v)));
+$('#snd').addEventListener('click', () => { S.snd = !S.snd; save(); updBar(); });
+updBar();
+(() => { const m = (location.hash || '').match(/^#(home|lessons|games|final|cert|lesson)(?:-(\d+))?$/); if (m) go(m[1], m[2] ? +m[2] : undefined); else go('home'); })();
+</script>
+</body>
+</html>

@@ -21,6 +21,7 @@
 :root{
   --bg:#f6f3ec; --paper:#fffdf8; --ink:#1d2a33; --muted:#5d6b75; --line:#e4ddcf;
   --brand:#0f5f6b; --brand-soft:#e1efef; --on-brand:#ffffff;
+  --dars:#0e7490; --dars-soft:#e0f4f7;
   --series:#2563a6; --series-soft:#e6eef8;
   --fard:#b4690e; --fard-soft:#fbf0e0;
   --wadjib:#2f7d4a; --wadjib-soft:#e5f3ea;
@@ -34,6 +35,7 @@
   :root:not([data-theme="light"]){
     --bg:#12181c; --paper:#1a2227; --ink:#e8ecee; --muted:#9aa8b1; --line:#2b363d;
     --brand:#5fb7c2; --brand-soft:#1d3236; --on-brand:#0d1a1d;
+    --dars:#5fc4d6; --dars-soft:#16303a;
     --series:#7fb0e8; --series-soft:#1c2a3a;
     --fard:#e3a24f; --fard-soft:#33281a;
     --wadjib:#74c493; --wadjib-soft:#1b2f23;
@@ -104,6 +106,7 @@ nav.terms button[aria-pressed="true"]{background:var(--brand-soft);border-color:
 .badge{font-size:.72rem;font-weight:800;color:#fff;background:var(--new);border-radius:6px;padding:0 6px;line-height:1.6}
 .kind{font-size:.72rem;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:0 5px}
 
+.s-dars{--c:var(--dars);--soft:var(--dars-soft)}
 .s-series{--c:var(--series);--soft:var(--series-soft)}
 .s-fard{--c:var(--fard);--soft:var(--fard-soft)}
 .s-wadjib{--c:var(--wadjib);--soft:var(--wadjib-soft)}
@@ -206,6 +209,7 @@ const LEVELS = [
 ];
 const TERMS = [["t1", "الفصل الأول"], ["t2", "الفصل الثاني"], ["t3", "الفصل الثالث"]];
 const SECTIONS = [
+  ["dars", "الدروس التفاعلية 📘"],
   ["series", "سلاسل التمارين"],
   ["fard", "الفروض"],
   ["wadjib", "الواجبات المنزلية"],
@@ -333,7 +337,7 @@ async function loadItems() {
   if (!r.ok) throw new Error("api " + r.status);
   const tree = (await r.json()).tree || [];
   const items = [];
-  const re = /^([1-4]m)\/(t[1-3])\/(series|fard|wadjib|ikhtibar|chahada|tahaddi)\/([^/]+?)(\/index\.html)?$/;
+  const re = /^([1-4]m)\/(t[1-3])\/(dars|series|fard|wadjib|ikhtibar|chahada|tahaddi)\/([^/]+?)(\/index\.html)?$/;
   for (const n of tree) {
     const m = n.path.match(re);
     if (!m || n.type !== "blob" || m[4].startsWith(".")) continue;
@@ -358,6 +362,10 @@ async function loadItems() {
 })();
 
 const MSGS = {
+  dars: [
+    "📘 أعزائي تلاميذ {level}\n\nدرس تفاعلي جديد على الموقع:\n«{title}»\n\n📖 اقرأ الشرح خطوة بخطوة.\n🧪 جرّب المحاكاة وحرّك الأشكال بنفسك.\n✏️ أجب عن الأسئلة واجمع النجوم، وفي النهاية شهادة إنجاز باسمك 🎓\n\nالخطأ جزء من التعلّم، فلا تستعجلوا 💪\n{link}",
+    "🎮 تعلّم وأنت تلعب! تلاميذ {level}\n\n«{title}»\n\n✅ شرح مبسط ومحاكاة وألعاب.\n⭐ اجمعوا النجوم والأوسمة.\n🎓 من يحصل على الشهادة الذهبية؟\n\nبالتوفيق للجميع 🌟\n{link}",
+  ],
   series: [
     "📚 أعزائي تلاميذ {level}\n\nسلسلة تمارين جديدة على الموقع:\n«{title}»\n\n✅ حاولوا حلّ كل تمرين بأنفسكم قبل رؤية الحل.\n💡 الخطأ جزء من التعلّم، فلا تستسلموا من أول محاولة.\n🎯 كل تمرين تحلّونه اليوم خطوة نحو النجاح.\n\nبالتوفيق للجميع 💪\n{link}",
     "🌟 تحدٍّ جديد لتلاميذ {level}!\n\n«{title}»\n\n📌 اقرأ السؤال جيدًا، اكتب جوابك، ثم تحقّق.\n📌 إن أخطأت استعمل التلميح وأعد المحاولة.\n📌 من يصل إلى 20/20؟ 😉\n\nالمثابرة سرّ التفوّق 💪\n{link}",
