@@ -71,7 +71,7 @@ function resetQuiz(){score=0;FX.reset();Object.keys(tries).forEach(k=>delete tri
 const FX = (() => {
   const PRAISE = ["أحسنت! التركيز يصنع الفرق", "ممتاز! التأني أوصلك للحل", "رائع! جهدك أثمر", "عمل متقن! الدقة قبل السرعة", "بارك الله فيك! واصل بهدوء", "برافو! قرأت السؤال جيدا"];
   const RETRY = ["الخطأ جزء من التعلّم، حاول مجددا 🌱", "تمهّل: السرعة تُضعف التركيز", "خذ وقتك وأعد القراءة بهدوء", "ركّز في المعطيات، أنت قريب", "ابذل جهدا صغيرا آخر 💪", "راجع حسابك خطوة بخطوة"];
-  const LOST = "لا تحزن 🌱 الخطأ جزء من التعلّم: اقرأ الإجابة النموذجية بتمعّن وأعد المحاولة غدا بهدوء";
+  const LOST = "لا بأس 🌱 فكلّ خطأ درسٌ يقرّبك من النجاح: اقرأ الإجابة النموذجية بتمعّن وأعد المحاولة غدا بهدوء";
   const pick = a => a[Math.floor(Math.random() * a.length)];
   let stars = 0, sound = true, finished = false, actx = null;
   try { sound = localStorage.getItem("fx-sound") !== "0"; } catch (e) {}
@@ -118,7 +118,7 @@ const FX = (() => {
       if (fb) fb.insertAdjacentHTML("beforeend", ' <span class="fx-stars">' + "⭐".repeat(n) + "</span>");
       burst(el, 6 + n * 3); again(el, "fx-pop"); toast(pick(PRAISE) + " " + "⭐".repeat(n), "good"); tone([523, 659, 784]);
     },
-    bad(el, last){ again(el, "fx-shake"); toast(last ? LOST : pick(RETRY), "bad"); tone(last ? [330, 262] : [392, 330]); },
+    bad(el, last){ again(el, "fx-shake"); if (!last) burst(el, 8); toast(last ? LOST : pick(RETRY), "bad"); tone(last ? [330, 262] : [392, 330]); },
     final(score, max){
       if (finished) return; finished = true;
       const p = score / max, msg = p >= .9 ? "أداء ممتاز! أنت نجم القسم 🏆" : p >= .7 ? "عمل جيد جدا! واصل التقدم 👏" : p >= .5 ? "عمل مقبول، راجع الأخطاء وستتحسن 💪" : "لا تستسلم! أعد التمارين وستنجح 🌱";
