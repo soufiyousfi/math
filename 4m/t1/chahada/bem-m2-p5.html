@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلسلة الشهادة الخامسة - المقطع الثاني: مسائل ووضعيات</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #0f766e;
+            --primary-light: #eff6ff;
+            --accent: #fbbf24;
+            --success: #15803d;
+            --success-bg: #dcfce7;
+            --warning: #b45309;
+            --warning-bg: #fef3c7;
+            --danger: #b91c1c;
+            --danger-bg: #fee2e2;
+            --dark: #0f172a;
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --border: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+        }
+
+        html, body {
+            background-color: var(--bg);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            width: 100%;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%);
+            color: #ffffff;
+            padding: 20px 12px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        header .school-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fef08a;
+            margin-bottom: 6px;
+        }
+
+        header h1 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 6px 0;
+            color: #ffffff;
+        }
+
+        header .sub-info {
+            font-size: 0.92rem;
+            opacity: 0.95;
+            background: rgba(255, 255, 255, 0.14);
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-top: 4px;
+        }
+
+        .sticky-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(6px);
+            border-bottom: 2px solid var(--border);
+            padding: 8px 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .sticky-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .stars-badge {
+            background: #fef3c7;
+            color: #b45309;
+            border: 1px solid #f59e0b;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .sound-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .progress-wrap {
+            flex: 1;
+            min-width: 110px;
+            max-width: 240px;
+            background: #e2e8f0;
+            height: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #0f766e, #15803d);
+            width: 0%;
+            height: 100%;
+            transition: width 0.35s ease;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 18px auto 0 auto;
+            padding: 0 10px;
+        }
+
+        .exercise-card {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 16px 14px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-light);
+            padding: 10px 12px;
+            border-radius: 10px;
+            border-right: 4px solid var(--primary);
+            margin-bottom: 12px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .card-header h2 {
+            font-size: 1.08rem;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .pts-badge {
+            background: #ffffff;
+            color: var(--primary);
+            border: 1px solid #bfdbfe;
+            padding: 3px 10px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .context-box {
+            background: #f8fafc;
+            border: 1px dashed #94a3b8;
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin-bottom: 14px;
+            font-size: 0.96rem;
+        }
+
+        .math {
+            direction: ltr;
+            unicode-bidi: isolate;
+            display: inline-block;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 700;
+            background: #e2e8f0;
+            padding: 1px 6px;
+            border-radius: 5px;
+            margin: 0 2px;
+            color: #0f172a;
+        }
+
+        .q-box {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 14px;
+            background: #ffffff;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .q-box.solved {
+            border-color: #86efac;
+            background: #f0fdf4;
+        }
+
+        .q-box.failed {
+            border-color: #fca5a5;
+            background: #fef2f2;
+        }
+
+        .q-title {
+            font-weight: 700;
+            font-size: 0.98rem;
+            margin-bottom: 10px;
+            color: #1e293b;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .q-meta {
+            font-size: 0.78rem;
+            background: #f1f5f9;
+            color: #475569;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .answer-area {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-line {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            min-width: 170px;
+            padding: 9px 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.98rem;
+            font-weight: 700;
+            direction: ltr;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary);
+        }
+
+        .sym-toolbar {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 4px;
+        }
+
+        .sym-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            color: #0f172a;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            direction: ltr;
+            unicode-bidi: isolate;
+            user-select: none;
+        }
+
+        .sym-btn { flex: 1 1 0; min-width: 0; padding: 6px 0; text-align: center; }
+
+        .sym-btn:hover {
+            background: #cbd5e1;
+        }
+
+        .sym-btn:active {
+            transform: scale(0.96);
+        }
+
+        .btn-check {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .btn-check:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-check:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        @keyframes shakeField {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        .shake {
+            animation: shakeField 0.35s ease;
+            border-color: var(--danger) !important;
+        }
+
+        .feedback-box {
+            margin-top: 10px;
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            display: none;
+        }
+
+        .feedback-box.success {
+            display: block;
+            background: var(--success-bg);
+            color: var(--success);
+            border-right: 4px solid var(--success);
+        }
+
+        .feedback-box.hint {
+            display: block;
+            background: var(--warning-bg);
+            color: var(--warning);
+            border-right: 4px solid var(--warning);
+        }
+
+        .feedback-box.fail {
+            display: block;
+            background: var(--danger-bg);
+            color: var(--danger);
+            border-right: 4px solid var(--danger);
+        }
+
+        .model-solution {
+            margin-top: 12px;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-right: 4px solid var(--secondary);
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+            font-size: 0.93rem;
+        }
+
+        .model-solution h4 {
+            color: var(--secondary);
+            margin-bottom: 8px;
+            font-size: 0.98rem;
+        }
+
+        .sol-line {
+            padding: 3px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .sol-result {
+            margin-top: 6px;
+            font-weight: 800;
+            color: var(--primary);
+            background: #eff6ff;
+            padding: 5px 8px;
+            border-radius: 6px;
+        }
+
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.86rem;
+            background: #ffffff;
+        }
+
+        .rubric-table td .math { white-space: nowrap; }
+        .rubric-table th, .rubric-table td {
+            border: 1px solid #cbd5e1;
+            padding: 6px 8px;
+            text-align: right;
+        }
+
+        .rubric-table th {
+            background: #e2e8f0;
+            color: #1e293b;
+            font-weight: 800;
+        }
+
+        .star-burst {
+            display: inline-block;
+            animation: popStars 0.6s ease forwards;
+        }
+
+        @keyframes popStars {
+            0% { transform: scale(0.4); opacity: 0; }
+            60% { transform: scale(1.25); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.65);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 15px;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            max-width: 420px;
+            width: 100%;
+            border-radius: 16px;
+            padding: 24px 18px;
+            text-align: center;
+            border-top: 6px solid var(--accent);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .modal-score {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin: 10px 0;
+        }
+
+        .modal-stars {
+            font-size: 1.4rem;
+            color: #d97706;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .btn-close-modal {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 9px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        @media (max-width: 420px) {
+            header .school-title { font-size: 0.98rem; }
+            header h1 { font-size: 1.12rem; }
+            .input-line { flex-direction: column; }
+            input[type="text"], .btn-check { width: 100%; }
+        }
+    
+        .fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; line-height: 1.05; margin: 0 2px; font-size: .92em; }
+        .fr > span:first-child { border-bottom: 2px solid currentColor; padding: 0 3px 1px; }
+        .fr > span:last-child { padding: 1px 3px 0; }
+        .vop { display: inline-block; direction: ltr; unicode-bidi: isolate; font-family: 'Courier New', Courier, monospace; font-weight: 700;
+               background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
+        .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
+        .vop .ln { border-top: 2px solid #0f172a; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="school-title">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
+        <h1>تمارين الشهادة - المقطع الثاني - السلسلة الخامسة</h1>
+        <div class="sub-info">السنة الرابعة متوسط | مسائل ووضعيات | 5 تمارين على 20<br>حلّ في الكراس ثم تحقق هنا (الآلة الحاسبة مسموح بها)</div>
+    </header>
+
+    <div class="sticky-bar">
+        <div class="sticky-inner">
+            <div class="stat-group">
+                <span class="score-badge">العلامة: <span class="math" id="scoreVal" style="background:transparent;color:#fff;padding:0;">0 / 20</span></span>
+                <span class="stars-badge">⭐ <span class="math" id="starsVal" style="background:transparent;color:#b45309;padding:0;">0</span></span>
+                <button type="button" class="sound-btn" id="soundToggle" onclick="toggleSound()" title="تشغيل/كتم الصوت">🔊</button>
+            </div>
+            <div class="progress-wrap" title="شريط التقدم">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="exercisesRoot"></div>
+
+    <div class="modal-overlay" id="finalModal">
+        <div class="modal-card">
+            <h3 id="finalTitle">🎉 أحسنت! أتممت جميع الأسئلة</h3>
+            <p>لقد أنهيت سلسلة الشهادة الخامسة - المقطع الثاني</p>
+            <div class="modal-score" id="finalScoreText">0 / 20</div>
+            <div class="modal-stars" id="finalStarsText">⭐ 0 نجمة</div>
+            <button type="button" class="btn-close-modal" onclick="document.getElementById('finalModal').style.display='none'">مراجعة إجاباتي</button>
+        </div>
+    </div>
+
+    <script>
+        let soundEnabled = true;
+        let totalScore = 0;
+        let totalStars = 0;
+        let completedQuestions = 0;
+        let totalQuestionsCount = 0;
+
+        const attemptsLeft = {};
+        const questionEarned = {};
+        const questionLocked = {};
+
+        const symbols1AM = ["√", "²", "−", "+", ";", ",", "/", "×", "⌫"];
+
+        function playTone(type) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'success') {
+                    osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+                    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.09);
+                    osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.18);
+                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.35);
+                } else {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, ctx.currentTime);
+                    osc.frequency.setValueAtTime(180, ctx.currentTime + 0.1);
+                    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.25);
+                }
+            } catch (e) {}
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            document.getElementById('soundToggle').innerText = soundEnabled ? '🔊' : '🔇';
+        }
+
+        const exercises = [
+ {
+  "id": 1,
+  "pts": 4,
+  "title": "التمرين 1: قطعة أرض الجد",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2016، الجزء الثاني (الجزء الأول منه))</span><br>لجدك قطعة أرض لها الشكل المقابل حيث: <span class=\"math\">ABCD</span> مستطيل أبعاده <span class=\"math\">50 m</span> و<span class=\"math\">40 m</span> و<span class=\"math\">M</span> نقطة من <span class=\"math\">[DC]</span> حيث: <span class=\"math\">DM = 20 m</span>. <span class=\"math\">N</span> نقطة تقاطع <span class=\"math\">(BC)</span> و<span class=\"math\">(AM)</span>.<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 196 300\" width=\"196\" height=\"300\" style=\"max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff\" font-family=\"Arial\"><rect width=\"196\" height=\"300\" fill=\"#fff\"/><polygon points=\"46.0,46.0 150.0,46.0 150.0,129.2 46.0,129.2\" fill=\"none\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><line x1=\"46.0\" y1=\"46.0\" x2=\"150.0\" y2=\"254.0\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><line x1=\"150.0\" y1=\"129.2\" x2=\"150.0\" y2=\"254.0\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><text x=\"98.0\" y=\"37.7\" font-size=\"14\" fill=\"#111\" text-anchor=\"middle\" dominant-baseline=\"middle\">50 m</text><text x=\"31.4\" y=\"87.6\" font-size=\"14\" fill=\"#111\" text-anchor=\"middle\" dominant-baseline=\"middle\">40 m</text><text x=\"66.8\" y=\"120.9\" font-size=\"14\" fill=\"#111\" text-anchor=\"middle\" dominant-baseline=\"middle\">20 m</text><circle cx=\"46.0\" cy=\"46.0\" r=\"2.6\" fill=\"#111\"/><text x=\"36.8\" y=\"34.1\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">A</text><circle cx=\"150.0\" cy=\"46.0\" r=\"2.6\" fill=\"#111\"/><text x=\"157.6\" y=\"33.1\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">B</text><circle cx=\"150.0\" cy=\"129.2\" r=\"2.6\" fill=\"#111\"/><text x=\"164.8\" y=\"131.5\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">C</text><circle cx=\"46.0\" cy=\"129.2\" r=\"2.6\" fill=\"#111\"/><text x=\"31.1\" y=\"131.0\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">D</text><circle cx=\"87.6\" cy=\"129.2\" r=\"2.6\" fill=\"#111\"/><text x=\"73.7\" y=\"134.8\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">M</text><circle cx=\"150.0\" cy=\"254.0\" r=\"2.6\" fill=\"#111\"/><text x=\"154.9\" y=\"268.2\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">N</text></svg>",
+  "questions": [
+   {
+    "qId": "1-1",
+    "text": "1) احسب <span class=\"math\"><span class=\"fr\"><span>MA</span><span>MN</span></span></span>.",
+    "exact": [
+     "2/3"
+    ],
+    "partial": [
+     "20/30",
+     "3/2"
+    ],
+    "h1": "<span class=\"math\">(AD) // (CN)</span>: خاصية طالس في الشكل <span class=\"math\">AMD</span> و<span class=\"math\">NMC</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>MA</span><span>MN</span></span> = <span class=\"fr\"><span>MD</span><span>MC</span></span></span> و<span class=\"math\">MC = 50 − 20</span>.",
+    "steps": [
+     "<b>الطريقة:</b> مستقيمان عموديان على (DC) متوازيان: <span class=\"math\">(AD) // (CN)</span>. ثم خاصية طالس (وضعية الفراشة): إذا تقاطع المستقيمان (AB) و(CD) في O وكان <span class=\"math\">(AC) // (BD)</span>، فإن: <span class=\"math\"><span class=\"fr\"><span>OA</span><span>OB</span></span> = <span class=\"fr\"><span>OC</span><span>OD</span></span> = <span class=\"fr\"><span>AC</span><span>BD</span></span></span>.",
+     "<span class=\"math\">MC = DC − DM = 50 − 20 = 30</span> m",
+     "<span class=\"math\">(AD) ⊥ (DC)</span> و<span class=\"math\">(CN) ⊥ (DC)</span> إذن <span class=\"math\">(AD) // (CN)</span>",
+     "المستقيمان (AN) و(DC) يتقاطعان في M: <span class=\"math\"><span class=\"fr\"><span>MA</span><span>MN</span></span> = <span class=\"fr\"><span>MD</span><span>MC</span></span> = <span class=\"fr\"><span>AD</span><span>NC</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>MA</span><span>MN</span></span> = <span class=\"fr\"><span>20</span><span>30</span></span> = <span class=\"fr\"><span>20 ÷ 10</span><span>30 ÷ 10</span></span> = <span class=\"fr\"><span>2</span><span>3</span></span></span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>MA</span><span>MN</span></span> = <span class=\"fr\"><span>2</span><span>3</span></span></span>",
+     "<b>الاستنتاج:</b> <span class=\"math\"><span class=\"fr\"><span>MA</span><span>MN</span></span> = <span class=\"fr\"><span>2</span><span>3</span></span></span>."
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "0,75"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1.5,
+    "partialMsg": "اختزل وانتبه للترتيب.",
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">MC = 30 m</span>",
+     "<span class=\"math\"><span class=\"fr\"><span>MA</span><span>MN</span></span> = <span class=\"fr\"><span>MD</span><span>MC</span></span> = <span class=\"fr\"><span>20</span><span>30</span></span></span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>MA</span><span>MN</span></span> = <span class=\"fr\"><span>2</span><span>3</span></span></span>"
+    ]
+   },
+   {
+    "qId": "1-2",
+    "text": "2) احسب <span class=\"math\">BN</span> (بـ m).",
+    "exact": [
+     "100"
+    ],
+    "partial": [
+     "60",
+     "80"
+    ],
+    "h1": "<span class=\"math\"><span class=\"fr\"><span>AD</span><span>CN</span></span> = <span class=\"fr\"><span>2</span><span>3</span></span></span> أي <span class=\"math\"><span class=\"fr\"><span>40</span><span>CN</span></span> = <span class=\"fr\"><span>2</span><span>3</span></span></span>.",
+    "h2": "<span class=\"math\">BN = BC + CN</span>.",
+    "steps": [
+     "<b>الطريقة:</b> من نفس التناسب (خاصية طالس): <span class=\"math\"><span class=\"fr\"><span>AD</span><span>NC</span></span> = <span class=\"fr\"><span>MD</span><span>MC</span></span></span>، ثم <span class=\"math\">BN = BC + CN</span> لأن C بين B وN.",
+     "<span class=\"math\"><span class=\"fr\"><span>40</span><span>CN</span></span> = <span class=\"fr\"><span>20</span><span>30</span></span></span> إذن <span class=\"math\">CN = <span class=\"fr\"><span>40 × 30</span><span>20</span></span> = 60</span> m",
+     "<span class=\"math\">BC = AD = 40</span> m",
+     "<span class=\"math\">BN = BC + CN = 40 + 60</span>",
+     "النتيجة: <span class=\"math\">BN = 100 m</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">BN = 100 m</span>."
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "0,75"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1.5,
+    "partialMsg": "<span class=\"math\">BN = BC + CN</span>.",
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">CN = 40 × <span class=\"fr\"><span>3</span><span>2</span></span> = 60 m</span>",
+     "<span class=\"math\">BN = 40 + 60</span>",
+     "النتيجة: <span class=\"math\">BN = 100 m</span>"
+    ]
+   },
+   {
+    "qId": "1-3",
+    "text": "3) احسب قيس <span class=\"math\">MAD</span> بالتدوير إلى الوحدة.",
+    "exact": [
+     "27"
+    ],
+    "partial": [
+     "63",
+     "26,57"
+    ],
+    "h1": "المثلث <span class=\"math\">ADM</span> قائم في <span class=\"math\">D</span>.",
+    "h2": "<span class=\"math\">tan MAD = <span class=\"fr\"><span>DM</span><span>AD</span></span> = <span class=\"fr\"><span>20</span><span>40</span></span></span>.",
+    "steps": [
+     "<b>الطريقة:</b> في المثلث MAD القائم في D: <span class=\"math\">tan</span> = المقابل ÷ المجاور، ثم الحاسبة (الزر <span class=\"math\">tan⁻¹</span>).",
+     "<span class=\"math\">tan MAD = <span class=\"fr\"><span>MD</span><span>AD</span></span> = <span class=\"fr\"><span>20</span><span>40</span></span> = 0,5</span>",
+     "بالحاسبة: <span class=\"math\">MAD ≈ 26,57°</span>",
+     "النتيجة: <span class=\"math\">MAD ≈ 27°</span>",
+     "<b>الاستنتاج:</b> قيس الزاوية <span class=\"math\">MAD</span> بالتدوير إلى الوحدة هو 27°."
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "0,5"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 1,
+    "partialMsg": "المقابل للزاوية <span class=\"math\">A</span> هو <span class=\"math\">DM</span>، ودوّر.",
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">tan MAD = 0,5</span>",
+     "<span class=\"math\">MAD ≈ 26,57°</span>",
+     "النتيجة: <span class=\"math\">MAD ≈ 27°</span>"
+    ]
+   }
+  ]
+ },
+ {
+  "id": 2,
+  "pts": 4,
+  "title": "التمرين 2: عرض الممر في المستودع",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2022، الجزء الثاني، السؤال 2)</span><br>استخدم الفلاح شاحنات لنقل المحصول إلى مستودع أرضيته مستطيلة الشكل، حيث فصل بين البطاطا والجزر بممر قبل توزيع التشكيلات (كما هو موضح في الشكل المرفق). <span class=\"math\">(AC) // (EF)</span>.<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 340 278\" width=\"340\" height=\"278\" style=\"max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff\" font-family=\"Arial\"><rect width=\"340\" height=\"278\" fill=\"#fff\"/><polygon points=\"46.0,46.0 294.0,46.0 294.0,232.0 46.0,232.0\" fill=\"none\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><line x1=\"46.0\" y1=\"46.0\" x2=\"294.0\" y2=\"232.0\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><line x1=\"95.6\" y1=\"46.0\" x2=\"294.0\" y2=\"194.8\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><polyline points=\"283.0,46.0 283.0,57.0 294.0,57.0\" fill=\"none\" stroke=\"#b91c1c\" stroke-width=\"1.5\"/><polyline points=\"46.0,221.0 57.0,221.0 57.0,232.0\" fill=\"none\" stroke=\"#b91c1c\" stroke-width=\"1.5\"/><text x=\"194.8\" y=\"61.5\" font-size=\"14\" fill=\"#111\" text-anchor=\"middle\" dominant-baseline=\"middle\">64 m</text><text x=\"67.7\" y=\"139.0\" font-size=\"14\" fill=\"#111\" text-anchor=\"middle\" dominant-baseline=\"middle\">60 m</text><text x=\"170.0\" y=\"216.5\" font-size=\"14\" fill=\"#111\" text-anchor=\"middle\" dominant-baseline=\"middle\">80 m</text><circle cx=\"46.0\" cy=\"46.0\" r=\"2.6\" fill=\"#111\"/><text x=\"33.5\" y=\"37.8\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">A</text><circle cx=\"294.0\" cy=\"46.0\" r=\"2.6\" fill=\"#111\"/><text x=\"306.0\" y=\"37.0\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">B</text><circle cx=\"294.0\" cy=\"232.0\" r=\"2.6\" fill=\"#111\"/><text x=\"305.4\" y=\"241.8\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">C</text><circle cx=\"46.0\" cy=\"232.0\" r=\"2.6\" fill=\"#111\"/><text x=\"34.0\" y=\"241.0\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">D</text><circle cx=\"95.6\" cy=\"46.0\" r=\"2.6\" fill=\"#111\"/><text x=\"85.3\" y=\"35.1\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">E</text><circle cx=\"294.0\" cy=\"194.8\" r=\"2.6\" fill=\"#111\"/><text x=\"307.2\" y=\"201.9\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">F</text></svg>",
+  "questions": [
+   {
+    "qId": "2-1",
+    "text": "1) احسب <span class=\"math\">AC</span> (بـ m).",
+    "exact": [
+     "100"
+    ],
+    "partial": [
+     "140"
+    ],
+    "h1": "المثلث <span class=\"math\">ABC</span> قائم في <span class=\"math\">B</span>.",
+    "h2": "<span class=\"math\">AC² = 80² + 60²</span>.",
+    "steps": [
+     "<b>الطريقة:</b> خاصية فيثاغورس: في المثلث القائم، مربع طول الوتر يساوي مجموع مربعي طولي الضلعين الآخرين. المثلث ABC قائم في B (ABCD مستطيل).",
+     "<span class=\"math\">AC² = AB² + BC² = 80² + 60²</span>",
+     "<span class=\"math\">AC² = 6400 + 3600 = 10000</span>",
+     "<span class=\"math\">AC = √10000 = 100</span>",
+     "النتيجة: <span class=\"math\">AC = 100 m</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">AC = 100 m</span>."
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "0,5"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 1,
+    "partialMsg": "خذ الجذر التربيعي.",
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">AC² = 6400 + 3600 = 10000</span>",
+     "النتيجة: <span class=\"math\">AC = 100 m</span>"
+    ]
+   },
+   {
+    "qId": "2-2",
+    "text": "2) احسب <span class=\"math\">AE</span> (بـ m).",
+    "exact": [
+     "16"
+    ],
+    "partial": [
+     "64",
+     "144"
+    ],
+    "h1": "<span class=\"math\">AB = DC = 80</span>.",
+    "h2": "<span class=\"math\">AE = AB − EB</span>.",
+    "steps": [
+     "<b>الطريقة:</b> E نقطة من [AB]، إذن <span class=\"math\">AE = AB − EB</span>.",
+     "<span class=\"math\">AE = 80 − 64</span>",
+     "النتيجة: <span class=\"math\">AE = 16 m</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">AE = 16 m</span>."
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "0,5"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 1,
+    "partialMsg": "<span class=\"math\">AE = AB − EB</span>.",
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">AE = 80 − 64</span>",
+     "النتيجة: <span class=\"math\">AE = 16 m</span>"
+    ]
+   },
+   {
+    "qId": "2-3",
+    "text": "3) احسب عرض الممر بالتدوير إلى الوحدة (بـ m).",
+    "exact": [
+     "10"
+    ],
+    "partial": [
+     "9,6",
+     "13",
+     "12,8"
+    ],
+    "h1": "العرض هو المسافة بين المستقيمين <span class=\"math\">(AC)</span> و<span class=\"math\">(EF)</span>، أي طول العمود النازل من <span class=\"math\">E</span> على <span class=\"math\">(AC)</span>.",
+    "h2": "في المثلث القائم الذي وتره <span class=\"math\">AE</span>: العرض <span class=\"math\">= AE × sin BAC</span> و<span class=\"math\">sin BAC = <span class=\"fr\"><span>BC</span><span>AC</span></span> = 0,6</span>.",
+    "steps": [
+     "<b>الطريقة:</b> عرض الممر هو المسافة بين المستقيمين المتوازيين (AC) و(EF)، أي طول العمود [EH] النازل من E على (AC). في المثلث AHE القائم في H: <span class=\"math\">sin</span> = المقابل ÷ الوتر، والزاوية <span class=\"math\">EAH</span> هي <span class=\"math\">BAC</span>.",
+     "في المثلث ABC: <span class=\"math\">sin BAC = <span class=\"fr\"><span>BC</span><span>AC</span></span> = <span class=\"fr\"><span>60</span><span>100</span></span> = 0,6</span>",
+     "في المثلث AHE: <span class=\"math\">sin EAH = <span class=\"fr\"><span>EH</span><span>AE</span></span></span> إذن <span class=\"math\">EH = AE × sin BAC</span>",
+     "<span class=\"math\">EH = 16 × 0,6 = 9,6</span>",
+     "النتيجة: عرض الممر ≈ 10 m",
+     "<b>الاستنتاج:</b> عرض الممر حوالي 10 m (بالتدوير إلى الوحدة)."
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">sin BAC = 0,6</span>",
+      "mark": "0,75"
+     },
+     {
+      "step": "<span class=\"math\">16 × 0,6 = 9,6</span>",
+      "mark": "0,75"
+     },
+     {
+      "step": "التدوير",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 2,
+    "partialMsg": "دوّر إلى الوحدة، واستعمل الجيب لا جيب التمام.",
+    "steps0": [
+     "<span class=\"math\">sin BAC = <span class=\"fr\"><span>60</span><span>100</span></span> = 0,6</span>",
+     "العرض <span class=\"math\">= 16 × 0,6 = 9,6</span>",
+     "النتيجة: عرض الممر <span class=\"math\">≈ 10 m</span>"
+    ]
+   }
+  ]
+ },
+ {
+  "id": 3,
+  "pts": 4,
+  "title": "التمرين 3: مسار سباق العَدْو",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2025، الوضعية الإدماجية، السؤال 1)</span><br>الشكل أدناه يمثّل تصميما لمسار سباق منافسة في العَدْو نظّمته إحدى البلديات بمناسبة الاحتفال بذكرى مجازر 08 ماي 1945 شاركت فيه ثلاث فئات:<br>- الفئة (أ): يقطعون المسافة من <span class=\"math\">A</span> إلى <span class=\"math\">C</span> مرورا بالنقطة <span class=\"math\">B</span>.<br>- الفئة (ب): من <span class=\"math\">A</span> إلى <span class=\"math\">E</span> مرورا بـ <span class=\"math\">B</span> و<span class=\"math\">C</span> على الترتيب.<br>- الفئة (ج): من <span class=\"math\">A</span> إلى <span class=\"math\">G</span> مرورا بالنقط <span class=\"math\">B ، C ، E ، F ، D</span> على الترتيب.<br><span class=\"math\">G</span> نقطة من <span class=\"math\">[AD]</span> حيث: <span class=\"math\">(FG) // (AC)</span> و<span class=\"math\">tan CEF = 0,75</span>. (الرسم غير مطلوب)<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 420 273\" width=\"420\" height=\"273\" style=\"max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff\" font-family=\"Arial\"><rect width=\"420\" height=\"273\" fill=\"#fff\"/><line x1=\"46.0\" y1=\"226.6\" x2=\"46.0\" y2=\"46.0\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><line x1=\"46.0\" y1=\"46.0\" x2=\"181.4\" y2=\"46.0\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><line x1=\"181.4\" y1=\"46.0\" x2=\"374.0\" y2=\"46.0\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><line x1=\"374.0\" y1=\"46.0\" x2=\"181.4\" y2=\"190.4\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><line x1=\"181.4\" y1=\"226.6\" x2=\"46.0\" y2=\"226.6\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><line x1=\"181.4\" y1=\"46.0\" x2=\"181.4\" y2=\"226.6\" stroke=\"#0f766e\" stroke-width=\"2\" stroke-dasharray=\"6,4\"/><line x1=\"46.0\" y1=\"226.6\" x2=\"181.4\" y2=\"46.0\" stroke=\"#0f766e\" stroke-width=\"2\" stroke-dasharray=\"6,4\"/><line x1=\"181.4\" y1=\"190.4\" x2=\"154.3\" y2=\"226.6\" stroke=\"#0f766e\" stroke-width=\"2\" stroke-dasharray=\"6,4\"/><polyline points=\"46.0,57.0 57.0,57.0 57.0,46.0\" fill=\"none\" stroke=\"#b91c1c\" stroke-width=\"1.5\"/><polyline points=\"170.4,46.0 170.4,57.0 181.4,57.0\" fill=\"none\" stroke=\"#b91c1c\" stroke-width=\"1.5\"/><polyline points=\"181.4,215.6 170.4,215.6 170.4,226.6\" fill=\"none\" stroke=\"#b91c1c\" stroke-width=\"1.5\"/><text x=\"79.1\" y=\"136.3\" font-size=\"14\" fill=\"#111\" text-anchor=\"middle\" dominant-baseline=\"middle\">1500 m</text><text x=\"113.7\" y=\"27.9\" font-size=\"14\" fill=\"#111\" text-anchor=\"middle\" dominant-baseline=\"middle\">1125 m</text><text x=\"217.5\" y=\"208.5\" font-size=\"14\" fill=\"#111\" text-anchor=\"middle\" dominant-baseline=\"middle\">300 m</text><circle cx=\"46.0\" cy=\"226.6\" r=\"2.6\" fill=\"#111\"/><text x=\"33.6\" y=\"235.0\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">A</text><circle cx=\"46.0\" cy=\"46.0\" r=\"2.6\" fill=\"#111\"/><text x=\"34.4\" y=\"36.5\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">B</text><circle cx=\"181.4\" cy=\"46.0\" r=\"2.6\" fill=\"#111\"/><text x=\"183.7\" y=\"31.2\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">C</text><circle cx=\"181.4\" cy=\"226.6\" r=\"2.6\" fill=\"#111\"/><text x=\"184.1\" y=\"241.3\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">D</text><circle cx=\"374.0\" cy=\"46.0\" r=\"2.6\" fill=\"#111\"/><text x=\"387.6\" y=\"39.6\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">E</text><circle cx=\"181.4\" cy=\"190.4\" r=\"2.6\" fill=\"#111\"/><text x=\"186.0\" y=\"204.7\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">F</text><circle cx=\"154.3\" cy=\"226.6\" r=\"2.6\" fill=\"#111\"/><text x=\"152.2\" y=\"241.4\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\">G</text></svg>",
+  "questions": [
+   {
+    "qId": "3-1",
+    "text": "1) المسافة التي تقطعها الفئة (أ) (بـ m).",
+    "exact": [
+     "2625"
+    ],
+    "partial": [
+     "1875"
+    ],
+    "h1": "<span class=\"math\">AB + BC</span>.",
+    "h2": "<span class=\"math\">1500 + 1125</span>.",
+    "steps": [
+     "<b>الطريقة:</b> المسافة التي تقطعها الفئة (أ) هي مجموع أطوال القطع المتتابعة في المسار: <span class=\"math\">AB + BC</span>.",
+     "<span class=\"math\">AB + BC = 1500 + 1125</span>",
+     "النتيجة: 2625 m",
+     "<b>الاستنتاج:</b> تقطع الفئة (أ) مسافة 2625 m."
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "0,5"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 1,
+    "partialMsg": "المسار يمر بـ <span class=\"math\">B</span>.",
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">AB + BC = 1500 + 1125</span>",
+     "النتيجة: <span class=\"math\">2625 m</span>"
+    ]
+   },
+   {
+    "qId": "3-2",
+    "text": "2) احسب <span class=\"math\">CE</span> (بـ m).",
+    "exact": [
+     "1600"
+    ],
+    "partial": [
+     "900",
+     "1125"
+    ],
+    "h1": "<span class=\"math\">CF = CD − FD = 1500 − 300</span>.",
+    "h2": "في المثلث <span class=\"math\">CEF</span> القائم في <span class=\"math\">C</span>: <span class=\"math\">tan CEF = <span class=\"fr\"><span>CF</span><span>CE</span></span></span>.",
+    "steps": [
+     "<b>الطريقة:</b> في المثلث CEF القائم في C: <span class=\"math\">tan CEF</span> = المقابل (CF) ÷ المجاور (CE).",
+     "<span class=\"math\">DC = AB = 1500</span> m (مستطيل) و<span class=\"math\">CF = DC − DF = 1500 − 300 = 1200</span> m",
+     "<span class=\"math\">tan CEF = <span class=\"fr\"><span>CF</span><span>CE</span></span></span> أي <span class=\"math\">0,75 = <span class=\"fr\"><span>1200</span><span>CE</span></span></span>",
+     "<span class=\"math\">CE = 1200 ÷ 0,75</span>",
+     "النتيجة: <span class=\"math\">CE = 1600 m</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">CE = 1600 m</span>."
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "0,5"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 1,
+    "partialMsg": "الظل = المقابل ÷ المجاور؛ المقابل للزاوية <span class=\"math\">E</span> هو <span class=\"math\">CF</span>.",
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">CF = 1200 m</span>",
+     "<span class=\"math\">0,75 = <span class=\"fr\"><span>1200</span><span>CE</span></span></span>",
+     "النتيجة: <span class=\"math\">CE = 1600 m</span>"
+    ]
+   },
+   {
+    "qId": "3-3",
+    "text": "3) المسافة التي تقطعها الفئة (ب) (بـ m).",
+    "exact": [
+     "4225"
+    ],
+    "partial": [],
+    "h1": "<span class=\"math\">AB + BC + CE</span>.",
+    "h2": "<span class=\"math\">2625 + 1600</span>.",
+    "steps": [
+     "<b>الطريقة:</b> مسافة الفئة (ب) = مسافة الفئة (أ) + CE.",
+     "<span class=\"math\">2625 + 1600</span>",
+     "النتيجة: 4225 m",
+     "<b>الاستنتاج:</b> تقطع الفئة (ب) مسافة 4225 m."
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "0,25"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,25"
+     }
+    ],
+    "pts": 0.5,
+    "steps0": [
+     "<span class=\"math\">2625 + 1600</span>",
+     "النتيجة: <span class=\"math\">4225 m</span>"
+    ]
+   },
+   {
+    "qId": "3-4",
+    "text": "4) المسافة التي تقطعها الفئة (ج) (بـ m).",
+    "exact": [
+     "6750"
+    ],
+    "partial": [
+     "6525",
+     "7650"
+    ],
+    "h1": "احسب <span class=\"math\">EF</span> بفيثاغورس، ثم <span class=\"math\">DG</span> بطالس في المثلث <span class=\"math\">DAC</span>.",
+    "h2": "<span class=\"math\">EF = 2000</span> ؛ <span class=\"math\"><span class=\"fr\"><span>DG</span><span>DA</span></span> = <span class=\"fr\"><span>DF</span><span>DC</span></span> = <span class=\"fr\"><span>300</span><span>1500</span></span></span> أي <span class=\"math\">DG = 225</span>.",
+    "steps": [
+     "<b>الطريقة:</b> خاصية فيثاغورس: في المثلث القائم، مربع طول الوتر يساوي مجموع مربعي طولي الضلعين الآخرين. (لحساب EF)، ثم خاصية طالس في المثلث DAC لأن <span class=\"math\">(FG) // (AC)</span> (لحساب DG)، ثم نجمع أطوال المسار.",
+     "<span class=\"math\">EF² = CE² + CF² = 1600² + 1200² = 4000000</span> إذن <span class=\"math\">EF = 2000</span> m",
+     "خاصية طالس في المثلث DCA: <span class=\"math\"><span class=\"fr\"><span>DG</span><span>DA</span></span> = <span class=\"fr\"><span>DF</span><span>DC</span></span></span> أي <span class=\"math\"><span class=\"fr\"><span>DG</span><span>1125</span></span> = <span class=\"fr\"><span>300</span><span>1500</span></span></span>",
+     "<span class=\"math\">DG = <span class=\"fr\"><span>1125 × 300</span><span>1500</span></span> = 225</span> m",
+     "المسار: <span class=\"math\">4225 + EF + FD + DG = 4225 + 2000 + 300 + 225</span>",
+     "النتيجة: 6750 m",
+     "<b>الاستنتاج:</b> تقطع الفئة (ج) مسافة 6750 m."
+    ],
+    "rubric": [
+     {
+      "step": "<span class=\"math\">EF = 2000</span>",
+      "mark": "0,5"
+     },
+     {
+      "step": "<span class=\"math\">DG = 225</span>",
+      "mark": "0,5"
+     },
+     {
+      "step": "المجموع",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 1.5,
+    "partialMsg": "المسار: <span class=\"math\">A→B→C→E→F→D→G</span>.",
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">EF² = 1600² + 1200² = 4000000</span> و<span class=\"math\">EF = 2000 m</span>",
+     "<span class=\"math\"><span class=\"fr\"><span>DG</span><span>1125</span></span> = <span class=\"fr\"><span>300</span><span>1500</span></span></span> إذن <span class=\"math\">DG = 225 m</span>",
+     "<span class=\"math\">4225 + 2000 + 300 + 225</span>",
+     "النتيجة: <span class=\"math\">6750 m</span>"
+    ]
+   }
+  ]
+ },
+ {
+  "id": 4,
+  "pts": 4,
+  "title": "التمرين 4: قاعة الحفلات",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2010، الجزء الثاني (الوضعية الإدماجية))</span><br>يمثل الشكل الموالي أرضية قاعة حفلات مكونة من مربع ومستطيل ونصف قرص. طول قطر المستطيل يزيد عن طول قطر المربع بـ <span class=\"math\">2 m</span> ومجموع طوليهما <span class=\"math\">28 m</span>. يريد صاحبها تبليطها ببلاط سعر المتر المربع الواحد <span class=\"math\">800</span> دينار.<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 195 300\" width=\"195\" height=\"300\" style=\"max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff\" font-family=\"Arial\"><rect width=\"195\" height=\"300\" fill=\"#fff\"/><path d=\"M 149.2 202.4 A 51.6 51.6 0 0 1 46.0 202.4\" fill=\"none\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><polygon points=\"46.0,202.4 149.2,202.4 149.2,125.0 46.0,125.0\" fill=\"none\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><polygon points=\"58.1,125.0 137.1,125.0 137.1,46.0 58.1,46.0\" fill=\"none\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><line x1=\"46.0\" y1=\"202.4\" x2=\"149.2\" y2=\"125.0\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><line x1=\"58.1\" y1=\"125.0\" x2=\"137.1\" y2=\"46.0\" stroke=\"#1e3a8a\" stroke-width=\"2\"/><path d=\"M 65.2 188.0 A 24 24 0 0 1 70.0 202.4\" fill=\"none\" stroke=\"#b91c1c\" stroke-width=\"1.5\"/><text x=\"83.9\" y=\"189.8\" font-size=\"13\" fill=\"#b91c1c\" text-anchor=\"middle\" dominant-baseline=\"middle\">α</text></svg>",
+  "questions": [
+   {
+    "qId": "4-1",
+    "text": "1) احسب طول قطر المربع (بـ m).",
+    "exact": [
+     "13"
+    ],
+    "partial": [
+     "15",
+     "14"
+    ],
+    "h1": "قطر المربع <span class=\"math\">d</span>، قطر المستطيل <span class=\"math\">d + 2</span>، ومجموعهما <span class=\"math\">28</span>.",
+    "h2": "<span class=\"math\">d + d + 2 = 28</span>.",
+    "steps": [
+     "<b>الطريقة:</b> نترجم المعطيات إلى معادلة: نرمز لقطر المربع بـ <span class=\"math\">d</span>، فقطر المستطيل <span class=\"math\">d + 2</span>، ومجموعهما 28.",
+     "<span class=\"math\">d + (d + 2) = 28</span>",
+     "<span class=\"math\">2d + 2 = 28</span> إذن <span class=\"math\">2d = 26</span>",
+     "النتيجة: <span class=\"math\">d = 13 m</span>",
+     "<b>الاستنتاج:</b> طول قطر المربع 13 m، وقطر المستطيل <span class=\"math\">13 + 2 = 15</span> m."
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "0,5"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 1,
+    "partialMsg": "قطر المستطيل هو الأطول.",
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">2d + 2 = 28</span>",
+     "النتيجة: <span class=\"math\">d = 13 m</span>"
+    ]
+   },
+   {
+    "qId": "4-2",
+    "text": "2) احسب طول المستطيل (بـ m) علما أن <span class=\"math\">cos α = 0,8</span>.",
+    "exact": [
+     "12"
+    ],
+    "partial": [
+     "10,4"
+    ],
+    "h1": "قطر المستطيل <span class=\"math\">15 m</span> و<span class=\"math\">cos α = 0,8</span>.",
+    "h2": "الطول = <span class=\"math\">15 × 0,8</span>.",
+    "steps": [
+     "<b>الطريقة:</b> قطر المستطيل يقسمه إلى مثلثين قائمين وتر كل منهما القطر (15 m). <span class=\"math\">cos α</span> = المجاور (الطول L) ÷ الوتر.",
+     "قطر المستطيل: <span class=\"math\">13 + 2 = 15</span> m",
+     "<span class=\"math\">cos α = <span class=\"fr\"><span>L</span><span>15</span></span></span> أي <span class=\"math\">0,8 = <span class=\"fr\"><span>L</span><span>15</span></span></span>",
+     "<span class=\"math\">L = 15 × 0,8</span>",
+     "النتيجة: <span class=\"math\">L = 12 m</span>",
+     "<b>الاستنتاج:</b> طول المستطيل 12 m."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 0.75,
+    "partialMsg": "قطر المستطيل <span class=\"math\">13 + 2 = 15</span>.",
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">cos α = <span class=\"fr\"><span>L</span><span>15</span></span></span>",
+     "النتيجة: <span class=\"math\">L = 12 m</span>"
+    ]
+   },
+   {
+    "qId": "4-3",
+    "text": "3) احسب عرض المستطيل (بـ m).",
+    "exact": [
+     "9"
+    ],
+    "partial": [
+     "81",
+     "3"
+    ],
+    "h1": "فيثاغورس: <span class=\"math\">l² = 15² − 12²</span>.",
+    "h2": "<span class=\"math\">225 − 144</span>.",
+    "steps": [
+     "<b>الطريقة:</b> خاصية فيثاغورس: في المثلث القائم، مربع طول الوتر يساوي مجموع مربعي طولي الضلعين الآخرين. الوتر هو قطر المستطيل.",
+     "<span class=\"math\">15² = 12² + l²</span> إذن <span class=\"math\">l² = 225 − 144 = 81</span>",
+     "<span class=\"math\">l = √81 = 9</span>",
+     "النتيجة: <span class=\"math\">l = 9 m</span>",
+     "<b>الاستنتاج:</b> عرض المستطيل 9 m."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 0.75,
+    "partialMsg": "خذ الجذر التربيعي.",
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">l² = 225 − 144 = 81</span>",
+     "النتيجة: <span class=\"math\">l = 9 m</span>"
+    ]
+   },
+   {
+    "qId": "4-4",
+    "text": "4) احسب السعر الإجمالي للبلاط (بـ DA) مع <span class=\"math\">π = 3,14</span>.",
+    "exact": [
+     "199216"
+    ],
+    "partial": [
+     "244432",
+     "154000"
+    ],
+    "h1": "مساحة المربع: <span class=\"math\">a² + a² = 13²</span> أي <span class=\"math\">a² = 84,5</span>.",
+    "h2": "المستطيل <span class=\"math\">12 × 9</span>، ونصف القرص قطره <span class=\"math\">12</span>: <span class=\"math\">3,14 × 6² ÷ 2</span>.",
+    "steps": [
+     "<b>الطريقة:</b> المساحة الكلية = مساحة المربع + مساحة المستطيل + مساحة نصف القرص، ثم السعر = المساحة × 800. مساحة المربع بدلالة قطره: <span class=\"math\">d² ÷ 2</span>. مساحة نصف القرص: <span class=\"math\">π × r² ÷ 2</span> (قطره طول المستطيل 12 m).",
+     "المربع: <span class=\"math\">13² ÷ 2 = 169 ÷ 2 = 84,5</span> m²",
+     "المستطيل: <span class=\"math\">12 × 9 = 108</span> m²",
+     "نصف القرص: <span class=\"math\">r = 6</span> و<span class=\"math\">3,14 × 6² ÷ 2 = 56,52</span> m²",
+     "المجموع: <span class=\"math\">84,5 + 108 + 56,52 = 249,02</span> m²",
+     "السعر: <span class=\"math\">249,02 × 800 = 199216</span>",
+     "النتيجة: 199216 DA",
+     "<b>الاستنتاج:</b> السعر الإجمالي للبلاط هو 199216 DA."
+    ],
+    "rubric": [
+     {
+      "step": "المساحات الثلاث",
+      "mark": "0,75"
+     },
+     {
+      "step": "المجموع والسعر",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1.5,
+    "partialMsg": "راجع مساحة المربع (<span class=\"math\"><span class=\"fr\"><span>d²</span><span>2</span></span></span>) ونصف القرص (نصف قطره <span class=\"math\">6</span>).",
+    "partialZero": true,
+    "steps0": [
+     "المربع: <span class=\"math\">2a² = 169</span> إذن <span class=\"math\">84,5 m²</span>",
+     "المستطيل: <span class=\"math\">108 m²</span> ؛ نصف القرص: <span class=\"math\">56,52 m²</span>",
+     "المجموع <span class=\"math\">249,02 m²</span>",
+     "<span class=\"math\">249,02 × 800</span>",
+     "النتيجة: <span class=\"math\">199216 DA</span>"
+    ]
+   }
+  ]
+ },
+ {
+  "id": 5,
+  "pts": 4,
+  "title": "التمرين 5: مثلث قائم وارتفاعه",
+  "context": "<span style=\"color:#0f766e;font-size:.9em\">(شهادة التعليم المتوسط 2018، التمرين الرابع)</span><br><span class=\"math\">TIC</span> مثلث فيه: <span class=\"math\">CI = 13</span> ، <span class=\"math\">TI = 5</span> ، <span class=\"math\">TC = 12</span> (وحدة الطول هي cm).",
+  "questions": [
+   {
+    "qId": "5-1",
+    "text": "1) <span class=\"math\">TIC</span> قائم (لأن <span class=\"math\">TI² + TC² = CI²</span>). احسب مساحته (بـ cm²).",
+    "exact": [
+     "30"
+    ],
+    "partial": [
+     "60",
+     "32,5"
+    ],
+    "h1": "<span class=\"math\">25 + 144 = 169</span>: قائم في <span class=\"math\">T</span>.",
+    "h2": "المساحة = <span class=\"math\">TI × TC ÷ 2</span>.",
+    "steps": [
+     "<b>الطريقة:</b> الخاصية العكسية لخاصية فيثاغورس تثبت أن المثلث قائم في T، ثم مساحة المثلث القائم = جداء الضلعين القائمين ÷ 2.",
+     "<span class=\"math\">TI² + TC² = 25 + 144 = 169</span> و<span class=\"math\">CI² = 13² = 169</span>",
+     "إذن المثلث TIC قائم في T",
+     "المساحة: <span class=\"math\">5 × 12 ÷ 2 = 60 ÷ 2</span>",
+     "النتيجة: 30 cm²",
+     "<b>الاستنتاج:</b> مساحة المثلث TIC هي 30 cm²."
+    ],
+    "rubric": [
+     {
+      "step": "إثبات أنه قائم",
+      "mark": "1"
+     },
+     {
+      "step": "المساحة",
+      "mark": "1"
+     }
+    ],
+    "pts": 2,
+    "partialMsg": "الضلعان القائمان هما <span class=\"math\">TI</span> و<span class=\"math\">TC</span>.",
+    "partialZero": true,
+    "steps0": [
+     "<span class=\"math\">TI² + TC² = 169 = CI²</span>: قائم في <span class=\"math\">T</span>",
+     "<span class=\"math\">5 × 12 ÷ 2</span>",
+     "النتيجة: <span class=\"math\">30 cm²</span>"
+    ]
+   },
+   {
+    "qId": "5-2",
+    "text": "2) [TH] الارتفاع المتعلق بالوتر [CI]. احسب <span class=\"math\">TH</span> بالتدوير إلى 0,1 (بـ cm).",
+    "exact": [
+     "4,6"
+    ],
+    "partial": [
+     "4,61",
+     "60/13",
+     "4,62"
+    ],
+    "h1": "المساحة أيضا <span class=\"math\">CI × TH ÷ 2</span>.",
+    "h2": "<span class=\"math\">13 × TH ÷ 2 = 30</span>، أو <span class=\"math\">sin TIC = <span class=\"fr\"><span>TC</span><span>CI</span></span> = <span class=\"fr\"><span>TH</span><span>TI</span></span></span>.",
+    "steps": [
+     "<b>الطريقة:</b> نكتب مساحة المثلث بطريقتين: <span class=\"math\">(CI × TH) ÷ 2</span> (القاعدة [CI] والارتفاع [TH]) وتساوي 30 cm² من السؤال 1.",
+     "<span class=\"math\">(13 × TH) ÷ 2 = 30</span>",
+     "<span class=\"math\">13 × TH = 60</span>",
+     "<span class=\"math\">TH = <span class=\"fr\"><span>60</span><span>13</span></span> ≈ 4,615</span>",
+     "النتيجة: <span class=\"math\">TH ≈ 4,6 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">TH ≈ 4,6 cm</span> بالتدوير إلى 0,1."
+    ],
+    "rubric": [
+     {
+      "step": "خطوات الحل",
+      "mark": "1"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 2,
+    "partialMsg": "دوّر إلى <span class=\"math\">0,1</span>.",
+    "steps0": [
+     "<span class=\"math\">13 × TH = 60</span>",
+     "<span class=\"math\">TH = <span class=\"fr\"><span>60</span><span>13</span></span> ≈ 4,615</span>",
+     "النتيجة: <span class=\"math\">TH ≈ 4,6 cm</span>"
+    ]
+   }
+  ]
+ }
+];
+
+        function exercisesCount() { return exercises.reduce((a, e) => a + e.questions.length, 0); }
+
+        function renderApp() {
+            totalQuestionsCount = exercisesCount();
+            const root = document.getElementById('exercisesRoot');
+            root.innerHTML = '';
+
+            exercises.forEach(ex => {
+                const card = document.createElement('div');
+                card.className = 'exercise-card';
+
+                let questionsHtml = '';
+                ex.questions.forEach(q => {
+                    attemptsLeft[q.qId] = 3;
+                    questionEarned[q.qId] = 0;
+                    questionLocked[q.qId] = false;
+
+                    let symHtml = '';
+                    symbols1AM.forEach(s => {
+                        symHtml += `<button type="button" class="sym-btn" onclick="pressSym('${q.qId}', '${s}')">${s}</button>`;
+                    });
+
+                    let stepsHtml = '';
+                    q.steps.forEach((st, idx) => {
+                        const isLast = (idx === q.steps.length - 1);
+                        stepsHtml += `<div class="${isLast ? 'sol-result' : 'sol-line'}">${st}</div>`;
+                    });
+
+                    let rubricRows = '';
+                    q.rubric.forEach(r => {
+                        rubricRows += `<tr><td>${r.step}</td><td><span class="math">${r.mark} ن</span></td></tr>`;
+                    });
+
+                    questionsHtml += `
+                        <div class="q-box" id="qbox-${q.qId}">
+                            <div class="q-title">
+                                <span>${q.text}</span>
+                                <span class="q-meta" id="meta-${q.qId}">المحاولات: <span class="math">3</span> | النقاط: <span class="math">${String(q.pts).replace('.', ',')}</span></span>
+                            </div>
+                            <div class="answer-area">
+                                <div class="input-line">
+                                    <input type="text" id="in-${q.qId}" placeholder="اكتب إجابتك هنا" autocomplete="off">
+                                    <button type="button" class="btn-check" id="btn-${q.qId}" onclick="checkAns(${ex.id}, '${q.qId}')">تحقق من الإجابة</button>
+                                </div>
+                                <div class="sym-toolbar">${symHtml}</div>
+                            </div>
+                            <div class="feedback-box" id="fb-${q.qId}"></div>
+                            <div class="model-solution" id="sol-${q.qId}">
+                                <h4>✔ الإجابة النموذجية المفصلة:</h4>
+                                ${stepsHtml}
+                                <table class="rubric-table">
+                                    <thead>
+                                        <tr><th>مراحل الحل (سلم التنقيط)</th><th>النقطة</th></tr>
+                                    </thead>
+                                    <tbody>${rubricRows}</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h2>${ex.title}</h2>
+                        <span class="pts-badge"><span class="math">${String(ex.pts).replace('.', ',')}</span> ${ex.pts === 1 ? 'نقطة' : 'نقاط'}</span>
+                    </div>
+                    <div class="context-box">${ex.context}</div>
+                    ${questionsHtml}
+                `;
+                root.appendChild(card);
+            });
+        }
+
+        function pressSym(qId, sym) {
+            const inp = document.getElementById(`in-${qId}`);
+            if (!inp || inp.disabled) return;
+            if (sym === '⌫') {
+                inp.value = inp.value.slice(0, -1);
+            } else {
+                inp.value += sym;
+            }
+            inp.focus();
+        }
+
+        function normalizeInput(raw) {
+            if (!raw) return '';
+            const arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+            let s = raw.toString().trim();
+            for (let i = 0; i < 10; i++) {
+                s = s.replace(new RegExp(arDigits[i], 'g'), i);
+            }
+            s = s.replace(/\s+/g, '');
+            s = s.replace(/^[a-zA-Z]\s*=/i, '');
+            s = s.replace(/،/g, ',').replace(/\./g, ',');
+            s = s.replace(/\*/g, '×').replace(/(\d)[xX](?=\d)/g, '$1×').replace(/[−–]/g, '-');
+            s = s.replace(/(da|دج|دينار|أوراق|ورقة|عشرة|عشرات|وحدة|متر|درجة|°c|c°|°|cm²|m²|m2|cm|m|kg|لتر|l)$/i, '');
+            s = s.replace(/-\((\d+\/\d+)\)/g, '-$1').replace(/\((-?\d+(?:,\d+)?)\)/g, '$1').replace(/^\((.*)\)$/, '$1').replace(/^\+(?=\d)/, '');
+            s = s.replace(/(\d),(\d*?)0+(?=$|[^\d])/g, (m, a, b) => b ? a + ',' + b : a);
+            return s.toLowerCase();
+        }
+
+        function updateHeaderStats() {
+            const formattedScore = String(Math.round(totalScore * 100) / 100).replace('.', ',');
+            document.getElementById('scoreVal').innerText = `${formattedScore} / 20`;
+            document.getElementById('starsVal').innerText = totalStars;
+            const pct = Math.min(100, Math.round((completedQuestions / totalQuestionsCount) * 100));
+            document.getElementById('progressBar').style.width = pct + '%';
+
+            if (completedQuestions === totalQuestionsCount) {
+                setTimeout(() => {
+                    document.getElementById('finalScoreText').innerText = `${formattedScore} / 20`;
+                    document.getElementById('finalTitle').innerText = totalScore >= 10 ? '🎉 أحسنت! أتممت جميع الأسئلة' : '💪 أتممت السلسلة! راجع الإجابات النموذجية وأعد المحاولة';
+                    document.getElementById('finalStarsText').innerText = `⭐ ${totalStars} نجمة`;
+                    document.getElementById('finalModal').style.display = 'flex';
+                }, 600);
+            }
+        }
+
+        function triggerShake(qId) {
+            const inp = document.getElementById(`in-${qId}`);
+            inp.classList.remove('shake');
+            void inp.offsetWidth;
+            inp.classList.add('shake');
+        }
+
+        const FBMSG = {"ok": ["أحسنت! تركيزك أوصلك إلى الجواب الصحيح.", "ممتاز! أخذت وقتك وفكّرت جيدا، وهذه هي النتيجة.", "برافو! التأنّي في الحساب يصنع النجاح.", "رائع! جهدك يستحق هذه النجوم.", "إجابة صحيحة! واصل بنفس الهدوء والتركيز.", "أحسنت! من يقرأ السؤال جيدا يصل إلى الحل.", "عمل متقن! الدقة أهم من السرعة، وأنت أثبتّ ذلك.", "بارك الله فيك! تقدّم خطوة بخطوة كما فعلت الآن."], "w1": ["لا بأس، الخطأ جزء من التعلّم. أعد قراءة السؤال بهدوء.", "تمهّل قليلا: كلما أسرعت قلّ تركيزك. خذ وقتك.", "محاولة جيدة! راجع حسابك خطوة بخطوة.", "كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.", "لا تستعجل. اقرأ المعطيات من جديد ثم فكّر.", "أنت قريب. أعطِ هذا السؤال الوقت الذي يحتاجه.", "الخطأ ليس فشلا بل خطوة نحو الفهم. حاول مجددا.", "هدّئ السرعة وزِد التركيز، وستجد الطريق."], "w2": ["محاولة أخيرة: اكتب الحساب على ورقة قبل أن تجيب.", "لا تيأس! التركيز يأتي مع الهدوء. اقرأ التلميح جيدا.", "السرعة والتركيز لا يجتمعان: تمهّل في هذه المحاولة الأخيرة.", "ابذل جهدا إضافيا صغيرا، فالحل قريب منك.", "راجع كل خطوة على حدة، ولا تتسرّع.", "كل العلماء أخطؤوا قبل أن ينجحوا. ركّز في هذه المحاولة."], "fail": ["لا تحزن، الخطأ جزء من التعلّم. اقرأ الإجابة النموذجية وسلم التنقيط بتمعّن.", "تعلّمنا شيئا جديدا اليوم! تأمّل خطوات الحل، وأعد التمرين غدا بهدوء.", "لا بأس، الفهم يحتاج وقتا وجهدا. راجع الحل خطوة بخطوة.", "المهم أن نفهم لماذا أخطأنا. اقرأ الحل، ثم حاول إعادته وحدك على ورقة.", "الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة."]};
+        function fbPick(kind, qId) { const a = FBMSG[kind]; const p = String(qId).split('-'); const n = (+p[0]) * 3 + (+p[1] || 0) + kind.length; return a[n % a.length]; }
+        function checkAns(exId, qId) {
+            if (questionLocked[qId]) return;
+            const ex = exercises.find(e => e.id === exId);
+            const q = ex.questions.find(item => item.qId === qId);
+            const inp = document.getElementById(`in-${qId}`);
+            const fb = document.getElementById(`fb-${qId}`);
+            const val = normalizeInput(inp.value);
+
+            if (!val) {
+                triggerShake(qId);
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = 'يرجى كتابة إجابتك أولاً في الخانة قبل الضغط على زر التحقق.';
+                return;
+            }
+
+            const isExactMatch = q.exact.some(ans => normalizeInput(ans) === val);
+            if (isExactMatch) {
+                const rem = attemptsLeft[qId];
+                const starsAwarded = (rem === 3) ? 3 : (rem === 2 ? 2 : 1);
+                const starIcons = '⭐'.repeat(starsAwarded);
+
+                const prevPts = questionEarned[qId] || 0;
+                totalScore += (q.pts - prevPts);
+                questionEarned[qId] = q.pts;
+                totalStars += starsAwarded;
+                questionLocked[qId] = true;
+                completedQuestions++;
+
+                playTone('success');
+                document.getElementById(`qbox-${qId}`).classList.add('solved');
+                inp.disabled = true;
+                document.getElementById(`btn-${qId}`).disabled = true;
+
+                fb.className = 'feedback-box success';
+                fb.innerHTML = `<span class="star-burst">${starIcons}</span> ${fbPick('ok', qId)} نلت العلامة الكاملة (<span class="math">${String(q.pts).replace('.', ',')} ن</span>).`;
+                document.getElementById(`sol-${qId}`).style.display = 'block';
+                updateHeaderStats();
+                return;
+            }
+
+            const isPartialMatch = q.partial && q.partial.some(ans => normalizeInput(ans) === val);
+            if (isPartialMatch) {
+                if (q.partialZero) { handleWrongAttempt(q, q.partialMsg); return; }
+                const halfPts = Math.round((q.pts / 2) * 100) / 100;
+                const prevPts = questionEarned[qId] || 0;
+                if (halfPts > prevPts) {
+                    totalScore += (halfPts - prevPts);
+                    questionEarned[qId] = halfPts;
+                }
+                handleWrongAttempt(q, `${q.partialMsg} (حصلت على نصف العلامة <span class="math">${String(halfPts).replace('.', ',')} ن</span>، صحّح الشكل لتنال العلامة الكاملة).`);
+                updateHeaderStats();
+                return;
+            }
+
+            handleWrongAttempt(q, null);
+        }
+
+        function handleWrongAttempt(q, customReason) {
+            const qId = q.qId;
+            attemptsLeft[qId]--;
+            const rem = attemptsLeft[qId];
+            const inp = document.getElementById(`in-${qId}`);
+            const fb = document.getElementById(`fb-${qId}`);
+
+            playTone('error');
+            triggerShake(qId);
+            document.getElementById(`meta-${qId}`).innerHTML = `المحاولات: <span class="math">${rem}</span> | النقاط: <span class="math">${String(q.pts).replace('.', ',')}</span>`;
+
+            if (rem === 2) {
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w1', qId) + '<br>'}<strong>💡 التلميح 1:</strong> ${q.h1}`;
+            } else if (rem === 1) {
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w2', qId) + '<br>'}<strong>💡 التلميح 2:</strong> ${q.h2}`;
+            } else {
+                questionLocked[qId] = true;
+                completedQuestions++;
+                inp.disabled = true;
+                document.getElementById(`btn-${qId}`).disabled = true;
+                document.getElementById(`qbox-${qId}`).classList.add('failed');
+
+                fb.className = 'feedback-box fail';
+                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 ' + fbPick('fail', qId);
+                document.getElementById(`sol-${qId}`).style.display = 'block';
+                updateHeaderStats();
+            }
+        }
+
+        window.onload = renderApp;
+    </script>
+</body>
+</html>
