@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلسلة المقطع الثاني رقم 1 - السنة الثانية متوسط - المقطع الثاني</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #0f766e;
+            --primary-light: #eff6ff;
+            --accent: #fbbf24;
+            --success: #15803d;
+            --success-bg: #dcfce7;
+            --warning: #b45309;
+            --warning-bg: #fef3c7;
+            --danger: #b91c1c;
+            --danger-bg: #fee2e2;
+            --dark: #0f172a;
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --border: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+        }
+
+        html, body {
+            background-color: var(--bg);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            width: 100%;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%);
+            color: #ffffff;
+            padding: 20px 12px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        header .school-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fef08a;
+            margin-bottom: 6px;
+        }
+
+        header h1 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 6px 0;
+            color: #ffffff;
+        }
+
+        header .sub-info {
+            font-size: 0.92rem;
+            opacity: 0.95;
+            background: rgba(255, 255, 255, 0.14);
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-top: 4px;
+        }
+
+        .sticky-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(6px);
+            border-bottom: 2px solid var(--border);
+            padding: 8px 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .sticky-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .stars-badge {
+            background: #fef3c7;
+            color: #b45309;
+            border: 1px solid #f59e0b;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .sound-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .progress-wrap {
+            flex: 1;
+            min-width: 110px;
+            max-width: 240px;
+            background: #e2e8f0;
+            height: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #0f766e, #15803d);
+            width: 0%;
+            height: 100%;
+            transition: width 0.35s ease;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 18px auto 0 auto;
+            padding: 0 10px;
+        }
+
+        .exercise-card {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 16px 14px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-light);
+            padding: 10px 12px;
+            border-radius: 10px;
+            border-right: 4px solid var(--primary);
+            margin-bottom: 12px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .card-header h2 {
+            font-size: 1.08rem;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .pts-badge {
+            background: #ffffff;
+            color: var(--primary);
+            border: 1px solid #bfdbfe;
+            padding: 3px 10px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .context-box {
+            background: #f8fafc;
+            border: 1px dashed #94a3b8;
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin-bottom: 14px;
+            font-size: 0.96rem;
+        }
+
+        .math {
+            direction: ltr;
+            unicode-bidi: isolate;
+            display: inline-block;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 700;
+            background: #e2e8f0;
+            padding: 1px 6px;
+            border-radius: 5px;
+            margin: 0 2px;
+            color: #0f172a;
+        }
+
+        .q-box {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 14px;
+            background: #ffffff;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .q-box.solved {
+            border-color: #86efac;
+            background: #f0fdf4;
+        }
+
+        .q-box.failed {
+            border-color: #fca5a5;
+            background: #fef2f2;
+        }
+
+        .q-title {
+            font-weight: 700;
+            font-size: 0.98rem;
+            margin-bottom: 10px;
+            color: #1e293b;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .q-meta {
+            font-size: 0.78rem;
+            background: #f1f5f9;
+            color: #475569;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .answer-area {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-line {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            min-width: 170px;
+            padding: 9px 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.98rem;
+            font-weight: 700;
+            direction: ltr;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary);
+        }
+
+        .sym-toolbar {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 4px;
+        }
+
+        .sym-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            color: #0f172a;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            direction: ltr;
+            unicode-bidi: isolate;
+            user-select: none;
+        }
+
+        .sym-btn { flex: 1 1 0; min-width: 0; padding: 6px 0; text-align: center; }
+
+        .sym-btn:hover {
+            background: #cbd5e1;
+        }
+
+        .sym-btn:active {
+            transform: scale(0.96);
+        }
+
+        .btn-check {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .btn-check:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-check:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        @keyframes shakeField {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        .shake {
+            animation: shakeField 0.35s ease;
+            border-color: var(--danger) !important;
+        }
+
+        .feedback-box {
+            margin-top: 10px;
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            display: none;
+        }
+
+        .feedback-box.success {
+            display: block;
+            background: var(--success-bg);
+            color: var(--success);
+            border-right: 4px solid var(--success);
+        }
+
+        .feedback-box.hint {
+            display: block;
+            background: var(--warning-bg);
+            color: var(--warning);
+            border-right: 4px solid var(--warning);
+        }
+
+        .feedback-box.fail {
+            display: block;
+            background: var(--danger-bg);
+            color: var(--danger);
+            border-right: 4px solid var(--danger);
+        }
+
+        .model-solution {
+            margin-top: 12px;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-right: 4px solid var(--secondary);
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+            font-size: 0.93rem;
+        }
+
+        .model-solution h4 {
+            color: var(--secondary);
+            margin-bottom: 8px;
+            font-size: 0.98rem;
+        }
+
+        .sol-line {
+            padding: 3px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .sol-result {
+            margin-top: 6px;
+            font-weight: 800;
+            color: var(--primary);
+            background: #eff6ff;
+            padding: 5px 8px;
+            border-radius: 6px;
+        }
+
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.86rem;
+            background: #ffffff;
+        }
+
+        .rubric-table td .math { white-space: nowrap; }
+        .rubric-table th, .rubric-table td {
+            border: 1px solid #cbd5e1;
+            padding: 6px 8px;
+            text-align: right;
+        }
+
+        .rubric-table th {
+            background: #e2e8f0;
+            color: #1e293b;
+            font-weight: 800;
+        }
+
+        .star-burst {
+            display: inline-block;
+            animation: popStars 0.6s ease forwards;
+        }
+
+        @keyframes popStars {
+            0% { transform: scale(0.4); opacity: 0; }
+            60% { transform: scale(1.25); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.65);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 15px;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            max-width: 420px;
+            width: 100%;
+            border-radius: 16px;
+            padding: 24px 18px;
+            text-align: center;
+            border-top: 6px solid var(--accent);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .modal-score {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin: 10px 0;
+        }
+
+        .modal-stars {
+            font-size: 1.4rem;
+            color: #d97706;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .btn-close-modal {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 9px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        @media (max-width: 420px) {
+            header .school-title { font-size: 0.98rem; }
+            header h1 { font-size: 1.12rem; }
+            .input-line { flex-direction: column; }
+            input[type="text"], .btn-check { width: 100%; }
+        }
+    
+        .fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; line-height: 1.05; margin: 0 2px; font-size: .92em; }
+        .fr > span:first-child { border-bottom: 2px solid currentColor; padding: 0 3px 1px; }
+        .fr > span:last-child { padding: 1px 3px 0; }
+        .vop { display: inline-block; direction: ltr; unicode-bidi: isolate; font-family: 'Courier New', Courier, monospace; font-weight: 700;
+               background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
+        .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
+        .vop .ln { border-top: 2px solid #0f172a; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="school-title">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
+        <h1>سلسلة المقطع الثاني رقم 1 التفاعلي في الرياضيات</h1>
+        <div class="sub-info">المستوى: السنة الثانية متوسط | نظير نقطة وشكل، الأشكال التي تقبل مركز تناظر | 5 تمارين على 20<br>حلّ في الكراس ثم تحقق هنا</div>
+    </header>
+
+    <div class="sticky-bar">
+        <div class="sticky-inner">
+            <div class="stat-group">
+                <span class="score-badge">العلامة: <span class="math" id="scoreVal" style="background:transparent;color:#fff;padding:0;">0 / 20</span></span>
+                <span class="stars-badge">⭐ <span class="math" id="starsVal" style="background:transparent;color:#b45309;padding:0;">0</span></span>
+                <button type="button" class="sound-btn" id="soundToggle" onclick="toggleSound()" title="تشغيل/كتم الصوت">🔊</button>
+            </div>
+            <div class="progress-wrap" title="شريط التقدم">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="exercisesRoot"></div>
+
+    <div class="modal-overlay" id="finalModal">
+        <div class="modal-card">
+            <h3 id="finalTitle">🎉 أحسنت! أتممت جميع الأسئلة</h3>
+            <p>لقد أنهيت سلسلة المقطع الثاني رقم 1</p>
+            <div class="modal-score" id="finalScoreText">0 / 20</div>
+            <div class="modal-stars" id="finalStarsText">⭐ 0 نجمة</div>
+            <button type="button" class="btn-close-modal" onclick="document.getElementById('finalModal').style.display='none'">مراجعة إجاباتي</button>
+        </div>
+    </div>
+
+    <script>
+        let soundEnabled = true;
+        let totalScore = 0;
+        let totalStars = 0;
+        let completedQuestions = 0;
+        let totalQuestionsCount = 0;
+
+        const attemptsLeft = {};
+        const questionEarned = {};
+        const questionLocked = {};
+
+        const symbols1AM = ["+", "−", "×", "÷", ",", "/", "<", ">", ";", "⌫"];
+
+        function playTone(type) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'success') {
+                    osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+                    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.09);
+                    osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.18);
+                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.35);
+                } else {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, ctx.currentTime);
+                    osc.frequency.setValueAtTime(180, ctx.currentTime + 0.1);
+                    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.25);
+                }
+            } catch (e) {}
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            document.getElementById('soundToggle').innerText = soundEnabled ? '🔊' : '🔇';
+        }
+
+        const exercises = [
+ {
+  "id": 1,
+  "pts": 3,
+  "title": "التمرين 1: تطبيق مباشر: نظير نقطة",
+  "context": "<span class=\"math\">A′</span> نظيرة <span class=\"math\">A</span> بالنسبة إلى <span class=\"math\">O</span> و<span class=\"math\">OA = 2,7 cm</span>.",
+  "questions": [
+   {
+    "qId": "1-1",
+    "text": "1) احسب <span class=\"math\">AA′</span> (بـ cm).",
+    "exact": [
+     "5,4"
+    ],
+    "partial": [
+     "2,7",
+     "1,35"
+    ],
+    "h1": "<span class=\"math\">O</span> منتصف <span class=\"math\">[AA′]</span>.",
+    "h2": "<span class=\"math\">2 × 2,7</span>.",
+    "steps": [
+     "<b>الطريقة:</b> تعريف نظير نقطة: <span class=\"math\">M′</span> نظيرة <span class=\"math\">M</span> بالنسبة إلى <span class=\"math\">O</span> يعني أن <span class=\"math\">O</span> منتصف القطعة <span class=\"math\">[MM′]</span>، ونظيرة <span class=\"math\">O</span> هي <span class=\"math\">O</span> نفسها.",
+     "<span class=\"math\">2 × 2,7 = 5,4</span>",
+     "النتيجة: <span class=\"math\">5,4 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">AA′ = 5,4 cm</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "3"
+     }
+    ],
+    "pts": 3,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 2,
+  "pts": 3,
+  "title": "التمرين 2: تطبيق مباشر: مركز التناظر",
+  "context": "الحروف: <span class=\"math\">O</span> ؛ <span class=\"math\">T</span> ؛ <span class=\"math\">H</span> ؛ <span class=\"math\">U</span> ؛ <span class=\"math\">Z</span>.",
+  "questions": [
+   {
+    "qId": "2-1",
+    "text": "1) كم حرفا منها يقبل مركز تناظر؟",
+    "exact": [
+     "3"
+    ],
+    "partial": [
+     "4",
+     "5",
+     "2"
+    ],
+    "h1": "أدر الورقة نصف دورة.",
+    "h2": "<span class=\"math\">T</span> و<span class=\"math\">U</span> لهما محور تناظر فقط.",
+    "steps": [
+     "<b>الطريقة:</b> شكل يقبل مركز تناظر <span class=\"math\">O</span> إذا كان نظيره بالنسبة إلى <span class=\"math\">O</span> هو الشكل نفسه (ينطبق على نفسه بعد دوران نصف دورة حول <span class=\"math\">O</span>).",
+     "تقبل: <span class=\"math\">O</span> ؛ <span class=\"math\">H</span> ؛ <span class=\"math\">Z</span>",
+     "النتيجة: <span class=\"math\">3</span>",
+     "<b>الاستنتاج:</b> ثلاثة حروف."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "3"
+     }
+    ],
+    "pts": 3,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 3,
+  "pts": 4,
+  "title": "التمرين 3: ربط: نظير قطعة",
+  "context": "<span class=\"math\">[A′B′]</span> نظيرة <span class=\"math\">[AB]</span> بالنسبة إلى <span class=\"math\">O</span> و<span class=\"math\">AB = 6 cm</span>.",
+  "questions": [
+   {
+    "qId": "3-1",
+    "text": "1) احسب <span class=\"math\">A′B′</span> (بـ cm).",
+    "exact": [
+     "6"
+    ],
+    "partial": [
+     "12",
+     "3"
+    ],
+    "h1": "الأطوال محفوظة.",
+    "h2": "نفس الطول.",
+    "steps": [
+     "<b>الطريقة:</b> خواص التناظر المركزي: يحافظ على الأطوال، وعلى أقياس الزوايا، وعلى المساحات، وعلى استقامية النقط. نظير مستقيم مستقيم يوازيه، ونظير دائرة دائرة لها نصف القطر نفسه.",
+     "النتيجة: <span class=\"math\">A′B′ = 6 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">A′B′ = 6 cm</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "2"
+     }
+    ],
+    "pts": 2,
+    "partialZero": true
+   },
+   {
+    "qId": "3-2",
+    "text": "2) ما وضعية <span class=\"math\">(AB)</span> و<span class=\"math\">(A′B′)</span>؟ اكتب <span class=\"math\">1</span> متوازيان، <span class=\"math\">2</span> متعامدان، <span class=\"math\">3</span> متقاطعان.",
+    "exact": [
+     "1"
+    ],
+    "partial": [
+     "2",
+     "3"
+    ],
+    "h1": "نظير مستقيم بالتناظر المركزي...",
+    "h2": "... يوازيه.",
+    "steps": [
+     "<b>الطريقة:</b> خواص التناظر المركزي: يحافظ على الأطوال، وعلى أقياس الزوايا، وعلى المساحات، وعلى استقامية النقط. نظير مستقيم مستقيم يوازيه، ونظير دائرة دائرة لها نصف القطر نفسه.",
+     "النتيجة: متوازيان (<span class=\"math\">1</span>)",
+     "<b>الاستنتاج:</b> <span class=\"math\">(AB) // (A′B′)</span>."
+    ],
+    "rubric": [
+     {
+      "step": "الجواب",
+      "mark": "2"
+     }
+    ],
+    "pts": 2,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 4,
+  "pts": 4,
+  "title": "التمرين 4: ربط: نظير دائرة",
+  "context": "<span class=\"math\">(C)</span> دائرة مركزها <span class=\"math\">C</span> ونصف قطرها <span class=\"math\">2 cm</span>، و<span class=\"math\">OC = 3 cm</span>. <span class=\"math\">(C′)</span> نظيرتها بالنسبة إلى <span class=\"math\">O</span>.",
+  "questions": [
+   {
+    "qId": "4-1",
+    "text": "1) احسب المسافة بين المركزين <span class=\"math\">CC′</span> (بـ cm).",
+    "exact": [
+     "6"
+    ],
+    "partial": [
+     "3",
+     "1,5"
+    ],
+    "h1": "<span class=\"math\">O</span> منتصف <span class=\"math\">[CC′]</span>.",
+    "h2": "<span class=\"math\">2 × 3</span>.",
+    "steps": [
+     "<b>الطريقة:</b> تعريف نظير نقطة: <span class=\"math\">M′</span> نظيرة <span class=\"math\">M</span> بالنسبة إلى <span class=\"math\">O</span> يعني أن <span class=\"math\">O</span> منتصف القطعة <span class=\"math\">[MM′]</span>، ونظيرة <span class=\"math\">O</span> هي <span class=\"math\">O</span> نفسها.",
+     "<span class=\"math\">2 × 3 = 6</span>",
+     "النتيجة: <span class=\"math\">6 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">CC′ = 6 cm</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "2"
+     }
+    ],
+    "pts": 2,
+    "partialZero": true
+   },
+   {
+    "qId": "4-2",
+    "text": "2) ما نصف قطر <span class=\"math\">(C′)</span> (بـ cm)؟",
+    "exact": [
+     "2"
+    ],
+    "partial": [
+     "4",
+     "6"
+    ],
+    "h1": "نصف القطر محفوظ.",
+    "h2": "نفس نصف القطر.",
+    "steps": [
+     "<b>الطريقة:</b> خواص التناظر المركزي: يحافظ على الأطوال، وعلى أقياس الزوايا، وعلى المساحات، وعلى استقامية النقط. نظير مستقيم مستقيم يوازيه، ونظير دائرة دائرة لها نصف القطر نفسه.",
+     "النتيجة: <span class=\"math\">2 cm</span>",
+     "<b>الاستنتاج:</b> نصف القطر <span class=\"math\">2 cm</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "2"
+     }
+    ],
+    "pts": 2,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 5,
+  "pts": 6,
+  "title": "التمرين 5: تميّز: شعار النادي الرياضي",
+  "context": "شعار نادٍ رياضي في قالمة يقبل مركز تناظر <span class=\"math\">O</span>، والروح الرياضية من أخلاقنا. النقطة <span class=\"math\">P</span> من الشعار على بعد <span class=\"math\">4 cm</span> من <span class=\"math\">O</span>، ومساحة نصف الشعار <span class=\"math\">15 cm²</span>.",
+  "questions": [
+   {
+    "qId": "5-1",
+    "text": "1) احسب المسافة بين <span class=\"math\">P</span> ونظيرتها <span class=\"math\">P′</span> (بـ cm).",
+    "exact": [
+     "8"
+    ],
+    "partial": [
+     "4",
+     "2"
+    ],
+    "h1": "<span class=\"math\">O</span> منتصف <span class=\"math\">[PP′]</span>.",
+    "h2": "<span class=\"math\">2 × 4</span>.",
+    "steps": [
+     "<b>الطريقة:</b> تعريف نظير نقطة: <span class=\"math\">M′</span> نظيرة <span class=\"math\">M</span> بالنسبة إلى <span class=\"math\">O</span> يعني أن <span class=\"math\">O</span> منتصف القطعة <span class=\"math\">[MM′]</span>، ونظيرة <span class=\"math\">O</span> هي <span class=\"math\">O</span> نفسها.",
+     "<span class=\"math\">2 × 4 = 8</span>",
+     "النتيجة: <span class=\"math\">8 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">PP′ = 8 cm</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "3"
+     }
+    ],
+    "pts": 3,
+    "partialZero": true
+   },
+   {
+    "qId": "5-2",
+    "text": "2) احسب مساحة الشعار كاملا (بـ cm²).",
+    "exact": [
+     "30"
+    ],
+    "partial": [
+     "15",
+     "7,5"
+    ],
+    "h1": "النصف الآخر نظير الأول.",
+    "h2": "المساحة محفوظة: <span class=\"math\">15 + 15</span>.",
+    "steps": [
+     "<b>الطريقة:</b> خواص التناظر المركزي: يحافظ على الأطوال، وعلى أقياس الزوايا، وعلى المساحات، وعلى استقامية النقط. نظير مستقيم مستقيم يوازيه، ونظير دائرة دائرة لها نصف القطر نفسه.",
+     "<span class=\"math\">15 + 15 = 30</span>",
+     "النتيجة: <span class=\"math\">30 cm²</span>",
+     "<b>الاستنتاج:</b> المساحة <span class=\"math\">30 cm²</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "3"
+     }
+    ],
+    "pts": 3,
+    "partialZero": true
+   }
+  ]
+ }
+];
+
+        function exercisesCount() { return exercises.reduce((a, e) => a + e.questions.length, 0); }
+
+        function renderApp() {
+            totalQuestionsCount = exercisesCount();
+            const root = document.getElementById('exercisesRoot');
+            root.innerHTML = '';
+
+            exercises.forEach(ex => {
+                const card = document.createElement('div');
+                card.className = 'exercise-card';
+
+                let questionsHtml = '';
+                ex.questions.forEach(q => {
+                    attemptsLeft[q.qId] = 3;
+                    questionEarned[q.qId] = 0;
+                    questionLocked[q.qId] = false;
+
+                    let symHtml = '';
+                    symbols1AM.forEach(s => {
+                        symHtml += `<button type="button" class="sym-btn" onclick="pressSym('${q.qId}', '${s}')">${s}</button>`;
+                    });
+
+                    let stepsHtml = '';
+                    q.steps.forEach((st, idx) => {
+                        const isLast = (idx === q.steps.length - 1);
+                        stepsHtml += `<div class="${isLast ? 'sol-result' : 'sol-line'}">${st}</div>`;
+                    });
+
+                    let rubricRows = '';
+                    q.rubric.forEach(r => {
+                        rubricRows += `<tr><td>${r.step}</td><td><span class="math">${r.mark} ن</span></td></tr>`;
+                    });
+
+                    questionsHtml += `
+                        <div class="q-box" id="qbox-${q.qId}">
+                            <div class="q-title">
+                                <span>${q.text}</span>
+                                <span class="q-meta" id="meta-${q.qId}">المحاولات: <span class="math">3</span> | النقاط: <span class="math">${String(q.pts).replace('.', ',')}</span></span>
+                            </div>
+                            <div class="answer-area">
+                                <div class="input-line">
+                                    <input type="text" id="in-${q.qId}" placeholder="اكتب إجابتك هنا" autocomplete="off">
+                                    <button type="button" class="btn-check" id="btn-${q.qId}" onclick="checkAns(${ex.id}, '${q.qId}')">تحقق من الإجابة</button>
+                                </div>
+                                <div class="sym-toolbar">${symHtml}</div>
+                            </div>
+                            <div class="feedback-box" id="fb-${q.qId}"></div>
+                            <div class="model-solution" id="sol-${q.qId}">
+                                <h4>✔ الإجابة النموذجية المفصلة:</h4>
+                                ${stepsHtml}
+                                <table class="rubric-table">
+                                    <thead>
+                                        <tr><th>مراحل الحل (سلم التنقيط)</th><th>النقطة</th></tr>
+                                    </thead>
+                                    <tbody>${rubricRows}</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h2>${ex.title}</h2>
+                        <span class="pts-badge"><span class="math">${String(ex.pts).replace('.', ',')}</span> ${ex.pts === 1 ? 'نقطة' : 'نقاط'}</span>
+                    </div>
+                    <div class="context-box">${ex.context}</div>
+                    ${questionsHtml}
+                `;
+                root.appendChild(card);
+            });
+        }
+
+        function pressSym(qId, sym) {
+            const inp = document.getElementById(`in-${qId}`);
+            if (!inp || inp.disabled) return;
+            if (sym === '⌫') {
+                inp.value = inp.value.slice(0, -1);
+            } else {
+                inp.value += sym;
+            }
+            inp.focus();
+        }
+
+        function normalizeInput(raw) {
+            if (!raw) return '';
+            const arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+            let s = raw.toString().trim();
+            for (let i = 0; i < 10; i++) {
+                s = s.replace(new RegExp(arDigits[i], 'g'), i);
+            }
+            s = s.replace(/\s+/g, '');
+            s = s.replace(/^[a-zA-Z]\s*=/i, '');
+            s = s.replace(/،/g, ',').replace(/\./g, ',');
+            s = s.replace(/\*/g, '×').replace(/(\d)[xX](?=\d)/g, '$1×').replace(/[−–]/g, '-');
+            s = s.replace(/(da|دج|دينار|أوراق|ورقة|عشرة|عشرات|وحدة|متر|درجة|°c|c°|°|cm²|m²|m2|cm|m|kg|لتر|l)$/i, '');
+            s = s.replace(/-\((\d+\/\d+)\)/g, '-$1').replace(/\((-?\d+(?:,\d+)?)\)/g, '$1').replace(/^\((.*)\)$/, '$1').replace(/^\+(?=\d)/, '');
+            s = s.replace(/(\d),(\d*?)0+(?=$|[^\d])/g, (m, a, b) => b ? a + ',' + b : a);
+            return s.toLowerCase();
+        }
+
+        function updateHeaderStats() {
+            const formattedScore = String(Math.round(totalScore * 100) / 100).replace('.', ',');
+            document.getElementById('scoreVal').innerText = `${formattedScore} / 20`;
+            document.getElementById('starsVal').innerText = totalStars;
+            const pct = Math.min(100, Math.round((completedQuestions / totalQuestionsCount) * 100));
+            document.getElementById('progressBar').style.width = pct + '%';
+
+            if (completedQuestions === totalQuestionsCount) {
+                setTimeout(() => {
+                    document.getElementById('finalScoreText').innerText = `${formattedScore} / 20`;
+                    document.getElementById('finalTitle').innerText = totalScore >= 10 ? '🎉 أحسنت! أتممت جميع الأسئلة' : '💪 أتممت السلسلة! راجع الإجابات النموذجية وأعد المحاولة';
+                    document.getElementById('finalStarsText').innerText = `⭐ ${totalStars} نجمة`;
+                    document.getElementById('finalModal').style.display = 'flex';
+                }, 600);
+            }
+        }
+
+        function triggerShake(qId) {
+            const inp = document.getElementById(`in-${qId}`);
+            inp.classList.remove('shake');
+            void inp.offsetWidth;
+            inp.classList.add('shake');
+        }
+
+        const FBMSG = {"ok": ["أحسنت! تركيزك أوصلك إلى الجواب الصحيح.", "ممتاز! أخذت وقتك وفكّرت جيدا، وهذه هي النتيجة.", "برافو! التأنّي في الحساب يصنع النجاح.", "رائع! جهدك يستحق هذه النجوم.", "إجابة صحيحة! واصل بنفس الهدوء والتركيز.", "أحسنت! من يقرأ السؤال جيدا يصل إلى الحل.", "عمل متقن! الدقة أهم من السرعة، وأنت أثبتّ ذلك.", "بارك الله فيك! تقدّم خطوة بخطوة كما فعلت الآن."], "w1": ["لا بأس، الخطأ جزء من التعلّم. أعد قراءة السؤال بهدوء.", "تمهّل قليلا: كلما أسرعت قلّ تركيزك. خذ وقتك.", "محاولة جيدة! راجع حسابك خطوة بخطوة.", "كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.", "لا تستعجل. اقرأ المعطيات من جديد ثم فكّر.", "أنت قريب. أعطِ هذا السؤال الوقت الذي يحتاجه.", "الخطأ ليس فشلا بل خطوة نحو الفهم. حاول مجددا.", "هدّئ السرعة وزِد التركيز، وستجد الطريق."], "w2": ["محاولة أخيرة: اكتب الحساب على ورقة قبل أن تجيب.", "لا تيأس! التركيز يأتي مع الهدوء. اقرأ التلميح جيدا.", "السرعة والتركيز لا يجتمعان: تمهّل في هذه المحاولة الأخيرة.", "ابذل جهدا إضافيا صغيرا، فالحل قريب منك.", "راجع كل خطوة على حدة، ولا تتسرّع.", "كل العلماء أخطؤوا قبل أن ينجحوا. ركّز في هذه المحاولة."], "fail": ["لا تحزن، الخطأ جزء من التعلّم. اقرأ الإجابة النموذجية وسلم التنقيط بتمعّن.", "تعلّمنا شيئا جديدا اليوم! تأمّل خطوات الحل، وأعد التمرين غدا بهدوء.", "لا بأس، الفهم يحتاج وقتا وجهدا. راجع الحل خطوة بخطوة.", "المهم أن نفهم لماذا أخطأنا. اقرأ الحل، ثم حاول إعادته وحدك على ورقة.", "الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة."]};
+        function fbPick(kind, qId) { const a = FBMSG[kind]; const p = String(qId).split('-'); const n = (+p[0]) * 3 + (+p[1] || 0) + kind.length; return a[n % a.length]; }
+        function checkAns(exId, qId) {
+            if (questionLocked[qId]) return;
+            const ex = exercises.find(e => e.id === exId);
+            const q = ex.questions.find(item => item.qId === qId);
+            const inp = document.getElementById(`in-${qId}`);
+            const fb = document.getElementById(`fb-${qId}`);
+            const val = normalizeInput(inp.value);
+
+            if (!val) {
+                triggerShake(qId);
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = 'يرجى كتابة إجابتك أولاً في الخانة قبل الضغط على زر التحقق.';
+                return;
+            }
+
+            const isExactMatch = q.exact.some(ans => normalizeInput(ans) === val);
+            if (isExactMatch) {
+                const rem = attemptsLeft[qId];
+                const starsAwarded = (rem === 3) ? 3 : (rem === 2 ? 2 : 1);
+                const starIcons = '⭐'.repeat(starsAwarded);
+
+                const prevPts = questionEarned[qId] || 0;
+                totalScore += (q.pts - prevPts);
+                questionEarned[qId] = q.pts;
+                totalStars += starsAwarded;
+                questionLocked[qId] = true;
+                completedQuestions++;
+
+                playTone('success');
+                document.getElementById(`qbox-${qId}`).classList.add('solved');
+                inp.disabled = true;
+                document.getElementById(`btn-${qId}`).disabled = true;
+
+                fb.className = 'feedback-box success';
+                fb.innerHTML = `<span class="star-burst">${starIcons}</span> ${fbPick('ok', qId)} نلت العلامة الكاملة (<span class="math">${String(q.pts).replace('.', ',')} ن</span>).`;
+                document.getElementById(`sol-${qId}`).style.display = 'block';
+                updateHeaderStats();
+                return;
+            }
+
+            const isPartialMatch = q.partial && q.partial.some(ans => normalizeInput(ans) === val);
+            if (isPartialMatch) {
+                if (q.partialZero) { handleWrongAttempt(q, q.partialMsg); return; }
+                const halfPts = Math.round((q.pts / 2) * 100) / 100;
+                const prevPts = questionEarned[qId] || 0;
+                if (halfPts > prevPts) {
+                    totalScore += (halfPts - prevPts);
+                    questionEarned[qId] = halfPts;
+                }
+                handleWrongAttempt(q, `${q.partialMsg} (حصلت على نصف العلامة <span class="math">${String(halfPts).replace('.', ',')} ن</span>، صحّح الشكل لتنال العلامة الكاملة).`);
+                updateHeaderStats();
+                return;
+            }
+
+            handleWrongAttempt(q, null);
+        }
+
+        function handleWrongAttempt(q, customReason) {
+            const qId = q.qId;
+            attemptsLeft[qId]--;
+            const rem = attemptsLeft[qId];
+            const inp = document.getElementById(`in-${qId}`);
+            const fb = document.getElementById(`fb-${qId}`);
+
+            playTone('error');
+            triggerShake(qId);
+            document.getElementById(`meta-${qId}`).innerHTML = `المحاولات: <span class="math">${rem}</span> | النقاط: <span class="math">${String(q.pts).replace('.', ',')}</span>`;
+
+            if (rem === 2) {
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w1', qId) + '<br>'}<strong>💡 التلميح 1:</strong> ${q.h1}`;
+            } else if (rem === 1) {
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w2', qId) + '<br>'}<strong>💡 التلميح 2:</strong> ${q.h2}`;
+            } else {
+                questionLocked[qId] = true;
+                completedQuestions++;
+                inp.disabled = true;
+                document.getElementById(`btn-${qId}`).disabled = true;
+                document.getElementById(`qbox-${qId}`).classList.add('failed');
+
+                fb.className = 'feedback-box fail';
+                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 ' + fbPick('fail', qId);
+                document.getElementById(`sol-${qId}`).style.display = 'block';
+                updateHeaderStats();
+            }
+        }
+
+        window.onload = renderApp;
+    </script>
+</body>
+</html>
