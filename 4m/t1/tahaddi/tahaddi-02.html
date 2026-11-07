@@ -543,6 +543,34 @@
 
  #paper{display:block!important;width:auto}
 }
+
+#paper .copy{font-size:11pt;padding:6px 10px 6px 84px;margin:0}
+#paper .copy .cols{grid-template-columns:1fr 1fr;gap:4px 14px}
+#paper .copy.flow{font-size:12pt}
+#paper .copy.flow .cols{display:block}
+#paper .copy.flow .ex{margin:0 0 4mm}
+#paper .copy.flow svg{max-height:170px}
+#paper .ex h4{font-size:11.5pt}
+#solpaper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt}
+#solpaper .sxs{columns:2;column-gap:7mm;column-rule:1px solid #cbd5e1}
+#solpaper .sx{margin:0 0 2mm}
+#solpaper h4{break-after:avoid}
+#solpaper h4{margin:2px 0;font-size:11pt;background:#dcfce7;border-radius:6px;padding:1px 6px}
+#solpaper .ph{display:flex;justify-content:space-between;font-weight:bold;font-size:9.5pt}
+#solpaper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #166534;border-radius:14px;padding:2px 8px;margin:3px auto 6px;width:fit-content;background:#f0fdf4}
+#solpaper .sq{margin:2px 0 4px;break-inside:avoid;text-align:right}
+#solpaper .sq p{margin:1px 0;line-height:1.4;text-align:right}
+#solpaper .sq p *{text-align:right}
+#solpaper table{border-collapse:collapse;margin:2px 0 3px;font-size:9.5pt}
+#solpaper td,#solpaper th{border:1px solid #64748b;padding:1px 6px}
+#solpaper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+.sol-btn{display:none}
+.sol-wait{margin-top:6px;font-size:.85rem;color:#64748b}
+@media print{
+ body.psol>*:not(#solpaper){display:none!important}
+ body.psol #solpaper{display:block!important}
+ body.psol #paper{display:none!important}
+}
 </style>
 </head>
 <body>
@@ -551,7 +579,7 @@
         <div class="school-title">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
         <h1>التحدي الثاني التفاعلي في الرياضيات</h1>
         <div class="sub-info">المستوى: السنة الرابعة متوسط | المقطع الثاني | هل تقبل التحدي؟<br>فكّر جيدا قبل أن تكتب، لك 3 محاولات</div>
-        <button class="print-btn" onclick="window.print()">🖨️ النسخة الورقية للطباعة</button>
+        <button class="print-btn" onclick="document.body.classList.remove('psol');window.print()">🖨️ النسخة الورقية للطباعة</button> <button class="print-btn sol-btn" onclick="printSol()">🖨️ النسخة الورقية للحل</button><div class="sol-wait"></div>
     </header>
 
     <div class="sticky-bar">
@@ -962,6 +990,15 @@
   const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
   s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
   document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
-<div id="paper"><div class="copy one"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACb0lEQVR4nMWYMY7kOAxFH0sNqDLVDdQXGbvmWAM0UJ5xA5PsndruvYicbShnMuDx30C92GRroi4tAzlg8Gnq85OUif+25XTHAZ/s2czMkD0Bq9n5ndfFzJ4+G+euh9JLqZh2ShfGRBeUJI2pWQ7q73+5vEbg27Of1oHNLp+Pc8+e6seWP5Yz4TX+9adYHoDzu1vocEnK4CeI/ghjKoSWt2DagbDH9auUVpfBK7fMAVBJ+O8BuGY5QJJUeu1RUxhT6bOTJLWLoFZjB7H02qOfNaCJW8MILBN14FQIUulwomsaAVWCdrB8k+bsklduyIPSaxSmASk7lS4MUXNLTfTfLyx6s1FnxX05W3bzI3DueiiEPdIFJfpM9HN28nPLWtAB+CPs0IUxFXDCWvJA0hBLB9FLAzrCmPzUUJUrJH0FHyiEndKFprcQRvkp7FWRpHyTn3M7PThtLrOUbvWJ93VM2xXY+thyRurCKM3ZiS5IXlWaW/Jgrt1ZSbOU/FTJ0I4Hp+26jtKxDlhvA7Duke7zce566oxUCAOYhihll5rqwcn/4FcfDpz0dnHzdg3b8yNwfuOxfJs3l+Fs+dcz8DPpaBgBpc/EAi9RlYQ07gsndLnN4cAluy17pM/fbLuu7fTgBMF6LH+3Aq5Wo3+LQ8sI1mEp72HgPF9Y7LQ+sV0fgXPP6qwM4I/aIEeVviUPNjMzPwVpO3FLvMMCvDbenaX8URVe2an0LftC3RsnXvAHHysUXcudqUYwa4+aNeCnsNP4/QCAL5efM+A+5kTWdtX4wYOJF6iM0EBTHpyYzZ63W3bS9I8UhB8PwLln9r+/pf0NU0yu/FmG0DMAAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الرابعة متوسط</span></div><div class="pt">التحدي الثاني</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>الوضعية الإدماجية (20 ن): تحدي حساب المثلثات</h4><div class="bem-data"><p>– كل الأسئلة تُحل بالعلاقات بين النسب المثلثية.</p></div><p>1) <span class="math">x</span> زاوية حادة حيث <span class="math">tan x = <span class="fr"><span>12</span><span>5</span></span></span> و<span class="math">cos x = <span class="fr"><span>5</span><span>13</span></span></span>. احسب <span class="math">sin x</span>.</p><p>2) بسّط <span class="math">(cos x + sin x)² − 2 × sin x × cos x</span> لكل زاوية حادة <span class="math">x</span>.</p><p>3) مثلث متساوي الساقين طول كل ساق <span class="math">10 cm</span> وكل زاوية من زاويتي القاعدة <span class="math">30°</span>. احسب طول القاعدة (بـ cm، بالتدوير إلى <span class="math">0,1</span>).</p></div></div></div></div><!--/paper-->
+<div id="paper"><div class="copy" data-pages="1"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACb0lEQVR4nMWYMY7kOAxFH0sNqDLVDdQXGbvmWAM0UJ5xA5PsndruvYicbShnMuDx30C92GRroi4tAzlg8Gnq85OUif+25XTHAZ/s2czMkD0Bq9n5ndfFzJ4+G+euh9JLqZh2ShfGRBeUJI2pWQ7q73+5vEbg27Of1oHNLp+Pc8+e6seWP5Yz4TX+9adYHoDzu1vocEnK4CeI/ghjKoSWt2DagbDH9auUVpfBK7fMAVBJ+O8BuGY5QJJUeu1RUxhT6bOTJLWLoFZjB7H02qOfNaCJW8MILBN14FQIUulwomsaAVWCdrB8k+bsklduyIPSaxSmASk7lS4MUXNLTfTfLyx6s1FnxX05W3bzI3DueiiEPdIFJfpM9HN28nPLWtAB+CPs0IUxFXDCWvJA0hBLB9FLAzrCmPzUUJUrJH0FHyiEndKFprcQRvkp7FWRpHyTn3M7PThtLrOUbvWJ93VM2xXY+thyRurCKM3ZiS5IXlWaW/Jgrt1ZSbOU/FTJ0I4Hp+26jtKxDlhvA7Duke7zce566oxUCAOYhihll5rqwcn/4FcfDpz0dnHzdg3b8yNwfuOxfJs3l+Fs+dcz8DPpaBgBpc/EAi9RlYQ07gsndLnN4cAluy17pM/fbLuu7fTgBMF6LH+3Aq5Wo3+LQ8sI1mEp72HgPF9Y7LQ+sV0fgXPP6qwM4I/aIEeVviUPNjMzPwVpO3FLvMMCvDbenaX8URVe2an0LftC3RsnXvAHHysUXcudqUYwa4+aNeCnsNP4/QCAL5efM+A+5kTWdtX4wYOJF6iM0EBTHpyYzZ63W3bS9I8UhB8PwLln9r+/pf0NU0yu/FmG0DMAAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الرابعة متوسط</span></div><div class="pt">التحدي الثاني</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>الوضعية الإدماجية (20 ن): تحدي حساب المثلثات</h4><div class="bem-data"><p>– كل الأسئلة تُحل بالعلاقات بين النسب المثلثية.</p></div><p>1) <span class="math">x</span> زاوية حادة حيث <span class="math">tan x = <span class="fr"><span>12</span><span>5</span></span></span> و<span class="math">cos x = <span class="fr"><span>5</span><span>13</span></span></span>. احسب <span class="math">sin x</span>.</p><p>2) بسّط <span class="math">(cos x + sin x)² − 2 × sin x × cos x</span> لكل زاوية حادة <span class="math">x</span>.</p><p>3) مثلث متساوي الساقين طول كل ساق <span class="math">10 cm</span> وكل زاوية من زاويتي القاعدة <span class="math">30°</span>. احسب طول القاعدة (بـ cm، بالتدوير إلى <span class="math">0,1</span>).</p></div></div></div></div><script>(function(){function fit(){var pp=document.getElementById('paper');if(!pp)return;var c=pp.querySelector('.copy');var n=+(c&&c.getAttribute('data-pages'));if(!n)return;
+var st=pp.getAttribute('style');pp.setAttribute('style','display:block;position:absolute;visibility:hidden;top:0;right:0;width:192mm');c.style.zoom=1;
+var mm=document.createElement('div');mm.style.height=(n*279-6)+'mm';pp.appendChild(mm);var lim=mm.getBoundingClientRect().height;pp.removeChild(mm);
+var lo=0.45,hi=1.3,k;c.style.zoom=hi;if(c.getBoundingClientRect().height<=lim)lo=hi;else for(k=0;k<10;k++){var m=(lo+hi)/2;c.style.zoom=m;if(c.getBoundingClientRect().height<=lim)lo=m;else hi=m}
+c.style.zoom=lo;if(st===null)pp.removeAttribute('style');else pp.setAttribute('style',st)}
+window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الرابعة متوسط</span></div><div class="pt">الحل النموذجي وسلم التنقيط — التحدي الثاني</div><div class="sxs"><div class="sx"><h4>الوضعية الإدماجية (20 ن): تحدي حساب المثلثات</h4><div class="sq"><p><b>1) <span class="math">x</span> زاوية حادة حيث <span class="math">tan x = <span class="fr"><span>12</span><span>5</span></span></span> و<span class="math">cos x = <span class="fr"><span>5</span><span>13</span></span></span>. احسب <span class="math">sin x</span>.</b></p><p><b>الطريقة:</b> العلاقة <span class="math">tan x = sin x / cos x</span> أي <span class="math">sin x = tan x × cos x</span>.</p><p><span class="math">sin x = <span class="fr"><span>12</span><span>5</span></span> × <span class="fr"><span>5</span><span>13</span></span></span></p><p>النتيجة: <span class="math">sin x = <span class="fr"><span>12</span><span>13</span></span></span></p><p><b>الاستنتاج:</b> <span class="math">sin x = <span class="fr"><span>12</span><span>13</span></span></span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: العلاقة</td><td>3</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>3</td></tr></table></div><div class="sq"><p><b>2) بسّط <span class="math">(cos x + sin x)² − 2 × sin x × cos x</span> لكل زاوية حادة <span class="math">x</span>.</b></p><p><b>الطريقة:</b> متطابقة <span class="math">(a + b)² = a² + 2ab + b²</span> ثم <span class="math">cos² x + sin² x = 1</span>.</p><p><span class="math">(cos x + sin x)² = cos² x + 2 sin x cos x + sin² x</span></p><p>بعد الطرح: <span class="math">cos² x + sin² x</span></p><p>النتيجة: <span class="math">1</span></p><p><b>الاستنتاج:</b> العبارة تساوي <span class="math">1</span> دائما.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: النشر</td><td>4</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>3</td></tr></table></div><div class="sq"><p><b>3) مثلث متساوي الساقين طول كل ساق <span class="math">10 cm</span> وكل زاوية من زاويتي القاعدة <span class="math">30°</span>. احسب طول القاعدة (بـ cm، بالتدوير إلى <span class="math">0,1</span>).</b></p><p><b>الطريقة:</b> الارتفاع المتعلق بالقاعدة في المثلث المتساوي الساقين محور لها؛ ثم جيب التمام في المثلث القائم.</p><p>نصف القاعدة <span class="math">= 10 × cos 30° ≈ 8,66</span></p><p>القاعدة <span class="math">≈ 2 × 8,66 = 17,32</span></p><p>النتيجة: <span class="math">≈ 17,3 cm</span></p><p><b>الاستنتاج:</b> طول القاعدة نحو <span class="math">17,3 cm</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: نصف القاعدة</td><td>4</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>3</td></tr></table></div></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
+function tick(){var b=document.querySelector('.sol-btn'),w=document.querySelector('.sol-wait');if(!b)return;var r=t+D-Date.now();
+if(r<=0){b.style.display='inline-block';if(w)w.style.display='none';return}if(w)w.textContent='📄 النسخة الورقية للحل تظهر بعد '+Math.ceil(r/60000)+' دقيقة';setTimeout(tick,20000)}
+window.printSol=function(){document.body.classList.add('psol');window.print()};window.addEventListener('afterprint',function(){document.body.classList.remove('psol')});
+window.addEventListener('load',tick)})();</script><!--/paper-->
 </body>
 </html>
