@@ -543,6 +543,34 @@
 
  #paper{display:block!important;width:auto}
 }
+
+#paper .copy{font-size:11pt;padding:6px 10px 6px 84px;margin:0}
+#paper .copy .cols{grid-template-columns:1fr 1fr;gap:4px 14px}
+#paper .copy.flow{font-size:12pt}
+#paper .copy.flow .cols{display:block}
+#paper .copy.flow .ex{margin:0 0 4mm}
+#paper .copy.flow svg{max-height:170px}
+#paper .ex h4{font-size:11.5pt}
+#solpaper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt}
+#solpaper .sxs{columns:2;column-gap:7mm;column-rule:1px solid #cbd5e1}
+#solpaper .sx{margin:0 0 2mm}
+#solpaper h4{break-after:avoid}
+#solpaper h4{margin:2px 0;font-size:11pt;background:#dcfce7;border-radius:6px;padding:1px 6px}
+#solpaper .ph{display:flex;justify-content:space-between;font-weight:bold;font-size:9.5pt}
+#solpaper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #166534;border-radius:14px;padding:2px 8px;margin:3px auto 6px;width:fit-content;background:#f0fdf4}
+#solpaper .sq{margin:2px 0 4px;break-inside:avoid;text-align:right}
+#solpaper .sq p{margin:1px 0;line-height:1.4;text-align:right}
+#solpaper .sq p *{text-align:right}
+#solpaper table{border-collapse:collapse;margin:2px 0 3px;font-size:9.5pt}
+#solpaper td,#solpaper th{border:1px solid #64748b;padding:1px 6px}
+#solpaper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+.sol-btn{display:none}
+.sol-wait{margin-top:6px;font-size:.85rem;color:#64748b}
+@media print{
+ body.psol>*:not(#solpaper){display:none!important}
+ body.psol #solpaper{display:block!important}
+ body.psol #paper{display:none!important}
+}
 </style>
 </head>
 <body>
@@ -551,7 +579,7 @@
         <div class="school-title">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
         <h1>التحدي الأول التفاعلي في الرياضيات</h1>
         <div class="sub-info">المستوى: السنة الأولى متوسط | المقطع الأول | هل تقبل التحدي؟<br>فكّر جيدا قبل أن تكتب، لك 3 محاولات</div>
-        <button class="print-btn" onclick="window.print()">🖨️ النسخة الورقية للطباعة</button>
+        <button class="print-btn" onclick="document.body.classList.remove('psol');window.print()">🖨️ النسخة الورقية للطباعة</button> <button class="print-btn sol-btn" onclick="printSol()">🖨️ النسخة الورقية للحل</button><div class="sol-wait"></div>
     </header>
 
     <div class="sticky-bar">
@@ -964,6 +992,15 @@
   const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
   s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
   document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
-<div id="paper"><div class="copy one"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACeUlEQVR4nMWYTW7cOBCFv5IaYO8oYA5A32BO4GZ8lDlGADmS0wF8rFDORaQbsHcUIOtlIS/jrGxOLUgItajC03v1QxN/tqV5xwEf7FnNzNbYPZk1txO83MbFzE4fHeddDyVKs5QHaWeYMWmWdJ2rYYDsBPADfukxlns7sVr38XH+7lm/wGLfaGde6D8vzp/sdFwvvEZNXcZP//7zX9UMGkwbKIzYw3LiFsOIU66ZwWR2x4V2KvdhXLgAZjbW04IkqVjuA1FjcLuXJKmaFihR15moDWJu5XYAq6lG92RbKJON6Knrl1vDoHK5bRV5EGXmkj+F8wU4W3698z9DTR4kL4Hfjk+3M8zaGSry4EI7uykTCn4LJeYe7bT1MlCiDy75EaK24HZaFauohWYd5CYsE9x3nmde+GpndfUqEpK2UKCVktdMzAQuVXkQNVLefsAwl5h7XPIVK5J2COXiNZeYCUoMKpYrYqBJI1KGYrpKiWFWVQxKzINc8ltQ8hsl5nZ2desBXrObch/clDkas9srYtA4LY9xjeEEChLqCOtDrqnG5DeU/Ijb/Qgx9wFqYkBcnM6WYX3IBJd4nrl8Qpx37ZABHJOCiLlHydebDyimLbhJG0r0lJhr9wW3364T6p51BvAJqNwXdgguQQCOlqCqfaFZG78theMYF/Bm4CvujW+zskbc7rfgkr+qxKrzgZkZ6mBt8/O8foPlM+K863nbnROtXKKdS9RVhZo8QHZifdCjlcsxrr7aGX5U3p1dotXaLhb9z46jPtfNAHX9wn24zmsDFOhr786X24j7ztc74iKtza0mBpPZ3foFgj0sx2vC4veKPLD//S3tN9L+hEfoKzbkAAAAAElFTkSuQmCC" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="pt">التحدي الأول</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>الوضعية الإدماجية (20 ن): لغز السوق الأسبوعي في بوشقوف</h4><p class="bem-intro">يحب أمين التفكير قبل الحساب.</p><div class="bem-data"><p>– ساعده في حل الألغاز التالية.</p></div><p>1) فكّر أمين في عدد عشري، ضربه في <span class="math">10</span> ثم أضاف <span class="math">3,5</span> فوجد <span class="math">48,5</span>. ما العدد؟</p><p>2) أوجد العدد العشري المحصور بين <span class="math">2,3</span> و<span class="math">2,4</span> والذي رقم أجزاء المائة فيه <span class="math">7</span> (وله رقمان فقط بعد الفاصلة).</p><p>3) اشترى أمين <span class="math">3 kg</span> من الطماطم بـ <span class="math">45 DA</span> للكيلوغرام و<span class="math">2 kg</span> من الفلفل بـ <span class="math">87,5 DA</span> للكيلوغرام. كم دفع (بـ DA)؟</p></div></div></div></div><!--/paper-->
+<div id="paper"><div class="copy" data-pages="1"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACeUlEQVR4nMWYTW7cOBCFv5IaYO8oYA5A32BO4GZ8lDlGADmS0wF8rFDORaQbsHcUIOtlIS/jrGxOLUgItajC03v1QxN/tqV5xwEf7FnNzNbYPZk1txO83MbFzE4fHeddDyVKs5QHaWeYMWmWdJ2rYYDsBPADfukxlns7sVr38XH+7lm/wGLfaGde6D8vzp/sdFwvvEZNXcZP//7zX9UMGkwbKIzYw3LiFsOIU66ZwWR2x4V2KvdhXLgAZjbW04IkqVjuA1FjcLuXJKmaFihR15moDWJu5XYAq6lG92RbKJON6Knrl1vDoHK5bRV5EGXmkj+F8wU4W3698z9DTR4kL4Hfjk+3M8zaGSry4EI7uykTCn4LJeYe7bT1MlCiDy75EaK24HZaFauohWYd5CYsE9x3nmde+GpndfUqEpK2UKCVktdMzAQuVXkQNVLefsAwl5h7XPIVK5J2COXiNZeYCUoMKpYrYqBJI1KGYrpKiWFWVQxKzINc8ltQ8hsl5nZ2desBXrObch/clDkas9srYtA4LY9xjeEEChLqCOtDrqnG5DeU/Ijb/Qgx9wFqYkBcnM6WYX3IBJd4nrl8Qpx37ZABHJOCiLlHydebDyimLbhJG0r0lJhr9wW3364T6p51BvAJqNwXdgguQQCOlqCqfaFZG78theMYF/Bm4CvujW+zskbc7rfgkr+qxKrzgZkZ6mBt8/O8foPlM+K863nbnROtXKKdS9RVhZo8QHZifdCjlcsxrr7aGX5U3p1dotXaLhb9z46jPtfNAHX9wn24zmsDFOhr786X24j7ztc74iKtza0mBpPZ3foFgj0sx2vC4veKPLD//S3tN9L+hEfoKzbkAAAAAElFTkSuQmCC" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="pt">التحدي الأول</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>الوضعية الإدماجية (20 ن): لغز السوق الأسبوعي في بوشقوف</h4><p class="bem-intro">يحب أمين التفكير قبل الحساب.</p><div class="bem-data"><p>– ساعده في حل الألغاز التالية.</p></div><p>1) فكّر أمين في عدد عشري، ضربه في <span class="math">10</span> ثم أضاف <span class="math">3,5</span> فوجد <span class="math">48,5</span>. ما العدد؟</p><p>2) أوجد العدد العشري المحصور بين <span class="math">2,3</span> و<span class="math">2,4</span> والذي رقم أجزاء المائة فيه <span class="math">7</span> (وله رقمان فقط بعد الفاصلة).</p><p>3) اشترى أمين <span class="math">3 kg</span> من الطماطم بـ <span class="math">45 DA</span> للكيلوغرام و<span class="math">2 kg</span> من الفلفل بـ <span class="math">87,5 DA</span> للكيلوغرام. كم دفع (بـ DA)؟</p></div></div></div></div><script>(function(){function fit(){var pp=document.getElementById('paper');if(!pp)return;var c=pp.querySelector('.copy');var n=+(c&&c.getAttribute('data-pages'));if(!n)return;
+var st=pp.getAttribute('style');pp.setAttribute('style','display:block;position:absolute;visibility:hidden;top:0;right:0;width:192mm');c.style.zoom=1;
+var mm=document.createElement('div');mm.style.height=(n*279-6)+'mm';pp.appendChild(mm);var lim=mm.getBoundingClientRect().height;pp.removeChild(mm);
+var lo=0.45,hi=1.3,k;c.style.zoom=hi;if(c.getBoundingClientRect().height<=lim)lo=hi;else for(k=0;k<10;k++){var m=(lo+hi)/2;c.style.zoom=m;if(c.getBoundingClientRect().height<=lim)lo=m;else hi=m}
+c.style.zoom=lo;if(st===null)pp.removeAttribute('style');else pp.setAttribute('style',st)}
+window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="pt">الحل النموذجي وسلم التنقيط — التحدي الأول</div><div class="sxs"><div class="sx"><h4>الوضعية الإدماجية (20 ن): لغز السوق الأسبوعي في بوشقوف</h4><div class="sq"><p><b>1) فكّر أمين في عدد عشري، ضربه في <span class="math">10</span> ثم أضاف <span class="math">3,5</span> فوجد <span class="math">48,5</span>. ما العدد؟</b></p><p><b>الطريقة:</b> نعكس العمليات انطلاقا من النتيجة: عكس الجمع طرح، وعكس الضرب في <span class="math">10</span> القسمة على <span class="math">10</span>.</p><p><span class="math">48,5 − 3,5 = 45</span></p><p><span class="math">45 ÷ 10 = 4,5</span></p><p>تحقق: <span class="math">4,5 × 10 + 3,5 = 48,5</span></p><p>النتيجة: <span class="math">4,5</span></p><p><b>الاستنتاج:</b> العدد <span class="math">4,5</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: عكس العمليات</td><td>3</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>3</td></tr></table></div><div class="sq"><p><b>2) أوجد العدد العشري المحصور بين <span class="math">2,3</span> و<span class="math">2,4</span> والذي رقم أجزاء المائة فيه <span class="math">7</span> (وله رقمان فقط بعد الفاصلة).</b></p><p><b>الطريقة:</b> ترتيب الأعداد العشرية: نقارن الأجزاء الصحيحة ثم أرقام أجزاء العشرة ثم أجزاء المائة.</p><p>العدد من الشكل <span class="math">2,3…</span></p><p>رقم أجزاء المائة <span class="math">7</span>: <span class="math">2,37</span></p><p><span class="math">2,3 &lt; 2,37 &lt; 2,4</span></p><p>النتيجة: <span class="math">2,37</span></p><p><b>الاستنتاج:</b> العدد <span class="math">2,37</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: التبرير</td><td>3</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>3</td></tr></table></div><div class="sq"><p><b>3) اشترى أمين <span class="math">3 kg</span> من الطماطم بـ <span class="math">45 DA</span> للكيلوغرام و<span class="math">2 kg</span> من الفلفل بـ <span class="math">87,5 DA</span> للكيلوغرام. كم دفع (بـ DA)؟</b></p><p><b>الطريقة:</b> ثمن كمية = الكمية × ثمن الوحدة، ثم نجمع.</p><p><div class="vop"><div>  45</div><div> × 3</div><div class="ln"> 135</div></div></p><p><div class="vop"><div> 87,5</div><div>  × 2</div><div class="ln">  175</div></div></p><p><div class="vop"><div>  135</div><div>+ 175</div><div class="ln">  310</div></div></p><p>النتيجة: <span class="math">310 DA</span></p><p><b>الاستنتاج:</b> دفع <span class="math">310 DA</span>. ونشجّع منتوج فلاحينا المحليين.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: الثمنان</td><td>4</td></tr><tr><td>م2 الاستعمال السليم: المجموع</td><td>4</td></tr></table></div></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
+function tick(){var b=document.querySelector('.sol-btn'),w=document.querySelector('.sol-wait');if(!b)return;var r=t+D-Date.now();
+if(r<=0){b.style.display='inline-block';if(w)w.style.display='none';return}if(w)w.textContent='📄 النسخة الورقية للحل تظهر بعد '+Math.ceil(r/60000)+' دقيقة';setTimeout(tick,20000)}
+window.printSol=function(){document.body.classList.add('psol');window.print()};window.addEventListener('afterprint',function(){document.body.classList.remove('psol')});
+window.addEventListener('load',tick)})();</script><!--/paper-->
 </body>
 </html>

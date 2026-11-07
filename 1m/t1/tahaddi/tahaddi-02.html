@@ -543,6 +543,34 @@
 
  #paper{display:block!important;width:auto}
 }
+
+#paper .copy{font-size:11pt;padding:6px 10px 6px 84px;margin:0}
+#paper .copy .cols{grid-template-columns:1fr 1fr;gap:4px 14px}
+#paper .copy.flow{font-size:12pt}
+#paper .copy.flow .cols{display:block}
+#paper .copy.flow .ex{margin:0 0 4mm}
+#paper .copy.flow svg{max-height:170px}
+#paper .ex h4{font-size:11.5pt}
+#solpaper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt}
+#solpaper .sxs{columns:2;column-gap:7mm;column-rule:1px solid #cbd5e1}
+#solpaper .sx{margin:0 0 2mm}
+#solpaper h4{break-after:avoid}
+#solpaper h4{margin:2px 0;font-size:11pt;background:#dcfce7;border-radius:6px;padding:1px 6px}
+#solpaper .ph{display:flex;justify-content:space-between;font-weight:bold;font-size:9.5pt}
+#solpaper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #166534;border-radius:14px;padding:2px 8px;margin:3px auto 6px;width:fit-content;background:#f0fdf4}
+#solpaper .sq{margin:2px 0 4px;break-inside:avoid;text-align:right}
+#solpaper .sq p{margin:1px 0;line-height:1.4;text-align:right}
+#solpaper .sq p *{text-align:right}
+#solpaper table{border-collapse:collapse;margin:2px 0 3px;font-size:9.5pt}
+#solpaper td,#solpaper th{border:1px solid #64748b;padding:1px 6px}
+#solpaper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+.sol-btn{display:none}
+.sol-wait{margin-top:6px;font-size:.85rem;color:#64748b}
+@media print{
+ body.psol>*:not(#solpaper){display:none!important}
+ body.psol #solpaper{display:block!important}
+ body.psol #paper{display:none!important}
+}
 </style>
 </head>
 <body>
@@ -551,7 +579,7 @@
         <div class="school-title">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
         <h1>التحدي الثاني التفاعلي في الرياضيات</h1>
         <div class="sub-info">المستوى: السنة الأولى متوسط | المقطع الثاني | هل تقبل التحدي؟<br>فكّر جيدا قبل أن تكتب، لك 3 محاولات</div>
-        <button class="print-btn" onclick="window.print()">🖨️ النسخة الورقية للطباعة</button>
+        <button class="print-btn" onclick="document.body.classList.remove('psol');window.print()">🖨️ النسخة الورقية للطباعة</button> <button class="print-btn sol-btn" onclick="printSol()">🖨️ النسخة الورقية للحل</button><div class="sol-wait"></div>
     </header>
 
     <div class="sticky-bar">
@@ -964,6 +992,15 @@
   const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
   s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
   document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
-<div id="paper"><div class="copy one"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAAChElEQVR4nMVYMY7bMBCcFQ3QHQXkAfRHTvRVedMBxpkXGbgy/0kT0feOAFSX7qiOAmhNCiXdOWlsZhsKmGIG4u5oVkJ8XGNzBQBujMwiIggiO2AS2Z5xGkVkc2ueqwiyI2N2LMid6SM6w0iyj9XeASgbgO0rATzt9DB5zNLenudabdbj7f0rtjAn+/ONGO/A8y9EL3gRPUweeGhP9+P5GBEWAMbb+ZGMk0qAZqqpIIjsZteqkB/a04iHFhARX0+BJklIujj9BQBk9JZkqT2NnfE2OxarAz044FhtGsGQYDlAMcOQuYMiupoKcmcYGVgsJB3JkFTUTKqiAqG3cPQgk2LujLcMFT0RuTMFXACrF8MIxz5WVuDSwebO9IRLsDokRR3Iip1IeugFB6AzfcyAIqRmH3ABLBdTrCY9uJg+6sFUvAUupo9rJy7GI8OUdT6qKqBeTFkdiUxH6pDq+UEzP6aLZBl1RJA+znsAs7MVMxIX4y2ZYOFIaq7WXHcajxGOjAxk1MPaDPX6oMEZF5eBkxUnHsBULLo78Fyt3Jk+csABEHpLJhWr+kGj+3Rx2w6K/N6qMO/NvLsHz9+QiWFS3GAr6bID8Bq51FQwP+PiQCnIbAEE8XZ7NvUyUgO2p9GEBMhxLBYuPcm8n2ruTJ3pqResc0mSBVW/Cw0wzTLtDbkNLUZppg3m/T14rhVJMgu91QtgNdkzu4r5YN2d9ff2GOcGx4gzMAI4VU7rJAuyS7CaSTG7ujkRKnIwBWs7AgA6VPTE9ZAEm9/oYQZTwMCKW9ufh9cAQP3OiZhqKlh356lAnnEAXHqReW/qKdggCJD377DE9OnH/HkAzLeb81xH5L//S/sFkMCftc85XM0AAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="pt">التحدي الثاني</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>الوضعية الإدماجية (20 ن): تحدي الأشكال</h4><div class="bem-data"><p>– فكّر جيدا: ليس كل جواب سريع جوابا صحيحا!</p></div><p>1) شبكة مربعة من <span class="math">3</span> مربعات × <span class="math">3</span> مربعات. كم مربعا (من كل الأحجام) تجد فيها؟</p><p>2) مستطيلات أبعادها أعداد طبيعية ومحيط كل منها <span class="math">24 cm</span>. ما أكبر مساحة ممكنة (بـ cm²)؟</p><p>3) حديقة مستطيلة <span class="math">12 m</span> × <span class="math">8 m</span> يحيط بها من الداخل ممر عرضه <span class="math">1 m</span>. ما مساحة الجزء المزروع داخل الممر (بـ m²)؟</p></div></div></div></div><!--/paper-->
+<div id="paper"><div class="copy" data-pages="1"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAAChElEQVR4nMVYMY7bMBCcFQ3QHQXkAfRHTvRVedMBxpkXGbgy/0kT0feOAFSX7qiOAmhNCiXdOWlsZhsKmGIG4u5oVkJ8XGNzBQBujMwiIggiO2AS2Z5xGkVkc2ueqwiyI2N2LMid6SM6w0iyj9XeASgbgO0rATzt9DB5zNLenudabdbj7f0rtjAn+/ONGO/A8y9EL3gRPUweeGhP9+P5GBEWAMbb+ZGMk0qAZqqpIIjsZteqkB/a04iHFhARX0+BJklIujj9BQBk9JZkqT2NnfE2OxarAz044FhtGsGQYDlAMcOQuYMiupoKcmcYGVgsJB3JkFTUTKqiAqG3cPQgk2LujLcMFT0RuTMFXACrF8MIxz5WVuDSwebO9IRLsDokRR3Iip1IeugFB6AzfcyAIqRmH3ABLBdTrCY9uJg+6sFUvAUupo9rJy7GI8OUdT6qKqBeTFkdiUxH6pDq+UEzP6aLZBl1RJA+znsAs7MVMxIX4y2ZYOFIaq7WXHcajxGOjAxk1MPaDPX6oMEZF5eBkxUnHsBULLo78Fyt3Jk+csABEHpLJhWr+kGj+3Rx2w6K/N6qMO/NvLsHz9+QiWFS3GAr6bID8Bq51FQwP+PiQCnIbAEE8XZ7NvUyUgO2p9GEBMhxLBYuPcm8n2ruTJ3pqResc0mSBVW/Cw0wzTLtDbkNLUZppg3m/T14rhVJMgu91QtgNdkzu4r5YN2d9ff2GOcGx4gzMAI4VU7rJAuyS7CaSTG7ujkRKnIwBWs7AgA6VPTE9ZAEm9/oYQZTwMCKW9ufh9cAQP3OiZhqKlh356lAnnEAXHqReW/qKdggCJD377DE9OnH/HkAzLeb81xH5L//S/sFkMCftc85XM0AAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="pt">التحدي الثاني</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>الوضعية الإدماجية (20 ن): تحدي الأشكال</h4><div class="bem-data"><p>– فكّر جيدا: ليس كل جواب سريع جوابا صحيحا!</p></div><p>1) شبكة مربعة من <span class="math">3</span> مربعات × <span class="math">3</span> مربعات. كم مربعا (من كل الأحجام) تجد فيها؟</p><p>2) مستطيلات أبعادها أعداد طبيعية ومحيط كل منها <span class="math">24 cm</span>. ما أكبر مساحة ممكنة (بـ cm²)؟</p><p>3) حديقة مستطيلة <span class="math">12 m</span> × <span class="math">8 m</span> يحيط بها من الداخل ممر عرضه <span class="math">1 m</span>. ما مساحة الجزء المزروع داخل الممر (بـ m²)؟</p></div></div></div></div><script>(function(){function fit(){var pp=document.getElementById('paper');if(!pp)return;var c=pp.querySelector('.copy');var n=+(c&&c.getAttribute('data-pages'));if(!n)return;
+var st=pp.getAttribute('style');pp.setAttribute('style','display:block;position:absolute;visibility:hidden;top:0;right:0;width:192mm');c.style.zoom=1;
+var mm=document.createElement('div');mm.style.height=(n*279-6)+'mm';pp.appendChild(mm);var lim=mm.getBoundingClientRect().height;pp.removeChild(mm);
+var lo=0.45,hi=1.3,k;c.style.zoom=hi;if(c.getBoundingClientRect().height<=lim)lo=hi;else for(k=0;k<10;k++){var m=(lo+hi)/2;c.style.zoom=m;if(c.getBoundingClientRect().height<=lim)lo=m;else hi=m}
+c.style.zoom=lo;if(st===null)pp.removeAttribute('style');else pp.setAttribute('style',st)}
+window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="pt">الحل النموذجي وسلم التنقيط — التحدي الثاني</div><div class="sxs"><div class="sx"><h4>الوضعية الإدماجية (20 ن): تحدي الأشكال</h4><div class="sq"><p><b>1) شبكة مربعة من <span class="math">3</span> مربعات × <span class="math">3</span> مربعات. كم مربعا (من كل الأحجام) تجد فيها؟</b></p><p><b>الطريقة:</b> نعدّ المربعات حسب حجمها ثم نجمع.</p><p>مربعات <span class="math">1 × 1</span>: <span class="math">9</span></p><p>مربعات <span class="math">2 × 2</span>: <span class="math">4</span></p><p>مربع <span class="math">3 × 3</span>: <span class="math">1</span></p><p>النتيجة: <span class="math">9 + 4 + 1 = 14</span></p><p><b>الاستنتاج:</b> في الشبكة <span class="math">14</span> مربعا.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: العدّ حسب الحجم</td><td>4</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>3</td></tr></table></div><div class="sq"><p><b>2) مستطيلات أبعادها أعداد طبيعية ومحيط كل منها <span class="math">24 cm</span>. ما أكبر مساحة ممكنة (بـ cm²)؟</b></p><p><b>الطريقة:</b> المحيط <span class="math">= 2 × (الطول + العرض)</span>، فالطول + العرض <span class="math">= 12</span>. نجرّب كل الحالات ونقارن المساحات.</p><p><span class="math">11 × 1 = 11</span> ؛ <span class="math">10 × 2 = 20</span> ؛ <span class="math">9 × 3 = 27</span></p><p><span class="math">8 × 4 = 32</span> ؛ <span class="math">7 × 5 = 35</span> ؛ <span class="math">6 × 6 = 36</span></p><p>النتيجة: أكبر مساحة <span class="math">36 cm²</span> (مربع ضلعه <span class="math">6 cm</span>)</p><p><b>الاستنتاج:</b> أكبر مساحة <span class="math">36 cm²</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: تجريب الحالات</td><td>4</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>3</td></tr></table></div><div class="sq"><p><b>3) حديقة مستطيلة <span class="math">12 m</span> × <span class="math">8 m</span> يحيط بها من الداخل ممر عرضه <span class="math">1 m</span>. ما مساحة الجزء المزروع داخل الممر (بـ m²)؟</b></p><p><b>الطريقة:</b> مساحة المستطيل = الطول × العرض، بعد طرح عرض الممر من الجهتين.</p><p>الطول <span class="math">12 − 2 = 10</span> والعرض <span class="math">8 − 2 = 6</span></p><p><span class="math">10 × 6 = 60</span></p><p>النتيجة: <span class="math">60 m²</span></p><p><b>الاستنتاج:</b> المساحة المزروعة <span class="math">60 m²</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: الأبعاد</td><td>3</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>3</td></tr></table></div></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
+function tick(){var b=document.querySelector('.sol-btn'),w=document.querySelector('.sol-wait');if(!b)return;var r=t+D-Date.now();
+if(r<=0){b.style.display='inline-block';if(w)w.style.display='none';return}if(w)w.textContent='📄 النسخة الورقية للحل تظهر بعد '+Math.ceil(r/60000)+' دقيقة';setTimeout(tick,20000)}
+window.printSol=function(){document.body.classList.add('psol');window.print()};window.addEventListener('afterprint',function(){document.body.classList.remove('psol')});
+window.addEventListener('load',tick)})();</script><!--/paper-->
 </body>
 </html>
