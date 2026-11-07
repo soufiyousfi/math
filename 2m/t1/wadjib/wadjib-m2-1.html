@@ -506,7 +506,44 @@
                background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
         .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
         .vop .ln { border-top: 2px solid #0f172a; }
-    </style>
+    
+.bem-intro{margin:0 0 6px;line-height:1.7}
+.bem-data p{margin:3px 0;line-height:1.7}
+.bem-warn{background:#fef9c3;border:1px solid #facc15;border-radius:8px;padding:6px 10px;margin:8px 0 4px;font-size:.92rem}
+.print-btn{margin-top:10px;background:#fff;color:#0f766e;border:2px solid #fde047;border-radius:20px;padding:6px 16px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+#paper .copy{border:1.5px solid #334155;border-radius:8px;padding:5px 9px 5px 80px;margin:0 0 5mm;break-inside:avoid;position:relative}
+#paper .cut{border-top:1.5px dashed #64748b;margin:0 0 4mm;text-align:center;font-size:9pt;color:#64748b;line-height:0}
+#paper .cut span{background:#fff;padding:0 6px}
+#paper .ph{display:flex;justify-content:space-between;align-items:center;font-weight:bold;font-size:9.5pt}
+#paper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #1e3a8a;border-radius:14px;padding:2px 8px;margin:3px auto 4px;width:fit-content;background:#eff6ff}
+#paper .qr{position:absolute;left:8px;top:6px;text-align:center;font-size:7pt;color:#475569;width:66px}
+#paper .qr img{width:58px;height:58px}
+#paper .cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+#paper .ex{break-inside:avoid;margin:2px 0}
+#paper .ex h4{margin:3px 0 1px;font-size:10.5pt;background:#e0f2fe;border-radius:6px;padding:1px 6px}
+#paper .ex p,#paper .ex li{margin:1px 0;line-height:1.4}
+#paper svg{max-height:120px;width:auto!important;margin:2px auto!important}
+#paper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+#paper .bem-warn{padding:3px 6px;margin:2px 0}
+#paper .bem-data p{margin:0}
+#paper .bem-intro{margin:0}
+#paper .w3{font-size:8.6pt;padding:4px 6px 4px 74px;margin-bottom:3mm}
+#paper .w3 .cols{grid-template-columns:1fr 1fr 1fr;gap:2px 8px}
+#paper .w3 svg{max-height:88px}
+#paper .w3 .ex h4{font-size:8.8pt}
+#paper .w3 .ex p{line-height:1.3}
+#paper .w3 .pt{font-size:10pt;margin:1px auto 2px;padding:1px 8px}
+#paper .one .cols{display:block}
+#paper .one svg{max-height:150px}
+#paper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt;width:192mm}
+@media print{
+ @page{size:A4;margin:8mm 9mm}
+ body>*:not(#paper){display:none!important}
+ html,body{background:#fff!important;padding:0!important;margin:0!important}
+
+ #paper{display:block!important;width:auto}
+}
+</style>
 </head>
 <body>
 
@@ -514,6 +551,7 @@
         <div class="school-title">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
         <h1>الواجب الأول للمقطع الثاني التفاعلي في الرياضيات</h1>
         <div class="sub-info">المستوى: السنة الثانية متوسط | المقطع الثاني: التناظر المركزي (نظير نقطة وشكل)<br>للتصحيح الذاتي بعد إنجاز الواجب في الكراس</div>
+        <button class="print-btn" onclick="window.print()">🖨️ النسخة الورقية للطباعة</button>
     </header>
 
     <div class="sticky-bar">
@@ -713,8 +751,8 @@
  {
   "id": 3,
   "pts": 7,
-  "title": "التمرين 3: حروف وكلمات",
-  "context": "نعتبر الحروف: <span class=\"math\">O</span> ؛ <span class=\"math\">H</span> ؛ <span class=\"math\">I</span> ؛ <span class=\"math\">N</span> ؛ <span class=\"math\">S</span> ؛ <span class=\"math\">Z</span> ؛ <span class=\"math\">X</span> ؛ <span class=\"math\">M</span>، والكلمة <span class=\"math\">SOS</span> (نداء الاستغاثة: مساعدة الغير واجب).",
+  "title": "الوضعية الإدماجية: حروف وكلمات",
+  "context": "<div class=\"bem-data\"><p>– نعتبر الحروف: <span class=\"math\">O</span> ؛ <span class=\"math\">H</span> ؛ <span class=\"math\">I</span> ؛ <span class=\"math\">N</span> ؛ <span class=\"math\">S</span> ؛ <span class=\"math\">Z</span> ؛ <span class=\"math\">X</span> ؛ <span class=\"math\">M</span>، والكلمة <span class=\"math\">SOS</span> (نداء الاستغاثة: مساعدة الغير واجب).</p></div>",
   "questions": [
    {
     "qId": "3-1",
@@ -737,8 +775,12 @@
     ],
     "rubric": [
      {
-      "step": "العدد",
-      "mark": "3,5"
+      "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
+      "mark": "1"
+     },
+     {
+      "step": "م2 الاستعمال السليم: العدد",
+      "mark": "2,5"
      }
     ],
     "pts": 3.5,
@@ -764,8 +806,12 @@
     ],
     "rubric": [
      {
-      "step": "الجواب",
-      "mark": "3,5"
+      "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
+      "mark": "1"
+     },
+     {
+      "step": "م2 الاستعمال السليم: الجواب",
+      "mark": "2,5"
      }
     ],
     "pts": 3.5,
@@ -1003,5 +1049,10 @@
   const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
   s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
   document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
+<div id="paper"><div class="copy w3"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACb0lEQVR4nMWYMW7cPBCFv7EEcDsukAPQF7HoNLmTgXVWsQL4TH/1S/ZFqBtQHQXIeinWRpo4lc2wYPOKGXDezLxHE38+89U7AHwwspqZrXb8YTwtLTwt/Wxm7UfH+QsSpeQ0b9j98TTbrW+R1FfMQNaCQgvPuo/lxjZWO358nHdP6WhS6fyGJKnglQp+SPXeAIAnHnWYjuCnuf3EOH9ETBuwbGBzyxJDj1OumcFkdk3n23m5D/1MB5hZPSa+Vj9qQ1If3O4lSarGA0rUkOhoUom5kds5gakeE9GUCZo0SCPnVOCs0nGumMHolYgZ3M45YZeEalYBCMA5AeB2PyS313yDAk1yux9U8Fu4cHKnqVgF5UYFv0HUFtxOo2J1q+CVSuf74CYNciMnwNfNoA90ftBvTlK1F0rMoEmv/Csxgxur8mD0g7RfJhJBY+15cLXeLqsd4OUa/JAAZj/6igrFjRDKk9+Ce+DO1nOGwlJzM025SQWv5KbMZTG7vWYvaPeDNGVwo5fcDoFYcR5c8ZxfDGgSHT9s/ZpPM9OxpkK5MenQAevXTHAjj6L7hDjvImsjszUeT6FAk9Zb7sw98LOuVpYb/RY0cqLE3KjU5EHrpuXLvHyD+fAf4Mty4mAfHuevvQChdF4JINBxlhsr64NzcpO2UPA9dABdRcfyqpU7Grndb8GNfqjLg4t3xvLL9drkx7R+h/kz4ryLUKKUtPv+spNL1KCqvvHNuQLavVKJ6oGK+uCCuNFvYW1mi/7/I7ia2/nVKD/nF7gJw8muPBRyxV+cN+/sknvg7po4b2GNNZ1rebsCli+LWVV1ov3zv7Rf+N6Lp8XuvzwAAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الثانية متوسط</span></div><div class="pt">الواجب الأول للمقطع الثاني</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>التمرين الأول (6 ن): نظير نقطة</h4><span class="math">M′</span> نظيرة <span class="math">M</span> بالنسبة إلى <span class="math">O</span>، و<span class="math">OM = 4,2 cm</span>.<p>1) احسب <span class="math">MM′</span> (بـ cm).</p><p>2) احسب <span class="math">OM′</span> (بـ cm).</p></div><div class="ex"><h4>التمرين الثاني (7 ن): نظير مثلث</h4><span class="math">ABC</span> مثلث حيث <span class="math">AB = 4 cm</span> ؛ <span class="math">BC = 5 cm</span> ؛ <span class="math">AC = 6 cm</span> وقيس الزاوية <span class="math">ABC</span> هو <span class="math">83°</span>. <span class="math">A′B′C′</span> نظيره بالنسبة إلى <span class="math">O</span>.<p>1) احسب محيط <span class="math">A′B′C′</span> (بـ cm).</p><p>2) ما قيس الزاوية <span class="math">A′B′C′</span> (بالدرجات)؟</p></div><div class="ex"><h4>الوضعية الإدماجية (7 ن): حروف وكلمات</h4><div class="bem-data"><p>– نعتبر الحروف: <span class="math">O</span> ؛ <span class="math">H</span> ؛ <span class="math">I</span> ؛ <span class="math">N</span> ؛ <span class="math">S</span> ؛ <span class="math">Z</span> ؛ <span class="math">X</span> ؛ <span class="math">M</span>، والكلمة <span class="math">SOS</span> (نداء الاستغاثة: مساعدة الغير واجب).</p></div><p>1) كم حرفا منها يقبل مركز تناظر؟</p><p>2) هل الكلمة <span class="math">SOS</span> كاملة تقبل مركز تناظر مع التعليل؟</p></div></div></div><div class="cut"><span>✂ ─ ─ ─</span></div><div class="copy w3"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACb0lEQVR4nMWYMW7cPBCFv7EEcDsukAPQF7HoNLmTgXVWsQL4TH/1S/ZFqBtQHQXIeinWRpo4lc2wYPOKGXDezLxHE38+89U7AHwwspqZrXb8YTwtLTwt/Wxm7UfH+QsSpeQ0b9j98TTbrW+R1FfMQNaCQgvPuo/lxjZWO358nHdP6WhS6fyGJKnglQp+SPXeAIAnHnWYjuCnuf3EOH9ETBuwbGBzyxJDj1OumcFkdk3n23m5D/1MB5hZPSa+Vj9qQ1If3O4lSarGA0rUkOhoUom5kds5gakeE9GUCZo0SCPnVOCs0nGumMHolYgZ3M45YZeEalYBCMA5AeB2PyS313yDAk1yux9U8Fu4cHKnqVgF5UYFv0HUFtxOo2J1q+CVSuf74CYNciMnwNfNoA90ftBvTlK1F0rMoEmv/Csxgxur8mD0g7RfJhJBY+15cLXeLqsd4OUa/JAAZj/6igrFjRDKk9+Ce+DO1nOGwlJzM025SQWv5KbMZTG7vWYvaPeDNGVwo5fcDoFYcR5c8ZxfDGgSHT9s/ZpPM9OxpkK5MenQAevXTHAjj6L7hDjvImsjszUeT6FAk9Zb7sw98LOuVpYb/RY0cqLE3KjU5EHrpuXLvHyD+fAf4Mty4mAfHuevvQChdF4JINBxlhsr64NzcpO2UPA9dABdRcfyqpU7Grndb8GNfqjLg4t3xvLL9drkx7R+h/kz4ryLUKKUtPv+spNL1KCqvvHNuQLavVKJ6oGK+uCCuNFvYW1mi/7/I7ia2/nVKD/nF7gJw8muPBRyxV+cN+/sknvg7po4b2GNNZ1rebsCli+LWVV1ov3zv7Rf+N6Lp8XuvzwAAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الثانية متوسط</span></div><div class="pt">الواجب الأول للمقطع الثاني</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>التمرين الأول (6 ن): نظير نقطة</h4><span class="math">M′</span> نظيرة <span class="math">M</span> بالنسبة إلى <span class="math">O</span>، و<span class="math">OM = 4,2 cm</span>.<p>1) احسب <span class="math">MM′</span> (بـ cm).</p><p>2) احسب <span class="math">OM′</span> (بـ cm).</p></div><div class="ex"><h4>التمرين الثاني (7 ن): نظير مثلث</h4><span class="math">ABC</span> مثلث حيث <span class="math">AB = 4 cm</span> ؛ <span class="math">BC = 5 cm</span> ؛ <span class="math">AC = 6 cm</span> وقيس الزاوية <span class="math">ABC</span> هو <span class="math">83°</span>. <span class="math">A′B′C′</span> نظيره بالنسبة إلى <span class="math">O</span>.<p>1) احسب محيط <span class="math">A′B′C′</span> (بـ cm).</p><p>2) ما قيس الزاوية <span class="math">A′B′C′</span> (بالدرجات)؟</p></div><div class="ex"><h4>الوضعية الإدماجية (7 ن): حروف وكلمات</h4><div class="bem-data"><p>– نعتبر الحروف: <span class="math">O</span> ؛ <span class="math">H</span> ؛ <span class="math">I</span> ؛ <span class="math">N</span> ؛ <span class="math">S</span> ؛ <span class="math">Z</span> ؛ <span class="math">X</span> ؛ <span class="math">M</span>، والكلمة <span class="math">SOS</span> (نداء الاستغاثة: مساعدة الغير واجب).</p></div><p>1) كم حرفا منها يقبل مركز تناظر؟</p><p>2) هل الكلمة <span class="math">SOS</span> كاملة تقبل مركز تناظر مع التعليل؟</p></div></div></div><div class="cut"><span>✂ ─ ─ ─</span></div><div class="copy w3"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACb0lEQVR4nMWYMW7cPBCFv7EEcDsukAPQF7HoNLmTgXVWsQL4TH/1S/ZFqBtQHQXIeinWRpo4lc2wYPOKGXDezLxHE38+89U7AHwwspqZrXb8YTwtLTwt/Wxm7UfH+QsSpeQ0b9j98TTbrW+R1FfMQNaCQgvPuo/lxjZWO358nHdP6WhS6fyGJKnglQp+SPXeAIAnHnWYjuCnuf3EOH9ETBuwbGBzyxJDj1OumcFkdk3n23m5D/1MB5hZPSa+Vj9qQ1If3O4lSarGA0rUkOhoUom5kds5gakeE9GUCZo0SCPnVOCs0nGumMHolYgZ3M45YZeEalYBCMA5AeB2PyS313yDAk1yux9U8Fu4cHKnqVgF5UYFv0HUFtxOo2J1q+CVSuf74CYNciMnwNfNoA90ftBvTlK1F0rMoEmv/Csxgxur8mD0g7RfJhJBY+15cLXeLqsd4OUa/JAAZj/6igrFjRDKk9+Ce+DO1nOGwlJzM025SQWv5KbMZTG7vWYvaPeDNGVwo5fcDoFYcR5c8ZxfDGgSHT9s/ZpPM9OxpkK5MenQAevXTHAjj6L7hDjvImsjszUeT6FAk9Zb7sw98LOuVpYb/RY0cqLE3KjU5EHrpuXLvHyD+fAf4Mty4mAfHuevvQChdF4JINBxlhsr64NzcpO2UPA9dABdRcfyqpU7Grndb8GNfqjLg4t3xvLL9drkx7R+h/kz4ryLUKKUtPv+spNL1KCqvvHNuQLavVKJ6oGK+uCCuNFvYW1mi/7/I7ia2/nVKD/nF7gJw8muPBRyxV+cN+/sknvg7po4b2GNNZ1rebsCli+LWVV1ov3zv7Rf+N6Lp8XuvzwAAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الثانية متوسط</span></div><div class="pt">الواجب الأول للمقطع الثاني</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>التمرين الأول (6 ن): نظير نقطة</h4><span class="math">M′</span> نظيرة <span class="math">M</span> بالنسبة إلى <span class="math">O</span>، و<span class="math">OM = 4,2 cm</span>.<p>1) احسب <span class="math">MM′</span> (بـ cm).</p><p>2) احسب <span class="math">OM′</span> (بـ cm).</p></div><div class="ex"><h4>التمرين الثاني (7 ن): نظير مثلث</h4><span class="math">ABC</span> مثلث حيث <span class="math">AB = 4 cm</span> ؛ <span class="math">BC = 5 cm</span> ؛ <span class="math">AC = 6 cm</span> وقيس الزاوية <span class="math">ABC</span> هو <span class="math">83°</span>. <span class="math">A′B′C′</span> نظيره بالنسبة إلى <span class="math">O</span>.<p>1) احسب محيط <span class="math">A′B′C′</span> (بـ cm).</p><p>2) ما قيس الزاوية <span class="math">A′B′C′</span> (بالدرجات)؟</p></div><div class="ex"><h4>الوضعية الإدماجية (7 ن): حروف وكلمات</h4><div class="bem-data"><p>– نعتبر الحروف: <span class="math">O</span> ؛ <span class="math">H</span> ؛ <span class="math">I</span> ؛ <span class="math">N</span> ؛ <span class="math">S</span> ؛ <span class="math">Z</span> ؛ <span class="math">X</span> ؛ <span class="math">M</span>، والكلمة <span class="math">SOS</span> (نداء الاستغاثة: مساعدة الغير واجب).</p></div><p>1) كم حرفا منها يقبل مركز تناظر؟</p><p>2) هل الكلمة <span class="math">SOS</span> كاملة تقبل مركز تناظر مع التعليل؟</p></div></div></div></div><script>(function(){function fit(){var pp=document.getElementById('paper');if(!pp)return;var cs=pp.querySelectorAll('.copy.w3');if(!cs.length)return;
+var st=pp.getAttribute('style');pp.setAttribute('style','display:block;position:absolute;visibility:hidden;top:0;right:0');
+cs.forEach(function(c){c.style.zoom=1});var h=cs[0].getBoundingClientRect().height,mm=document.createElement('div');mm.style.height='88mm';pp.appendChild(mm);var lim=mm.getBoundingClientRect().height;pp.removeChild(mm);
+if(st===null)pp.removeAttribute('style');else pp.setAttribute('style',st);var z=Math.min(1,lim/h);cs.forEach(function(c){c.style.zoom=z})}
+window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><!--/paper-->
 </body>
 </html>

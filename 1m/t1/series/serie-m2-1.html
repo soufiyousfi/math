@@ -506,7 +506,44 @@
                background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
         .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
         .vop .ln { border-top: 2px solid #0f172a; }
-    </style>
+    
+.bem-intro{margin:0 0 6px;line-height:1.7}
+.bem-data p{margin:3px 0;line-height:1.7}
+.bem-warn{background:#fef9c3;border:1px solid #facc15;border-radius:8px;padding:6px 10px;margin:8px 0 4px;font-size:.92rem}
+.print-btn{margin-top:10px;background:#fff;color:#0f766e;border:2px solid #fde047;border-radius:20px;padding:6px 16px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+#paper .copy{border:1.5px solid #334155;border-radius:8px;padding:5px 9px 5px 80px;margin:0 0 5mm;break-inside:avoid;position:relative}
+#paper .cut{border-top:1.5px dashed #64748b;margin:0 0 4mm;text-align:center;font-size:9pt;color:#64748b;line-height:0}
+#paper .cut span{background:#fff;padding:0 6px}
+#paper .ph{display:flex;justify-content:space-between;align-items:center;font-weight:bold;font-size:9.5pt}
+#paper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #1e3a8a;border-radius:14px;padding:2px 8px;margin:3px auto 4px;width:fit-content;background:#eff6ff}
+#paper .qr{position:absolute;left:8px;top:6px;text-align:center;font-size:7pt;color:#475569;width:66px}
+#paper .qr img{width:58px;height:58px}
+#paper .cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+#paper .ex{break-inside:avoid;margin:2px 0}
+#paper .ex h4{margin:3px 0 1px;font-size:10.5pt;background:#e0f2fe;border-radius:6px;padding:1px 6px}
+#paper .ex p,#paper .ex li{margin:1px 0;line-height:1.4}
+#paper svg{max-height:120px;width:auto!important;margin:2px auto!important}
+#paper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+#paper .bem-warn{padding:3px 6px;margin:2px 0}
+#paper .bem-data p{margin:0}
+#paper .bem-intro{margin:0}
+#paper .w3{font-size:8.6pt;padding:4px 6px 4px 74px;margin-bottom:3mm}
+#paper .w3 .cols{grid-template-columns:1fr 1fr 1fr;gap:2px 8px}
+#paper .w3 svg{max-height:88px}
+#paper .w3 .ex h4{font-size:8.8pt}
+#paper .w3 .ex p{line-height:1.3}
+#paper .w3 .pt{font-size:10pt;margin:1px auto 2px;padding:1px 8px}
+#paper .one .cols{display:block}
+#paper .one svg{max-height:150px}
+#paper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt;width:192mm}
+@media print{
+ @page{size:A4;margin:8mm 9mm}
+ body>*:not(#paper){display:none!important}
+ html,body{background:#fff!important;padding:0!important;margin:0!important}
+
+ #paper{display:block!important;width:auto}
+}
+</style>
 </head>
 <body>
 
@@ -514,6 +551,7 @@
         <div class="school-title">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
         <h1>سلسلة المقطع الثاني رقم 1 التفاعلي في الرياضيات</h1>
         <div class="sub-info">المستوى: السنة الأولى متوسط | الدائرة، المثيلات، المساحة بالرصف | 5 تمارين على 20<br>حلّ في الكراس ثم تحقق هنا</div>
+        <button class="print-btn" onclick="window.print()">🖨️ النسخة الورقية للطباعة</button>
     </header>
 
     <div class="sticky-bar">
@@ -784,8 +822,8 @@
  {
   "id": 5,
   "pts": 6,
-  "title": "التمرين 5: تميّز: زليج الجدار",
-  "context": "ينسخ حرفي قطعة زليج مربعة طول ضلعها <span class=\"math\">12 cm</span> ليزيّن جدار مسجد الحي، فالحرف التقليدية تراث نعتز به.",
+  "title": "الوضعية الإدماجية: زليج الجدار",
+  "context": "<div class=\"bem-data\"><p>– ينسخ حرفي قطعة زليج مربعة طول ضلعها <span class=\"math\">12 cm</span> ليزيّن جدار مسجد الحي، فالحرف التقليدية تراث نعتز به.</p></div>",
   "questions": [
    {
     "qId": "5-1",
@@ -807,8 +845,12 @@
     ],
     "rubric": [
      {
-      "step": "النتيجة",
-      "mark": "3"
+      "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
+      "mark": "0,75"
+     },
+     {
+      "step": "م2 الاستعمال السليم: النتيجة",
+      "mark": "2,25"
      }
     ],
     "pts": 3,
@@ -834,8 +876,12 @@
     ],
     "rubric": [
      {
-      "step": "النتيجة",
-      "mark": "3"
+      "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
+      "mark": "0,75"
+     },
+     {
+      "step": "م2 الاستعمال السليم: النتيجة",
+      "mark": "2,25"
      }
     ],
     "pts": 3,
@@ -1073,5 +1119,6 @@
   const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
   s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
   document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
+<div id="paper"><div class="copy one"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACcUlEQVR4nMWYzY3cOBSEv9cUwNkTG9gA2IlY6lQ2j56R2jLgsCzZEWwGVAALUDcKUKv20PDNsycP9x30gzq8wsOrEksmfl3L6R0AfjOymZltp/X1YmbDspkNi5k1v7vPfyCdlPzj7JI/QoOf1SBpqMaA0uKSpiD5ORP9gUuFMKZ6MwDYrjwutPRpO3H7uD6/quZ5s2VY6P7+5+LL+udfVRmcMO3QhiHC2izrNQx45ZoMZrMLOn+dC2FM6AxmVm8TGy9g+3F8ge8BQgFERT+gdBoTXQZ/0D+fMNXTApro5Sd6FctOmuhVWvp6atzeghldvhuf4rBg+XGBUNGRNGcipjFpCjulpU86qs7g9exm/8127LoO8eU5A75UdCQTlDk0YAfjy7eT0/aHKmpBs5RKp1H+eJrRDQiqqAXlXj9rj3TZiRZXj0Ex7fiJXnTZSco3NFX8NlIIe9QBUQc3iuVexXI9LaApDGAa5efcC3DJHzX3oACxEPbnq5fG5Gv6AYUwoAmiZg3PA5qfqmphzrdYLLvkj7BHP0Gkq7kHxbJLWO7lZ42ipVdtP9AQ6bJLEMbklZ1oq25ipwEsg46gRJdd8lNlR5IKuFQsE3XQq3SqN4OTP9ZmCXO+gZ7nA3j5gD7vIkjaY2nDHjWFPZaWXtVdWam0P3MK7fNS05UlqbRhj34Kkj/CWHkPNjMzWBu2N+62XWH5iD7vIpROSpo1RK9MLG0YVTm5yhq2t3Wc12sYE5YfVlULT8Tf4x793TZDZ/DTuldmQAu8tDiFz0DpcvXsbMvrZTtxv2z9orR159rZebOzS8U0ADwu4XPFvGD/+7+0fwFbFo1HR9+gSwAAAABJRU5ErkJggg==" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="pt">سلسلة المقطع الثاني رقم 1</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>التمرين الأول (3 ن): تطبيق مباشر: القطر</h4>دائرة نصف قطرها <span class="math">6 cm</span>.<p>1) احسب قطرها (بـ cm).</p></div><div class="ex"><h4>التمرين الثاني (3 ن): تطبيق مباشر: نصف القطر</h4>دائرة قطرها <span class="math">15 cm</span>.<p>1) احسب نصف قطرها (بـ cm).</p></div><div class="ex"><h4>التمرين الثالث (4 ن): ربط: الرصف ووحدة المساحة</h4>مستطيل مرصوف بـ <span class="math">7</span> مربعات في كل سطر و<span class="math">3</span> أسطر، ومساحة المربع الواحد <span class="math">2 cm²</span>.<p>1) كم مربعا يغطي المستطيل؟</p><p>2) ما مساحة المستطيل (بـ cm²)؟</p></div><div class="ex"><h4>التمرين الرابع (4 ن): ربط: وضعية نقطة</h4>دائرة مركزها <span class="math">O</span> ونصف قطرها <span class="math">4 cm</span>. اكتب <span class="math">1</span> داخل الدائرة، <span class="math">2</span> خارجها، <span class="math">3</span> عليها.<p>1) <span class="math">M</span> نقطة حيث <span class="math">OM = 4 cm</span>. أين تقع؟</p><p>2) <span class="math">N</span> نقطة حيث <span class="math">ON = 5,5 cm</span>. أين تقع؟</p></div><div class="ex"><h4>الوضعية الإدماجية (6 ن): زليج الجدار</h4><div class="bem-data"><p>– ينسخ حرفي قطعة زليج مربعة طول ضلعها <span class="math">12 cm</span> ليزيّن جدار مسجد الحي، فالحرف التقليدية تراث نعتز به.</p></div><p>1) ما محيط كل نسخة (بـ cm)؟</p><p>2) وضع <span class="math">5</span> نسخ متلاصقة في صف واحد. ما طول الصف (بـ cm)؟</p></div></div></div></div><!--/paper-->
 </body>
 </html>

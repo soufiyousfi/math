@@ -506,7 +506,44 @@
                background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
         .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
         .vop .ln { border-top: 2px solid #0f172a; }
-    </style>
+    
+.bem-intro{margin:0 0 6px;line-height:1.7}
+.bem-data p{margin:3px 0;line-height:1.7}
+.bem-warn{background:#fef9c3;border:1px solid #facc15;border-radius:8px;padding:6px 10px;margin:8px 0 4px;font-size:.92rem}
+.print-btn{margin-top:10px;background:#fff;color:#0f766e;border:2px solid #fde047;border-radius:20px;padding:6px 16px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+#paper .copy{border:1.5px solid #334155;border-radius:8px;padding:5px 9px 5px 80px;margin:0 0 5mm;break-inside:avoid;position:relative}
+#paper .cut{border-top:1.5px dashed #64748b;margin:0 0 4mm;text-align:center;font-size:9pt;color:#64748b;line-height:0}
+#paper .cut span{background:#fff;padding:0 6px}
+#paper .ph{display:flex;justify-content:space-between;align-items:center;font-weight:bold;font-size:9.5pt}
+#paper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #1e3a8a;border-radius:14px;padding:2px 8px;margin:3px auto 4px;width:fit-content;background:#eff6ff}
+#paper .qr{position:absolute;left:8px;top:6px;text-align:center;font-size:7pt;color:#475569;width:66px}
+#paper .qr img{width:58px;height:58px}
+#paper .cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+#paper .ex{break-inside:avoid;margin:2px 0}
+#paper .ex h4{margin:3px 0 1px;font-size:10.5pt;background:#e0f2fe;border-radius:6px;padding:1px 6px}
+#paper .ex p,#paper .ex li{margin:1px 0;line-height:1.4}
+#paper svg{max-height:120px;width:auto!important;margin:2px auto!important}
+#paper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+#paper .bem-warn{padding:3px 6px;margin:2px 0}
+#paper .bem-data p{margin:0}
+#paper .bem-intro{margin:0}
+#paper .w3{font-size:8.6pt;padding:4px 6px 4px 74px;margin-bottom:3mm}
+#paper .w3 .cols{grid-template-columns:1fr 1fr 1fr;gap:2px 8px}
+#paper .w3 svg{max-height:88px}
+#paper .w3 .ex h4{font-size:8.8pt}
+#paper .w3 .ex p{line-height:1.3}
+#paper .w3 .pt{font-size:10pt;margin:1px auto 2px;padding:1px 8px}
+#paper .one .cols{display:block}
+#paper .one svg{max-height:150px}
+#paper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt;width:192mm}
+@media print{
+ @page{size:A4;margin:8mm 9mm}
+ body>*:not(#paper){display:none!important}
+ html,body{background:#fff!important;padding:0!important;margin:0!important}
+
+ #paper{display:block!important;width:auto}
+}
+</style>
 </head>
 <body>
 
@@ -514,6 +551,7 @@
         <div class="school-title">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
         <h1>التحدي الثاني التفاعلي في الرياضيات</h1>
         <div class="sub-info">المستوى: السنة الثالثة متوسط | المقطع الثاني | هل تقبل التحدي؟<br>فكّر جيدا قبل أن تكتب، لك 3 محاولات</div>
+        <button class="print-btn" onclick="window.print()">🖨️ النسخة الورقية للطباعة</button>
     </header>
 
     <div class="sticky-bar">
@@ -592,8 +630,8 @@
  {
   "id": 1,
   "pts": 20,
-  "title": "التمرين 1: تحدي المثلثات",
-  "context": "المنتصفات والمستقيمات الخاصة تخفي أسرارا.",
+  "title": "الوضعية الإدماجية: تحدي المثلثات",
+  "context": "<div class=\"bem-data\"><p>– المنتصفات والمستقيمات الخاصة تخفي أسرارا.</p></div>",
   "questions": [
    {
     "qId": "1-1",
@@ -616,11 +654,11 @@
     ],
     "rubric": [
      {
-      "step": "التبرير",
+      "step": "م1 التفسير السليم: التبرير",
       "mark": "3"
      },
      {
-      "step": "النتيجة",
+      "step": "م2 الاستعمال السليم: النتيجة",
       "mark": "3"
      }
     ],
@@ -648,11 +686,11 @@
     ],
     "rubric": [
      {
-      "step": "المعادلة",
+      "step": "م1 التفسير السليم: المعادلة",
       "mark": "4"
      },
      {
-      "step": "النتيجة",
+      "step": "م2 الاستعمال السليم: النتيجة",
       "mark": "3"
      }
     ],
@@ -680,11 +718,11 @@
     ],
     "rubric": [
      {
-      "step": "الخاصية",
+      "step": "م1 التفسير السليم: الخاصية",
       "mark": "4"
      },
      {
-      "step": "النتيجة",
+      "step": "م2 الاستعمال السليم: النتيجة",
       "mark": "3"
      }
     ],
@@ -923,5 +961,6 @@
   const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
   s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
   document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
+<div id="paper"><div class="copy one"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACdUlEQVR4nMWYMY7kNhBFfzUboDI24ANwMoc+wYrtaMM9g++hRXOgvdQ6sTgnIW9AZSVAre9Axjqw107GZQYEgR9UofiKn6QQfz/a5TsC8M7KJiKCcnt9Gd7wpQHrtYnI9b3jfFeBJrKS3VVfmCMPuEpyrmY1AOUKvAERvD0qEDI2ub1/nH9TQoamltt2X/N/Geev4/pt1X78+qlj+PWnH6wzEKJt9wNYB0hUXhw88cWQRADQMcz1zwmAMyMRJEkuQNTEHD3/GHYZaOoTVJgjC1lZ+hS9bQZjmIlEVs8O+MIdLIbnAcjuKsbAehbiCHNV6ZYcLJgiC/foj7BHlg4gWe4Cj5AB4Vy5YIJKBzxNa3DA0Zf+IBe4qsId/rDtxv6oKh3gEnIEwh4xBkNn2i5ADEuY63ZfWSEtQ6Xtdqey/+3mfgGAOBwXNP0ItPA1drMbClS6o44hAyMcFYFVkyGJF79gamHuruItbC+D9GcCb3beCB54kEfYwSXs0NRd9QcehiS6/hRxzVd5dET/epuw/txNaxBmsjBHkjlq4lx9seRgcy03fBDW7bKy+tcboOP7x/kH5UP8nIY3PCUseAqwbgnAZLoLOzQxx9MlpQPe2J1JauJMJM70S7D2BR3DDr8EVpb+qEicq60v+LnluN4BDIzygiI5mvrCZbsHX4bUcaaBMXyWgdHw3fiNg0qSBOCoYkmiAmdDRB3DfjaE7T1RE1kVmOAXuKqJMxWWvgDKFZ7MWO9AHMrtKYPQjoNT2ZJcMYyYoKnNBMWuF6AjXOUSZvrSJ5D9QdhzQHZEHXGCGX0xfbWdUyB9YQaku/NTxyoD+d//0n4HZAO1W25hBIMAAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الثالثة متوسط</span></div><div class="pt">التحدي الثاني</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>الوضعية الإدماجية (20 ن): تحدي المثلثات</h4><div class="bem-data"><p>– المنتصفات والمستقيمات الخاصة تخفي أسرارا.</p></div><p>1) <span class="math">I</span> و<span class="math">J</span> و<span class="math">K</span> منتصفات أضلاع المثلث <span class="math">ABC</span>. مساحة <span class="math">IJK</span> أي كسر من مساحة <span class="math">ABC</span>؟</p><p>2) <span class="math">G</span> مركز ثقل المثلث <span class="math">ABC</span> و<span class="math">AG = 8 cm</span>. ما طول المتوسط المار بـ <span class="math">A</span> (بـ cm)؟</p><p>3) في مثلث قائم، طول المتوسط المتعلق بالوتر <span class="math">6,5 cm</span>. ما طول الوتر (بـ cm)؟</p></div></div></div></div><!--/paper-->
 </body>
 </html>

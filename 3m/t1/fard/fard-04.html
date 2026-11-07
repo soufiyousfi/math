@@ -506,7 +506,44 @@
                background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
         .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
         .vop .ln { border-top: 2px solid #0f172a; }
-    </style>
+    
+.bem-intro{margin:0 0 6px;line-height:1.7}
+.bem-data p{margin:3px 0;line-height:1.7}
+.bem-warn{background:#fef9c3;border:1px solid #facc15;border-radius:8px;padding:6px 10px;margin:8px 0 4px;font-size:.92rem}
+.print-btn{margin-top:10px;background:#fff;color:#0f766e;border:2px solid #fde047;border-radius:20px;padding:6px 16px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+#paper .copy{border:1.5px solid #334155;border-radius:8px;padding:5px 9px 5px 80px;margin:0 0 5mm;break-inside:avoid;position:relative}
+#paper .cut{border-top:1.5px dashed #64748b;margin:0 0 4mm;text-align:center;font-size:9pt;color:#64748b;line-height:0}
+#paper .cut span{background:#fff;padding:0 6px}
+#paper .ph{display:flex;justify-content:space-between;align-items:center;font-weight:bold;font-size:9.5pt}
+#paper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #1e3a8a;border-radius:14px;padding:2px 8px;margin:3px auto 4px;width:fit-content;background:#eff6ff}
+#paper .qr{position:absolute;left:8px;top:6px;text-align:center;font-size:7pt;color:#475569;width:66px}
+#paper .qr img{width:58px;height:58px}
+#paper .cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+#paper .ex{break-inside:avoid;margin:2px 0}
+#paper .ex h4{margin:3px 0 1px;font-size:10.5pt;background:#e0f2fe;border-radius:6px;padding:1px 6px}
+#paper .ex p,#paper .ex li{margin:1px 0;line-height:1.4}
+#paper svg{max-height:120px;width:auto!important;margin:2px auto!important}
+#paper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+#paper .bem-warn{padding:3px 6px;margin:2px 0}
+#paper .bem-data p{margin:0}
+#paper .bem-intro{margin:0}
+#paper .w3{font-size:8.6pt;padding:4px 6px 4px 74px;margin-bottom:3mm}
+#paper .w3 .cols{grid-template-columns:1fr 1fr 1fr;gap:2px 8px}
+#paper .w3 svg{max-height:88px}
+#paper .w3 .ex h4{font-size:8.8pt}
+#paper .w3 .ex p{line-height:1.3}
+#paper .w3 .pt{font-size:10pt;margin:1px auto 2px;padding:1px 8px}
+#paper .one .cols{display:block}
+#paper .one svg{max-height:150px}
+#paper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt;width:192mm}
+@media print{
+ @page{size:A4;margin:8mm 9mm}
+ body>*:not(#paper){display:none!important}
+ html,body{background:#fff!important;padding:0!important;margin:0!important}
+
+ #paper{display:block!important;width:auto}
+}
+</style>
 </head>
 <body>
 
@@ -514,6 +551,7 @@
         <div class="school-title">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
         <h1>الفرض الرابع التفاعلي في الرياضيات</h1>
         <div class="sub-info">المستوى: السنة الثالثة متوسط | المقطع الثاني: المثلثات (المستقيمات الخاصة في المثلث)<br>للتصحيح الذاتي بعد إنجاز الفرض على الورقة</div>
+        <button class="print-btn" onclick="window.print()">🖨️ النسخة الورقية للطباعة</button>
     </header>
 
     <div class="sticky-bar">
@@ -872,8 +910,8 @@
  {
   "id": 4,
   "pts": 5,
-  "title": "التمرين 4: وضعية: خزان الماء المشترك",
-  "context": "تريد ثلاث قرى في ولاية قالمة بناء خزان ماء مشترك على البعد نفسه من القرى الثلاث <span class=\"math\">A</span> و<span class=\"math\">B</span> و<span class=\"math\">C</span>، فتقاسم الماء والاقتصاد فيه واجب. القرى تشكل مثلثا قائما في <span class=\"math\">A</span> وتره <span class=\"math\">BC = 8 km</span>.",
+  "title": "الوضعية الإدماجية: خزان الماء المشترك",
+  "context": "<div class=\"bem-data\"><p>– تريد ثلاث قرى في ولاية قالمة بناء خزان ماء مشترك على البعد نفسه من القرى الثلاث <span class=\"math\">A</span> و<span class=\"math\">B</span> و<span class=\"math\">C</span>، فتقاسم الماء والاقتصاد فيه واجب.</p><p>– القرى تشكل مثلثا قائما في <span class=\"math\">A</span> وتره <span class=\"math\">BC = 8 km</span>.</p></div>",
   "questions": [
    {
     "qId": "4-1",
@@ -896,8 +934,12 @@
     ],
     "rubric": [
      {
-      "step": "الجواب مع التبرير",
-      "mark": "2"
+      "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
+      "mark": "0,5"
+     },
+     {
+      "step": "م2 الاستعمال السليم: الجواب مع التبرير",
+      "mark": "1,5"
      }
     ],
     "pts": 2,
@@ -924,8 +966,12 @@
     ],
     "rubric": [
      {
-      "step": "النتيجة",
-      "mark": "1,5"
+      "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
+      "mark": "0,5"
+     },
+     {
+      "step": "م2 الاستعمال السليم: النتيجة",
+      "mark": "1"
      }
     ],
     "pts": 1.5,
@@ -952,8 +998,12 @@
     ],
     "rubric": [
      {
-      "step": "الجواب",
-      "mark": "1,5"
+      "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
+      "mark": "0,5"
+     },
+     {
+      "step": "م2 الاستعمال السليم: الجواب",
+      "mark": "1"
      }
     ],
     "pts": 1.5,
@@ -1191,5 +1241,6 @@
   const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
   s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
   document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
+<div id="paper"><div class="copy one"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK8AAACvAQAAAACj6bPYAAAB8UlEQVR4nL1XMZLbMAxcmDdDd/QP4B/kBRH9MDpSRnlVKukZ6XA/oKtQMzpuCrnLpTOCEgUwS2IXCyE+CZ4+ywIvSaMBQBPuyg4gdgAYPFuekEnDV5mwnRJtuyWyvar259EGBOOSyEjOxp4mNGeUALDdgPeHXKBye3Xtf6Rjf9yvke/3a3t57b+jZdJI0sg6GnsivR92Fblu+fIDW9Y3bLeHyNkXJUmySQ3kkmYjSbJ7T2xB7AjWgKLsaVdfXqJJDWy5jgfU2FGcSQJ2FHDlbG1IE+ICeKPkWgMjOaFlzoTUotH5L3MtaEMiudZgJCfvluxp0gZAm1Rok1rgjRIIFhcUxQBoGzC6kyTXkXFJPManIc3m3JILgjXhfqzKuKQJ3iiFu3KtReNKEkOa1JmXLdfRIKTFnmYjazB/kgRyrUUhnAmkmd6Cl2sw9jQbkHblyt2ZJG+gTgoAGn9+mXD+LUV/3ZyXVwUiKw6hjR2jeWvskmayA0rWQAwY3f9ySDta5qRcSTukzxnl0xUAccFoR3PX8TltIiIARj6+ATjzEszbVGbSwMvHNS74foXUD2+7dbj1tQaypwkAvNXn6dbvOuEsNRC5Fn348rINz02iyCRjR3Een6dbX9J+LGtIDc5u/XlfDmlXAEWPdeKKUv7/Ff0H45lh3rlCgCsAAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الثالثة متوسط</span></div><div class="pt">الفرض الرابع</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>التمرين الأول (5 ن): المتوسطات ومركز الثقل</h4><span class="math">ABC</span> مثلث. <span class="math">I</span> منتصف <span class="math">[BC]</span> و<span class="math">J</span> منتصف <span class="math">[AC]</span>. المتوسطان <span class="math">[AI]</span> و<span class="math">[BJ]</span> يتقاطعان في <span class="math">G</span>. <span class="math">AI = 9 cm</span> و<span class="math">BJ = 7,5 cm</span>.<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 240" width="380" height="240" style="max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff" font-family="Arial" font-size="16"><rect width="380" height="240" fill="#fff"/><polygon points="170,20 40,200 330,200" fill="none" stroke="#111" stroke-width="2"/><line x1="170" y1="20" x2="185.0" y2="200.0" stroke="#0f766e" stroke-width="2"/><line x1="40" y1="200" x2="250.0" y2="110.0" stroke="#0f766e" stroke-width="2"/><circle cx="170" cy="20" r="3" fill="#111"/><text x="164" y="12" font-weight="bold">A</text><circle cx="40" cy="200" r="3" fill="#111"/><text x="22" y="216" font-weight="bold">B</text><circle cx="330" cy="200" r="3" fill="#111"/><text x="336" y="216" font-weight="bold">C</text><circle cx="185.0" cy="200.0" r="3" fill="#111"/><text x="181.0" y="220.0" font-weight="bold">I</text><circle cx="250.0" cy="110.0" r="3" fill="#111"/><text x="258.0" y="108.0" font-weight="bold">J</text><circle cx="180.0" cy="140.0" r="3" fill="#111"/><text x="188.0" y="156.0" font-weight="bold">G</text><text x="112.5" y="196" font-size="12" fill="#b91c1c" text-anchor="middle">||</text><text x="257.5" y="196" font-size="12" fill="#b91c1c" text-anchor="middle">||</text><text x="190" y="232" font-size="12" fill="#64748b" text-anchor="middle">(الشكل غير مرسوم بالأبعاد الحقيقية)</text></svg><p>1) احسب <span class="math">AG</span> (بـ cm).</p><p>2) احسب <span class="math">GI</span> (بـ cm).</p><p>3) احسب <span class="math">BG</span> (بـ cm).</p></div><div class="ex"><h4>التمرين الثاني (5 ن): محاور الأضلاع والدائرة المحيطة</h4><span class="math">ABC</span> مثلث قائم في <span class="math">A</span> حيث <span class="math">BC = 10 cm</span>. <span class="math">O</span> مركز الدائرة المحيطة به.<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 240" width="380" height="240" style="max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff" font-family="Arial" font-size="16"><rect width="380" height="240" fill="#fff"/><polygon points="60,190 320,190 60,40" fill="none" stroke="#111" stroke-width="2"/><polyline points="71.0,190.0 71.0,179.0 60.0,179.0" fill="none" stroke="#b91c1c" stroke-width="1.5"/><circle cx="60" cy="190" r="3" fill="#111"/><text x="42" y="206" font-weight="bold">A</text><circle cx="320" cy="190" r="3" fill="#111"/><text x="326" y="206" font-weight="bold">B</text><circle cx="60" cy="40" r="3" fill="#111"/><text x="42" y="36" font-weight="bold">C</text></svg><p>1) <span class="math">O</span> منتصف أي ضلع مع التعليل؟</p><p>2) احسب نصف قطر الدائرة المحيطة (بـ cm).</p><p>3) احسب <span class="math">OA</span> (بـ cm).</p></div><div class="ex"><h4>التمرين الثالث (5 ن): منصفات الزوايا</h4><span class="math">ABC</span> مثلث حيث <span class="math">BAC = 70°</span> و<span class="math">ABC = 50°</span>. منصفا الزاويتين <span class="math">ABC</span> و<span class="math">ACB</span> يتقاطعان في <span class="math">I</span>.<p>1) احسب قيس الزاوية <span class="math">IBC</span> (بالدرجات).</p><p>2) احسب قيس الزاوية <span class="math">ICB</span> (بالدرجات).</p><p>3) احسب قيس الزاوية <span class="math">BIC</span> (بالدرجات).</p></div><div class="ex"><h4>الوضعية الإدماجية (5 ن): خزان الماء المشترك</h4><div class="bem-data"><p>– تريد ثلاث قرى في ولاية قالمة بناء خزان ماء مشترك على البعد نفسه من القرى الثلاث <span class="math">A</span> و<span class="math">B</span> و<span class="math">C</span>، فتقاسم الماء والاقتصاد فيه واجب.</p><p>– القرى تشكل مثلثا قائما في <span class="math">A</span> وتره <span class="math">BC = 8 km</span>.</p></div><p>1) أين نبني الخزان مع التعليل؟</p><p>2) ما بعد الخزان عن كل قرية (بـ km)؟</p><p>3) لو أردنا نقطة على البعد نفسه من الطرق الثلاث (الأضلاع)، ما الرقم المناسب من القائمة السابقة؟</p></div></div></div></div><!--/paper-->
 </body>
 </html>

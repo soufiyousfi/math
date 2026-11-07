@@ -506,7 +506,44 @@
                background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
         .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
         .vop .ln { border-top: 2px solid #0f172a; }
-    </style>
+    
+.bem-intro{margin:0 0 6px;line-height:1.7}
+.bem-data p{margin:3px 0;line-height:1.7}
+.bem-warn{background:#fef9c3;border:1px solid #facc15;border-radius:8px;padding:6px 10px;margin:8px 0 4px;font-size:.92rem}
+.print-btn{margin-top:10px;background:#fff;color:#0f766e;border:2px solid #fde047;border-radius:20px;padding:6px 16px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+#paper .copy{border:1.5px solid #334155;border-radius:8px;padding:5px 9px 5px 80px;margin:0 0 5mm;break-inside:avoid;position:relative}
+#paper .cut{border-top:1.5px dashed #64748b;margin:0 0 4mm;text-align:center;font-size:9pt;color:#64748b;line-height:0}
+#paper .cut span{background:#fff;padding:0 6px}
+#paper .ph{display:flex;justify-content:space-between;align-items:center;font-weight:bold;font-size:9.5pt}
+#paper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #1e3a8a;border-radius:14px;padding:2px 8px;margin:3px auto 4px;width:fit-content;background:#eff6ff}
+#paper .qr{position:absolute;left:8px;top:6px;text-align:center;font-size:7pt;color:#475569;width:66px}
+#paper .qr img{width:58px;height:58px}
+#paper .cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+#paper .ex{break-inside:avoid;margin:2px 0}
+#paper .ex h4{margin:3px 0 1px;font-size:10.5pt;background:#e0f2fe;border-radius:6px;padding:1px 6px}
+#paper .ex p,#paper .ex li{margin:1px 0;line-height:1.4}
+#paper svg{max-height:120px;width:auto!important;margin:2px auto!important}
+#paper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+#paper .bem-warn{padding:3px 6px;margin:2px 0}
+#paper .bem-data p{margin:0}
+#paper .bem-intro{margin:0}
+#paper .w3{font-size:8.6pt;padding:4px 6px 4px 74px;margin-bottom:3mm}
+#paper .w3 .cols{grid-template-columns:1fr 1fr 1fr;gap:2px 8px}
+#paper .w3 svg{max-height:88px}
+#paper .w3 .ex h4{font-size:8.8pt}
+#paper .w3 .ex p{line-height:1.3}
+#paper .w3 .pt{font-size:10pt;margin:1px auto 2px;padding:1px 8px}
+#paper .one .cols{display:block}
+#paper .one svg{max-height:150px}
+#paper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt;width:192mm}
+@media print{
+ @page{size:A4;margin:8mm 9mm}
+ body>*:not(#paper){display:none!important}
+ html,body{background:#fff!important;padding:0!important;margin:0!important}
+
+ #paper{display:block!important;width:auto}
+}
+</style>
 </head>
 <body>
 
@@ -514,6 +551,7 @@
         <div class="school-title">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
         <h1>سلسلة المقطع الثاني رقم 2 التفاعلي في الرياضيات</h1>
         <div class="sub-info">المستوى: السنة الثالثة متوسط | المستقيمات الخاصة في المثلث | 5 تمارين على 20<br>حلّ في الكراس ثم تحقق هنا</div>
+        <button class="print-btn" onclick="window.print()">🖨️ النسخة الورقية للطباعة</button>
     </header>
 
     <div class="sticky-bar">
@@ -791,8 +829,8 @@
  {
   "id": 5,
   "pts": 6,
-  "title": "التمرين 5: تميّز: لوحة المؤسسة",
-  "context": "صنع تلاميذ النادي العلمي لوحة مثلثة متجانسة تحمل اسم متوسطة العربي بن مهيدي، ويريدون تعليقها من مركز ثقلها لتبقى متوازنة. طول أحد متوسطاتها <span class=\"math\">18 cm</span>.<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 380 240\" width=\"380\" height=\"240\" style=\"max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff\" font-family=\"Arial\" font-size=\"16\"><rect width=\"380\" height=\"240\" fill=\"#fff\"/><polygon points=\"170,20 40,200 330,200\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\"/><line x1=\"170\" y1=\"20\" x2=\"185.0\" y2=\"200.0\" stroke=\"#0f766e\" stroke-width=\"2\"/><line x1=\"40\" y1=\"200\" x2=\"250.0\" y2=\"110.0\" stroke=\"#0f766e\" stroke-width=\"2\"/><circle cx=\"170\" cy=\"20\" r=\"3\" fill=\"#111\"/><text x=\"164\" y=\"12\" font-weight=\"bold\">A</text><circle cx=\"40\" cy=\"200\" r=\"3\" fill=\"#111\"/><text x=\"22\" y=\"216\" font-weight=\"bold\">B</text><circle cx=\"330\" cy=\"200\" r=\"3\" fill=\"#111\"/><text x=\"336\" y=\"216\" font-weight=\"bold\">C</text><circle cx=\"185.0\" cy=\"200.0\" r=\"3\" fill=\"#111\"/><text x=\"181.0\" y=\"220.0\" font-weight=\"bold\">I</text><circle cx=\"250.0\" cy=\"110.0\" r=\"3\" fill=\"#111\"/><text x=\"258.0\" y=\"108.0\" font-weight=\"bold\">J</text><circle cx=\"180.0\" cy=\"140.0\" r=\"3\" fill=\"#111\"/><text x=\"188.0\" y=\"156.0\" font-weight=\"bold\">G</text><text x=\"112.5\" y=\"196\" font-size=\"12\" fill=\"#b91c1c\" text-anchor=\"middle\">||</text><text x=\"257.5\" y=\"196\" font-size=\"12\" fill=\"#b91c1c\" text-anchor=\"middle\">||</text><text x=\"190\" y=\"232\" font-size=\"12\" fill=\"#64748b\" text-anchor=\"middle\">(الشكل غير مرسوم بالأبعاد الحقيقية)</text></svg>",
+  "title": "الوضعية الإدماجية: لوحة المؤسسة",
+  "context": "<p class=\"bem-intro\">صنع تلاميذ النادي العلمي لوحة مثلثة متجانسة تحمل اسم متوسطة العربي بن مهيدي، ويريدون تعليقها من مركز ثقلها لتبقى متوازنة.</p><div class=\"bem-data\"><p>– طول أحد متوسطاتها <span class=\"math\">18 cm</span>.</p></div><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 380 240\" width=\"380\" height=\"240\" style=\"max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff\" font-family=\"Arial\" font-size=\"16\"><rect width=\"380\" height=\"240\" fill=\"#fff\"/><polygon points=\"170,20 40,200 330,200\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\"/><line x1=\"170\" y1=\"20\" x2=\"185.0\" y2=\"200.0\" stroke=\"#0f766e\" stroke-width=\"2\"/><line x1=\"40\" y1=\"200\" x2=\"250.0\" y2=\"110.0\" stroke=\"#0f766e\" stroke-width=\"2\"/><circle cx=\"170\" cy=\"20\" r=\"3\" fill=\"#111\"/><text x=\"164\" y=\"12\" font-weight=\"bold\">A</text><circle cx=\"40\" cy=\"200\" r=\"3\" fill=\"#111\"/><text x=\"22\" y=\"216\" font-weight=\"bold\">B</text><circle cx=\"330\" cy=\"200\" r=\"3\" fill=\"#111\"/><text x=\"336\" y=\"216\" font-weight=\"bold\">C</text><circle cx=\"185.0\" cy=\"200.0\" r=\"3\" fill=\"#111\"/><text x=\"181.0\" y=\"220.0\" font-weight=\"bold\">I</text><circle cx=\"250.0\" cy=\"110.0\" r=\"3\" fill=\"#111\"/><text x=\"258.0\" y=\"108.0\" font-weight=\"bold\">J</text><circle cx=\"180.0\" cy=\"140.0\" r=\"3\" fill=\"#111\"/><text x=\"188.0\" y=\"156.0\" font-weight=\"bold\">G</text><text x=\"112.5\" y=\"196\" font-size=\"12\" fill=\"#b91c1c\" text-anchor=\"middle\">||</text><text x=\"257.5\" y=\"196\" font-size=\"12\" fill=\"#b91c1c\" text-anchor=\"middle\">||</text><text x=\"190\" y=\"232\" font-size=\"12\" fill=\"#64748b\" text-anchor=\"middle\">(الشكل غير مرسوم بالأبعاد الحقيقية)</text></svg><div class=\"bem-warn\"><b>ملاحظة:</b> الرسم غير معطى بأبعاده الحقيقية، ولا يطلب إعادة الرسم.</div>",
   "questions": [
    {
     "qId": "5-1",
@@ -814,8 +852,12 @@
     ],
     "rubric": [
      {
-      "step": "النتيجة",
-      "mark": "3"
+      "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
+      "mark": "0,75"
+     },
+     {
+      "step": "م2 الاستعمال السليم: النتيجة",
+      "mark": "2,25"
      }
     ],
     "pts": 3,
@@ -841,8 +883,12 @@
     ],
     "rubric": [
      {
-      "step": "النتيجة",
-      "mark": "3"
+      "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
+      "mark": "0,75"
+     },
+     {
+      "step": "م2 الاستعمال السليم: النتيجة",
+      "mark": "2,25"
      }
     ],
     "pts": 3,
@@ -1080,5 +1126,6 @@
   const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
   s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
   document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
+<div id="paper"><div class="copy one"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACZElEQVR4nMWYPW7cMBCFv5EWoDvuDbgXseQcK8BuVoYC5FiRfBLqBlRHAVy9FDKQJk7lMCzYvGJGnMH7kYk/n6X5AIBPRjYzs61Zb5fNzq+2vcBiZqfPrvMhQu6lmC21cnNqI70UJY2x2hsgO+EeYbvQ+SHo1U5sdv78On9Hthd+zKtZWf5tnY8RNy63HkuPfvuSqndgKtD5svgdcI9QcEr1OiAD5M6P8fcFtNU2EUlS7lXQ5EtwO60kqV4HueOKm7yU+9TK7dyj5lTzDSZaHW9vKkGS5CbuVTuAbIngdl+CJj8EzTWnoDndj8G7nXsEX3CTr9dBw/P5YcDjsjb+FADYXtZ6utDwBmEzG+NTtxYy6wksVeQDzemKZhU00UbNUsxdzU3MvaRsGsj4gpSu0FfcxAadWfxEG5/gh6yhlXu1oeIUJloBd+U+EY5RTFVZefJjBF8A7lET1+BUkRMbbNl6zengpvDU0c5bw7XiFHYg449NDLnzJWAVXRra/RC0+4J2WjlpCJpTTV3Y/Rhzn64hmwr0GuXqqrNplHvnIdCsIWSqaqNUcLPG6HYA/BhzV9cjpVaYCrnzQwCu0Fd1KLPezQkdbXSzSshWcROb7RuE/GzDkk3bhWc7LW76/DofI+7nmcWNOoUn+E5+A+wWKubGwyubFDGNkV7jYRvrZme69da7iUevn2cWWCtq45GdOdz6PeY+tcp9TVbO3eGMStDuFbX7AaxyYmmPL3eTH2O2BFVd2jui81dbv623i5+4wtu/qvOnk3spak5HcNIhT1TMC+/Z2dI9Yuku8IWqumD//V/aL81cs1HsskmtAAAAAElFTkSuQmCC" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الثالثة متوسط</span></div><div class="pt">سلسلة المقطع الثاني رقم 2</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>التمرين الأول (3 ن): تطبيق مباشر: مركز الثقل</h4><span class="math">G</span> مركز ثقل المثلث <span class="math">ABC</span> و<span class="math">[AI]</span> متوسط طوله <span class="math">15 cm</span>.<p>1) احسب <span class="math">AG</span> (بـ cm).</p></div><div class="ex"><h4>التمرين الثاني (3 ن): تطبيق مباشر: الدائرة المحيطة</h4>مثلث قائم طول وتره <span class="math">13 cm</span>.<p>1) احسب نصف قطر الدائرة المحيطة به (بـ cm).</p></div><div class="ex"><h4>التمرين الثالث (4 ن): ربط: المنصفات والزوايا</h4><span class="math">ABC</span> مثلث حيث <span class="math">BAC = 60°</span> و<span class="math">ABC = 80°</span>. منصفا الزاويتين <span class="math">ABC</span> و<span class="math">ACB</span> يتقاطعان في <span class="math">I</span>.<p>1) احسب <span class="math">ACB</span> (بالدرجات).</p><p>2) احسب <span class="math">BIC</span> (بالدرجات).</p></div><div class="ex"><h4>التمرين الرابع (4 ن): ربط: المثلث متساوي الساقين</h4><span class="math">ABC</span> مثلث متساوي الساقين رأسه <span class="math">A</span> و<span class="math">BAC = 40°</span>. <span class="math">H</span> منتصف <span class="math">[BC]</span>، فالمتوسط <span class="math">[AH]</span> هو أيضا ارتفاع ومنصف للزاوية <span class="math">A</span>.<p>1) احسب <span class="math">BAH</span> (بالدرجات).</p><p>2) احسب <span class="math">ABC</span> (بالدرجات).</p></div><div class="ex"><h4>الوضعية الإدماجية (6 ن): لوحة المؤسسة</h4><p class="bem-intro">صنع تلاميذ النادي العلمي لوحة مثلثة متجانسة تحمل اسم متوسطة العربي بن مهيدي، ويريدون تعليقها من مركز ثقلها لتبقى متوازنة.</p><div class="bem-data"><p>– طول أحد متوسطاتها <span class="math">18 cm</span>.</p></div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 240" width="380" height="240" style="max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff" font-family="Arial" font-size="16"><rect width="380" height="240" fill="#fff"/><polygon points="170,20 40,200 330,200" fill="none" stroke="#111" stroke-width="2"/><line x1="170" y1="20" x2="185.0" y2="200.0" stroke="#0f766e" stroke-width="2"/><line x1="40" y1="200" x2="250.0" y2="110.0" stroke="#0f766e" stroke-width="2"/><circle cx="170" cy="20" r="3" fill="#111"/><text x="164" y="12" font-weight="bold">A</text><circle cx="40" cy="200" r="3" fill="#111"/><text x="22" y="216" font-weight="bold">B</text><circle cx="330" cy="200" r="3" fill="#111"/><text x="336" y="216" font-weight="bold">C</text><circle cx="185.0" cy="200.0" r="3" fill="#111"/><text x="181.0" y="220.0" font-weight="bold">I</text><circle cx="250.0" cy="110.0" r="3" fill="#111"/><text x="258.0" y="108.0" font-weight="bold">J</text><circle cx="180.0" cy="140.0" r="3" fill="#111"/><text x="188.0" y="156.0" font-weight="bold">G</text><text x="112.5" y="196" font-size="12" fill="#b91c1c" text-anchor="middle">||</text><text x="257.5" y="196" font-size="12" fill="#b91c1c" text-anchor="middle">||</text><text x="190" y="232" font-size="12" fill="#64748b" text-anchor="middle">(الشكل غير مرسوم بالأبعاد الحقيقية)</text></svg><div class="bem-warn"><b>ملاحظة:</b> الرسم غير معطى بأبعاده الحقيقية، ولا يطلب إعادة الرسم.</div><p>1) على أي بعد من الرأس (على هذا المتوسط) نثقب اللوحة؟ (بـ cm)</p><p>2) وعلى أي بعد من منتصف الضلع المقابل؟ (بـ cm)</p></div></div></div></div><!--/paper-->
 </body>
 </html>

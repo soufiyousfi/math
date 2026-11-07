@@ -506,7 +506,44 @@
                background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
         .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
         .vop .ln { border-top: 2px solid #0f172a; }
-    </style>
+    
+.bem-intro{margin:0 0 6px;line-height:1.7}
+.bem-data p{margin:3px 0;line-height:1.7}
+.bem-warn{background:#fef9c3;border:1px solid #facc15;border-radius:8px;padding:6px 10px;margin:8px 0 4px;font-size:.92rem}
+.print-btn{margin-top:10px;background:#fff;color:#0f766e;border:2px solid #fde047;border-radius:20px;padding:6px 16px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+#paper .copy{border:1.5px solid #334155;border-radius:8px;padding:5px 9px 5px 80px;margin:0 0 5mm;break-inside:avoid;position:relative}
+#paper .cut{border-top:1.5px dashed #64748b;margin:0 0 4mm;text-align:center;font-size:9pt;color:#64748b;line-height:0}
+#paper .cut span{background:#fff;padding:0 6px}
+#paper .ph{display:flex;justify-content:space-between;align-items:center;font-weight:bold;font-size:9.5pt}
+#paper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #1e3a8a;border-radius:14px;padding:2px 8px;margin:3px auto 4px;width:fit-content;background:#eff6ff}
+#paper .qr{position:absolute;left:8px;top:6px;text-align:center;font-size:7pt;color:#475569;width:66px}
+#paper .qr img{width:58px;height:58px}
+#paper .cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+#paper .ex{break-inside:avoid;margin:2px 0}
+#paper .ex h4{margin:3px 0 1px;font-size:10.5pt;background:#e0f2fe;border-radius:6px;padding:1px 6px}
+#paper .ex p,#paper .ex li{margin:1px 0;line-height:1.4}
+#paper svg{max-height:120px;width:auto!important;margin:2px auto!important}
+#paper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+#paper .bem-warn{padding:3px 6px;margin:2px 0}
+#paper .bem-data p{margin:0}
+#paper .bem-intro{margin:0}
+#paper .w3{font-size:8.6pt;padding:4px 6px 4px 74px;margin-bottom:3mm}
+#paper .w3 .cols{grid-template-columns:1fr 1fr 1fr;gap:2px 8px}
+#paper .w3 svg{max-height:88px}
+#paper .w3 .ex h4{font-size:8.8pt}
+#paper .w3 .ex p{line-height:1.3}
+#paper .w3 .pt{font-size:10pt;margin:1px auto 2px;padding:1px 8px}
+#paper .one .cols{display:block}
+#paper .one svg{max-height:150px}
+#paper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt;width:192mm}
+@media print{
+ @page{size:A4;margin:8mm 9mm}
+ body>*:not(#paper){display:none!important}
+ html,body{background:#fff!important;padding:0!important;margin:0!important}
+
+ #paper{display:block!important;width:auto}
+}
+</style>
 </head>
 <body>
 
@@ -514,6 +551,7 @@
         <div class="school-title">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
         <h1>الفرض الرابع التفاعلي في الرياضيات</h1>
         <div class="sub-info">المستوى: السنة الثانية متوسط | المقطع الثاني: التناظر المركزي (خواص التناظر المركزي)<br>للتصحيح الذاتي بعد إنجاز الفرض على الورقة</div>
+        <button class="print-btn" onclick="window.print()">🖨️ النسخة الورقية للطباعة</button>
     </header>
 
     <div class="sticky-bar">
@@ -868,8 +906,8 @@
  {
   "id": 4,
   "pts": 5,
-  "title": "التمرين 4: وضعية: مائدة الضيافة",
-  "context": "مائدة دائرية مركزها <span class=\"math\">O</span> وقطرها <span class=\"math\">1,2 m</span>. وضعت الأم صحن الكسكسي عند النقطة <span class=\"math\">P</span> على بعد <span class=\"math\">0,4 m</span> من <span class=\"math\">O</span>، ثم وضعت صحن اللبن عند <span class=\"math\">P′</span> نظيرة <span class=\"math\">P</span> بالنسبة إلى <span class=\"math\">O</span>، ليتقاسم الضيوف الطعام، فإكرام الضيف من قيمنا.",
+  "title": "الوضعية الإدماجية: مائدة الضيافة",
+  "context": "<div class=\"bem-data\"><p>– مائدة دائرية مركزها <span class=\"math\">O</span> وقطرها <span class=\"math\">1,2 m</span>.</p><p>– وضعت الأم صحن الكسكسي عند النقطة <span class=\"math\">P</span> على بعد <span class=\"math\">0,4 m</span> من <span class=\"math\">O</span>، ثم وضعت صحن اللبن عند <span class=\"math\">P′</span> نظيرة <span class=\"math\">P</span> بالنسبة إلى <span class=\"math\">O</span>، ليتقاسم الضيوف الطعام، فإكرام الضيف من قيمنا.</p></div>",
   "questions": [
    {
     "qId": "4-1",
@@ -892,8 +930,12 @@
     ],
     "rubric": [
      {
-      "step": "النتيجة",
-      "mark": "2,5"
+      "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
+      "mark": "0,5"
+     },
+     {
+      "step": "م2 الاستعمال السليم: النتيجة",
+      "mark": "2"
      }
     ],
     "pts": 2.5,
@@ -921,11 +963,11 @@
     ],
     "rubric": [
      {
-      "step": "نصف القطر",
+      "step": "م1 التفسير السليم: نصف القطر",
       "mark": "1"
      },
      {
-      "step": "النتيجة",
+      "step": "م2 الاستعمال السليم: النتيجة",
       "mark": "1,5"
      }
     ],
@@ -1164,5 +1206,6 @@
   const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
   s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
   document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
+<div id="paper"><div class="copy one"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK8AAACvAQAAAACj6bPYAAACGElEQVR4nL2XMW7bQBBF34gCVqmWZbrVRULKd0oTQLbkUIDLnCeVtcpFyBOErLIElvwpHKRyUnm95S9mMPtn/vwx8crT5jUU3gQmAUjKQSvgVoCmZMoNrdSj+jLYnc4kvJTeKvY/YNmW+QAhyc5hPvBobxb7//ApcvNdvysR+1X4Nt23/jpl3LV4SlIr9QmfofE5pMZLqXD7RLM9DU99gqcIk9muaJVbJ2C24Rs+sWxpReG53MytmbmvLHtuVH2SWeGOJdlYKdl4UrKxkls5UphLt/rZUA07fB6mSq7316Jczh/WS3CxYXC/DNzKsldZLmHKAw2XkH6MVZ+AULZjSfhONP4MDSe5q5cKy7pbpzxgYyVFbYcEl8EV5XIz3+kcUrQ8zG297OcDUHaTkExnpJGgOJ76l5kpLHjNlMNONcxtvez9c/2lsOChOFY9jc+41Xe9NFa9W8umvHopteqUGp+D4ghlU26wkWEHi7lu6OL8AKGwEZnb+rHVdZJ2sLT+uT4yHwqv6LHqFXUObvWZ1CqHsh+7BY5hPvxUbwcu+O/15/ixdJXK0I4ERelFY8vOJZKkZMpBGoFWXV9YCmYzM3edXNzhc0A1lN2XL259fuBIkm0HbFz2pY1IQ9UnUw7uL5elbxIAVDNM92Z7H9XFd3HrNpzDziTxyXJQYS5NGbfUANO9pZsvbyrhj7NUlHrgpLLqY+9/Rf8Gy3U5siAgxVoAAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الثانية متوسط</span></div><div class="pt">الفرض الرابع</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>التمرين الأول (5 ن): الحفاظ على الأطوال والمساحات</h4><span class="math">ABCD</span> مستطيل طوله <span class="math">12 cm</span> وعرضه <span class="math">5 cm</span>. <span class="math">A′B′C′D′</span> نظيره بالنسبة إلى نقطة <span class="math">O</span>.<p>1) احسب مساحة <span class="math">A′B′C′D′</span> (بـ cm²).</p><p>2) احسب محيط <span class="math">A′B′C′D′</span> (بـ cm).</p><p>3) ما قيس الزاوية <span class="math">A′B′C′</span> (بالدرجات)؟</p></div><div class="ex"><h4>التمرين الثاني (5 ن): قطعتان لهما المنتصف نفسه</h4><span class="math">[AC]</span> و<span class="math">[BD]</span> قطعتان لهما المنتصف نفسه <span class="math">O</span>، و<span class="math">AC = 9 cm</span>.<p>1) ما نظيرة النقطة <span class="math">A</span> بالنسبة إلى <span class="math">O</span> مع التعليل؟</p><p>2) ما نظيرة النقطة <span class="math">B</span> بالنسبة إلى <span class="math">O</span> مع التعليل؟</p><p>3) احسب <span class="math">OA</span> (بـ cm).</p></div><div class="ex"><h4>التمرين الثالث (5 ن): الحفاظ على الاستقامية</h4><span class="math">A, B, C</span> ثلاث نقط على استقامة بهذا الترتيب حيث <span class="math">AB = 3 cm</span> و<span class="math">BC = 4 cm</span>. <span class="math">A′, B′, C′</span> نظائرها بالنسبة إلى <span class="math">O</span>.<p>1) هل النقط <span class="math">A′, B′, C′</span> على استقامة مع التعليل؟</p><p>2) احسب <span class="math">A′C′</span> (بـ cm).</p><p>3) أي نقطة من <span class="math">A′, B′, C′</span> تقع بين النقطتين الأخريين مع التعليل؟</p></div><div class="ex"><h4>الوضعية الإدماجية (5 ن): مائدة الضيافة</h4><div class="bem-data"><p>– مائدة دائرية مركزها <span class="math">O</span> وقطرها <span class="math">1,2 m</span>.</p><p>– وضعت الأم صحن الكسكسي عند النقطة <span class="math">P</span> على بعد <span class="math">0,4 m</span> من <span class="math">O</span>، ثم وضعت صحن اللبن عند <span class="math">P′</span> نظيرة <span class="math">P</span> بالنسبة إلى <span class="math">O</span>، ليتقاسم الضيوف الطعام، فإكرام الضيف من قيمنا.</p></div><p>1) احسب المسافة بين الصحنين <span class="math">PP′</span> (بـ m).</p><p>2) احسب بُعد الصحن <span class="math">P′</span> عن حافة المائدة (بـ m).</p></div></div></div></div><!--/paper-->
 </body>
 </html>

@@ -506,7 +506,44 @@
                background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
         .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
         .vop .ln { border-top: 2px solid #0f172a; }
-    </style>
+    
+.bem-intro{margin:0 0 6px;line-height:1.7}
+.bem-data p{margin:3px 0;line-height:1.7}
+.bem-warn{background:#fef9c3;border:1px solid #facc15;border-radius:8px;padding:6px 10px;margin:8px 0 4px;font-size:.92rem}
+.print-btn{margin-top:10px;background:#fff;color:#0f766e;border:2px solid #fde047;border-radius:20px;padding:6px 16px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+#paper .copy{border:1.5px solid #334155;border-radius:8px;padding:5px 9px 5px 80px;margin:0 0 5mm;break-inside:avoid;position:relative}
+#paper .cut{border-top:1.5px dashed #64748b;margin:0 0 4mm;text-align:center;font-size:9pt;color:#64748b;line-height:0}
+#paper .cut span{background:#fff;padding:0 6px}
+#paper .ph{display:flex;justify-content:space-between;align-items:center;font-weight:bold;font-size:9.5pt}
+#paper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #1e3a8a;border-radius:14px;padding:2px 8px;margin:3px auto 4px;width:fit-content;background:#eff6ff}
+#paper .qr{position:absolute;left:8px;top:6px;text-align:center;font-size:7pt;color:#475569;width:66px}
+#paper .qr img{width:58px;height:58px}
+#paper .cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+#paper .ex{break-inside:avoid;margin:2px 0}
+#paper .ex h4{margin:3px 0 1px;font-size:10.5pt;background:#e0f2fe;border-radius:6px;padding:1px 6px}
+#paper .ex p,#paper .ex li{margin:1px 0;line-height:1.4}
+#paper svg{max-height:120px;width:auto!important;margin:2px auto!important}
+#paper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+#paper .bem-warn{padding:3px 6px;margin:2px 0}
+#paper .bem-data p{margin:0}
+#paper .bem-intro{margin:0}
+#paper .w3{font-size:8.6pt;padding:4px 6px 4px 74px;margin-bottom:3mm}
+#paper .w3 .cols{grid-template-columns:1fr 1fr 1fr;gap:2px 8px}
+#paper .w3 svg{max-height:88px}
+#paper .w3 .ex h4{font-size:8.8pt}
+#paper .w3 .ex p{line-height:1.3}
+#paper .w3 .pt{font-size:10pt;margin:1px auto 2px;padding:1px 8px}
+#paper .one .cols{display:block}
+#paper .one svg{max-height:150px}
+#paper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt;width:192mm}
+@media print{
+ @page{size:A4;margin:8mm 9mm}
+ body>*:not(#paper){display:none!important}
+ html,body{background:#fff!important;padding:0!important;margin:0!important}
+
+ #paper{display:block!important;width:auto}
+}
+</style>
 </head>
 <body>
 
@@ -514,6 +551,7 @@
         <div class="school-title">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
         <h1>سلسلة المقطع الثاني رقم 2 التفاعلي في الرياضيات</h1>
         <div class="sub-info">المستوى: السنة الأولى متوسط | المحيط والمساحة | 5 تمارين على 20<br>حلّ في الكراس ثم تحقق هنا</div>
+        <button class="print-btn" onclick="window.print()">🖨️ النسخة الورقية للطباعة</button>
     </header>
 
     <div class="sticky-bar">
@@ -743,8 +781,8 @@
  {
   "id": 5,
   "pts": 6,
-  "title": "التمرين 5: تميّز: حقل الزيتون",
-  "context": "حقل زيتون في ولاية قالمة على شكل مستطيل طوله <span class=\"math\">60 m</span> وعرضه <span class=\"math\">35 m</span>. تحتاج كل شجرة زيتون إلى <span class=\"math\">25 m²</span>. غرس الأشجار صدقة جارية ونفع للبيئة.",
+  "title": "الوضعية الإدماجية: حقل الزيتون",
+  "context": "<div class=\"bem-data\"><p>– حقل زيتون في ولاية قالمة على شكل مستطيل طوله <span class=\"math\">60 m</span> وعرضه <span class=\"math\">35 m</span>.</p><p>– تحتاج كل شجرة زيتون إلى <span class=\"math\">25 m²</span>.</p><p>– غرس الأشجار صدقة جارية ونفع للبيئة.</p></div>",
   "questions": [
    {
     "qId": "5-1",
@@ -766,8 +804,12 @@
     ],
     "rubric": [
      {
-      "step": "النتيجة",
-      "mark": "3"
+      "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
+      "mark": "0,75"
+     },
+     {
+      "step": "م2 الاستعمال السليم: النتيجة",
+      "mark": "2,25"
      }
     ],
     "pts": 3,
@@ -794,11 +836,11 @@
     ],
     "rubric": [
      {
-      "step": "القسمة",
+      "step": "م1 التفسير السليم: القسمة",
       "mark": "1,5"
      },
      {
-      "step": "النتيجة",
+      "step": "م2 الاستعمال السليم: النتيجة",
       "mark": "1,5"
      }
     ],
@@ -1037,5 +1079,6 @@
   const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
   s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
   document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
+<div id="paper"><div class="copy one"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACe0lEQVR4nMWYMY7sNhBEX4sDcDLODTgXsTROfCcD+pb2zwI+kyNL64twbsDJSICrcrA/9Dpa00or6AK7q7paJv75ewyfAPDFSDUzq7fnSrXLi9UbPMzs9NV1PkUok5TKCNHv2SUmKUm6p25vgOyE30KDMaxRL3ai2uXr6/w7Ul1+5WnWHv9tnc8Rv8HjbPl9qj/n7gxMDUbAH4B/jw2v3JPBbnat08Wl5xT9Xm+8YmZrPy1IksqkFb+FFv2BkyR10wJlZMZvLGLKTv5gSdqz68bg5L/fnOovwYy3UK8FwfmPy9LRkUZmChD9EVrUFtaovWcXpOwkqeEPlgSh4bfQj8FQLa6POl2IzyGcIgD19uy4F7SrRb+xJEYWFQCs4ySiPc9gGbThkvaPRbV0VOOUF2nPUAgNKc8wdZzEAcL6gHBPZ/hdNuDkX7p64oYTI3MsUyZ+tGKj4xwUghIEiZElaWOOXh0nccAe3yYpv1/1HeJ5xO11YO7ZhdAopkYhtFjG0CLWMaWdGHmN4Xheoj8G386FF/T2bF0zktuBmepUrd5w6TyGjloolp2K6Z7KCGjXGgs9HUlHaGjPLvkDgHBPZeyoxgF73GW3UK/PW1gjPOv1bLlfTkS7Vpg+4qpLfleLxXK/Lgz1N5wKzzUWU73yk50efvv6Op8j/s/Lr4ai38/wSnkD7Fvslw8GLDvxVwbecMkW3T9CQse9AJRJLfpda9TRWws/bmfCXWXKSypTdipTR1emjLikPc9RR1DSEVawzheLS2XKRL+FeyqWoXNKG3GpWF4+XNnveaavK5dJStqzUxnDXcXUgI73wg8tjMxgeRGERlct2P/+L+1vYUOQCd8Ewq0AAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="pt">سلسلة المقطع الثاني رقم 2</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>التمرين الأول (3 ن): تطبيق مباشر: محيط مستطيل</h4>مستطيل طوله <span class="math">9 cm</span> وعرضه <span class="math">6 cm</span>.<p>1) احسب محيطه (بـ cm).</p></div><div class="ex"><h4>التمرين الثاني (3 ن): تطبيق مباشر: مساحة مربع</h4>مربع طول ضلعه <span class="math">8 cm</span>.<p>1) احسب مساحته (بـ cm²).</p></div><div class="ex"><h4>التمرين الثالث (4 ن): ربط: مساحة مثلث قائم</h4>مثلث قائم طولا ضلعيه القائمين <span class="math">10 cm</span> و<span class="math">7 cm</span>.<p>1) احسب مساحته (بـ cm²).</p></div><div class="ex"><h4>التمرين الرابع (4 ن): ربط: محيط دائرة</h4>دائرة نصف قطرها <span class="math">10 cm</span>. نأخذ <span class="math">π ≈ 3,14</span>.<p>1) احسب محيطها (بـ cm).</p></div><div class="ex"><h4>الوضعية الإدماجية (6 ن): حقل الزيتون</h4><div class="bem-data"><p>– حقل زيتون في ولاية قالمة على شكل مستطيل طوله <span class="math">60 m</span> وعرضه <span class="math">35 m</span>.</p><p>– تحتاج كل شجرة زيتون إلى <span class="math">25 m²</span>.</p><p>– غرس الأشجار صدقة جارية ونفع للبيئة.</p></div><p>1) احسب مساحة الحقل (بـ m²).</p><p>2) كم شجرة يمكن غرسها في الحقل؟</p></div></div></div></div><!--/paper-->
 </body>
 </html>
