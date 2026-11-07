@@ -68,11 +68,91 @@ button{font:inherit;cursor:pointer;border-radius:8px;border:1px solid var(--line
                background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
         .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
         .vop .ln { border-top: 2px solid #0f172a; }
+
+.bem-intro{margin:0 0 6px;line-height:1.7}
+.bem-data p{margin:3px 0;line-height:1.7}
+.bem-warn{background:#fef9c3;border:1px solid #facc15;border-radius:8px;padding:6px 10px;margin:8px 0 4px;font-size:.92rem}
+.print-btn{margin-top:10px;background:#fff;color:#0f766e;border:2px solid #fde047;border-radius:20px;padding:6px 16px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+#paper .copy{border:1.5px solid #334155;border-radius:8px;padding:5px 9px 5px 80px;margin:0 0 5mm;break-inside:avoid;position:relative}
+#paper .cut{border-top:1.5px dashed #64748b;margin:0 0 4mm;text-align:center;font-size:9pt;color:#64748b;line-height:0}
+#paper .cut span{background:#fff;padding:0 6px}
+#paper .ph{display:flex;justify-content:space-between;align-items:center;font-weight:bold;font-size:9.5pt}
+#paper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #1e3a8a;border-radius:14px;padding:2px 8px;margin:3px auto 4px;width:fit-content;background:#eff6ff}
+#paper .qr{position:absolute;left:8px;top:6px;text-align:center;font-size:7pt;color:#475569;width:66px}
+#paper .qr img{width:58px;height:58px}
+#paper .cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+#paper .ex{break-inside:avoid;margin:2px 0}
+#paper .ex h4{margin:3px 0 1px;font-size:10.5pt;background:#e0f2fe;border-radius:6px;padding:1px 6px}
+#paper .ex p,#paper .ex li{margin:1px 0;line-height:1.4}
+#paper svg{max-height:120px;width:auto!important;margin:2px auto!important}
+#paper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+#paper .bem-warn{padding:3px 6px;margin:2px 0}
+#paper .bem-data p{margin:0}
+#paper .bem-intro{margin:0}
+#paper .w3{font-size:8.6pt;padding:4px 6px 4px 74px;margin-bottom:3mm}
+#paper .w3 .cols{grid-template-columns:1fr 1fr 1fr;gap:2px 8px}
+#paper .w3 svg{max-height:88px}
+#paper .w3 .ex h4{font-size:8.8pt}
+#paper .w3 .ex p{line-height:1.3}
+#paper .w3 .pt{font-size:10pt;margin:1px auto 2px;padding:1px 8px}
+#paper .one .cols{display:block}
+#paper .one svg{max-height:150px}
+#paper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt;width:192mm}
+@media print{
+ @page{size:A4;margin:8mm 9mm}
+ body>*:not(#paper){display:none!important}
+ html,body{background:#fff!important;padding:0!important;margin:0!important}
+
+ #paper{display:block!important;width:auto}
+}
+
+#paper .copy{font-size:11pt;padding:6px 10px 6px 84px;margin:0}
+#paper .copy .cols{grid-template-columns:1fr 1fr;gap:4px 14px}
+#paper .copy.flow{font-size:12pt}
+#paper .copy.flow .cols{display:block}
+#paper .copy.flow .ex{margin:0 0 4mm}
+#paper .copy.flow svg{max-height:170px}
+#paper .ex h4{font-size:11.5pt}
+#solpaper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt}
+#solpaper .sxs{columns:2;column-gap:7mm;column-rule:1px solid #cbd5e1}
+#solpaper .sx{margin:0 0 2mm}
+#solpaper h4{break-after:avoid}
+#solpaper h4{margin:2px 0;font-size:11pt;background:#dcfce7;border-radius:6px;padding:1px 6px}
+#solpaper .ph{display:flex;justify-content:space-between;font-weight:bold;font-size:9.5pt}
+#solpaper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #166534;border-radius:14px;padding:2px 8px;margin:3px auto 6px;width:fit-content;background:#f0fdf4}
+#solpaper .sq{margin:2px 0 4px;break-inside:avoid;text-align:right}
+#solpaper .sq p{margin:1px 0;line-height:1.4;text-align:right}
+#solpaper .sq p *{text-align:right}
+#solpaper table{border-collapse:collapse;margin:2px 0 3px;font-size:9.5pt}
+#solpaper td,#solpaper th{border:1px solid #64748b;padding:1px 6px}
+#solpaper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+/* 2026-11-07 shape of his model «فرض الفصل الأول» papers: title box, red underlined headings, one column, figure on the left */
+#paper .copy{border:none;border-radius:0;padding:0 0 0 0}
+#paper .copy .cols,#paper .copy.flow .cols{display:block}
+#paper .ttl{border:1.5px solid #1e293b;border-radius:6px;text-align:center;font-weight:bold;font-size:13pt;padding:5px 8px;margin:4px 0 6px 82px}
+#paper .copy .ph{padding-left:82px}
+#paper .qr{top:0;left:0}
+#paper .ex{margin:0 0 3mm;overflow:hidden;border:none!important;box-shadow:none!important;background:none!important;padding:0!important;border-radius:0!important}
+#paper .ex h4,#solpaper h4{background:none!important;color:#b91c1c;text-decoration:underline;font-size:12.5pt;padding:0;margin:4px 0 3px}
+#paper .ex .fig{float:left;width:40%;margin:0 0 2px 12px}
+#paper .ex .fig svg{max-width:100%!important;max-height:190px;margin:0 auto!important}
+#paper .ex p{line-height:1.55}
+#paper .bem-warn{background:none;border:none;padding:0;font-size:10pt}
+#paper .foot{text-align:center;font-size:8pt;color:#475569;border-top:1px solid #cbd5e1;margin-top:3mm;padding-top:1mm;clear:both}
+#solpaper .ttl{border:1.5px solid #1e293b;border-radius:6px;text-align:center;font-weight:bold;font-size:13pt;padding:4px 8px;margin:4px 0 6px}
+.sol-btn{display:none}
+.sol-wait{margin-top:6px;font-size:.85rem;color:#64748b}
+@media print{
+ body.psol>*:not(#solpaper){display:none!important}
+ body.psol #solpaper{display:block!important}
+ body.psol #paper{display:none!important}
+}
 </style>
 </head>
 <body>
 <header>
-  <h1>المقطع الأول: الأعداد الطبيعية والأعداد العشرية</h1>
+  <h1>المقطع الأول: الأعداد الطبيعية والأعداد العشرية</h1><div style="text-align:center">
+        <button class="print-btn" onclick="document.body.classList.remove('psol');window.print()">🖨️ النسخة الورقية للطباعة</button> <button class="print-btn sol-btn" onclick="printSol()">🖨️ النسخة الورقية للحل</button><div class="sol-wait"></div></div>
   <div class="score">علامتك: <span id="score">0</span> / 20</div>
 </header>
 <main>
@@ -380,5 +460,15 @@ function formHelp(t){
 document.getElementById("reset").addEventListener("click", () => { build(); window.scrollTo(0,0); });
 build();
 </script>
+<div id="paper"><div class="copy flow" data-pages="0"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACX0lEQVR4nMWYMY7kNhBFXzUbYGfsG7BPIvYNfJ4FtCuNNYBDn8eZdBP2DajIFKDRd9ANOPFOtEMzoED8oD4+i7+qZOK/1+P0EwB+MbKZmW2n1eyy2PjYzMaHmZ1/dZxPkCRl/xEnrT/CGb/ojKSxGQNqh8uacapWiP7A5UqYcjsNALY7327+YMjbif7r4nyCpOIWS/H7zau8t2Zg2kHxe4L1/FjvYcSrtGSwmN2AP5ZKmDK6gpk1zERJUjVNqoQpe71Wu0zc7rw/LrKRcKw72301sxPvDTVYSh/9jMvVipNmBtWOoZkG1A6oqUDtwpSfhI7Q7hbQUojVisuaw07tGDJtNUjFZc0MGegjqfTowDXUQJJ0hCljkvyBU7WWbwH4sM0V8B/XN8PKt9tF13aORLVC1BH2KGmPpOJE1/IWatIOVoZMKk5S6fFzw9pITWUQXdjRQf+UpFpp+Ba0aAQrg/xSBgFDbusHFYj/Hr3KkHU09QPTiGaIWjQiFfBzUw2sEGsqLvsj7NHPEEkt86Cm8rJhv2gSHX2EpnVBmkQqwLM/KEDXmIFeVnAEZVLp8XNTRyJIlaD8ckcG1dSwLqDj2RW4XAkjUnFtuzSk0sfahTFqDnusXZAauzJBmS7sr3P33Fq6siRVwh79HCR/hKltHjxnZ7rV5+0Hb7bd4fEVcX6KUJOUdbysINYuvCaHdj2S7Mx2X/e43sOUsfJhl6+I8znifw/jw7/ZZugKfl73ZgzOz0+3nvfL3zhd/voNKuXP1rOzabttJ95u2/DY2dK1ZSa+tkHVNMb2dcH+939p/wC+7aXkJAh1xAAAAABJRU5ErkJggg==" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="ttl">تمارين المقطع الأول في مادة الرياضيات للسنة الأولى متوسط</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>التمرين الأول (5 ن): جمع وطرح وضرب الأعداد الطبيعية</h4>باع فلاح من بوشقوف يوم السبت 1245 kg من الزيتون، وباع يوم الأحد 2378 kg.<p>1) ما هي كمية الزيتون التي باعها الفلاح في اليومين؟</p><p>2) بكم يزيد ما باعه يوم الأحد عما باعه يوم السبت؟</p><p>3) باع الفلاح زيتون يوم الأحد بسعر 350 DA للكيلوغرام الواحد. ما هو المبلغ الذي تحصّل عليه يوم الأحد؟</p></div><div class="ex"><h4>التمرين الثاني (5 ن): الكتابة العشرية والكسرية، والضرب والقسمة على 10 و 100 و 1000 و 0,1</h4>أجب عن كل سؤال. اكتب الفاصلة بالزر «,» .<p>1) اكتب العدد 3,47 على شكل كتابة كسرية عشرية.</p><p>2) اكتب الكسر 52/10 على شكل كتابة عشرية.</p><p>3) احسب: 4,8 × 100</p><p>4) احسب: 63 ÷ 1000</p><p>5) احسب: 25 × 0,1</p></div><div class="ex"><h4>التمرين الثالث (5 ن): مقارنة وترتيب الأعداد العشرية</h4>في حصة التربية البدنية بمتوسطة في وادي فراغة، قفز أمين 3,45 m، وقفز ياسين 3,5 m، وقفزت رانية 3,405 m.<p>1) ضع الرمز المناسب (< أو > أو =) بين العددين: 7,5 … 7,48</p><p>2) رتب الأعداد التالية ترتيبا تصاعديا: 2,3 ؛ 2,03 ؛ 2,31 ؛ 2,301</p><p>3) من هو صاحب أطول قفزة؟</p><p>4) اكتب عددا عشريا محصورا بين 4,6 و 4,7</p></div><div class="ex"><h4>التمرين الرابع (5 ن): العمليات على الأعداد العشرية ورتبة مقدار نتيجة حساب</h4>في سوق بوشقوف، اشترت سلمى 2,5 kg من الطماطم بسعر 85,40 DA للكيلوغرام، و 1,2 kg من البطاطا بسعر 64,5 DA للكيلوغرام، ودفعت للبائع ورقة 500 DA.<p>1) أعط رتبة مقدار لثمن الطماطم (بدون حساب دقيق).</p><p>2) احسب الثمن الدقيق للطماطم.</p><p>3) احسب ثمن البطاطا.</p><p>4) ما هو المبلغ الذي يرده البائع لسلمى؟</p></div></div><div class="foot">بالتوفيق</div></div></div><script>(function(){function fit(){var pp=document.getElementById('paper');if(!pp)return;var c=pp.querySelector('.copy');var n=+(c&&c.getAttribute('data-pages'));if(!n)return;
+var st=pp.getAttribute('style');pp.setAttribute('style','display:block;position:absolute;visibility:hidden;top:0;right:0;width:192mm');c.style.zoom=1;
+var mm=document.createElement('div');mm.style.height=(n*279-6)+'mm';pp.appendChild(mm);var lim=mm.getBoundingClientRect().height;pp.removeChild(mm);
+var lo=0.45,hi=1.3,k;c.style.zoom=hi;if(c.getBoundingClientRect().height<=lim)lo=hi;else for(k=0;k<10;k++){var m=(lo+hi)/2;c.style.zoom=m;if(c.getBoundingClientRect().height<=lim)lo=m;else hi=m}
+c.style.zoom=lo;if(st===null)pp.removeAttribute('style');else pp.setAttribute('style',st)}
+window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="ttl">الحل النموذجي وسلم التنقيط — تمارين المقطع الأول — السنة الأولى متوسط</div><div class="sxs"><div class="sx"><h4>التمرين الأول (5 ن): جمع وطرح وضرب الأعداد الطبيعية</h4><div class="sq"><p><b>1) ما هي كمية الزيتون التي باعها الفلاح في اليومين؟</b></p><p><b>اكتب العملية المناسبة:</b> لإيجاد الكمية الكلية نجمع الكميتين:<br><span class="math">1245 + 2378</span></p><p><b>اكتب النتيجة (بالكيلوغرام):</b> نجمع عموديا رتبة برتبة: الآحاد 5+8=13 (نكتب 3 ونحتفظ بـ 1)، العشرات 4+7+1=12 (نكتب 2 ونحتفظ بـ 1)، المئات 2+3+1=6، الآلاف 1+2=3.<br><span class="math">1245 + 2378 = 3623<br>الكمية الكلية: 3623 kg</span></p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>اكتب العملية المناسبة</td><td>0,5</td></tr><tr><td>اكتب النتيجة (بالكيلوغرام)</td><td>0,75</td></tr></table></div><div class="sq"><p><b>2) بكم يزيد ما باعه يوم الأحد عما باعه يوم السبت؟</b></p><p><b>اكتب العملية المناسبة:</b> الفرق بين كميتين نحصل عليه بطرح الأصغر من الأكبر:<br><span class="math">2378 − 1245</span></p><p><b>اكتب النتيجة (بالكيلوغرام):</b> الآحاد 8−5=3، العشرات 7−4=3، المئات 3−2=1، الآلاف 2−1=1. للتحقق: 1245 + 1133 = 2378.<br><span class="math">2378 − 1245 = 1133<br>يزيد بـ 1133 kg</span></p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>اكتب العملية المناسبة</td><td>0,5</td></tr><tr><td>اكتب النتيجة (بالكيلوغرام)</td><td>0,75</td></tr></table></div><div class="sq"><p><b>3) باع الفلاح زيتون يوم الأحد بسعر 350 DA للكيلوغرام الواحد. ما هو المبلغ الذي تحصّل عليه يوم الأحد؟</b></p><p><b>اكتب العملية المناسبة:</b> ثمن الكمية = الكمية × ثمن الكيلوغرام الواحد:<br><span class="math">2378 × 350</span></p><p><b>اكتب النتيجة (بالدينار):</b> 2378 × 35 = 71340 + 11890 = 83230 ، ثم نضرب في 10 فنضيف صفرا.<br><span class="math">2378 × 350 = 832300<br>المبلغ: 832300 DA</span></p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>اكتب العملية المناسبة</td><td>1</td></tr><tr><td>اكتب النتيجة (بالدينار)</td><td>1,5</td></tr></table></div></div><div class="sx"><h4>التمرين الثاني (5 ن): الكتابة العشرية والكسرية، والضرب والقسمة على 10 و 100 و 1000 و 0,1</h4><div class="sq"><p><b>1) اكتب العدد 3,47 على شكل كتابة كسرية عشرية.</b></p><p><b>الكتابة الكسرية (استعمل الزر /):</b> العدد 3,47 فيه رقمان بعد الفاصلة، أي 347 جزءا من مئة.<br><span class="math">3,47 = 347/100</span></p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الكتابة الكسرية (استعمل الزر /)</td><td>1</td></tr></table></div><div class="sq"><p><b>2) اكتب الكسر 52/10 على شكل كتابة عشرية.</b></p><p><b>الكتابة العشرية:</b> 52 عشرا تساوي 5 وحدات و 2 أعشار.<br><span class="math">52/10 = 5,2</span></p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الكتابة العشرية</td><td>1</td></tr></table></div><div class="sq"><p><b>3) احسب: 4,8 × 100</b></p><p><b>النتيجة:</b> نزيح الفاصلة مرتبتين إلى اليمين ونكمل بصفر عند الحاجة.<br><span class="math">4,8 × 100 = 480</span></p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>4) احسب: 63 ÷ 1000</b></p><p><b>النتيجة:</b> نكتب 63 = 63,0 ونزيح الفاصلة ثلاث مراتب إلى اليسار، ونكمل بالأصفار على اليسار.<br><span class="math">63 ÷ 1000 = 0,063</span></p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>5) احسب: 25 × 0,1</b></p><p><b>النتيجة:</b> ضرب عدد في 0,1 يعطي نفس نتيجة قسمته على 10.<br><span class="math">25 × 0,1 = 25 ÷ 10 = 2,5</span></p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الثالث (5 ن): مقارنة وترتيب الأعداد العشرية</h4><div class="sq"><p><b>1) ضع الرمز المناسب (< أو > أو =) بين العددين: 7,5 … 7,48</b></p><p><b>الرمز:</b> الجزءان الصحيحان متساويان. نقارن الأعشار: 5 أكبر من 4، إذن 7,5 أكبر.<br><span class="math">7,5 > 7,48</span></p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الرمز</td><td>1</td></tr></table></div><div class="sq"><p><b>2) رتب الأعداد التالية ترتيبا تصاعديا: 2,3 ؛ 2,03 ؛ 2,31 ؛ 2,301</b></p><p><b>اكتب الأعداد من الأصغر إلى الأكبر مفصولة بالرمز <:</b> نكمل بالأصفار: 2,300 ؛ 2,030 ؛ 2,310 ؛ 2,301 ثم نقارن الأجزاء العشرية: 030 < 300 < 301 < 310.<br><span class="math">2,03 < 2,3 < 2,301 < 2,31</span></p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>اكتب الأعداد من الأصغر إلى الأكبر مفصولة بالرمز <</td><td>1,5</td></tr></table></div><div class="sq"><p><b>3) من هو صاحب أطول قفزة؟</b></p><p><b>اكتب الاسم:</b> 3,500 > 3,450 > 3,405 ، إذن أطول قفزة هي قفزة ياسين (3,5 m). عدد الأرقام بعد الفاصلة لا يدل على كبر العدد.<br><span class="math">3,5 > 3,45 > 3,405</span></p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>اكتب الاسم</td><td>1</td></tr></table></div><div class="sq"><p><b>4) اكتب عددا عشريا محصورا بين 4,6 و 4,7</b></p><p><b>العدد:</b> 4,6 = 4,60 و 4,7 = 4,70 ، وكل عدد من 4,61 إلى 4,69 (أو 4,605 ...) محصور بينهما.<br><span class="math">4,6 < 4,65 < 4,7</span></p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>العدد</td><td>1,5</td></tr></table></div></div><div class="sx"><h4>التمرين الرابع (5 ن): العمليات على الأعداد العشرية ورتبة مقدار نتيجة حساب</h4><div class="sq"><p><b>1) أعط رتبة مقدار لثمن الطماطم (بدون حساب دقيق).</b></p><p><b>رتبة المقدار (بالدينار):</b> 85,40 قريب من 80 ، و 2,5 × 80 = 160 + 40 = 200. إذن ثمن الطماطم حوالي 200 DA (كل رتبة مقدار بين 200 و 270 مقبولة).<br><span class="math">2,5 × 85,40 ≈ 2,5 × 80 = 200</span></p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>رتبة المقدار (بالدينار)</td><td>1</td></tr></table></div><div class="sq"><p><b>2) احسب الثمن الدقيق للطماطم.</b></p><p><b>اكتب العملية:</b> نضرب الكمية في سعر الكيلوغرام:<br><span class="math">2,5 × 85,40</span></p><p><b>اكتب النتيجة (بالدينار):</b> نكتب 85,40 = 85,4 . نحسب 25 × 854 = 21350 ، وفي العاملين 2,5 و 85,4 رقمان بعد الفاصلة (رقم في كل منهما)، فنضع الفاصلة قبل رقمين: 213,50 . النتيجة قريبة من رتبة المقدار 200، إذن هي معقولة.<br><span class="math">2,5 × 85,40 = 213,50<br>ثمن الطماطم: 213,5 DA</span></p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>اكتب العملية</td><td>0,5</td></tr><tr><td>اكتب النتيجة (بالدينار)</td><td>0,75</td></tr></table></div><div class="sq"><p><b>3) احسب ثمن البطاطا.</b></p><p><b>اكتب العملية:</b> نضرب الكمية في سعر الكيلوغرام:<br><span class="math">1,2 × 64,5</span></p><p><b>اكتب النتيجة (بالدينار):</b> 12 × 645 = 7740 ، وفي العاملين معا رقمان بعد الفاصلة، إذن النتيجة 77,40.<br><span class="math">1,2 × 64,5 = 77,40<br>ثمن البطاطا: 77,4 DA</span></p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>اكتب العملية</td><td>0,5</td></tr><tr><td>اكتب النتيجة (بالدينار)</td><td>0,75</td></tr></table></div><div class="sq"><p><b>4) ما هو المبلغ الذي يرده البائع لسلمى؟</b></p><p><b>المبلغ الذي دفعته سلمى ثمنا للمشتريات (بالدينار):</b> نجمع الثمنين مع وضع الفواصل بعضها تحت بعض.<br><span class="math">213,5 + 77,4 = 290,9</span></p><p><b>اكتب عملية حساب المبلغ المردود:</b> نطرح ثمن المشتريات من الورقة النقدية:<br><span class="math">500 − 290,9</span></p><p><b>المبلغ المردود (بالدينار):</b> 500,0 − 290,9 = 209,1. للتحقق: 290,9 + 209,1 = 500.<br><span class="math">500 − 290,9 = 209,1<br>يرد البائع لسلمى 209,1 DA</span></p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>المبلغ الذي دفعته سلمى ثمنا للمشتريات (بالدينار)</td><td>0,5</td></tr><tr><td>اكتب عملية حساب المبلغ المردود</td><td>0,5</td></tr><tr><td>المبلغ المردود (بالدينار)</td><td>0,5</td></tr></table></div></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
+function tick(){var b=document.querySelector('.sol-btn'),w=document.querySelector('.sol-wait');if(!b)return;var r=t+D-Date.now();
+if(r<=0){b.style.display='inline-block';if(w)w.style.display='none';return}if(w)w.textContent='📄 النسخة الورقية للحل تظهر بعد '+Math.ceil(r/60000)+' دقيقة';setTimeout(tick,20000)}
+window.printSol=function(){document.body.classList.add('psol');window.print()};window.addEventListener('afterprint',function(){document.body.classList.remove('psol')});
+window.addEventListener('load',tick)})();</script><!--/paper-->
 </body>
 </html>
