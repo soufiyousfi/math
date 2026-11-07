@@ -506,7 +506,44 @@
                background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
         .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
         .vop .ln { border-top: 2px solid #0f172a; }
-    </style>
+    
+.bem-intro{margin:0 0 6px;line-height:1.7}
+.bem-data p{margin:3px 0;line-height:1.7}
+.bem-warn{background:#fef9c3;border:1px solid #facc15;border-radius:8px;padding:6px 10px;margin:8px 0 4px;font-size:.92rem}
+.print-btn{margin-top:10px;background:#fff;color:#0f766e;border:2px solid #fde047;border-radius:20px;padding:6px 16px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+#paper .copy{border:1.5px solid #334155;border-radius:8px;padding:5px 9px 5px 80px;margin:0 0 5mm;break-inside:avoid;position:relative}
+#paper .cut{border-top:1.5px dashed #64748b;margin:0 0 4mm;text-align:center;font-size:9pt;color:#64748b;line-height:0}
+#paper .cut span{background:#fff;padding:0 6px}
+#paper .ph{display:flex;justify-content:space-between;align-items:center;font-weight:bold;font-size:9.5pt}
+#paper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #1e3a8a;border-radius:14px;padding:2px 8px;margin:3px auto 4px;width:fit-content;background:#eff6ff}
+#paper .qr{position:absolute;left:8px;top:6px;text-align:center;font-size:7pt;color:#475569;width:66px}
+#paper .qr img{width:58px;height:58px}
+#paper .cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+#paper .ex{break-inside:avoid;margin:2px 0}
+#paper .ex h4{margin:3px 0 1px;font-size:10.5pt;background:#e0f2fe;border-radius:6px;padding:1px 6px}
+#paper .ex p,#paper .ex li{margin:1px 0;line-height:1.4}
+#paper svg{max-height:120px;width:auto!important;margin:2px auto!important}
+#paper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+#paper .bem-warn{padding:3px 6px;margin:2px 0}
+#paper .bem-data p{margin:0}
+#paper .bem-intro{margin:0}
+#paper .w3{font-size:8.6pt;padding:4px 6px 4px 74px;margin-bottom:3mm}
+#paper .w3 .cols{grid-template-columns:1fr 1fr 1fr;gap:2px 8px}
+#paper .w3 svg{max-height:88px}
+#paper .w3 .ex h4{font-size:8.8pt}
+#paper .w3 .ex p{line-height:1.3}
+#paper .w3 .pt{font-size:10pt;margin:1px auto 2px;padding:1px 8px}
+#paper .one .cols{display:block}
+#paper .one svg{max-height:150px}
+#paper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt;width:192mm}
+@media print{
+ @page{size:A4;margin:8mm 9mm}
+ body>*:not(#paper){display:none!important}
+ html,body{background:#fff!important;padding:0!important;margin:0!important}
+
+ #paper{display:block!important;width:auto}
+}
+</style>
 </head>
 <body>
 
@@ -514,6 +551,7 @@
         <div class="school-title">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
         <h1>سلسلة المقطع الثاني رقم 2 التفاعلي في الرياضيات</h1>
         <div class="sub-info">المستوى: السنة الرابعة متوسط | النسب المثلثية | 5 تمارين على 20<br>حلّ في الكراس ثم تحقق هنا</div>
+        <button class="print-btn" onclick="window.print()">🖨️ النسخة الورقية للطباعة</button>
     </header>
 
     <div class="sticky-bar">
@@ -789,8 +827,8 @@
  {
   "id": 5,
   "pts": 6,
-  "title": "التمرين 5: تميّز: الطريق المنحدر",
-  "context": "طريق مستقيم نحو حمام دباغ طوله <span class=\"math\">1500 m</span> ويرتفع بـ <span class=\"math\">120 m</span>. احترام السرعة في المنحدرات يحمي الأرواح. (التدوير إلى <span class=\"math\">0,1</span>)",
+  "title": "الوضعية الإدماجية: الطريق المنحدر",
+  "context": "<div class=\"bem-data\"><p>– طريق مستقيم نحو حمام دباغ طوله <span class=\"math\">1500 m</span> ويرتفع بـ <span class=\"math\">120 m</span>.</p><p>– احترام السرعة في المنحدرات يحمي الأرواح.</p></div><div class=\"bem-warn\"><b>ملاحظة:</b> التدوير إلى <span class=\"math\">0,1</span>.</div>",
   "questions": [
    {
     "qId": "5-1",
@@ -814,11 +852,11 @@
     ],
     "rubric": [
      {
-      "step": "النسبة",
+      "step": "م1 التفسير السليم: النسبة",
       "mark": "1,5"
      },
      {
-      "step": "النتيجة",
+      "step": "م2 الاستعمال السليم: النتيجة",
       "mark": "1,5"
      }
     ],
@@ -847,11 +885,11 @@
     ],
     "rubric": [
      {
-      "step": "فيثاغورس",
+      "step": "م1 التفسير السليم: فيثاغورس",
       "mark": "1,5"
      },
      {
-      "step": "النتيجة",
+      "step": "م2 الاستعمال السليم: النتيجة",
       "mark": "1,5"
      }
     ],
@@ -1090,5 +1128,6 @@
   const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
   s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
   document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
+<div id="paper"><div class="copy one"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACY0lEQVR4nMVYMW7jMBCcNQ3QHfUD+iMWfc8KoERyZOCedSLyEeoHVEcCiuYKO1edUyUbFoKAKZaY1ezOSIj/n3n3AAC+GKkiIvW8DLOIDHMVGWYR2X91nYcISiATJ0fazY2JkUwkx6TGASh7AMvzsbzNz+Fwaq6o0nx9nc+R+gIT0aJPdbes31fnE+QtAxL889EyX7VvIFyBk5dQsOzn5ewGWGbNG0SRIwATATcmsAFEZNDTAkmywK2+wI3J8n70tFDPuM4Hyb+j25YV9byIyA5X3XlAu7mRRbIhJ/QsLXo1DlCEAxgzfGndmBhz50vr9LoAkiMtc584uRWlRZ+4aXLAmDvYza0A0HmE3IEbjGIXgJ52cquHkLQbDItoasFuwLz0s432vbkIJD/JgY3eRAI3N/gCACRXj5AN0Wp2gZErbMwdELIhmTtwcorbuZ6XkQCu4J/mSeoOhvXXvKp2YUwADO2EngBMspvqPJjcyNI6JkgGLDkmqzsPmE0iOXhGDiA5wE6qHMRs+OETV28nwCNkVQ7IZCc3wEaORIuegCYHpQU8Alfg5g+yIXQ3U8wdSsjw3BwTQjbJTqp7QTJ8kXx/44aeJSjvhW7GqekT6IcZkoHDN9R5iNx9YuDgObnVlxY9Vacybv40ZnOPsO3toaxGFsl9sh/hUfk7qCIiODWXUF9wkXoG5u+o8xC5Z2fmPlne7SoLNLczKHtU8XJczm5MkPwuqlq4ITbOY7IXqQI2gJ0WPX/wD+n8oYWhewVQQv6B7LxH3eFyrP3MVEOjnZ3reVlv6QnA+9G9KuZG+fF/aX8B0q+oBF4qqgYAAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الرابعة متوسط</span></div><div class="pt">سلسلة المقطع الثاني رقم 2</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>التمرين الأول (3 ن): تطبيق مباشر: جيب التمام</h4><span class="math">ABC</span> مثلث قائم في <span class="math">B</span> حيث <span class="math">AB = 5 cm</span> و<span class="math">AC = 13 cm</span>.<p>1) اكتب <span class="math">cos BAC</span> على شكل كسر.</p></div><div class="ex"><h4>التمرين الثاني (3 ن): تطبيق مباشر: الجيب</h4>مثلث قائم وتره <span class="math">8 cm</span> وإحدى زاويتيه الحادتين <span class="math">30°</span>.<p>1) احسب طول الضلع المقابل للزاوية <span class="math">30°</span> (بـ cm). (<span class="math">sin 30° = 0,5</span>)</p></div><div class="ex"><h4>التمرين الثالث (4 ن): ربط: العلاقات بين النسب</h4><span class="math">x</span> زاوية حادة حيث <span class="math">cos x = 0,8</span>.<p>1) احسب <span class="math">sin x</span>.</p><p>2) احسب <span class="math">tan x</span>.</p></div><div class="ex"><h4>التمرين الرابع (4 ن): ربط: فيثاغورس وزاوية</h4><span class="math">EFG</span> مثلث قائم في <span class="math">E</span> حيث <span class="math">EF = 7 cm</span> و<span class="math">EG = 24 cm</span>.<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 240" width="380" height="240" style="max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff" font-family="Arial" font-size="16"><rect width="380" height="240" fill="#fff"/><polygon points="60,190 320,190 60,40" fill="none" stroke="#111" stroke-width="2"/><polyline points="71.0,190.0 71.0,179.0 60.0,179.0" fill="none" stroke="#b91c1c" stroke-width="1.5"/><circle cx="60" cy="190" r="3" fill="#111"/><text x="42" y="206" font-weight="bold">E</text><circle cx="320" cy="190" r="3" fill="#111"/><text x="326" y="206" font-weight="bold">G</text><circle cx="60" cy="40" r="3" fill="#111"/><text x="42" y="36" font-weight="bold">F</text></svg><p>1) احسب <span class="math">FG</span> (بـ cm).</p><p>2) أعط قيس الزاوية <span class="math">EFG</span> مدوّرا إلى الدرجة.</p></div><div class="ex"><h4>الوضعية الإدماجية (6 ن): الطريق المنحدر</h4><div class="bem-data"><p>– طريق مستقيم نحو حمام دباغ طوله <span class="math">1500 m</span> ويرتفع بـ <span class="math">120 m</span>.</p><p>– احترام السرعة في المنحدرات يحمي الأرواح.</p></div><div class="bem-warn"><b>ملاحظة:</b> التدوير إلى <span class="math">0,1</span>.</div><p>1) أعط قيس زاوية ميل الطريق مع الأفق مدوّرا إلى الدرجة.</p><p>2) احسب المسافة الأفقية المقطوعة (بـ m).</p></div></div></div></div><!--/paper-->
 </body>
 </html>

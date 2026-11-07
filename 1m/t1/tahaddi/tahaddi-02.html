@@ -506,7 +506,44 @@
                background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
         .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
         .vop .ln { border-top: 2px solid #0f172a; }
-    </style>
+    
+.bem-intro{margin:0 0 6px;line-height:1.7}
+.bem-data p{margin:3px 0;line-height:1.7}
+.bem-warn{background:#fef9c3;border:1px solid #facc15;border-radius:8px;padding:6px 10px;margin:8px 0 4px;font-size:.92rem}
+.print-btn{margin-top:10px;background:#fff;color:#0f766e;border:2px solid #fde047;border-radius:20px;padding:6px 16px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+#paper .copy{border:1.5px solid #334155;border-radius:8px;padding:5px 9px 5px 80px;margin:0 0 5mm;break-inside:avoid;position:relative}
+#paper .cut{border-top:1.5px dashed #64748b;margin:0 0 4mm;text-align:center;font-size:9pt;color:#64748b;line-height:0}
+#paper .cut span{background:#fff;padding:0 6px}
+#paper .ph{display:flex;justify-content:space-between;align-items:center;font-weight:bold;font-size:9.5pt}
+#paper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #1e3a8a;border-radius:14px;padding:2px 8px;margin:3px auto 4px;width:fit-content;background:#eff6ff}
+#paper .qr{position:absolute;left:8px;top:6px;text-align:center;font-size:7pt;color:#475569;width:66px}
+#paper .qr img{width:58px;height:58px}
+#paper .cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+#paper .ex{break-inside:avoid;margin:2px 0}
+#paper .ex h4{margin:3px 0 1px;font-size:10.5pt;background:#e0f2fe;border-radius:6px;padding:1px 6px}
+#paper .ex p,#paper .ex li{margin:1px 0;line-height:1.4}
+#paper svg{max-height:120px;width:auto!important;margin:2px auto!important}
+#paper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+#paper .bem-warn{padding:3px 6px;margin:2px 0}
+#paper .bem-data p{margin:0}
+#paper .bem-intro{margin:0}
+#paper .w3{font-size:8.6pt;padding:4px 6px 4px 74px;margin-bottom:3mm}
+#paper .w3 .cols{grid-template-columns:1fr 1fr 1fr;gap:2px 8px}
+#paper .w3 svg{max-height:88px}
+#paper .w3 .ex h4{font-size:8.8pt}
+#paper .w3 .ex p{line-height:1.3}
+#paper .w3 .pt{font-size:10pt;margin:1px auto 2px;padding:1px 8px}
+#paper .one .cols{display:block}
+#paper .one svg{max-height:150px}
+#paper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt;width:192mm}
+@media print{
+ @page{size:A4;margin:8mm 9mm}
+ body>*:not(#paper){display:none!important}
+ html,body{background:#fff!important;padding:0!important;margin:0!important}
+
+ #paper{display:block!important;width:auto}
+}
+</style>
 </head>
 <body>
 
@@ -514,6 +551,7 @@
         <div class="school-title">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
         <h1>التحدي الثاني التفاعلي في الرياضيات</h1>
         <div class="sub-info">المستوى: السنة الأولى متوسط | المقطع الثاني | هل تقبل التحدي؟<br>فكّر جيدا قبل أن تكتب، لك 3 محاولات</div>
+        <button class="print-btn" onclick="window.print()">🖨️ النسخة الورقية للطباعة</button>
     </header>
 
     <div class="sticky-bar">
@@ -592,8 +630,8 @@
  {
   "id": 1,
   "pts": 20,
-  "title": "التمرين 1: تحدي الأشكال",
-  "context": "فكّر جيدا: ليس كل جواب سريع جوابا صحيحا!",
+  "title": "الوضعية الإدماجية: تحدي الأشكال",
+  "context": "<div class=\"bem-data\"><p>– فكّر جيدا: ليس كل جواب سريع جوابا صحيحا!</p></div>",
   "questions": [
    {
     "qId": "1-1",
@@ -618,11 +656,11 @@
     ],
     "rubric": [
      {
-      "step": "العدّ حسب الحجم",
+      "step": "م1 التفسير السليم: العدّ حسب الحجم",
       "mark": "4"
      },
      {
-      "step": "النتيجة",
+      "step": "م2 الاستعمال السليم: النتيجة",
       "mark": "3"
      }
     ],
@@ -650,11 +688,11 @@
     ],
     "rubric": [
      {
-      "step": "تجريب الحالات",
+      "step": "م1 التفسير السليم: تجريب الحالات",
       "mark": "4"
      },
      {
-      "step": "النتيجة",
+      "step": "م2 الاستعمال السليم: النتيجة",
       "mark": "3"
      }
     ],
@@ -683,11 +721,11 @@
     ],
     "rubric": [
      {
-      "step": "الأبعاد",
+      "step": "م1 التفسير السليم: الأبعاد",
       "mark": "3"
      },
      {
-      "step": "النتيجة",
+      "step": "م2 الاستعمال السليم: النتيجة",
       "mark": "3"
      }
     ],
@@ -926,5 +964,6 @@
   const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
   s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
   document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
+<div id="paper"><div class="copy one"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAAChElEQVR4nMVYMY7bMBCcFQ3QHQXkAfRHTvRVedMBxpkXGbgy/0kT0feOAFSX7qiOAmhNCiXdOWlsZhsKmGIG4u5oVkJ8XGNzBQBujMwiIggiO2AS2Z5xGkVkc2ueqwiyI2N2LMid6SM6w0iyj9XeASgbgO0rATzt9DB5zNLenudabdbj7f0rtjAn+/ONGO/A8y9EL3gRPUweeGhP9+P5GBEWAMbb+ZGMk0qAZqqpIIjsZteqkB/a04iHFhARX0+BJklIujj9BQBk9JZkqT2NnfE2OxarAz044FhtGsGQYDlAMcOQuYMiupoKcmcYGVgsJB3JkFTUTKqiAqG3cPQgk2LujLcMFT0RuTMFXACrF8MIxz5WVuDSwebO9IRLsDokRR3Iip1IeugFB6AzfcyAIqRmH3ABLBdTrCY9uJg+6sFUvAUupo9rJy7GI8OUdT6qKqBeTFkdiUxH6pDq+UEzP6aLZBl1RJA+znsAs7MVMxIX4y2ZYOFIaq7WXHcajxGOjAxk1MPaDPX6oMEZF5eBkxUnHsBULLo78Fyt3Jk+csABEHpLJhWr+kGj+3Rx2w6K/N6qMO/NvLsHz9+QiWFS3GAr6bID8Bq51FQwP+PiQCnIbAEE8XZ7NvUyUgO2p9GEBMhxLBYuPcm8n2ruTJ3pqResc0mSBVW/Cw0wzTLtDbkNLUZppg3m/T14rhVJMgu91QtgNdkzu4r5YN2d9ff2GOcGx4gzMAI4VU7rJAuyS7CaSTG7ujkRKnIwBWs7AgA6VPTE9ZAEm9/oYQZTwMCKW9ufh9cAQP3OiZhqKlh356lAnnEAXHqReW/qKdggCJD377DE9OnH/HkAzLeb81xH5L//S/sFkMCftc85XM0AAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="pt">التحدي الثاني</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>الوضعية الإدماجية (20 ن): تحدي الأشكال</h4><div class="bem-data"><p>– فكّر جيدا: ليس كل جواب سريع جوابا صحيحا!</p></div><p>1) شبكة مربعة من <span class="math">3</span> مربعات × <span class="math">3</span> مربعات. كم مربعا (من كل الأحجام) تجد فيها؟</p><p>2) مستطيلات أبعادها أعداد طبيعية ومحيط كل منها <span class="math">24 cm</span>. ما أكبر مساحة ممكنة (بـ cm²)؟</p><p>3) حديقة مستطيلة <span class="math">12 m</span> × <span class="math">8 m</span> يحيط بها من الداخل ممر عرضه <span class="math">1 m</span>. ما مساحة الجزء المزروع داخل الممر (بـ m²)؟</p></div></div></div></div><!--/paper-->
 </body>
 </html>

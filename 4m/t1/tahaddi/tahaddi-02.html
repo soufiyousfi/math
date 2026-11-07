@@ -506,7 +506,44 @@
                background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
         .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
         .vop .ln { border-top: 2px solid #0f172a; }
-    </style>
+    
+.bem-intro{margin:0 0 6px;line-height:1.7}
+.bem-data p{margin:3px 0;line-height:1.7}
+.bem-warn{background:#fef9c3;border:1px solid #facc15;border-radius:8px;padding:6px 10px;margin:8px 0 4px;font-size:.92rem}
+.print-btn{margin-top:10px;background:#fff;color:#0f766e;border:2px solid #fde047;border-radius:20px;padding:6px 16px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+#paper .copy{border:1.5px solid #334155;border-radius:8px;padding:5px 9px 5px 80px;margin:0 0 5mm;break-inside:avoid;position:relative}
+#paper .cut{border-top:1.5px dashed #64748b;margin:0 0 4mm;text-align:center;font-size:9pt;color:#64748b;line-height:0}
+#paper .cut span{background:#fff;padding:0 6px}
+#paper .ph{display:flex;justify-content:space-between;align-items:center;font-weight:bold;font-size:9.5pt}
+#paper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #1e3a8a;border-radius:14px;padding:2px 8px;margin:3px auto 4px;width:fit-content;background:#eff6ff}
+#paper .qr{position:absolute;left:8px;top:6px;text-align:center;font-size:7pt;color:#475569;width:66px}
+#paper .qr img{width:58px;height:58px}
+#paper .cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+#paper .ex{break-inside:avoid;margin:2px 0}
+#paper .ex h4{margin:3px 0 1px;font-size:10.5pt;background:#e0f2fe;border-radius:6px;padding:1px 6px}
+#paper .ex p,#paper .ex li{margin:1px 0;line-height:1.4}
+#paper svg{max-height:120px;width:auto!important;margin:2px auto!important}
+#paper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+#paper .bem-warn{padding:3px 6px;margin:2px 0}
+#paper .bem-data p{margin:0}
+#paper .bem-intro{margin:0}
+#paper .w3{font-size:8.6pt;padding:4px 6px 4px 74px;margin-bottom:3mm}
+#paper .w3 .cols{grid-template-columns:1fr 1fr 1fr;gap:2px 8px}
+#paper .w3 svg{max-height:88px}
+#paper .w3 .ex h4{font-size:8.8pt}
+#paper .w3 .ex p{line-height:1.3}
+#paper .w3 .pt{font-size:10pt;margin:1px auto 2px;padding:1px 8px}
+#paper .one .cols{display:block}
+#paper .one svg{max-height:150px}
+#paper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt;width:192mm}
+@media print{
+ @page{size:A4;margin:8mm 9mm}
+ body>*:not(#paper){display:none!important}
+ html,body{background:#fff!important;padding:0!important;margin:0!important}
+
+ #paper{display:block!important;width:auto}
+}
+</style>
 </head>
 <body>
 
@@ -514,6 +551,7 @@
         <div class="school-title">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
         <h1>التحدي الثاني التفاعلي في الرياضيات</h1>
         <div class="sub-info">المستوى: السنة الرابعة متوسط | المقطع الثاني | هل تقبل التحدي؟<br>فكّر جيدا قبل أن تكتب، لك 3 محاولات</div>
+        <button class="print-btn" onclick="window.print()">🖨️ النسخة الورقية للطباعة</button>
     </header>
 
     <div class="sticky-bar">
@@ -592,8 +630,8 @@
  {
   "id": 1,
   "pts": 20,
-  "title": "التمرين 1: تحدي حساب المثلثات",
-  "context": "كل الأسئلة تُحل بالعلاقات بين النسب المثلثية.",
+  "title": "الوضعية الإدماجية: تحدي حساب المثلثات",
+  "context": "<div class=\"bem-data\"><p>– كل الأسئلة تُحل بالعلاقات بين النسب المثلثية.</p></div>",
   "questions": [
    {
     "qId": "1-1",
@@ -615,11 +653,11 @@
     ],
     "rubric": [
      {
-      "step": "العلاقة",
+      "step": "م1 التفسير السليم: العلاقة",
       "mark": "3"
      },
      {
-      "step": "النتيجة",
+      "step": "م2 الاستعمال السليم: النتيجة",
       "mark": "3"
      }
     ],
@@ -647,11 +685,11 @@
     ],
     "rubric": [
      {
-      "step": "النشر",
+      "step": "م1 التفسير السليم: النشر",
       "mark": "4"
      },
      {
-      "step": "النتيجة",
+      "step": "م2 الاستعمال السليم: النتيجة",
       "mark": "3"
      }
     ],
@@ -681,11 +719,11 @@
     ],
     "rubric": [
      {
-      "step": "نصف القاعدة",
+      "step": "م1 التفسير السليم: نصف القاعدة",
       "mark": "4"
      },
      {
-      "step": "النتيجة",
+      "step": "م2 الاستعمال السليم: النتيجة",
       "mark": "3"
      }
     ],
@@ -924,5 +962,6 @@
   const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
   s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
   document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
+<div id="paper"><div class="copy one"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACb0lEQVR4nMWYMY7kOAxFH0sNqDLVDdQXGbvmWAM0UJ5xA5PsndruvYicbShnMuDx30C92GRroi4tAzlg8Gnq85OUif+25XTHAZ/s2czMkD0Bq9n5ndfFzJ4+G+euh9JLqZh2ShfGRBeUJI2pWQ7q73+5vEbg27Of1oHNLp+Pc8+e6seWP5Yz4TX+9adYHoDzu1vocEnK4CeI/ghjKoSWt2DagbDH9auUVpfBK7fMAVBJ+O8BuGY5QJJUeu1RUxhT6bOTJLWLoFZjB7H02qOfNaCJW8MILBN14FQIUulwomsaAVWCdrB8k+bsklduyIPSaxSmASk7lS4MUXNLTfTfLyx6s1FnxX05W3bzI3DueiiEPdIFJfpM9HN28nPLWtAB+CPs0IUxFXDCWvJA0hBLB9FLAzrCmPzUUJUrJH0FHyiEndKFprcQRvkp7FWRpHyTn3M7PThtLrOUbvWJ93VM2xXY+thyRurCKM3ZiS5IXlWaW/Jgrt1ZSbOU/FTJ0I4Hp+26jtKxDlhvA7Duke7zce566oxUCAOYhihll5rqwcn/4FcfDpz0dnHzdg3b8yNwfuOxfJs3l+Fs+dcz8DPpaBgBpc/EAi9RlYQ07gsndLnN4cAluy17pM/fbLuu7fTgBMF6LH+3Aq5Wo3+LQ8sI1mEp72HgPF9Y7LQ+sV0fgXPP6qwM4I/aIEeVviUPNjMzPwVpO3FLvMMCvDbenaX8URVe2an0LftC3RsnXvAHHysUXcudqUYwa4+aNeCnsNP4/QCAL5efM+A+5kTWdtX4wYOJF6iM0EBTHpyYzZ63W3bS9I8UhB8PwLln9r+/pf0NU0yu/FmG0DMAAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الرابعة متوسط</span></div><div class="pt">التحدي الثاني</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>الوضعية الإدماجية (20 ن): تحدي حساب المثلثات</h4><div class="bem-data"><p>– كل الأسئلة تُحل بالعلاقات بين النسب المثلثية.</p></div><p>1) <span class="math">x</span> زاوية حادة حيث <span class="math">tan x = <span class="fr"><span>12</span><span>5</span></span></span> و<span class="math">cos x = <span class="fr"><span>5</span><span>13</span></span></span>. احسب <span class="math">sin x</span>.</p><p>2) بسّط <span class="math">(cos x + sin x)² − 2 × sin x × cos x</span> لكل زاوية حادة <span class="math">x</span>.</p><p>3) مثلث متساوي الساقين طول كل ساق <span class="math">10 cm</span> وكل زاوية من زاويتي القاعدة <span class="math">30°</span>. احسب طول القاعدة (بـ cm، بالتدوير إلى <span class="math">0,1</span>).</p></div></div></div></div><!--/paper-->
 </body>
 </html>

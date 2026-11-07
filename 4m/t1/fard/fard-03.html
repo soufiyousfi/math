@@ -506,7 +506,44 @@
                background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
         .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
         .vop .ln { border-top: 2px solid #0f172a; }
-    </style>
+    
+.bem-intro{margin:0 0 6px;line-height:1.7}
+.bem-data p{margin:3px 0;line-height:1.7}
+.bem-warn{background:#fef9c3;border:1px solid #facc15;border-radius:8px;padding:6px 10px;margin:8px 0 4px;font-size:.92rem}
+.print-btn{margin-top:10px;background:#fff;color:#0f766e;border:2px solid #fde047;border-radius:20px;padding:6px 16px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+#paper .copy{border:1.5px solid #334155;border-radius:8px;padding:5px 9px 5px 80px;margin:0 0 5mm;break-inside:avoid;position:relative}
+#paper .cut{border-top:1.5px dashed #64748b;margin:0 0 4mm;text-align:center;font-size:9pt;color:#64748b;line-height:0}
+#paper .cut span{background:#fff;padding:0 6px}
+#paper .ph{display:flex;justify-content:space-between;align-items:center;font-weight:bold;font-size:9.5pt}
+#paper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #1e3a8a;border-radius:14px;padding:2px 8px;margin:3px auto 4px;width:fit-content;background:#eff6ff}
+#paper .qr{position:absolute;left:8px;top:6px;text-align:center;font-size:7pt;color:#475569;width:66px}
+#paper .qr img{width:58px;height:58px}
+#paper .cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+#paper .ex{break-inside:avoid;margin:2px 0}
+#paper .ex h4{margin:3px 0 1px;font-size:10.5pt;background:#e0f2fe;border-radius:6px;padding:1px 6px}
+#paper .ex p,#paper .ex li{margin:1px 0;line-height:1.4}
+#paper svg{max-height:120px;width:auto!important;margin:2px auto!important}
+#paper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+#paper .bem-warn{padding:3px 6px;margin:2px 0}
+#paper .bem-data p{margin:0}
+#paper .bem-intro{margin:0}
+#paper .w3{font-size:8.6pt;padding:4px 6px 4px 74px;margin-bottom:3mm}
+#paper .w3 .cols{grid-template-columns:1fr 1fr 1fr;gap:2px 8px}
+#paper .w3 svg{max-height:88px}
+#paper .w3 .ex h4{font-size:8.8pt}
+#paper .w3 .ex p{line-height:1.3}
+#paper .w3 .pt{font-size:10pt;margin:1px auto 2px;padding:1px 8px}
+#paper .one .cols{display:block}
+#paper .one svg{max-height:150px}
+#paper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt;width:192mm}
+@media print{
+ @page{size:A4;margin:8mm 9mm}
+ body>*:not(#paper){display:none!important}
+ html,body{background:#fff!important;padding:0!important;margin:0!important}
+
+ #paper{display:block!important;width:auto}
+}
+</style>
 </head>
 <body>
 
@@ -514,6 +551,7 @@
         <div class="school-title">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
         <h1>الفرض الثالث التفاعلي في الرياضيات</h1>
         <div class="sub-info">المستوى: السنة الرابعة متوسط | المقطع الثاني: خاصية طالس والنسب المثلثية (خاصية طالس وعكسها)<br>للتصحيح الذاتي بعد إنجاز الفرض على الورقة</div>
+        <button class="print-btn" onclick="window.print()">🖨️ النسخة الورقية للطباعة</button>
     </header>
 
     <div class="sticky-bar">
@@ -593,7 +631,7 @@
   "id": 1,
   "pts": 5,
   "title": "التمرين 1: خاصية طالس: حساب أطوال",
-  "context": "<span class=\"math\">ABC</span> مثلث. <span class=\"math\">M</span> نقطة من <span class=\"math\">[AB]</span> و<span class=\"math\">N</span> نقطة من <span class=\"math\">[AC]</span> حيث <span class=\"math\">(MN) // (BC)</span>.<br><span class=\"math\">AM = 4,2 cm</span> ؛ <span class=\"math\">AB = 7 cm</span> ؛ <span class=\"math\">AC = 9 cm</span> ؛ <span class=\"math\">BC = 8 cm</span>.<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 380 240\" width=\"380\" height=\"240\" style=\"max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff\" font-family=\"Arial\" font-size=\"16\"><rect width=\"380\" height=\"240\" fill=\"#fff\"/><polygon points=\"170,20 40,200 330,200\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\"/><line x1=\"92.0\" y1=\"128.0\" x2=\"266.0\" y2=\"128.0\" stroke=\"#0f766e\" stroke-width=\"2.5\"/><circle cx=\"170\" cy=\"20\" r=\"3\" fill=\"#111\"/><text x=\"164\" y=\"12\" font-weight=\"bold\">A</text><circle cx=\"40\" cy=\"200\" r=\"3\" fill=\"#111\"/><text x=\"22\" y=\"216\" font-weight=\"bold\">B</text><circle cx=\"330\" cy=\"200\" r=\"3\" fill=\"#111\"/><text x=\"336\" y=\"216\" font-weight=\"bold\">C</text><circle cx=\"92.0\" cy=\"128.0\" r=\"3\" fill=\"#111\"/><text x=\"70.0\" y=\"128.0\" font-weight=\"bold\">M</text><circle cx=\"266.0\" cy=\"128.0\" r=\"3\" fill=\"#111\"/><text x=\"274.0\" y=\"128.0\" font-weight=\"bold\">N</text><text x=\"190\" y=\"232\" font-size=\"12\" fill=\"#64748b\" text-anchor=\"middle\">(الشكل غير مرسوم بالأبعاد الحقيقية)</text></svg>",
+  "context": "<span class=\"math\">ABC</span> مثلث. <span class=\"math\">M</span> نقطة من <span class=\"math\">[AB]</span> و<span class=\"math\">N</span> نقطة من <span class=\"math\">[AC]</span> حيث <span class=\"math\">(MN) // (BC)</span>.<br><span class=\"math\">AM = 4,2 cm</span> ؛ <span class=\"math\">AB = 7 cm</span> ؛ <span class=\"math\">AC = 9 cm</span> ؛ <span class=\"math\">BC = 8 cm</span>.<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 380 240\" width=\"380\" height=\"240\" style=\"max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff\" font-family=\"Arial\" font-size=\"16\"><rect width=\"380\" height=\"240\" fill=\"#fff\"/><polygon points=\"170,20 40,200 330,200\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\"/><line x1=\"92.0\" y1=\"128.0\" x2=\"266.0\" y2=\"128.0\" stroke=\"#0f766e\" stroke-width=\"2.5\"/><polyline points=\"173.0,133.0 179.0,128.0 173.0,123.0\" fill=\"none\" stroke=\"#b91c1c\" stroke-width=\"2\"/><polyline points=\"179.0,205.0 185.0,200.0 179.0,195.0\" fill=\"none\" stroke=\"#b91c1c\" stroke-width=\"2\"/><circle cx=\"170\" cy=\"20\" r=\"3\" fill=\"#111\"/><text x=\"164\" y=\"12\" font-weight=\"bold\">A</text><circle cx=\"40\" cy=\"200\" r=\"3\" fill=\"#111\"/><text x=\"22\" y=\"216\" font-weight=\"bold\">B</text><circle cx=\"330\" cy=\"200\" r=\"3\" fill=\"#111\"/><text x=\"336\" y=\"216\" font-weight=\"bold\">C</text><circle cx=\"92.0\" cy=\"128.0\" r=\"3\" fill=\"#111\"/><text x=\"70.0\" y=\"128.0\" font-weight=\"bold\">M</text><circle cx=\"266.0\" cy=\"128.0\" r=\"3\" fill=\"#111\"/><text x=\"274.0\" y=\"128.0\" font-weight=\"bold\">N</text><text x=\"190\" y=\"232\" font-size=\"12\" fill=\"#64748b\" text-anchor=\"middle\">(الشكل غير مرسوم بالأبعاد الحقيقية)</text></svg>",
   "questions": [
    {
     "qId": "1-1",
@@ -693,7 +731,7 @@
   "id": 2,
   "pts": 5,
   "title": "التمرين 2: الخاصية العكسية لطالس",
-  "context": "<span class=\"math\">EFG</span> مثلث. <span class=\"math\">R</span> نقطة من <span class=\"math\">[EF]</span> و<span class=\"math\">S</span> نقطة من <span class=\"math\">[EG]</span> حيث:<br><span class=\"math\">ER = 3 cm</span> ؛ <span class=\"math\">EF = 7,5 cm</span> ؛ <span class=\"math\">ES = 4 cm</span> ؛ <span class=\"math\">EG = 10 cm</span>.<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 380 240\" width=\"380\" height=\"240\" style=\"max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff\" font-family=\"Arial\" font-size=\"16\"><rect width=\"380\" height=\"240\" fill=\"#fff\"/><polygon points=\"170,20 40,200 330,200\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\"/><line x1=\"118.0\" y1=\"92.0\" x2=\"234.0\" y2=\"92.0\" stroke=\"#0f766e\" stroke-width=\"2.5\"/><circle cx=\"170\" cy=\"20\" r=\"3\" fill=\"#111\"/><text x=\"164\" y=\"12\" font-weight=\"bold\">E</text><circle cx=\"40\" cy=\"200\" r=\"3\" fill=\"#111\"/><text x=\"22\" y=\"216\" font-weight=\"bold\">F</text><circle cx=\"330\" cy=\"200\" r=\"3\" fill=\"#111\"/><text x=\"336\" y=\"216\" font-weight=\"bold\">G</text><circle cx=\"118.0\" cy=\"92.0\" r=\"3\" fill=\"#111\"/><text x=\"96.0\" y=\"92.0\" font-weight=\"bold\">R</text><circle cx=\"234.0\" cy=\"92.0\" r=\"3\" fill=\"#111\"/><text x=\"242.0\" y=\"92.0\" font-weight=\"bold\">S</text><text x=\"190\" y=\"232\" font-size=\"12\" fill=\"#64748b\" text-anchor=\"middle\">(الشكل غير مرسوم بالأبعاد الحقيقية)</text></svg>",
+  "context": "<span class=\"math\">EFG</span> مثلث. <span class=\"math\">R</span> نقطة من <span class=\"math\">[EF]</span> و<span class=\"math\">S</span> نقطة من <span class=\"math\">[EG]</span> حيث:<br><span class=\"math\">ER = 3 cm</span> ؛ <span class=\"math\">EF = 7,5 cm</span> ؛ <span class=\"math\">ES = 4 cm</span> ؛ <span class=\"math\">EG = 10 cm</span>.<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 380 240\" width=\"380\" height=\"240\" style=\"max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff\" font-family=\"Arial\" font-size=\"16\"><rect width=\"380\" height=\"240\" fill=\"#fff\"/><polygon points=\"170,20 40,200 330,200\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\"/><line x1=\"118.0\" y1=\"92.0\" x2=\"234.0\" y2=\"92.0\" stroke=\"#0f766e\" stroke-width=\"2.5\"/><polyline points=\"170.0,97.0 176.0,92.0 170.0,87.0\" fill=\"none\" stroke=\"#b91c1c\" stroke-width=\"2\"/><polyline points=\"179.0,205.0 185.0,200.0 179.0,195.0\" fill=\"none\" stroke=\"#b91c1c\" stroke-width=\"2\"/><circle cx=\"170\" cy=\"20\" r=\"3\" fill=\"#111\"/><text x=\"164\" y=\"12\" font-weight=\"bold\">E</text><circle cx=\"40\" cy=\"200\" r=\"3\" fill=\"#111\"/><text x=\"22\" y=\"216\" font-weight=\"bold\">F</text><circle cx=\"330\" cy=\"200\" r=\"3\" fill=\"#111\"/><text x=\"336\" y=\"216\" font-weight=\"bold\">G</text><circle cx=\"118.0\" cy=\"92.0\" r=\"3\" fill=\"#111\"/><text x=\"96.0\" y=\"92.0\" font-weight=\"bold\">R</text><circle cx=\"234.0\" cy=\"92.0\" r=\"3\" fill=\"#111\"/><text x=\"242.0\" y=\"92.0\" font-weight=\"bold\">S</text><text x=\"190\" y=\"232\" font-size=\"12\" fill=\"#64748b\" text-anchor=\"middle\">(الشكل غير مرسوم بالأبعاد الحقيقية)</text></svg>",
   "questions": [
    {
     "qId": "2-1",
@@ -789,7 +827,7 @@
   "id": 3,
   "pts": 5,
   "title": "التمرين 3: وضعية الفراشة",
-  "context": "المستقيمان <span class=\"math\">(AD)</span> و<span class=\"math\">(BE)</span> متقاطعان في <span class=\"math\">O</span>، و<span class=\"math\">(AB) // (DE)</span>.<br><span class=\"math\">OA = 6 cm</span> ؛ <span class=\"math\">OD = 9 cm</span> ؛ <span class=\"math\">AB = 8 cm</span> ؛ <span class=\"math\">OB = 5 cm</span>.<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 380 240\" width=\"380\" height=\"240\" style=\"max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff\" font-family=\"Arial\" font-size=\"16\"><rect width=\"380\" height=\"240\" fill=\"#fff\"/><line x1=\"40\" y1=\"40\" x2=\"330.25\" y2=\"190.5\" stroke=\"#111\" stroke-width=\"2\"/><line x1=\"150\" y1=\"40\" x2=\"203.75\" y2=\"190.5\" stroke=\"#111\" stroke-width=\"2\"/><line x1=\"40\" y1=\"40\" x2=\"150\" y2=\"40\" stroke=\"#0f766e\" stroke-width=\"2.5\"/><line x1=\"330.25\" y1=\"190.5\" x2=\"203.75\" y2=\"190.5\" stroke=\"#0f766e\" stroke-width=\"2.5\"/><circle cx=\"175\" cy=\"110\" r=\"3\" fill=\"#111\"/><text x=\"185\" y=\"114\" font-weight=\"bold\">O</text><circle cx=\"40\" cy=\"40\" r=\"3\" fill=\"#111\"/><text x=\"22\" y=\"36\" font-weight=\"bold\">A</text><circle cx=\"150\" cy=\"40\" r=\"3\" fill=\"#111\"/><text x=\"156\" y=\"32\" font-weight=\"bold\">B</text><circle cx=\"330.25\" cy=\"190.5\" r=\"3\" fill=\"#111\"/><text x=\"336.25\" y=\"206.5\" font-weight=\"bold\">D</text><circle cx=\"203.75\" cy=\"190.5\" r=\"3\" fill=\"#111\"/><text x=\"185.75\" y=\"206.5\" font-weight=\"bold\">E</text><text x=\"190\" y=\"232\" font-size=\"12\" fill=\"#64748b\" text-anchor=\"middle\">(AB) // (DE) — الشكل غير مرسوم بالأبعاد الحقيقية</text></svg>",
+  "context": "المستقيمان <span class=\"math\">(AD)</span> و<span class=\"math\">(BE)</span> متقاطعان في <span class=\"math\">O</span>، و<span class=\"math\">(AB) // (DE)</span>.<br><span class=\"math\">OA = 6 cm</span> ؛ <span class=\"math\">OD = 9 cm</span> ؛ <span class=\"math\">AB = 8 cm</span> ؛ <span class=\"math\">OB = 5 cm</span>.<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 380 240\" width=\"380\" height=\"240\" style=\"max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff\" font-family=\"Arial\" font-size=\"16\"><rect width=\"380\" height=\"240\" fill=\"#fff\"/><line x1=\"40\" y1=\"40\" x2=\"330.25\" y2=\"190.5\" stroke=\"#111\" stroke-width=\"2\"/><line x1=\"150\" y1=\"40\" x2=\"203.75\" y2=\"190.5\" stroke=\"#111\" stroke-width=\"2\"/><line x1=\"40\" y1=\"40\" x2=\"150\" y2=\"40\" stroke=\"#0f766e\" stroke-width=\"2.5\"/><line x1=\"330.25\" y1=\"190.5\" x2=\"203.75\" y2=\"190.5\" stroke=\"#0f766e\" stroke-width=\"2.5\"/><polyline points=\"89.0,45.0 95.0,40.0 89.0,35.0\" fill=\"none\" stroke=\"#b91c1c\" stroke-width=\"2\"/><polyline points=\"261.0,195.5 267.0,190.5 261.0,185.5\" fill=\"none\" stroke=\"#b91c1c\" stroke-width=\"2\"/><circle cx=\"175\" cy=\"110\" r=\"3\" fill=\"#111\"/><text x=\"185\" y=\"114\" font-weight=\"bold\">O</text><circle cx=\"40\" cy=\"40\" r=\"3\" fill=\"#111\"/><text x=\"22\" y=\"36\" font-weight=\"bold\">A</text><circle cx=\"150\" cy=\"40\" r=\"3\" fill=\"#111\"/><text x=\"156\" y=\"32\" font-weight=\"bold\">B</text><circle cx=\"330.25\" cy=\"190.5\" r=\"3\" fill=\"#111\"/><text x=\"336.25\" y=\"206.5\" font-weight=\"bold\">D</text><circle cx=\"203.75\" cy=\"190.5\" r=\"3\" fill=\"#111\"/><text x=\"185.75\" y=\"206.5\" font-weight=\"bold\">E</text><text x=\"190\" y=\"232\" font-size=\"12\" fill=\"#64748b\" text-anchor=\"middle\">(AB) // (DE) — الشكل غير مرسوم بالأبعاد الحقيقية</text></svg>",
   "questions": [
    {
     "qId": "3-1",
@@ -861,8 +899,8 @@
  {
   "id": 4,
   "pts": 5,
-  "title": "التمرين 4: وضعية: عمود المسرح الروماني بقالمة",
-  "context": "لتقدير ارتفاع عمود أثري في المسرح الروماني بقالمة، غرس تلميذ عصا شاقولية طولها <span class=\"math\">1,5 m</span> فكان طول ظلها <span class=\"math\">2 m</span>، وفي اللحظة نفسها كان طول ظل العمود <span class=\"math\">8 m</span>. (أشعة الشمس متوازية، والعمود والعصا شاقوليان). المحافظة على المعالم الأثرية مسؤوليتنا جميعا.",
+  "title": "الوضعية الإدماجية: عمود المسرح الروماني بقالمة",
+  "context": "<div class=\"bem-data\"><p>– لتقدير ارتفاع عمود أثري في المسرح الروماني بقالمة، غرس تلميذ عصا شاقولية طولها <span class=\"math\">1,5 m</span> فكان طول ظلها <span class=\"math\">2 m</span>، وفي اللحظة نفسها كان طول ظل العمود <span class=\"math\">8 m</span>.</p><p>– (أشعة الشمس متوازية، والعمود والعصا شاقوليان).</p><p>– المحافظة على المعالم الأثرية مسؤوليتنا جميعا.</p></div>",
   "questions": [
    {
     "qId": "4-1",
@@ -883,8 +921,12 @@
     ],
     "rubric": [
      {
-      "step": "النتيجة",
-      "mark": "1,5"
+      "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
+      "mark": "0,5"
+     },
+     {
+      "step": "م2 الاستعمال السليم: النتيجة",
+      "mark": "1"
      }
     ],
     "pts": 1.5,
@@ -912,11 +954,11 @@
     ],
     "rubric": [
      {
-      "step": "تساوي النسب",
+      "step": "م1 التفسير السليم: تساوي النسب",
       "mark": "1"
      },
      {
-      "step": "النتيجة",
+      "step": "م2 الاستعمال السليم: النتيجة",
       "mark": "1"
      }
     ],
@@ -945,11 +987,11 @@
     ],
     "rubric": [
      {
-      "step": "فيثاغورس",
+      "step": "م1 التفسير السليم: فيثاغورس",
       "mark": "0,75"
      },
      {
-      "step": "النتيجة",
+      "step": "م2 الاستعمال السليم: النتيجة",
       "mark": "0,75"
      }
     ],
@@ -1189,5 +1231,6 @@
   const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
   s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
   document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
+<div id="paper"><div class="copy one"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK8AAACvAQAAAACj6bPYAAAB/UlEQVR4nL1XQY7bMAwcxgGUm9IXyEDfUSnfKpBdu/ACfdZG3Y/Itx7lGw0onh6MFiiw7SlcXQTxQIIz1JAU4p3Dw3tW4CFmKAAwswVuANwGANEy5AGJLOD5ZZaDH6HwpD7K9z/MlCPWCxA0zWNYL/gmD/P9f3OXkcNUTha+/z7H/ZJ6//zzdmlwt0/WIaGJLApcgehb0OhJNS6fLNIjelcU+J6BReRkmyVJUlPtiiMbkEhyswU2AmCuV7hMlv1pG5K5DtRUB6rUjm7DFcZcrs/+OCOfgRN8m5eOrvibcZZsgSSL2wA4cjQG9gAs4wwAQd9qVxRAMK5YTbUjIgBEDHQ3TxrLunsNbVbhRGYeZwVeZmfLpaY6EEBXNO6dZCrW/1I4guQYmOtQVGpnLXhuW1o4ZZnKms733r+ev1oLnkq9AtGTbvNTIWtXnLXg+TGocCoafQvMFbAOmdj2vrVzmSqCefnUjtw8i8v1GtyGa7AtH2hEVyBswW2+QRNbsAeWVOFERD/C3fxUrLNMbNgZzPtIAmtg96lASJIVQKJ1lodVRMTdFulP8C2AZ8C2X+7T+vqMISvlOEPqvbceKiO6ovBTcX+4tN5JAAAyr/3yJNL7zHH+mAXBH8NJSOKLsNCYS2GDu58BYHkS/eGlt+YS+K16mSwABtqqj3z8Fv0LWdBSawCfzaMAAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الرابعة متوسط</span></div><div class="pt">الفرض الثالث</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>التمرين الأول (5 ن): خاصية طالس: حساب أطوال</h4><span class="math">ABC</span> مثلث. <span class="math">M</span> نقطة من <span class="math">[AB]</span> و<span class="math">N</span> نقطة من <span class="math">[AC]</span> حيث <span class="math">(MN) // (BC)</span>.<br><span class="math">AM = 4,2 cm</span> ؛ <span class="math">AB = 7 cm</span> ؛ <span class="math">AC = 9 cm</span> ؛ <span class="math">BC = 8 cm</span>.<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 240" width="380" height="240" style="max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff" font-family="Arial" font-size="16"><rect width="380" height="240" fill="#fff"/><polygon points="170,20 40,200 330,200" fill="none" stroke="#111" stroke-width="2"/><line x1="92.0" y1="128.0" x2="266.0" y2="128.0" stroke="#0f766e" stroke-width="2.5"/><polyline points="173.0,133.0 179.0,128.0 173.0,123.0" fill="none" stroke="#b91c1c" stroke-width="2"/><polyline points="179.0,205.0 185.0,200.0 179.0,195.0" fill="none" stroke="#b91c1c" stroke-width="2"/><circle cx="170" cy="20" r="3" fill="#111"/><text x="164" y="12" font-weight="bold">A</text><circle cx="40" cy="200" r="3" fill="#111"/><text x="22" y="216" font-weight="bold">B</text><circle cx="330" cy="200" r="3" fill="#111"/><text x="336" y="216" font-weight="bold">C</text><circle cx="92.0" cy="128.0" r="3" fill="#111"/><text x="70.0" y="128.0" font-weight="bold">M</text><circle cx="266.0" cy="128.0" r="3" fill="#111"/><text x="274.0" y="128.0" font-weight="bold">N</text><text x="190" y="232" font-size="12" fill="#64748b" text-anchor="middle">(الشكل غير مرسوم بالأبعاد الحقيقية)</text></svg><p>1) احسب <span class="math">AN</span> (بـ cm).</p><p>2) احسب <span class="math">MN</span> (بـ cm).</p><p>3) استنتج <span class="math">NC</span> (بـ cm).</p></div><div class="ex"><h4>التمرين الثاني (5 ن): الخاصية العكسية لطالس</h4><span class="math">EFG</span> مثلث. <span class="math">R</span> نقطة من <span class="math">[EF]</span> و<span class="math">S</span> نقطة من <span class="math">[EG]</span> حيث:<br><span class="math">ER = 3 cm</span> ؛ <span class="math">EF = 7,5 cm</span> ؛ <span class="math">ES = 4 cm</span> ؛ <span class="math">EG = 10 cm</span>.<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 240" width="380" height="240" style="max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff" font-family="Arial" font-size="16"><rect width="380" height="240" fill="#fff"/><polygon points="170,20 40,200 330,200" fill="none" stroke="#111" stroke-width="2"/><line x1="118.0" y1="92.0" x2="234.0" y2="92.0" stroke="#0f766e" stroke-width="2.5"/><polyline points="170.0,97.0 176.0,92.0 170.0,87.0" fill="none" stroke="#b91c1c" stroke-width="2"/><polyline points="179.0,205.0 185.0,200.0 179.0,195.0" fill="none" stroke="#b91c1c" stroke-width="2"/><circle cx="170" cy="20" r="3" fill="#111"/><text x="164" y="12" font-weight="bold">E</text><circle cx="40" cy="200" r="3" fill="#111"/><text x="22" y="216" font-weight="bold">F</text><circle cx="330" cy="200" r="3" fill="#111"/><text x="336" y="216" font-weight="bold">G</text><circle cx="118.0" cy="92.0" r="3" fill="#111"/><text x="96.0" y="92.0" font-weight="bold">R</text><circle cx="234.0" cy="92.0" r="3" fill="#111"/><text x="242.0" y="92.0" font-weight="bold">S</text><text x="190" y="232" font-size="12" fill="#64748b" text-anchor="middle">(الشكل غير مرسوم بالأبعاد الحقيقية)</text></svg><p>1) احسب النسبة <span class="math"><span class="fr"><span>ER</span><span>EF</span></span></span> (اكتبها عددا عشريا).</p><p>2) احسب النسبة <span class="math"><span class="fr"><span>ES</span><span>EG</span></span></span> (اكتبها عددا عشريا).</p><p>3) هل المستقيمان <span class="math">(RS)</span> و<span class="math">(FG)</span> متوازيان مع التعليل؟</p></div><div class="ex"><h4>التمرين الثالث (5 ن): وضعية الفراشة</h4>المستقيمان <span class="math">(AD)</span> و<span class="math">(BE)</span> متقاطعان في <span class="math">O</span>، و<span class="math">(AB) // (DE)</span>.<br><span class="math">OA = 6 cm</span> ؛ <span class="math">OD = 9 cm</span> ؛ <span class="math">AB = 8 cm</span> ؛ <span class="math">OB = 5 cm</span>.<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 240" width="380" height="240" style="max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff" font-family="Arial" font-size="16"><rect width="380" height="240" fill="#fff"/><line x1="40" y1="40" x2="330.25" y2="190.5" stroke="#111" stroke-width="2"/><line x1="150" y1="40" x2="203.75" y2="190.5" stroke="#111" stroke-width="2"/><line x1="40" y1="40" x2="150" y2="40" stroke="#0f766e" stroke-width="2.5"/><line x1="330.25" y1="190.5" x2="203.75" y2="190.5" stroke="#0f766e" stroke-width="2.5"/><polyline points="89.0,45.0 95.0,40.0 89.0,35.0" fill="none" stroke="#b91c1c" stroke-width="2"/><polyline points="261.0,195.5 267.0,190.5 261.0,185.5" fill="none" stroke="#b91c1c" stroke-width="2"/><circle cx="175" cy="110" r="3" fill="#111"/><text x="185" y="114" font-weight="bold">O</text><circle cx="40" cy="40" r="3" fill="#111"/><text x="22" y="36" font-weight="bold">A</text><circle cx="150" cy="40" r="3" fill="#111"/><text x="156" y="32" font-weight="bold">B</text><circle cx="330.25" cy="190.5" r="3" fill="#111"/><text x="336.25" y="206.5" font-weight="bold">D</text><circle cx="203.75" cy="190.5" r="3" fill="#111"/><text x="185.75" y="206.5" font-weight="bold">E</text><text x="190" y="232" font-size="12" fill="#64748b" text-anchor="middle">(AB) // (DE) — الشكل غير مرسوم بالأبعاد الحقيقية</text></svg><p>1) احسب <span class="math">DE</span> (بـ cm).</p><p>2) احسب <span class="math">OE</span> (بـ cm).</p></div><div class="ex"><h4>الوضعية الإدماجية (5 ن): عمود المسرح الروماني بقالمة</h4><div class="bem-data"><p>– لتقدير ارتفاع عمود أثري في المسرح الروماني بقالمة، غرس تلميذ عصا شاقولية طولها <span class="math">1,5 m</span> فكان طول ظلها <span class="math">2 m</span>، وفي اللحظة نفسها كان طول ظل العمود <span class="math">8 m</span>.</p><p>– (أشعة الشمس متوازية، والعمود والعصا شاقوليان).</p><p>– المحافظة على المعالم الأثرية مسؤوليتنا جميعا.</p></div><p>1) احسب النسبة بين طول ظل العمود وطول ظل العصا.</p><p>2) احسب ارتفاع العمود (بـ m).</p><p>3) احسب المسافة بين قمة العمود ونهاية ظله (بـ m).</p></div></div></div></div><!--/paper-->
 </body>
 </html>

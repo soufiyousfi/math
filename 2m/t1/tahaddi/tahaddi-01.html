@@ -506,7 +506,44 @@
                background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
         .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
         .vop .ln { border-top: 2px solid #0f172a; }
-    </style>
+    
+.bem-intro{margin:0 0 6px;line-height:1.7}
+.bem-data p{margin:3px 0;line-height:1.7}
+.bem-warn{background:#fef9c3;border:1px solid #facc15;border-radius:8px;padding:6px 10px;margin:8px 0 4px;font-size:.92rem}
+.print-btn{margin-top:10px;background:#fff;color:#0f766e;border:2px solid #fde047;border-radius:20px;padding:6px 16px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+#paper .copy{border:1.5px solid #334155;border-radius:8px;padding:5px 9px 5px 80px;margin:0 0 5mm;break-inside:avoid;position:relative}
+#paper .cut{border-top:1.5px dashed #64748b;margin:0 0 4mm;text-align:center;font-size:9pt;color:#64748b;line-height:0}
+#paper .cut span{background:#fff;padding:0 6px}
+#paper .ph{display:flex;justify-content:space-between;align-items:center;font-weight:bold;font-size:9.5pt}
+#paper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #1e3a8a;border-radius:14px;padding:2px 8px;margin:3px auto 4px;width:fit-content;background:#eff6ff}
+#paper .qr{position:absolute;left:8px;top:6px;text-align:center;font-size:7pt;color:#475569;width:66px}
+#paper .qr img{width:58px;height:58px}
+#paper .cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+#paper .ex{break-inside:avoid;margin:2px 0}
+#paper .ex h4{margin:3px 0 1px;font-size:10.5pt;background:#e0f2fe;border-radius:6px;padding:1px 6px}
+#paper .ex p,#paper .ex li{margin:1px 0;line-height:1.4}
+#paper svg{max-height:120px;width:auto!important;margin:2px auto!important}
+#paper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+#paper .bem-warn{padding:3px 6px;margin:2px 0}
+#paper .bem-data p{margin:0}
+#paper .bem-intro{margin:0}
+#paper .w3{font-size:8.6pt;padding:4px 6px 4px 74px;margin-bottom:3mm}
+#paper .w3 .cols{grid-template-columns:1fr 1fr 1fr;gap:2px 8px}
+#paper .w3 svg{max-height:88px}
+#paper .w3 .ex h4{font-size:8.8pt}
+#paper .w3 .ex p{line-height:1.3}
+#paper .w3 .pt{font-size:10pt;margin:1px auto 2px;padding:1px 8px}
+#paper .one .cols{display:block}
+#paper .one svg{max-height:150px}
+#paper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt;width:192mm}
+@media print{
+ @page{size:A4;margin:8mm 9mm}
+ body>*:not(#paper){display:none!important}
+ html,body{background:#fff!important;padding:0!important;margin:0!important}
+
+ #paper{display:block!important;width:auto}
+}
+</style>
 </head>
 <body>
 
@@ -514,6 +551,7 @@
         <div class="school-title">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
         <h1>التحدي الأول التفاعلي في الرياضيات</h1>
         <div class="sub-info">المستوى: السنة الثانية متوسط | المقطع الأول | هل تقبل التحدي؟<br>فكّر جيدا قبل أن تكتب، لك 3 محاولات</div>
+        <button class="print-btn" onclick="window.print()">🖨️ النسخة الورقية للطباعة</button>
     </header>
 
     <div class="sticky-bar">
@@ -592,8 +630,8 @@
  {
   "id": 1,
   "pts": 20,
-  "title": "التمرين 1: تحدي الحساب الذكي",
-  "context": "احسب بذكاء دون آلة حاسبة.",
+  "title": "الوضعية الإدماجية: تحدي الحساب الذكي",
+  "context": "<div class=\"bem-data\"><p>– احسب بذكاء دون آلة حاسبة.</p></div>",
   "questions": [
    {
     "qId": "1-1",
@@ -616,11 +654,11 @@
     ],
     "rubric": [
      {
-      "step": "التوزيع",
+      "step": "م1 التفسير السليم: التوزيع",
       "mark": "4"
      },
      {
-      "step": "النتيجة",
+      "step": "م2 الاستعمال السليم: النتيجة",
       "mark": "3"
      }
     ],
@@ -648,11 +686,11 @@
     ],
     "rubric": [
      {
-      "step": "التجميع",
+      "step": "م1 التفسير السليم: التجميع",
       "mark": "3"
      },
      {
-      "step": "النتيجة",
+      "step": "م2 الاستعمال السليم: النتيجة",
       "mark": "3"
      }
     ],
@@ -682,11 +720,11 @@
     ],
     "rubric": [
      {
-      "step": "الكسر المستعمل",
+      "step": "م1 التفسير السليم: الكسر المستعمل",
       "mark": "3"
      },
      {
-      "step": "السعة",
+      "step": "م2 الاستعمال السليم: السعة",
       "mark": "4"
      }
     ],
@@ -925,5 +963,6 @@
   const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
   s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
   document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
+<div id="paper"><div class="copy one"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACYElEQVR4nMVYQW7cMAwcrg3IN/kH2o/E2j6rwCZ2owX6rNr7EukH8k0GbE8PzraXpKeE1UGANAcSFDkcSoj3Vzp9AACfjCwiIstlFgFmkeaOWxKR+rPtfIigeDIWn6/gjj5CyEgyRLUYgFIDdCEC2Lz5JTUWaT/fzr8R84ofHndbA8L16+x8jCwvc4jo5hWlw03XgyMPOJER/rGp5gEKAJTOhvh3A1DpeUCS5I4qAuhjkVyRJPVqYbnMInLCd2+Yt7Pd7XJevCYfcEdPSL6iwJKlQ0V06BVjcLJ1Kk9ucI1PNewrNoFQMwYj4NDZEIvkKqKzJEfFTDwtF7smEzKc3dwKSL4lCAfFGDD3LLAr4Lk6s6NiEc1awOREGkmB5peYOF9wBahYC6elT6TZWiQIn8WMtk52tIqvcOSf5J4c7YqjO++a1WhGXJ3ZsZ0hGTD7LL65a8aAu12BDj1Lh57F556A1exMnQ0sPlcRHSqa0a6uiGZv5ERGw9yzSO5p9kcyKKq09uYwtbfUsEXCfR5ceWo1FQrsgCL56h6MBJhJVal2qGh3IBW2P+PyjSEuvlXUiWbK17RcbA0b8iYFAMikykgcnJm4giOuKD4r9wUUyYdMiYZcj2NR1YnFMxCwPMiI5AozKjPSCsPcEx2qWN6utbVyEYb4OAYWXZ0oIgLK6gD0bO5AUtWJp7dJKW9SPJ/PoAzuS+x8jByzc3tzDdsb5hds0mDW44MHYkNkyEj21a6gpkb6M71vgg59hGS45fJFdt5dx+zMXNFMJA3JWDpVRnpzY3BkrmLxHHR7o/z3v7TfPRmkpFK5JJMAAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الثانية متوسط</span></div><div class="pt">التحدي الأول</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>الوضعية الإدماجية (20 ن): تحدي الحساب الذكي</h4><div class="bem-data"><p>– احسب بذكاء دون آلة حاسبة.</p></div><p>1) احسب <span class="math">99 × 37</span>.</p><p>2) احسب <span class="math">125 × 37 × 8</span>.</p><p>3) استُعمل <span class="math"><span class="fr"><span>1</span><span>3</span></span></span> ثم <span class="math"><span class="fr"><span>1</span><span>6</span></span></span> من ماء خزان، فبقي فيه <span class="math">60 L</span>. ما سعته (بـ L)؟</p></div></div></div></div><!--/paper-->
 </body>
 </html>
