@@ -1,0 +1,977 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>درس تفاعلي: خاصية طالس (المقطع 2، الرابعة متوسط)</title>
+<meta name="description" content="رحلة تفاعلية للسنة الرابعة متوسط: خاصية طالس في المثلث وفي شكل الفراشة، حساب الأطوال، الخاصية العكسية، تقسيم قطعة. شرح مرحلي، محاكاة، ألعاب، أسئلة بتصحيح فوري وشهادة إنجاز.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="📏 درس تفاعلي للرابعة متوسط: خاصية طالس">
+<meta property="og:description" content="افهم، جرّب، العب واجمع النجوم: 5 محطات من خاصية طالس إلى تقسيم قطعة، وفي النهاية شهادة إنجاز باسمك!">
+<meta property="og:image" content="https://soufiyousfi.github.io/math/4m/t1/dars/img/dars-m2-thales-fb.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://soufiyousfi.github.io/math/4m/t1/dars/dars-m2-thales.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://soufiyousfi.github.io/math/4m/t1/dars/img/dars-m2-thales-fb.png">
+<meta name="theme-color" content="#0f5f8b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef6fb; --card:#ffffff; --ink:#18303f; --muted:#5b7080; --line:#d6e4ee;
+  --c1:#0f5f8b; --c2:#0ea5a4; --yel:#facc15; --ok:#16a34a; --ok-soft:#e3f6e9;
+  --bad:#dc2626; --bad-soft:#fde8e8; --hint:#b45309; --hint-soft:#fff4dc;
+  --sum:#ea580c; --sum-soft:#fff1e6; --vio:#7c3aed; --vio-soft:#f1eafe;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:"Cairo",Tahoma,sans-serif;font-size:17px;line-height:1.75;-webkit-tap-highlight-color:transparent}
+button{font-family:inherit;font-size:inherit;cursor:pointer}
+.m{font-family:"Cairo",Tahoma,sans-serif;white-space:nowrap;unicode-bidi:isolate;font-weight:700;color:#0b4a6f}
+.fr{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 3px;line-height:1.25;font-weight:700;color:#0b4a6f}
+.fr>span:first-child{border-bottom:2px solid currentColor;padding:0 4px}
+.fr>span:last-child{padding:0 4px}
+/* header */
+.top{background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;padding:14px 16px 12px;border-bottom:5px solid var(--yel);text-align:center}
+.top .school{font-size:.8rem;opacity:.95;font-weight:700}
+.top h1{margin:4px 0 0;font-size:1.45rem;font-weight:900;line-height:1.4}
+.top .sub{font-size:.85rem;opacity:.95}
+.bar{position:sticky;top:0;z-index:20;background:#fff;box-shadow:0 2px 10px rgba(15,95,139,.15);padding:6px 10px;display:flex;align-items:center;gap:6px;flex-wrap:nowrap}
+.bar .pill{background:var(--bg);border-radius:999px;padding:0 8px;font-size:.92rem;font-weight:800;white-space:nowrap}
+.bar .prog{flex:1;min-width:40px;height:10px;background:#e2ecf3;border-radius:6px;overflow:hidden}
+.bar .prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--c2),var(--ok));transition:width .5s}
+.bar .snd{border:0;background:var(--bg);border-radius:999px;padding:0 10px;font-size:1rem}
+nav.tabs{display:flex;gap:6px;overflow-x:auto;padding:10px 12px 4px;max-width:900px;margin:0 auto;scrollbar-width:none}
+nav.tabs button{flex:none;border:2px solid var(--line);background:#fff;border-radius:12px;padding:4px 12px;font-weight:800;color:var(--c1)}
+nav.tabs button.on{background:var(--c1);color:#fff;border-color:var(--c1)}
+main{max-width:900px;margin:0 auto;padding:8px 16px 60px}
+.card{background:var(--card);border-radius:16px;box-shadow:0 2px 12px rgba(15,95,139,.08);padding:14px 16px;margin:12px 0;border:1px solid var(--line)}
+h2{font-size:1.2rem;margin:4px 0 8px;color:var(--c1);font-weight:900}
+h3{font-size:1.05rem;margin:4px 0 6px;color:var(--c1);font-weight:800}
+.muted{color:var(--muted);font-size:.9rem}
+.btn{border:0;border-radius:12px;padding:7px 16px;font-weight:800;background:var(--c1);color:#fff;box-shadow:0 3px 0 rgba(0,0,0,.15)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.alt{background:#fff;color:var(--c1);border:2px solid var(--c1);box-shadow:none}
+.btn.green{background:var(--ok)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+/* home */
+.goals li{margin:2px 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--vio-soft);color:var(--vio);border-radius:999px;padding:0 10px;font-weight:700;font-size:.88rem}
+.map{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.stn{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:right;position:relative;min-height:96px}
+.stn .ic{font-size:1.6rem;line-height:1}
+.stn .nm{font-weight:800;font-size:.92rem;line-height:1.4;display:block;margin-top:4px}
+.stn .st{position:absolute;top:6px;left:8px;font-size:.8rem;font-weight:800}
+.stn.done{border-color:var(--ok);background:var(--ok-soft)}
+.grp-t{font-weight:900;color:var(--c2);margin:14px 0 4px}
+/* lesson */
+.lhead{display:flex;gap:10px;align-items:center}
+.lhead .ic{font-size:2rem}
+.stages{display:flex;gap:6px;margin:8px 0}
+.stages button{flex:1;border:2px solid var(--line);background:#fff;border-radius:12px;padding:4px 2px;font-weight:800;color:var(--muted);font-size:.9rem}
+.stages button.on{border-color:var(--c2);color:#fff;background:var(--c2)}
+.step{border-right:6px solid var(--c2);animation:pop .35s}
+.step.sum{border-right-color:var(--sum);background:var(--sum-soft)}
+.step h3 .n{display:inline-block;background:var(--yel);color:#3b2f00;border-radius:8px;padding:0 8px;margin-left:6px;font-size:.85rem}
+.key{background:var(--sum-soft);border:2px dashed var(--sum);border-radius:12px;padding:6px 10px;margin:6px 0;font-weight:700}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* sim */
+.sim-svg{width:100%;height:auto;display:block;background:#fbfdff;border-radius:12px;border:1px solid var(--line);touch-action:none;user-select:none;-webkit-user-select:none;direction:ltr}
+.sim-svg text{font-family:"Cairo",Tahoma,sans-serif;font-weight:800}
+.readout{background:#f3f8fc;border-radius:12px;padding:6px 10px;margin-top:8px;font-weight:700;min-height:2em}
+.missions{margin-top:8px;display:flex;flex-direction:column;gap:4px}
+.mis{border:2px dashed var(--line);border-radius:10px;padding:2px 10px;font-weight:700;font-size:.92rem}
+.mis.ok{border-style:solid;border-color:var(--ok);background:var(--ok-soft)}
+.mis.ok::before{content:"✅ "}
+.mis:not(.ok)::before{content:"🎯 "}
+.sl{display:flex;align-items:center;gap:8px;margin:4px 0;font-weight:700}
+.sl input{flex:1;accent-color:var(--c2)}
+.sl output{min-width:58px;text-align:center;background:var(--bg);border-radius:8px}
+/* questions */
+.qc{border-right:6px solid var(--c1)}
+.qc.ok{border-right-color:var(--ok)}
+.qc.lost{border-right-color:var(--hint)}
+.qh{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.qh b{color:var(--c1)}
+.qh .pts{margin-inline-start:auto;background:var(--yel);color:#3b2f00;border-radius:999px;padding:0 10px;font-weight:800;font-size:.85rem}
+.qh .tries{font-size:.85rem;color:var(--muted)}
+.qt{margin-bottom:6px}
+.ch{display:flex;flex-direction:column;gap:6px}
+.opt{border:2px solid var(--line);background:#fff;border-radius:12px;padding:6px 12px;text-align:right;font-weight:700}
+.opt:disabled{cursor:default}
+.opt.bad{border-color:var(--bad);background:var(--bad-soft);text-decoration:line-through;opacity:.7}
+.opt.good{border-color:var(--ok);background:var(--ok-soft)}
+.ans{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ans input{flex:1;min-width:120px;max-width:220px;font:inherit;font-weight:800;font-size:1.1rem;padding:5px 10px;border:2px solid var(--line);border-radius:12px;text-align:center;direction:ltr}
+.ans input:focus{outline:none;border-color:var(--c2)}
+.unit{font-weight:800;color:var(--c1)}
+.keys{display:flex;gap:6px;margin-top:6px}
+.keys button{border:2px solid var(--line);background:#f6fafc;border-radius:10px;min-width:44px;padding:0 10px;font-weight:900;font-size:1.1rem}
+.fb{margin-top:6px;font-weight:700}
+.fb .w{background:var(--bad-soft);color:#991b1b;border-radius:10px;padding:4px 10px;display:block}
+.fb .h{background:var(--hint-soft);color:#7c3a00;border-radius:10px;padding:4px 10px;display:block;margin-top:4px}
+.fb .g{background:var(--ok-soft);color:#14532d;border-radius:10px;padding:4px 10px;display:block}
+.model{background:#f5fbff;border:2px solid #bfdbef;border-radius:12px;padding:8px 12px;margin-top:8px}
+.model h4{margin:0 0 4px;color:var(--c1)}
+.model .ln{padding:1px 0}
+.model .ccl{background:var(--ok-soft);border-radius:8px;padding:2px 8px;margin:6px 0}
+details.sol summary{cursor:pointer;font-weight:800;color:var(--c1);margin-top:6px}
+table.sc{border-collapse:collapse;width:100%;margin-top:6px;font-size:.9rem}
+table.sc th,table.sc td{border:1px solid #cfe0ec;padding:2px 8px}
+table.sc th{background:#e6f1f8}
+table.sc td:last-child{text-align:center;width:70px}
+table.sc tr.tot td{font-weight:900;background:#fff7d6}
+table.vop{border-collapse:collapse;margin:4px 0;font-weight:800;font-size:1.05rem;direction:ltr;display:inline-table;color:#0b4a6f}
+table.vop td{padding:0 4px;text-align:right;letter-spacing:3px}
+table.vop tr.rl td{border-top:2px solid #0b4a6f}
+.shake{animation:shk .45s}
+@keyframes shk{0%,100%{transform:none}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+/* toast & stars */
+#toast{position:fixed;right:12px;bottom:18px;z-index:60;max-width:min(330px,calc(100% - 24px));display:flex;flex-direction:column;gap:6px;pointer-events:none}
+#toast div{background:#fff;border-radius:14px;padding:8px 12px;font-weight:800;box-shadow:0 6px 24px rgba(0,0,0,.18);border-right:6px solid var(--ok);animation:pop .3s}
+#toast div.w{border-right-color:var(--hint)}
+.burst{position:fixed;z-index:70;pointer-events:none;font-size:26px;animation:fly 1s ease-out forwards}
+@keyframes fly{to{transform:translate(var(--dx),var(--dy)) scale(.4);opacity:0}}
+.modal{position:fixed;inset:0;background:rgba(10,30,45,.55);z-index:80;display:flex;align-items:center;justify-content:center;padding:16px}
+.modal .card{max-width:420px;width:100%;text-align:center;animation:pop .3s}
+.modal .big{font-size:3rem;line-height:1.2}
+/* games */
+.mt{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mt .col{display:flex;flex-direction:column;gap:6px}
+.tile{border:2px solid var(--line);background:#fff;border-radius:12px;padding:6px;font-weight:800;min-height:46px}
+.tile.sel{border-color:var(--c2);background:#e0f7f6}
+.tile.done{border-color:var(--ok);background:var(--ok-soft);opacity:.75}
+.big2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.big2 button{border:0;border-radius:14px;padding:14px 6px;font-weight:900;font-size:1.1rem;color:#fff}
+.stmt{font-size:1.1rem;font-weight:800;background:#f3f8fc;border-radius:12px;padding:10px;text-align:center;min-height:3.2em}
+.opts4{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+/* certificate */
+canvas#cv{width:100%;height:auto;border-radius:10px;box-shadow:0 4px 18px rgba(0,0,0,.15);display:block}
+.namebox{font:inherit;font-weight:800;font-size:1.1rem;padding:6px 10px;border:2px solid var(--line);border-radius:12px;width:100%;max-width:340px}
+.lock{font-size:2.4rem}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:20px 16px 40px}
+@media print{
+  body *{visibility:hidden}
+  #cv,#cv *{visibility:visible}
+  #cv{position:fixed;inset:0;width:100%;box-shadow:none}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="school">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
+  <h1>📏 رحلة خاصية طالس</h1>
+  <div class="sub">السنة الرابعة متوسط — المقطع 2: خاصية طالس وحساب المثلثات في المثلث القائم (المورد 1: خاصية طالس)</div>
+</header>
+<div class="bar">
+  <span class="pill">⭐ <b id="stars">0</b> / <span id="maxs">0</span></span>
+  <span class="pill">🏅 <b id="badges">0</b> / 5</span>
+  <span class="prog" title="التقدم"><i id="progi"></i></span>
+  <button class="snd" id="snd" aria-label="الصوت">🔊</button>
+</div>
+<nav class="tabs" id="tabs">
+  <button data-v="home">🏠 الرئيسية</button>
+  <button data-v="lessons">📚 المحطات</button>
+  <button data-v="games">🎮 الألعاب</button>
+  <button data-v="final">🇩🇿 التحدي النهائي</button>
+  <button data-v="cert">🎓 الشهادة</button>
+</nav>
+<main id="app"></main>
+<div id="toast"></div>
+<footer>متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي<br>المراجع: منهاج السنة الرابعة متوسط 2016، المخطط السنوي 2022، الكتاب المدرسي (الباب 9)، مواضيع شهادة التعليم المتوسط.</footer>
+
+<script>
+"use strict";
+/* ================= helpers ================= */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const M = t => `<bdi class="m" dir="ltr">${t}</bdi>`;
+const F = (a, b) => `<span class="fr" dir="ltr"><span>${a}</span><span>${b}</span></span>`;
+function V(a, op, b, r) {
+  return `<table class="vop" dir="ltr"><tr><td></td><td>${a}</td></tr><tr><td>${op}</td><td>${b}</td></tr><tr class="rl"><td></td><td>${r}</td></tr></table>`;
+}
+const fmt = (x, d = 2) => { const p = Math.pow(10, d); return String(Math.round(x * p) / p).replace('.', ','); };
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+function hashStr(s) { let n = 7; for (const c of String(s)) n = (n * 31 + c.charCodeAt(0)) % 99991; return n; }
+
+/* ================= messages (vary per question) ================= */
+const MSG = {
+  ok: ['أحسنت! تركيزك أوصلك إلى الجواب الصحيح.', 'ممتاز! أخذت وقتك وفكّرت جيدا، وهذه هي النتيجة.', 'برافو! التأنّي يصنع النجاح.', 'رائع! جهدك يستحق هذه النجوم.', 'إجابة صحيحة! واصل بنفس الهدوء والتركيز.', 'أحسنت! من يقرأ السؤال جيدا يصل إلى الحل.', 'عمل متقن! الدقة أهم من السرعة، وأنت أثبتّ ذلك.', 'بارك الله فيك! تقدّم خطوة بخطوة كما فعلت الآن.'],
+  w1: ['لا بأس، الخطأ جزء من التعلّم. أعد قراءة السؤال بهدوء.', 'تمهّل قليلا: كلما أسرعت قلّ تركيزك. خذ وقتك.', 'محاولة جيدة! راجع عملك خطوة بخطوة.', 'كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.', 'لا تستعجل. اقرأ المعطيات من جديد ثم فكّر.', 'أنت قريب. أعطِ هذا السؤال الوقت الذي يحتاجه.', 'الخطأ ليس فشلا بل خطوة نحو الفهم. حاول مجددا.', 'هدّئ السرعة وزِد التركيز، وستجد الطريق.'],
+  w2: ['محاولة أخيرة: ارسم أو اكتب الحساب على ورقة قبل أن تجيب.', 'لا تيأس! التركيز يأتي مع الهدوء. اقرأ التلميح جيدا.', 'السرعة والتركيز لا يجتمعان: تمهّل في هذه المحاولة الأخيرة.', 'ابذل جهدا إضافيا صغيرا، فالحل قريب منك.', 'راجع كل خطوة على حدة، ولا تتسرّع.', 'كل العلماء أخطؤوا قبل أن ينجحوا. ركّز في هذه المحاولة.'],
+  fail: ['لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. اقرأ الإجابة النموذجية بتمعّن.', 'تعلّمنا شيئا جديدا اليوم! تأمّل خطوات الحل، وأعد السؤال غدا بهدوء.', 'لا بأس، الفهم يحتاج وقتا وجهدا. راجع الحل خطوة بخطوة.', 'المهم أن نفهم لماذا أخطأنا. اقرأ الحل، ثم أعده وحدك على ورقة.', 'الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة.']
+};
+const pick = (k, id) => MSG[k][(hashStr(id) + k.length) % MSG[k].length];
+
+/* ================= state ================= */
+const KEY = 'dars_4m_m2_thales_v1';
+let S = { q: {}, mis: {}, g: {}, name: '', snd: true };
+try { const t = localStorage.getItem(KEY); if (t) S = Object.assign(S, JSON.parse(t)); } catch (e) {}
+function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+
+/* ================= sound & effects ================= */
+let AC = null;
+function tone(fs, dur = .12) {
+  if (!S.snd) return;
+  try {
+    AC = AC || new (window.AudioContext || window.webkitAudioContext)();
+    fs.forEach((f, i) => {
+      const o = AC.createOscillator(), g = AC.createGain();
+      o.frequency.value = f; o.type = 'sine';
+      g.gain.setValueAtTime(.18, AC.currentTime + i * dur);
+      g.gain.exponentialRampToValueAtTime(.001, AC.currentTime + (i + 1) * dur);
+      o.connect(g); g.connect(AC.destination);
+      o.start(AC.currentTime + i * dur); o.stop(AC.currentTime + (i + 1) * dur);
+    });
+  } catch (e) {}
+}
+const sOk = () => tone([660, 880, 1100]);
+const sBad = () => tone([260, 200], .16);
+function toast(t, warn) {
+  const d = document.createElement('div'); d.className = warn ? 'w' : ''; d.innerHTML = t;
+  $('#toast').appendChild(d); setTimeout(() => d.remove(), 3200);
+}
+function burst(el, n = 3) {
+  const r = el.getBoundingClientRect();
+  for (let i = 0; i < 6 + n * 2; i++) {
+    const s = document.createElement('span'); s.className = 'burst'; s.textContent = i % 3 ? '⭐' : '✨';
+    s.style.left = (r.left + r.width / 2) + 'px'; s.style.top = (r.top + 20) + 'px';
+    s.style.setProperty('--dx', (Math.random() * 240 - 120) + 'px'); s.style.setProperty('--dy', (-60 - Math.random() * 140) + 'px');
+    document.body.appendChild(s); setTimeout(() => s.remove(), 1000);
+  }
+}
+function shake(el) { el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake'); }
+function modal(html) {
+  const m = document.createElement('div'); m.className = 'modal';
+  m.innerHTML = `<div class="card">${html}<div class="row" style="justify-content:center;margin-top:10px"><button class="btn" data-close>حسنا 👍</button></div></div>`;
+  m.addEventListener('click', e => { if (e.target === m || e.target.closest('[data-close]')) m.remove(); });
+  document.body.appendChild(m); return m;
+}
+
+/* ================= SVG helpers ================= */
+const NS = 'http://www.w3.org/2000/svg';
+function E(tag, at, par) { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); if (par) par.appendChild(e); return e; }
+function mkSvg(host, w, h) { const s = E('svg', { viewBox: `0 0 ${w} ${h}`, class: 'sim-svg' }); host.appendChild(s); return s; }
+function svgPt(svg, ev) { const p = svg.createSVGPoint(); p.x = ev.clientX; p.y = ev.clientY; return p.matrixTransform(svg.getScreenCTM().inverse()); }
+function grid(svg, w, h, step, col = '#e4eef5') { const g = E('g', {}, svg); for (let x = 0; x <= w; x += step) E('line', { x1: x, y1: 0, x2: x, y2: h, stroke: col, 'stroke-width': 1 }, g); for (let y = 0; y <= h; y += step) E('line', { x1: 0, y1: y, x2: w, y2: y, stroke: col, 'stroke-width': 1 }, g); return g; }
+function drag(svg, el, onMove, onEnd) {
+  el.style.cursor = 'grab';
+  el.addEventListener('pointerdown', e => {
+    e.preventDefault(); try { el.setPointerCapture(e.pointerId); } catch (_) {}
+    const mv = ev => { const p = svgPt(svg, ev); onMove(p.x, p.y); };
+    const up = () => { el.removeEventListener('pointermove', mv); el.removeEventListener('pointerup', up); el.removeEventListener('pointercancel', up); if (onEnd) onEnd(); };
+    el.addEventListener('pointermove', mv); el.addEventListener('pointerup', up); el.addEventListener('pointercancel', up);
+  });
+}
+function handle(svg, label, color) {
+  const g = E('g', {}, svg);
+  E('circle', { r: 16, fill: color, 'fill-opacity': .15 }, g);
+  E('circle', { r: 6, fill: color }, g);
+  const t = E('text', { 'font-size': 16, fill: color, x: 9, y: -9 }, g); t.textContent = label;
+  g.place = (x, y) => g.setAttribute('transform', `translate(${x},${y})`);
+  return g;
+}
+function rightMark(par, P, u, v, s = 12, col = '#dc2626') {
+  // small square at P along unit vectors u and v
+  const a = [P.x + u.x * s, P.y + u.y * s], b = [P.x + (u.x + v.x) * s, P.y + (u.y + v.y) * s], c = [P.x + v.x * s, P.y + v.y * s];
+  return E('polyline', { points: `${a} ${b} ${c}`, fill: 'none', stroke: col, 'stroke-width': 2 }, par);
+}
+function tick(par, P, Q, n = 1, col = '#7c3aed') {
+  const mx = (P.x + Q.x) / 2, my = (P.y + Q.y) / 2, L = Math.hypot(Q.x - P.x, Q.y - P.y) || 1;
+  const ux = (Q.x - P.x) / L, uy = (Q.y - P.y) / L, nx = -uy, ny = ux;
+  for (let i = 0; i < n; i++) {
+    const o = (i - (n - 1) / 2) * 5;
+    E('line', { x1: mx + ux * o + nx * 7, y1: my + uy * o + ny * 7, x2: mx + ux * o - nx * 7, y2: my + uy * o - ny * 7, stroke: col, 'stroke-width': 2.5 }, par);
+  }
+}
+
+/* ================= missions ================= */
+function misHTML(L) { return L.mis.map((t, k) => `<div class="mis ${S.mis[L.id + '-' + k] ? 'ok' : ''}" id="mis-${L.id}-${k}">${t}</div>`).join(''); }
+function misDone(L, k) {
+  const id = L.id + '-' + k; if (S.mis[id]) return;
+  S.mis[id] = 1; save(); updBar();
+  const el = $('#mis-' + id); if (el) { el.classList.add('ok'); burst(el, 1); }
+  sOk(); toast('🎯 مهمة منجزة! ⭐ +1');
+}
+
+/* ================= lesson data: 4AM S2, خاصية طالس ================= */
+const NUM_SC = [['كتابة الخاصية أو الطريقة', 1], ['الحساب الصحيح', 1], ['النتيجة مع الوحدة', 1]];
+const MCQ_SC = [['ذكر الخاصية المناسبة', 1], ['التعليل والاستنتاج الصحيح', 2]];
+const J = 'مع التعليل؟ ✍️ علّل في كراسك، ثم اختر:';
+const NST = 5;
+
+const LESSONS = [
+{ id: 1, ic: '📐', g: 1, t: 'خاصية طالس في المثلث',
+  goal: 'أكتب النسب المتساوية لخاصية طالس في مثلث بترتيب صحيح.',
+  steps: [
+    { h: 'الشكل', b: `${M('ABC')} مثلث، ${M('M')} نقطة من ${M('[AB]')} و ${M('N')} نقطة من ${M('[AC]')}، والمستقيمان ${M('(MN)')} و ${M('(BC)')} متوازيان: ${M('(MN) // (BC)')}.${figT()}` },
+    { h: 'مثلثان: صغير وكبير', b: `يظهر في الشكل مثلثان لهما الرأس نفسه ${M('A')}: المثلث الصغير ${M('AMN')} والمثلث الكبير ${M('ABC')}.<div class="key">المثلث ${M('AMN')} تصغير للمثلث ${M('ABC')}: أطوال أضلاعه متناسبة مع أطوال أضلاع ${M('ABC')}.</div>` },
+    { h: 'نص الخاصية', b: `إذا كانت النقط ${M('A')} و ${M('M')} و ${M('B')} في استقامة، والنقط ${M('A')} و ${M('N')} و ${M('C')} في استقامة، و ${M('(MN) // (BC)')}، فإن:<div class="key" style="text-align:center">${F('AM', 'AB')} ${M('=')} ${F('AN', 'AC')} ${M('=')} ${F('MN', 'BC')}</div>` },
+    { h: 'كيف أكتب النسب دون خطأ؟', b: `في كل نسبة: <b>في البسط ضلع من المثلث الصغير</b>، و<b>في المقام الضلع المقابل له من المثلث الكبير</b>.<br>❌ خطأ شائع: ${F('AM', 'MB')} (جزء القطعة بدل القطعة كلها). الصواب ${F('AM', 'AB')}.` },
+    { h: 'خاصية طالس', sum: 1, b: `في مثلث ${M('ABC')}: ${M('M ∈ [AB]')} و ${M('N ∈ [AC]')} و ${M('(MN) // (BC)')}، إذن ${F('AM', 'AB')} ${M('=')} ${F('AN', 'AC')} ${M('=')} ${F('MN', 'BC')}.<br>نستعملها لحساب طول مجهول عندما نعرف ثلاثة أطوال في نسبتين.` }
+  ],
+  sim: 'simThales', simHelp: 'حرّك المؤشر لتغيير موضع M على [AB]، واسحب الرأسين B و C. المستقيم (MN) يبقى موازيا لـ (BC): لاحظ النسب الثلاث.',
+  mis: ['اجعل النسبة AM ÷ AB تساوي 0,5 (M منتصف [AB])', 'اجعل النسبة تساوي 0,25', 'اجعل النسبة تساوي 0,75'],
+  qs: [
+    { id: '1-1', type: 'mcq', q: `${M('ABC')} مثلث، ${M('M ∈ [AB]')} و ${M('N ∈ [AC]')} و ${M('(MN) // (BC)')}. أي كتابة صحيحة؟`,
+      ch: [`${F('AM', 'AB')} ${M('=')} ${F('AN', 'AC')} ${M('=')} ${F('MN', 'BC')}`, `${F('AM', 'MB')} ${M('=')} ${F('AN', 'AC')} ${M('=')} ${F('MN', 'BC')}`, `${F('AM', 'AB')} ${M('=')} ${F('AC', 'AN')} ${M('=')} ${F('MN', 'BC')}`, `${F('AM', 'AC')} ${M('=')} ${F('AN', 'AB')} ${M('=')} ${F('MN', 'BC')}`], a: 0,
+      h1: 'حدّد المثلث الصغير والمثلث الكبير.', h2: 'في البسط أضلاع المثلث الصغير AMN، وفي المقام الأضلاع المقابلة من ABC.',
+      m: 'خاصية طالس في المثلث.',
+      s: ['المثلث الصغير AMN والمثلث الكبير ABC لهما الرأس A.', `نقابل: ${M('AM')} مع ${M('AB')}، و ${M('AN')} مع ${M('AC')}، و ${M('MN')} مع ${M('BC')}.`],
+      c: `${F('AM', 'AB')} ${M('=')} ${F('AN', 'AC')} ${M('=')} ${F('MN', 'BC')}.` },
+    { id: '1-2', type: 'num', unit: 'cm', a: 3, q: `في الشكل السابق: ${M('AM = 2 cm')} و ${M('AB = 6 cm')} و ${M('BC = 9 cm')}. احسب ${M('MN')}.`,
+      h1: 'أي نسبتين فيهما MN والأطوال المعطاة؟', h2: `${F('AM', 'AB')} = ${F('MN', 'BC')}، أي ${F('2', '6')} = ${F('MN', '9')}.`,
+      m: 'خاصية طالس، ثم الجداء المتقاطع.',
+      s: [`النقط ${M('A, M, B')} في استقامة، و ${M('A, N, C')} في استقامة، و ${M('(MN) // (BC)')}، إذن ${F('AM', 'AB')} ${M('=')} ${F('MN', 'BC')}.`, `${F('2', '6')} ${M('=')} ${F('MN', '9')}`, `${M('MN =')} ${F('2 × 9', '6')} ${M('=')} ${F('18', '6')} ${M('= 3')}`],
+      c: `${M('MN = 3 cm')}.` },
+    { id: '1-3', type: 'num', unit: 'cm', a: 7.5, tol: .01, q: `${M('ABC')} مثلث، ${M('M ∈ [AB]')} و ${M('N ∈ [AC]')} و ${M('(MN) // (BC)')}، حيث ${M('AM = 3 cm')} و ${M('AB = 5 cm')} و ${M('AN = 4,5 cm')}. احسب ${M('AC')}.`,
+      h1: 'اكتب النسبتين اللتين فيهما AM و AB و AN و AC.', h2: `${F('3', '5')} = ${F('4,5', 'AC')}، ثم AC = (5 × 4,5) ÷ 3.`,
+      m: 'خاصية طالس، ثم الجداء المتقاطع.',
+      s: [`حسب خاصية طالس: ${F('AM', 'AB')} ${M('=')} ${F('AN', 'AC')}`, `${F('3', '5')} ${M('=')} ${F('4,5', 'AC')}`, `${M('AC =')} ${F('5 × 4,5', '3')} ${M('=')} ${F('22,5', '3')} ${M('= 7,5')}`],
+      c: `${M('AC = 7,5 cm')}.` },
+    { id: '1-4', type: 'mcq', q: `متى يمكن استعمال خاصية طالس في المثلث ${M('ABC')} مع ${M('M ∈ [AB]')} و ${M('N ∈ [AC]')}؟ ${J}`,
+      ch: [`عندما يكون ${M('(MN) // (BC)')}`, `عندما يكون ${M('AM = AN')}`, `عندما يكون المثلث ${M('ABC')} قائما`, 'في كل الحالات'], a: 0,
+      h1: 'أعد قراءة نص الخاصية: ما الشرط الذي يأتي بعد «إذا»؟', h2: 'الشرط يتعلق بمستقيمين.',
+      m: 'شروط خاصية طالس.',
+      s: ['تحتاج الخاصية إلى نقط في استقامة كما في الشكل، وإلى مستقيمين متوازيين.', 'لا يشترط أن يكون المثلث قائما ولا أن يكون AM = AN.'],
+      c: `نستعمل خاصية طالس عندما يكون ${M('(MN) // (BC)')}.` }
+  ] },
+{ id: 2, ic: '🦋', g: 1, t: 'خاصية طالس في شكل الفراشة',
+  goal: 'أتعرّف على وضعية طالس عندما تكون النقطتان على جهتين مختلفتين من نقطة التقاطع.',
+  steps: [
+    { h: 'الشكل', b: `المستقيمان ${M('(AC)')} و ${M('(BD)')} متقاطعان في ${M('O')}، و ${M('(AB) // (CD)')}. النقطة ${M('O')} تقع بين ${M('A')} و ${M('C')}، وبين ${M('B')} و ${M('D')}.${figB()}` },
+    { h: 'المثلثان', b: `المثلثان ${M('OAB')} و ${M('OCD')} لهما الرأس نفسه ${M('O')}، لكن كل واحد في جهة.` },
+    { h: 'نص الخاصية', b: `إذا كانت النقط ${M('A')} و ${M('O')} و ${M('C')} في استقامة، والنقط ${M('B')} و ${M('O')} و ${M('D')} في استقامة، و ${M('(AB) // (CD)')}، فإن:<div class="key" style="text-align:center">${F('OA', 'OC')} ${M('=')} ${F('OB', 'OD')} ${M('=')} ${F('AB', 'CD')}</div>` },
+    { h: 'انتبه', sum: 1, b: `في شكل الفراشة نكتب النسب انطلاقا من نقطة التقاطع ${M('O')}: البسط من المثلث ${M('OAB')}، والمقام الضلع المقابل من المثلث ${M('OCD')}.<br>❌ خطأ شائع: ${F('OA', 'OD')} (الضلعان غير متقابلين).` }
+  ],
+  sim: 'simButterfly', simHelp: 'اسحب النقطتين A و B، وحرّك المؤشر k لتكبير المثلث OCD. لاحظ أن النسب الثلاث تبقى متساوية.',
+  mis: ['اجعل المثلثين متقايسين (النسبة 1)', 'اجعل OCD ضعف OAB (النسبة 0,5)', 'اجعل النسبة 2'],
+  qs: [
+    { id: '2-1', type: 'mcq', q: `المستقيمان ${M('(AC)')} و ${M('(BD)')} متقاطعان في ${M('O')} و ${M('(AB) // (CD)')}. أي كتابة صحيحة؟`,
+      ch: [`${F('OA', 'OD')} ${M('=')} ${F('OB', 'OC')} ${M('=')} ${F('AB', 'CD')}`, `${F('OA', 'OC')} ${M('=')} ${F('OB', 'OD')} ${M('=')} ${F('AB', 'CD')}`, `${F('OA', 'AC')} ${M('=')} ${F('OB', 'BD')} ${M('=')} ${F('AB', 'CD')}`], a: 1,
+      h1: 'A و C على المستقيم نفسه، و B و D على المستقيم الآخر.', h2: 'نقابل OA بـ OC (على المستقيم (AC))، و OB بـ OD.',
+      m: 'خاصية طالس في شكل الفراشة.',
+      s: ['المثلثان OAB و OCD لهما الرأس O.', `${M('OA')} يقابل ${M('OC')}، و ${M('OB')} يقابل ${M('OD')}، و ${M('AB')} يقابل ${M('CD')}.`],
+      c: `${F('OA', 'OC')} ${M('=')} ${F('OB', 'OD')} ${M('=')} ${F('AB', 'CD')}.` },
+    { id: '2-2', type: 'num', unit: 'cm', a: 7.5, tol: .01, q: `في الشكل السابق: ${M('OA = 4 cm')} و ${M('OC = 6 cm')} و ${M('AB = 5 cm')}. احسب ${M('CD')}.`,
+      h1: 'استعمل النسبتين OA/OC و AB/CD.', h2: `${F('4', '6')} = ${F('5', 'CD')}.`,
+      m: 'خاصية طالس في شكل الفراشة، ثم الجداء المتقاطع.',
+      s: [`النقط ${M('A, O, C')} في استقامة، و ${M('B, O, D')} في استقامة، و ${M('(AB) // (CD)')}، إذن ${F('OA', 'OC')} ${M('=')} ${F('AB', 'CD')}.`, `${F('4', '6')} ${M('=')} ${F('5', 'CD')}`, `${M('CD =')} ${F('6 × 5', '4')} ${M('=')} ${F('30', '4')} ${M('= 7,5')}`],
+      c: `${M('CD = 7,5 cm')}.` },
+    { id: '2-3', type: 'num', unit: 'cm', a: 4, tol: .01, q: `في الشكل نفسه: ${M('OB = 3 cm')} و ${M('OD = 4,5 cm')} و ${M('OC = 6 cm')}. احسب ${M('OA')}.`,
+      h1: 'اكتب النسبتين OA/OC و OB/OD.', h2: `${F('OA', '6')} = ${F('3', '4,5')}.`,
+      m: 'خاصية طالس في شكل الفراشة.',
+      s: [`${F('OA', 'OC')} ${M('=')} ${F('OB', 'OD')}`, `${F('OA', '6')} ${M('=')} ${F('3', '4,5')}`, `${M('OA =')} ${F('6 × 3', '4,5')} ${M('=')} ${F('18', '4,5')} ${M('= 4')}`],
+      c: `${M('OA = 4 cm')}.` },
+    { id: '2-4', type: 'num', unit: 'cm', a: 6, tol: .01, q: `في شكل فراشة: ${M('O ∈ [AC]')} و ${M('O ∈ [BD]')} و ${M('(AB) // (CD)')}، حيث ${M('AC = 15 cm')} و ${F('OA', 'OC')} ${M('=')} ${F('2', '3')}. احسب ${M('OA')}.`,
+      h1: 'O تقع بين A و C: ماذا يساوي OA + OC؟', h2: 'OA + OC = 15، والنسبة 2/3 تعني أن AC مقسمة إلى 2 + 3 = 5 أجزاء متساوية.',
+      m: 'O نقطة من [AC]، ثم استعمال النسبة.',
+      s: [`${M('OA + OC = AC = 15')}`, `${F('OA', 'OC')} ${M('=')} ${F('2', '3')}: نقسم ${M('AC')} إلى ${M('2 + 3 = 5')} أجزاء متساوية.`, `الجزء: ${M('15 ÷ 5 = 3')}، إذن ${M('OA = 2 × 3 = 6')} و ${M('OC = 3 × 3 = 9')}.`],
+      c: `${M('OA = 6 cm')}.` }
+  ] },
+{ id: 3, ic: '🌴', g: 2, t: 'حساب أطوال في وضعيات من الحياة',
+  goal: 'أوظّف خاصية طالس لحساب ارتفاعات ومسافات يصعب قياسها مباشرة.',
+  steps: [
+    { h: 'أشعة الشمس متوازية', b: `في لحظة واحدة، أشعة الشمس متوازية. العصا والشجرة العموديتان على الأرض متوازيتان أيضا.${figShadow()}` },
+    { h: 'أين المثلثان؟', b: `طرف الظل ${M('S')} رأس مشترك: المثلث الصغير ${M('SKQ')} (العصا وظلها) والمثلث الكبير ${M('SPT')} (الشجرة وظلها)، و ${M('(KQ) // (PT)')}.` },
+    { h: 'الحساب', b: `حسب خاصية طالس: ${F('SK', 'SP')} ${M('=')} ${F('KQ', 'PT')}. نعرف ظل العصا ${M('SK')} وطولها ${M('KQ')} وظل الشجرة ${M('SP')}، فنحسب ارتفاع الشجرة ${M('PT')}.` },
+    { h: 'المنهجية', sum: 1, b: '1) أحدّد المثلثين والمستقيمين المتوازيين. 2) أكتب النسب الثلاث وأختار اثنتين فيهما المجهول. 3) أحسب بالجداء المتقاطع. 4) أكتب الجواب بجملة مع الوحدة.' }
+  ],
+  sim: 'simShadow', simHelp: 'غيّر طول العصا وظلها وظل الشجرة: يُحسب ارتفاع الشجرة بخاصية طالس.',
+  mis: ['اجعل ارتفاع الشجرة 6 m', 'اجعل ارتفاع الشجرة 9 m', 'اجعل ارتفاع الشجرة 12 m'],
+  qs: [
+    { id: '3-1', type: 'num', unit: 'm', a: 9, tol: .01, q: `في ساحة متوسطتنا بوادي فراغة: عصا طولها ${M('1,5 m')} ظلها ${M('2 m')}، وفي اللحظة نفسها ظل شجرة الزيتون ${M('12 m')}، وطرفا الظلين منطبقان. احسب ارتفاع الشجرة.`,
+      h1: 'المثلث الصغير: العصا وظلها. المثلث الكبير: الشجرة وظلها.', h2: `${F('2', '12')} = ${F('1,5', 'h')}.`,
+      m: 'العصا والشجرة عموديتان على الأرض فهما متوازيتان، ثم خاصية طالس.',
+      s: [`${F('SK', 'SP')} ${M('=')} ${F('KQ', 'PT')}`, `${F('2', '12')} ${M('=')} ${F('1,5', 'PT')}`, `${M('PT =')} ${F('12 × 1,5', '2')} ${M('=')} ${F('18', '2')} ${M('= 9')}`],
+      c: `ارتفاع الشجرة ${M('9 m')}. 🌳 الشجرة تظلّلنا، فلنحافظ عليها.` },
+    { id: '3-2', type: 'num', unit: 'm', a: 10, tol: .01, q: `لقياس عرض وادي سيبوس عند بوشقوف دون عبوره: ${M('T')} شجرة على الضفة الأخرى، ${M('A')} و ${M('B')} على الضفة القريبة حيث ${M('AB = 10 m')}. ابتعدنا على المستقيمين ${M('(TA)')} و ${M('(TB)')} إلى ${M('E')} و ${M('F')} حيث ${M('AE = 2 m')} و ${M('EF = 12 m')} و ${M('(EF) // (AB)')}. احسب ${M('TA')}.`,
+      h1: 'المثلث الصغير TAB والمثلث الكبير TEF، و TE = TA + 2.', h2: `${F('TA', 'TA + 2')} = ${F('10', '12')}، أي 12 × TA = 10 × (TA + 2).`,
+      m: 'خاصية طالس، ثم حل معادلة من الدرجة الأولى.',
+      s: [`${F('TA', 'TE')} ${M('=')} ${F('AB', 'EF')} و ${M('TE = TA + 2')}`, `${F('TA', 'TA + 2')} ${M('=')} ${F('10', '12')}`, `${M('12 TA = 10 TA + 20')}`, `${M('2 TA = 20')}، إذن ${M('TA = 10')}`],
+      c: `${M('TA = 10 m')}. 💧 ضفاف سيبوس النظيفة مسؤوليتنا جميعا.` },
+    { id: '3-3', type: 'num', unit: 'cm', a: 8, tol: .01, q: `${M('ABC')} مثلث محيطه ${M('20 cm')}، و ${M('M ∈ [AB]')} و ${M('N ∈ [AC]')} و ${M('(MN) // (BC)')} حيث ${F('AM', 'AB')} ${M('=')} ${F('2', '5')}. احسب محيط المثلث ${M('AMN')}.`,
+      h1: 'المثلث AMN تصغير للمثلث ABC: كل أضلاعه مضروبة في النسبة نفسها.', h2: 'محيط AMN = 20 × 2/5.',
+      m: 'خاصية طالس: أضلاع AMN متناسبة مع أضلاع ABC بالنسبة 2/5.',
+      s: [`${M('AM =')} ${F('2', '5')} ${M('AB')} و ${M('AN =')} ${F('2', '5')} ${M('AC')} و ${M('MN =')} ${F('2', '5')} ${M('BC')}`, `محيط ${M('AMN')} ${M('=')} ${F('2', '5')} ${M('× 20')}`, `${M('= 40 ÷ 5 = 8')}`],
+      c: `محيط المثلث ${M('AMN')} هو ${M('8 cm')}.` },
+    { id: '3-4', type: 'num', unit: 'm', a: 3.2, tol: .01, q: `سلّم ${M('[AB]')} طوله ${M('6 m')} مسنود إلى جدار عمودي ${M('[AC]')} ارتفاعه ${M('4,8 m')} (${M('A')} أعلى الجدار و ${M('B')} على الأرض). درجة أفقية ${M('[MN]')} توازي الأرض، ${M('M')} على السلم حيث ${M('AM = 2 m')}، و ${M('N')} على الجدار. احسب ${M('NC')} (ابدأ بحساب ${M('AN')})`,
+      h1: 'المثلث الصغير AMN والكبير ABC، و (MN) // (BC).', h2: `${F('AM', 'AB')} = ${F('AN', 'AC')}: AN = (2 × 4,8) ÷ 6 = 1,6، ثم NC = 4,8 − 1,6.`,
+      m: 'الدرجة والأرض متوازيتان، ثم خاصية طالس.',
+      s: [`${F('AM', 'AB')} ${M('=')} ${F('AN', 'AC')}`, `${F('2', '6')} ${M('=')} ${F('AN', '4,8')}، إذن ${M('AN =')} ${F('2 × 4,8', '6')} ${M('= 1,6')}`, `${M('NC = AC − AN = 4,8 − 1,6 = 3,2')}`],
+      c: `${M('AN = 1,6 m')}، و ${M('NC = 3,2 m')}.` }
+  ] },
+{ id: 4, ic: '✅', g: 2, t: 'الخاصية العكسية: هل المستقيمان متوازيان؟',
+  goal: 'أثبت توازي مستقيمين بالخاصية العكسية لطالس، أو عدم توازيهما بخاصية طالس.',
+  steps: [
+    { h: 'السؤال', b: `${M('ABC')} مثلث، ${M('M ∈ [AB]')} و ${M('N ∈ [AC]')}. لا نعرف هل ${M('(MN)')} يوازي ${M('(BC)')}: نقارن النسبتين ${F('AM', 'AB')} و ${F('AN', 'AC')}.` },
+    { h: 'الخاصية العكسية لطالس', b: `إذا كانت النقط ${M('A, M, B')} والنقط ${M('A, N, C')} في استقامة <b>وبنفس الترتيب</b>، و ${F('AM', 'AB')} ${M('=')} ${F('AN', 'AC')}، فإن ${M('(MN) // (BC)')}.` },
+    { h: 'إذا كانت النسبتان مختلفتين', b: `لو كان ${M('(MN) // (BC)')} لكانت النسبتان متساويتين حسب <b>خاصية طالس</b>. إذن إذا كانت النسبتان مختلفتين فالمستقيمان <b>غير متوازيين حسب خاصية طالس</b>.` },
+    { h: 'المنهجية', sum: 1, b: `1) أحسب كل نسبة وحدها. 2) أقارن. 3) أستنتج:<br>• متساويتان وبنفس الترتيب ← متوازيان <b>حسب الخاصية العكسية لطالس</b>.<br>• مختلفتان ← غير متوازيين <b>حسب خاصية طالس</b>.` }
+  ],
+  sim: 'simConverse', simHelp: 'حرّك المؤشرين لتغيير موضعي M و N بشكل مستقل، ولاحظ متى يصبح (MN) موازيا لـ (BC).',
+  mis: ['اجعل (MN) // (BC) بالنسبة 0,4', 'اجعل المستقيمين غير متوازيين واقرأ الخاصية المستعملة', 'اجعل (MN) // (BC) بالنسبة 0,8'],
+  qs: [
+    { id: '4-1', type: 'mcq', q: `${M('RST')} مثلث، ${M('M ∈ [RS]')} و ${M('N ∈ [RT]')} حيث ${M('RM = 3')} و ${M('RS = 7,5')} و ${M('RN = 4')} و ${M('RT = 10')}. هل ${M('(MN) // (ST)')}؟ ${J}`,
+      ch: ['نعم، حسب الخاصية العكسية لطالس', 'لا، حسب خاصية طالس', 'نعم، حسب خاصية طالس', 'لا يمكن الحكم'], a: 0,
+      h1: 'احسب RM ÷ RS ثم RN ÷ RT.', h2: 'النسبتان 0,4 و 0,4، والنقط بنفس الترتيب.',
+      m: 'نقارن النسبتين ثم نطبق الخاصية العكسية لطالس.',
+      s: [`${F('RM', 'RS')} ${M('=')} ${F('3', '7,5')} ${M('= 0,4')}`, `${F('RN', 'RT')} ${M('=')} ${F('4', '10')} ${M('= 0,4')}`, 'النسبتان متساويتان، والنقط R, M, S و R, N, T في استقامة وبنفس الترتيب.'],
+      c: `${M('(MN) // (ST)')} حسب الخاصية العكسية لطالس.` },
+    { id: '4-2', type: 'mcq', q: `${M('ABC')} مثلث، ${M('M ∈ [AB]')} و ${M('N ∈ [AC]')} حيث ${M('AM = 2')} و ${M('AB = 5')} و ${M('AN = 3')} و ${M('AC = 8')}. هل ${M('(MN) // (BC)')}؟ ${J}`,
+      ch: ['نعم، حسب الخاصية العكسية لطالس', 'لا، حسب خاصية طالس', 'لا، حسب الخاصية العكسية لطالس'], a: 1,
+      h1: 'احسب كل نسبة وحدها.', h2: '2 ÷ 5 = 0,4 و 3 ÷ 8 = 0,375.',
+      m: 'نقارن النسبتين؛ إذا اختلفتا نستعمل خاصية طالس.',
+      s: [`${F('AM', 'AB')} ${M('=')} ${F('2', '5')} ${M('= 0,4')}`, `${F('AN', 'AC')} ${M('=')} ${F('3', '8')} ${M('= 0,375')}`, `${M('0,4 ≠ 0,375')}: لو كان المستقيمان متوازيين لتساوت النسبتان.`],
+      c: `${M('(MN)')} و ${M('(BC)')} غير متوازيين حسب خاصية طالس.` },
+    { id: '4-3', type: 'num', unit: '', a: 0.25, tol: .001, q: `مستطيل ${M('ABCD')} فيه ${M('AB = 8')} و ${M('BC = 6')}. ${M('E ∈ [BA]')} و ${M('F ∈ [BC]')} حيث ${M('BE = 2')} و ${M('BF = 1,5')}. احسب النسبة ${F('BE', 'BA')} (اكتبها عددا عشريا).`,
+      h1: 'BE ÷ BA = 2 ÷ 8.', h2: 'اكتب الكسر 2/8 عددا عشريا.',
+      m: 'حساب نسبة.',
+      s: [`${F('BE', 'BA')} ${M('=')} ${F('2', '8')} ${M('=')} ${F('2 ÷ 2', '8 ÷ 2')} ${M('=')} ${F('1', '4')} ${M('= 0,25')}`, `و ${F('BF', 'BC')} ${M('=')} ${F('1,5', '6')} ${M('= 0,25')} أيضا: إذن ${M('(EF) // (AC)')} حسب الخاصية العكسية لطالس (BEM 2018).`],
+      c: `${F('BE', 'BA')} ${M('= 0,25')}.` },
+    { id: '4-4', type: 'mcq', q: `${F('AM', 'AB')} ${M('=')} ${F('AN', 'AC')} ${M('= 0,5')}، لكن ${M('M')} على ${M('[AB]')} و ${M('N')} على امتداد ${M('[CA]')} من جهة ${M('A')} (خارج القطعة). هل نستطيع أن نستنتج ${M('(MN) // (BC)')}؟ ${J}`,
+      ch: ['نعم، النسبتان متساويتان', 'لا، النقط ليست بنفس الترتيب', 'نعم، حسب خاصية طالس'], a: 1,
+      h1: 'أعد قراءة شروط الخاصية العكسية: ماذا يشترط عن ترتيب النقط؟', h2: 'M بين A و B، لكن A بين N و C: الترتيب مختلف.',
+      m: 'شرط الترتيب في الخاصية العكسية لطالس.',
+      s: ['الخاصية العكسية تشترط أن تكون النقط بنفس الترتيب على المستقيمين.', 'هنا M بين A و B، بينما A بين N و C: الترتيبان مختلفان.'],
+      c: 'لا نستطيع تطبيق الخاصية العكسية: النقط ليست بنفس الترتيب.' }
+  ] },
+{ id: 5, ic: '✏️', g: 2, t: 'تقسيم قطعة إلى أجزاء متقايسة',
+  goal: 'أقسّم قطعة مستقيم إلى أجزاء متقايسة بالمسطرة غير المدرّجة والمدور، وأعلّل بخاصية طالس.',
+  steps: [
+    { h: 'المشكلة', b: `نريد تقسيم ${M('[AB]')} حيث ${M('AB = 8 cm')} إلى 3 أجزاء متساوية. ${M('8 ÷ 3 ≈ 2,67')}: لا يمكن القياس بدقة بالمسطرة!` },
+    { h: 'الإنشاء', b: '1) نرسم من A نصف مستقيم مساعدا. 2) نعيّن عليه بالمدور 3 نقط متتالية A₁ و A₂ و A₃ متساوية البعد. 3) نصل A₃ بـ B. 4) نرسم من A₁ و A₂ مستقيمين يوازيان (A₃B).' },
+    { h: 'لماذا تنجح الطريقة؟', b: `في المثلث ${M('AA₃B')}: الموازيات تعطي حسب خاصية طالس النسب ${F('1', '3')} و ${F('2', '3')}، فالأجزاء الثلاثة على ${M('[AB]')} متساوية.` },
+    { h: 'تعميم', sum: 1, b: `لتعيين النقطة ${M('M')} من ${M('[AB]')} حيث ${F('AM', 'AB')} ${M('=')} ${F('2', '5')}: نقسم ${M('[AB]')} إلى 5 أجزاء متساوية بالطريقة نفسها، ونأخذ نقطة التقسيم الثانية.` }
+  ],
+  sim: 'simDivide', simHelp: 'اختر عدد الأجزاء n، ثم اضغط «الخطوة التالية» لتتابع خطوات الإنشاء.',
+  mis: ['أتمّ تقسيم القطعة إلى 3 أجزاء', 'أتمّ تقسيم القطعة إلى 5 أجزاء', 'أتمّ تقسيم القطعة إلى 7 أجزاء'],
+  qs: [
+    { id: '5-1', type: 'mcq', q: `ما الخطوة الأولى لتقسيم ${M('[AB]')} إلى 3 أجزاء متساوية دون استعمال تدريجات المسطرة؟`,
+      ch: ['نقيس AB ونقسمه على 3', 'نرسم من A نصف مستقيم مساعدا', 'نرسم محور القطعة [AB]', 'نرسم دائرة مركزها A'], a: 1,
+      h1: 'الطريقة تعتمد على خاصية طالس في مثلث نصنعه بأنفسنا.', h2: 'نحتاج إلى نصف مستقيم ننقل عليه أطوالا متساوية بالمدور.',
+      m: 'تقسيم قطعة بخاصية طالس.',
+      s: ['القياس ممنوع (8 ÷ 3 غير دقيق).', 'نرسم من A نصف مستقيم مساعدا وننقل عليه 3 أطوال متساوية بالمدور.'],
+      c: 'الخطوة الأولى: نرسم من A نصف مستقيم مساعدا.' },
+    { id: '5-2', type: 'num', unit: 'cm', a: 1.6, tol: .001, q: `قسّمنا قطعة طولها ${M('8 cm')} إلى 5 أجزاء متساوية بهذه الطريقة. ما طول كل جزء؟`,
+      h1: 'الأجزاء متساوية ومجموعها 8 cm.', h2: '8 ÷ 5.',
+      m: 'الأجزاء متساوية، فنقسم الطول على عددها.',
+      s: [`${M('8 ÷ 5 = 1,6')}`],
+      c: `طول كل جزء ${M('1,6 cm')}.` },
+    { id: '5-3', type: 'mcq', q: `لماذا تكون الأجزاء على ${M('[AB]')} متساوية؟ ${J}`,
+      ch: ['لأننا قسنا بالمسطرة', 'حسب خاصية طالس، لأن المستقيمات المرسومة متوازية', 'لأن المثلث AA₃B قائم', 'حسب خاصية فيثاغورس'], a: 1,
+      h1: 'ما العلاقة بين المستقيمات التي رسمناها في الخطوة الأخيرة؟', h2: 'المستقيمات متوازية، والأطوال على نصف المستقيم متساوية.',
+      m: 'تعليل الإنشاء بخاصية طالس.',
+      s: ['المستقيمات المرسومة من A₁ و A₂ توازي (A₃B).', 'حسب خاصية طالس في المثلث AA₃B تنتقل نسب الأطوال المتساوية إلى [AB].'],
+      c: 'الأجزاء متساوية حسب خاصية طالس.' },
+    { id: '5-4', type: 'num', unit: 'cm', a: 4, tol: .001, q: `${M('AB = 10 cm')} و ${M('M')} نقطة من ${M('[AB]')} حيث ${F('AM', 'AB')} ${M('=')} ${F('2', '5')}. احسب ${M('AM')}.`,
+      h1: 'AM = 2/5 من AB.', h2: 'AM = (2 × 10) ÷ 5.',
+      m: 'استعمال النسبة.',
+      s: [`${M('AM =')} ${F('2', '5')} ${M('× 10')}`, `${M('= 20 ÷ 5 = 4')}`],
+      c: `${M('AM = 4 cm')}.` }
+  ] }
+];
+
+const FINAL = { id: 'F', qs: [
+  { id: 'F-1', type: 'num', unit: 'm', a: 6, tol: .01, q: `احسب ارتفاع السارية ${M('PT')}.`,
+    h1: 'العصا والسارية عموديتان على الأرض: فهما متوازيتان.', h2: `${F('SK', 'SP')} = ${F('KQ', 'PT')}، أي ${F('2', '8')} = ${F('1,5', 'PT')}.`,
+    m: 'العصا والسارية متوازيتان، ثم خاصية طالس.',
+    s: ['النقط S, K, P في استقامة، و S, Q, T في استقامة، و (KQ) // (PT).', `${F('SK', 'SP')} ${M('=')} ${F('KQ', 'PT')}، أي ${F('2', '8')} ${M('=')} ${F('1,5', 'PT')}`, `${M('PT =')} ${F('8 × 1,5', '2')} ${M('=')} ${F('12', '2')} ${M('= 6')}`],
+    c: `ارتفاع السارية ${M('6 m')}.` },
+  { id: 'F-2', type: 'num', unit: 'm', a: 10, tol: .01, q: `احسب طول الحبل ${M('ST')} الممدود من قمة السارية إلى طرف ظلها.`,
+    h1: 'المثلث SPT قائم في P.', h2: 'خاصية فيثاغورس: ST² = 8² + 6².',
+    m: 'خاصية فيثاغورس في المثلث SPT القائم في P.',
+    s: [`${M('ST² = SP² + PT²')}`, `${M('ST² = 8² + 6² = 64 + 36 = 100')}`, `${M('ST = √100 = 10')}`],
+    c: `طول الحبل ${M('10 m')}.` },
+  { id: 'F-3', type: 'mcq', q: `على الحبل نقطة ${M('R')} حيث ${M('SR = 5 m')}، وعلى الأرض نقطة ${M('U')} من ${M('[SP]')} حيث ${M('SU = 4 m')}. هل الشريط ${M('[RU]')} يوازي السارية؟ ${J}`,
+    ch: ['نعم، حسب الخاصية العكسية لطالس', 'لا، حسب خاصية طالس', 'نعم، لأن RU عمودي'], a: 0,
+    h1: 'احسب SR ÷ ST ثم SU ÷ SP.', h2: '5 ÷ 10 = 0,5 و 4 ÷ 8 = 0,5.',
+    m: 'الخاصية العكسية لطالس.',
+    s: [`${F('SR', 'ST')} ${M('=')} ${F('5', '10')} ${M('= 0,5')}`, `${F('SU', 'SP')} ${M('=')} ${F('4', '8')} ${M('= 0,5')}`, 'النسبتان متساويتان، والنقط S, R, T و S, U, P في استقامة وبنفس الترتيب.'],
+    c: `${M('(RU) // (PT)')} حسب الخاصية العكسية لطالس: الشريط يوازي السارية.` },
+  { id: 'F-4', type: 'num', unit: 'DA', a: 1320, q: `ثمن المتر من حبل الزينة ${M('120 DA')}. نحتاج طول الحبل ${M('ST')} مع ${M('1 m')} إضافي للربط. احسب الثمن.`,
+    h1: 'الطول اللازم = 10 + 1.', h2: '11 × 120.',
+    m: 'الثمن = الطول اللازم × ثمن المتر.',
+    s: [`${M('10 + 1 = 11 m')}`, `${M('11 × 120 = 1320')}`],
+    c: `الثمن ${M('1320 DA')}. 🇩🇿 علمنا رمز تضحيات الشهداء، نرفعه ونحترمه.` }
+] };
+
+/* static figures */
+function LBL(x, y, t, s = 16, c = '#111') { return `<text x="${x}" y="${y}" font-size="${s}" font-weight="800" fill="${c}">${t}</text>`; }
+function DOT(x, y) { return `<circle cx="${x}" cy="${y}" r="3.5" fill="#111"/>`; }
+function SV(w, h, b, mw = 340) { return `<svg viewBox="0 0 ${w} ${h}" style="width:100%;max-width:${mw}px;display:block;margin:6px auto;direction:ltr;background:#fff">${b}</svg>`; }
+function figT() {
+  return SV(300, 200, `<polygon points="150,20 30,180 280,180" fill="none" stroke="#111" stroke-width="2.5"/><line x1="96" y1="92" x2="208" y2="92" stroke="#0ea5a4" stroke-width="3"/>` +
+    DOT(150, 20) + DOT(30, 180) + DOT(280, 180) + DOT(96, 92) + DOT(208, 92) + LBL(144, 14, 'A') + LBL(12, 196, 'B') + LBL(282, 196, 'C') + LBL(74, 92, 'M') + LBL(214, 92, 'N'));
+}
+function figB() {
+  return SV(320, 200, `<line x1="40" y1="40" x2="270" y2="175" stroke="#111" stroke-width="2.5"/><line x1="40" y1="130" x2="270" y2="10" stroke="#111" stroke-width="2.5"/><line x1="40" y1="40" x2="40" y2="130" stroke="#0ea5a4" stroke-width="3"/><line x1="270" y1="10" x2="270" y2="175" stroke="#0ea5a4" stroke-width="3"/>` +
+    DOT(40, 40) + DOT(40, 130) + DOT(270, 175) + DOT(270, 10) + DOT(121, 88) + LBL(20, 40, 'A') + LBL(20, 140, 'B') + LBL(276, 190, 'C') + LBL(276, 18, 'D') + LBL(112, 78, 'O'));
+}
+function figShadow() {
+  return SV(340, 190, `<line x1="10" y1="170" x2="330" y2="170" stroke="#78350f" stroke-width="2"/><line x1="40" y1="170" x2="40" y2="30" stroke="#15803d" stroke-width="5"/><circle cx="40" cy="30" r="18" fill="#86efac" fill-opacity=".7"/>` +
+    `<line x1="40" y1="30" x2="300" y2="170" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 4"/><line x1="235" y1="170" x2="235" y2="135" stroke="#111" stroke-width="4"/>` +
+    `<polyline points="40,158 52,158 52,170" fill="none" stroke="#dc2626" stroke-width="2"/><polyline points="235,158 223,158 223,170" fill="none" stroke="#dc2626" stroke-width="2"/>` +
+    DOT(40, 30) + DOT(40, 170) + DOT(235, 170) + DOT(235, 135) + DOT(300, 170) + LBL(54, 30, 'T') + LBL(28, 188, 'P') + LBL(229, 188, 'K') + LBL(241, 132, 'Q') + LBL(304, 188, 'S') + `<text x="250" y="40" font-size="26">☀️</text>`);
+}
+function figFlag() {
+  return SV(360, 210, `<line x1="10" y1="185" x2="350" y2="185" stroke="#78350f" stroke-width="2"/><line x1="50" y1="185" x2="50" y2="35" stroke="#111" stroke-width="4"/><rect x="50" y="35" width="40" height="26" fill="#16a34a"/><rect x="70" y="35" width="20" height="26" fill="#fff" stroke="#ccc"/><circle cx="72" cy="48" r="6" fill="none" stroke="#dc2626" stroke-width="2"/>` +
+    `<line x1="50" y1="35" x2="250" y2="185" stroke="#0f5f8b" stroke-width="2.5"/><line x1="200" y1="185" x2="200" y2="147.5" stroke="#111" stroke-width="3"/>` +
+    `<line x1="150" y1="110" x2="150" y2="185" stroke="#7c3aed" stroke-width="2" stroke-dasharray="5 4"/>` +
+    `<polyline points="50,173 62,173 62,185" fill="none" stroke="#dc2626" stroke-width="2"/>` +
+    DOT(50, 35) + DOT(50, 185) + DOT(250, 185) + DOT(200, 185) + DOT(200, 147.5) + DOT(150, 110) + DOT(150, 185) +
+    LBL(30, 38, 'T') + LBL(40, 203, 'P') + LBL(254, 203, 'S') + LBL(204, 203, 'K') + LBL(206, 146, 'Q') + LBL(152, 104, 'R') + LBL(144, 203, 'U') +
+    `<text x="80" y="203" font-size="13" fill="#0b4a6f">SP = 8 m</text><text x="205" y="174" font-size="11" fill="#0b4a6f">1,5 m</text>`, 380);
+}
+
+/* ================= scoring ================= */
+const ALLQ = LESSONS.flatMap(L => L.qs).concat(FINAL.qs);
+const GAMES_MAX = { g1: 8, g2: 8 };
+const MIS_MAX = LESSONS.reduce((n, L) => n + L.mis.length, 0);
+const MAXS = ALLQ.length * 3 + MIS_MAX + Object.values(GAMES_MAX).reduce((a, b) => a + b, 0);
+
+function totalStars() {
+  let n = 0; for (const k in S.q) n += S.q[k].st || 0;
+  n += Object.keys(S.mis).length; for (const k in S.g) n += S.g[k] || 0; return n;
+}
+const lessonDone = L => L.qs.every(q => S.q[q.id] && S.q[q.id].done);
+const finalDone = () => FINAL.qs.every(q => S.q[q.id] && S.q[q.id].done);
+function updBar() {
+  $('#stars').textContent = totalStars(); $('#maxs').textContent = MAXS;
+  $('#badges').textContent = LESSONS.filter(lessonDone).length;
+  const items = ALLQ.length + MIS_MAX + 2;
+  const done = ALLQ.filter(q => S.q[q.id] && S.q[q.id].done).length + Object.keys(S.mis).length + Object.keys(S.g).length;
+  $('#progi').style.width = Math.round(100 * done / items) + '%';
+  $('#snd').textContent = S.snd ? '🔊' : '🔇';
+}
+
+/* ================= question engine ================= */
+function parseNum(t) {
+  t = String(t).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[٫,]/g, '.').replace(/\s+/g, '').replace(/[^\d.\-]/g, '');
+  if (!/^-?\d*\.?\d+$/.test(t)) return NaN; return parseFloat(t);
+}
+function hintStars(el) {
+  const r = el.getBoundingClientRect();
+  for (let i = 0; i < 6; i++) { const s = document.createElement('span'); s.className = 'burst'; s.textContent = ['⭐', '💡', '✨'][i % 3]; s.style.left = (r.left + r.width / 2) + 'px'; s.style.top = (r.top + 20) + 'px'; s.style.setProperty('--dx', (Math.random() * 200 - 100) + 'px'); s.style.setProperty('--dy', (-50 - Math.random() * 110) + 'px'); document.body.appendChild(s); setTimeout(() => s.remove(), 1000); }
+}
+function modelHTML(q) {
+  const sc = q.sc || (q.type === 'mcq' ? MCQ_SC : NUM_SC);
+  return `<h4>📘 الإجابة النموذجية</h4><div><b>الطريقة:</b> ${q.m}</div>${q.s.map(x => `<div class="ln">${x}</div>`).join('')}<div class="ccl"><b>الاستنتاج:</b> ${q.c}</div>
+  <table class="sc"><tr><th>سلم التنقيط (على الورقة)</th><th>النقاط</th></tr>${sc.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('')}<tr class="tot"><td>المجموع</td><td>${sc.reduce((a, r) => a + r[1], 0)}</td></tr></table>`;
+}
+function qHTML(q, i) {
+  let inp;
+  if (q.type === 'mcq') inp = `<div class="ch">${q.ch.map((c, k) => `<button class="opt" data-k="${k}">${c}</button>`).join('')}</div>`;
+  else inp = `<div class="ans"><input type="text" inputmode="decimal" autocomplete="off" aria-label="الجواب"><span class="unit">${q.unit || ''}</span><button class="btn chk">تحقّق ✓</button></div>
+    <div class="keys"><button data-key=",">,</button><button data-key="×">×</button><button data-key="⌫">⌫</button></div>`;
+  return `<div class="card qc" id="q-${q.id}"><div class="qh"><b>السؤال ${i + 1}</b><span class="tries"></span><span class="pts">حتى 3 ⭐</span></div><div class="qt">${q.q}</div>${inp}<div class="fb" aria-live="polite"></div><div class="mdl"></div></div>`;
+}
+function renderQs(list, host) {
+  host.innerHTML = list.map(qHTML).join('');
+  list.forEach(q => bindQ(q));
+}
+function qState(q) { return S.q[q.id] || (S.q[q.id] = { t: 0, done: false, st: 0, dis: [] }); }
+function paintQ(q) {
+  const el = $('#q-' + q.id), st = S.q[q.id]; if (!el || !st) return;
+  el.querySelector('.tries').textContent = st.done ? (st.ok ? '⭐'.repeat(st.st) : 'انتهت المحاولات') : (st.t ? `المحاولة ${st.t + 1} من 3` : '');
+  if (q.type === 'mcq') (st.dis || []).forEach(k => { const b = el.querySelector(`.opt[data-k="${k}"]`); b.classList.add('bad'); b.disabled = true; });
+  if (st.done) {
+    el.classList.add(st.ok ? 'ok' : 'lost');
+    $$('input,button.opt,button.chk,.keys button', el).forEach(b => b.disabled = true);
+    if (q.type === 'mcq') el.querySelector(`.opt[data-k="${q.a}"]`).classList.add('good');
+    else if (st.v != null) el.querySelector('input').value = st.v;
+    el.querySelector('.mdl').innerHTML = st.ok ? `<details class="sol"><summary>📘 اطّلع على الحل المفصّل</summary><div class="model">${modelHTML(q)}</div></details>` : `<div class="model">${modelHTML(q)}</div>`;
+  }
+}
+function bindQ(q) {
+  const el = $('#q-' + q.id);
+  paintQ(q);
+  if (q.type === 'mcq') $$('.opt', el).forEach(b => b.addEventListener('click', () => answer(q, +b.dataset.k, b)));
+  else {
+    const inp = el.querySelector('input');
+    el.querySelector('.chk').addEventListener('click', () => answer(q, inp.value));
+    inp.addEventListener('keydown', e => { if (e.key === 'Enter') answer(q, inp.value); });
+    $$('.keys button', el).forEach(b => b.addEventListener('click', () => {
+      const k = b.dataset.key; if (k === '⌫') inp.value = inp.value.slice(0, -1); else inp.value += k; inp.focus();
+    }));
+  }
+}
+function answer(q, v, btn) {
+  const st = qState(q); if (st.done) return;
+  const el = $('#q-' + q.id), fb = el.querySelector('.fb');
+  let ok;
+  if (q.type === 'mcq') ok = v === q.a;
+  else {
+    const x = parseNum(v);
+    if (isNaN(x)) { fb.innerHTML = '<span class="h">اكتب عددا (يمكنك استعمال الفاصلة ,).</span>'; shake(el); return; }
+    ok = Math.abs(x - q.a) <= (q.tol || 1e-9); st.v = v;
+  }
+  if (ok) {
+    st.done = true; st.ok = true; st.st = 3 - st.t; save();
+    fb.innerHTML = `<span class="g">✅ ${pick('ok', q.id)} ${'⭐'.repeat(st.st)}</span>`;
+    sOk(); burst(el, st.st); toast(`${pick('ok', q.id + 'x')} ⭐ +${st.st}`);
+  } else {
+    st.t++; sBad(); shake(el);
+    if (q.type === 'mcq') { st.dis = st.dis || []; st.dis.push(v); }
+    if (st.t >= 3) {
+      st.done = true; st.ok = false; st.st = 0;
+      fb.innerHTML = `<span class="w">🌱 ${pick('fail', q.id)}</span>`; toast('🌱 ' + pick('fail', q.id + 'y'), 1);
+    } else if (st.t === 1) {
+      fb.innerHTML = `<span class="w">${pick('w1', q.id)}</span><span class="h">💡 تلميح 1: ${q.h1}</span>`; toast(pick('w1', q.id + 'z'), 1); hintStars(el);
+    } else {
+      fb.innerHTML = `<span class="w">${pick('w2', q.id)}</span><span class="h">💡 تلميح 2: ${q.h2}</span>`; toast(pick('w2', q.id + 'z'), 1); hintStars(el);
+    }
+    save();
+  }
+  paintQ(q); updBar(); afterQ(q);
+}
+function afterQ(q) {
+  const L = LESSONS.find(l => l.qs.includes(q));
+  if (L && lessonDone(L) && !S['bdg' + L.id]) {
+    S['bdg' + L.id] = 1; save();
+    const st = L.qs.reduce((n, x) => n + (S.q[x.id].st || 0), 0);
+    setTimeout(() => modal(`<div class="big">🏅</div><h2>وسام المحطة ${L.id}</h2><p>أنهيت «${L.t}» وجمعت ${st} ⭐ من ${L.qs.length * 3}.</p><p class="muted">الخطأ جزء من التعلّم: أعد قراءة الحلول التي أخطأت فيها.</p>${L.id < NST ? `<button class="btn green" onclick="this.closest('.modal').remove();go('lesson',${L.id + 1})">المحطة التالية ←</button>` : `<button class="btn green" onclick="this.closest('.modal').remove();go('final')">إلى التحدي النهائي 🇩🇿</button>`}`), 700);
+  }
+  if (q.id.startsWith('F-') && finalDone() && !S.bdgF) { S.bdgF = 1; save(); setTimeout(() => modal(`<div class="big">🇩🇿</div><h2>أنهيت التحدي النهائي!</h2><p>ساعدت نادي المتوسطة في تزيين سارية العلم. اذهب الآن إلى الشهادة.</p><button class="btn green" onclick="this.closest('.modal').remove();go('cert')">🎓 الشهادة</button>`), 700); }
+}
+
+/* ================= simulations ================= */
+const SIMS = {};
+function simShell(host, L) {
+  host.innerHTML = `<div class="card"><h3>🧪 المحاكاة</h3><div class="muted">${L.simHelp}</div><div class="ctrl"></div><div class="svgwrap" style="margin-top:6px"></div><div class="readout"></div><div class="extra"></div><div class="missions">${misHTML(L)}</div></div>`;
+  return { ctrl: $('.ctrl', host), wrap: $('.svgwrap', host), out: $('.readout', host), extra: $('.extra', host) };
+}
+const lab = (par, P, t, dx, dy, col = '#111', fs = 16) => { const e = E('text', { x: P.x + dx, y: P.y + dy, 'font-size': fs, fill: col }, par); e.textContent = t; return e; };
+const dot = (par, P, col = '#111') => E('circle', { cx: P.x, cy: P.y, r: 4, fill: col }, par);
+const ln = (par, P, Q, col = '#111', w = 2.5, dash) => { const a = { x1: P.x, y1: P.y, x2: Q.x, y2: Q.y, stroke: col, 'stroke-width': w }; if (dash) a['stroke-dasharray'] = dash; return E('line', a, par); };
+const lerp = (P, Q, t) => ({ x: P.x + (Q.x - P.x) * t, y: P.y + (Q.y - P.y) * t });
+const dist = (P, Q) => Math.hypot(Q.x - P.x, Q.y - P.y) / 40;
+const near = (a, b) => Math.abs(a - b) < 1e-6;
+function slider(id, label, min, max, step, val) { return `<div class="sl">${label} <input type="range" id="${id}" min="${min}" max="${max}" step="${step}" value="${val}"><output id="${id}o"></output></div>`; }
+
+SIMS.simThales = (host, L) => {
+  const H = simShell(host, L);
+  H.ctrl.innerHTML = slider('tm', 'موضع M:', .1, .9, .05, .6);
+  const svg = mkSvg(H.wrap, 360, 260); grid(svg, 360, 260, 20);
+  const A = { x: 180, y: 28 }, B = { x: 50, y: 230 }, C = { x: 320, y: 230 };
+  const g = E('g', {}, svg);
+  const hB = handle(svg, 'B', '#0f5f8b'), hC = handle(svg, 'C', '#0f5f8b');
+  function draw() {
+    const t = +$('#tm', H.ctrl).value; $('#tmo', H.ctrl).textContent = fmt(t, 2);
+    const Mp = lerp(A, B, t), Np = lerp(A, C, t);
+    g.innerHTML = '';
+    E('polygon', { points: `${A.x},${A.y} ${B.x},${B.y} ${C.x},${C.y}`, fill: '#e0f2fe', 'fill-opacity': .55, stroke: '#111', 'stroke-width': 2.5 }, g);
+    E('polygon', { points: `${A.x},${A.y} ${Mp.x},${Mp.y} ${Np.x},${Np.y}`, fill: '#fde68a', 'fill-opacity': .7 }, g);
+    ln(g, Mp, Np, '#0ea5a4', 3.5);
+    [A, Mp, Np].forEach(P => dot(g, P));
+    lab(g, A, 'A', -5, -8); lab(g, Mp, 'M', -24, 4); lab(g, Np, 'N', 8, 4);
+    hB.place(B.x, B.y); hC.place(C.x, C.y);
+    const r = (a, b) => `${M(fmt(a, 2) + ' ÷ ' + fmt(b, 2) + ' ≈ ' + fmt(a / b, 2))}`;
+    H.out.innerHTML = `${F('AM', 'AB')}: ${r(dist(A, Mp), dist(A, B))}<br>${F('AN', 'AC')}: ${r(dist(A, Np), dist(A, C))}<br>${F('MN', 'BC')}: ${r(dist(Mp, Np), dist(B, C))}<br><span class="muted">(الأطوال بالسنتيمتر على الشاشة تقريبا)</span>`;
+    if (near(t, .5)) misDone(L, 0); if (near(t, .25)) misDone(L, 1); if (near(t, .75)) misDone(L, 2);
+  }
+  drag(svg, hB, (x, y) => { B.x = clamp(x, 15, 170); B.y = clamp(y, 140, 248); draw(); });
+  drag(svg, hC, (x, y) => { C.x = clamp(x, 190, 345); C.y = clamp(y, 140, 248); draw(); });
+  $('#tm', H.ctrl).addEventListener('input', draw); draw();
+};
+
+SIMS.simButterfly = (host, L) => {
+  const H = simShell(host, L);
+  H.ctrl.innerHTML = slider('kk', 'المعامل k = OC ÷ OA:', .5, 2.5, .25, 1.5);
+  const svg = mkSvg(H.wrap, 360, 260); grid(svg, 360, 260, 20);
+  const O = { x: 140, y: 130 }, A = { x: 80, y: 70 }, B = { x: 85, y: 180 };
+  const g = E('g', {}, svg);
+  const hA = handle(svg, 'A', '#dc2626'), hB = handle(svg, 'B', '#dc2626');
+  function lim(P) { const dx = P.x - O.x, dy = P.y - O.y, d = Math.hypot(dx, dy); if (d > 80) { P.x = O.x + dx / d * 80; P.y = O.y + dy / d * 80; } if (P.x > O.x - 20) P.x = O.x - 20; }
+  function draw() {
+    const k = +$('#kk', H.ctrl).value; $('#kko', H.ctrl).textContent = fmt(k, 2);
+    const C = { x: O.x + (O.x - A.x) * k, y: O.y + (O.y - A.y) * k }, D = { x: O.x + (O.x - B.x) * k, y: O.y + (O.y - B.y) * k };
+    g.innerHTML = '';
+    ln(g, A, C); ln(g, B, D); ln(g, A, B, '#0ea5a4', 3.5); ln(g, C, D, '#0ea5a4', 3.5);
+    [O, C, D].forEach(P => dot(g, P)); lab(g, O, 'O', -6, -10); lab(g, C, 'C', 8, 6); lab(g, D, 'D', 8, 6);
+    hA.place(A.x, A.y); hB.place(B.x, B.y);
+    const r = (a, b) => `${M(fmt(a, 2) + ' ÷ ' + fmt(b, 2) + ' ≈ ' + fmt(a / b, 2))}`;
+    H.out.innerHTML = `${F('OA', 'OC')}: ${r(dist(O, A), dist(O, C))}<br>${F('OB', 'OD')}: ${r(dist(O, B), dist(O, D))}<br>${F('AB', 'CD')}: ${r(dist(A, B), dist(C, D))}`;
+    if (near(k, 1)) misDone(L, 0); if (near(k, 2)) misDone(L, 1); if (near(k, .5)) misDone(L, 2);
+  }
+  drag(svg, hA, (x, y) => { A.x = x; A.y = clamp(y, 10, O.y - 15); lim(A); draw(); });
+  drag(svg, hB, (x, y) => { B.x = x; B.y = clamp(y, O.y + 15, 250); lim(B); draw(); });
+  $('#kk', H.ctrl).addEventListener('input', draw); draw();
+};
+
+SIMS.simShadow = (host, L) => {
+  const H = simShell(host, L);
+  H.ctrl.innerHTML = slider('sh', 'طول العصا (m):', 1, 2, .1, 1.5) + slider('ss', 'ظل العصا (m):', 1, 3, .5, 2) + slider('sS', 'ظل الشجرة (m):', 4, 16, 1, 10);
+  const svg = mkSvg(H.wrap, 360, 250);
+  const g = E('g', {}, svg);
+  function draw() {
+    const h = +$('#sh', H.ctrl).value, s = +$('#ss', H.ctrl).value, S2 = +$('#sS', H.ctrl).value;
+    $('#sho', H.ctrl).textContent = fmt(h, 1); $('#sso', H.ctrl).textContent = fmt(s, 1); $('#sSo', H.ctrl).textContent = S2;
+    const T = h * S2 / s, sc = Math.min(18, 190 / T, 290 / S2), gy = 225, P = { x: 40, y: gy }, Sx = { x: 40 + S2 * sc, y: gy };
+    const K = { x: Sx.x - s * sc, y: gy }, Q = { x: K.x, y: gy - h * sc }, Tt = { x: 40, y: gy - T * sc };
+    g.innerHTML = '';
+    E('rect', { x: 0, y: 0, width: 360, height: gy, fill: '#f0f9ff' }, g); E('rect', { x: 0, y: gy, width: 360, height: 25, fill: '#d6c7a1' }, g);
+    E('text', { x: 300, y: 34, 'font-size': 28 }, g).textContent = '☀️';
+    ln(g, Tt, Sx, '#f59e0b', 2, '6 4');
+    ln(g, P, Tt, '#15803d', 6); E('circle', { cx: Tt.x, cy: Tt.y, r: 14, fill: '#86efac', 'fill-opacity': .8 }, g);
+    ln(g, K, Q, '#111', 4); ln(g, P, Sx, '#475569', 4);
+    rightMark(g, P, { x: 1, y: 0 }, { x: 0, y: -1 }, 10); rightMark(g, K, { x: -1, y: 0 }, { x: 0, y: -1 }, 9);
+    [P, Tt, K, Q, Sx].forEach(X => dot(g, X));
+    lab(g, Tt, 'T', 16, 4); lab(g, P, 'P', -6, 20); lab(g, K, 'K', -6, 20); lab(g, Q, 'Q', 6, -6); lab(g, Sx, 'S', -4, 20);
+    H.out.innerHTML = `${F('SK', 'SP')} ${M('=')} ${F('KQ', 'PT')}، أي ${F(fmt(s, 1), String(S2))} ${M('=')} ${F(fmt(h, 1), 'PT')}<br>${M('PT =')} ${F(S2 + ' × ' + fmt(h, 1), fmt(s, 1))} ${M('≈ ' + fmt(T, 2) + ' m')}`;
+    if (Math.abs(T - 6) < 1e-6) misDone(L, 0); if (Math.abs(T - 9) < 1e-6) misDone(L, 1); if (Math.abs(T - 12) < 1e-6) misDone(L, 2);
+  }
+  $$('input', H.ctrl).forEach(i => i.addEventListener('input', draw)); draw();
+};
+
+SIMS.simConverse = (host, L) => {
+  const H = simShell(host, L);
+  H.ctrl.innerHTML = slider('cm', 'AM ÷ AB:', .1, .9, .05, .6) + slider('cn', 'AN ÷ AC:', .1, .9, .05, .45);
+  const svg = mkSvg(H.wrap, 360, 250); grid(svg, 360, 250, 20);
+  const A = { x: 170, y: 25 }, B = { x: 45, y: 225 }, C = { x: 330, y: 225 };
+  const g = E('g', {}, svg);
+  function draw() {
+    const tm = +$('#cm', H.ctrl).value, tn = +$('#cn', H.ctrl).value;
+    $('#cmo', H.ctrl).textContent = fmt(tm, 2); $('#cno', H.ctrl).textContent = fmt(tn, 2);
+    const Mp = lerp(A, B, tm), Np = lerp(A, C, tn), par = near(tm, tn);
+    g.innerHTML = '';
+    E('polygon', { points: `${A.x},${A.y} ${B.x},${B.y} ${C.x},${C.y}`, fill: 'none', stroke: '#111', 'stroke-width': 2.5 }, g);
+    ln(g, Mp, Np, par ? '#16a34a' : '#dc2626', 3.5);
+    [A, B, C, Mp, Np].forEach(P => dot(g, P));
+    lab(g, A, 'A', -5, -8); lab(g, B, 'B', -18, 16); lab(g, C, 'C', 6, 16); lab(g, Mp, 'M', -24, 4); lab(g, Np, 'N', 8, 4);
+    H.out.innerHTML = `${F('AM', 'AB')} ${M('= ' + fmt(tm, 2))} و ${F('AN', 'AC')} ${M('= ' + fmt(tn, 2))}<br>` +
+      (par ? '✅ النسبتان متساويتان والنقط بنفس الترتيب: <b>(MN) // (BC) حسب الخاصية العكسية لطالس</b>.' : '❌ النسبتان مختلفتان: <b>(MN) و (BC) غير متوازيين حسب خاصية طالس</b>.');
+    if (par && near(tm, .4)) misDone(L, 0); if (!par) misDone(L, 1); if (par && near(tm, .8)) misDone(L, 2);
+  }
+  $$('input', H.ctrl).forEach(i => i.addEventListener('input', draw)); draw();
+};
+
+SIMS.simDivide = (host, L) => {
+  const H = simShell(host, L);
+  H.ctrl.innerHTML = slider('dn', 'عدد الأجزاء n:', 2, 7, 1, 3) + '<div class="row" style="margin-top:4px"><button class="btn" id="dstep">الخطوة التالية ▶</button></div>';
+  const svg = mkSvg(H.wrap, 360, 230);
+  const g = E('g', {}, svg);
+  const A = { x: 30, y: 200 }, B = { x: 330, y: 200 }, u = { x: Math.cos(.6), y: -Math.sin(.6) };
+  let stp = 0;
+  const TX = ['القطعة [AB]: لا نستعمل تدريجات المسطرة.', '1) نرسم من A نصف مستقيم مساعدا.', '2) ننقل عليه بالمدور n أطوالا متساوية: A₁، A₂، ...', '3) نصل آخر نقطة بـ B.', '4) نرسم من النقط الأخرى موازيات لهذا المستقيم: نقط التقسيم على [AB].'];
+  function draw() {
+    const n = +$('#dn', H.ctrl).value; $('#dno', H.ctrl).textContent = n;
+    const step = 250 / n, Pk = k => ({ x: A.x + u.x * step * k, y: A.y + u.y * step * k });
+    g.innerHTML = '';
+    ln(g, A, B, '#111', 3); dot(g, A); dot(g, B); lab(g, A, 'A', -6, 22); lab(g, B, 'B', -6, 22);
+    if (stp >= 1) ln(g, A, { x: A.x + u.x * 300, y: A.y + u.y * 300 }, '#0f5f8b', 2);
+    if (stp >= 2) for (let k = 1; k <= n; k++) { const P = Pk(k); dot(g, P, '#0f5f8b'); E('path', { d: `M ${P.x - 9} ${P.y - 6} Q ${P.x + 2} ${P.y + 2} ${P.x + 7} ${P.y + 10}`, fill: 'none', stroke: '#7c3aed', 'stroke-width': 1.5 }, g); if (n <= 5 || k === n) lab(g, P, 'A' + k, -10, -10, '#0f5f8b', 13); }
+    if (stp >= 3) ln(g, Pk(n), B, '#dc2626', 2.5);
+    if (stp >= 4) for (let k = 1; k < n; k++) { const Q = lerp(A, B, k / n); ln(g, Pk(k), Q, '#dc2626', 1.8, '6 4'); dot(g, Q, '#16a34a'); }
+    H.out.innerHTML = TX[stp] + (stp >= 4 ? `<br>كل جزء = ${F('AB', String(n))}.` : '');
+    $('#dstep', H.ctrl).textContent = stp >= 4 ? 'أعد من البداية ↺' : 'الخطوة التالية ▶';
+    if (stp >= 4) { if (n === 3) misDone(L, 0); if (n === 5) misDone(L, 1); if (n === 7) misDone(L, 2); }
+  }
+  $('#dstep', H.ctrl).addEventListener('click', () => { stp = stp >= 4 ? 0 : stp + 1; draw(); });
+  $('#dn', H.ctrl).addEventListener('input', () => { draw(); });
+  draw();
+};
+
+/* ================= games ================= */
+const GAMES = {};
+function gameDone(id, n) { const prev = S.g[id]; if (prev === undefined || n > prev) { S.g[id] = n; save(); updBar(); } }
+GAMES.g1 = host => {
+  const LET = shuffle(['A', 'B', 'C', 'D', 'E', 'F', 'M', 'N', 'R', 'S', 'T', 'K']);
+  const rounds = [];
+  for (let i = 0; i < 8; i++) {
+    const L5 = shuffle(LET).slice(0, 5), kind = i % 2 ? 'b' : 't';
+    rounds.push({ kind, L: L5 });
+  }
+  let k = 0, score = 0;
+  const fr = (a, b) => F(a, b), eq = (...x) => x.join(` ${M('=')} `);
+  function fig(r) {
+    const [V, P, Q, R, Sx] = r.L;
+    if (r.kind === 't') return SV(300, 190, `<polygon points="150,18 30,175 280,175" fill="none" stroke="#111" stroke-width="2.5"/><line x1="96" y1="88" x2="208" y2="88" stroke="#0ea5a4" stroke-width="3"/>` + LBL(144, 13, V) + LBL(80, 92, P, 15) + LBL(213, 92, Q, 15) + LBL(12, 190, R) + LBL(283, 190, Sx), 300);
+    return SV(320, 190, `<line x1="40" y1="40" x2="270" y2="170" stroke="#111" stroke-width="2.5"/><line x1="40" y1="130" x2="270" y2="12" stroke="#111" stroke-width="2.5"/><line x1="40" y1="40" x2="40" y2="130" stroke="#0ea5a4" stroke-width="3"/><line x1="270" y1="12" x2="270" y2="170" stroke="#0ea5a4" stroke-width="3"/>` + LBL(20, 42, P) + LBL(20, 140, Q) + LBL(276, 182, R) + LBL(276, 22, Sx) + LBL(110, 78, V), 300);
+  }
+  function opts(r) {
+    const [V, P, Q, R, Sx] = r.L;
+    if (r.kind === 't') return [[eq(fr(V + P, V + R), fr(V + Q, V + Sx), fr(P + Q, R + Sx)), 1], [eq(fr(V + P, P + R), fr(V + Q, V + Sx), fr(P + Q, R + Sx)), 0], [eq(fr(V + P, V + R), fr(V + Sx, V + Q), fr(P + Q, R + Sx)), 0], [eq(fr(V + P, V + Sx), fr(V + Q, V + R), fr(P + Q, R + Sx)), 0]];
+    return [[eq(fr(V + P, V + R), fr(V + Q, V + Sx), fr(P + Q, R + Sx)), 1], [eq(fr(V + P, V + Sx), fr(V + Q, V + R), fr(P + Q, R + Sx)), 0], [eq(fr(V + P, P + R), fr(V + Q, Q + Sx), fr(P + Q, R + Sx)), 0], [eq(fr(V + R, V + P), fr(V + Q, V + Sx), fr(P + Q, R + Sx)), 0]];
+  }
+  function show() {
+    if (k >= 8) { gameDone('g1', score); host.innerHTML = `<div class="stmt">النتيجة: ${score} / 8 ⭐<br>${score >= 7 ? 'عين طالسية حادة! 🦅' : 'تذكّر: في البسط ضلع من المثلث الأول، وفي المقام الضلع المقابل له.'}</div><div class="row" style="justify-content:center;margin-top:8px"><button class="btn" id="g1r">إعادة 🔁</button></div>`; $('#g1r').addEventListener('click', () => GAMES.g1(host)); return; }
+    const r = rounds[k], [V, P, Q, R, Sx] = r.L, o = shuffle(opts(r));
+    const cond = r.kind === 't' ? `${M(P + ' ∈ [' + V + R + ']')} و ${M(Q + ' ∈ [' + V + Sx + ']')} و ${M('(' + P + Q + ') // (' + R + Sx + ')')}` : `المستقيمان ${M('(' + P + R + ')')} و ${M('(' + Q + Sx + ')')} متقاطعان في ${M(V)} و ${M('(' + P + Q + ') // (' + R + Sx + ')')}`;
+    host.innerHTML = `<p class="muted">اختر الكتابة الصحيحة لخاصية طالس. (${k + 1}/8) — خذ وقتك، الدقة أهم من السرعة.</p><div class="stmt" style="font-size:1rem">${cond}</div>${fig(r)}<div class="ch">${o.map((x, i) => `<button class="opt" data-i="${i}">${x[0]}</button>`).join('')}</div><div class="readout" id="g1o">النقاط: ${score} ⭐</div>`;
+    $$('[data-i]', host).forEach(b => b.addEventListener('click', () => {
+      $$('[data-i]', host).forEach(x => { x.disabled = true; if (o[+x.dataset.i][1]) x.classList.add('good'); });
+      const ok = o[+b.dataset.i][1]; if (ok) { score++; sOk(); burst(b, 1); } else { b.classList.add('bad'); sBad(); shake(b); }
+      $('#g1o').innerHTML = (ok ? '✅ أحسنت! ' : '🌱 لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. ') + `الرأس المشترك ${M(V)}: نقابل ${M(V + P)} بـ ${M(V + R)}، و ${M(V + Q)} بـ ${M(V + Sx)}. <button class="btn" id="g1n">التالي ←</button>`;
+      $('#g1n').addEventListener('click', () => { k++; show(); });
+    }));
+  }
+  show();
+};
+GAMES.g2 = host => {
+  const IT = shuffle([[3, 7.5, 4, 10], [2, 5, 3, 8], [1.5, 6, 2, 8], [4, 10, 5, 12], [2.4, 6, 3.2, 8], [3, 9, 4, 11], [5, 8, 6.25, 10], [2, 7, 3, 10]]);
+  let k = 0, score = 0;
+  function show() {
+    if (k >= 8) { gameDone('g2', score); host.innerHTML = `<div class="stmt">النتيجة: ${score} / 8 ⭐<br>${score >= 7 ? 'ممتاز! تعرف متى تستعمل كل خاصية 🎉' : 'تذكّر: متساويتان ← الخاصية العكسية لطالس؛ مختلفتان ← خاصية طالس.'}</div><div class="row" style="justify-content:center;margin-top:8px"><button class="btn" id="g2r">إعادة 🔁</button></div>`; $('#g2r').addEventListener('click', () => GAMES.g2(host)); return; }
+    const [am, ab, an, ac] = IT[k], r1 = am / ab, r2 = an / ac, par = Math.abs(r1 - r2) < 1e-9;
+    host.innerHTML = `<p class="muted">في المثلث ${M('ABC')}: ${M('M ∈ [AB]')} و ${M('N ∈ [AC]')}. هل ${M('(MN) // (BC)')}؟ (${k + 1}/8) — احسب على ورقة قبل أن تختار.</p><div class="stmt">${M('AM = ' + fmt(am) + ' ، AB = ' + fmt(ab))}<br>${M('AN = ' + fmt(an) + ' ، AC = ' + fmt(ac))}</div><div class="big2"><button style="background:#16a34a" data-a="1">✅ متوازيان<br><small>حسب الخاصية العكسية لطالس</small></button><button style="background:#dc2626" data-a="0">❌ غير متوازيين<br><small>حسب خاصية طالس</small></button></div><div class="readout" id="g2o">النقاط: ${score} ⭐</div>`;
+    $$('[data-a]', host).forEach(b => b.addEventListener('click', () => {
+      $$('[data-a]', host).forEach(x => x.disabled = true);
+      const ok = (b.dataset.a === '1') === par; if (ok) { score++; sOk(); burst(b, 1); } else { sBad(); shake(b); }
+      $('#g2o').innerHTML = (ok ? '✅ صحيح! ' : '🌱 لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. ') + `${F('AM', 'AB')} ${M('≈ ' + fmt(r1, 4))} و ${F('AN', 'AC')} ${M('≈ ' + fmt(r2, 4))}: ` + (par ? 'متساويتان، إذن متوازيان حسب الخاصية العكسية لطالس.' : 'مختلفتان، إذن غير متوازيين حسب خاصية طالس.') + ' <button class="btn" id="g2n">التالي ←</button>';
+      $('#g2n').addEventListener('click', () => { k++; show(); });
+    }));
+  }
+  show();
+};
+
+/* ================= views ================= */
+const GRP = { 1: 'أ) الخاصية في الشكلين', 2: 'ب) الاستعمالات: الحساب، البرهان، الإنشاء' };
+function vHome() {
+  return `<div class="card"><h2>👋 مرحبا بك في رحلة خاصية طالس!</h2>
+  <p>في هذا الموقع تتعلّم خاصية طالس خطوة بخطوة. لكل محطة ثلاث مراحل: <b>📖 أفهم</b> (شرح مبسط)، <b>🧪 أجرّب</b> (محاكاة تحرّك فيها الأشكال)، <b>✏️ أتدرّب</b> (أسئلة تصحَّح فورا). اجمع النجوم والأوسمة، ثم احصل على <b>شهادة إنجاز</b> باسمك.</p>
+  <div class="key">💡 لكل سؤال ثلاث محاولات: بعد الخطأ الأول تلميح، وبعد الثاني تلميح أوضح، وبعد الثالث الحل المفصّل. الخطأ جزء من التعلّم، والدقة أهم من السرعة.</div>
+  <div class="row"><button class="btn green" onclick="go('lesson',${firstOpen()})">${totalStars() ? 'واصل الرحلة ←' : 'ابدأ الرحلة ←'}</button></div></div>
+  <div class="card"><h2>🎯 أهداف المقطع</h2><p class="muted">في نهاية هذه الرحلة أكون قادرا على أن:</p><ol class="goals">${LESSONS.map(L => `<li>${L.goal}</li>`).join('')}</ol>
+  <h3>🧩 المفاهيم الأساسية</h3><div class="chips">${['مستقيمان متوازيان //', 'نقط في استقامة', 'نسبة طولين', 'خاصية طالس', 'شكل الفراشة', 'تكبير وتصغير', 'الجداء المتقاطع', 'الخاصية العكسية لطالس', 'ترتيب النقط', 'تقسيم قطعة'].map(c => `<span class="chip">${c}</span>`).join('')}</div></div>
+  ${vMap()}`;
+}
+function vMap() {
+  let h = '<div class="card"><h2>🗺️ خريطة المحطات</h2>';
+  [1, 2].forEach(g => {
+    h += `<div class="grp-t">${GRP[g]}</div><div class="map">` + LESSONS.filter(L => L.g === g).map(L => {
+      const d = lessonDone(L), st = L.qs.reduce((n, q) => n + ((S.q[q.id] || {}).st || 0), 0);
+      return `<button class="stn ${d ? 'done' : ''}" onclick="go('lesson',${L.id})"><span class="st">${d ? '🏅 ' + st + '⭐' : L.id}</span><span class="ic">${L.ic}</span><span class="nm">${L.t}</span></button>`;
+    }).join('') + '</div>';
+  });
+  return h + '</div>';
+}
+function firstOpen() { const L = LESSONS.find(L => !lessonDone(L)); return L ? L.id : 1; }
+let stage = 0, stepN = 1;
+function vLesson(id) {
+  const L = LESSONS.find(l => l.id === id);
+  const host = document.createElement('div');
+  host.innerHTML = `<div class="card"><div class="lhead"><span class="ic">${L.ic}</span><div><div class="muted">المحطة ${L.id} من ${NST} — ${GRP[L.g]}</div><h2 style="margin:0">${L.t}</h2></div></div>
+   <div class="muted" style="margin-top:4px">🎯 ${L.goal}</div>
+   <div class="stages"><button data-s="0">📖 أفهم</button><button data-s="1">🧪 أجرّب</button><button data-s="2">✏️ أتدرّب</button></div></div><div id="stage"></div>
+   <div class="row" style="justify-content:space-between">${id > 1 ? `<button class="btn alt" onclick="go('lesson',${id - 1})">→ المحطة السابقة</button>` : '<span></span>'}${id < NST ? `<button class="btn alt" onclick="go('lesson',${id + 1})">المحطة التالية ←</button>` : `<button class="btn alt" onclick="go('final')">التحدي النهائي ←</button>`}</div>`;
+  const sh = host.querySelector('#stage');
+  function setStage(s) {
+    stage = s; $$('.stages button', host).forEach(b => b.classList.toggle('on', +b.dataset.s === s));
+    if (s === 0) {
+      const all = L.steps.length;
+      const draw = () => {
+        sh.innerHTML = L.steps.slice(0, stepN).map((st, i) => `<div class="card step ${st.sum ? 'sum' : ''}"><h3><span class="n">${st.sum ? 'حوصلة' : 'الخطوة ' + (i + 1)}</span>${st.h}</h3><div>${st.b}</div></div>`).join('') +
+          `<div class="row">${stepN < all ? `<button class="btn" id="nx">الخطوة التالية (${stepN}/${all}) ↓</button>` : `<button class="btn green" id="gs">فهمت! إلى المحاكاة 🧪</button>`}</div>`;
+        const nx = $('#nx', sh); if (nx) nx.addEventListener('click', () => { stepN++; draw(); sh.lastElementChild.previousElementSibling.scrollIntoView({ behavior: 'smooth', block: 'center' }); });
+        const gs = $('#gs', sh); if (gs) gs.addEventListener('click', () => { setStage(1); host.scrollIntoView({ behavior: 'smooth' }); });
+      };
+      draw();
+    } else if (s === 1) {
+      SIMS[L.sim](sh, L);
+      const r = document.createElement('div'); r.className = 'row'; r.innerHTML = '<button class="btn green">إلى الأسئلة ✏️</button>';
+      r.firstChild.addEventListener('click', () => { setStage(2); host.scrollIntoView({ behavior: 'smooth' }); }); sh.appendChild(r);
+    } else {
+      sh.innerHTML = '<div id="qs"></div>'; renderQs(L.qs, $('#qs', sh));
+    }
+  }
+  $$('.stages button', host).forEach(b => b.addEventListener('click', () => setStage(+b.dataset.s)));
+  stepN = 1; setTimeout(() => setStage(0));
+  return host;
+}
+function vGames() {
+  const host = document.createElement('div');
+  host.innerHTML = `<div class="card"><h2>🎮 الألعاب التعليمية</h2><p class="muted">لعبتان للمراجعة. أفضل نتيجة لك في كل لعبة تُضاف إلى نجومك.</p>
+   <div class="row"><button class="btn" data-g="g1">🦅 صائد النسب ${S.g.g1 != null ? '(' + S.g.g1 + '/8)' : ''}</button><button class="btn" data-g="g2">✅❌ متوازيان أم لا؟ ${S.g.g2 != null ? '(' + S.g.g2 + '/8)' : ''}</button></div></div><div class="card" id="gbox"><p class="muted">اختر لعبة للبدء.</p></div>`;
+  $$('[data-g]', host).forEach(b => b.addEventListener('click', () => { const box = $('#gbox', host); GAMES[b.dataset.g](box); box.scrollIntoView({ behavior: 'smooth', block: 'start' }); }));
+  return host;
+}
+function vFinal() {
+  const host = document.createElement('div');
+  host.innerHTML = `<div class="card"><h2>🇩🇿 التحدي النهائي: سارية العلم في ساحة المتوسطة</h2>
+   <p>يحضّر نادي متوسطة العربي بن مهيدي بوادي فراغة حفل رفع العلم، ويريد تزيين السارية بحبل من الأعلام الصغيرة دون الصعود إليها.</p>
+   <p>– في لحظة واحدة: عصا عمودية ${M('[KQ]')} طولها ${M('1,5 m')} ظلها ${M('SK = 2 m')}، وظل السارية ${M('[PT]')} هو ${M('SP = 8 m')}، وطرفا الظلين منطبقان في ${M('S')}.<br>– السارية والعصا عموديتان على الأرض.</p>
+   ${figFlag()}
+   <p class="muted">ملاحظة: الرسم غير معطى بأبعاده الحقيقية.</p>
+   <div class="muted">هذه الوضعية تجمع موارد الدرس. اكتب كل حساب على ورقة قبل أن تجيب.</div></div><div id="fq"></div>`;
+  setTimeout(() => renderQs(FINAL.qs, $('#fq', host)));
+  return host;
+}
+function medal() { const p = totalStars() / MAXS; return p >= .85 ? ['🥇', 'الذهبية', '#b45309'] : p >= .6 ? ['🥈', 'الفضية', '#475569'] : ['🥉', 'البرونزية', '#9a3412']; }
+function vCert() {
+  const host = document.createElement('div');
+  const left = LESSONS.filter(L => !lessonDone(L)), fin = finalDone();
+  if (left.length || !fin) {
+    host.innerHTML = `<div class="card" style="text-align:center"><div class="lock">🔒</div><h2>الشهادة تنتظرك!</h2><p>لتحصل على شهادة الإنجاز أكمل أسئلة كل المحطات والتحدي النهائي.</p>
+     <p>${left.length ? `بقيت ${left.length} محطة: ${left.map(L => `<button class="chip" style="border:0" onclick="go('lesson',${L.id})">${L.id}. ${L.t}</button>`).join(' ')}` : '✅ كل المحطات منجزة.'}</p><p>${fin ? '✅ التحدي النهائي منجز.' : `<button class="btn" onclick="go('final')">🇩🇿 التحدي النهائي</button>`}</p></div>${resetCard()}`;
+    setTimeout(() => bindReset(host)); return host;
+  }
+  const [ic, nm] = medal();
+  host.innerHTML = `<div class="card"><h2>🎓 شهادة الإنجاز ${ic}</h2><p>مبروك! أنهيت الرحلة كلها وجمعت <b>${totalStars()}</b> ⭐ من ${MAXS}، فاستحققت الشهادة <b>${nm}</b>.</p>
+    <label>اكتب اسمك ولقبك كما تريد أن يظهر في الشهادة:</label><br><input class="namebox" id="nm" maxlength="40" value="${(S.name || '').replace(/"/g, '')}"><div class="row" style="margin-top:8px"><button class="btn" id="mk">✨ أنشئ الشهادة</button><button class="btn alt" id="dl">⬇️ تحميل صورة</button><button class="btn alt" id="pr">🖨️ طباعة</button></div>
+    <canvas id="cv" width="1400" height="990" style="margin-top:10px"></canvas></div>${resetCard()}`;
+  setTimeout(() => {
+    bindReset(host);
+    const draw = async () => { S.name = $('#nm').value.trim(); save(); await drawCert(); };
+    $('#mk').addEventListener('click', draw); $('#nm').addEventListener('change', draw);
+    $('#dl').addEventListener('click', async () => { await draw(); const a = document.createElement('a'); a.download = 'شهادة_خاصية_طالس.png'; try { a.href = $('#cv').toDataURL('image/png'); a.click(); } catch (e) { toast('تعذّر التحميل: استعمل زر الطباعة أو لقطة شاشة.', 1); } });
+    $('#pr').addEventListener('click', async () => { await draw(); window.print(); });
+    draw();
+  });
+  return host;
+}
+function resetCard() { return `<div class="card"><h3>🔁 إعادة الرحلة من البداية</h3><p class="muted">يمسح النجوم والإجابات المحفوظة في هذا الجهاز.</p><button class="btn alt" id="rst">إعادة البدء</button></div>`; }
+function bindReset(host) { const b = $('#rst', host); if (b) b.addEventListener('click', () => { if (b.dataset.c) { S = { q: {}, mis: {}, g: {}, name: S.name, snd: S.snd }; save(); updBar(); go('home'); } else { b.dataset.c = 1; b.textContent = 'اضغط مرة أخرى للتأكيد'; } }); }
+async function drawCert() {
+  const cv = $('#cv'), x = cv.getContext('2d'), W = cv.width, H = cv.height, [ic, nm, col] = medal();
+  try { await document.fonts.load('900 40px Cairo'); await document.fonts.load('700 30px Cairo'); } catch (e) {}
+  x.clearRect(0, 0, W, H);
+  const g = x.createLinearGradient(0, 0, W, H); g.addColorStop(0, '#fffdf3'); g.addColorStop(1, '#eef8ff'); x.fillStyle = g; x.fillRect(0, 0, W, H);
+  x.lineWidth = 14; x.strokeStyle = '#0f5f8b'; x.strokeRect(24, 24, W - 48, H - 48);
+  x.lineWidth = 4; x.strokeStyle = '#facc15'; x.strokeRect(48, 48, W - 96, H - 96);
+  x.direction = 'rtl'; x.textAlign = 'center'; x.fillStyle = '#18303f';
+  const T = (t, y, f, c = '#18303f') => { x.font = f; x.fillStyle = c; x.fillText(t, W / 2, y); };
+  T('الجمهورية الجزائرية الديمقراطية الشعبية', 110, '700 30px Cairo');
+  T('وزارة التربية الوطنية', 152, '700 26px Cairo', '#5b7080');
+  T('متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة', 196, '700 26px Cairo', '#5b7080');
+  T('شهادة إنجاز', 300, '900 84px Cairo', '#0f5f8b');
+  T('تُمنح هذه الشهادة للتلميذ(ة)', 380, '700 32px Cairo');
+  T(S.name || '..............................', 470, '900 64px Cairo', '#c2410c');
+  T('لإتمامه(ا) بنجاح «رحلة خاصية طالس»', 545, '700 32px Cairo');
+  T('المقطع الثاني — السنة الرابعة متوسط', 592, '700 28px Cairo', '#5b7080');
+  T(`مجموع النجوم: ${totalStars()} من ${MAXS} ⭐ — الأوسمة: 5 / 5 🏅`, 660, '800 32px Cairo', '#0b4a6f');
+  T(`${ic} الشهادة ${nm}`, 735, '900 46px Cairo', col);
+  const d = new Date(), ds = `${d.getDate()} / ${d.getMonth() + 1} / ${d.getFullYear()}`;
+  x.font = '700 26px Cairo'; x.fillStyle = '#18303f';
+  x.textAlign = 'right'; x.fillText('الأستاذ: يوسفي السوفي', W - 110, 860);
+  x.textAlign = 'left'; x.direction = 'rtl'; x.fillText('التاريخ: ' + ds, 110, 860);
+  x.textAlign = 'center'; x.font = '60px serif'; x.fillText('📏', W / 2, 880);
+}
+
+/* ================= router ================= */
+let cur = 'home';
+function go(v, arg) {
+  cur = v; const app = $('#app'); app.innerHTML = '';
+  $$('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.v === v || (v === 'lesson' && b.dataset.v === 'lessons')));
+  let node;
+  if (v === 'home') { app.innerHTML = vHome(); }
+  else if (v === 'lessons') { app.innerHTML = vMap(); }
+  else if (v === 'lesson') { node = vLesson(arg); }
+  else if (v === 'games') node = vGames();
+  else if (v === 'final') node = vFinal();
+  else if (v === 'cert') node = vCert();
+  if (node) app.appendChild(node);
+  try { history.replaceState(null, '', '#' + v + (arg ? '-' + arg : '')); } catch (e) {}
+  window.scrollTo({ top: 0 });
+}
+$$('#tabs button').forEach(b => b.addEventListener('click', () => go(b.dataset.v)));
+$('#snd').addEventListener('click', () => { S.snd = !S.snd; save(); updBar(); });
+updBar();
+(() => { const m = (location.hash || '').match(/^#(home|lessons|games|final|cert|lesson)(?:-(\d+))?$/); if (m) go(m[1], m[2] ? +m[2] : undefined); else go('home'); })();
+</script>
+</body>
+</html>
