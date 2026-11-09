@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلسلة رتبة مقدار نتيجة حساب - السنة الأولى متوسط - المقطع الأول</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #0f766e;
+            --primary-light: #eff6ff;
+            --accent: #fbbf24;
+            --success: #15803d;
+            --success-bg: #dcfce7;
+            --warning: #b45309;
+            --warning-bg: #fef3c7;
+            --danger: #b91c1c;
+            --danger-bg: #fee2e2;
+            --dark: #0f172a;
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --border: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+        }
+
+        html, body {
+            background-color: var(--bg);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            width: 100%;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%);
+            color: #ffffff;
+            padding: 20px 12px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        header .school-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fef08a;
+            margin-bottom: 6px;
+        }
+
+        header h1 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 6px 0;
+            color: #ffffff;
+        }
+
+        header .sub-info {
+            font-size: 0.92rem;
+            opacity: 0.95;
+            background: rgba(255, 255, 255, 0.14);
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-top: 4px;
+        }
+
+        .sticky-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(6px);
+            border-bottom: 2px solid var(--border);
+            padding: 8px 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .sticky-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .stars-badge {
+            background: #fef3c7;
+            color: #b45309;
+            border: 1px solid #f59e0b;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .sound-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .progress-wrap {
+            flex: 1;
+            min-width: 110px;
+            max-width: 240px;
+            background: #e2e8f0;
+            height: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #0f766e, #15803d);
+            width: 0%;
+            height: 100%;
+            transition: width 0.35s ease;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 18px auto 0 auto;
+            padding: 0 10px;
+        }
+
+        .exercise-card {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 16px 14px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-light);
+            padding: 10px 12px;
+            border-radius: 10px;
+            border-right: 4px solid var(--primary);
+            margin-bottom: 12px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .card-header h2 {
+            font-size: 1.08rem;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .pts-badge {
+            background: #ffffff;
+            color: var(--primary);
+            border: 1px solid #bfdbfe;
+            padding: 3px 10px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .context-box {
+            background: #f8fafc;
+            border: 1px dashed #94a3b8;
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin-bottom: 14px;
+            font-size: 0.96rem;
+        }
+
+        .math {
+            direction: ltr;
+            unicode-bidi: isolate;
+            display: inline-block;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 700;
+            background: #e2e8f0;
+            padding: 1px 6px;
+            border-radius: 5px;
+            margin: 0 2px;
+            color: #0f172a;
+        }
+
+        .q-box {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 14px;
+            background: #ffffff;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .q-box.solved {
+            border-color: #86efac;
+            background: #f0fdf4;
+        }
+
+        .q-box.failed {
+            border-color: #fca5a5;
+            background: #fef2f2;
+        }
+
+        .q-title {
+            font-weight: 700;
+            font-size: 0.98rem;
+            margin-bottom: 10px;
+            color: #1e293b;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .q-meta {
+            font-size: 0.78rem;
+            background: #f1f5f9;
+            color: #475569;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .answer-area {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-line {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            min-width: 170px;
+            padding: 9px 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.98rem;
+            font-weight: 700;
+            direction: ltr;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary);
+        }
+
+        .sym-toolbar {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 4px;
+        }
+
+        .sym-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            color: #0f172a;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            direction: ltr;
+            unicode-bidi: isolate;
+            user-select: none;
+        }
+
+        .sym-btn { flex: 1 1 0; min-width: 0; padding: 6px 0; text-align: center; }
+
+        .sym-btn:hover {
+            background: #cbd5e1;
+        }
+
+        .sym-btn:active {
+            transform: scale(0.96);
+        }
+
+        .btn-check {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .btn-check:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-check:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        @keyframes shakeField {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        .shake {
+            animation: shakeField 0.35s ease;
+            border-color: var(--danger) !important;
+        }
+
+        .feedback-box {
+            margin-top: 10px;
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            display: none;
+        }
+
+        .feedback-box.success {
+            display: block;
+            background: var(--success-bg);
+            color: var(--success);
+            border-right: 4px solid var(--success);
+        }
+
+        .feedback-box.hint {
+            display: block;
+            background: var(--warning-bg);
+            color: var(--warning);
+            border-right: 4px solid var(--warning);
+        }
+
+        .feedback-box.fail {
+            display: block;
+            background: var(--danger-bg);
+            color: var(--danger);
+            border-right: 4px solid var(--danger);
+        }
+
+        .model-solution {
+            margin-top: 12px;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-right: 4px solid var(--secondary);
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+            font-size: 0.93rem;
+        }
+
+        .model-solution h4 {
+            color: var(--secondary);
+            margin-bottom: 8px;
+            font-size: 0.98rem;
+        }
+
+        .sol-line {
+            padding: 3px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .sol-result {
+            margin-top: 6px;
+            font-weight: 800;
+            color: var(--primary);
+            background: #eff6ff;
+            padding: 5px 8px;
+            border-radius: 6px;
+        }
+
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.86rem;
+            background: #ffffff;
+        }
+
+        .rubric-table td .math { white-space: nowrap; }
+        .rubric-table th, .rubric-table td {
+            border: 1px solid #cbd5e1;
+            padding: 6px 8px;
+            text-align: right;
+        }
+
+        .rubric-table th {
+            background: #e2e8f0;
+            color: #1e293b;
+            font-weight: 800;
+        }
+
+        .star-burst {
+            display: inline-block;
+            animation: popStars 0.6s ease forwards;
+        }
+
+        @keyframes popStars {
+            0% { transform: scale(0.4); opacity: 0; }
+            60% { transform: scale(1.25); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.65);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 15px;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            max-width: 420px;
+            width: 100%;
+            border-radius: 16px;
+            padding: 24px 18px;
+            text-align: center;
+            border-top: 6px solid var(--accent);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .modal-score {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin: 10px 0;
+        }
+
+        .modal-stars {
+            font-size: 1.4rem;
+            color: #d97706;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .btn-close-modal {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 9px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        @media (max-width: 420px) {
+            header .school-title { font-size: 0.98rem; }
+            header h1 { font-size: 1.12rem; }
+            .input-line { flex-direction: column; }
+            input[type="text"], .btn-check { width: 100%; }
+        }
+    
+        .fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; line-height: 1.05; margin: 0 2px; font-size: .92em; }
+        .fr > span:first-child { border-bottom: 2px solid currentColor; padding: 0 3px 1px; }
+        .fr > span:last-child { padding: 1px 3px 0; }
+        .vop { display: inline-block; direction: ltr; unicode-bidi: isolate; font-family: 'Courier New', Courier, monospace; font-weight: 700;
+               background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
+        .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
+        .vop .ln { border-top: 2px solid #0f172a; }
+    
+.bem-intro{margin:0 0 6px;line-height:1.7}
+.bem-data p{margin:3px 0;line-height:1.7}
+.bem-warn{background:#fef9c3;border:1px solid #facc15;border-radius:8px;padding:6px 10px;margin:8px 0 4px;font-size:.92rem}
+.print-btn{margin-top:10px;background:#fff;color:#0f766e;border:2px solid #fde047;border-radius:20px;padding:6px 16px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+#paper .copy{border:1.5px solid #334155;border-radius:8px;padding:5px 9px 5px 80px;margin:0 0 5mm;break-inside:avoid;position:relative}
+#paper .cut{border-top:1.5px dashed #64748b;margin:0 0 4mm;text-align:center;font-size:9pt;color:#64748b;line-height:0}
+#paper .cut span{background:#fff;padding:0 6px}
+#paper .ph{display:flex;justify-content:space-between;align-items:center;font-weight:bold;font-size:9.5pt}
+#paper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #1e3a8a;border-radius:14px;padding:2px 8px;margin:3px auto 4px;width:fit-content;background:#eff6ff}
+#paper .qr{position:absolute;left:8px;top:6px;text-align:center;font-size:7pt;color:#475569;width:66px}
+#paper .qr img{width:58px;height:58px}
+#paper .cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+#paper .ex{break-inside:avoid;margin:2px 0}
+#paper .ex h4{margin:3px 0 1px;font-size:10.5pt;background:#e0f2fe;border-radius:6px;padding:1px 6px}
+#paper .ex p,#paper .ex li{margin:1px 0;line-height:1.4}
+#paper svg{max-height:120px;width:auto!important;margin:2px auto!important}
+#paper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+#paper .bem-warn{padding:3px 6px;margin:2px 0}
+#paper .bem-data p{margin:0}
+#paper .bem-intro{margin:0}
+#paper .w3{font-size:8.6pt;padding:4px 6px 4px 74px;margin-bottom:3mm}
+#paper .w3 .cols{grid-template-columns:1fr 1fr 1fr;gap:2px 8px}
+#paper .w3 svg{max-height:88px}
+#paper .w3 .ex h4{font-size:8.8pt}
+#paper .w3 .ex p{line-height:1.3}
+#paper .w3 .pt{font-size:10pt;margin:1px auto 2px;padding:1px 8px}
+#paper .one .cols{display:block}
+#paper .one svg{max-height:150px}
+#paper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt;width:192mm}
+@media print{
+ @page{size:A4;margin:8mm 9mm}
+ body>*:not(#paper){display:none!important}
+ html,body{background:#fff!important;padding:0!important;margin:0!important}
+
+ #paper{display:block!important;width:auto}
+}
+
+#paper .copy{font-size:11pt;padding:6px 10px 6px 84px;margin:0}
+#paper .copy .cols{grid-template-columns:1fr 1fr;gap:4px 14px}
+#paper .copy.flow{font-size:12pt}
+#paper .copy.flow .cols{display:block}
+#paper .copy.flow .ex{margin:0 0 4mm}
+#paper .copy.flow svg{max-height:170px}
+#paper .ex h4{font-size:11.5pt}
+#solpaper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt}
+#solpaper .sxs{columns:2;column-gap:7mm;column-rule:1px solid #cbd5e1}
+#solpaper .sx{margin:0 0 2mm}
+#solpaper h4{break-after:avoid}
+#solpaper h4{margin:2px 0;font-size:11pt;background:#dcfce7;border-radius:6px;padding:1px 6px}
+#solpaper .ph{display:flex;justify-content:space-between;font-weight:bold;font-size:9.5pt}
+#solpaper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #166534;border-radius:14px;padding:2px 8px;margin:3px auto 6px;width:fit-content;background:#f0fdf4}
+#solpaper .sq{margin:2px 0 4px;break-inside:avoid;text-align:right}
+#solpaper .sq p{margin:1px 0;line-height:1.4;text-align:right}
+#solpaper .sq p *{text-align:right}
+#solpaper table{border-collapse:collapse;margin:2px 0 3px;font-size:9.5pt}
+#solpaper td,#solpaper th{border:1px solid #64748b;padding:1px 6px}
+#solpaper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+/* 2026-11-07 shape of his model «فرض الفصل الأول» papers: title box, red underlined headings, one column, figure on the left */
+#paper .copy{border:none;border-radius:0;padding:0 0 0 0}
+#paper .copy .cols,#paper .copy.flow .cols{display:block}
+#paper .ttl{border:1.5px solid #1e293b;border-radius:6px;text-align:center;font-weight:bold;font-size:13pt;padding:5px 8px;margin:4px 0 6px 82px}
+#paper .copy .ph{padding-left:82px}
+#paper .qr{top:0;left:0}
+#paper .ex{margin:0 0 3mm;overflow:hidden;border:none!important;box-shadow:none!important;background:none!important;padding:0!important;border-radius:0!important}
+#paper .ex h4,#solpaper h4{background:none!important;color:#b91c1c;text-decoration:underline;font-size:12.5pt;padding:0;margin:4px 0 3px}
+#paper .ex .fig{float:left;width:40%;margin:0 0 2px 12px}
+#paper .ex .fig svg{max-width:100%!important;max-height:190px;margin:0 auto!important}
+#paper .ex p{line-height:1.55}
+#paper .bem-warn{background:none;border:none;padding:0;font-size:10pt}
+#paper .foot{text-align:center;font-size:8pt;color:#475569;border-top:1px solid #cbd5e1;margin-top:3mm;padding-top:1mm;clear:both}
+#solpaper .ttl{border:1.5px solid #1e293b;border-radius:6px;text-align:center;font-weight:bold;font-size:13pt;padding:4px 8px;margin:4px 0 6px}
+.sol-btn{display:none}
+.sol-wait{margin-top:6px;font-size:.85rem;color:#64748b}
+@media print{
+ body.psol>*:not(#solpaper){display:none!important}
+ body.psol #solpaper{display:block!important}
+ body.psol #paper{display:none!important}
+}
+</style>
+</head>
+<body>
+
+    <header>
+        <div class="school-title">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
+        <h1>سلسلة رتبة مقدار نتيجة حساب التفاعلي في الرياضيات</h1>
+        <div class="sub-info">المستوى: السنة الأولى متوسط | المقطع الأول: رتبة مقدار نتيجة حساب | 5 تمارين على 20<br>حلّ في الكراس ثم تحقق هنا</div>
+        <button class="print-btn" onclick="document.body.classList.remove('psol');window.print()">🖨️ النسخة الورقية للطباعة</button> <button class="print-btn sol-btn" onclick="printSol()">🖨️ النسخة الورقية للحل</button><div class="sol-wait"></div>
+    </header>
+
+    <div class="sticky-bar">
+        <div class="sticky-inner">
+            <div class="stat-group">
+                <span class="score-badge">العلامة: <span class="math" id="scoreVal" style="background:transparent;color:#fff;padding:0;">0 / 20</span></span>
+                <span class="stars-badge">⭐ <span class="math" id="starsVal" style="background:transparent;color:#b45309;padding:0;">0</span></span>
+                <button type="button" class="sound-btn" id="soundToggle" onclick="toggleSound()" title="تشغيل/كتم الصوت">🔊</button>
+            </div>
+            <div class="progress-wrap" title="شريط التقدم">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="exercisesRoot"></div>
+
+    <div class="modal-overlay" id="finalModal">
+        <div class="modal-card">
+            <h3 id="finalTitle">🎉 أحسنت! أتممت جميع الأسئلة</h3>
+            <p>لقد أنهيت سلسلة رتبة مقدار نتيجة حساب</p>
+            <div class="modal-score" id="finalScoreText">0 / 20</div>
+            <div class="modal-stars" id="finalStarsText">⭐ 0 نجمة</div>
+            <button type="button" class="btn-close-modal" onclick="document.getElementById('finalModal').style.display='none'">مراجعة إجاباتي</button>
+        </div>
+    </div>
+
+    <script>
+        let soundEnabled = true;
+        let totalScore = 0;
+        let totalStars = 0;
+        let completedQuestions = 0;
+        let totalQuestionsCount = 0;
+
+        const attemptsLeft = {};
+        const questionEarned = {};
+        const questionLocked = {};
+
+        const symbols1AM = ["+", "−", "×", "÷", ",", "/", "<", ">", ";", "⌫"];
+
+        function playTone(type) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'success') {
+                    osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+                    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.09);
+                    osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.18);
+                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.35);
+                } else {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, ctx.currentTime);
+                    osc.frequency.setValueAtTime(180, ctx.currentTime + 0.1);
+                    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.25);
+                }
+            } catch (e) {}
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            document.getElementById('soundToggle').innerText = soundEnabled ? '🔊' : '🔇';
+        }
+
+        const exercises = [
+ {
+  "id": 1,
+  "pts": 3,
+  "title": "التمرين 1: تطبيق مباشر: اختيار رتبة المقدار",
+  "context": "دون إجراء الحساب الدقيق، اختر رتبة مقدار كل نتيجة من بين الأعداد المقترحة مع التعليل.",
+  "questions": [
+   {
+    "qId": "1-1",
+    "text": "1) <span class=\"math\">49,8 + 31,2</span> : <span class=\"math\">1</span>) <span class=\"math\">80</span> ؛ <span class=\"math\">2</span>) <span class=\"math\">800</span> ؛ <span class=\"math\">3</span>) <span class=\"math\">8</span>.<br>✍️ علّل في كراسك، ثم اكتب رقم الجواب الصحيح.",
+    "exact": [
+     "1"
+    ],
+    "partial": [
+     "2",
+     "3"
+    ],
+    "h1": "<span class=\"math\">49,8</span> قريب من <span class=\"math\">50</span>.",
+    "h2": "<span class=\"math\">31,2</span> قريب من <span class=\"math\">30</span>.",
+    "steps": [
+     "<b>الطريقة:</b> نحسب رتبة مقدار النتيجة بتدوير الأعداد، ثم نختار من الاقتراحات العدد الأقرب منها.",
+     "<span class=\"math\">49,8 ≈ 50</span> و<span class=\"math\">31,2 ≈ 30</span>",
+     "<span class=\"math\">50 + 30 = 80</span>",
+     "النتيجة: الجواب <span class=\"math\">1</span> (<span class=\"math\">80</span>)",
+     "<b>الاستنتاج:</b> رتبة مقدار <span class=\"math\">49,8 + 31,2</span> هي <span class=\"math\">80</span>."
+    ],
+    "rubric": [
+     {
+      "step": "التدوير والحساب الذهني",
+      "mark": "0,5"
+     },
+     {
+      "step": "الاختيار الصحيح",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "1-2",
+    "text": "2) <span class=\"math\">398,5 − 102,3</span> : <span class=\"math\">1</span>) <span class=\"math\">3000</span> ؛ <span class=\"math\">2</span>) <span class=\"math\">30</span> ؛ <span class=\"math\">3</span>) <span class=\"math\">300</span>.<br>✍️ علّل في كراسك، ثم اكتب رقم الجواب الصحيح.",
+    "exact": [
+     "3"
+    ],
+    "partial": [
+     "1",
+     "2"
+    ],
+    "h1": "دوّر كل عدد إلى أقرب مائة.",
+    "h2": "<span class=\"math\">398,5</span> قريب من <span class=\"math\">400</span>.",
+    "steps": [
+     "<b>الطريقة:</b> نحسب رتبة مقدار النتيجة بتدوير الأعداد، ثم نختار من الاقتراحات العدد الأقرب منها.",
+     "<span class=\"math\">398,5 ≈ 400</span> و<span class=\"math\">102,3 ≈ 100</span>",
+     "<span class=\"math\">400 − 100 = 300</span>",
+     "النتيجة: الجواب <span class=\"math\">3</span> (<span class=\"math\">300</span>)",
+     "<b>الاستنتاج:</b> رتبة مقدار <span class=\"math\">398,5 − 102,3</span> هي <span class=\"math\">300</span>."
+    ],
+    "rubric": [
+     {
+      "step": "التدوير والحساب الذهني",
+      "mark": "0,5"
+     },
+     {
+      "step": "الاختيار الصحيح",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "1-3",
+    "text": "3) <span class=\"math\">19,7 × 5,1</span> : <span class=\"math\">1</span>) <span class=\"math\">10</span> ؛ <span class=\"math\">2</span>) <span class=\"math\">100</span> ؛ <span class=\"math\">3</span>) <span class=\"math\">1000</span>.<br>✍️ علّل في كراسك، ثم اكتب رقم الجواب الصحيح.",
+    "exact": [
+     "2"
+    ],
+    "partial": [
+     "1",
+     "3"
+    ],
+    "h1": "<span class=\"math\">19,7</span> قريب من <span class=\"math\">20</span>.",
+    "h2": "<span class=\"math\">5,1</span> قريب من <span class=\"math\">5</span>.",
+    "steps": [
+     "<b>الطريقة:</b> نحسب رتبة مقدار النتيجة بتدوير الأعداد، ثم نختار من الاقتراحات العدد الأقرب منها.",
+     "<span class=\"math\">19,7 ≈ 20</span> و<span class=\"math\">5,1 ≈ 5</span>",
+     "<span class=\"math\">20 × 5 = 100</span>",
+     "النتيجة: الجواب <span class=\"math\">2</span> (<span class=\"math\">100</span>)",
+     "<b>الاستنتاج:</b> رتبة مقدار <span class=\"math\">19,7 × 5,1</span> هي <span class=\"math\">100</span>."
+    ],
+    "rubric": [
+     {
+      "step": "التدوير والحساب الذهني",
+      "mark": "0,5"
+     },
+     {
+      "step": "الاختيار الصحيح",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 2,
+  "pts": 3,
+  "title": "التمرين 2: تطبيق مباشر: حساب رتبة مقدار",
+  "context": "",
+  "questions": [
+   {
+    "qId": "2-1",
+    "text": "1) بتدوير كل عدد إلى أقرب عشرة، أعط رتبة مقدار المجموع <span class=\"math\">58,3 + 21,9</span>.",
+    "exact": [
+     "80"
+    ],
+    "partial": [
+     "80,2",
+     "70",
+     "90"
+    ],
+    "h1": "دوّر <span class=\"math\">58,3</span> إلى أقرب عشرة.",
+    "h2": "<span class=\"math\">58,3 ≈ 60</span> ؛ ودوّر <span class=\"math\">21,9</span> كذلك.",
+    "steps": [
+     "<b>الطريقة:</b> رتبة مقدار نتيجة حساب: نعوّض كل عدد بعدد قريب منه سهل الحساب (بالتدوير)، ثم نجري العملية ذهنيا.",
+     "<span class=\"math\">58,3 ≈ 60</span>",
+     "<span class=\"math\">21,9 ≈ 20</span>",
+     "<span class=\"math\">60 + 20 = 80</span>",
+     "النتيجة: <span class=\"math\">80</span>",
+     "<b>الاستنتاج:</b> رتبة مقدار <span class=\"math\">58,3 + 21,9</span> هي <span class=\"math\">80</span>."
+    ],
+    "rubric": [
+     {
+      "step": "تدوير العددين",
+      "mark": "0,75"
+     },
+     {
+      "step": "رتبة المقدار",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1.5,
+    "partialMsg": "هذه نتيجة دقيقة أو تدوير غير صحيح؛ المطلوب تدوير كل عدد إلى أقرب عشرة ثم الجمع.",
+    "partialZero": true
+   },
+   {
+    "qId": "2-2",
+    "text": "2) بتدوير كل عدد إلى الوحدة، أعط رتبة مقدار الجداء <span class=\"math\">4,9 × 6,1</span>.",
+    "exact": [
+     "30"
+    ],
+    "partial": [
+     "29,89",
+     "24",
+     "35",
+     "11"
+    ],
+    "h1": "دوّر <span class=\"math\">4,9</span> إلى الوحدة.",
+    "h2": "<span class=\"math\">4,9 ≈ 5</span> ؛ ودوّر <span class=\"math\">6,1</span> كذلك.",
+    "steps": [
+     "<b>الطريقة:</b> رتبة مقدار نتيجة حساب: نعوّض كل عدد بعدد قريب منه سهل الحساب (بالتدوير)، ثم نجري العملية ذهنيا.",
+     "<span class=\"math\">4,9 ≈ 5</span>",
+     "<span class=\"math\">6,1 ≈ 6</span>",
+     "<span class=\"math\">5 × 6 = 30</span>",
+     "النتيجة: <span class=\"math\">30</span>",
+     "<b>الاستنتاج:</b> رتبة مقدار <span class=\"math\">4,9 × 6,1</span> هي <span class=\"math\">30</span>."
+    ],
+    "rubric": [
+     {
+      "step": "تدوير العددين",
+      "mark": "0,75"
+     },
+     {
+      "step": "رتبة المقدار",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1.5,
+    "partialMsg": "هذه نتيجة دقيقة أو تدوير غير صحيح؛ المطلوب تدوير كل عدد إلى الوحدة ثم الضرب.",
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 3,
+  "pts": 4,
+  "title": "التمرين 3: ربط: وضع الفاصلة في نتيجة الآلة",
+  "context": "حسب أيمن الجداء <span class=\"math\">3,9 × 21,4</span> بآلة حاسبة معطّلة الفاصلة، فظهرت الأرقام <span class=\"math\">8346</span> دون فاصلة.",
+  "questions": [
+   {
+    "qId": "3-1",
+    "text": "1) بتدوير <span class=\"math\">3,9</span> إلى الوحدة و<span class=\"math\">21,4</span> إلى أقرب عشرة، أعط رتبة مقدار الجداء.",
+    "exact": [
+     "80"
+    ],
+    "partial": [
+     "84",
+     "88",
+     "83,46"
+    ],
+    "h1": "دوّر <span class=\"math\">3,9</span> إلى الوحدة.",
+    "h2": "<span class=\"math\">3,9 ≈ 4</span> و<span class=\"math\">21,4 ≈ 20</span>.",
+    "steps": [
+     "<b>الطريقة:</b> رتبة مقدار نتيجة حساب: نعوّض كل عدد بعدد قريب منه سهل الحساب (بالتدوير)، ثم نجري العملية ذهنيا.",
+     "<span class=\"math\">3,9 ≈ 4</span>",
+     "<span class=\"math\">21,4 ≈ 20</span>",
+     "<span class=\"math\">4 × 20 = 80</span>",
+     "النتيجة: <span class=\"math\">80</span>",
+     "<b>الاستنتاج:</b> رتبة مقدار الجداء هي <span class=\"math\">80</span>."
+    ],
+    "rubric": [
+     {
+      "step": "التدوير",
+      "mark": "1"
+     },
+     {
+      "step": "رتبة المقدار",
+      "mark": "1"
+     }
+    ],
+    "pts": 2,
+    "partialZero": true
+   },
+   {
+    "qId": "3-2",
+    "text": "2) ضع الفاصلة في الأرقام <span class=\"math\">8346</span> لتحصل على النتيجة الصحيحة.",
+    "exact": [
+     "83,46"
+    ],
+    "partial": [
+     "834,6",
+     "8,346"
+    ],
+    "h1": "النتيجة قريبة من رتبة مقدارها.",
+    "h2": "أيّ وضع للفاصلة يعطي عددا قريبا من <span class=\"math\">80</span>: <span class=\"math\">8,346</span> أم <span class=\"math\">83,46</span> أم <span class=\"math\">834,6</span>؟",
+    "steps": [
+     "<b>الطريقة:</b> نختار وضع الفاصلة الذي يعطي عددا قريبا من رتبة المقدار <span class=\"math\">80</span>.",
+     "<span class=\"math\">8,346</span> بعيد عن <span class=\"math\">80</span>",
+     "<span class=\"math\">834,6</span> بعيد عن <span class=\"math\">80</span>",
+     "<span class=\"math\">83,46</span> قريب من <span class=\"math\">80</span>",
+     "تحقق: في <span class=\"math\">3,9</span> رقم واحد بعد الفاصلة وفي <span class=\"math\">21,4</span> رقم واحد، فللجداء رقمان بعد الفاصلة",
+     "النتيجة: <span class=\"math\">3,9 × 21,4 = 83,46</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">3,9 × 21,4 = 83,46</span>."
+    ],
+    "rubric": [
+     {
+      "step": "المقارنة برتبة المقدار",
+      "mark": "1"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 2,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 4,
+  "pts": 4,
+  "title": "التمرين 4: ربط: هل نتيجة الآلة معقولة؟",
+  "context": "أراد عماد حساب المجموع <span class=\"math\">312,5 + 189,7</span> بالآلة الحاسبة، فظهر على الشاشة <span class=\"math\">2209,5</span>.",
+  "questions": [
+   {
+    "qId": "4-1",
+    "text": "1) بتدوير كل عدد إلى أقرب مائة، أعط رتبة مقدار المجموع.",
+    "exact": [
+     "500"
+    ],
+    "partial": [
+     "502,2",
+     "400",
+     "600"
+    ],
+    "h1": "دوّر <span class=\"math\">312,5</span> إلى أقرب مائة.",
+    "h2": "<span class=\"math\">312,5 ≈ 300</span> و<span class=\"math\">189,7 ≈ 200</span>.",
+    "steps": [
+     "<b>الطريقة:</b> رتبة مقدار نتيجة حساب: نعوّض كل عدد بعدد قريب منه سهل الحساب (بالتدوير)، ثم نجري العملية ذهنيا.",
+     "<span class=\"math\">312,5 ≈ 300</span>",
+     "<span class=\"math\">189,7 ≈ 200</span>",
+     "<span class=\"math\">300 + 200 = 500</span>",
+     "النتيجة: <span class=\"math\">500</span>",
+     "<b>الاستنتاج:</b> رتبة مقدار المجموع هي <span class=\"math\">500</span>."
+    ],
+    "rubric": [
+     {
+      "step": "التدوير",
+      "mark": "1"
+     },
+     {
+      "step": "رتبة المقدار",
+      "mark": "1"
+     }
+    ],
+    "pts": 2,
+    "partialZero": true
+   },
+   {
+    "qId": "4-2",
+    "text": "2) هل النتيجة <span class=\"math\">2209,5</span> معقولة مع التعليل؟<br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> نعم أو <span class=\"math\">2</span> لا.",
+    "exact": [
+     "2"
+    ],
+    "partial": [
+     "1"
+    ],
+    "h1": "قارن <span class=\"math\">2209,5</span> برتبة المقدار <span class=\"math\">500</span>.",
+    "h2": "<span class=\"math\">2209,5</span> أكبر من <span class=\"math\">500</span> بكثير.",
+    "steps": [
+     "<b>الطريقة:</b> نقارن النتيجة برتبة مقدارها: إذا كانت بعيدة جدا عنها فالنتيجة غير معقولة.",
+     "رتبة المقدار <span class=\"math\">500</span>",
+     "<span class=\"math\">2209,5</span> أكبر بكثير من <span class=\"math\">500</span>",
+     "النتيجة: لا (<span class=\"math\">2</span>)",
+     "<b>الاستنتاج:</b> النتيجة <span class=\"math\">2209,5</span> غير معقولة لأنها بعيدة جدا عن <span class=\"math\">500</span> (أُدخل <span class=\"math\">1897</span> بدل <span class=\"math\">189,7</span>)."
+    ],
+    "rubric": [
+     {
+      "step": "المقارنة والتعليل",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "4-3",
+    "text": "3) احسب النتيجة الصحيحة <span class=\"math\">312,5 + 189,7</span>.",
+    "exact": [
+     "502,2"
+    ],
+    "partial": [
+     "501,2",
+     "492,2",
+     "2209,5"
+    ],
+    "h1": "اجمع عموديا مع وضع الفواصل تحت بعضها.",
+    "h2": "ابدأ بالأعشار: <span class=\"math\">5 + 7 = 12</span>.",
+    "steps": [
+     "<b>الطريقة:</b> الجمع العمودي للأعداد العشرية: الفاصلة تحت الفاصلة، ثم التحقق برتبة المقدار.",
+     "<div class=\"vop\"><div>  312,5</div><div>+ 189,7</div><div class=\"ln\">  502,2</div></div>",
+     "تحقق: <span class=\"math\">502,2</span> قريب من <span class=\"math\">500</span>",
+     "النتيجة: <span class=\"math\">502,2</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">312,5 + 189,7 = 502,2</span> وهي نتيجة معقولة."
+    ],
+    "rubric": [
+     {
+      "step": "الجمع العمودي",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 5,
+  "pts": 6,
+  "title": "الوضعية الإدماجية: التسوّق من سوق بوشقوف",
+  "context": "<p class=\"bem-intro\">ذهبت أم سارة إلى سوق بوشقوف لتشتري خضرا من إنتاج فلاحي ولاية قالمة، فتشجيع الإنتاج المحلي يدعم فلاحي منطقتنا.</p><div class=\"bem-data\"><p>– معها ورقة نقدية من فئة <span class=\"math\">1000 DA</span>.</p><p>– اشترت <span class=\"math\">2,9 kg</span> من الطماطم بسعر <span class=\"math\">70 DA</span> للكيلوغرام.</p><p>– واشترت <span class=\"math\">4,1 kg</span> من البطاطا بسعر <span class=\"math\">60 DA</span> للكيلوغرام.</p><p>– واشترت <span class=\"math\">1,8 kg</span> من الفلفل بسعر <span class=\"math\">150 DA</span> للكيلوغرام.</p></div>",
+  "questions": [
+   {
+    "qId": "5-1",
+    "text": "1) بتدوير كل كتلة إلى الوحدة، أعط رتبة مقدار المبلغ الكلي (بـ DA).",
+    "exact": [
+     "750"
+    ],
+    "partial": [
+     "719",
+     "700",
+     "800"
+    ],
+    "h1": "دوّر الكتل: <span class=\"math\">2,9 ≈ 3</span>.",
+    "h2": "احسب <span class=\"math\">3 × 70</span> و<span class=\"math\">4 × 60</span> و<span class=\"math\">2 × 150</span> ثم اجمع.",
+    "steps": [
+     "<b>الطريقة:</b> رتبة مقدار نتيجة حساب: نعوّض كل عدد بعدد قريب منه سهل الحساب (بالتدوير)، ثم نجري العملية ذهنيا.",
+     "<span class=\"math\">2,9 ≈ 3</span> ؛ <span class=\"math\">4,1 ≈ 4</span> ؛ <span class=\"math\">1,8 ≈ 2</span>",
+     "<span class=\"math\">3 × 70 = 210</span>",
+     "<span class=\"math\">4 × 60 = 240</span>",
+     "<span class=\"math\">2 × 150 = 300</span>",
+     "<span class=\"math\">210 + 240 + 300 = 750</span>",
+     "النتيجة: <span class=\"math\">750 DA</span>",
+     "<b>الاستنتاج:</b> رتبة مقدار المبلغ الكلي <span class=\"math\">750 DA</span>."
+    ],
+    "rubric": [
+     {
+      "step": "م1 التفسير السليم: تدوير الكتل",
+      "mark": "1"
+     },
+     {
+      "step": "م2 الاستعمال السليم: رتبة المقدار",
+      "mark": "1"
+     }
+    ],
+    "pts": 2,
+    "partialZero": true
+   },
+   {
+    "qId": "5-2",
+    "text": "2) هل يكفيها المبلغ <span class=\"math\">1000 DA</span> مع التعليل؟<br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> نعم أو <span class=\"math\">2</span> لا.",
+    "exact": [
+     "1"
+    ],
+    "partial": [
+     "2"
+    ],
+    "h1": "قارن رتبة المقدار بـ <span class=\"math\">1000</span>.",
+    "h2": "<span class=\"math\">750</span> أصغر من <span class=\"math\">1000</span> بفارق كبير.",
+    "steps": [
+     "<b>الطريقة:</b> نقارن النتيجة برتبة مقدارها: إذا كانت بعيدة جدا عنها فالنتيجة غير معقولة؛ ونستعملها أيضا للحكم قبل الحساب الدقيق.",
+     "رتبة المقدار <span class=\"math\">750 DA</span>",
+     "<span class=\"math\">750 &lt; 1000</span> والفارق كبير (<span class=\"math\">250 DA</span>)",
+     "النتيجة: نعم (<span class=\"math\">1</span>)",
+     "<b>الاستنتاج:</b> المبلغ <span class=\"math\">1000 DA</span> يكفيها."
+    ],
+    "rubric": [
+     {
+      "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
+      "mark": "0,25"
+     },
+     {
+      "step": "م2 الاستعمال السليم: المقارنة والتعليل",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "5-3",
+    "text": "3) احسب المبلغ الكلي بالضبط (بـ DA).",
+    "exact": [
+     "719"
+    ],
+    "partial": [
+     "750",
+     "449",
+     "473",
+     "516"
+    ],
+    "h1": "احسب ثمن كل نوع: الكتلة × سعر الكيلوغرام.",
+    "h2": "<span class=\"math\">2,9 × 70 = 203</span> ؛ أكمل البطاطا والفلفل.",
+    "steps": [
+     "<b>الطريقة:</b> ثمن كل نوع = الكتلة × سعر الكيلوغرام، ثم نجمع الأثمان ونتحقق برتبة المقدار.",
+     "<div class=\"vop\"><div>  2,9</div><div> × 70</div><div class=\"ln\">  203</div></div>",
+     "<div class=\"vop\"><div>  4,1</div><div> × 60</div><div class=\"ln\">  246</div></div>",
+     "<div class=\"vop\"><div>   1,8</div><div> × 150</div><div class=\"ln\">   90 </div><div>  18  </div><div class=\"ln\">   270</div></div>",
+     "<div class=\"vop\"><div>  203</div><div>+ 246</div><div class=\"ln\">  449</div></div>",
+     "<div class=\"vop\"><div>  449</div><div>+ 270</div><div class=\"ln\">  719</div></div>",
+     "تحقق: <span class=\"math\">719</span> قريب من <span class=\"math\">750</span>",
+     "النتيجة: <span class=\"math\">719 DA</span>",
+     "<b>الاستنتاج:</b> المبلغ الكلي <span class=\"math\">719 DA</span> وهو قريب من رتبة مقداره <span class=\"math\">750 DA</span>."
+    ],
+    "rubric": [
+     {
+      "step": "م1 التفسير السليم: أثمان الأنواع الثلاثة",
+      "mark": "1,5"
+     },
+     {
+      "step": "م2 الاستعمال السليم: المجموع",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 2,
+    "partialZero": true
+   },
+   {
+    "qId": "5-4",
+    "text": "4) كم يبقى معها (بـ DA)؟",
+    "exact": [
+     "281"
+    ],
+    "partial": [
+     "250",
+     "291",
+     "381"
+    ],
+    "h1": "الباقي = المبلغ الذي معها − المبلغ الكلي.",
+    "h2": "<span class=\"math\">1000 − 719</span>.",
+    "steps": [
+     "<b>الطريقة:</b> الباقي = المبلغ الذي معها − المبلغ المدفوع (طرح عمودي).",
+     "<div class=\"vop\"><div>  1000</div><div>−  719</div><div class=\"ln\">   281</div></div>",
+     "النتيجة: <span class=\"math\">281 DA</span>",
+     "<b>الاستنتاج:</b> يبقى معها <span class=\"math\">281 DA</span>."
+    ],
+    "rubric": [
+     {
+      "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
+      "mark": "0,25"
+     },
+     {
+      "step": "م2 الاستعمال السليم: الطرح",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   }
+  ]
+ }
+];
+
+        function exercisesCount() { return exercises.reduce((a, e) => a + e.questions.length, 0); }
+
+        function renderApp() {
+            totalQuestionsCount = exercisesCount();
+            const root = document.getElementById('exercisesRoot');
+            root.innerHTML = '';
+
+            exercises.forEach(ex => {
+                const card = document.createElement('div');
+                card.className = 'exercise-card';
+
+                let questionsHtml = '';
+                ex.questions.forEach(q => {
+                    attemptsLeft[q.qId] = 3;
+                    questionEarned[q.qId] = 0;
+                    questionLocked[q.qId] = false;
+
+                    let symHtml = '';
+                    symbols1AM.forEach(s => {
+                        symHtml += `<button type="button" class="sym-btn" onclick="pressSym('${q.qId}', '${s}')">${s}</button>`;
+                    });
+
+                    let stepsHtml = '';
+                    q.steps.forEach((st, idx) => {
+                        const isLast = (idx === q.steps.length - 1);
+                        stepsHtml += `<div class="${isLast ? 'sol-result' : 'sol-line'}">${st}</div>`;
+                    });
+
+                    let rubricRows = '';
+                    q.rubric.forEach(r => {
+                        rubricRows += `<tr><td>${r.step}</td><td><span class="math">${r.mark} ن</span></td></tr>`;
+                    });
+
+                    questionsHtml += `
+                        <div class="q-box" id="qbox-${q.qId}">
+                            <div class="q-title">
+                                <span>${q.text}</span>
+                                <span class="q-meta" id="meta-${q.qId}">المحاولات: <span class="math">3</span> | النقاط: <span class="math">${String(q.pts).replace('.', ',')}</span></span>
+                            </div>
+                            <div class="answer-area">
+                                <div class="input-line">
+                                    <input type="text" id="in-${q.qId}" placeholder="اكتب إجابتك هنا" autocomplete="off">
+                                    <button type="button" class="btn-check" id="btn-${q.qId}" onclick="checkAns(${ex.id}, '${q.qId}')">تحقق من الإجابة</button>
+                                </div>
+                                <div class="sym-toolbar">${symHtml}</div>
+                            </div>
+                            <div class="feedback-box" id="fb-${q.qId}"></div>
+                            <div class="model-solution" id="sol-${q.qId}">
+                                <h4>✔ الإجابة النموذجية المفصلة:</h4>
+                                ${stepsHtml}
+                                <table class="rubric-table">
+                                    <thead>
+                                        <tr><th>مراحل الحل (سلم التنقيط)</th><th>النقطة</th></tr>
+                                    </thead>
+                                    <tbody>${rubricRows}</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h2>${ex.title}</h2>
+                        <span class="pts-badge"><span class="math">${String(ex.pts).replace('.', ',')}</span> ${ex.pts === 1 ? 'نقطة' : 'نقاط'}</span>
+                    </div>
+                    <div class="context-box">${ex.context}</div>
+                    ${questionsHtml}
+                `;
+                root.appendChild(card);
+            });
+        }
+
+        function pressSym(qId, sym) {
+            const inp = document.getElementById(`in-${qId}`);
+            if (!inp || inp.disabled) return;
+            if (sym === '⌫') {
+                inp.value = inp.value.slice(0, -1);
+            } else {
+                inp.value += sym;
+            }
+            inp.focus();
+        }
+
+        function normalizeInput(raw) {
+            if (!raw) return '';
+            const arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+            let s = raw.toString().trim();
+            for (let i = 0; i < 10; i++) {
+                s = s.replace(new RegExp(arDigits[i], 'g'), i);
+            }
+            s = s.replace(/\s+/g, '');
+            s = s.replace(/^[a-zA-Z]\s*=/i, '');
+            s = s.replace(/،/g, ',').replace(/\./g, ',');
+            s = s.replace(/\*/g, '×').replace(/(\d)[xX](?=\d)/g, '$1×').replace(/[−–]/g, '-');
+            s = s.replace(/(da|دج|دينار|أوراق|ورقة|عشرة|عشرات|وحدة|متر|درجة|°c|c°|°|cm²|m²|m2|cm|m|kg|لتر|l)$/i, '');
+            s = s.replace(/-\((\d+\/\d+)\)/g, '-$1').replace(/\((-?\d+(?:,\d+)?)\)/g, '$1').replace(/^\((.*)\)$/, '$1').replace(/^\+(?=\d)/, '');
+            s = s.replace(/(\d),(\d*?)0+(?=$|[^\d])/g, (m, a, b) => b ? a + ',' + b : a);
+            return s.toLowerCase();
+        }
+
+        function updateHeaderStats() {
+            const formattedScore = String(Math.round(totalScore * 100) / 100).replace('.', ',');
+            document.getElementById('scoreVal').innerText = `${formattedScore} / 20`;
+            document.getElementById('starsVal').innerText = totalStars;
+            const pct = Math.min(100, Math.round((completedQuestions / totalQuestionsCount) * 100));
+            document.getElementById('progressBar').style.width = pct + '%';
+
+            if (completedQuestions === totalQuestionsCount) {
+                setTimeout(() => {
+                    document.getElementById('finalScoreText').innerText = `${formattedScore} / 20`;
+                    document.getElementById('finalTitle').innerText = totalScore >= 10 ? '🎉 أحسنت! أتممت جميع الأسئلة' : '💪 أتممت السلسلة! راجع الإجابات النموذجية وأعد المحاولة';
+                    document.getElementById('finalStarsText').innerText = `⭐ ${totalStars} نجمة`;
+                    document.getElementById('finalModal').style.display = 'flex';
+                }, 600);
+            }
+        }
+
+        function triggerShake(qId) {
+            const inp = document.getElementById(`in-${qId}`);
+            inp.classList.remove('shake');
+            void inp.offsetWidth;
+            inp.classList.add('shake');
+        }
+
+        const FBMSG = {"ok": ["أحسنت! تركيزك أوصلك إلى الجواب الصحيح.", "ممتاز! أخذت وقتك وفكّرت جيدا، وهذه هي النتيجة.", "برافو! التأنّي في الحساب يصنع النجاح.", "رائع! جهدك يستحق هذه النجوم.", "إجابة صحيحة! واصل بنفس الهدوء والتركيز.", "أحسنت! من يقرأ السؤال جيدا يصل إلى الحل.", "عمل متقن! الدقة أهم من السرعة، وأنت أثبتّ ذلك.", "بارك الله فيك! تقدّم خطوة بخطوة كما فعلت الآن."], "w1": ["لا بأس، الخطأ جزء من التعلّم. أعد قراءة السؤال بهدوء.", "تمهّل قليلا: كلما أسرعت قلّ تركيزك. خذ وقتك.", "محاولة جيدة! راجع حسابك خطوة بخطوة.", "كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.", "لا تستعجل. اقرأ المعطيات من جديد ثم فكّر.", "أنت قريب. أعطِ هذا السؤال الوقت الذي يحتاجه.", "الخطأ ليس فشلا بل خطوة نحو الفهم. حاول مجددا.", "هدّئ السرعة وزِد التركيز، وستجد الطريق."], "w2": ["محاولة أخيرة: اكتب الحساب على ورقة قبل أن تجيب.", "لا تيأس! التركيز يأتي مع الهدوء. اقرأ التلميح جيدا.", "السرعة والتركيز لا يجتمعان: تمهّل في هذه المحاولة الأخيرة.", "ابذل جهدا إضافيا صغيرا، فالحل قريب منك.", "راجع كل خطوة على حدة، ولا تتسرّع.", "كل العلماء أخطؤوا قبل أن ينجحوا. ركّز في هذه المحاولة."], "fail": ["لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. اقرأ الإجابة النموذجية وسلم التنقيط بتمعّن.", "تعلّمنا شيئا جديدا اليوم! تأمّل خطوات الحل، وأعد التمرين غدا بهدوء.", "لا بأس، الفهم يحتاج وقتا وجهدا. راجع الحل خطوة بخطوة.", "المهم أن نفهم لماذا أخطأنا. اقرأ الحل، ثم حاول إعادته وحدك على ورقة.", "الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة."]};
+        function fbPick(kind, qId) { const a = FBMSG[kind]; const p = String(qId).split('-'); const n = (+p[0]) * 3 + (+p[1] || 0) + kind.length; return a[n % a.length]; }
+        function checkAns(exId, qId) {
+            if (questionLocked[qId]) return;
+            const ex = exercises.find(e => e.id === exId);
+            const q = ex.questions.find(item => item.qId === qId);
+            const inp = document.getElementById(`in-${qId}`);
+            const fb = document.getElementById(`fb-${qId}`);
+            const val = normalizeInput(inp.value);
+
+            if (!val) {
+                triggerShake(qId);
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = 'يرجى كتابة إجابتك أولاً في الخانة قبل الضغط على زر التحقق.';
+                return;
+            }
+
+            const isExactMatch = q.exact.some(ans => normalizeInput(ans) === val);
+            if (isExactMatch) {
+                const rem = attemptsLeft[qId];
+                const starsAwarded = (rem === 3) ? 3 : (rem === 2 ? 2 : 1);
+                const starIcons = '⭐'.repeat(starsAwarded);
+
+                const prevPts = questionEarned[qId] || 0;
+                totalScore += (q.pts - prevPts);
+                questionEarned[qId] = q.pts;
+                totalStars += starsAwarded;
+                questionLocked[qId] = true;
+                completedQuestions++;
+
+                playTone('success');
+                document.getElementById(`qbox-${qId}`).classList.add('solved');
+                inp.disabled = true;
+                document.getElementById(`btn-${qId}`).disabled = true;
+
+                fb.className = 'feedback-box success';
+                fb.innerHTML = `<span class="star-burst">${starIcons}</span> ${fbPick('ok', qId)} نلت العلامة الكاملة (<span class="math">${String(q.pts).replace('.', ',')} ن</span>).`;
+                flyStars(fb, 18);
+                document.getElementById(`sol-${qId}`).style.display = 'block';
+                updateHeaderStats();
+                return;
+            }
+
+            const isPartialMatch = q.partial && q.partial.some(ans => normalizeInput(ans) === val);
+            if (isPartialMatch) {
+                if (q.partialZero) { handleWrongAttempt(q, q.partialMsg); return; }
+                const halfPts = Math.round((q.pts / 2) * 100) / 100;
+                const prevPts = questionEarned[qId] || 0;
+                if (halfPts > prevPts) {
+                    totalScore += (halfPts - prevPts);
+                    questionEarned[qId] = halfPts;
+                }
+                handleWrongAttempt(q, `${q.partialMsg} (حصلت على نصف العلامة <span class="math">${String(halfPts).replace('.', ',')} ن</span>، صحّح الشكل لتنال العلامة الكاملة).`);
+                updateHeaderStats();
+                return;
+            }
+
+            handleWrongAttempt(q, null);
+        }
+
+        function handleWrongAttempt(q, customReason) {
+            const qId = q.qId;
+            attemptsLeft[qId]--;
+            const rem = attemptsLeft[qId];
+            const inp = document.getElementById(`in-${qId}`);
+            const fb = document.getElementById(`fb-${qId}`);
+
+            playTone('error');
+            triggerShake(qId);
+            document.getElementById(`meta-${qId}`).innerHTML = `المحاولات: <span class="math">${rem}</span> | النقاط: <span class="math">${String(q.pts).replace('.', ',')}</span>`;
+
+            if (rem === 2) {
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w1', qId) + '<br>'}<strong>💡 التلميح 1:</strong> ${q.h1}`;
+                flyStars(fb, 9, ['⭐','💡','✨']);
+            } else if (rem === 1) {
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w2', qId) + '<br>'}<strong>💡 التلميح 2:</strong> ${q.h2}`;
+                flyStars(fb, 9, ['⭐','💡','✨']);
+            } else {
+                questionLocked[qId] = true;
+                completedQuestions++;
+                inp.disabled = true;
+                document.getElementById(`btn-${qId}`).disabled = true;
+                document.getElementById(`qbox-${qId}`).classList.add('failed');
+
+                fb.className = 'feedback-box fail';
+                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 ' + fbPick('fail', qId);
+                document.getElementById(`sol-${qId}`).style.display = 'block';
+                updateHeaderStats();
+            }
+        }
+
+        window.onload = renderApp;
+    </script>
+<!-- flyStars: نجوم متطايرة -->
+<style>.fly-star{position:fixed;z-index:70;font-size:1.45rem;pointer-events:none;animation:flystar 1s ease-out forwards}
+@keyframes flystar{from{transform:translate(0,0) scale(.4);opacity:1}to{transform:translate(var(--dx),var(--dy)) scale(1.15) rotate(220deg);opacity:0}}</style>
+<script>function flyStars(el, n, icons){ try{ icons = icons || ['⭐','✨','🌟']; const r = el.getBoundingClientRect(), x = r.left + r.width/2, y = Math.max(r.top, 0) + 20;
+ for (let i = 0; i < n; i++){ const s = document.createElement('span'); s.className = 'fly-star'; s.textContent = icons[i % icons.length];
+  const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
+  s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
+  document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
+<div id="paper"><div class="copy flow" data-pages="0"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACgklEQVR4nMWYQY7bSAxFHy0D5VmVgDmAfIOcwJJzlBxjAHckRwbmEnMYufsipV02AUqrKQGy/iyU7NK96q7hRiL+4hNF8rNYJn5v4+4VAN4Zmc3M5vPUjbNZx7yb9qOZ7d+b5w2kkYK7lo+jW/1+BL8gqcsYgWwPFm/MxfjUHE7ljdnK9+d5G5nPvg9+pQ3peVo+jud3tt8+J+OfpOrH8fv9059fMkdgYuRFjFZPe9Ifa4cTt4xZuJsdOZU3Er4PnEows3yViCQpmSQ3+D641UuSFPLpwZnbeFB5tVRPC/Pn0cx2WbMgmxsNkzQX8Va5bxRKJ1syZmEAEr5Xqn0fsHipUu3zZQENfqnSrz+oaYNW2nx1ABR3agrZeeoqLD6OkLEOSKalcvd4ga0hKJQsZy9wsm5EJbhHeTVq/rKDynyaiAYKgV8qSUtFEwtRU+SrxNTEIqQmtoEmFkpNvKDB9xl7YfW9gAtaueAGWiWLOXvBImMyddXhJRYCGP2jyjoX4qVyA5dq85tYBJdTDzYdSvgF3dVtFzQ35NTEBFQJL7nVL5UboKLJWAekRgu6qw/url5YbAUZz2DHM3+LelqYm5LRrdyg/gCeVy1BG5wiaPUKTrEIbsiqSLb1QqtkkcqttEpNxrmAVooAXiHhO5xiKzJH4CXwkga/bGeQV5UTXHBS99OvAeqsc0GSUk0hN/jtwpy3DrbdGfyTzV+52txGxo/geRUhNVL41YhUqfa9EhmzsO3O83nqquns+wA87PARPG8jbuA2uqvN5ofNzb47v8Ty6P6l0OEZSMSMrziYFlDVMe+4Hqd2VJibjJvrtjvPXylCMnUc4HH03zLuC/a/v6X9B6Qji8t/+rMBAAAAAElFTkSuQmCC" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="ttl">سلسلة رتبة مقدار نتيجة حساب في مادة الرياضيات للسنة الأولى متوسط</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>التمرين الأول (3 ن): تطبيق مباشر: اختيار رتبة المقدار</h4>دون إجراء الحساب الدقيق، اختر رتبة مقدار كل نتيجة من بين الأعداد المقترحة مع التعليل.<p>1) <span class="math">49,8 + 31,2</span> : <span class="math">1</span>) <span class="math">80</span> ؛ <span class="math">2</span>) <span class="math">800</span> ؛ <span class="math">3</span>) <span class="math">8</span>.</p><p>2) <span class="math">398,5 − 102,3</span> : <span class="math">1</span>) <span class="math">3000</span> ؛ <span class="math">2</span>) <span class="math">30</span> ؛ <span class="math">3</span>) <span class="math">300</span>.</p><p>3) <span class="math">19,7 × 5,1</span> : <span class="math">1</span>) <span class="math">10</span> ؛ <span class="math">2</span>) <span class="math">100</span> ؛ <span class="math">3</span>) <span class="math">1000</span>.</p></div><div class="ex"><h4>التمرين الثاني (3 ن): تطبيق مباشر: حساب رتبة مقدار</h4><p>1) بتدوير كل عدد إلى أقرب عشرة، أعط رتبة مقدار المجموع <span class="math">58,3 + 21,9</span>.</p><p>2) بتدوير كل عدد إلى الوحدة، أعط رتبة مقدار الجداء <span class="math">4,9 × 6,1</span>.</p></div><div class="ex"><h4>التمرين الثالث (4 ن): ربط: وضع الفاصلة في نتيجة الآلة</h4>حسب أيمن الجداء <span class="math">3,9 × 21,4</span> بآلة حاسبة معطّلة الفاصلة، فظهرت الأرقام <span class="math">8346</span> دون فاصلة.<p>1) بتدوير <span class="math">3,9</span> إلى الوحدة و<span class="math">21,4</span> إلى أقرب عشرة، أعط رتبة مقدار الجداء.</p><p>2) ضع الفاصلة في الأرقام <span class="math">8346</span> لتحصل على النتيجة الصحيحة.</p></div><div class="ex"><h4>التمرين الرابع (4 ن): ربط: هل نتيجة الآلة معقولة؟</h4>أراد عماد حساب المجموع <span class="math">312,5 + 189,7</span> بالآلة الحاسبة، فظهر على الشاشة <span class="math">2209,5</span>.<p>1) بتدوير كل عدد إلى أقرب مائة، أعط رتبة مقدار المجموع.</p><p>2) هل النتيجة <span class="math">2209,5</span> معقولة مع التعليل؟</p><p>3) احسب النتيجة الصحيحة <span class="math">312,5 + 189,7</span>.</p></div><div class="ex"><h4>الوضعية الإدماجية (6 ن): التسوّق من سوق بوشقوف</h4><p class="bem-intro">ذهبت أم سارة إلى سوق بوشقوف لتشتري خضرا من إنتاج فلاحي ولاية قالمة، فتشجيع الإنتاج المحلي يدعم فلاحي منطقتنا.</p><div class="bem-data"><p>– معها ورقة نقدية من فئة <span class="math">1000 DA</span>.</p><p>– اشترت <span class="math">2,9 kg</span> من الطماطم بسعر <span class="math">70 DA</span> للكيلوغرام.</p><p>– واشترت <span class="math">4,1 kg</span> من البطاطا بسعر <span class="math">60 DA</span> للكيلوغرام.</p><p>– واشترت <span class="math">1,8 kg</span> من الفلفل بسعر <span class="math">150 DA</span> للكيلوغرام.</p></div><p>1) بتدوير كل كتلة إلى الوحدة، أعط رتبة مقدار المبلغ الكلي (بـ DA).</p><p>2) هل يكفيها المبلغ <span class="math">1000 DA</span> مع التعليل؟</p><p>3) احسب المبلغ الكلي بالضبط (بـ DA).</p><p>4) كم يبقى معها (بـ DA)؟</p></div></div><div class="foot">بالتوفيق</div></div></div><script>(function(){function fit(){var pp=document.getElementById('paper');if(!pp)return;var c=pp.querySelector('.copy');var n=+(c&&c.getAttribute('data-pages'));if(!n)return;
+var st=pp.getAttribute('style');pp.setAttribute('style','display:block;position:absolute;visibility:hidden;top:0;right:0;width:192mm');c.style.zoom=1;
+var mm=document.createElement('div');mm.style.height=(n*279-6)+'mm';pp.appendChild(mm);var lim=mm.getBoundingClientRect().height;pp.removeChild(mm);
+var lo=0.45,hi=1.3,k;c.style.zoom=hi;if(c.getBoundingClientRect().height<=lim)lo=hi;else for(k=0;k<10;k++){var m=(lo+hi)/2;c.style.zoom=m;if(c.getBoundingClientRect().height<=lim)lo=m;else hi=m}
+c.style.zoom=lo;if(st===null)pp.removeAttribute('style');else pp.setAttribute('style',st)}
+window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="ttl">الحل النموذجي وسلم التنقيط — سلسلة رتبة مقدار نتيجة حساب — السنة الأولى متوسط</div><div class="sxs"><div class="sx"><h4>التمرين الأول (3 ن): تطبيق مباشر: اختيار رتبة المقدار</h4><div class="sq"><p><b>1) <span class="math">49,8 + 31,2</span> : <span class="math">1</span>) <span class="math">80</span> ؛ <span class="math">2</span>) <span class="math">800</span> ؛ <span class="math">3</span>) <span class="math">8</span>.</b></p><p><b>الطريقة:</b> نحسب رتبة مقدار النتيجة بتدوير الأعداد، ثم نختار من الاقتراحات العدد الأقرب منها.</p><p><span class="math">49,8 ≈ 50</span> و<span class="math">31,2 ≈ 30</span></p><p><span class="math">50 + 30 = 80</span></p><p>النتيجة: الجواب <span class="math">1</span> (<span class="math">80</span>)</p><p><b>الاستنتاج:</b> رتبة مقدار <span class="math">49,8 + 31,2</span> هي <span class="math">80</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>التدوير والحساب الذهني</td><td>0,5</td></tr><tr><td>الاختيار الصحيح</td><td>0,5</td></tr></table></div><div class="sq"><p><b>2) <span class="math">398,5 − 102,3</span> : <span class="math">1</span>) <span class="math">3000</span> ؛ <span class="math">2</span>) <span class="math">30</span> ؛ <span class="math">3</span>) <span class="math">300</span>.</b></p><p><b>الطريقة:</b> نحسب رتبة مقدار النتيجة بتدوير الأعداد، ثم نختار من الاقتراحات العدد الأقرب منها.</p><p><span class="math">398,5 ≈ 400</span> و<span class="math">102,3 ≈ 100</span></p><p><span class="math">400 − 100 = 300</span></p><p>النتيجة: الجواب <span class="math">3</span> (<span class="math">300</span>)</p><p><b>الاستنتاج:</b> رتبة مقدار <span class="math">398,5 − 102,3</span> هي <span class="math">300</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>التدوير والحساب الذهني</td><td>0,5</td></tr><tr><td>الاختيار الصحيح</td><td>0,5</td></tr></table></div><div class="sq"><p><b>3) <span class="math">19,7 × 5,1</span> : <span class="math">1</span>) <span class="math">10</span> ؛ <span class="math">2</span>) <span class="math">100</span> ؛ <span class="math">3</span>) <span class="math">1000</span>.</b></p><p><b>الطريقة:</b> نحسب رتبة مقدار النتيجة بتدوير الأعداد، ثم نختار من الاقتراحات العدد الأقرب منها.</p><p><span class="math">19,7 ≈ 20</span> و<span class="math">5,1 ≈ 5</span></p><p><span class="math">20 × 5 = 100</span></p><p>النتيجة: الجواب <span class="math">2</span> (<span class="math">100</span>)</p><p><b>الاستنتاج:</b> رتبة مقدار <span class="math">19,7 × 5,1</span> هي <span class="math">100</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>التدوير والحساب الذهني</td><td>0,5</td></tr><tr><td>الاختيار الصحيح</td><td>0,5</td></tr></table></div></div><div class="sx"><h4>التمرين الثاني (3 ن): تطبيق مباشر: حساب رتبة مقدار</h4><div class="sq"><p><b>1) بتدوير كل عدد إلى أقرب عشرة، أعط رتبة مقدار المجموع <span class="math">58,3 + 21,9</span>.</b></p><p><b>الطريقة:</b> رتبة مقدار نتيجة حساب: نعوّض كل عدد بعدد قريب منه سهل الحساب (بالتدوير)، ثم نجري العملية ذهنيا.</p><p><span class="math">58,3 ≈ 60</span></p><p><span class="math">21,9 ≈ 20</span></p><p><span class="math">60 + 20 = 80</span></p><p>النتيجة: <span class="math">80</span></p><p><b>الاستنتاج:</b> رتبة مقدار <span class="math">58,3 + 21,9</span> هي <span class="math">80</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>تدوير العددين</td><td>0,75</td></tr><tr><td>رتبة المقدار</td><td>0,75</td></tr></table></div><div class="sq"><p><b>2) بتدوير كل عدد إلى الوحدة، أعط رتبة مقدار الجداء <span class="math">4,9 × 6,1</span>.</b></p><p><b>الطريقة:</b> رتبة مقدار نتيجة حساب: نعوّض كل عدد بعدد قريب منه سهل الحساب (بالتدوير)، ثم نجري العملية ذهنيا.</p><p><span class="math">4,9 ≈ 5</span></p><p><span class="math">6,1 ≈ 6</span></p><p><span class="math">5 × 6 = 30</span></p><p>النتيجة: <span class="math">30</span></p><p><b>الاستنتاج:</b> رتبة مقدار <span class="math">4,9 × 6,1</span> هي <span class="math">30</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>تدوير العددين</td><td>0,75</td></tr><tr><td>رتبة المقدار</td><td>0,75</td></tr></table></div></div><div class="sx"><h4>التمرين الثالث (4 ن): ربط: وضع الفاصلة في نتيجة الآلة</h4><div class="sq"><p><b>1) بتدوير <span class="math">3,9</span> إلى الوحدة و<span class="math">21,4</span> إلى أقرب عشرة، أعط رتبة مقدار الجداء.</b></p><p><b>الطريقة:</b> رتبة مقدار نتيجة حساب: نعوّض كل عدد بعدد قريب منه سهل الحساب (بالتدوير)، ثم نجري العملية ذهنيا.</p><p><span class="math">3,9 ≈ 4</span></p><p><span class="math">21,4 ≈ 20</span></p><p><span class="math">4 × 20 = 80</span></p><p>النتيجة: <span class="math">80</span></p><p><b>الاستنتاج:</b> رتبة مقدار الجداء هي <span class="math">80</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>التدوير</td><td>1</td></tr><tr><td>رتبة المقدار</td><td>1</td></tr></table></div><div class="sq"><p><b>2) ضع الفاصلة في الأرقام <span class="math">8346</span> لتحصل على النتيجة الصحيحة.</b></p><p><b>الطريقة:</b> نختار وضع الفاصلة الذي يعطي عددا قريبا من رتبة المقدار <span class="math">80</span>.</p><p><span class="math">8,346</span> بعيد عن <span class="math">80</span></p><p><span class="math">834,6</span> بعيد عن <span class="math">80</span></p><p><span class="math">83,46</span> قريب من <span class="math">80</span></p><p>تحقق: في <span class="math">3,9</span> رقم واحد بعد الفاصلة وفي <span class="math">21,4</span> رقم واحد، فللجداء رقمان بعد الفاصلة</p><p>النتيجة: <span class="math">3,9 × 21,4 = 83,46</span></p><p><b>الاستنتاج:</b> <span class="math">3,9 × 21,4 = 83,46</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>المقارنة برتبة المقدار</td><td>1</td></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الرابع (4 ن): ربط: هل نتيجة الآلة معقولة؟</h4><div class="sq"><p><b>1) بتدوير كل عدد إلى أقرب مائة، أعط رتبة مقدار المجموع.</b></p><p><b>الطريقة:</b> رتبة مقدار نتيجة حساب: نعوّض كل عدد بعدد قريب منه سهل الحساب (بالتدوير)، ثم نجري العملية ذهنيا.</p><p><span class="math">312,5 ≈ 300</span></p><p><span class="math">189,7 ≈ 200</span></p><p><span class="math">300 + 200 = 500</span></p><p>النتيجة: <span class="math">500</span></p><p><b>الاستنتاج:</b> رتبة مقدار المجموع هي <span class="math">500</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>التدوير</td><td>1</td></tr><tr><td>رتبة المقدار</td><td>1</td></tr></table></div><div class="sq"><p><b>2) هل النتيجة <span class="math">2209,5</span> معقولة مع التعليل؟</b></p><p><b>الطريقة:</b> نقارن النتيجة برتبة مقدارها: إذا كانت بعيدة جدا عنها فالنتيجة غير معقولة.</p><p>رتبة المقدار <span class="math">500</span></p><p><span class="math">2209,5</span> أكبر بكثير من <span class="math">500</span></p><p>النتيجة: لا (<span class="math">2</span>)</p><p><b>الاستنتاج:</b> النتيجة <span class="math">2209,5</span> غير معقولة لأنها بعيدة جدا عن <span class="math">500</span> (أُدخل <span class="math">1897</span> بدل <span class="math">189,7</span>).</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>المقارنة والتعليل</td><td>1</td></tr></table></div><div class="sq"><p><b>3) احسب النتيجة الصحيحة <span class="math">312,5 + 189,7</span>.</b></p><p><b>الطريقة:</b> الجمع العمودي للأعداد العشرية: الفاصلة تحت الفاصلة، ثم التحقق برتبة المقدار.</p><p><div class="vop"><div>  312,5</div><div>+ 189,7</div><div class="ln">  502,2</div></div></p><p>تحقق: <span class="math">502,2</span> قريب من <span class="math">500</span></p><p>النتيجة: <span class="math">502,2</span></p><p><b>الاستنتاج:</b> <span class="math">312,5 + 189,7 = 502,2</span> وهي نتيجة معقولة.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الجمع العمودي</td><td>1</td></tr></table></div></div><div class="sx"><h4>الوضعية الإدماجية (6 ن): التسوّق من سوق بوشقوف</h4><div class="sq"><p><b>1) بتدوير كل كتلة إلى الوحدة، أعط رتبة مقدار المبلغ الكلي (بـ DA).</b></p><p><b>الطريقة:</b> رتبة مقدار نتيجة حساب: نعوّض كل عدد بعدد قريب منه سهل الحساب (بالتدوير)، ثم نجري العملية ذهنيا.</p><p><span class="math">2,9 ≈ 3</span> ؛ <span class="math">4,1 ≈ 4</span> ؛ <span class="math">1,8 ≈ 2</span></p><p><span class="math">3 × 70 = 210</span></p><p><span class="math">4 × 60 = 240</span></p><p><span class="math">2 × 150 = 300</span></p><p><span class="math">210 + 240 + 300 = 750</span></p><p>النتيجة: <span class="math">750 DA</span></p><p><b>الاستنتاج:</b> رتبة مقدار المبلغ الكلي <span class="math">750 DA</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: تدوير الكتل</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: رتبة المقدار</td><td>1</td></tr></table></div><div class="sq"><p><b>2) هل يكفيها المبلغ <span class="math">1000 DA</span> مع التعليل؟</b></p><p><b>الطريقة:</b> نقارن النتيجة برتبة مقدارها: إذا كانت بعيدة جدا عنها فالنتيجة غير معقولة؛ ونستعملها أيضا للحكم قبل الحساب الدقيق.</p><p>رتبة المقدار <span class="math">750 DA</span></p><p><span class="math">750 &lt; 1000</span> والفارق كبير (<span class="math">250 DA</span>)</p><p>النتيجة: نعم (<span class="math">1</span>)</p><p><b>الاستنتاج:</b> المبلغ <span class="math">1000 DA</span> يكفيها.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: اختيار الأداة الرياضية المناسبة</td><td>0,25</td></tr><tr><td>م2 الاستعمال السليم: المقارنة والتعليل</td><td>0,75</td></tr></table></div><div class="sq"><p><b>3) احسب المبلغ الكلي بالضبط (بـ DA).</b></p><p><b>الطريقة:</b> ثمن كل نوع = الكتلة × سعر الكيلوغرام، ثم نجمع الأثمان ونتحقق برتبة المقدار.</p><p><div class="vop"><div>  2,9</div><div> × 70</div><div class="ln">  203</div></div></p><p><div class="vop"><div>  4,1</div><div> × 60</div><div class="ln">  246</div></div></p><p><div class="vop"><div>   1,8</div><div> × 150</div><div class="ln">   90 </div><div>  18  </div><div class="ln">   270</div></div></p><p><div class="vop"><div>  203</div><div>+ 246</div><div class="ln">  449</div></div></p><p><div class="vop"><div>  449</div><div>+ 270</div><div class="ln">  719</div></div></p><p>تحقق: <span class="math">719</span> قريب من <span class="math">750</span></p><p>النتيجة: <span class="math">719 DA</span></p><p><b>الاستنتاج:</b> المبلغ الكلي <span class="math">719 DA</span> وهو قريب من رتبة مقداره <span class="math">750 DA</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: أثمان الأنواع الثلاثة</td><td>1,5</td></tr><tr><td>م2 الاستعمال السليم: المجموع</td><td>0,5</td></tr></table></div><div class="sq"><p><b>4) كم يبقى معها (بـ DA)؟</b></p><p><b>الطريقة:</b> الباقي = المبلغ الذي معها − المبلغ المدفوع (طرح عمودي).</p><p><div class="vop"><div>  1000</div><div>−  719</div><div class="ln">   281</div></div></p><p>النتيجة: <span class="math">281 DA</span></p><p><b>الاستنتاج:</b> يبقى معها <span class="math">281 DA</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: اختيار الأداة الرياضية المناسبة</td><td>0,25</td></tr><tr><td>م2 الاستعمال السليم: الطرح</td><td>0,75</td></tr></table></div></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
+function tick(){var b=document.querySelector('.sol-btn'),w=document.querySelector('.sol-wait');if(!b)return;var r=t+D-Date.now();
+if(r<=0){b.style.display='inline-block';if(w)w.style.display='none';return}if(w)w.textContent='📄 النسخة الورقية للحل تظهر بعد '+Math.ceil(r/60000)+' دقيقة';setTimeout(tick,20000)}
+window.printSol=function(){document.body.classList.add('psol');window.print()};window.addEventListener('afterprint',function(){document.body.classList.remove('psol')});
+window.addEventListener('load',tick)})();</script><!--/paper-->
+</body>
+</html>
