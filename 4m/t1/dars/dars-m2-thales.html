@@ -65,8 +65,12 @@ main{max-width:640px;margin:0 auto;padding:4px 12px}
 .btn.light{background:#fff;color:var(--c1);border:3px solid var(--c1);box-shadow:0 5px 0 #93c5fd}
 .btn:disabled{opacity:.45;cursor:default;transform:none}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center;margin-top:10px}
-.tog{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.tog .btn{font-size:1rem;min-height:46px}
+.tog{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.tog .btn{font-size:.95rem;min-height:46px;padding:6px 4px}
+table.vt{border-collapse:collapse;margin:6px auto;direction:ltr;font-weight:900;font-size:1.1rem}
+table.vt td{border:2px solid #0369a1;padding:3px 14px;text-align:center;background:#fff}
+table.vt tr:first-child td{background:#e0f2fe}
+.bk{font-size:.85rem;color:#64748b;text-align:center}
 /* game 1 */
 .bank{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;direction:ltr;margin:10px 0}
 .tile{min-width:62px;min-height:50px;padding:6px 12px;border-radius:12px;border:3px solid #0284c7;background:#fff;color:#0369a1;font-weight:900;font-size:1.15rem;box-shadow:0 5px 0 #0284c7}
@@ -154,9 +158,9 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:16px}
 
 <section class="card" id="s0">
   <div class="ct">📖 تذكير في دقيقة</div>
-  <div class="tog"><button class="btn" id="t1">🔺 المثلث</button><button class="btn light" id="t2">🦋 الفراشة</button></div>
+  <div class="tog"><button class="btn" id="t1">🔺 المثلث</button><button class="btn light" id="t2">🦋 الفراشة</button><button class="btn light" id="t3">↩️ العكسية</button></div>
   <div id="recap"></div>
-  <div class="key">في كل نسبة: <b>البسط</b> ضلع من المثلث الصغير، و<b>المقام</b> الضلع المقابل له في المثلث الكبير.<br>نقرأ النسب ونكتبها <b>من اليسار إلى اليمين</b>.</div>
+  <div class="key">نكتب النسب ونقرؤها <b>من اليسار إلى اليمين</b>.</div>
   <div class="row"><a class="btn orange wide" href="#s1" style="text-decoration:none">ابدأ اللعب 🎮</a></div>
 </section>
 
@@ -186,7 +190,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:16px}
 </section>
 </main>
 <div id="toast"></div>
-<footer>متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي<br>المرجع: منهاج السنة الرابعة متوسط والكتاب المدرسي (خاصية طالس وعكسها).</footer>
+<footer>متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي<br>المرجع: منهاج السنة الرابعة متوسط والكتاب المدرسي، الباب 9 «خاصية طالس» ص 104 إلى 109.</footer>
 
 <script>
 "use strict";
@@ -194,8 +198,9 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const F = (a, b) => `<span class="fr"><span>${a}</span><span>${b}</span></span>`;
 /* EQ: a whole formula, always displayed left to right */
-const EQ = (...p) => `<span class="eq">${p.join('')}</span>`;
-const EQB = (...p) => `<span class="eq blk">${p.join('')}</span>`;
+const EQP = p => p.map(x => x.startsWith('<') ? x : `<span>${x}</span>`).join('');
+const EQ = (...p) => `<span class="eq">${EQP(p)}</span>`;
+const EQB = (...p) => `<span class="eq blk">${EQP(p)}</span>`;
 const M = t => `<span class="m">${t}</span>`;
 const fmt = x => String(Math.round(x * 1000) / 1000).replace('.', ',');
 const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
@@ -254,20 +259,32 @@ function figBut(L = { A: 'A', M: 'M', N: 'N', B: 'B', C: 'C' }) {
 }
 
 /* ---------- recap ---------- */
+const VT = (t, b) => `<table class="vt"><tr>${t.map(x => `<td>${x}</td>`).join('')}</tr><tr>${b.map(x => `<td>${x}</td>`).join('')}</tr></table>`;
 function recap(k) {
-  $('#t1').className = 'btn' + (k === 1 ? '' : ' light'); $('#t2').className = 'btn' + (k === 2 ? '' : ' light');
-  const txt = k === 1
-    ? `${M('ABC')} مثلث، ${M('M ∈ [AB]')} و ${M('N ∈ [AC]')}، والمستقيمان ${M('(MN)')} و ${M('(BC)')} متوازيان.`
-    : `المستقيمان ${M('(BM)')} و ${M('(CN)')} يتقاطعان في ${M('A')}، والمستقيمان ${M('(MN)')} و ${M('(BC)')} متوازيان.`;
-  $('#recap').innerHTML = `<div class="fig">${k === 1 ? figTri() : figBut()}</div><div>${txt}</div><div>حسب <b>خاصية طالس</b>:</div>${EQB(F('AM', 'AB'), '=', F('AN', 'AC'), '=', F('MN', 'BC'))}`;
+  ['#t1', '#t2', '#t3'].forEach((id, i) => $(id).className = 'btn' + (k === i + 1 ? '' : ' light'));
+  if (k < 3) {
+    $('#recap').innerHTML = `<div class="fig">${k === 1 ? figTri() : figBut()}</div>
+    <div><b>خاصية طالس:</b> ${M('(BM)')} و ${M('(CN)')} مستقيمان متقاطعان في النقطة ${M('A')}. إذا كان ${M('(MN)')} و ${M('(BC)')} متوازيين فإنّ:</div>${EQB(F('AM', 'AB'), '=', F('AN', 'AC'), '=', F('MN', 'BC'))}
+    <div>لكتابة النسب نرتّب رؤوس المثلثين ${M('AMN')} و ${M('ABC')}، ثم نقرأ عمودا عمودا:</div>${VT(['A', 'M', 'N'], ['A', 'B', 'C'])}
+    <div>📝 <b>ملاحظة:</b> يكفي عدم تساوي نسبتين من هذه النسب للقول إنّ ${M('(MN)')} و ${M('(BC)')} غير متوازيين.</div>
+    <div class="bk">الكتاب المدرسي ص 106</div>`;
+  } else {
+    $('#recap').innerHTML = `<div class="fig">${figTri()}</div>
+    <div><b>الخاصية العكسية لخاصية طالس:</b> ${M('(d)')} و ${M("(d')")} مستقيمان متقاطعان في ${M('A')}، ${M('M')} و ${M('B')} نقطتان من ${M('(d)')}، و ${M('N')} و ${M('C')} نقطتان من ${M("(d')")} تختلف عن ${M('A')}.</div>
+    <div>إذا كان ${EQ(F('AM', 'AB'), '=', F('AN', 'AC'))} وكانت النقط ${M('A, M, B')} والنقط ${M('A, N, C')} <b>مرتّبة بنفس الترتيب</b> فإنّ ${M('(MN)')} و ${M('(BC)')} متوازيان.</div>
+    <div>⚖️ <b>لمقارنة نسبتين</b> نحسب القيمة العشرية لكل نسبة، أو نستعمل الجداء المتصالب:</div>
+    <div>مثال: ${EQ(F('3', '5'), '=', '0,6')} و ${EQ(F('4,2', '7'), '=', '0,6')}</div><div>أو: ${EQ('3 × 7', '=', '21')} و ${EQ('5 × 4,2', '=', '21')}، إذن ${EQ(F('3', '5'), '=', F('4,2', '7'))}</div>
+    <div class="bk">الكتاب المدرسي ص 108 و 109</div>`;
+  }
 }
-$('#t1').addEventListener('click', () => recap(1)); $('#t2').addEventListener('click', () => recap(2)); recap(1);
+$('#t1').addEventListener('click', () => recap(1)); $('#t2').addEventListener('click', () => recap(2)); $('#t3').addEventListener('click', () => recap(3)); recap(1);
 
 /* ================= GAME 1: build the Thales ratios (tap a card, then a box) ================= */
 const G1 = [
-  { id: 'g1a', fig: () => figTri(), txt: `في الشكل: ${M('M ∈ [AB]')} و ${M('N ∈ [AC]')}، و ${M('(MN)')} يوازي ${M('(BC)')}.`, pairs: [['AM', 'AB'], ['AN', 'AC'], ['MN', 'BC']] },
-  { id: 'g1b', fig: () => figBut({ A: 'O', M: 'G', N: 'H', B: 'E', C: 'F' }), txt: `المستقيمان ${M('(EG)')} و ${M('(FH)')} يتقاطعان في ${M('O')}، و ${M('(GH)')} يوازي ${M('(EF)')}.`, pairs: [['OG', 'OE'], ['OH', 'OF'], ['GH', 'EF']] }
+  { id: 'g1a', fig: () => figTri(), txt: `في الشكل: ${M('M ∈ [AB]')} و ${M('N ∈ [AC]')}، و ${M('(MN)')} يوازي ${M('(BC)')}.`, pairs: [['AM', 'AB'], ['AN', 'AC'], ['MN', 'BC']], hyp: `${M('(BM)')} و ${M('(CN)')} متقاطعان في ${M('A')}، و ${M('(MN) // (BC)')}، إذن حسب خاصية طالس نرتّب رؤوس المثلثين ${M('AMN')} و ${M('ABC')}:` },
+  { id: 'g1b', fig: () => figBut({ A: 'O', M: 'G', N: 'H', B: 'E', C: 'F' }), txt: `المستقيمان ${M('(EG)')} و ${M('(FH)')} يتقاطعان في ${M('O')}، و ${M('(GH)')} يوازي ${M('(EF)')}.`, pairs: [['OG', 'OE'], ['OH', 'OF'], ['GH', 'EF']], hyp: `${M('(EG)')} و ${M('(FH)')} متقاطعان في ${M('O')}، و ${M('(GH) // (EF)')}، إذن حسب خاصية طالس نرتّب رؤوس المثلثين ${M('OGH')} و ${M('OEF')}:` }
 ];
+const vt = R => VT([R.pairs[0][0][0], R.pairs[0][0][1], R.pairs[1][0][1]], [R.pairs[0][1][0], R.pairs[0][1][1], R.pairs[1][1][1]]);
 function game1(idx = 0) {
   const R = G1[idx], host = $('#g1'), st = S.r[R.id];
   let tries = 0, sel = null; const z = Array(6).fill(null);
@@ -288,8 +305,8 @@ function game1(idx = 0) {
   }));
   const fin = ok => {
     record(R.id, ok, tries, 2); $('#g1chk').disabled = true; zones.forEach(b => b.disabled = true); tbtn.forEach(b => b.disabled = true);
-    $('#g1sol').innerHTML = solHTML('خاصية طالس: نقابل كل ضلع من المثلث الصغير بالضلع الموافق له من المثلث الكبير.',
-      [`المثلث الصغير ${M(R.pairs.map(p => p[0]).join(' ، '))} والمثلث الكبير ${M(R.pairs.map(p => p[1]).join(' ، '))}.`],
+    $('#g1sol').innerHTML = solHTML('خاصية طالس: نرتّب رؤوس المثلثين ثم نكتب النسب عمودا عمودا (الكتاب ص 106).',
+      [R.hyp, vt(R)],
       EQ(F(R.pairs[0][0], R.pairs[0][1]), '=', F(R.pairs[1][0], R.pairs[1][1]), '=', F(R.pairs[2][0], R.pairs[2][1])));
     $('#g1nx').innerHTML = idx < G1.length - 1 ? `<button class="btn green wide" id="g1go">الجولة التالية ←</button>` : `<a class="btn green wide" href="#s2" style="text-decoration:none">إلى اللعبة 2 🔐</a>`;
     const g = $('#g1go'); if (g) g.addEventListener('click', () => game1(idx + 1));
@@ -304,8 +321,8 @@ function game1(idx = 0) {
     $$('.frz', host).forEach((f, i) => f.classList.add(good[i] ? 'good' : 'badz'));
     if (ok) { tries++; sOk(); burst($('.build', host)); fb.innerHTML = `<span class="g">✅ ${pick('ok')} ${'⭐'.repeat(Math.max(1, 4 - tries))}</span>`; toast('🧩 +2 ن'); fin(true); return; }
     tries++; sBad(); shake($('.build', host));
-    if (tries === 1) fb.innerHTML = `<span class="w">${pick('w1')}</span><span class="h">💡 الكسور الخضراء صحيحة. في كل كسر: البسط ضلع من المثلث الصغير، والمقام الضلع المقابل له في المثلث الكبير.</span>`;
-    else if (tries === 2) fb.innerHTML = `<span class="w">${pick('w2')}</span><span class="h">💡 ابدأ بالكسر ${EQ(F(R.pairs[0][0], R.pairs[0][1]))}: الضلعان على نفس المستقيم ولهما نفس البداية ${M(R.pairs[0][0][0])}.</span>`;
+    if (tries === 1) fb.innerHTML = `<span class="w">${pick('w1')}</span><span class="h">💡 الكسور الخضراء صحيحة. رتّب رؤوس المثلثين: البسط من المثلث ${M(R.pairs[0][0][0] + R.pairs[0][0][1] + R.pairs[1][0][1])} والمقام من المثلث ${M(R.pairs[0][1][0] + R.pairs[0][1][1] + R.pairs[1][1][1])}.</span>`;
+    else if (tries === 2) fb.innerHTML = `<span class="w">${pick('w2')}</span><span class="h">💡 اقرأ هذا الجدول عمودا عمودا: ${vt(R)}</span>`;
     else { fb.innerHTML = `<span class="w">🌱 ${pick('fail')}</span>`; toast('🌱 ' + pick('fail'), 1); fin(false); }
   });
   paint();
@@ -326,7 +343,7 @@ const G2 = [
     st: [EQ('2 × x', '=', '4 × 7'), EQ('x', '=', F('4 × 7', '2'), '=', F('28', '2'), '=', '14')], c: EQ('x = 14') },
   { id: 'g2c', where: 'خزنة وادي سيبوس 🌊', eq: () => `<div class="fig" style="background:#fff">${figTri()}</div><div style="color:#fff">${M('(MN)')} يوازي ${M('(BC)')}، ${M('AM = 4')} ، ${M('AB = 10')} ، ${M('BC = 15')}. الشيفرة هي ${M('MN')}.</div>`, a: 6,
     h1: 'اختر من نسب طالس النسبتين اللتين فيهما MN والأطوال المعطاة.', h2: EQ(F('AM', 'AB'), '=', F('MN', 'BC'), ' أي ', F('4', '10'), '=', F('MN', '15')),
-    st: [`${M('M ∈ [AB]')} و ${M('N ∈ [AC]')} و ${M('(MN)')} يوازي ${M('(BC)')}، حسب خاصية طالس:`, EQ(F('AM', 'AB'), '=', F('AN', 'AC'), '=', F('MN', 'BC')), EQ(F('4', '10'), '=', F('MN', '15')), EQ('MN', '=', F('4 × 15', '10'), '=', F('60', '10'), '=', '6')], c: EQ('MN = 6') }
+    st: [`${M('(BM)')} و ${M('(CN)')} متقاطعان في ${M('A')}، و ${M('(MN) // (BC)')}، إذن المثلثان ${M('AMN')} و ${M('ABC')} في وضعية طالس، وبالتالي:`, EQ(F('AM', 'AB'), '=', F('AN', 'AC'), '=', F('MN', 'BC')), `نحتفظ بالمساواة المناسبة: ${EQ(F('AM', 'AB'), '=', F('MN', 'BC'))} أي ${EQ(F('4', '10'), '=', F('MN', '15'))}`, EQ('MN', '=', F('4 × 15', '10'), '=', F('60', '10'), '=', '6')], c: EQ('MN = 6') }
 ];
 function game2(idx = 0) {
   const R = G2[idx], host = $('#g2'), st = S.r[R.id];
@@ -341,7 +358,7 @@ function game2(idx = 0) {
   $$('.pad [data-k]', host).forEach(b => b.addEventListener('click', () => { if (over) return; const k = b.dataset.k; if (k === 'C') v = ''; else if (v.length < 6 && !(k === ',' && v.includes(','))) v += k; sClick(); scr.classList.remove('err'); show(); }));
   const fin = ok => {
     over = true; record(R.id, ok, tries, 2); $('#open').disabled = true;
-    $('#g2sol').innerHTML = solHTML(idx < 2 ? 'الجداء المتصالب في تساوي نسبتين.' : 'خاصية طالس ثم الجداء المتصالب.', R.st, R.c);
+    $('#g2sol').innerHTML = solHTML(idx < 2 ? 'الجداء المتصالب في تساوي نسبتين.' : 'خاصية طالس، نحتفظ بالمساواة المناسبة ثم الجداء المتصالب (الكتاب ص 107).', R.st, R.c);
     nxt();
   };
   const nxt = () => { $('#g2nx').innerHTML = idx < G2.length - 1 ? `<button class="btn green wide" id="g2go">الخزنة التالية ←</button>` : `<a class="btn green wide" href="#s3" style="text-decoration:none">إلى اللعبة 3 ⚖️</a>`; const g = $('#g2go'); if (g) g.addEventListener('click', () => game2(idx + 1)); };
@@ -362,10 +379,10 @@ function game2(idx = 0) {
 
 /* ================= GAME 3: parallel or not? ================= */
 const G3 = [
-  { id: 'g3a', d: { AM: '3', AB: '5', AN: '4,2', AC: '7' }, p: [3 * 7, 5 * 4.2], ok: true, x: ['3 × 7 = 21', '5 × 4,2 = 21'] },
-  { id: 'g3b', d: { AM: '2', AB: '6', AN: '3', AC: '8' }, p: [2 * 8, 6 * 3], ok: false, x: ['2 × 8 = 16', '6 × 3 = 18'] },
-  { id: 'g3c', d: { AM: '4', AB: '10', AN: '6', AC: '15' }, p: [4 * 15, 10 * 6], ok: true, x: ['4 × 15 = 60', '10 × 6 = 60'] },
-  { id: 'g3d', d: { AM: '5', AB: '8', AN: '6', AC: '10' }, p: [5 * 10, 8 * 6], ok: false, x: ['5 × 10 = 50', '8 × 6 = 48'] }
+  { id: 'g3a', d: { AM: '3', AB: '5', AN: '4,2', AC: '7' }, ok: true, v: ['0,6', '0,6'], x: ['3 × 7 = 21', '5 × 4,2 = 21'] },
+  { id: 'g3b', d: { AM: '2', AB: '5', AN: '3', AC: '8' }, ok: false, v: ['0,4', '0,375'], x: ['2 × 8 = 16', '5 × 3 = 15'] },
+  { id: 'g3c', d: { AM: '4', AB: '10', AN: '6', AC: '15' }, ok: true, v: ['0,4', '0,4'], x: ['4 × 15 = 60', '10 × 6 = 60'] },
+  { id: 'g3d', d: { AM: '5', AB: '8', AN: '6', AC: '10' }, ok: false, v: ['0,625', '0,6'], x: ['5 × 10 = 50', '8 × 6 = 48'] }
 ];
 function game3(idx = 0) {
   const R = G3[idx], host = $('#g3'), st = S.r[R.id];
@@ -373,15 +390,17 @@ function game3(idx = 0) {
    <div class="muted">النقط ${M('A, M, B')} في استقامة، والنقط ${M('A, N, C')} في استقامة وبنفس الترتيب. هل ${M('(MN)')} و ${M('(BC)')} متوازيان؟ محاولة واحدة، فخذ وقتك. (${idx + 1} من 4)</div>
    <div class="fig">${figTri()}</div>
    <div class="data">${Object.entries(R.d).map(([k, v]) => `<div>${k} = ${v}</div>`).join('')}</div>
-   <div class="muted">💡 قارن ${EQ(F('AM', 'AB'))} و ${EQ(F('AN', 'AC'))} بالجداء المتصالب.</div>
+   <div class="muted">💡 قارن ${EQ(F('AM', 'AB'))} و ${EQ(F('AN', 'AC'))}: احسب القيمة العشرية لكل نسبة، أو استعمل الجداء المتصالب.</div>
    <div class="duo"><button class="btn green" data-a="1">✅ متوازيان</button><button class="btn red" data-a="0">❌ غير متوازيين</button></div>
    <div class="fb" id="g3fb"></div><div id="g3sol"></div><div class="row" id="g3nx"></div>`;
   const sol = () => {
     const d = R.d, eqs = R.ok;
-    $('#g3sol').innerHTML = solHTML(eqs ? 'الخاصية العكسية لطالس.' : 'خاصية طالس.',
-      [EQ(F('AM', 'AB'), '=', F(d.AM, d.AB), '&nbsp; و &nbsp;', F('AN', 'AC'), '=', F(d.AN, d.AC)), `الجداء المتصالب: ${EQ(R.x[0])} و ${EQ(R.x[1])}`,
-       eqs ? `الجداءان متساويان، إذن ${EQ(F('AM', 'AB'), '=', F('AN', 'AC'))}، والنقط في استقامة وبنفس الترتيب.` : `الجداءان مختلفان، إذن ${EQ(F('AM', 'AB'), '≠', F('AN', 'AC'))}. لو كان المستقيمان متوازيين لكانت النسبتان متساويتين حسب خاصية طالس.`],
-      eqs ? `حسب الخاصية العكسية لطالس: ${M('(MN)')} و ${M('(BC)')} متوازيان.` : `حسب خاصية طالس: ${M('(MN)')} و ${M('(BC)')} غير متوازيين.`);
+    $('#g3sol').innerHTML = solHTML(eqs ? 'الخاصية العكسية لخاصية طالس (الكتاب ص 108 و 109).' : 'خاصية طالس: يكفي عدم تساوي نسبتين (الكتاب ص 106 و 109).',
+      [`النقط ${M('A, M, B')} والنقط ${M('A, N, C')} في استقامة وبنفس الترتيب.`,
+       EQ(F('AM', 'AB'), '=', F(d.AM, d.AB), '=', R.v[0]), EQ(F('AN', 'AC'), '=', F(d.AN, d.AC), '=', R.v[1]),
+       `أو بالجداء المتصالب: ${EQ(R.x[0])} و ${EQ(R.x[1])}`,
+       eqs ? `إذن ${EQ(F('AM', 'AB'), '=', F('AN', 'AC'))}.` : `إذن ${EQ(F('AM', 'AB'), '≠', F('AN', 'AC'))}. لو كان ${M('(MN)')} و ${M('(BC)')} متوازيين لكان ${EQ(F('AM', 'AB'), '=', F('AN', 'AC'))} حسب خاصية طالس، لكنّ هذه المساواة خاطئة.`],
+      eqs ? `حسب الخاصية العكسية لخاصية طالس نستنتج أنّ ${M('(MN) // (BC)')}.` : `المستقيمان ${M('(MN)')} و ${M('(BC)')} غير متوازيين.`);
     $('#g3nx').innerHTML = idx < G3.length - 1 ? `<button class="btn green wide" id="g3go">التالي ←</button>` : `<a class="btn green wide" href="#s4" style="text-decoration:none">إلى التحدي الكبير 🌳</a>`;
     const g = $('#g3go'); if (g) g.addEventListener('click', () => game3(idx + 1));
   };
@@ -400,12 +419,12 @@ const CH = [
   { id: 'cha', unit: 'm', a: 9, q: `احسب ارتفاع الشجرة ${M('BC')}.`,
     h1: 'العصا والشجرة عموديتان على الأرض، فهما متوازيتان. اكتب نسب طالس في المثلثين AMN و ABC.', h2: EQ(F('AM', 'AB'), '=', F('MN', 'BC'), ' أي ', F('2', '12'), '=', F('1,5', 'BC')),
     m: 'العصا والشجرة عموديتان على نفس المستقيم (الأرض) فهما متوازيتان، ثم خاصية طالس.',
-    s: [`${M('M ∈ [AB]')} و ${M('N ∈ [AC]')} و ${M('(MN)')} يوازي ${M('(BC)')}، حسب خاصية طالس:`, EQ(F('AM', 'AB'), '=', F('AN', 'AC'), '=', F('MN', 'BC')), EQ(F('2', '12'), '=', F('1,5', 'BC')), EQ('BC', '=', F('12 × 1,5', '2'), '=', F('18', '2'), '=', '9')],
+    s: [`${M('(BM)')} و ${M('(CN)')} متقاطعان في ${M('A')}، و ${M('(MN) // (BC)')}، إذن المثلثان ${M('AMN')} و ${M('ABC')} في وضعية طالس، وبالتالي:`, EQ(F('AM', 'AB'), '=', F('AN', 'AC'), '=', F('MN', 'BC')), `نحتفظ بالمساواة المناسبة: ${EQ(F('AM', 'AB'), '=', F('MN', 'BC'))} أي ${EQ(F('2', '12'), '=', F('1,5', 'BC'))}`, EQ('BC', '=', F('12 × 1,5', '2'), '=', F('18', '2'), '=', '9')],
     c: `ارتفاع الشجرة ${M('BC = 9 m')}.`, sc: [['تبرير التوازي', .5], ['كتابة نسب طالس', 1], ['التعويض', .5], ['الحساب والنتيجة مع الوحدة', 1]] },
   { id: 'chb', unit: 'm', a: 15, q: `علما أن ${M('AN = 2,5 m')}، احسب طول الشعاع ${M('AC')} من رأس الشجرة إلى الأرض.`,
     h1: 'استعمل النسبتين اللتين فيهما AN و AC.', h2: EQ(F('AM', 'AB'), '=', F('AN', 'AC'), ' أي ', F('2', '12'), '=', F('2,5', 'AC')),
     m: 'خاصية طالس (النسبتان AM/AB و AN/AC).',
-    s: [EQ(F('AM', 'AB'), '=', F('AN', 'AC')), EQ(F('2', '12'), '=', F('2,5', 'AC')), EQ('AC', '=', F('12 × 2,5', '2'), '=', F('30', '2'), '=', '15')],
+    s: [`حسب خاصية طالس في المثلثين ${M('AMN')} و ${M('ABC')}، نحتفظ بالمساواة المناسبة:`, EQ(F('AM', 'AB'), '=', F('AN', 'AC')), EQ(F('2', '12'), '=', F('2,5', 'AC')), EQ('AC', '=', F('12 × 2,5', '2'), '=', F('30', '2'), '=', '15')],
     c: `${M('AC = 15 m')}.`, sc: [['كتابة النسبتين', 1], ['التعويض', 1], ['الحساب والنتيجة مع الوحدة', 1]] }
 ];
 function figTree() {
