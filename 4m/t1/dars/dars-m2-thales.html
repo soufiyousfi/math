@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ألعاب طالس: تحدٍّ وشهادة (الرابعة متوسط)</title>
-<meta name="description" content="درس قصير للسنة الرابعة متوسط: خاصية طالس في دقيقة، ثم 3 ألعاب (ركّب النسب، الخزنة السرية، متوازيان أم لا؟)، تحدٍّ كبير، وشهادة إنجاز باسمك.">
+<meta name="description" content="درس قصير للسنة الرابعة متوسط: خاصية طالس في دقيقة، ثم 8 ألعاب تغطي أفكار خاصية طالس في شهادة التعليم المتوسط، تحدٍّ كبير، وشهادة إنجاز باسمك.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="🎮 ألعاب طالس للرابعة متوسط: العب، افتح الخزنة واربح شهادتك!">
-<meta property="og:description" content="تذكير في دقيقة، 3 ألعاب، تحدٍّ كبير وشهادة إنجاز باسمك. هل تحصل على 20/20؟">
+<meta property="og:description" content="تذكير في دقيقة، 8 ألعاب من أفكار الشهادة، تحدٍّ كبير وشهادة إنجاز باسمك. هل تحصل على 20/20؟">
 <meta property="og:image" content="https://soufiyousfi.github.io/math/4m/t1/dars/img/dars-m2-thales-games-fb.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -104,6 +104,24 @@ table.vt tr:first-child td{background:#e0f2fe}
 .duo .btn{min-height:60px;font-size:1.05rem}
 .data{display:grid;grid-template-columns:1fr 1fr;gap:6px;direction:ltr;margin:6px 0}
 .data div{background:#f1f5f9;border-radius:10px;padding:2px 8px;font-weight:800;text-align:center;color:#1e3a8a}
+/* new games */
+.bem{display:inline-block;background:#fef9c3;border:1px solid #facc15;color:#713f12;border-radius:999px;padding:0 10px;font-size:.82rem;font-weight:800;margin-bottom:4px}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:300px;margin:10px auto}
+.match .col{display:flex;flex-direction:column;gap:12px;align-items:stretch}.match .hd{text-align:center}
+.pairs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;direction:ltr;margin:8px 0;min-height:10px}
+.pairs .p{padding:4px 10px;border-radius:12px;border:3px solid transparent}
+.pairs .p.good{border-color:var(--ok)}.pairs .p.badz{border-color:var(--bad)}
+.cards{display:flex;flex-direction:column;gap:8px;margin:8px 0}
+.scard{width:100%;text-align:start;font:inherit;font-size:.95rem;font-weight:700;background:#fff;border:3px solid #0284c7;border-radius:12px;padding:6px 10px;box-shadow:0 4px 0 #0284c7;color:var(--ink)}
+.scard.in{border-color:var(--ok);box-shadow:0 4px 0 #15803d;background:#f0fdf4}
+.seqh{font-weight:900;color:var(--c1);margin-top:6px}
+ol.seq{margin:4px 0;padding-inline-start:26px;min-height:40px;background:#f8fafc;border:2px dashed #86efac;border-radius:12px;padding-top:6px;padding-bottom:6px}
+ol.seq li{margin:6px 0;font-weight:900}
+.pl{cursor:pointer}.pl .vis{stroke:#0369a1;stroke-width:3}.pl .hit{stroke:transparent;stroke-width:24}
+.pl.on .vis{stroke:#f59e0b;stroke-width:7}.pl.off{pointer-events:none}
+.opts{display:flex;flex-direction:column;gap:10px;margin-top:8px}.opts .btn{font-size:1rem}
+.slrow{display:flex;gap:8px;align-items:center;direction:ltr}.slrow .btn{min-width:56px;padding:4px}
+.slrow input{flex:1;height:44px;accent-color:#f59e0b}
 /* feedback */
 .fb{margin-top:10px;font-weight:700}
 .fb .w{display:block;background:var(--bad-soft);color:#991b1b;border-radius:12px;padding:6px 10px}
@@ -152,7 +170,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:16px}
   <button class="snd" id="snd" aria-label="الصوت">🔊</button>
 </div>
 <nav class="chips" id="chips">
-  <a href="#s0">📖 تذكير</a><a href="#s1" data-k="g1">🧩 اللعبة 1</a><a href="#s2" data-k="g2">🔐 اللعبة 2</a><a href="#s3" data-k="g3">⚖️ اللعبة 3</a><a href="#s4" data-k="ch">🌳 التحدي</a><a href="#s5">🎓 الشهادة</a>
+  <a href="#s0">📖 تذكير</a><a href="#s1" data-k="g1">🧩 1</a><a href="#s2" data-k="bm">🦋 2</a><a href="#s3" data-k="g2">🔐 3</a><a href="#s4" data-k="os">🧱 4</a><a href="#s5" data-k="pp">📐 5</a><a href="#s6" data-k="g3">⚖️ 6</a><a href="#s7" data-k="kg">🔍 7</a><a href="#s8" data-k="sl">🎚️ 8</a><a href="#s9" data-k="ch">🌳 التحدي</a><a href="#s10">🎓 الشهادة</a>
 </nav>
 <main>
 
@@ -165,26 +183,51 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:16px}
 </section>
 
 <section class="card" id="s1">
-  <div class="ct">🧩 اللعبة 1: ركّب نسب طالس <span class="pts">4 ن</span></div>
+  <div class="ct">🧩 اللعبة 1: ركّب نسب طالس <span class="pts">2 ن</span></div>
   <div id="g1"></div>
 </section>
 
 <section class="card" id="s2">
-  <div class="ct">🔐 اللعبة 2: الخزنة السرية <span class="pts">6 ن</span></div>
-  <div id="g2"></div>
+  <div class="ct">🦋 اللعبة 2: صِل الأضلاع المتوافقة <span class="pts">2 ن</span></div>
+  <div id="bm"></div>
 </section>
 
 <section class="card" id="s3">
-  <div class="ct">⚖️ اللعبة 3: متوازيان أم لا؟ <span class="pts">4 ن</span></div>
-  <div id="g3"></div>
+  <div class="ct">🔐 اللعبة 3: الخزنة السرية <span class="pts">2 ن</span></div>
+  <div id="g2"></div>
 </section>
 
 <section class="card" id="s4">
-  <div class="ct">🌳 التحدي الكبير: شجرة ساحة المتوسطة <span class="pts">6 ن</span></div>
-  <div id="ch"></div>
+  <div class="ct">🧱 اللعبة 4: رتّب خطوات الحل <span class="pts">2 ن</span></div>
+  <div id="os"></div>
 </section>
 
 <section class="card" id="s5">
+  <div class="ct">📐 اللعبة 5: صيّاد التوازي <span class="pts">2 ن</span></div>
+  <div id="pp"></div>
+</section>
+
+<section class="card" id="s6">
+  <div class="ct">⚖️ اللعبة 6: متوازيان أم لا؟ <span class="pts">3 ن</span></div>
+  <div id="g3"></div>
+</section>
+
+<section class="card" id="s7">
+  <div class="ct">🔍 اللعبة 7: تكبير أم تصغير؟ <span class="pts">2 ن</span></div>
+  <div id="kg"></div>
+</section>
+
+<section class="card" id="s8">
+  <div class="ct">🎚️ اللعبة 8: أين تقع O؟ <span class="pts">2 ن</span></div>
+  <div id="sl"></div>
+</section>
+
+<section class="card" id="s9">
+  <div class="ct">🌳 التحدي الكبير: شجرة ساحة المتوسطة <span class="pts">3 ن</span></div>
+  <div id="ch"></div>
+</section>
+
+<section class="card" id="s10">
   <div class="ct">🎓 شهادة الإنجاز</div>
   <div id="cert"></div>
 </section>
@@ -215,12 +258,12 @@ const MSG = {
 let mi = 0; const pick = k => MSG[k][(mi++) % MSG[k].length];
 
 /* ---------- state ---------- */
-const KEY = 'dars_4m_thales_games_v2';
+const KEY = 'dars_4m_thales_games_v3';
 let S = { r: {}, name: '', snd: true };
 try { const t = localStorage.getItem(KEY); if (t) S = Object.assign(S, JSON.parse(t)); } catch (e) {}
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
-/* S.r[id] = {done, pts, st} ; ids: g1a g1b (2 pts) g2a g2b g2c (2) g3a..g3d (1) cha chb (3) */
-const ITEMS = { g1: ['g1a', 'g1b'], g2: ['g2a', 'g2b', 'g2c'], g3: ['g3a', 'g3b', 'g3c', 'g3d'], ch: ['cha', 'chb'] };
+/* S.r[id] = {done, pts, st}. Points: g1a 2, bm 2, g2c 2, os 2, pp1+pp2 1+1, g3a/g3b/g3e 1 each, k1+k2 1+1, sl 2, cha+chb 1,5+1,5 = 20 */
+const ITEMS = { g1: ['g1a'], bm: ['bm'], g2: ['g2c'], os: ['os'], pp: ['pp1', 'pp2'], g3: ['g3a', 'g3b', 'g3e'], kg: ['k1', 'k2'], sl: ['sl'], ch: ['cha', 'chb'] };
 const ALL = Object.values(ITEMS).flat();
 const score = () => ALL.reduce((n, k) => n + ((S.r[k] || {}).pts || 0), 0);
 const stars = () => ALL.reduce((n, k) => n + ((S.r[k] || {}).st || 0), 0);
@@ -281,16 +324,15 @@ $('#t1').addEventListener('click', () => recap(1)); $('#t2').addEventListener('c
 
 /* ================= GAME 1: build the Thales ratios (tap a card, then a box) ================= */
 const G1 = [
-  { id: 'g1a', fig: () => figTri(), txt: `في الشكل: ${M('M ∈ [AB]')} و ${M('N ∈ [AC]')}، و ${M('(MN)')} يوازي ${M('(BC)')}.`, pairs: [['AM', 'AB'], ['AN', 'AC'], ['MN', 'BC']], hyp: `${M('(BM)')} و ${M('(CN)')} متقاطعان في ${M('A')}، و ${M('(MN) // (BC)')}، إذن حسب خاصية طالس نرتّب رؤوس المثلثين ${M('AMN')} و ${M('ABC')}:` },
-  { id: 'g1b', fig: () => figBut({ A: 'O', M: 'G', N: 'H', B: 'E', C: 'F' }), txt: `المستقيمان ${M('(EG)')} و ${M('(FH)')} يتقاطعان في ${M('O')}، و ${M('(GH)')} يوازي ${M('(EF)')}.`, pairs: [['OG', 'OE'], ['OH', 'OF'], ['GH', 'EF']], hyp: `${M('(EG)')} و ${M('(FH)')} متقاطعان في ${M('O')}، و ${M('(GH) // (EF)')}، إذن حسب خاصية طالس نرتّب رؤوس المثلثين ${M('OGH')} و ${M('OEF')}:` }
+  { id: 'g1a', fig: () => figTri(), txt: `في الشكل: ${M('M ∈ [AB]')} و ${M('N ∈ [AC]')}، و ${M('(MN)')} يوازي ${M('(BC)')}.`, pairs: [['AM', 'AB'], ['AN', 'AC'], ['MN', 'BC']], hyp: `${M('(BM)')} و ${M('(CN)')} متقاطعان في ${M('A')}، و ${M('(MN) // (BC)')}، إذن حسب خاصية طالس نرتّب رؤوس المثلثين ${M('AMN')} و ${M('ABC')}:` }
 ];
 const vt = R => VT([R.pairs[0][0][0], R.pairs[0][0][1], R.pairs[1][0][1]], [R.pairs[0][1][0], R.pairs[0][1][1], R.pairs[1][1][1]]);
 function game1(idx = 0) {
   const R = G1[idx], host = $('#g1'), st = S.r[R.id];
   let tries = 0, sel = null; const z = Array(6).fill(null);
   const tiles = shuffle(R.pairs.flat());
-  host.innerHTML = `<div class="steps3">${G1.map((r, i) => `<span class="${S.r[r.id] ? (S.r[r.id].pts ? 'ok' : 'ko') : i === idx ? 'cur' : ''}">${i + 1}</span>`).join('')}</div>
-   <div class="muted">المس بطاقة، ثم المس الخانة الفارغة المناسبة. لإرجاع بطاقة المس خانتها. (الجولة ${idx + 1} من 2)</div>
+  host.innerHTML = `${BEM('فكرة من الشهادة: 2007، 2010')}
+   <div class="muted">المس بطاقة، ثم المس الخانة الفارغة المناسبة. لإرجاع بطاقة المس خانتها. لك 3 محاولات.</div>
    <div class="fig">${R.fig()}</div><div>${R.txt}</div>
    <div class="bank">${tiles.map((t, i) => `<button class="tile" data-i="${i}">${t}</button>`).join('')}</div>
    <div class="build">${[0, 1, 2].map(f => `<div class="frz" data-f="${f}"><button class="zone" data-z="${2 * f}"></button><div class="bar2"></div><button class="zone" data-z="${2 * f + 1}"></button></div>${f < 2 ? '<span class="eqs">=</span>' : ''}`).join('')}</div>
@@ -308,7 +350,7 @@ function game1(idx = 0) {
     $('#g1sol').innerHTML = solHTML('خاصية طالس: نرتّب رؤوس المثلثين ثم نكتب النسب عمودا عمودا (الكتاب ص 106).',
       [R.hyp, vt(R)],
       EQ(F(R.pairs[0][0], R.pairs[0][1]), '=', F(R.pairs[1][0], R.pairs[1][1]), '=', F(R.pairs[2][0], R.pairs[2][1])));
-    $('#g1nx').innerHTML = idx < G1.length - 1 ? `<button class="btn green wide" id="g1go">الجولة التالية ←</button>` : `<a class="btn green wide" href="#s2" style="text-decoration:none">إلى اللعبة 2 🔐</a>`;
+    $('#g1nx').innerHTML = idx < G1.length - 1 ? `<button class="btn green wide" id="g1go">الجولة التالية ←</button>` : NX(2);
     const g = $('#g1go'); if (g) g.addEventListener('click', () => game1(idx + 1));
   };
   $('#g1chk').addEventListener('click', () => {
@@ -328,19 +370,13 @@ function game1(idx = 0) {
   paint();
   if (st) { // already played: show result, allow practice replay
     $('#g1chk').disabled = true; $('#g1fb').innerHTML = `<span class="g">منجزة: ${fmt(st.pts)} / 2 ن ${'⭐'.repeat(st.st)}</span>`;
-    $('#g1nx').innerHTML = idx < G1.length - 1 ? `<button class="btn green wide" id="g1go">الجولة التالية ←</button>` : '';
+    $('#g1nx').innerHTML = NX(2);
     const g = $('#g1go'); if (g) g.addEventListener('click', () => game1(idx + 1));
   }
 }
 
 /* ================= GAME 2: the secret safe (fourth proportional) ================= */
 const G2 = [
-  { id: 'g2a', where: 'خزنة المسرح الروماني بقالمة 🏛️', eq: () => EQ(F('x', '12'), '=', F('3', '4')), a: 9,
-    h1: 'استعمل الجداء المتصالب: إذا كان a/b = c/d فإن a × d = b × c.', h2: EQ('x × 4', '=', '12 × 3'),
-    st: [EQ('x × 4', '=', '12 × 3'), EQ('x', '=', F('12 × 3', '4'), '=', F('36', '4'), '=', '9')], c: EQ('x = 9') },
-  { id: 'g2b', where: 'خزنة حمام دباغ ♨️', eq: () => EQ(F('4', 'x'), '=', F('2', '7')), a: 14,
-    h1: 'المجهول في المقام: استعمل الجداء المتصالب.', h2: EQ('2 × x', '=', '4 × 7'),
-    st: [EQ('2 × x', '=', '4 × 7'), EQ('x', '=', F('4 × 7', '2'), '=', F('28', '2'), '=', '14')], c: EQ('x = 14') },
   { id: 'g2c', where: 'خزنة وادي سيبوس 🌊', eq: () => `<div class="fig" style="background:#fff">${figTri()}</div><div style="color:#fff">${M('(MN)')} يوازي ${M('(BC)')}، ${M('AM = 4')} ، ${M('AB = 10')} ، ${M('BC = 15')}. الشيفرة هي ${M('MN')}.</div>`, a: 6,
     h1: 'اختر من نسب طالس النسبتين اللتين فيهما MN والأطوال المعطاة.', h2: EQ(F('AM', 'AB'), '=', F('MN', 'BC'), ' أي ', F('4', '10'), '=', F('MN', '15')),
     st: [`${M('(BM)')} و ${M('(CN)')} متقاطعان في ${M('A')}، و ${M('(MN) // (BC)')}، إذن المثلثان ${M('AMN')} و ${M('ABC')} في وضعية طالس، وبالتالي:`, EQ(F('AM', 'AB'), '=', F('AN', 'AC'), '=', F('MN', 'BC')), `نحتفظ بالمساواة المناسبة: ${EQ(F('AM', 'AB'), '=', F('MN', 'BC'))} أي ${EQ(F('4', '10'), '=', F('MN', '15'))}`, EQ('MN', '=', F('4 × 15', '10'), '=', F('60', '10'), '=', '6')], c: EQ('MN = 6') }
@@ -348,8 +384,8 @@ const G2 = [
 function game2(idx = 0) {
   const R = G2[idx], host = $('#g2'), st = S.r[R.id];
   let v = '', tries = 0, over = !!st;
-  host.innerHTML = `<div class="steps3">${G2.map((r, i) => `<span class="${S.r[r.id] ? (S.r[r.id].pts ? 'ok' : 'ko') : i === idx ? 'cur' : ''}">${i + 1}</span>`).join('')}</div>
-   <div class="muted">احسب ${M('x')} واكتب الشيفرة لفتح الخزنة. لك 3 محاولات. (الخزنة ${idx + 1} من 3)</div>
+  host.innerHTML = `${BEM('فكرة من الشهادة: 2007، 2010 (حساب طول)')}
+   <div class="muted">احسب الطول المجهول واكتبه شيفرةً لفتح الخزنة. لك 3 محاولات.</div>
    <div class="safe"><div style="font-weight:900">${R.where}</div><div class="lock" id="lk">🔒</div><div style="margin:6px 0 10px;font-size:1.25rem">${R.eq()}</div>
    <div class="screen" id="scr">_ _</div>
    <div class="pad">${['7', '8', '9', 'C', '4', '5', '6', ',', '1', '2', '3', '0'].map(k => `<button data-k="${k}" class="${k === 'C' ? 'c' : ''}">${k}</button>`).join('')}<button class="open" id="open">🔓 افتح الخزنة</button></div></div>
@@ -358,10 +394,10 @@ function game2(idx = 0) {
   $$('.pad [data-k]', host).forEach(b => b.addEventListener('click', () => { if (over) return; const k = b.dataset.k; if (k === 'C') v = ''; else if (v.length < 6 && !(k === ',' && v.includes(','))) v += k; sClick(); scr.classList.remove('err'); show(); }));
   const fin = ok => {
     over = true; record(R.id, ok, tries, 2); $('#open').disabled = true;
-    $('#g2sol').innerHTML = solHTML(idx < 2 ? 'الجداء المتصالب في تساوي نسبتين.' : 'خاصية طالس، نحتفظ بالمساواة المناسبة ثم الجداء المتصالب (الكتاب ص 107).', R.st, R.c);
+    $('#g2sol').innerHTML = solHTML('خاصية طالس، نحتفظ بالمساواة المناسبة ثم الجداء المتصالب (الكتاب ص 107).', R.st, R.c);
     nxt();
   };
-  const nxt = () => { $('#g2nx').innerHTML = idx < G2.length - 1 ? `<button class="btn green wide" id="g2go">الخزنة التالية ←</button>` : `<a class="btn green wide" href="#s3" style="text-decoration:none">إلى اللعبة 3 ⚖️</a>`; const g = $('#g2go'); if (g) g.addEventListener('click', () => game2(idx + 1)); };
+  const nxt = () => { $('#g2nx').innerHTML = NX(4); };
   $('#open').addEventListener('click', () => {
     if (over) return; const fb = $('#g2fb');
     if (!v) { fb.innerHTML = '<span class="h">اكتب الشيفرة أولا.</span>'; return; }
@@ -377,32 +413,175 @@ function game2(idx = 0) {
   if (st) { $('#open').disabled = true; $('#lk').textContent = st.pts ? '🔓' : '🔒'; $('#g2fb').innerHTML = `<span class="g">منجزة: ${fmt(st.pts)} / 2 ن ${'⭐'.repeat(st.st)}</span>`; nxt(); }
 }
 
-/* ================= GAME 3: parallel or not? ================= */
-const G3 = [
-  { id: 'g3a', d: { AM: '3', AB: '5', AN: '4,2', AC: '7' }, ok: true, v: ['0,6', '0,6'], x: ['3 × 7 = 21', '5 × 4,2 = 21'] },
-  { id: 'g3b', d: { AM: '2', AB: '5', AN: '3', AC: '8' }, ok: false, v: ['0,4', '0,375'], x: ['2 × 8 = 16', '5 × 3 = 15'] },
-  { id: 'g3c', d: { AM: '4', AB: '10', AN: '6', AC: '15' }, ok: true, v: ['0,4', '0,4'], x: ['4 × 15 = 60', '10 × 6 = 60'] },
-  { id: 'g3d', d: { AM: '5', AB: '8', AN: '6', AC: '10' }, ok: false, v: ['0,625', '0,6'], x: ['5 × 10 = 50', '8 × 6 = 48'] }
+/* ---------- shared: titles, next links, BEM badge ---------- */
+const TT = ['', '🧩 اللعبة 1', '🦋 اللعبة 2', '🔐 اللعبة 3', '🧱 اللعبة 4', '📐 اللعبة 5', '⚖️ اللعبة 6', '🔍 اللعبة 7', '🎚️ اللعبة 8', '🌳 التحدي', '🎓 الشهادة'];
+const NX = n => `<a class="btn green wide" href="#s${n}" style="text-decoration:none">إلى ${TT[n]} ←</a>`;
+const DONE = (st, p) => `<span class="g">منجزة: ${fmt(st.pts)} / ${fmt(p)} ن ${'⭐'.repeat(st.st)}</span>`;
+const BEM = t => `<div class="bem">📜 ${t}</div>`;
+const FR = s => { const [a, b] = s.split('/'); return F(a, b); };
+
+/* ================= GAME 2: butterfly, link the corresponding sides ================= */
+function gameBM() {
+  const host = $('#bm'), st = S.r.bm, L = ['OG', 'OH', 'GH'], RR = { OG: 'OE', OH: 'OF', GH: 'EF' }, COL = ['#fde68a', '#bbf7d0', '#c7d2fe'];
+  const right = shuffle(['OE', 'OF', 'EF']); let selL = null, tries = 0, over = !!st; const link = {};
+  host.innerHTML = `${BEM('فكرة من الشهادة: وضعية الفراشة (2016، 2024)')}
+   <div class="fig">${figBut({ A: 'O', M: 'G', N: 'H', B: 'E', C: 'F' })}</div>
+   <div>المستقيمان ${M('(EG)')} و ${M('(FH)')} يتقاطعان في ${M('O')}، و ${M('(GH) // (EF)')}.</div>
+   <div class="muted">المس ضلعا من المثلث ${M('OGH')}، ثم المس الضلع الموافق له من المثلث ${M('OEF')}. لك 3 محاولات.</div>
+   <div class="match"><div class="col"><div class="hd">${M('OGH')}</div>${L.map(s => `<button class="tile" data-l="${s}">${s}</button>`).join('')}</div><div class="col"><div class="hd">${M('OEF')}</div>${right.map(s => `<button class="tile" data-r="${s}">${s}</button>`).join('')}</div></div>
+   <div class="pairs" id="bmp"></div>
+   <button class="btn orange wide" id="bmchk">تحقّق ✨</button><div class="fb" id="bmfb"></div><div id="bmsol"></div><div class="row" id="bmnx"></div>`;
+  const paint = (marks) => {
+    $$('[data-l]', host).forEach(b => { const l = b.dataset.l, i = L.indexOf(l); b.classList.toggle('sel', selL === l); b.style.background = link[l] && selL !== l ? COL[i] : ''; });
+    $$('[data-r]', host).forEach(b => { const l = L.find(x => link[x] === b.dataset.r); b.style.background = l ? COL[L.indexOf(l)] : ''; });
+    $('#bmp').innerHTML = L.filter(l => link[l]).map(l => `<span class="p ${marks ? (marks[l] ? 'good' : 'badz') : ''}" style="background:${COL[L.indexOf(l)]}">${EQ(F(l, link[l]))}</span>`).join('');
+  };
+  $$('[data-l]', host).forEach(b => b.addEventListener('click', () => { if (over) return; const l = b.dataset.l; if (selL === l) selL = null; else if (link[l] && selL === null) { delete link[l]; selL = l; } else selL = l; sClick(); paint(); }));
+  $$('[data-r]', host).forEach(b => b.addEventListener('click', () => { if (over || selL === null) return; const r = b.dataset.r; L.forEach(x => { if (link[x] === r) delete link[x]; }); link[selL] = r; selL = null; sClick(); paint(); }));
+  const fin = ok => {
+    over = true; record('bm', ok, tries, 2); $('#bmchk').disabled = true;
+    $('#bmsol').innerHTML = solHTML('نرتّب رؤوس المثلثين ثم نقرأ عمودا عمودا (الكتاب ص 106).',
+      [`${M('(EG)')} و ${M('(FH)')} متقاطعان في ${M('O')} و ${M('(GH) // (EF)')}، حسب خاصية طالس:`, VT(['O', 'G', 'H'], ['O', 'E', 'F'])],
+      EQ(F('OG', 'OE'), '=', F('OH', 'OF'), '=', F('GH', 'EF')));
+    $('#bmnx').innerHTML = NX(3);
+  };
+  $('#bmchk').addEventListener('click', () => {
+    if (over) return; const fb = $('#bmfb');
+    if (L.some(l => !link[l])) { fb.innerHTML = '<span class="h">صِل الأضلاع الثلاثة أولا.</span>'; shake($('.match', host)); return; }
+    tries++; const marks = {}; L.forEach(l => marks[l] = link[l] === RR[l]); paint(marks);
+    if (L.every(l => marks[l])) { sOk(); burst($('#bmp')); fb.innerHTML = `<span class="g">✅ ${pick('ok')} ${'⭐'.repeat(Math.max(1, 4 - tries))}</span>`; toast('🦋 +2 ن'); fin(true); return; }
+    sBad(); shake($('#bmp'));
+    if (tries === 1) fb.innerHTML = `<span class="w">${pick('w1')}</span><span class="h">💡 الضلعان المتوافقان يبدآن من ${M('O')} ويقعان على نفس المستقيم، أما ${M('[GH]')} فيوافق الضلع الموازي له.</span>`;
+    else if (tries === 2) fb.innerHTML = `<span class="w">${pick('w2')}</span><span class="h">💡 اقرأ هذا الجدول عمودا عمودا: ${VT(['O', 'G', 'H'], ['O', 'E', 'F'])}</span>`;
+    else { fb.innerHTML = `<span class="w">🌱 ${pick('fail')}</span>`; fin(false); }
+  });
+  paint();
+  if (st) { $('#bmfb').innerHTML = DONE(st, 2); Object.assign(link, RR); paint(); $('#bmchk').disabled = true; $('#bmnx').innerHTML = NX(3); }
+}
+
+/* ================= GAME 4: put the solution steps in order (BEM 2010) ================= */
+const OS = [
+  { t: () => `${EQ('AB', '=', 'AE', '+', 'EB', '=', '2', '+', '3', '=', '5')}`, r: 1 },
+  { t: () => `${M('(BE)')} و ${M('(CF)')} متقاطعان في ${M('A')} و ${M('(EF) // (BC)')}، حسب خاصية طالس: ${EQ(F('AE', 'AB'), '=', F('AF', 'AC'), '=', F('EF', 'BC'))}`, r: 1 },
+  { t: () => `نحتفظ بالمساواة المناسبة: ${EQ(F('AE', 'AB'), '=', F('AF', 'AC'))}`, r: 2 },
+  { t: () => EQ(F('2', '5'), '=', F('4', 'AC')), r: 3 },
+  { t: () => EQ('AC', '=', F('5 × 4', '2'), '=', '10'), r: 4 },
+  { t: () => EQ('FC', '=', 'AC', '−', 'AF', '=', '10', '−', '4', '=', '6'), r: 5 },
+  { t: () => EQ('AC', '=', F('2 × 4', '5'), '=', '1,6'), r: 0 }
 ];
-function game3(idx = 0) {
-  const R = G3[idx], host = $('#g3'), st = S.r[R.id];
-  host.innerHTML = `<div class="steps3">${G3.map((r, i) => `<span class="${S.r[r.id] ? (S.r[r.id].pts ? 'ok' : 'ko') : i === idx ? 'cur' : ''}">${i + 1}</span>`).join('')}</div>
-   <div class="muted">النقط ${M('A, M, B')} في استقامة، والنقط ${M('A, N, C')} في استقامة وبنفس الترتيب. هل ${M('(MN)')} و ${M('(BC)')} متوازيان؟ محاولة واحدة، فخذ وقتك. (${idx + 1} من 4)</div>
-   <div class="fig">${figTri()}</div>
+function gameOS() {
+  const host = $('#os'), st = S.r.os; let tries = 0, over = !!st; const seq = []; const order = shuffle(OS.map((_, i) => i));
+  host.innerHTML = `${BEM('فكرة من الشهادة 2010: حساب طول بالطرح بعد خاصية طالس')}
+   <div class="fig">${figTri({ A: 'A', M: 'E', N: 'F', B: 'B', C: 'C' })}</div>
+   <div>${M('(EF) // (BC)')}، ${M('AE = 2')} ، ${M('EB = 3')} ، ${M('AF = 4')}. المطلوب: احسب ${M('FC')}.</div>
+   <div class="muted">المس البطاقات بترتيب الحل الصحيح. انتبه: بطاقة واحدة خاطئة لا تُستعمل! لإرجاع بطاقة المسها في الحل.</div>
+   <div class="cards" id="osb"></div><div class="seqh">✍️ حلّي:</div><ol class="seq" id="oss"></ol>
+   <button class="btn orange wide" id="oschk">تحقّق من الترتيب ✨</button><div class="fb" id="osfb"></div><div id="ossol"></div><div class="row" id="osnx"></div>`;
+  const paint = () => {
+    $('#osb').innerHTML = order.filter(i => !seq.includes(i)).map(i => `<button class="scard" data-i="${i}">${OS[i].t()}</button>`).join('') || '<div class="muted">✔️ استعملت كل البطاقات.</div>';
+    $('#oss').innerHTML = seq.map(i => `<li><button class="scard in" data-i="${i}">${OS[i].t()}</button></li>`).join('');
+    $$('#osb .scard', host).forEach(b => b.addEventListener('click', () => { if (over) return; seq.push(+b.dataset.i); sClick(); paint(); }));
+    $$('#oss .scard', host).forEach(b => b.addEventListener('click', () => { if (over) return; seq.splice(seq.indexOf(+b.dataset.i), 1); sClick(); paint(); }));
+  };
+  const fin = ok => {
+    over = true; record('os', ok, tries, 2); $('#oschk').disabled = true;
+    $('#ossol').innerHTML = solHTML('خاصية طالس، المساواة المناسبة، الجداء المتصالب ثم الطرح (الكتاب ص 107).', OS.filter(s => s.r).sort((a, b) => a.r - b.r).map(s => s.t()), EQ('FC', '=', '6'));
+    $('#osnx').innerHTML = NX(5);
+  };
+  $('#oschk').addEventListener('click', () => {
+    if (over) return; const fb = $('#osfb');
+    if (seq.length < 6) { fb.innerHTML = '<span class="h">ضع 6 بطاقات في حلّك.</span>'; shake($('#oss')); return; }
+    tries++;
+    const ok = seq.length === 6 && seq.every(i => OS[i].r) && seq.every((i, k) => k === 0 || OS[seq[k - 1]].r <= OS[i].r);
+    if (ok) { sOk(); burst($('#oss')); fb.innerHTML = `<span class="g">✅ ${pick('ok')} ${'⭐'.repeat(Math.max(1, 4 - tries))}</span>`; toast('🧱 +2 ن'); fin(true); return; }
+    sBad(); shake($('#oss'));
+    const bad = seq.some(i => !OS[i].r);
+    if (tries === 1) fb.innerHTML = `<span class="w">${pick('w1')}</span><span class="h">💡 ${bad ? `في حلّك البطاقة الخاطئة: تحقّق من الجداء المتصالب في ${EQ(F('2', '5'), '=', F('4', 'AC'))}.` : 'ابدأ بالمعطيات: احسب AB واكتب خاصية طالس، ثم المساواة المناسبة، ثم التعويض.'}</span>`;
+    else if (tries === 2) fb.innerHTML = `<span class="w">${pick('w2')}</span><span class="h">💡 ${EQ('2 × AC', '=', '5 × 4')}، ونحسب ${M('FC')} في الأخير لأننا نحتاج ${M('AC')}.</span>`;
+    else { fb.innerHTML = `<span class="w">🌱 ${pick('fail')}</span>`; fin(false); }
+  });
+  paint();
+  if (st) { $('#osfb').innerHTML = DONE(st, 2); $('#oschk').disabled = true; $('#osnx').innerHTML = NX(5); }
+}
+
+/* ================= GAME 5: two perpendiculars to the same line are parallel ================= */
+function figPP() {
+  const ln = (id, x1, y1, x2, y2) => `<g class="pl" data-l="${id}"><line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="vis"/><line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="hit"/></g>`;
+  return `<svg viewBox="0 0 300 185">${ln('AB', 40, 8, 40, 178)}${ln('BC', 22, 160, 292, 160)}${ln('AC', 26, 12, 292, 167)}${ln('EF', 180, 70, 180, 178)}
+  <polyline points="40,146 54,146 54,160" fill="none" stroke="#dc2626" stroke-width="2"/><polyline points="180,146 194,146 194,160" fill="none" stroke="#dc2626" stroke-width="2"/>
+  <text x="22" y="22" font-size="16">A</text><text x="22" y="176" font-size="16">B</text><text x="276" y="154" font-size="16">C</text><text x="184" y="178" font-size="16">E</text><text x="186" y="96" font-size="16">F</text></svg>`;
+}
+function gamePP() {
+  const host = $('#pp'); let tries = 0; const sel = new Set();
+  host.innerHTML = `${BEM('فكرة من الشهادة: 2008، 2013، 2019، 2020، 2026')}
+   <div>${M('ABC')} مثلث قائم في ${M('B')}، ${M('E')} نقطة من ${M('[BC]')}، والمستقيم العمودي على ${M('(BC)')} في ${M('E')} يقطع ${M('[AC]')} في ${M('F')}.</div>
+   <div class="fig" id="ppfig">${figPP()}</div>
+   <div class="q" id="pp1"><b>1) المس المستقيمين المتوازيين في الشكل (1 ن):</b> <div class="row"><button class="btn orange" id="pp1c">تحقّق ✓</button></div><div class="fb"></div></div>
+   <div class="q" id="pp2"></div><div id="ppsol"></div><div class="row" id="ppnx"></div>`;
+  const lines = $$('.pl', host);
+  const paint = () => lines.forEach(g => g.classList.toggle('on', sel.has(g.dataset.l)));
+  const lock1 = () => { lines.forEach(g => g.classList.add('off')); $('#pp1c').disabled = true; sel.clear(); sel.add('AB'); sel.add('EF'); paint(); part2(); };
+  lines.forEach(g => g.addEventListener('click', () => { if (S.r.pp1) return; const l = g.dataset.l; if (sel.has(l)) sel.delete(l); else { if (sel.size === 2) sel.delete([...sel][0]); sel.add(l); } sClick(); paint(); }));
+  $('#pp1c').addEventListener('click', () => {
+    const fb = $('#pp1 .fb'); if (S.r.pp1) return;
+    if (sel.size < 2) { fb.innerHTML = '<span class="h">المس مستقيمين اثنين.</span>'; return; }
+    tries++; const ok = sel.has('AB') && sel.has('EF');
+    if (ok) { sOk(); burst($('#ppfig')); fb.innerHTML = `<span class="g">✅ ${pick('ok')} ${M('(AB)')} و ${M('(EF)')}</span>`; toast('📐 +1 ن'); record('pp1', true, tries, 1); lock1(); return; }
+    sBad(); shake($('#ppfig'));
+    if (tries === 1) fb.innerHTML = `<span class="w">${pick('w1')}</span><span class="h">💡 انظر إلى علامتي الزاوية القائمة: أي مستقيمين عموديان على ${M('(BC)')}؟</span>`;
+    else { fb.innerHTML = `<span class="w">🌱 ${pick('fail')} المستقيمان هما ${M('(AB)')} و ${M('(EF)')}.</span>`; record('pp1', false, tries, 1); lock1(); }
+  });
+  function part2() {
+    const el = $('#pp2'), J = shuffle([['a', `لأنهما عموديان على نفس المستقيم ${M('(BC)')}`], ['b', 'حسب الخاصية العكسية لخاصية طالس'], ['c', 'لأنهما يظهران متوازيين في الشكل']]);
+    el.innerHTML = `<b>2) لماذا ${M('(EF) // (AB)')}؟ (1 ن، محاولة واحدة)</b><div class="opts">${J.map(j => `<button class="btn light" data-j="${j[0]}"><span>${j[1]}</span></button>`).join('')}</div><div class="fb"></div>`;
+    const sol = () => {
+      $('#ppsol').innerHTML = solHTML('المستقيمان العموديان على نفس المستقيم متوازيان، ثم خاصية طالس.',
+        [`${M('(AB) ⊥ (BC)')} و ${M('(EF) ⊥ (BC)')}، إذن ${M('(EF) // (AB)')}.`, `${M('(BE)')} و ${M('(AF)')} متقاطعان في ${M('C')} و ${M('(EF) // (AB)')}، حسب خاصية طالس:`, VT(['C', 'E', 'F'], ['C', 'B', 'A'])],
+        EQ(F('CE', 'CB'), '=', F('CF', 'CA'), '=', F('EF', 'BA')));
+      $('#ppnx').innerHTML = NX(6);
+    };
+    if (S.r.pp2) { $$('[data-j]', el).forEach(b => b.disabled = true); $('.fb', el).innerHTML = DONE(S.r.pp2, 1); sol(); return; }
+    $$('[data-j]', el).forEach(b => b.addEventListener('click', () => {
+      $$('[data-j]', el).forEach(x => x.disabled = true); const ok = b.dataset.j === 'a', fb = $('.fb', el);
+      if (ok) { sOk(); burst(b); fb.innerHTML = `<span class="g">✅ ${pick('ok')}</span>`; toast('📐 +1 ن'); }
+      else { sBad(); shake(b); fb.innerHTML = `<span class="w">🌱 ${b.dataset.j === 'b' ? 'الخاصية العكسية تحتاج أطوالا ونسبا، ولا أطوال هنا.' : 'الشكل وحده لا يكفي للبرهان.'} الجواب: لأنهما عموديان على نفس المستقيم.</span>`; }
+      record('pp2', ok, 1, 1); sol();
+    }));
+  }
+  if (S.r.pp1) { $('#pp1 .fb').innerHTML = DONE(S.r.pp1, 1); lock1(); }
+}
+
+/* ================= GAME 6: parallel or not? (3 different situations) ================= */
+function figOrder() {
+  return `<svg viewBox="0 0 300 185"><polygon points="150,60 40,170 260,170" fill="#e0f2fe" stroke="#0369a1" stroke-width="3"/>
+  <line x1="150" y1="60" x2="194" y2="16" stroke="#0369a1" stroke-width="3"/><line x1="194" y1="16" x2="194" y2="104" stroke="#dc2626" stroke-width="3"/>
+  <text x="128" y="62" font-size="16">A</text><text x="22" y="178" font-size="16">B</text><text x="266" y="178" font-size="16">C</text>
+  <text x="200" y="20" font-size="16" fill="#dc2626">M</text><text x="200" y="110" font-size="16" fill="#dc2626">N</text></svg>`;
+}
+const G6 = [
+  { id: 'g3a', fig: figTri, d: { AM: '3', AB: '5', AN: '4,2', AC: '7' }, v: ['0,6', '0,6'], x: ['3 × 7 = 21', '5 × 4,2 = 21'], ok: true, ord: true, tag: 'فكرة من الشهادة: 2007، 2017، 2018، 2021' },
+  { id: 'g3b', fig: figTri, d: { AM: '5', AB: '8', AN: '6', AC: '10' }, v: ['0,625', '0,6'], x: ['5 × 10 = 50', '8 × 6 = 48'], ok: false, ord: true, tag: 'فكرة من الكتاب ص 106 و 109: نسبتان غير متساويتين' },
+  { id: 'g3e', fig: figOrder, d: { AM: '2', AB: '5', AN: '2,8', AC: '7' }, v: ['0,4', '0,4'], x: ['2 × 7 = 14', '5 × 2,8 = 14'], ok: false, ord: false, tag: 'فكرة من الكتاب ص 108: شرط الترتيب' }
+];
+function game6(idx = 0) {
+  const R = G6[idx], host = $('#g3'), st = S.r[R.id];
+  host.innerHTML = `<div class="steps3">${G6.map((r, i) => `<span class="${S.r[r.id] ? (S.r[r.id].pts ? 'ok' : 'ko') : i === idx ? 'cur' : ''}">${i + 1}</span>`).join('')}</div>${BEM(R.tag)}
+   <div>${M('M')} نقطة من المستقيم ${M('(AB)')} و ${M('N')} نقطة من المستقيم ${M('(AC)')}. هل ${M('(MN)')} و ${M('(BC)')} متوازيان؟ <span class="muted">(محاولة واحدة، الوضعية ${idx + 1} من 3)</span></div>
+   <div class="fig">${R.fig()}</div>
    <div class="data">${Object.entries(R.d).map(([k, v]) => `<div>${k} = ${v}</div>`).join('')}</div>
-   <div class="muted">💡 قارن ${EQ(F('AM', 'AB'))} و ${EQ(F('AN', 'AC'))}: احسب القيمة العشرية لكل نسبة، أو استعمل الجداء المتصالب.</div>
+   <div class="muted">💡 قارن ${EQ(F('AM', 'AB'))} و ${EQ(F('AN', 'AC'))}، ثم انظر إلى ترتيب النقط في الشكل.</div>
    <div class="duo"><button class="btn green" data-a="1">✅ متوازيان</button><button class="btn red" data-a="0">❌ غير متوازيين</button></div>
    <div class="fb" id="g3fb"></div><div id="g3sol"></div><div class="row" id="g3nx"></div>`;
   const sol = () => {
-    const d = R.d, eqs = R.ok;
-    $('#g3sol').innerHTML = solHTML(eqs ? 'الخاصية العكسية لخاصية طالس (الكتاب ص 108 و 109).' : 'خاصية طالس: يكفي عدم تساوي نسبتين (الكتاب ص 106 و 109).',
-      [`النقط ${M('A, M, B')} والنقط ${M('A, N, C')} في استقامة وبنفس الترتيب.`,
-       EQ(F('AM', 'AB'), '=', F(d.AM, d.AB), '=', R.v[0]), EQ(F('AN', 'AC'), '=', F(d.AN, d.AC), '=', R.v[1]),
-       `أو بالجداء المتصالب: ${EQ(R.x[0])} و ${EQ(R.x[1])}`,
-       eqs ? `إذن ${EQ(F('AM', 'AB'), '=', F('AN', 'AC'))}.` : `إذن ${EQ(F('AM', 'AB'), '≠', F('AN', 'AC'))}. لو كان ${M('(MN)')} و ${M('(BC)')} متوازيين لكان ${EQ(F('AM', 'AB'), '=', F('AN', 'AC'))} حسب خاصية طالس، لكنّ هذه المساواة خاطئة.`],
-      eqs ? `حسب الخاصية العكسية لخاصية طالس نستنتج أنّ ${M('(MN) // (BC)')}.` : `المستقيمان ${M('(MN)')} و ${M('(BC)')} غير متوازيين.`);
-    $('#g3nx').innerHTML = idx < G3.length - 1 ? `<button class="btn green wide" id="g3go">التالي ←</button>` : `<a class="btn green wide" href="#s4" style="text-decoration:none">إلى التحدي الكبير 🌳</a>`;
-    const g = $('#g3go'); if (g) g.addEventListener('click', () => game3(idx + 1));
+    const d = R.d, eqv = R.v[0] === R.v[1];
+    const steps = [EQ(F('AM', 'AB'), '=', F(d.AM, d.AB), '=', R.v[0]), EQ(F('AN', 'AC'), '=', F(d.AN, d.AC), '=', R.v[1]), `أو بالجداء المتصالب: ${EQ(R.x[0])} و ${EQ(R.x[1])}`];
+    let m, c;
+    if (R.ok) { m = 'الخاصية العكسية لخاصية طالس (الكتاب ص 108 و 109).'; steps.push(`إذن ${EQ(F('AM', 'AB'), '=', F('AN', 'AC'))}، والنقط ${M('A, M, B')} والنقط ${M('A, N, C')} في استقامة وبنفس الترتيب.`); c = `حسب الخاصية العكسية لخاصية طالس: ${M('(MN) // (BC)')}.`; }
+    else if (!eqv) { m = 'خاصية طالس: يكفي عدم تساوي نسبتين (الكتاب ص 106 و 109).'; steps.push(`إذن ${EQ(F('AM', 'AB'), '≠', F('AN', 'AC'))}. لو كان ${M('(MN)')} و ${M('(BC)')} متوازيين لكان ${EQ(F('AM', 'AB'), '=', F('AN', 'AC'))} حسب خاصية طالس، لكنّ هذه المساواة خاطئة.`); c = `${M('(MN)')} و ${M('(BC)')} غير متوازيين.`; }
+    else { m = 'شرط الترتيب في الخاصية العكسية (الكتاب ص 108).'; steps.push(`النسبتان متساويتان، لكنّ ${M('M')} و ${M('B')} على جهتين مختلفتين من ${M('A')}، بينما ${M('N')} و ${M('C')} على نفس الجهة: النقط ${M('A, M, B')} والنقط ${M('A, N, C')} <b>ليست مرتبة بنفس الترتيب</b>، فلا نطبّق الخاصية العكسية.`); c = `${M('(MN)')} و ${M('(BC)')} غير متوازيين (انظر الشكل).`; }
+    $('#g3sol').innerHTML = solHTML(m, steps, c);
+    $('#g3nx').innerHTML = idx < G6.length - 1 ? `<button class="btn green wide" id="g3go">الوضعية التالية ←</button>` : NX(7);
+    const g = $('#g3go'); if (g) g.addEventListener('click', () => game6(idx + 1));
   };
   $$('[data-a]', host).forEach(b => b.addEventListener('click', () => {
     $$('[data-a]', host).forEach(x => x.disabled = true);
@@ -411,7 +590,86 @@ function game3(idx = 0) {
     else { sBad(); shake(b); fb.innerHTML = `<span class="w">🌱 ${pick('w1')} اقرأ الحل جيدا.</span>`; }
     record(R.id, ok, 1, 1); sol();
   }));
-  if (st) { $$('[data-a]', host).forEach(x => x.disabled = true); $('#g3fb').innerHTML = `<span class="g">منجزة: ${st.pts} / 1 ن</span>`; sol(); }
+  if (st) { $$('[data-a]', host).forEach(x => x.disabled = true); $('#g3fb').innerHTML = DONE(st, 1); sol(); }
+}
+
+/* ================= GAME 7: enlargement or reduction? (ratio k) ================= */
+const KG = [
+  { id: 'k1', fig: () => figTri(), txt: `${M('(MN) // (BC)')}، ${M('AM = 4,5')} و ${M('AB = 6')}.`, t1: 'AMN', t2: 'ABC', r: ['AM', 'AB'], opts: ['3/4', '4/3', '45/60'], a: '3/4', kind: 's',
+    st: [EQ('k', '=', F('AM', 'AB'), '=', F('4,5', '6'), '=', F('45', '60'), '=', F('3', '4'))] },
+  { id: 'k2', fig: () => figBut({ A: 'O', M: 'E', N: 'F', B: 'G', C: 'H' }), txt: `${M('(GH) // (EF)')}، ${M('OG = 9')} و ${M('OE = 6')}.`, t1: 'OGH', t2: 'OEF', r: ['OG', 'OE'], opts: ['3/2', '2/3', '9/6'], a: '3/2', kind: 'g',
+    st: [EQ('k', '=', F('OG', 'OE'), '=', F('9', '6'), '=', F('3', '2'))] }
+];
+function game7(idx = 0) {
+  const R = KG[idx], host = $('#kg'), st = S.r[R.id]; let pk = null, pc = null;
+  host.innerHTML = `<div class="steps3">${KG.map((r, i) => `<span class="${S.r[r.id] ? (S.r[r.id].pts ? 'ok' : 'ko') : i === idx ? 'cur' : ''}">${i + 1}</span>`).join('')}</div>${BEM('فكرة من الكتاب ص 106 و 110: معامل التناسب، تكبير أم تصغير')}
+   <div class="fig">${R.fig()}</div><div>${R.txt}</div>
+   <div><b>أ)</b> اختر معامل التناسب ${EQ('k', '=', F(R.r[0], R.r[1]))} على شكل كسر غير قابل للاختزال:</div>
+   <div class="bank">${shuffle(R.opts).map(o => `<button class="tile" data-o="${o}">${EQ(FR(o))}</button>`).join('')}</div>
+   <div><b>ب)</b> المثلث ${M(R.t1)} هو ... للمثلث ${M(R.t2)}:</div>
+   <div class="duo"><button class="btn light" data-c="g">🔎 تكبير</button><button class="btn light" data-c="s">🔬 تصغير</button></div>
+   <button class="btn orange wide" id="kchk" style="margin-top:12px">تحقّق ✨ (محاولة واحدة)</button><div class="fb" id="kfb"></div><div id="ksol"></div><div class="row" id="knx"></div>`;
+  const paint = () => { $$('[data-o]', host).forEach(b => b.classList.toggle('sel', b.dataset.o === pk)); $$('[data-c]', host).forEach(b => b.className = 'btn' + (b.dataset.c === pc ? '' : ' light')); };
+  $$('[data-o]', host).forEach(b => b.addEventListener('click', () => { if (S.r[R.id]) return; pk = b.dataset.o; sClick(); paint(); }));
+  $$('[data-c]', host).forEach(b => b.addEventListener('click', () => { if (S.r[R.id]) return; pc = b.dataset.c; sClick(); paint(); }));
+  const sol = () => {
+    const big = R.kind === 'g';
+    $('#ksol').innerHTML = solHTML(`معامل التناسب ${M('k')}: إذا كان ${EQ('k', '<', '1')} فهو تصغير، وإذا كان ${EQ('k', '>', '1')} فهو تكبير (الكتاب ص 106).`,
+      R.st.concat([big ? EQ('k', '>', '1') : EQ('k', '<', '1')]), `المثلث ${M(R.t1)} ${big ? 'تكبير' : 'تصغير'} للمثلث ${M(R.t2)} بمعامل ${EQ(FR(R.a))}.`);
+    $('#knx').innerHTML = idx < KG.length - 1 ? `<button class="btn green wide" id="kgo">الجولة التالية ←</button>` : NX(8);
+    const g = $('#kgo'); if (g) g.addEventListener('click', () => game7(idx + 1));
+  };
+  $('#kchk').addEventListener('click', () => {
+    const fb = $('#kfb'); if (S.r[R.id]) return;
+    if (!pk || !pc) { fb.innerHTML = '<span class="h">اختر الكسر، واختر تكبير أو تصغير.</span>'; return; }
+    const ok = pk === R.a && pc === R.kind; $('#kchk').disabled = true;
+    if (ok) { sOk(); burst($('#kchk')); fb.innerHTML = `<span class="g">✅ ${pick('ok')} ⭐⭐⭐</span>`; toast('🔍 +1 ن'); }
+    else { sBad(); shake($('#kchk')); fb.innerHTML = `<span class="w">🌱 ${pk !== R.a ? (pk.includes(',') || pk === R.opts[2] ? 'الكسر غير مختزل.' : 'انتبه للترتيب: البسط من المثلث ' + R.t1 + '.') : 'المعامل صحيح، لكن قارنه بالعدد 1.'} اقرأ الحل.</span>`; }
+    record(R.id, ok, 1, 1); sol();
+  });
+  if (st) { $('#kchk').disabled = true; $('#kfb').innerHTML = DONE(st, 1); sol(); }
+}
+
+/* ================= GAME 8: slide O on [AB] (BEM 2024: sum of two lengths) ================= */
+function gameSL() {
+  const host = $('#sl'), st = S.r.sl; let x = 45, tries = 0, over = !!st;
+  host.innerHTML = `${BEM('فكرة من الشهادة 2024: نسبة ومجموع طولين')}
+   <div class="fig">${figBut({ A: 'O', M: 'B', N: 'D', B: 'A', C: 'C' })}</div>
+   <div>(وحدة الطول mm) المستقيمان ${M('(AB)')} و ${M('(CD)')} يتقاطعان في ${M('O')}، و ${M('(AC) // (BD)')}، ${M('OC = 66')} ، ${M('OD = 44')} و ${M('AB = 90')}.</div>
+   <div class="muted">حرّك النقطة ${M('O')} على القطعة ${M('[AB]')} حتى تتحقق خاصية طالس، ثم اضغط «ثبّت». لك 3 محاولات.</div>
+   <div class="fig"><svg viewBox="0 0 300 70" id="slsvg"></svg></div>
+   <div class="slrow"><button class="btn light" id="slm">−</button><input type="range" min="1" max="89" step="1" value="45" id="slr" aria-label="موقع O"><button class="btn light" id="slp">+</button></div>
+   <div id="slv" style="text-align:center"></div>
+   <button class="btn orange wide" id="slchk">📌 ثبّت النقطة O</button><div class="fb" id="slfb"></div><div id="slsol"></div><div class="row" id="slnx"></div>`;
+  const draw = () => {
+    const px = 20 + 260 * x / 90;
+    $('#slsvg').innerHTML = `<line x1="20" y1="35" x2="280" y2="35" stroke="#0369a1" stroke-width="4"/><circle cx="20" cy="35" r="5" fill="#0369a1"/><circle cx="280" cy="35" r="5" fill="#0369a1"/>
+      <circle cx="${px}" cy="35" r="9" fill="#f59e0b" stroke="#b45309" stroke-width="2"/><text x="12" y="62" font-size="16">A</text><text x="272" y="62" font-size="16">B</text><text x="${px - 6}" y="20" font-size="16" fill="#b45309">O</text>
+      <text x="${(20 + px) / 2 - 8}" y="62" font-size="12" fill="#475569">${x}</text><text x="${(px + 280) / 2 - 8}" y="62" font-size="12" fill="#475569">${90 - x}</text>`;
+    $('#slv').innerHTML = `${EQ('OA', '=', String(x))} &nbsp; ${EQ('OB', '=', String(90 - x))} &nbsp; ${EQ(F('OA', 'OB'), '≈', fmt(Math.round(100 * x / (90 - x)) / 100))}`;
+    $('#slr').value = x;
+  };
+  const set = v => { if (over) return; x = Math.max(1, Math.min(89, v)); draw(); };
+  $('#slr').addEventListener('input', e => set(+e.target.value));
+  $('#slm').addEventListener('click', () => { set(x - 1); sClick(); }); $('#slp').addEventListener('click', () => { set(x + 1); sClick(); });
+  const fin = (ok, rec = true) => {
+    over = true; if (rec) record('sl', ok, tries, 2); ['#slchk', '#slm', '#slp', '#slr'].forEach(s => $(s).disabled = true); x = 54; draw();
+    $('#slsol').innerHTML = solHTML(`خاصية طالس في وضعية الفراشة، ثم المجموع ${EQ('OA', '+', 'OB', '=', 'AB')}.`,
+      [`حسب خاصية طالس: ${EQ(F('OA', 'OB'), '=', F('OC', 'OD'), '=', F('66', '44'), '=', F('3', '2'), '=', '1,5')}`, `إذن ${EQ('OA', '=', '1,5 × OB')} و ${EQ('OA', '+', 'OB', '=', '90')}`,
+       EQ('1,5 × OB', '+', 'OB', '=', '90'), EQ('2,5 × OB', '=', '90'), EQ('OB', '=', F('90', '2,5'), '=', '36'), EQ('OA', '=', '90', '−', '36', '=', '54')],
+      `${M('OA = 54 mm')} و ${M('OB = 36 mm')}.`);
+    $('#slnx').innerHTML = NX(9);
+  };
+  $('#slchk').addEventListener('click', () => {
+    if (over) return; const fb = $('#slfb'); tries++;
+    if (x === 54) { sOk(); burst($('#slsvg')); fb.innerHTML = `<span class="g">✅ ${pick('ok')} ${'⭐'.repeat(Math.max(1, 4 - tries))}</span>`; toast('🎚️ +2 ن'); fin(true); return; }
+    sBad(); shake($('#slsvg'));
+    if (tries === 1) fb.innerHTML = `<span class="w">${pick('w1')}</span><span class="h">💡 حسب خاصية طالس ${EQ(F('OA', 'OB'), '=', F('OC', 'OD'))}. احسب ${EQ(F('66', '44'))} عشريا.</span>`;
+    else if (tries === 2) fb.innerHTML = `<span class="w">${pick('w2')}</span><span class="h">💡 ${EQ('OA', '=', '1,5 × OB')} و ${EQ('OA', '+', 'OB', '=', '90')}، إذن ${EQ('2,5 × OB', '=', '90')}.</span>`;
+    else { fb.innerHTML = `<span class="w">🌱 ${pick('fail')}</span>`; fin(false); }
+  });
+  draw();
+  if (st) { fin(st.pts > 0, false); $('#slfb').innerHTML = DONE(st, 2); }
 }
 
 /* ================= CHALLENGE: the tree in our school yard ================= */
@@ -420,12 +678,12 @@ const CH = [
     h1: 'العصا والشجرة عموديتان على الأرض، فهما متوازيتان. اكتب نسب طالس في المثلثين AMN و ABC.', h2: EQ(F('AM', 'AB'), '=', F('MN', 'BC'), ' أي ', F('2', '12'), '=', F('1,5', 'BC')),
     m: 'العصا والشجرة عموديتان على نفس المستقيم (الأرض) فهما متوازيتان، ثم خاصية طالس.',
     s: [`${M('(BM)')} و ${M('(CN)')} متقاطعان في ${M('A')}، و ${M('(MN) // (BC)')}، إذن المثلثان ${M('AMN')} و ${M('ABC')} في وضعية طالس، وبالتالي:`, EQ(F('AM', 'AB'), '=', F('AN', 'AC'), '=', F('MN', 'BC')), `نحتفظ بالمساواة المناسبة: ${EQ(F('AM', 'AB'), '=', F('MN', 'BC'))} أي ${EQ(F('2', '12'), '=', F('1,5', 'BC'))}`, EQ('BC', '=', F('12 × 1,5', '2'), '=', F('18', '2'), '=', '9')],
-    c: `ارتفاع الشجرة ${M('BC = 9 m')}.`, sc: [['تبرير التوازي', .5], ['كتابة نسب طالس', 1], ['التعويض', .5], ['الحساب والنتيجة مع الوحدة', 1]] },
-  { id: 'chb', unit: 'm', a: 15, q: `علما أن ${M('AN = 2,5 m')}، احسب طول الشعاع ${M('AC')} من رأس الشجرة إلى الأرض.`,
-    h1: 'استعمل النسبتين اللتين فيهما AN و AC.', h2: EQ(F('AM', 'AB'), '=', F('AN', 'AC'), ' أي ', F('2', '12'), '=', F('2,5', 'AC')),
-    m: 'خاصية طالس (النسبتان AM/AB و AN/AC).',
-    s: [`حسب خاصية طالس في المثلثين ${M('AMN')} و ${M('ABC')}، نحتفظ بالمساواة المناسبة:`, EQ(F('AM', 'AB'), '=', F('AN', 'AC')), EQ(F('2', '12'), '=', F('2,5', 'AC')), EQ('AC', '=', F('12 × 2,5', '2'), '=', F('30', '2'), '=', '15')],
-    c: `${M('AC = 15 m')}.`, sc: [['كتابة النسبتين', 1], ['التعويض', 1], ['الحساب والنتيجة مع الوحدة', 1]] }
+    c: `ارتفاع الشجرة ${M('BC = 9 m')}.`, sc: [['تبرير التوازي', .5], ['نسب طالس والمساواة المناسبة', .5], ['الحساب والنتيجة مع الوحدة', .5]] },
+  { id: 'chb', unit: 'm', a: 15, q: `احسب طول شعاع الشمس ${M('AC')} من رأس الشجرة إلى النقطة ${M('A')}.`,
+    h1: `الشجرة عمودية على الأرض، فالمثلث ${M('ABC')} قائم في ${M('B')}: استعمل خاصية فيثاغورس.`, h2: EQ('AC²', '=', 'AB²', '+', 'BC²', '=', '12²', '+', '9²'),
+    m: `المثلث ${M('ABC')} قائم في ${M('B')}، خاصية فيثاغورس (مع ${M('BC = 9')} من السؤال 1).`,
+    s: [`المثلث ${M('ABC')} قائم في ${M('B')}، حسب خاصية فيثاغورس:`, EQ('AC²', '=', 'AB²', '+', 'BC²'), EQ('AC²', '=', '12²', '+', '9²', '=', '144', '+', '81', '=', '225'), EQ('AC', '=', '√225', '=', '15')],
+    c: `${M('AC = 15 m')}.`, sc: [['خاصية فيثاغورس', .5], ['التعويض والحساب', .5], ['النتيجة مع الوحدة', .5]] }
 ];
 function figTree() {
   return `<svg viewBox="0 0 300 210"><line x1="5" y1="195" x2="295" y2="195" stroke="#78350f" stroke-width="3"/>
@@ -439,24 +697,24 @@ function figTree() {
 }
 function challenge() {
   const host = $('#ch');
-  host.innerHTML = `<div>في ساحة متوسطتنا بوادي فراغة شجرة كبيرة غرسها التلاميذ. لقياس ارتفاعها دون تسلّقها، غرس أنس عصا ${M('[MN]')} طولها ${M('1,5 m')} عموديا على الأرض، بحيث ينتهي ظل العصا وظل الشجرة في نفس النقطة ${M('A')}. ظل العصا ${M('AM = 2 m')} وظل الشجرة ${M('AB = 12 m')}. الشجرة ${M('[BC]')} عمودية على الأرض، والنقط ${M('A, M, B')} و ${M('A, N, C')} في استقامة. 🌱 الشجرة تمنحنا الظل والهواء النقي، فلنحافظ عليها.</div>
-   <div class="fig">${figTree()}</div>${CH.map((q, i) => `<div class="q" id="q-${q.id}"><b>السؤال ${i + 1} (${i ? 3 : 3} ن):</b> ${q.q}
+  host.innerHTML = `${BEM('فكرة من الشهادة: طالس ثم فيثاغورس (2008، 2019)')}<div>في ساحة متوسطتنا بوادي فراغة شجرة كبيرة غرسها التلاميذ. لقياس ارتفاعها دون تسلّقها، غرس أنس عصا ${M('[MN]')} طولها ${M('1,5 m')} عموديا على الأرض، بحيث ينتهي ظل العصا وظل الشجرة في نفس النقطة ${M('A')}. ظل العصا ${M('AM = 2 m')} وظل الشجرة ${M('AB = 12 m')}. الشجرة ${M('[BC]')} عمودية على الأرض، والنقط ${M('A, M, B')} و ${M('A, N, C')} في استقامة. 🌱 الشجرة تمنحنا الظل والهواء النقي، فلنحافظ عليها.</div>
+   <div class="fig">${figTree()}</div>${CH.map((q, i) => `<div class="q" id="q-${q.id}"><b>السؤال ${i + 1} (1,5 ن):</b> ${q.q}
    <div class="ans"><input type="text" inputmode="decimal" autocomplete="off" aria-label="الجواب"><span class="unit">${q.unit}</span><button class="btn chk">تحقّق ✓</button></div>
    <div class="keys"><button data-k=",">,</button><button data-k="⌫">⌫</button></div><div class="fb"></div><div class="mdl"></div></div>`).join('')}`;
   CH.forEach(q => {
     const el = $('#q-' + q.id), inp = $('input', el), fb = $('.fb', el); let tries = 0;
     const lock = (ok, stt) => { $$('input,button', el).forEach(b => b.disabled = true); $('.mdl', el).innerHTML = ok ? `<details><summary style="cursor:pointer;font-weight:800;color:#0369a1">📘 اطّلع على الحل المفصّل</summary>${solHTML(q.m, q.s, q.c, q.sc)}</details>` : solHTML(q.m, q.s, q.c, q.sc); };
-    const st = S.r[q.id]; if (st) { fb.innerHTML = `<span class="g">منجز: ${fmt(st.pts)} / 3 ن ${'⭐'.repeat(st.st)}</span>`; lock(true); return; }
+    const st = S.r[q.id]; if (st) { fb.innerHTML = `<span class="g">منجز: ${fmt(st.pts)} / 1,5 ن ${'⭐'.repeat(st.st)}</span>`; lock(true); return; }
     $$('.keys button', el).forEach(b => b.addEventListener('click', () => { const k = b.dataset.k; inp.value = k === '⌫' ? inp.value.slice(0, -1) : inp.value + k; inp.focus(); }));
     const check = () => {
       const t = inp.value.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[٫,]/g, '.').replace(/[^\d.]/g, '');
       if (!t || isNaN(+t)) { fb.innerHTML = '<span class="h">اكتب عددا (الفاصلة بالزر ,).</span>'; shake(el); return; }
       tries++;
-      if (Math.abs(+t - q.a) < 1e-9) { sOk(); burst(el); fb.innerHTML = `<span class="g">✅ ${pick('ok')} ${'⭐'.repeat(Math.max(1, 4 - tries))}</span>`; toast('🌳 +3 ن'); record(q.id, true, tries, 3); lock(true); return; }
+      if (Math.abs(+t - q.a) < 1e-9) { sOk(); burst(el); fb.innerHTML = `<span class="g">✅ ${pick('ok')} ${'⭐'.repeat(Math.max(1, 4 - tries))}</span>`; toast('🌳 +1,5 ن'); record(q.id, true, tries, 1.5); lock(true); return; }
       sBad(); shake(el);
       if (tries === 1) fb.innerHTML = `<span class="w">${pick('w1')}</span><span class="h">💡 ${q.h1}</span>`;
       else if (tries === 2) fb.innerHTML = `<span class="w">${pick('w2')}</span><span class="h">💡 ${q.h2}</span>`;
-      else { fb.innerHTML = `<span class="w">🌱 ${pick('fail')}</span>`; record(q.id, false, tries, 3); lock(false); }
+      else { fb.innerHTML = `<span class="w">🌱 ${pick('fail')}</span>`; record(q.id, false, tries, 1.5); lock(false); }
     };
     $('.chk', el).addEventListener('click', check); inp.addEventListener('keydown', e => { if (e.key === 'Enter') check(); });
   });
@@ -468,7 +726,7 @@ let certBuilt = false;
 function renderCert() {
   const host = $('#cert'); if (!host) return;
   const left = Object.keys(ITEMS).filter(k => !doneK(k));
-  if (left.length) { certBuilt = false; const nm = { g1: '🧩 اللعبة 1', g2: '🔐 اللعبة 2', g3: '⚖️ اللعبة 3', ch: '🌳 التحدي' }; host.innerHTML = `<div style="text-align:center"><div class="lock">🔒</div><p>أكمل الألعاب الثلاث والتحدي لتفتح شهادتك.</p><p>بقي: ${left.map(k => `<b>${nm[k]}</b>`).join(' ، ')}</p></div>`; return; }
+  if (left.length) { certBuilt = false; host.innerHTML = `<div style="text-align:center"><div class="lock">🔒</div><p>أكمل الألعاب الثماني والتحدي لتفتح شهادتك.</p><p>بقي: ${left.map(k => `<b>${TT[Object.keys(ITEMS).indexOf(k) + 1]}</b>`).join(' ، ')}</p></div>`; return; }
   if (certBuilt) { drawCert(); return; }
   certBuilt = true; const [ic, nm] = medal();
   host.innerHTML = `<p>🎉 مبروك! علامتك <b>${fmt(score())} / 20</b> و ${stars()} ⭐: الشهادة <b>${nm}</b> ${ic}</p>
@@ -494,7 +752,7 @@ async function drawCert() {
   T('متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة', 196, '700 26px Cairo', '#475569');
   T('شهادة إنجاز', 300, '900 84px Cairo', '#0369a1'); T('تُمنح هذه الشهادة للتلميذ(ة)', 380, '700 32px Cairo');
   T(S.name || '..............................', 470, '900 64px Cairo', '#c2410c');
-  T('لإتمامه(ا) بنجاح «ألعاب طالس» والتحدي الكبير', 545, '700 32px Cairo'); T('المقطع الثاني — السنة الرابعة متوسط', 592, '700 28px Cairo', '#475569');
+  T('لإتمامه(ا) بنجاح «ألعاب طالس» الثماني والتحدي الكبير', 545, '700 32px Cairo'); T('المقطع الثاني — السنة الرابعة متوسط', 592, '700 28px Cairo', '#475569');
   T(`العلامة: ${fmt(score())} / 20 — النجوم: ${stars()} ⭐`, 660, '800 34px Cairo', '#1e3a8a'); T(`${ic} الشهادة ${nm}`, 735, '900 46px Cairo', col);
   const d = new Date(); x.font = '700 26px Cairo'; x.fillStyle = '#0f172a';
   x.textAlign = 'right'; x.fillText('الأستاذ: يوسفي السوفي', W - 110, 860); x.textAlign = 'left'; x.fillText(`التاريخ: ${d.getDate()} / ${d.getMonth() + 1} / ${d.getFullYear()}`, 110, 860);
@@ -503,7 +761,7 @@ async function drawCert() {
 
 $('#snd').addEventListener('click', () => { S.snd = !S.snd; save(); upd(); });
 const firstOpen = (arr) => Math.max(0, arr.findIndex(r => !S.r[r.id])) ;
-game1(firstOpen(G1)); game2(firstOpen(G2)); game3(firstOpen(G3)); challenge(); upd();
+game1(0); gameBM(); game2(0); gameOS(); gamePP(); game6(firstOpen(G6)); game7(firstOpen(KG)); gameSL(); challenge(); upd();
 </script>
 </body>
 </html>
