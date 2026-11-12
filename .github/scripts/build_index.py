@@ -14,7 +14,7 @@ import subprocess
 
 LEVELS = ["1m", "2m", "3m", "4m"]
 TERMS = ["t1", "t2", "t3"]
-SECTIONS = ["dars", "series", "fard", "wadjib", "ikhtibar", "chahada", "tahaddi"]
+SECTIONS = ["dars", "al3ab", "series", "fard", "wadjib", "ikhtibar", "chahada", "tahaddi"]
 EXTS = {".html": "html", ".htm": "html", ".pdf": "pdf",
         ".png": "image", ".jpg": "image", ".jpeg": "image", ".webp": "image"}
 
@@ -22,7 +22,7 @@ TITLE_RE = re.compile(r"<title[^>]*>(.*?)</title>", re.I | re.S)
 
 LEVEL_AR = {"1m": "السنة الأولى متوسط", "2m": "السنة الثانية متوسط",
             "3m": "السنة الثالثة متوسط", "4m": "السنة الرابعة متوسط"}
-SECTION_AR = {"dars": "درس تفاعلي", "series": "سلسلة تمارين", "fard": "فرض", "wadjib": "واجب منزلي", "ikhtibar": "اختبار", "chahada": "سلسلة الشهادة", "tahaddi": "تحدي"}
+SECTION_AR = {"dars": "درس تفاعلي", "al3ab": "ألعاب رياضيات", "series": "سلسلة تمارين", "fard": "فرض", "wadjib": "واجب منزلي", "ikhtibar": "اختبار", "chahada": "سلسلة الشهادة", "tahaddi": "تحدي"}
 
 
 def site_base():
