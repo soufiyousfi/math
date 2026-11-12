@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ألعاب المقطع الأول: الخزائن السرية وذاكرة الكسور (الثانية متوسط)</title>
-<meta name="description" content="لعبتان للسنة الثانية متوسط على المقطع الأول: الخزائن السرية (أولويات العمليات والتوزيع والعبارة الجبرية) وذاكرة الكسور. نجوم ومؤقّت وشهادة باسمك.">
+<title>ألعاب المقطع الأول: العمليات والحساب الحرفي والكسور (الثانية متوسط)</title>
+<meta name="description" content="ثلاث ألعاب سهلة بأزرار اختيار للسنة الثانية متوسط: أولويات العمليات، التوزيع والحساب الحرفي، الكسور. 20 سؤالا و20 نقطة وشهادة.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="🎮 ألعاب المقطع الأول للثانية متوسط: افتح الخزائن وتذكّر الكسور!">
-<meta property="og:description" content="لعبتان، 20 نقطة، نجوم إضافية للأسرع، وشهادة إنجاز باسمك. هل تحصل على 20/20؟">
+<meta property="og:title" content="🎮 ألعاب المقطع الأول للثانية متوسط: 3 ألعاب و20 سؤالا!">
+<meta property="og:description" content="الأولويات، التوزيع، الكسور: اضغط الجواب واربح النجوم والشهادة.">
 <meta property="og:image" content="https://soufiyousfi.github.io/math/2m/t1/al3ab/img/al3ab-m1-fb.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&display=swap" rel="stylesheet">
 <style>
+
 :root{
   --bg:#eef7fb; --card:#fff; --ink:#0f172a; --muted:#475569; --line:#cbd5e1;
   --c1:#0369a1; --c2:#0d9488; --yel:#f59e0b; --ok:#16a34a; --ok-soft:#dcfce7;
@@ -71,57 +72,6 @@ table.vt{border-collapse:collapse;margin:6px auto;direction:ltr;font-weight:900;
 table.vt td{border:2px solid #0369a1;padding:3px 14px;text-align:center;background:#fff}
 table.vt tr:first-child td{background:#e0f2fe}
 .bk{font-size:.85rem;color:#64748b;text-align:center}
-/* game 1 */
-.bank{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;direction:ltr;margin:10px 0}
-.tile{min-width:62px;min-height:50px;padding:6px 12px;border-radius:12px;border:3px solid #0284c7;background:#fff;color:#0369a1;font-weight:900;font-size:1.15rem;box-shadow:0 5px 0 #0284c7}
-.tile.sel{background:var(--yel);border-color:#b45309;color:#fff;box-shadow:0 5px 0 #b45309;transform:translateY(-2px)}
-.tile.used{visibility:hidden}
-.build{direction:ltr;display:flex;align-items:center;justify-content:center;gap:6px;margin:14px 0;background:#eff6ff;border:2px dashed #93c5fd;border-radius:14px;padding:12px 4px}
-.frz{display:flex;flex-direction:column;align-items:center;gap:5px;padding:4px;border-radius:12px}
-.frz .bar2{width:62px;height:4px;background:#0369a1;border-radius:2px}
-.zone{width:62px;height:44px;border:3px dashed #94a3b8;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem;color:#0369a1}
-.zone.on{border-color:var(--yel);background:#fef3c7}
-.zone.full{border-style:solid;border-color:#0284c7;background:#e0f2fe}
-.frz.good{background:var(--ok-soft);outline:3px solid var(--ok)}
-.frz.badz{background:var(--bad-soft);outline:3px solid var(--bad)}
-.eqs{font-size:1.6rem;font-weight:900;color:#0369a1}
-/* game 2 safe */
-.safe{background:#334155;border-radius:18px;padding:14px;color:#fff;text-align:center}
-.safe .m,.safe>.eq,.safe>div>.eq{color:#fde68a}
-.screen{background:#0f172a;border:4px solid #64748b;border-radius:10px;padding:8px;font-family:monospace;font-size:1.8rem;letter-spacing:4px;color:#4ade80;direction:ltr;min-height:62px;display:flex;align-items:center;justify-content:center}
-.screen.err{color:#f87171}
-.pad{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:300px;margin:12px auto 0;direction:ltr}
-.pad button{min-height:56px;border:0;border-radius:14px;background:#e2e8f0;color:#0f172a;font-size:1.4rem;font-weight:900;box-shadow:0 5px 0 #94a3b8}
-.pad button:active{transform:translateY(4px);box-shadow:none}
-.pad .c{background:#fecaca;color:#7f1d1d;box-shadow:0 5px 0 #f87171}
-.pad .open{grid-column:span 4;background:var(--yel);color:#3b2600;box-shadow:0 5px 0 #b45309}
-.lock{font-size:2.4rem;line-height:1}
-.steps3{display:flex;gap:6px;justify-content:center;margin-bottom:8px}
-.steps3 span{width:34px;height:34px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-weight:900}
-.steps3 span.ok{background:var(--ok);color:#fff}.steps3 span.cur{background:var(--yel);color:#fff}.steps3 span.ko{background:#94a3b8;color:#fff}
-/* game 3 */
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-.duo .btn{min-height:60px;font-size:1.05rem}
-.data{display:grid;grid-template-columns:1fr 1fr;gap:6px;direction:ltr;margin:6px 0}
-.data div{background:#f1f5f9;border-radius:10px;padding:2px 8px;font-weight:800;text-align:center;color:#1e3a8a}
-/* new games */
-.bem{display:inline-block;background:#fef9c3;border:1px solid #facc15;color:#713f12;border-radius:999px;padding:0 10px;font-size:.82rem;font-weight:800;margin-bottom:4px}
-.match{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:300px;margin:10px auto}
-.match .col{display:flex;flex-direction:column;gap:12px;align-items:stretch}.match .hd{text-align:center}
-.pairs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;direction:ltr;margin:8px 0;min-height:10px}
-.pairs .p{padding:4px 10px;border-radius:12px;border:3px solid transparent}
-.pairs .p.good{border-color:var(--ok)}.pairs .p.badz{border-color:var(--bad)}
-.cards{display:flex;flex-direction:column;gap:8px;margin:8px 0}
-.scard{width:100%;text-align:start;font:inherit;font-size:.95rem;font-weight:700;background:#fff;border:3px solid #0284c7;border-radius:12px;padding:6px 10px;box-shadow:0 4px 0 #0284c7;color:var(--ink)}
-.scard.in{border-color:var(--ok);box-shadow:0 4px 0 #15803d;background:#f0fdf4}
-.seqh{font-weight:900;color:var(--c1);margin-top:6px}
-ol.seq{margin:4px 0;padding-inline-start:26px;min-height:40px;background:#f8fafc;border:2px dashed #86efac;border-radius:12px;padding-top:6px;padding-bottom:6px}
-ol.seq li{margin:6px 0;font-weight:900}
-.pl{cursor:pointer}.pl .vis{stroke:#0369a1;stroke-width:3}.pl .hit{stroke:transparent;stroke-width:24}
-.pl.on .vis{stroke:#f59e0b;stroke-width:7}.pl.off{pointer-events:none}
-.opts{display:flex;flex-direction:column;gap:10px;margin-top:8px}.opts .btn{font-size:1rem}
-.slrow{display:flex;gap:8px;align-items:center;direction:ltr}.slrow .btn{min-width:56px;padding:4px}
-.slrow input{flex:1;height:44px;accent-color:#f59e0b}
 /* feedback */
 .fb{margin-top:10px;font-weight:700}
 .fb .w{display:block;background:var(--bad-soft);color:#991b1b;border-radius:12px;padding:6px 10px}
@@ -156,35 +106,52 @@ canvas#cv{width:100%;height:auto;border-radius:10px;box-shadow:0 4px 18px rgba(0
 footer{text-align:center;color:var(--muted);font-size:.85rem;padding:16px}
 @media print{body *{visibility:hidden}#cv{visibility:visible;position:fixed;inset:0;width:100%;box-shadow:none}}
 
-/* ---- games page additions ---- */
-.res{display:inline-block;background:#ecfeff;border:1px solid #67e8f9;color:#155e75;border-radius:999px;padding:0 10px;font-size:.82rem;font-weight:800;margin-bottom:4px}
-.dots{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin:6px 0}
-.dots span{width:26px;height:26px;border-radius:50%;background:#e2e8f0;font-size:.8rem;font-weight:900;display:flex;align-items:center;justify-content:center}
-.dots span.ok{background:var(--ok);color:#fff}.dots span.ko{background:#94a3b8;color:#fff}.dots span.cur{background:var(--yel);color:#fff}
-.timer{display:flex;align-items:center;gap:8px;margin:6px 0}
-.tbar{flex:1;height:14px;background:#e2e8f0;border-radius:8px;overflow:hidden}
-.tbar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#f59e0b,#16a34a);transition:width .25s linear}
-.tbar.off i{background:#cbd5e1}
-.tsec{font-weight:900;min-width:46px;text-align:center;direction:ltr}
-.tbtn{min-height:40px;border:2px solid var(--line);background:#fff;border-radius:12px;font-weight:800;padding:0 10px}
-.qtext{font-size:1.08rem;font-weight:700;margin:6px 0}
-.mc{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-.mc .btn{min-height:56px;font-size:1.2rem;direction:ltr}
-.vop{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Courier New",monospace;font-weight:900;font-size:1.2rem;color:#1e3a8a;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:4px 14px;margin:4px 0;line-height:1.45;text-align:right}
+
+/* ---- simple games v2 ---- */
+.res{display:inline-block;background:#ecfeff;border:1px solid #67e8f9;color:#155e75;border-radius:999px;padding:0 10px;font-size:.82rem;font-weight:800;margin:2px 0}
+.bk{display:inline-block;background:#fef9c3;border:1px solid #facc15;color:#713f12;border-radius:999px;padding:0 10px;font-size:.8rem;font-weight:800;margin:2px 0}
+.dots{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin:8px 0}
+.dots span{width:30px;height:30px;border-radius:50%;background:#e2e8f0;font-size:.85rem;font-weight:900;display:flex;align-items:center;justify-content:center}
+.dots span.ok{background:var(--ok);color:#fff}.dots span.ko{background:#94a3b8;color:#fff}.dots span.cur{background:var(--yel);color:#fff;transform:scale(1.15)}
+.qbox{background:#f8fafc;border:2px solid #e2e8f0;border-radius:14px;padding:10px 12px;margin-top:6px}
+.qtext{font-size:1.12rem;font-weight:700}
+.do{display:block;background:#e0f2fe;color:#075985;border-radius:10px;padding:4px 10px;margin:8px 0 0;font-weight:800;font-size:.95rem}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.opts.one{grid-template-columns:1fr}
+.opt{min-height:62px;border-radius:16px;border:3px solid #0284c7;background:#fff;color:#0c4a6e;font-weight:900;font-size:1.15rem;box-shadow:0 5px 0 #0284c7;padding:6px 8px;line-height:1.4}
+.opt.sel{background:#fef3c7;border-color:#d97706;box-shadow:0 5px 0 #b45309;transform:translateY(-2px)}
+.opt.good{background:var(--ok-soft);border-color:var(--ok);box-shadow:0 5px 0 #15803d;color:#14532d}
+.opt.bad{background:var(--bad-soft);border-color:var(--bad);box-shadow:0 5px 0 #991b1b;color:#7f1d1d;text-decoration:line-through;opacity:.7}
+.opt:disabled{cursor:default}
+.mcols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+.mcols .col{display:flex;flex-direction:column;gap:10px}
+.olist{direction:ltr;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:62px;background:#f0fdf4;border:2px dashed #86efac;border-radius:14px;padding:8px;margin:10px 0 4px;align-items:center}
+.olist .pk{background:#dcfce7;border:2px solid #16a34a;border-radius:10px;padding:2px 12px;font-weight:900;font-size:1.1rem;color:#14532d}
+.olist.vert{direction:rtl;flex-direction:column;align-items:stretch}.olist.vert .pk{text-align:start}.nb{display:inline-flex;width:24px;height:24px;border-radius:50%;background:#16a34a;color:#fff;align-items:center;justify-content:center;font-size:.85rem;margin-inline-end:4px}
+.olist .em{color:#94a3b8;font-weight:700}
+.go{margin-top:14px}
+.hint3{font-size:.85rem;color:var(--muted);text-align:center;margin-top:6px}
+.tries{display:flex;gap:4px;justify-content:center;margin-top:8px;font-size:1.2rem}
+.gsum{text-align:center}
+.gsum .big{font-size:2.2rem}
+.lock{font-size:2.4rem;line-height:1}
+.intro{background:#fff7ed;border:2px dashed #fb923c;border-radius:12px;padding:6px 10px;margin:6px 0;font-weight:700}
+.howto li{margin:4px 0}
+.vop{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Courier New",monospace;font-weight:900;font-size:1.15rem;color:#1e3a8a;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:4px 14px;margin:4px 0;line-height:1.45;text-align:right}
 .vop div{white-space:pre}.vop .rule{border-top:3px solid #1e3a8a;height:0;margin:2px 0}
-.mcol{display:flex;flex-direction:column;gap:10px}
-.mtile{min-height:56px;border-radius:14px;border:3px solid #0284c7;background:#fff;color:#0369a1;font-weight:900;font-size:1.2rem;box-shadow:0 5px 0 #0284c7;display:flex;align-items:center;justify-content:center}
-.mtile.sel{background:var(--yel);border-color:#b45309;color:#fff;box-shadow:0 5px 0 #b45309}
-.mtile.done{background:var(--ok-soft);border-color:var(--ok);color:#14532d;box-shadow:0 5px 0 #15803d;pointer-events:none}
-.mtile.bad{background:var(--bad-soft);border-color:var(--bad)}
-.machine{background:#334155;border-radius:18px;padding:12px;color:#fff;text-align:center}
-.machine .mbox{display:inline-block;background:var(--yel);color:#3b2600;border-radius:12px;padding:4px 16px;font-size:1.5rem;font-weight:900;direction:ltr;margin:6px 0}
-.machine .inn{font-size:1.6rem;font-weight:900;color:#fde68a;direction:ltr}
-.olist{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;direction:ltr;min-height:60px;background:#f0fdf4;border:2px dashed #86efac;border-radius:14px;padding:8px;margin:8px 0;align-items:center}
-#mo .tile.used{display:none}
-.olist .sg{font-weight:900;font-size:1.4rem;color:#15803d}
-.olist .pk{background:#dcfce7;border:2px solid #16a34a;border-radius:10px;padding:2px 10px;font-weight:900;font-size:1.15rem;color:#14532d}
-.memo{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}.mc2{min-height:74px;border-radius:14px;border:3px solid #7c3aed;background:#7c3aed;color:#fff;font-weight:900;font-size:1.05rem;box-shadow:0 5px 0 #5b21b6;padding:4px;display:flex;align-items:center;justify-content:center;transition:transform .2s}.mc2 .face{display:none}.mc2 .back{font-size:1.6rem}.mc2.open{background:#fff;color:#1e3a8a}.mc2.open .face{display:block}.mc2.open .back{display:none}.mc2.got{background:var(--ok-soft);border-color:var(--ok);box-shadow:0 5px 0 #15803d}.mc2 .m,.mc2 .eq{white-space:normal;font-size:1rem}
+.fig svg{max-width:300px}
+.gw .fig svg,.fw .fig svg{max-width:340px}
+.hz,.gn{cursor:pointer}
+.pool{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:62px;margin-top:10px}
+.pool .opt,.bc .opt{min-height:50px;padding:4px 12px;font-size:1.05rem}
+.bins{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.bin{border:3px dashed #0d9488;border-radius:14px;background:#f0fdfa;min-height:120px;padding:6px;cursor:pointer}
+.bh{font-weight:900;color:#0f766e;text-align:center;border-bottom:2px solid #99f6e4;margin-bottom:6px}
+.bc{display:flex;flex-direction:column;gap:6px}
+.nlw .fig{margin-bottom:4px}
+.slrow{display:flex;gap:8px;align-items:center;direction:ltr}.slrow .btn{min-width:56px;padding:4px}
+.slrow input{flex:1;height:44px;accent-color:#dc2626}
+.chips a.cur{border-color:var(--yel)}
 </style>
 </head>
 <body>
@@ -199,249 +166,358 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:16px}
   <span class="prog"><i id="progi"></i></span>
   <button class="snd" id="snd" aria-label="الصوت">🔊</button>
 </div>
-<nav class="chips" id="chips">
-  <a href="#s1" data-k="g1">🔐 اللعبة 1</a><a href="#s2" data-k="g2">🃏 اللعبة 2</a><a href="#s3">🎓 الشهادة</a>
-</nav>
-<main>
+<nav class="chips" id="chips"></nav>
+<main id="main">
 <section class="card" id="s0">
-  <div class="ct">📌 كيف ألعب؟</div>
-  <div>لكل سؤال <b>3 محاولات</b>: بعد الخطأ الأول تلميح، وبعد الثاني تلميح أقوى، وبعد الثالث يظهر الحل النموذجي. اكتب الحساب على ورقة قبل أن تجيب.</div>
-  <div>⏱️ في لعبة الذاكرة مؤقّت: إذا وجدت كل الأزواج قبل نهاية الوقت ربحت <b>نجمة السرعة ⚡</b>. انتهاء الوقت لا يُسقطك.</div>
+  <div class="ct">📌 كيف ألعب؟ (اقرأ مرة واحدة)</div>
+  <ol class="howto">
+    <li>🎲 طرق الإجابة متنوعة: تختار، تكتب، تحرّك نقطة، تضع نقطة على المرصوفة، تضغط على الشكل، تصل، ترتّب، أو تصنّف. اقرأ التعليمة الزرقاء فوق كل سؤال.</li>
+    <li>✔ لا يُصحَّح شيء قبل أن تضغط الزر الأخضر <b>«تحقّق»</b>. إذا ضغطت بالخطأ، غيّر جوابك قبل «تحقّق» ولا تخسر شيئا.</li>
+    <li>💡 إذا أخطأت: يظهر تلميح وتجرّب مرة أخرى. لك <b>3 محاولات</b>، وبعد الثالثة يظهر الحل المفصّل.</li>
+    <li>🎯 كل سؤال بنقطة: من المحاولة الأولى <b>1</b>، الثانية <b>0,5</b>، الثالثة <b>0,25</b>.</li>
+    <li>✍️ اكتب الحساب في كراسك قبل أن تختار. تقدّمك محفوظ في هاتفك.</li>
+  </ol>
 </section>
-<section class="card" id="s1">
-  <div class="ct">🔐 اللعبة 1: الخزائن السرية <span class="pts">10 ن</span></div>
-  <div id="g1"></div>
-</section>
-<section class="card" id="s2">
-  <div class="ct">🃏 اللعبة 2: ذاكرة الكسور <span class="pts">10 ن</span></div>
-  <div id="g2"></div>
-</section>
-<section class="card" id="s3">
+<div id="games"></div>
+<section class="card" id="sc">
   <div class="ct">🎓 الشهادة</div>
   <div id="cert"></div>
 </section>
 </main>
 <div id="toast"></div>
-<footer>متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي<br>المرجع: منهاج السنة الثانية متوسط والمخططات السنوية 2022، المقطع الأول.</footer>
-
+<footer>متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي<br>المرجع: منهاج السنة الثانية متوسط والمخطط السنوي 2022، المقطع الأول، والكتاب المدرسي.</footer>
 <script>
 "use strict";
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+/* math helpers: everything inside M() is written left to right */
 const F = (a, b) => `<span class="fr"><span>${a}</span><span>${b}</span></span>`;
-const EQP = p => p.map(x => x.startsWith('<') ? x : `<span>${x}</span>`).join('');
-const EQ = (...p) => `<span class="eq">${EQP(p)}</span>`;
-const EQB = (...p) => `<span class="eq blk">${EQP(p)}</span>`;
 const M = t => `<span class="m">${t}</span>`;
-const fmt = x => String(Math.round(x * 1000) / 1000).replace('.', ',');
-const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
-/* vertical operation: rows right-aligned, '—' = rule */
+const EQ = (...p) => `<span class="eq">${p.map(x => String(x).startsWith('<') ? x : `<span>${x}</span>`).join('')}</span>`;
 const VOP = rows => `<div class="vop">${rows.map(r => r === '—' ? '<div class="rule"></div>' : `<div>${r}</div>`).join('')}</div>`;
-const num = s => { const t = String(s).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[٫,]/g, '.').replace(/\s/g, '').replace(/DA|kg|m/gi, ''); return t === '' || isNaN(+t) ? null : +t; };
-
-/* ---------- messages (change from question to question) ---------- */
+const fmt = x => String(Math.round(x * 100) / 100).replace('.', ',');
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+/* geometry figure: P = {A:[x,y]}, seg/line/ray = [['A','B']], circ = [[cx,cy,r,dashed]], ra = [['A','B','C']] (right angle at B), extra = raw svg */
+function G(o) {
+  const W = o.w || 300, H = o.h || 200, P = o.P || {}, out = [];
+  if (o.grid) { for (let x = 0; x <= W; x += o.grid) out.push(`<line x1="${x}" y1="0" x2="${x}" y2="${H}" stroke="#e2e8f0"/>`); for (let y = 0; y <= H; y += o.grid) out.push(`<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="#e2e8f0"/>`); }
+  const ext = (a, b, k1, k2) => { const [x1, y1] = P[a], [x2, y2] = P[b], dx = x2 - x1, dy = y2 - y1; return [x1 - k1 * dx, y1 - k1 * dy, x2 + k2 * dx, y2 + k2 * dy]; };
+  (o.poly || []).forEach(p => out.push(`<polygon points="${p.map(k => P[k].join(',')).join(' ')}" fill="${o.fill || '#e0f2fe'}" stroke="#0369a1" stroke-width="2.5"/>`));
+  (o.circ || []).forEach(c => out.push(`<circle cx="${c[0]}" cy="${c[1]}" r="${c[2]}" fill="none" stroke="${c[4] || '#0369a1'}" stroke-width="2.5" ${c[3] ? 'stroke-dasharray="6 5"' : ''}/>`));
+  (o.line || []).forEach(([a, b, col]) => { const e = ext(a, b, .6, .6); out.push(`<line x1="${e[0]}" y1="${e[1]}" x2="${e[2]}" y2="${e[3]}" stroke="${col || '#0369a1'}" stroke-width="2.5"/>`); });
+  (o.ray || []).forEach(([a, b, col]) => { const e = ext(a, b, 0, .8); out.push(`<line x1="${e[0]}" y1="${e[1]}" x2="${e[2]}" y2="${e[3]}" stroke="${col || '#0369a1'}" stroke-width="2.5"/>`); });
+  (o.seg || []).forEach(([a, b, col, dash]) => out.push(`<line x1="${P[a][0]}" y1="${P[a][1]}" x2="${P[b][0]}" y2="${P[b][1]}" stroke="${col || '#0369a1'}" stroke-width="${col ? 3.5 : 2.5}" ${dash ? 'stroke-dasharray="6 5"' : ''}/>`));
+  (o.ra || []).forEach(([a, b, c]) => { const [bx, by] = P[b], u = (p) => { const dx = P[p][0] - bx, dy = P[p][1] - by, n = Math.hypot(dx, dy); return [dx / n * 11, dy / n * 11]; }; const [ux, uy] = u(a), [vx, vy] = u(c); out.push(`<polyline points="${bx + ux},${by + uy} ${bx + ux + vx},${by + uy + vy} ${bx + vx},${by + vy}" fill="none" stroke="#dc2626" stroke-width="2"/>`); });
+  if (o.extra) out.push(o.extra);
+  Object.entries(P).forEach(([k, [x, y]]) => { if ((o.hide || []).includes(k)) return; const d = (o.lab || {})[k] || [8, -8]; out.push(`<circle cx="${x}" cy="${y}" r="3.5" fill="#0f172a"/><text x="${x + d[0]}" y="${y + d[1]}" font-size="17" fill="#0f172a" text-anchor="middle">${k}</text>`); });
+  return `<div class="fig"><svg viewBox="0 0 ${W} ${H}">${out.join('')}</svg></div>`;
+}
+/* graduated line: labels a (left) and b (right), n equal parts, point lab at tick k (marks = [[k,label],...]) */
+function NL(a, b, n, marks) {
+  const x0 = 25, x1 = 295, y = 55, out = [`<line x1="10" y1="${y}" x2="310" y2="${y}" stroke="#0369a1" stroke-width="3"/>`];
+  for (let i = 0; i <= n; i++) { const x = x0 + (x1 - x0) * i / n, big = i === 0 || i === n || (n === 10 && i === 5); out.push(`<line x1="${x}" y1="${y - (big ? 12 : 7)}" x2="${x}" y2="${y + (big ? 12 : 7)}" stroke="#0369a1" stroke-width="2"/>`); }
+  out.push(`<text x="${x0}" y="${y + 34}" font-size="18" text-anchor="middle" fill="#0f172a">${a}</text><text x="${x1}" y="${y + 34}" font-size="18" text-anchor="middle" fill="#0f172a">${b}</text>`);
+  marks.forEach(([k, l]) => { const x = x0 + (x1 - x0) * k / n; out.push(`<circle cx="${x}" cy="${y}" r="6" fill="#dc2626"/><text x="${x}" y="${y - 18}" font-size="19" text-anchor="middle" fill="#dc2626">${l}</text>`); });
+  return `<div class="fig"><svg viewBox="0 0 320 100">${out.join('')}</svg></div>`;
+}
+/* ---------- messages: change from question to question ---------- */
 const MSG = {
-  ok: ['أحسنت! تركيزك أوصلك إلى الجواب الصحيح.', 'ممتاز! الدقة أهم من السرعة، وأنت أثبتّ ذلك.', 'رائع! جهدك يستحق هذه النجوم.', 'برافو! التأنّي يصنع النجاح.', 'إجابة صحيحة! واصل بنفس الهدوء.', 'بارك الله فيك! تقدّم خطوة بخطوة كما فعلت.'],
+  ok: ['أحسنت! تركيزك أوصلك إلى الجواب الصحيح.', 'ممتاز! الدقة أهم من السرعة، وأنت أثبتّ ذلك.', 'رائع! جهدك يستحق هذه النجوم.', 'برافو! التأنّي يصنع النجاح.', 'إجابة صحيحة! واصل بنفس الهدوء.', 'بارك الله فيك! تقدّم خطوة بخطوة كما فعلت.', 'جميل جدا! فكّرت جيدا قبل أن تختار.'],
   w1: ['لا بأس، الخطأ جزء من التعلّم. اقرأ التلميح بهدوء.', 'تمهّل قليلا: كلما أسرعت قلّ تركيزك.', 'كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.', 'أنت قريب. أعطِ السؤال الوقت الذي يحتاجه.'],
-  w2: ['محاولة أخيرة: اكتب الحساب على ورقة قبل أن تجيب.', 'لا تيأس! التركيز يأتي مع الهدوء.', 'السرعة والتركيز لا يجتمعان: تمهّل.', 'ابذل جهدا صغيرا آخر، فالحل قريب منك.'],
-  fail: ['لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. تأمّل الحل خطوة بخطوة.', 'المهم أن نفهم لماذا أخطأنا. اقرأ الحل ثم أعده وحدك على ورقة.', 'الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة.']
+  w2: ['محاولة أخيرة: اكتب الحساب في كراسك قبل أن تختار.', 'لا تيأس! التركيز يأتي مع الهدوء.', 'السرعة والتركيز لا يجتمعان: تمهّل.', 'ابذل جهدا صغيرا آخر، فالحل قريب منك.'],
+  fail: ['لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. تأمّل الحل خطوة بخطوة.', 'المهم أن نفهم لماذا أخطأنا. اقرأ الحل ثم أعده وحدك في كراسك.', 'الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة.']
 };
 let mi = 0; const pick = k => MSG[k][(mi++) % MSG[k].length];
-
-/* ---------- state ---------- */
-const KEY = 'al3ab_2m_m1_v1';
-let S = { r: {}, name: '', snd: true, tm: true };
-try { const t = localStorage.getItem(KEY); if (t) S = Object.assign(S, JSON.parse(t)); } catch (e) {}
-const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
-const ITEMS = { g1: ['k1', 'k2', 'k3', 'k4', 'k5'], g2: ['mm', 'r2', 'r3'] };
-const ALL = Object.values(ITEMS).flat();
-const score = () => ALL.reduce((n, k) => n + ((S.r[k] || {}).pts || 0), 0);
-const stars = () => ALL.reduce((n, k) => n + ((S.r[k] || {}).st || 0), 0);
-const doneK = k => ITEMS[k].every(i => S.r[i] && S.r[i].done);
-function rec(id, pts, st) { S.r[id] = { done: true, pts, st }; save(); upd(); }
-function upd() {
-  $('#score').textContent = fmt(score()); $('#stars').textContent = stars();
-  $('#progi').style.width = Math.round(100 * ALL.filter(k => S.r[k] && S.r[k].done).length / ALL.length) + '%';
-  $('#snd').textContent = S.snd ? '🔊' : '🔇';
-  $$('#chips a[data-k]').forEach(a => a.classList.toggle('ok', doneK(a.dataset.k)));
-  Object.keys(ITEMS).forEach((k, i) => $('#s' + (i + 1)).classList.toggle('done', doneK(k)));
-  renderCert();
+/*META {"TITLE":"ألعاب المقطع الأول: العمليات والحساب الحرفي والكسور (الثانية متوسط)","DESC":"ثلاث ألعاب سهلة بأزرار اختيار للسنة الثانية متوسط: أولويات العمليات، التوزيع والحساب الحرفي، الكسور. 20 سؤالا و20 نقطة وشهادة.","OGT":"🎮 ألعاب المقطع الأول للثانية متوسط: 3 ألعاب و20 سؤالا!","OGD":"الأولويات، التوزيع، الكسور: اضغط الجواب واربح النجوم والشهادة.","L":"2m","N":"1","H1":"🎮 ألعاب المقطع الأول","SUB":"السنة الثانية متوسط — العمليات، الحساب الحرفي، الكسور","REF":"المرجع: منهاج السنة الثانية متوسط والمخطط السنوي 2022، المقطع الأول، والكتاب المدرسي."} */
+const PAGE = {
+ key: 'al3ab_2m_m1_v2', file: 'ألعاب_المقطع_الأول_2م',
+ certLine: 'لإتمامه(ا) ألعاب «أولويات العمليات» و«التوزيع والحساب الحرفي» و«الكسور»', certSub: 'المقطع الأول — السنة الثانية متوسط',
+ games: [
+ { icon: '🧮', name: 'أولويات العمليات', res: ['أولويات العمليات والأقواس'],
+   intro: 'تذكّر الترتيب: الأقواس أولا، ثم الضرب والقسمة، ثم الجمع والطرح.', qs: [
+  { q: `${M('12 + 3 × 4 = ?')}`, o: [M('24'), M('60'), M('19'), M('48')], a: 0,
+    h1: 'هل نبدأ بالجمع أم بالضرب؟', h2: `الضرب أولا: ${M('3 × 4 = 12')}.`,
+    m: { w: 'الضرب له الأولوية على الجمع.', s: [M('12 + 3 × 4'), M('= 12 + 12'), M('= 24')], c: `${M('12 + 3 × 4 = 24')}.` } },
+  { q: `${M('(12 + 3) × 4 = ?')}`, o: [M('60'), M('24'), M('19'), M('51')], a: 0,
+    h1: 'هنا توجد أقواس: ماذا نحسب أولا؟', h2: `داخل القوسين: ${M('12 + 3 = 15')}.`,
+    m: { w: 'نحسب ما بين القوسين أولا.', s: [M('(12 + 3) × 4'), M('= 15 × 4'), M('= 60')], c: `${M('(12 + 3) × 4 = 60')}.` } },
+  { q: `${M('30 − 12 ÷ 3 = ?')}`, o: [M('26'), M('6'), M('9'), M('22')], a: 0,
+    h1: 'القسمة قبل الطرح.', h2: `${M('12 ÷ 3 = 4')}، ثم ${M('30 − 4')}.`,
+    m: { w: 'القسمة لها الأولوية على الطرح.', s: [M('30 − 12 ÷ 3'), M('= 30 − 4'), M('= 26')], c: `${M('30 − 12 ÷ 3 = 26')}.` } },
+  { t: 'o', q: `رتّب خطوات حساب ${M('5 + 2 × (8 − 3)')} من الأولى إلى الأخيرة.`, it: [M('8 − 3 = 5'), M('2 × 5 = 10'), M('5 + 10 = 15')], vert: 1, ph: 'اضغط الخطوة الأولى أولا',
+    h1: 'ابدأ بما بين القوسين.', h2: 'بعد القوسين يأتي الضرب، ثم الجمع.',
+    m: { w: 'الأقواس، ثم الضرب، ثم الجمع.', s: [M('5 + 2 × (8 − 3)'), M('= 5 + 2 × 5'), M('= 5 + 10'), M('= 15')], c: 'النتيجة 15.' } },
+  { q: `حسب علي: ${M('20 − 4 × 3 = 48')}. ما النتيجة الصحيحة؟`, o: [M('8'), M('48'), M('12'), M('52')], a: 0,
+    h1: 'علي بدأ بالطرح. هل هذا صحيح؟', h2: `الضرب أولا: ${M('4 × 3 = 12')}.`,
+    m: { w: 'الضرب قبل الطرح، وخطأ علي أنه حسب من اليسار إلى اليمين دون احترام الأولوية.', s: [M('20 − 4 × 3'), M('= 20 − 12'), M('= 8')], c: `النتيجة الصحيحة ${M('8')}.` } },
+  { q: `في تعاونية فلاحية بقالمة، ملأت فاطمة ${M('3')} علب في كل منها ${M('12')} بيضة، وبقيت ${M('5')} بيضات. أيّ عبارة تعطي عدد البيض كله؟`, o: [M('3 × 12 + 5'), M('3 × (12 + 5)'), M('(3 + 12) × 5'), M('3 + 12 × 5')], a: 0,
+    h1: 'ثلاث علب في كل منها 12: هذا ضرب.', h2: 'ثم نضيف البيضات الخمس الباقية.',
+    m: { w: 'نترجم النص إلى عبارة: الضرب للعلب، والجمع للباقي.', s: [M('3 × 12 + 5'), M('= 36 + 5'), M('= 41')], c: `العبارة ${M('3 × 12 + 5')}، وعدد البيض ${M('41')}.` } },
+  { q: `${M('18 ÷ (6 − 3) × 2 = ?')}`, o: [M('12'), M('3'), M('36'), M('1')], a: 0,
+    h1: 'القوسان أولا، ثم القسمة والضرب من اليسار إلى اليمين.', h2: `${M('18 ÷ 3 = 6')}، ثم ${M('6 × 2')}.`,
+    m: { w: 'الأقواس أولا، ثم الضرب والقسمة بالترتيب من اليسار إلى اليمين.', s: [M('18 ÷ (6 − 3) × 2'), M('= 18 ÷ 3 × 2'), M('= 6 × 2'), M('= 12')], c: 'النتيجة 12.' } }
+ ]},
+ { icon: '🔤', name: 'التوزيع والحساب الحرفي', res: ['توزيع الضرب على الجمع والطرح', 'العبارة الحرفية'],
+   intro: 'التوزيع يسهّل الحساب الذهني، والحرف يعوّض عددا.', qs: [
+  { q: `أيّ كتابة تساوي ${M('7 × (10 + 3)')}؟`, o: [M('7 × 10 + 7 × 3'), M('7 × 10 + 3'), M('7 + 10 × 3'), M('70 + 10')], a: 0,
+    h1: 'الضرب يتوزع على كل حد داخل القوسين.', h2: `نضرب ${M('7')} في ${M('10')} وفي ${M('3')}.`,
+    m: { w: `${M('k × (a + b) = k × a + k × b')}.`, s: [M('7 × (10 + 3) = 7 × 10 + 7 × 3'), M('= 70 + 21 = 91')], c: `${M('7 × (10 + 3) = 7 × 10 + 7 × 3')}.` } },
+  { q: `احسب ذهنيا: ${M('25 × 102')}`, o: [M('2550'), M('2502'), M('2050'), M('255')], a: 0,
+    h1: `اكتب ${M('102 = 100 + 2')}.`, h2: `${M('25 × 100 + 25 × 2')}.`,
+    m: { w: 'نفكك العدد ثم نوزع الضرب.', s: [M('25 × 102 = 25 × (100 + 2)'), M('= 2500 + 50'), M('= 2550')], c: `${M('25 × 102 = 2550')}.` } },
+  { q: `احسب بأسهل طريقة: ${M('6 × 13 + 6 × 7')}`, o: [M('120'), M('85'), M('546'), M('78')], a: 0,
+    h1: `العامل ${M('6')} مشترك بين الجداءين.`, h2: `${M('6 × (13 + 7)')}.`,
+    m: { w: 'نستعمل التوزيع بالعكس (العامل المشترك).', s: [M('6 × 13 + 6 × 7 = 6 × (13 + 7)'), M('= 6 × 20'), M('= 120')], c: 'النتيجة 120.' } },
+  { q: `احسب قيمة العبارة ${M('3 × x + 5')} من أجل ${M('x = 4')}.`, o: [M('17'), M('39'), M('12'), M('35')], a: 0,
+    h1: `نعوّض الحرف ${M('x')} بالعدد ${M('4')}.`, h2: `${M('3 × 4 + 5')}، والضرب أولا.`,
+    m: { w: 'نعوّض الحرف بقيمته ثم نحترم الأولويات.', s: [M('3 × 4 + 5'), M('= 12 + 5'), M('= 17')], c: 'قيمة العبارة 17.' } },
+  { t: 'm', q: 'صِل كل عبارة بكتابتها المختصرة.', p: [[M('a × 4'), M('4a')], [M('a + a'), M('2a')], [M('3 × a + 2 × a'), M('5a')], [M('a × b × 2'), M('2ab')]],
+    h1: 'نحذف علامة × بين عدد وحرف، ونكتب العدد أولا.', h2: `${M('a + a')} حرفان متساويان: مرتين ${M('a')}.`,
+    m: { w: 'نختصر الكتابة بحذف × ونجمع الحدود المتشابهة.', s: [M('a × 4 = 4a'), M('a + a = 2a'), M('3a + 2a = (3 + 2)a = 5a'), M('a × b × 2 = 2ab')], c: 'كل عبارة تساوي كتابتها المختصرة.' } },
+  { q: `مستطيل طوله ${M('L')} وعرضه ${M('3')}. أيّ عبارة تعطي محيطه؟`, o: [M('2 × (L + 3)'), M('L × 3'), M('2 × L + 3'), M('L + 3')], a: 0,
+    h1: 'المحيط = مجموع أطوال الأضلاع الأربعة.', h2: `${M('L + 3 + L + 3')}.`,
+    m: { w: 'محيط المستطيل = 2 × (الطول + العرض).', s: [M('L + 3 + L + 3 = 2 × (L + 3)')], c: `المحيط ${M('2 × (L + 3)')}. أما ${M('L × 3')} فهي المساحة.` } },
+  { q: `انشر العبارة ${M('4 × (x − 2)')}.`, o: [M('4x − 8'), M('4x − 2'), M('x − 8'), M('4x + 8')], a: 0,
+    h1: `نضرب ${M('4')} في ${M('x')} وفي ${M('2')}.`, h2: 'لا تنس أن تضرب الحد الثاني أيضا.',
+    m: { w: `${M('k × (a − b) = k × a − k × b')}.`, s: [M('4 × (x − 2) = 4 × x − 4 × 2'), M('= 4x − 8')], c: `${M('4 × (x − 2) = 4x − 8')}.` } }
+ ]},
+ { icon: '🍕', name: 'الكسور', res: ['جداء كسرين والاختزال', 'مقارنة وجمع وطرح كسرين'],
+   intro: 'كل سؤال مهارة: الضرب، الاختزال، المقارنة، الجمع، الطرح، الترتيب.', qs: [
+  { q: `${EQ(F('3', '4'), '×', F('2', '5'), '= ?')}`, o: [F('6', '20'), F('5', '9'), F('8', '15'), F('6', '9')], a: 0,
+    h1: 'نضرب البسط في البسط، والمقام في المقام.', h2: `البسط ${M('3 × 2')} والمقام ${M('4 × 5')}.`,
+    m: { w: 'جداء كسرين: البسط في البسط والمقام في المقام.', s: [EQ(F('3', '4'), '×', F('2', '5'), '=', F('3 × 2', '4 × 5'), '=', F('6', '20')), 'ويمكن الاختزال: ' + EQ(F('6', '20'), '=', F('3', '10'))], c: `${EQ(F('3', '4'), '×', F('2', '5'), '=', F('6', '20'), '=', F('3', '10'))}.` } },
+  { q: `اختزل الكسر ${F('18', '24')} إلى كسر غير قابل للاختزال.`, o: [F('3', '4'), F('2', '3'), F('3', '8'), F('9', '14')], a: 0,
+    h1: `ابحث عن عدد يقسم ${M('18')} و ${M('24')} معا.`, h2: `${M('6')} يقسم العددين.`,
+    m: { w: 'نقسم البسط والمقام على القاسم المشترك نفسه.', s: [EQ(F('18', '24'), '=', F('18 ÷ 6', '24 ÷ 6'), '=', F('3', '4'))], c: `${EQ(F('18', '24'), '=', F('3', '4'))}.` } },
+  { q: `قارن ${F('3', '5')} و ${F('7', '10')}.`, o: [EQ(F('3', '5'), '<', F('7', '10')), EQ(F('3', '5'), '>', F('7', '10')), EQ(F('3', '5'), '=', F('7', '10')), 'لا يمكن المقارنة'], a: 0,
+    h1: `المقام ${M('10')} مضاعف للمقام ${M('5')}.`, h2: `${EQ(F('3', '5'), '=', F('6', '10'))}.`,
+    m: { w: 'نوحّد المقامين ثم نقارن البسطين.', s: [EQ(F('3', '5'), '=', F('3 × 2', '5 × 2'), '=', F('6', '10')), M('6 < 7')], c: `${EQ(F('3', '5'), '<', F('7', '10'))}.` } },
+  { q: `${EQ(F('1', '3'), '+', F('5', '6'), '= ?')}`, o: [F('7', '6'), F('6', '9'), F('6', '6'), F('7', '9')], a: 0,
+    h1: 'لا نجمع المقامين! نوحّد المقامين أولا.', h2: `${EQ(F('1', '3'), '=', F('2', '6'))}.`,
+    m: { w: 'نوحّد المقامين ثم نجمع البسطين ونحتفظ بالمقام.', s: [EQ(F('1', '3'), '+', F('5', '6'), '=', F('2', '6'), '+', F('5', '6')), EQ('=', F('7', '6'))], c: `${EQ(F('1', '3'), '+', F('5', '6'), '=', F('7', '6'))}.` } },
+  { q: `${EQ(F('7', '8'), '−', F('1', '4'), '= ?')}`, o: [F('5', '8'), F('6', '4'), F('6', '8'), F('3', '2')], a: 0,
+    h1: `المقام ${M('8')} مضاعف للمقام ${M('4')}.`, h2: `${EQ(F('1', '4'), '=', F('2', '8'))}.`,
+    m: { w: 'نوحّد المقامين ثم نطرح البسطين.', s: [EQ(F('7', '8'), '−', F('2', '8'), '=', F('5', '8'))], c: `${EQ(F('7', '8'), '−', F('1', '4'), '=', F('5', '8'))}.` } },
+  { t: 'o', q: 'ملأت عائلة من حمام دباغ قوارير زيت زيتون بكميات مختلفة. رتّب الكسور من الأصغر إلى الأكبر.', it: [F('1', '2'), F('5', '8'), F('3', '4'), F('7', '8')], sepS: '<',
+    h1: `اكتب كل الكسور بالمقام ${M('8')}.`, h2: `${EQ(F('1', '2'), '=', F('4', '8'))} و ${EQ(F('3', '4'), '=', F('6', '8'))}.`,
+    m: { w: 'نوحّد المقامات ثم نرتب البسوط.', s: [EQ(F('4', '8'), ';', F('5', '8'), ';', F('6', '8'), ';', F('7', '8'))], c: `${EQ(F('1', '2'), '<', F('5', '8'), '<', F('3', '4'), '<', F('7', '8'))}.` } }
+ ]}
+ ]
+};
+/* v3: varied answer methods + one game per property (his rules 2026-11-12) */
+const X = (q, o) => Object.assign({}, q, o);
+{ const [g1, g2, g3] = PAGE.games;
+  g1.qs[0] = X(g1.qs[0], { t: 'n', a: 24 });
+  g1.qs[2] = X(g1.qs[2], { t: 'n', a: 26 });
+  g2.qs[1] = X(g2.qs[1], { t: 'n', a: 2550 });
+  g2.qs[3] = X(g2.qs[3], { t: 'n', a: 17 });
+  g2.qs[6] = X(g2.qs[6], { t: 'n', txt: 1, keys: ['x', '−', '+'], acc: ['4x−8', '4×x−8', '−8+4x'], show: '4x − 8', q: `انشر العبارة ${M('4 × (x − 2)')} واكتب النتيجة مختصرة.` });
+  g3.qs[1] = X(g3.qs[1], { t: 'n', txt: 1, keys: ['/'], acc: ['3/4'], show: '3/4', q: `اختزل الكسر ${F('18', '24')} إلى كسر غير قابل للاختزال. (اكتب البسط ثم / ثم المقام)` });
+  g3.qs[2] = { t: 'bin', q: 'صنّف كل كسر: أصغر من 1 أم أكبر من 1؟', bins: [`أصغر من ${M('1')}`, `أكبر من ${M('1')}`], it: [[F('5', '8'), 0], [F('9', '10'), 0], [F('7', '6'), 1], [F('12', '11'), 1], [F('3', '7'), 0], [F('15', '4'), 1]],
+    h1: 'قارن البسط بالمقام.', h2: 'إذا كان البسط أصغر من المقام فالكسر أصغر من 1.',
+    m: { w: 'نقارن البسط بالمقام.', s: ['البسط < المقام ⇐ الكسر < 1', 'البسط > المقام ⇐ الكسر > 1'], c: `${F('5', '8')} و ${F('9', '10')} و ${F('3', '7')} أصغر من 1، والباقي أكبر من 1.` } };
+  const gd = { icon: '✖️', name: 'خاصية التوزيع', res: ['توزيع الضرب على الجمع والطرح'], intro: `خاصية واحدة: ${M('k × (a + b) = k × a + k × b')}.`, qs: [g2.qs[0], g2.qs[1], g2.qs[2], g2.qs[6]] };
+  const gh = { icon: '🔤', name: 'العبارة الحرفية', res: ['العبارة الحرفية'], intro: 'الحرف يعوّض عددا: نختصر الكتابة ونحسب القيمة.', qs: [g2.qs[3], g2.qs[4], g2.qs[5]] };
+  PAGE.games = [g1, gd, gh, g3];
+  PAGE.certLine = 'لإتمامه(ا) ألعاب «الأولويات» و«التوزيع» و«العبارة الحرفية» و«الكسور»';
 }
 
+/* ---------- state ---------- */
+const KEY = PAGE.key;
+let S = { r: {}, snd: true, name: '', at: {} };
+try { const t = localStorage.getItem(KEY); if (t) S = Object.assign(S, JSON.parse(t)); } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
+PAGE.games.forEach((g, gi) => g.qs.forEach((q, qi) => { q.id = `g${gi + 1}q${qi + 1}`; }));
+const ALLQ = PAGE.games.flatMap(g => g.qs);
+const TOT = ALLQ.length;
+const PT = 20 / TOT;
+const score = () => ALLQ.reduce((n, q) => n + ((S.r[q.id] || {}).pts || 0), 0);
+const stars = () => ALLQ.reduce((n, q) => n + ((S.r[q.id] || {}).st || 0), 0);
+const gDone = g => g.qs.every(q => S.r[q.id]);
 /* ---------- sound & effects ---------- */
 let AC = null;
 function tone(fs, d = .12, type = 'triangle') { if (!S.snd) return; try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); fs.forEach((f, i) => { const o = AC.createOscillator(), g = AC.createGain(); o.type = type; o.frequency.value = f; g.gain.setValueAtTime(.15, AC.currentTime + i * d); g.gain.exponentialRampToValueAtTime(.001, AC.currentTime + (i + 1) * d); o.connect(g); g.connect(AC.destination); o.start(AC.currentTime + i * d); o.stop(AC.currentTime + (i + 1) * d); }); } catch (e) {} }
-const sOk = () => tone([523, 659, 784]), sBad = () => tone([220, 180], .18, 'sawtooth'), sClick = () => tone([800], .05, 'sine');
-function toast(t, w) { const d = document.createElement('div'); d.className = w ? 'w' : ''; d.innerHTML = t; $('#toast').appendChild(d); setTimeout(() => d.remove(), 3000); }
+const sOk = () => tone([523, 659, 784]), sBad = () => tone([220, 180], .18, 'sawtooth'), sClick = () => tone([700], .04, 'sine');
+function toast(t, w) { $('#toast').innerHTML = ''; const d = document.createElement('div'); d.className = w ? 'w' : ''; d.innerHTML = t; $('#toast').appendChild(d); setTimeout(() => d.remove(), 3000); }
 function burst(el, n = 10, set = ['⭐', '✨']) { const r = el.getBoundingClientRect(); for (let i = 0; i < n; i++) { const s = document.createElement('span'); s.className = 'burst'; s.textContent = set[i % set.length]; s.style.left = (r.left + r.width / 2) + 'px'; s.style.top = (r.top + 10) + 'px'; s.style.setProperty('--dx', (Math.random() * 240 - 120) + 'px'); s.style.setProperty('--dy', (-60 - Math.random() * 130) + 'px'); document.body.appendChild(s); setTimeout(() => s.remove(), 1000); } }
 const hintFx = el => burst(el, 5, ['💡', '⭐', '✨']);
 function shake(el) { el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake'); }
-const solHTML = (m, steps, c, sc) => `<div class="sol"><h4>📘 الحل النموذجي</h4><div><b>الطريقة:</b> ${m}</div>${steps.map(s => `<div class="ln">${s}</div>`).join('')}<div class="ccl"><b>الاستنتاج:</b> ${c}</div>${sc ? `<table class="sc"><tr><th>سلم التنقيط</th><th>النقاط</th></tr>${sc.map(r => `<tr><td>${r[0]}</td><td>${fmt(r[1])}</td></tr>`).join('')}<tr class="tot"><td>المجموع</td><td>${fmt(sc.reduce((a, r) => a + r[1], 0))}</td></tr></table>` : ''}</div>`;
-const solBox = (ok, html) => ok ? `<details><summary style="cursor:pointer;font-weight:800;color:#0369a1">📘 اطّلع على الحل المفصّل</summary>${html}</details>` : html;
-const RES = t => `<div class="res">📚 ${t}</div>`;
-const NXA = (href, t) => `<a class="btn green wide" href="${href}" style="text-decoration:none">${t} ←</a>`;
-
-
-/* generic 3-tries input question. opts: {host, q, a (string|number), parse:'num'|'frac'|'root', unit, h1, h2, sol(), pts, id, keys, onDone} */
-const norm = s => String(s).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/\s|×|\*/g, '').replace(/[٫]/g, ',');
-function askQ(o) {
-  const host = o.host, st = S.r[o.id];
-  host.innerHTML = `<div class="qtext">${o.q}</div>
-   <div class="ans"><input type="text" inputmode="${o.parse === 'num' ? 'decimal' : 'text'}" autocomplete="off" aria-label="الجواب">${o.unit ? `<span class="unit">${o.unit}</span>` : ''}<button class="btn chk">تحقّق ✓</button></div>
-   <div class="keys">${o.keys.map(k => `<button data-k="${k}">${k}</button>`).join('')}<button data-k="⌫">⌫</button></div>
-   <div class="fb"></div><div class="mdl"></div>`;
-  const fb = $('.fb', host), inp = $('input', host);
-  const lock = () => $$('input,.ans button,.keys button', host).forEach(b => b.disabled = true);
-  if (st) { lock(); fb.innerHTML = `<span class="g">منجز: ${fmt(st.pts)} / ${fmt(o.pts)} ن ${'⭐'.repeat(st.st)}</span>`; $('.mdl', host).innerHTML = solBox(!!st.pts, o.sol()); o.onDone && o.onDone(); return; }
-  let tries = 0;
-  $$('.keys button', host).forEach(b => b.addEventListener('click', () => { const k = b.dataset.k; inp.value = k === '⌫' ? inp.value.slice(0, -1) : inp.value + k; inp.focus(); }));
-  const good = v => { if (o.parse === 'num') { const x = num(v); return x !== null && Math.abs(x - o.a) < 1e-9; } return o.accept.includes(norm(v)); };
-  const check = () => {
-    if (S.r[o.id]) return;
-    if (!inp.value.trim()) { fb.innerHTML = '<span class="h">اكتب جوابك أولا.</span>'; shake(inp); return; }
-    tries++;
-    const fin = ok => { rec(o.id, ok ? o.pts : 0, ok ? Math.max(1, 4 - tries) : 0); lock(); $('.mdl', host).innerHTML = solBox(ok, o.sol()); o.onDone && o.onDone(); };
-    if (good(inp.value)) { sOk(); burst(inp); fb.innerHTML = `<span class="g">✅ ${pick('ok')} ${'⭐'.repeat(Math.max(1, 4 - tries))}</span>`; toast(`+${fmt(o.pts)} ن`); fin(true); return; }
-    sBad(); shake(inp);
-    if (tries === 1) { fb.innerHTML = `<span class="w">${pick('w1')}</span><span class="h">💡 ${o.h1}</span>`; hintFx(fb); }
-    else if (tries === 2) { fb.innerHTML = `<span class="w">${pick('w2')}</span><span class="h">💡 ${o.h2}</span>`; hintFx(fb); }
-    else { fb.innerHTML = `<span class="w">🌱 ${pick('fail')}</span>`; fin(false); }
-  };
-  $('.chk', host).addEventListener('click', check); inp.addEventListener('keydown', e => { if (e.key === 'Enter') check(); });
+function solHTML(q) {
+  const m = q.m, sc = q.sc || m.sc || [['الجواب الصحيح', 1]], k = PT;
+  return `<div class="sol"><h4>📘 الحل النموذجي</h4><div><b>الطريقة:</b> ${m.w}</div>${m.s.map(s => `<div class="ln">${s}</div>`).join('')}<div class="ccl"><b>الاستنتاج:</b> ${m.c}</div><table class="sc"><tr><th>سلم التنقيط</th><th>النقاط</th></tr>${sc.map(r => `<tr><td>${r[0]}</td><td>${fmt(r[1] * k)}</td></tr>`).join('')}<tr class="tot"><td>المجموع</td><td>${fmt(sc.reduce((a, r) => a + r[1], 0) * k)}</td></tr></table></div>`;
 }
-/* ================= GAME 1: secret safes (keypad = his favourite mechanic) ================= */
-const SAFES = [
- { id: 'k1', where: 'خزنة حمام دباغ ♨️', e: EQ('7 + 3 × 5'), a: 22, h1: 'الضرب قبل الجمع.', h2: `احسب أولا ${EQ('3 × 5')}`,
-   m: 'في سلسلة عمليات دون أقواس، نجري الضرب والقسمة قبل الجمع والطرح.', s: [EQ('7 + 3 × 5'), EQ('= 7 + 15'), EQ('= 22')], c: 'الشيفرة 22' },
- { id: 'k2', where: 'خزنة المسرح الروماني 🏛️', e: EQ('(7 + 3) × 5'), a: 50, h1: 'الأقواس أولا.', h2: `احسب ما بين القوسين: ${EQ('7 + 3')}`,
-   m: 'نحسب ما بين الأقواس أولا.', s: [EQ('(7 + 3) × 5'), EQ('= 10 × 5'), EQ('= 50')], c: 'الشيفرة 50' },
- { id: 'k3', where: 'خزنة وادي سيبوس 🌊', e: EQ('48 − 24 ÷ (2 + 4)'), a: 44, h1: 'الأقواس أولا، ثم القسمة، ثم الطرح.', h2: `${EQ('2 + 4 = 6')} ثم ${EQ('24 ÷ 6')}`,
-   m: 'الأقواس، ثم القسمة قبل الطرح.', s: [EQ('48 − 24 ÷ (2 + 4)'), EQ('= 48 − 24 ÷ 6'), EQ('= 48 − 4'), EQ('= 44')], c: 'الشيفرة 44' },
- { id: 'k4', where: 'خزنة مزرعة بوشقوف 🍅', e: EQ('25 × 13 + 25 × 7'), a: 500, h1: 'العامل 25 مشترك: استعمل التوزيع في الاتجاه المعاكس (التحليل).', h2: EQ('25 × 13 + 25 × 7', '=', '25 × (13 + 7)'),
-   m: 'خاصية توزيع الضرب على الجمع: k × a + k × b = k × (a + b).', s: [EQ('25 × 13 + 25 × 7'), EQ('= 25 × (13 + 7)'), EQ('= 25 × 20'), EQ('= 500')], c: 'الشيفرة 500' },
- { id: 'k5', where: 'خزنة سوق قالمة 🛒', e: `قيمة العبارة ${EQ('3x + 5')} من أجل ${EQ('x = 4')}`, a: 17, h1: 'عوّض x بالعدد 4.', h2: `${EQ('3x')} تعني ${EQ('3 × x')}، أي ${EQ('3 × 4')}`,
-   m: 'نعوّض المتغيّر بقيمته ثم نحترم أولوية العمليات.', s: [EQ('3x + 5', '=', '3 × 4 + 5'), EQ('= 12 + 5'), EQ('= 17')], c: 'الشيفرة 17' }
-];
-function game1(idx) {
-  if (idx == null) idx = Math.max(0, SAFES.findIndex(r => !S.r[r.id])); if (idx < 0) idx = 0;
-  const R = SAFES[idx], host = $('#g1'), st = S.r[R.id];
-  let v = '', tries = 0;
-  const dots = SAFES.map((r, i) => { const x = S.r[r.id]; return `<span class="${x ? (x.pts ? 'ok' : 'ko') : (i === idx ? 'cur' : '')}">${i + 1}</span>`; }).join('');
-  host.innerHTML = `${RES('الموارد: أولويات العمليات والأقواس، توزيع الضرب على الجمع والطرح، العبارة الجبرية')}
-   <div class="dots">${dots}</div><div class="muted">احسب واكتب النتيجة شيفرةً لفتح الخزنة (2 ن). لك 3 محاولات.</div>
-   <div class="safe"><div style="font-weight:900">${R.where}</div><div class="lock" id="lk">🔒</div><div style="margin:6px 0 10px;font-size:1.25rem">${R.e}</div>
-   <div class="screen" id="scr">_ _</div>
-   <div class="pad">${['7', '8', '9', 'C', '4', '5', '6', ',', '1', '2', '3', '0'].map(k => `<button data-k="${k}" class="${k === 'C' ? 'c' : ''}">${k}</button>`).join('')}<button class="open" id="open">🔓 افتح الخزنة</button></div></div>
-   <div class="fb" id="g1fb"></div><div id="g1sol"></div><div class="row" id="g1nx"></div>`;
-  const scr = $('#scr', host), fb = $('#g1fb'), show = () => { scr.textContent = v || '_ _'; };
-  const sol = () => solHTML(R.m, R.s, R.c, [['ترتيب العمليات', 1], ['النتيجة', 1]]);
-  const next = () => { $('#g1nx').innerHTML = idx < SAFES.length - 1 ? `<button class="btn green wide" id="g1go">الخزنة التالية ←</button>` : NXA('#s2', 'إلى اللعبة 2'); const g = $('#g1go'); if (g) g.addEventListener('click', () => { game1(idx + 1); $('#s1').scrollIntoView({ behavior: 'smooth' }); }); };
-  if (st) { $('#open').disabled = true; $('#lk').textContent = st.pts ? '🔓' : '🔒'; fb.innerHTML = `<span class="g">منجزة: ${fmt(st.pts)} / 2 ن ${'⭐'.repeat(st.st)}</span>`; $('#g1sol').innerHTML = solBox(!!st.pts, sol()); next(); return; }
-  $$('.pad [data-k]', host).forEach(b => b.addEventListener('click', () => { if (S.r[R.id]) return; const k = b.dataset.k; if (k === 'C') v = ''; else if (v.length < 6 && !(k === ',' && v.includes(','))) v += k; sClick(); scr.classList.remove('err'); show(); }));
-  const fin = ok => { rec(R.id, ok ? 2 : 0, ok ? Math.max(1, 4 - tries) : 0); $('#open').disabled = true; $('#g1sol').innerHTML = solBox(ok, sol()); $$('.dots span', host)[idx].className = ok ? 'ok' : 'ko'; next(); };
-  $('#open').addEventListener('click', () => {
-    if (S.r[R.id]) return;
-    if (!v) { fb.innerHTML = '<span class="h">اكتب الشيفرة أولا.</span>'; return; }
-    tries++;
-    if (Math.abs(num(v) - R.a) < 1e-9) { $('#lk').textContent = '🔓'; sOk(); burst(scr); fb.innerHTML = `<span class="g">🎉 انفتحت الخزنة! ${pick('ok')} ${'⭐'.repeat(Math.max(1, 4 - tries))}</span>`; toast('🔐 +2 ن'); fin(true); return; }
-    sBad(); scr.classList.add('err'); shake(scr); setTimeout(() => { v = ''; scr.classList.remove('err'); show(); }, 700);
-    if (tries === 1) { fb.innerHTML = `<span class="w">${pick('w1')}</span><span class="h">💡 ${R.h1}</span>`; hintFx(fb); }
-    else if (tries === 2) { fb.innerHTML = `<span class="w">${pick('w2')}</span><span class="h">💡 ${R.h2}</span>`; hintFx(fb); }
-    else { fb.innerHTML = `<span class="w">🌱 ${pick('fail')}</span>`; fin(false); }
-  });
+const solBox = (ok, q) => ok ? `<details><summary style="cursor:pointer;font-weight:800;color:#0369a1">📘 اطّلع على الحل المفصّل</summary>${solHTML(q)}</details>` : solHTML(q);
+const RATE = [1, .5, .25];
+/* ---------- build page ---------- */
+const host = $('#games');
+$('#chips').innerHTML = PAGE.games.map((g, i) => `<a href="#g${i + 1}" data-g="${i}">${g.icon} اللعبة ${i + 1}</a>`).join('') + `<a href="#sc">🎓 الشهادة</a>`;
+PAGE.games.forEach((g, gi) => {
+  const sec = document.createElement('section'); sec.className = 'card'; sec.id = `g${gi + 1}`;
+  sec.innerHTML = `<div class="ct">${g.icon} اللعبة ${gi + 1}: ${g.name} <span class="pts">${fmt(g.qs.length * PT)} ن</span></div>${g.res.map(r => `<span class="res">📚 ${r}</span>`).join(' ')}${g.intro ? `<div class="intro">${g.intro}</div>` : ''}<div class="dots"></div><div class="stage"></div>`;
+  host.appendChild(sec);
+  showGame(gi);
+});
+function dotsOf(g, cur) { return g.qs.map((q, i) => { const r = S.r[q.id]; return `<span class="${r ? (r.pts > 0 ? 'ok' : 'ko') : (i === cur ? 'cur' : '')}">${i + 1}</span>`; }).join(''); }
+function showGame(gi, force) {
+  const g = PAGE.games[gi], sec = $(`#g${gi + 1}`), st = $('.stage', sec);
+  let cur = g.qs.findIndex(q => !S.r[q.id]);
+  if (force !== undefined) cur = force;
+  $('.dots', sec).innerHTML = dotsOf(g, cur);
+  sec.classList.toggle('done', gDone(g));
+  if (cur < 0) {
+    const p = g.qs.reduce((n, q) => n + S.r[q.id].pts, 0), s = g.qs.reduce((n, q) => n + S.r[q.id].st, 0);
+    const nxt = gi + 1 < PAGE.games.length ? `#g${gi + 2}` : '#sc';
+    st.innerHTML = `<div class="gsum"><div class="big">🏁</div><p>انتهت اللعبة! نقاطك <b>${fmt(p * PT)} / ${fmt(g.qs.length * PT)}</b> و ${s} ⭐</p>
+      <div class="row"><a class="btn green" href="${nxt}" style="text-decoration:none">${gi + 1 < PAGE.games.length ? 'إلى اللعبة التالية' : 'إلى الشهادة'} ←</a><button class="btn light rg">🔁 أعد هذه اللعبة</button></div></div>`;
+    $('.rg', st).addEventListener('click', e => { const b = e.currentTarget; if (!b.dataset.c) { b.dataset.c = 1; b.textContent = 'اضغط مرة أخرى للتأكيد'; return; } g.qs.forEach(q => delete S.r[q.id]); save(); upd(); showGame(gi); });
+    return;
+  }
+  renderQ(gi, cur);
 }
-const SQ = t => `<span class="m">${t}</span>`;
-const PAIRS = [
-  [F('6', '8'), F('3', '4')], [F('2', '3') + '<span>×</span>' + F('4', '5'), F('8', '15')], [F('1', '2') + '<span>+</span>' + F('1', '6'), F('2', '3')],
-  [F('5', '6') + '<span>−</span>' + F('1', '3'), F('1', '2')], [F('3', '5') + '<span>× 10</span>', '6'], [F('7', '10') + '<span>+</span>' + F('1', '5'), F('9', '10')]
-];
-const T2 = 120;
-let m2I = null, m2Left = T2, m2Pause = false;
-function game2() {
-  const host = $('#g2');
-  host.innerHTML = `${RES('الموارد: جداء كسرين، مقارنة وجمع وطرح كسرين (مقام أحدهما مضاعف للآخر)، الاختزال')}
-   <div class="q" style="border:0;margin:0;padding:0"><b>🃏 المرحلة 1 (6 ن):</b> اقلب بطاقتين: إذا كانتا متساويتين بقيتا مكشوفتين. اعثر على الأزواج الستة.
-   <div class="timer"><span class="tbar" id="tbar2"><i id="tb2"></i></span><span class="tsec" id="ts2"></span><button class="tbtn" id="tp2"></button><button class="tbtn" id="toff2"></button></div>
-   <div class="memo" id="memo"></div><div class="muted" style="text-align:center">المحاولات: <b id="mv">0</b> — الأزواج: <b id="pf">0</b> / 6</div><div class="fb" id="mfb"></div><div class="mdl" id="msol"></div></div>
-   <div class="q" id="r2"></div><div class="q" id="r3"></div><div class="row" id="g2nx"></div>`;
-  memo();
-}
-function g2end() { if (doneK('g2')) $('#g2nx').innerHTML = NXA('#s3', 'إلى الشهادة'); }
-function m2Draw() {
-  const b = $('#tb2'); if (!b) return; $('#tbar2').classList.toggle('off', !S.tm);
-  b.style.width = S.tm ? (100 * m2Left / T2) + '%' : '100%'; $('#ts2').textContent = S.tm ? m2Left + ' s' : '—';
-  $('#tp2').textContent = m2Pause ? '▶️ استئناف' : '⏸️ إيقاف'; $('#tp2').disabled = !S.tm; $('#toff2').textContent = S.tm ? '⏱️ بدون مؤقّت' : '⏱️ شغّل المؤقّت';
-}
-function memo() {
-  const host = $('#memo'), st = S.r.mm;
-  const sol = () => solHTML('نوحّد المقامات للجمع والطرح، ونضرب البسطين والمقامين للجداء، ثم نختزل.', [
-    EQ(F('6', '8'), '=', F('6 ÷ 2', '8 ÷ 2'), '=', F('3', '4')), EQ(F('2', '3'), '×', F('4', '5'), '=', F('2 × 4', '3 × 5'), '=', F('8', '15')),
-    EQ(F('1', '2'), '+', F('1', '6'), '=', F('3', '6'), '+', F('1', '6'), '=', F('4', '6'), '=', F('2', '3')), EQ(F('5', '6'), '−', F('1', '3'), '=', F('5', '6'), '−', F('2', '6'), '=', F('3', '6'), '=', F('1', '2')),
-    EQ(F('3', '5'), '× 10', '=', F('30', '5'), '=', '6'), EQ(F('7', '10'), '+', F('1', '5'), '=', F('7', '10'), '+', F('2', '10'), '=', F('9', '10'))],
-    'كل بطاقة تساوي البطاقة المقابلة لها.', PAIRS.map((p, i) => ['الزوج ' + (i + 1), 1]));
-  const cards = shuffle(PAIRS.flatMap((p, i) => [[i, p[0]], [i, p[1]]]));
-  host.innerHTML = cards.map((c, k) => `<button class="mc2" data-p="${c[0]}" data-k="${k}"><span class="back">?</span><span class="face">${c[1].startsWith('<') ? `<span class="eq">${c[1]}</span>` : SQ(c[1])}</span></button>`).join('');
-  $('#tp2').addEventListener('click', () => { m2Pause = !m2Pause; m2Draw(); });
-  $('#toff2').addEventListener('click', () => { S.tm = !S.tm; save(); m2Draw(); });
-  const after = () => { if (!$('#r2').innerHTML) askFrA(); };
-  if (st) { $$('.mc2', host).forEach(b => b.classList.add('open', 'got')); $('#mfb').innerHTML = `<span class="g">منجزة: ${fmt(st.pts)} / 6 ن ${'⭐'.repeat(st.st)}</span>`; $('#msol').innerHTML = solBox(true, sol()); $('#pf').textContent = 6; m2Left = 0; m2Draw(); after(); return; }
-  m2Left = T2; m2Pause = false; m2Draw();
-  if (m2I) clearInterval(m2I);
-  m2I = setInterval(() => { if (!S.tm || m2Pause) return; if (m2Left > 0) m2Left--; m2Draw(); if (m2Left === 0) { clearInterval(m2I); toast('⏱️ انتهى الوقت، لا بأس: أكمل بهدوء.', 1); } }, 1000);
-  let open = [], moves = 0, found = 0, busy = false;
-  $$('.mc2', host).forEach(b => b.addEventListener('click', () => {
-    if (busy || b.classList.contains('open') || S.r.mm) return;
-    b.classList.add('open'); sClick(); open.push(b);
-    if (open.length < 2) return;
-    moves++; $('#mv').textContent = moves;
-    const [x, y] = open; open = [];
-    if (x.dataset.p === y.dataset.p) {
-      x.classList.add('got'); y.classList.add('got'); found++; $('#pf').textContent = found; sOk(); burst(y, 6);
-      $('#mfb').innerHTML = `<span class="g">✅ ${pick('ok')}</span>`;
-      if (found === PAIRS.length) {
-        clearInterval(m2I); const bonus = S.tm && m2Left > 0 ? 1 : 0, base = moves <= 10 ? 3 : moves <= 16 ? 2 : 1;
-        rec('mm', 6, base + bonus); toast('🃏 +6 ن');
-        $('#mfb').innerHTML = `<span class="g">🎉 وجدت الأزواج الستة في ${moves} محاولة! ${'⭐'.repeat(base)}${bonus ? ' ⚡⭐ نجمة السرعة!' : ''}</span>`;
-        $('#msol').innerHTML = solBox(true, sol()); after();
-      }
+function renderQ(gi, qi) {
+  const g = PAGE.games[gi], q = g.qs[qi], sec = $(`#g${gi + 1}`), st = $('.stage', sec);
+  const t = q.t || 'c';
+  const doTxt = { c: '👆 اختر جوابا واحدا ثم اضغط «تحقّق».', m: '👆 اضغط بطاقة من اليمين ثم البطاقة التي تناسبها من اليسار، ثم «تحقّق».', o: '👆 اضغط البطاقات بالترتيب المطلوب، ثم «تحقّق». للتصحيح اضغط «امسح».', n: '✍️ اكتب جوابك (الأرقام من لوحة هاتفك، والرموز من الأزرار)، ثم «تحقّق».', nl: '↔️ حرّك النقطة الحمراء بالأزرار ◀ ▶ أو بالمؤشر حتى تصل إلى المكان الصحيح، ثم «تحقّق».', grid: '📍 اضغط على عقدة من المرصوفة لتضع النقطة، ثم «تحقّق».', fig: '👆 اضغط مباشرة على الشكل، ثم «تحقّق».', bin: '🗂️ اضغط بطاقة، ثم اضغط الصندوق المناسب لها. عند الانتهاء اضغط «تحقّق».' }[t];
+  st.innerHTML = `<div class="qbox"><div class="muted">السؤال ${qi + 1} من ${g.qs.length}${q.bk ? ` <span class="bk">📖 ${q.bk}</span>` : ''}</div><div class="qtext">${q.q}</div>${q.fig || ''}${q.j ? `<div class="muted">✍️ علّل جوابك في كراسك، ثم اختر.</div>` : ''}<span class="do">${doTxt}</span>
+    <div class="play"></div><div class="tries">${'❤️'.repeat(3)}</div><div class="fb"></div>
+    <button class="btn green wide go" disabled>✔ تحقّق</button><div class="after"></div></div>`;
+  const play = $('.play', st), go = $('.go', st), fb = $('.fb', st), after = $('.after', st), tr = $('.tries', st);
+  let wrong = 0, busy = false, finished = false;
+  const showTries = () => tr.innerHTML = '❤️'.repeat(3 - wrong) + '🤍'.repeat(wrong);
+  /* --- choice --- */
+  let sel = null, state = null;
+  if (t === 'c') {
+    const opts = q.keep ? q.o.map((x, i) => [x, i]) : shuffle(q.o.map((x, i) => [x, i]));
+    play.innerHTML = `<div class="opts ${q.o.some(x => String(x).length > 26) ? 'one' : ''}">${opts.map(([x, i]) => `<button class="opt" data-i="${i}">${x}</button>`).join('')}</div>`;
+    $$('.opt', play).forEach(b => b.addEventListener('click', () => { if (busy || finished || b.disabled) return; sClick(); $$('.opt', play).forEach(x => x.classList.remove('sel')); b.classList.add('sel'); sel = +b.dataset.i; go.disabled = false; }));
+    state = { check: () => sel === q.a, onWrong: () => { const b = $(`.opt[data-i="${sel}"]`, play); b.classList.remove('sel'); b.classList.add('bad'); b.disabled = true; sel = null; go.disabled = true; },
+      reveal: ok => { $$('.opt', play).forEach(b => { b.disabled = true; b.classList.remove('sel'); if (+b.dataset.i === q.a) b.classList.add('good'); }); } };
+  }
+  /* --- matching --- */
+  if (t === 'm') {
+    const L = q.p.map((p, i) => [p[0], i]), R = shuffle(q.p.map((p, i) => [p[1], i]));
+    const pairs = {}; let lsel = null; const COL = ['#fde68a', '#bfdbfe', '#fbcfe8', '#bbf7d0', '#ddd6fe'];
+    play.innerHTML = `<div class="mcols"><div class="col">${L.map(([x, i]) => `<button class="opt ml" data-i="${i}">${x}</button>`).join('')}</div><div class="col">${R.map(([x, i]) => `<button class="opt mr" data-i="${i}">${x}</button>`).join('')}</div></div>`;
+    const paint = () => { $$('.ml,.mr', play).forEach(b => { b.style.background = ''; b.classList.remove('sel'); }); Object.entries(pairs).forEach(([l, r], k) => { $(`.ml[data-i="${l}"]`, play).style.background = COL[k % 5]; $(`.mr[data-i="${r}"]`, play).style.background = COL[k % 5]; }); if (lsel !== null) $(`.ml[data-i="${lsel}"]`, play).classList.add('sel'); go.disabled = Object.keys(pairs).length < q.p.length; };
+    $$('.ml', play).forEach(b => b.addEventListener('click', () => { if (busy || finished) return; sClick(); const i = +b.dataset.i; delete pairs[i]; lsel = i; paint(); }));
+    $$('.mr', play).forEach(b => b.addEventListener('click', () => { if (busy || finished) return; if (lsel === null) { toast('اضغط أولا بطاقة من العمود الأيمن 👉', 1); return; } sClick(); const r = +b.dataset.i; Object.keys(pairs).forEach(l => { if (pairs[l] === r) delete pairs[l]; }); pairs[lsel] = r; lsel = null; paint(); }));
+    state = { check: () => q.p.every((p, i) => pairs[i] === i), onWrong: () => { Object.keys(pairs).forEach(l => { if (pairs[l] !== +l) delete pairs[l]; }); paint(); $$('.ml', play).forEach(b => { if (pairs[b.dataset.i] !== undefined) b.disabled = true; }); $$('.mr', play).forEach(b => { if (Object.values(pairs).includes(+b.dataset.i)) b.disabled = true; }); },
+      reveal: () => { Object.keys(pairs).forEach(k => delete pairs[k]); q.p.forEach((p, i) => pairs[i] = i); lsel = null; paint(); $$('.ml,.mr', play).forEach(b => b.disabled = true); } };
+  }
+  /* --- ordering --- */
+  if (t === 'o') {
+    const items = shuffle(q.it.map((x, i) => [x, i])); let seq = [];
+    play.innerHTML = `<div class="olist"></div><div class="opts">${items.map(([x, i]) => `<button class="opt oi" data-i="${i}">${x}</button>`).join('')}</div><div class="row"><button class="btn light clr" style="min-height:44px">⌫ امسح</button></div>`;
+    const ol = $('.olist', play); if (q.vert) ol.classList.add('vert');
+    const paint = () => { ol.innerHTML = seq.length ? seq.map((i, k) => `<span class="pk">${q.vert ? `<b class="nb">${k + 1}</b> ` : ''}${q.it[i]}</span>`).join(q.vert ? '' : `<span class="sg">${q.sepS || ''}</span>`) : `<span class="em">${q.ph || 'اضغط البطاقات بالترتيب'}</span>`; $$('.oi', play).forEach(b => b.style.visibility = seq.includes(+b.dataset.i) ? 'hidden' : ''); go.disabled = seq.length < q.it.length; };
+    $$('.oi', play).forEach(b => b.addEventListener('click', () => { if (busy || finished) return; sClick(); seq.push(+b.dataset.i); paint(); }));
+    $('.clr', play).addEventListener('click', () => { if (finished) return; seq = []; paint(); });
+    paint();
+    state = { check: () => seq.every((v, k) => v === k), onWrong: () => { let k = 0; while (k < seq.length && seq[k] === k) k++; seq = seq.slice(0, k); paint(); },
+      reveal: () => { seq = q.it.map((x, i) => i); paint(); $('.clr', play).style.display = 'none'; } };
+  }
+  /* --- typed answer (phone keyboard for digits + symbol keys) --- */
+  if (t === 'n') {
+    const keys = q.keys || ['−', ','];
+    play.innerHTML = `<div class="ans"><input class="nin" autocomplete="off" inputmode="${q.txt ? 'text' : 'decimal'}" placeholder="اكتب هنا"><span class="unit">${q.u || ''}</span></div><div class="keys">${keys.map(k => `<button data-k="${k}">${k}</button>`).join('')}<button data-k="⌫">⌫</button></div>`;
+    const inp = $('.nin', play);
+    const sync = () => { go.disabled = !inp.value.trim(); };
+    inp.addEventListener('input', sync); inp.addEventListener('keydown', e => { if (e.key === 'Enter' && !go.disabled) go.click(); });
+    $$('.keys button', play).forEach(b => b.addEventListener('click', () => { if (finished) return; sClick(); const k = b.dataset.k; inp.value = k === '⌫' ? inp.value.slice(0, -1) : inp.value + k; sync(); inp.focus(); }));
+    const norm = s => String(s).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[٫.]/g, ',').replace(/[-–]/g, '−').replace(/\s+/g, '').replace(/[*x]/g, m => m === '*' ? '×' : m).toLowerCase();
+    const val = s => { const v = norm(s).replace(/^\+/, '').replace(',', '.').replace('−', '-'); return v === '' || isNaN(+v) ? null : +v; };
+    state = { check: () => { const v = inp.value; if (q.rng) { const x = val(v); return x !== null && x > q.rng[0] && x < q.rng[1]; } if (q.acc) return q.acc.some(a => norm(a) === norm(v)); if (typeof q.a === 'number') { const x = val(v); return x !== null && Math.abs(x - q.a) < 1e-9; } return (q.acc || [q.a]).some(a => norm(a) === norm(v)); },
+      onWrong: () => { inp.select && inp.select(); }, reveal: ok => { if (!ok) inp.value = q.show || String(q.a).replace('.', ','); inp.disabled = true; inp.style.borderColor = ok ? 'var(--ok)' : '#0284c7'; $$('.keys button', play).forEach(b => b.disabled = true); } };
+  }
+  /* --- move a point on a graduated line --- */
+  if (t === 'nl') {
+    let k = q.start || 0;
+    play.innerHTML = `<div class="nlw"></div><div class="slrow"><button class="btn light mv" data-d="-1">◀</button><input type="range" min="0" max="${q.n}" step="1" value="${k}"><button class="btn light mv" data-d="1">▶</button></div>`;
+    const draw = () => { $('.nlw', play).innerHTML = NL(q.a0, q.b0, q.n, [[k, q.lab || '●']]); $('input', play).value = k; go.disabled = false; };
+    $('input', play).addEventListener('input', e => { if (finished) return; k = +e.target.value; draw(); });
+    $$('.mv', play).forEach(b => b.addEventListener('click', () => { if (finished) return; sClick(); k = Math.max(0, Math.min(q.n, k + +b.dataset.d)); draw(); }));
+    draw(); go.disabled = true;
+    state = { check: () => k === q.k, onWrong: () => {}, reveal: () => { k = q.k; draw(); $$('.mv,input', play).forEach(b => b.disabled = true); } };
+  }
+  /* --- place a point on a grid --- */
+  if (t === 'grid') {
+    let pt = null; const o = q.go, s = o.grid;
+    const draw = () => { let svg = G(o); const nodes = []; for (let x = s; x < o.w; x += s) for (let y = s; y < o.h; y += s) nodes.push(`<circle class="gn" data-x="${x}" data-y="${y}" cx="${x}" cy="${y}" r="13" fill="transparent"/><circle cx="${x}" cy="${y}" r="2.5" fill="#94a3b8" pointer-events="none"/>`);
+      if (pt) nodes.push(`<circle cx="${pt[0]}" cy="${pt[1]}" r="7" fill="#dc2626" pointer-events="none"/><text x="${pt[0] + 10}" y="${pt[1] - 10}" font-size="18" fill="#dc2626" pointer-events="none">${q.lab}</text>`);
+      $('.gw', play).innerHTML = svg.replace('</svg>', nodes.join('') + '</svg>');
+      $$('.gn', play).forEach(c => c.addEventListener('click', () => { if (finished) return; sClick(); pt = [+c.dataset.x, +c.dataset.y]; go.disabled = false; draw(); })); };
+    play.innerHTML = `<div class="gw"></div>`; draw();
+    state = { check: () => pt && pt[0] === q.ans[0] && pt[1] === q.ans[1], onWrong: () => {}, reveal: () => { pt = q.ans; finished = true; draw(); } };
+  }
+  /* --- tap a part of the figure --- */
+  if (t === 'fig') {
+    let sel2 = null; const o = q.go, P = o.P;
+    const draw = () => { const hits = q.hit.map((h, i) => Array.isArray(h) ? `<line class="hz" data-i="${i}" x1="${P[h[0]][0]}" y1="${P[h[0]][1]}" x2="${P[h[1]][0]}" y2="${P[h[1]][1]}" stroke="${sel2 === i ? '#f59e0b' : 'transparent'}" stroke-width="${sel2 === i ? 8 : 26}" stroke-linecap="round"/>` : `<circle class="hz" data-i="${i}" cx="${P[h][0]}" cy="${P[h][1]}" r="${sel2 === i ? 11 : 18}" fill="${sel2 === i ? '#f59e0b' : 'transparent'}"/>`).join('');
+      $('.fw', play).innerHTML = G(o).replace('</svg>', hits + '</svg>');
+      $$('.hz', play).forEach(c => c.addEventListener('click', () => { if (finished) return; sClick(); sel2 = +c.dataset.i; go.disabled = false; draw(); })); };
+    play.innerHTML = `<div class="fw"></div>`; draw();
+    state = { check: () => sel2 === q.a, onWrong: () => { sel2 = null; go.disabled = true; draw(); }, reveal: () => { finished = true; sel2 = q.a; draw(); } };
+  }
+  /* --- sort cards into two boxes --- */
+  if (t === 'bin') {
+    const items = shuffle(q.it.map((x, i) => i)); const where = {}; let cur = null; const locked = {};
+    play.innerHTML = `<div class="pool"></div><div class="bins">${q.bins.map((b, j) => `<div class="bin" data-j="${j}"><div class="bh">${b}</div><div class="bc"></div></div>`).join('')}</div>`;
+    const paint = () => {
+      $('.pool', play).innerHTML = items.filter(i => where[i] === undefined).map(i => `<button class="opt bi ${cur === i ? 'sel' : ''}" data-i="${i}">${q.it[i][0]}</button>`).join('') || '<span class="em">✔ صنّفت كل البطاقات</span>';
+      $$('.bin', play).forEach(b => { const j = +b.dataset.j; $('.bc', b).innerHTML = items.filter(i => where[i] === j).map(i => `<button class="opt bi ${locked[i] ? 'good' : ''}" data-i="${i}">${q.it[i][0]}</button>`).join(''); });
+      $$('.bi', play).forEach(b => b.addEventListener('click', e => { e.stopPropagation(); if (finished) return; const i = +b.dataset.i; sClick(); if (where[i] !== undefined && cur !== null && cur !== i) { where[cur] = where[i]; cur = null; paint(); return; } if (locked[i]) return; if (where[i] !== undefined) { delete where[i]; cur = i; } else cur = cur === i ? null : i; paint(); }));
+      go.disabled = items.some(i => where[i] === undefined);
+    };
+    $$('.bin', play).forEach(b => b.addEventListener('click', () => { if (finished) return; if (cur === null) { toast('اضغط أولا بطاقة من الأعلى 👆', 1); return; } sClick(); where[cur] = +b.dataset.j; cur = null; paint(); }));
+    paint();
+    state = { check: () => items.every(i => where[i] === q.it[i][1]), onWrong: () => { items.forEach(i => { if (where[i] !== q.it[i][1]) delete where[i]; else locked[i] = 1; }); paint(); },
+      reveal: () => { items.forEach(i => { where[i] = q.it[i][1]; locked[i] = 1; }); finished = true; paint(); } };
+  }
+  go.addEventListener('click', () => {
+    if (busy || finished || go.disabled) return; busy = true; setTimeout(() => busy = false, 450);
+    if (state.check()) {
+      finished = true; state.reveal(true); const stn = 3 - wrong, pts = RATE[wrong];
+      S.r[q.id] = { pts, st: stn }; save(); sOk(); burst(go, 8 + stn * 3); toast('⭐'.repeat(stn) + ' ' + pick('ok'));
+      fb.innerHTML = `<span class="g">✅ ${pick('ok')} — ربحت ${M(fmt(pts * PT))} ن</span>`; end(true);
     } else {
-      busy = true; setTimeout(() => { x.classList.remove('open'); y.classList.remove('open'); busy = false; }, 1100);
-      if (moves === 6 && found < 2) { $('#mfb').innerHTML = `<span class="h">💡 احسب كل بطاقة ذهنيا: لجمع كسرين نوحّد المقامين أولا.</span>`; hintFx($('#mfb')); }
+      wrong++; showTries(); sBad(); shake(st);
+      if (wrong >= 3) { finished = true; state.reveal(false); S.r[q.id] = { pts: 0, st: 0 }; save(); fb.innerHTML = `<span class="w">${pick('fail')}</span>`; end(false); }
+      else { state.onWrong(); hintFx(go); fb.innerHTML = `<span class="w">❌ ${pick(wrong === 1 ? 'w1' : 'w2')}</span><span class="h">💡 تلميح ${wrong}: ${wrong === 1 ? q.h1 : q.h2}</span>`; }
     }
-  }));
+  });
+  function end(ok) {
+    go.style.display = 'none'; upd();
+    $('.dots', sec).innerHTML = dotsOf(g, qi);
+    after.innerHTML = solBox(ok, q) + `<button class="btn wide nx" style="margin-top:12px">${qi + 1 < g.qs.length ? 'السؤال التالي ←' : 'النتيجة ←'}</button>`;
+    $('.nx', after).addEventListener('click', () => { showGame(gi); sec.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  }
 }
-
-function askFrA() {
-  askQ({ host: $('#r2'), id: 'r2', pts: 2, parse: 'frac', keys: ['/'], accept: ['1/3'], q: `<b>🃏 المرحلة 2 (2 ن):</b> احسب ${EQ(F('3', '4'), '−', F('5', '12'))} ثم اختزل النتيجة (اكتب البسط ثم / ثم المقام).`,
-    h1: 'المقام 12 مضاعف للمقام 4: حوّل الكسر الأول إلى كسر مقامه 12.', h2: EQ(F('3', '4'), '=', F('9', '12')),
-    sol: () => solHTML('نوحّد المقامين ثم نطرح البسطين ونختزل.', [EQ(F('3', '4'), '−', F('5', '12'), '=', F('9', '12'), '−', F('5', '12')), EQ('=', F('4', '12')), EQ('=', F('4 ÷ 4', '12 ÷ 4'), '=', F('1', '3'))], EQ(F('3', '4'), '−', F('5', '12'), '=', F('1', '3')), [['توحيد المقامين', 1], ['الطرح والاختزال', 1]]),
-    onDone: () => { if (!$('#r3').innerHTML) askFrB(); } });
+/* ---------- score bar ---------- */
+function upd() {
+  $('#score').textContent = fmt(score() * PT); $('#stars').textContent = stars();
+  $('#progi').style.width = Math.round(100 * ALLQ.filter(q => S.r[q.id]).length / TOT) + '%';
+  $('#snd').textContent = S.snd ? '🔊' : '🔇';
+  $$('#chips a[data-g]').forEach(a => a.classList.toggle('ok', gDone(PAGE.games[+a.dataset.g])));
+  PAGE.games.forEach((g, i) => $(`#g${i + 1}`).classList.toggle('done', gDone(g)));
+  renderCert();
 }
-function askFrB() {
-  askQ({ host: $('#r3'), id: 'r3', pts: 2, parse: 'frac', keys: ['/'], accept: ['3/2'], q: `<b>🃏 المرحلة 3 (2 ن):</b> احسب ${EQ(F('2', '7'), '×', F('21', '4'))} ثم اختزل النتيجة.`,
-    h1: 'جداء كسرين: نضرب البسطين ونضرب المقامين.', h2: EQ(F('2 × 21', '7 × 4'), '=', F('42', '28')),
-    sol: () => solHTML('نضرب البسطين ونضرب المقامين ثم نختزل.', [EQ(F('2', '7'), '×', F('21', '4'), '=', F('2 × 21', '7 × 4'), '=', F('42', '28')), EQ('=', F('42 ÷ 14', '28 ÷ 14'), '=', F('3', '2'))], EQ(F('2', '7'), '×', F('21', '4'), '=', F('3', '2')), [['الجداء', 1], ['الاختزال', 1]]),
-    onDone: g2end });
-}
-
-/* ================= CERTIFICATE ================= */
-const GT = { g1: '🔐 اللعبة 1', g2: '🃏 اللعبة 2' };
-function medal() { const s = score(); return s >= 17 ? ['🥇', 'الذهبية', '#b45309'] : s >= 12 ? ['🥈', 'الفضية', '#475569'] : ['🥉', 'البرونزية', '#9a3412']; }
+/* ---------- certificate ---------- */
+function medal() { const s = score() * PT; return s >= 17 ? ['🥇', 'الذهبية', '#b45309'] : s >= 12 ? ['🥈', 'الفضية', '#475569'] : ['🥉', 'البرونزية', '#9a3412']; }
 let certBuilt = false;
 function renderCert() {
-  const host = $('#cert'); if (!host) return;
-  const left = Object.keys(ITEMS).filter(k => !doneK(k));
-  if (left.length) { certBuilt = false; host.innerHTML = `<div style="text-align:center"><div class="lock">🔒</div><p>أكمل اللعبتين لتفتح شهادتك.</p><p>بقي: ${left.map(k => `<b>${GT[k]}</b>`).join(' ، ')}</p></div>`; return; }
+  const hostc = $('#cert'); if (!hostc) return;
+  const left = PAGE.games.map((g, i) => [g, i]).filter(([g]) => !gDone(g));
+  if (left.length) { certBuilt = false; hostc.innerHTML = `<div style="text-align:center"><div class="lock">🔒</div><p>أكمل كل الألعاب لتفتح شهادتك.</p><p>بقي: ${left.map(([g, i]) => `<b>${g.icon} اللعبة ${i + 1}</b>`).join(' ، ')}</p></div>`; return; }
   if (certBuilt) { drawCert(); return; }
   certBuilt = true; const [ic, nm] = medal();
-  host.innerHTML = `<p>🎉 مبروك! علامتك <b>${fmt(score())} / 20</b> و ${stars()} ⭐: الشهادة <b>${nm}</b> ${ic}</p>
+  hostc.innerHTML = `<p>🎉 مبروك! علامتك <b>${fmt(score() * PT)} / 20</b> و ${stars()} ⭐: الشهادة <b>${nm}</b> ${ic}</p>
    <label>اكتب اسمك ولقبك:</label><input class="namebox" id="nm" maxlength="40" value="${(S.name || '').replace(/"/g, '')}">
    <div class="row"><button class="btn orange" id="mk">✨ أنشئ الشهادة</button><button class="btn" id="dl">⬇️ تحميل صورة</button><button class="btn light" id="pr">🖨️ طباعة</button></div>
    <canvas id="cv" width="1400" height="990"></canvas>
-   <div class="row"><button class="btn light" id="rst">🔁 العب من جديد</button></div>`;
+   <div class="row"><button class="btn light" id="rst">🔁 العب كل الألعاب من جديد</button></div>`;
   const go = async () => { S.name = $('#nm').value.trim(); save(); await drawCert(); };
   $('#mk').addEventListener('click', go); $('#nm').addEventListener('change', go);
-  $('#dl').addEventListener('click', async () => { await go(); try { const a = document.createElement('a'); a.download = 'شهادة_ألعاب_المقطع_الأول.png'; a.href = $('#cv').toDataURL('image/png'); a.click(); } catch (e) { toast('تعذّر التحميل: استعمل الطباعة أو لقطة شاشة.', 1); } });
+  $('#dl').addEventListener('click', async () => { await go(); try { const a = document.createElement('a'); a.download = 'شهادة_' + PAGE.file + '.png'; a.href = $('#cv').toDataURL('image/png'); a.click(); } catch (e) { toast('تعذّر التحميل: استعمل الطباعة أو لقطة شاشة.', 1); } });
   $('#pr').addEventListener('click', async () => { await go(); window.print(); });
   $('#rst').addEventListener('click', e => { const b = e.currentTarget; if (!b.dataset.c) { b.dataset.c = 1; b.textContent = 'اضغط مرة أخرى للتأكيد'; return; } S.r = {}; save(); location.hash = ''; location.reload(); });
   go();
@@ -457,15 +533,14 @@ async function drawCert() {
   T('متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة', 196, '700 26px Cairo', '#475569');
   T('شهادة إنجاز', 300, '900 84px Cairo', '#0369a1'); T('تُمنح هذه الشهادة للتلميذ(ة)', 380, '700 32px Cairo');
   T(S.name || '..............................', 470, '900 64px Cairo', '#c2410c');
-  T('لإتمامه(ا) بنجاح لعبتي «الخزائن السرية» و«ذاكرة الكسور»', 545, '700 32px Cairo'); T('المقطع الأول — السنة الثانية متوسط', 592, '700 28px Cairo', '#475569');
-  T(`العلامة: ${fmt(score())} / 20 — النجوم: ${stars()} ⭐`, 660, '800 34px Cairo', '#1e3a8a'); T(`${ic} الشهادة ${nm}`, 735, '900 46px Cairo', col);
+  T(PAGE.certLine, 545, '700 30px Cairo'); T(PAGE.certSub, 592, '700 28px Cairo', '#475569');
+  T(`العلامة: ${fmt(score() * PT)} / 20 — النجوم: ${stars()} ⭐`, 660, '800 34px Cairo', '#1e3a8a'); T(`${ic} الشهادة ${nm}`, 735, '900 46px Cairo', col);
   const d = new Date(); x.font = '700 26px Cairo'; x.fillStyle = '#0f172a';
   x.textAlign = 'right'; x.fillText('الأستاذ: يوسفي السوفي', W - 110, 860); x.textAlign = 'left'; x.fillText(`التاريخ: ${d.getDate()} / ${d.getMonth() + 1} / ${d.getFullYear()}`, 110, 860);
-  x.textAlign = 'center'; x.font = '60px serif'; x.fillText('🔐', W / 2, 880);
+  x.textAlign = 'center'; x.font = '60px serif'; x.fillText('🎮', W / 2, 880);
 }
-
 $('#snd').addEventListener('click', () => { S.snd = !S.snd; save(); upd(); });
-game1(); game2(); upd();
+upd();
 </script>
 </body>
 </html>
