@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>مهمّات المسّاح: طالس والنسب المثلثية (الرابعة متوسط)</title>
+<meta name="description" content="لعبة للسنة الرابعة متوسط على المقطع الثاني: خمس مهمّات من ولاية قالمة، اختر الأداة المناسبة (خاصية طالس أو cos أو sin أو tan) ثم احسب. نجوم وشهادة باسمك.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="🧭 مهمّات المسّاح للرابعة متوسط: طالس أم cos أم sin أم tan؟">
+<meta property="og:description" content="خمس مهمّات من قالمة: اختر الأداة واحسب. 20 نقطة وشهادة إنجاز باسمك.">
+<meta property="og:image" content="https://soufiyousfi.github.io/math/4m/t1/al3ab/img/al3ab-m2-fb.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://soufiyousfi.github.io/math/4m/t1/al3ab/al3ab-m2.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0369a1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef7fb; --card:#fff; --ink:#0f172a; --muted:#475569; --line:#cbd5e1;
+  --c1:#0369a1; --c2:#0d9488; --yel:#f59e0b; --ok:#16a34a; --ok-soft:#dcfce7;
+  --bad:#dc2626; --bad-soft:#fee2e2; --hint-soft:#fef3c7;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:"Cairo",Tahoma,sans-serif;font-size:17px;line-height:1.7;-webkit-tap-highlight-color:transparent;padding-bottom:40px}
+button{font-family:inherit;cursor:pointer}
+/* every formula is written LEFT TO RIGHT */
+.eq{direction:ltr;unicode-bidi:isolate;display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center;font-weight:800;color:#1e3a8a;vertical-align:middle}
+.eq.blk{display:flex;margin:6px auto}
+.fr{display:inline-flex;flex-direction:column;align-items:center;line-height:1.25}
+.fr>span:first-child{border-bottom:2.5px solid currentColor;padding:0 5px}
+.fr>span:last-child{padding:0 5px}
+.m{direction:ltr;unicode-bidi:isolate;font-weight:800;color:#1e3a8a;white-space:nowrap}
+/* header */
+.top{background:linear-gradient(135deg,#0284c7,#0d9488);color:#fff;text-align:center;padding:12px 16px;border-bottom:5px solid var(--yel)}
+.top .school{font-size:.8rem;font-weight:700;opacity:.95}
+.top h1{margin:2px 0 0;font-size:1.4rem;font-weight:900}
+.bar{position:sticky;top:0;z-index:30;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.12);display:flex;align-items:center;gap:6px;padding:6px 10px}
+.pill{background:#f1f5f9;border:1px solid #e2e8f0;border-radius:999px;padding:0 10px;font-weight:800;white-space:nowrap}
+.prog{flex:1;height:12px;background:#e2e8f0;border-radius:8px;overflow:hidden;min-width:40px}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,#0d9488,#16a34a);transition:width .5s}
+.snd{border:0;background:#f1f5f9;border-radius:999px;font-size:1.1rem;padding:0 8px}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:10px 12px 0;max-width:640px;margin:0 auto;scrollbar-width:none}
+.chips a{flex:none;text-decoration:none;font-weight:800;font-size:.9rem;color:var(--c1);background:#fff;border:2px solid var(--line);border-radius:12px;padding:2px 10px}
+.chips a.ok{border-color:var(--ok);background:var(--ok-soft);color:#14532d}
+main{max-width:640px;margin:0 auto;padding:4px 12px}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:14px;margin:14px 0;box-shadow:0 6px 0 var(--line)}
+.card.done{border-color:var(--ok);box-shadow:0 6px 0 #86efac}
+.ct{font-weight:900;font-size:1.15rem;color:var(--c1);display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.ct .pts{white-space:nowrap;margin-inline-start:auto;background:var(--yel);color:#3b2600;border-radius:999px;padding:0 10px;font-size:.85rem}
+.muted{color:var(--muted);font-size:.93rem}
+.key{background:#fff7ed;border:2px dashed #ea580c;border-radius:12px;padding:8px 10px;margin:8px 0;font-weight:700;text-align:center}
+.fig{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:6px;margin:8px 0;text-align:center}
+.fig svg{width:100%;max-width:330px;height:auto;direction:ltr}
+.fig svg text{font-family:"Cairo",Tahoma,sans-serif;font-weight:800}
+/* BIG, clearly visible buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:52px;padding:8px 20px;border:0;border-radius:14px;font-weight:900;font-size:1.1rem;color:#fff;background:var(--c1);box-shadow:0 5px 0 #0c4a6e;transition:transform .08s}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 #0c4a6e}
+.btn.wide{width:100%}
+.btn.orange{background:#ea580c;box-shadow:0 5px 0 #9a3412}
+.btn.green{background:var(--ok);box-shadow:0 5px 0 #14532d}
+.btn.red{background:var(--bad);box-shadow:0 5px 0 #7f1d1d}
+.btn.light{background:#fff;color:var(--c1);border:3px solid var(--c1);box-shadow:0 5px 0 #93c5fd}
+.btn:disabled{opacity:.45;cursor:default;transform:none}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center;margin-top:10px}
+.tog{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.tog .btn{font-size:.95rem;min-height:46px;padding:6px 4px}
+table.vt{border-collapse:collapse;margin:6px auto;direction:ltr;font-weight:900;font-size:1.1rem}
+table.vt td{border:2px solid #0369a1;padding:3px 14px;text-align:center;background:#fff}
+table.vt tr:first-child td{background:#e0f2fe}
+.bk{font-size:.85rem;color:#64748b;text-align:center}
+/* game 1 */
+.bank{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;direction:ltr;margin:10px 0}
+.tile{min-width:62px;min-height:50px;padding:6px 12px;border-radius:12px;border:3px solid #0284c7;background:#fff;color:#0369a1;font-weight:900;font-size:1.15rem;box-shadow:0 5px 0 #0284c7}
+.tile.sel{background:var(--yel);border-color:#b45309;color:#fff;box-shadow:0 5px 0 #b45309;transform:translateY(-2px)}
+.tile.used{visibility:hidden}
+.build{direction:ltr;display:flex;align-items:center;justify-content:center;gap:6px;margin:14px 0;background:#eff6ff;border:2px dashed #93c5fd;border-radius:14px;padding:12px 4px}
+.frz{display:flex;flex-direction:column;align-items:center;gap:5px;padding:4px;border-radius:12px}
+.frz .bar2{width:62px;height:4px;background:#0369a1;border-radius:2px}
+.zone{width:62px;height:44px;border:3px dashed #94a3b8;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem;color:#0369a1}
+.zone.on{border-color:var(--yel);background:#fef3c7}
+.zone.full{border-style:solid;border-color:#0284c7;background:#e0f2fe}
+.frz.good{background:var(--ok-soft);outline:3px solid var(--ok)}
+.frz.badz{background:var(--bad-soft);outline:3px solid var(--bad)}
+.eqs{font-size:1.6rem;font-weight:900;color:#0369a1}
+/* game 2 safe */
+.safe{background:#334155;border-radius:18px;padding:14px;color:#fff;text-align:center}
+.safe .m,.safe>.eq,.safe>div>.eq{color:#fde68a}
+.screen{background:#0f172a;border:4px solid #64748b;border-radius:10px;padding:8px;font-family:monospace;font-size:1.8rem;letter-spacing:4px;color:#4ade80;direction:ltr;min-height:62px;display:flex;align-items:center;justify-content:center}
+.screen.err{color:#f87171}
+.pad{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:300px;margin:12px auto 0;direction:ltr}
+.pad button{min-height:56px;border:0;border-radius:14px;background:#e2e8f0;color:#0f172a;font-size:1.4rem;font-weight:900;box-shadow:0 5px 0 #94a3b8}
+.pad button:active{transform:translateY(4px);box-shadow:none}
+.pad .c{background:#fecaca;color:#7f1d1d;box-shadow:0 5px 0 #f87171}
+.pad .open{grid-column:span 4;background:var(--yel);color:#3b2600;box-shadow:0 5px 0 #b45309}
+.lock{font-size:2.4rem;line-height:1}
+.steps3{display:flex;gap:6px;justify-content:center;margin-bottom:8px}
+.steps3 span{width:34px;height:34px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-weight:900}
+.steps3 span.ok{background:var(--ok);color:#fff}.steps3 span.cur{background:var(--yel);color:#fff}.steps3 span.ko{background:#94a3b8;color:#fff}
+/* game 3 */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.duo .btn{min-height:60px;font-size:1.05rem}
+.data{display:grid;grid-template-columns:1fr 1fr;gap:6px;direction:ltr;margin:6px 0}
+.data div{background:#f1f5f9;border-radius:10px;padding:2px 8px;font-weight:800;text-align:center;color:#1e3a8a}
+/* new games */
+.bem{display:inline-block;background:#fef9c3;border:1px solid #facc15;color:#713f12;border-radius:999px;padding:0 10px;font-size:.82rem;font-weight:800;margin-bottom:4px}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:300px;margin:10px auto}
+.match .col{display:flex;flex-direction:column;gap:12px;align-items:stretch}.match .hd{text-align:center}
+.pairs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;direction:ltr;margin:8px 0;min-height:10px}
+.pairs .p{padding:4px 10px;border-radius:12px;border:3px solid transparent}
+.pairs .p.good{border-color:var(--ok)}.pairs .p.badz{border-color:var(--bad)}
+.cards{display:flex;flex-direction:column;gap:8px;margin:8px 0}
+.scard{width:100%;text-align:start;font:inherit;font-size:.95rem;font-weight:700;background:#fff;border:3px solid #0284c7;border-radius:12px;padding:6px 10px;box-shadow:0 4px 0 #0284c7;color:var(--ink)}
+.scard.in{border-color:var(--ok);box-shadow:0 4px 0 #15803d;background:#f0fdf4}
+.seqh{font-weight:900;color:var(--c1);margin-top:6px}
+ol.seq{margin:4px 0;padding-inline-start:26px;min-height:40px;background:#f8fafc;border:2px dashed #86efac;border-radius:12px;padding-top:6px;padding-bottom:6px}
+ol.seq li{margin:6px 0;font-weight:900}
+.pl{cursor:pointer}.pl .vis{stroke:#0369a1;stroke-width:3}.pl .hit{stroke:transparent;stroke-width:24}
+.pl.on .vis{stroke:#f59e0b;stroke-width:7}.pl.off{pointer-events:none}
+.opts{display:flex;flex-direction:column;gap:10px;margin-top:8px}.opts .btn{font-size:1rem}
+.slrow{display:flex;gap:8px;align-items:center;direction:ltr}.slrow .btn{min-width:56px;padding:4px}
+.slrow input{flex:1;height:44px;accent-color:#f59e0b}
+/* feedback */
+.fb{margin-top:10px;font-weight:700}
+.fb .w{display:block;background:var(--bad-soft);color:#991b1b;border-radius:12px;padding:6px 10px}
+.fb .h{display:block;background:var(--hint-soft);color:#7c2d12;border-radius:12px;padding:6px 10px;margin-top:6px}
+.fb .g{display:block;background:var(--ok-soft);color:#14532d;border-radius:12px;padding:6px 10px}
+.sol{background:#f8fafc;border:2px solid #bae6fd;border-radius:12px;padding:8px 12px;margin-top:10px}
+.sol h4{margin:0 0 4px;color:var(--c1)}
+.sol .ln{padding:2px 0}
+.sol .ccl{background:var(--ok-soft);border-radius:8px;padding:2px 8px;margin-top:6px}
+table.sc{border-collapse:collapse;width:100%;margin-top:6px;font-size:.9rem}
+table.sc th,table.sc td{border:1px solid #cbd5e1;padding:2px 8px}
+table.sc th{background:#e0f2fe}table.sc td:last-child{text-align:center;width:64px}
+table.sc tr.tot td{font-weight:900;background:#fef9c3}
+/* challenge input */
+.ans{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:6px}
+.ans input{width:150px;font:inherit;font-weight:900;font-size:1.3rem;text-align:center;direction:ltr;padding:6px;border:3px solid var(--line);border-radius:12px}
+.ans input:focus{outline:none;border-color:var(--c2)}
+.unit{font-weight:900;color:var(--c1)}
+.keys{display:flex;gap:8px;justify-content:center;margin-top:8px}
+.keys button{min-width:56px;min-height:48px;border:3px solid var(--line);background:#f8fafc;border-radius:12px;font-weight:900;font-size:1.3rem}
+.q{border-top:2px dashed var(--line);padding-top:10px;margin-top:10px}
+.shake{animation:shk .45s}
+@keyframes shk{0%,100%{transform:none}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+#toast{position:fixed;right:12px;bottom:16px;z-index:60;max-width:min(320px,calc(100% - 24px));display:flex;flex-direction:column;gap:6px;pointer-events:none}
+#toast div{background:#fff;border-radius:14px;padding:8px 12px;font-weight:800;box-shadow:0 6px 24px rgba(0,0,0,.2);border-right:6px solid var(--ok);animation:pop .3s}
+#toast div.w{border-right-color:#d97706}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.burst{position:fixed;z-index:70;pointer-events:none;font-size:26px;animation:fly 1s ease-out forwards}
+@keyframes fly{to{transform:translate(var(--dx),var(--dy)) scale(.4);opacity:0}}
+canvas#cv{width:100%;height:auto;border-radius:10px;box-shadow:0 4px 18px rgba(0,0,0,.15);display:block;margin-top:10px}
+.namebox{font:inherit;font-weight:800;font-size:1.1rem;padding:8px 10px;border:3px solid var(--line);border-radius:12px;width:100%}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:16px}
+@media print{body *{visibility:hidden}#cv{visibility:visible;position:fixed;inset:0;width:100%;box-shadow:none}}
+
+/* ---- games page additions ---- */
+.res{display:inline-block;background:#ecfeff;border:1px solid #67e8f9;color:#155e75;border-radius:999px;padding:0 10px;font-size:.82rem;font-weight:800;margin-bottom:4px}
+.dots{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin:6px 0}
+.dots span{width:26px;height:26px;border-radius:50%;background:#e2e8f0;font-size:.8rem;font-weight:900;display:flex;align-items:center;justify-content:center}
+.dots span.ok{background:var(--ok);color:#fff}.dots span.ko{background:#94a3b8;color:#fff}.dots span.cur{background:var(--yel);color:#fff}
+.timer{display:flex;align-items:center;gap:8px;margin:6px 0}
+.tbar{flex:1;height:14px;background:#e2e8f0;border-radius:8px;overflow:hidden}
+.tbar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#f59e0b,#16a34a);transition:width .25s linear}
+.tbar.off i{background:#cbd5e1}
+.tsec{font-weight:900;min-width:46px;text-align:center;direction:ltr}
+.tbtn{min-height:40px;border:2px solid var(--line);background:#fff;border-radius:12px;font-weight:800;padding:0 10px}
+.qtext{font-size:1.08rem;font-weight:700;margin:6px 0}
+.mc{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.mc .btn{min-height:56px;font-size:1.2rem;direction:ltr}
+.vop{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Courier New",monospace;font-weight:900;font-size:1.2rem;color:#1e3a8a;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:4px 14px;margin:4px 0;line-height:1.45;text-align:right}
+.vop div{white-space:pre}.vop .rule{border-top:3px solid #1e3a8a;height:0;margin:2px 0}
+.mcol{display:flex;flex-direction:column;gap:10px}
+.mtile{min-height:56px;border-radius:14px;border:3px solid #0284c7;background:#fff;color:#0369a1;font-weight:900;font-size:1.2rem;box-shadow:0 5px 0 #0284c7;display:flex;align-items:center;justify-content:center}
+.mtile.sel{background:var(--yel);border-color:#b45309;color:#fff;box-shadow:0 5px 0 #b45309}
+.mtile.done{background:var(--ok-soft);border-color:var(--ok);color:#14532d;box-shadow:0 5px 0 #15803d;pointer-events:none}
+.mtile.bad{background:var(--bad-soft);border-color:var(--bad)}
+.machine{background:#334155;border-radius:18px;padding:12px;color:#fff;text-align:center}
+.machine .mbox{display:inline-block;background:var(--yel);color:#3b2600;border-radius:12px;padding:4px 16px;font-size:1.5rem;font-weight:900;direction:ltr;margin:6px 0}
+.machine .inn{font-size:1.6rem;font-weight:900;color:#fde68a;direction:ltr}
+.olist{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;direction:ltr;min-height:60px;background:#f0fdf4;border:2px dashed #86efac;border-radius:14px;padding:8px;margin:8px 0;align-items:center}
+#mo .tile.used{display:none}
+.olist .sg{font-weight:900;font-size:1.4rem;color:#15803d}
+.olist .pk{background:#dcfce7;border:2px solid #16a34a;border-radius:10px;padding:2px 10px;font-weight:900;font-size:1.15rem;color:#14532d}
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}.tools .btn{direction:ltr}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="school">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
+  <h1>🎮 مهمّات المسّاح</h1>
+  <div style="font-size:.85rem">السنة الرابعة متوسط — المقطع 2: خاصية طالس والنسب المثلثية</div>
+</header>
+<div class="bar">
+  <span class="pill">🎯 <b id="score">0</b> / 20</span>
+  <span class="pill">⭐ <b id="stars">0</b></span>
+  <span class="prog"><i id="progi"></i></span>
+  <button class="snd" id="snd" aria-label="الصوت">🔊</button>
+</div>
+<nav class="chips" id="chips">
+  <a href="#s0">📖 تذكير</a><a href="#s1" data-k="g1">🧭 المهمّات</a><a href="#s2">🎓 الشهادة</a>
+</nav>
+<main>
+<section class="card" id="s0">
+  <div class="ct">📖 تذكير في دقيقة</div>
+  <div class="row" style="margin-top:0"><button class="btn" id="t1">طالس</button><button class="btn light" id="t2">النسب المثلثية</button></div>
+  <div id="recap"></div>
+</section>
+<section class="card" id="s1">
+  <div class="ct">🧭 مهمّات المسّاح <span class="pts">20 ن</span></div>
+  <div class="muted">أنت مسّاح شابّ في ولاية قالمة. في كل مهمّة: <b>1)</b> اختر الأداة المناسبة (1 ن)، ثم <b>2)</b> احسب المطلوب (3 ن). لكل خطوة 3 محاولات. جهّز الحاسبة على وضع <b class="m">DEG</b>.</div>
+  <div id="g1"></div>
+</section>
+<section class="card" id="s2">
+  <div class="ct">🎓 الشهادة</div>
+  <div id="cert"></div>
+</section>
+</main>
+<div id="toast"></div>
+<footer>متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي<br>المرجع: منهاج السنة الرابعة متوسط والكتاب المدرسي، الباب 9 «خاصية طالس» والباب 10 «النسب المثلثية».</footer>
+
+<script>
+"use strict";
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const F = (a, b) => `<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const EQP = p => p.map(x => x.startsWith('<') ? x : `<span>${x}</span>`).join('');
+const EQ = (...p) => `<span class="eq">${EQP(p)}</span>`;
+const EQB = (...p) => `<span class="eq blk">${EQP(p)}</span>`;
+const M = t => `<span class="m">${t}</span>`;
+const fmt = x => String(Math.round(x * 1000) / 1000).replace('.', ',');
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+/* vertical operation: rows right-aligned, '—' = rule */
+const VOP = rows => `<div class="vop">${rows.map(r => r === '—' ? '<div class="rule"></div>' : `<div>${r}</div>`).join('')}</div>`;
+const num = s => { const t = String(s).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[٫,]/g, '.').replace(/\s/g, '').replace(/DA|kg|m/gi, ''); return t === '' || isNaN(+t) ? null : +t; };
+
+/* ---------- messages (change from question to question) ---------- */
+const MSG = {
+  ok: ['أحسنت! تركيزك أوصلك إلى الجواب الصحيح.', 'ممتاز! الدقة أهم من السرعة، وأنت أثبتّ ذلك.', 'رائع! جهدك يستحق هذه النجوم.', 'برافو! التأنّي يصنع النجاح.', 'إجابة صحيحة! واصل بنفس الهدوء.', 'بارك الله فيك! تقدّم خطوة بخطوة كما فعلت.'],
+  w1: ['لا بأس، الخطأ جزء من التعلّم. اقرأ التلميح بهدوء.', 'تمهّل قليلا: كلما أسرعت قلّ تركيزك.', 'كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.', 'أنت قريب. أعطِ السؤال الوقت الذي يحتاجه.'],
+  w2: ['محاولة أخيرة: اكتب الحساب على ورقة قبل أن تجيب.', 'لا تيأس! التركيز يأتي مع الهدوء.', 'السرعة والتركيز لا يجتمعان: تمهّل.', 'ابذل جهدا صغيرا آخر، فالحل قريب منك.'],
+  fail: ['لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. تأمّل الحل خطوة بخطوة.', 'المهم أن نفهم لماذا أخطأنا. اقرأ الحل ثم أعده وحدك على ورقة.', 'الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة.']
+};
+let mi = 0; const pick = k => MSG[k][(mi++) % MSG[k].length];
+
+/* ---------- state ---------- */
+const KEY = 'al3ab_4m_m2_v1';
+let S = { r: {}, name: '', snd: true };
+try { const t = localStorage.getItem(KEY); if (t) S = Object.assign(S, JSON.parse(t)); } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
+const ITEMS = { g1: ['m1c', 'm1v', 'm2c', 'm2v', 'm3c', 'm3v', 'm4c', 'm4v', 'm5c', 'm5v'] };
+const ALL = Object.values(ITEMS).flat();
+const score = () => ALL.reduce((n, k) => n + ((S.r[k] || {}).pts || 0), 0);
+const stars = () => ALL.reduce((n, k) => n + ((S.r[k] || {}).st || 0), 0);
+const doneK = k => ITEMS[k].every(i => S.r[i] && S.r[i].done);
+function rec(id, pts, st) { S.r[id] = { done: true, pts, st }; save(); upd(); }
+function upd() {
+  $('#score').textContent = fmt(score()); $('#stars').textContent = stars();
+  $('#progi').style.width = Math.round(100 * ALL.filter(k => S.r[k] && S.r[k].done).length / ALL.length) + '%';
+  $('#snd').textContent = S.snd ? '🔊' : '🔇';
+  $$('#chips a[data-k]').forEach(a => a.classList.toggle('ok', doneK(a.dataset.k)));
+  Object.keys(ITEMS).forEach((k, i) => $('#s' + (i + 1)).classList.toggle('done', doneK(k)));
+  renderCert();
+}
+
+/* ---------- sound & effects ---------- */
+let AC = null;
+function tone(fs, d = .12, type = 'triangle') { if (!S.snd) return; try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); fs.forEach((f, i) => { const o = AC.createOscillator(), g = AC.createGain(); o.type = type; o.frequency.value = f; g.gain.setValueAtTime(.15, AC.currentTime + i * d); g.gain.exponentialRampToValueAtTime(.001, AC.currentTime + (i + 1) * d); o.connect(g); g.connect(AC.destination); o.start(AC.currentTime + i * d); o.stop(AC.currentTime + (i + 1) * d); }); } catch (e) {} }
+const sOk = () => tone([523, 659, 784]), sBad = () => tone([220, 180], .18, 'sawtooth'), sClick = () => tone([800], .05, 'sine');
+function toast(t, w) { const d = document.createElement('div'); d.className = w ? 'w' : ''; d.innerHTML = t; $('#toast').appendChild(d); setTimeout(() => d.remove(), 3000); }
+function burst(el, n = 10, set = ['⭐', '✨']) { const r = el.getBoundingClientRect(); for (let i = 0; i < n; i++) { const s = document.createElement('span'); s.className = 'burst'; s.textContent = set[i % set.length]; s.style.left = (r.left + r.width / 2) + 'px'; s.style.top = (r.top + 10) + 'px'; s.style.setProperty('--dx', (Math.random() * 240 - 120) + 'px'); s.style.setProperty('--dy', (-60 - Math.random() * 130) + 'px'); document.body.appendChild(s); setTimeout(() => s.remove(), 1000); } }
+const hintFx = el => burst(el, 5, ['💡', '⭐', '✨']);
+function shake(el) { el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake'); }
+const solHTML = (m, steps, c, sc) => `<div class="sol"><h4>📘 الحل النموذجي</h4><div><b>الطريقة:</b> ${m}</div>${steps.map(s => `<div class="ln">${s}</div>`).join('')}<div class="ccl"><b>الاستنتاج:</b> ${c}</div>${sc ? `<table class="sc"><tr><th>سلم التنقيط</th><th>النقاط</th></tr>${sc.map(r => `<tr><td>${r[0]}</td><td>${fmt(r[1])}</td></tr>`).join('')}<tr class="tot"><td>المجموع</td><td>${fmt(sc.reduce((a, r) => a + r[1], 0))}</td></tr></table>` : ''}</div>`;
+const solBox = (ok, html) => ok ? `<details><summary style="cursor:pointer;font-weight:800;color:#0369a1">📘 اطّلع على الحل المفصّل</summary>${html}</details>` : html;
+const RES = t => `<div class="res">📚 ${t}</div>`;
+const NXA = (href, t) => `<a class="btn green wide" href="${href}" style="text-decoration:none">${t} ←</a>`;
+
+
+/* ---------- figures (no parallel arrows: parallelism is stated in the text; right angles marked) ---------- */
+const TX = (x, y, t, c = '#0f172a', s = 16) => `<text x="${x}" y="${y}" font-size="${s}" fill="${c}">${t}</text>`;
+function figThales() {
+  return `<svg viewBox="0 0 300 180"><polygon points="150,18 40,165 260,165" fill="#e0f2fe" stroke="#0369a1" stroke-width="3"/>
+  <line x1="106" y1="77" x2="194" y2="77" stroke="#dc2626" stroke-width="3"/>
+  ${TX(144, 14, 'A')}${TX(22, 175, 'B')}${TX(266, 175, 'C')}${TX(86, 78, 'M', '#dc2626')}${TX(200, 78, 'N', '#dc2626')}</svg>`;
+}
+/* right triangle: right angle at R (bottom right), angle α at P (bottom left), top T */
+function figRight(L, angTxt, sides) {
+  return `<svg viewBox="0 0 330 190"><polygon points="40,160 250,160 250,40" fill="#ecfdf5" stroke="#0d9488" stroke-width="3"/>
+  <polyline points="234,160 234,144 250,144" fill="none" stroke="#0d9488" stroke-width="2.5"/>
+  <path d="M 85 160 A 45 45 0 0 0 80 138" fill="none" stroke="#ea580c" stroke-width="3"/>
+  ${TX(92, 152, angTxt, '#ea580c', 15)}
+  ${TX(18, 172, L[0])}${TX(256, 176, L[1])}${TX(256, 38, L[2])}
+  ${sides.map(s => TX(s[0], s[1], s[2], '#1e3a8a', 15)).join('')}</svg>`;
+}
+const recapHTML = {
+  1: () => `<div class="fig">${figThales()}</div>
+    <div><b>خاصية طالس:</b> ${M('(BM)')} و ${M('(CN)')} مستقيمان متقاطعان في ${M('A')}. إذا كان ${M('(MN)')} و ${M('(BC)')} متوازيين فإنّ:</div>${EQB(F('AM', 'AB'), '=', F('AN', 'AC'), '=', F('MN', 'BC'))}
+    <div>ثم <b>نحتفظ بالمساواة المناسبة</b> ونستعمل الجداء المتصالب.</div><div class="bk">الكتاب المدرسي ص 106 و 107</div>`,
+  2: () => `<div class="fig">${figRight(['A', 'B', 'C'], '', [[120, 182, 'المجاور'], [130, 92, 'الوتر'], [260, 104, 'المقابل']])}</div>
+    <div>في المثلث ${M('ABC')} القائم في ${M('B')}:</div>
+    ${EQB('cos A', '=', F('AB', 'AC'))}<div class="muted" style="text-align:center">جيب التمام = المجاور ÷ الوتر</div>
+    ${EQB('sin A', '=', F('BC', 'AC'))}<div class="muted" style="text-align:center">الجيب = المقابل ÷ الوتر</div>
+    ${EQB('tan A', '=', F('BC', 'AB'))}<div class="muted" style="text-align:center">الظل = المقابل ÷ المجاور</div>
+    <div>💡 لاختيار النسبة: نحدّد الضلع المعلوم والضلع المطلوب بالنسبة إلى الزاوية المعلومة.</div>`
+};
+function recap(k) { ['#t1', '#t2'].forEach((id, i) => $(id).className = 'btn' + (k === i + 1 ? '' : ' light')); $('#recap').innerHTML = recapHTML[k](); }
+$('#t1').addEventListener('click', () => recap(1)); $('#t2').addEventListener('click', () => recap(2)); recap(1);
+
+const TOOLS = [['th', 'خاصية طالس'], ['cos', 'cos'], ['sin', 'sin'], ['tan', 'tan']];
+const MS = [
+ { id: 'm1', name: 'جسر على وادي سيبوس 🌊', tool: 'th', unit: 'm', a: 4.8, tol: 1e-9,
+   txt: `رسم مهندس مخطّط جسر صغير على وادي سيبوس. الدعامة ${M('[MN]')} توازي الأرضية ${M('[BC]')}، أي ${M('(MN) // (BC)')}، والنقط ${M('A, M, B')} و ${M('A, N, C')} في استقامة.<br>${M('AM = 3 m')} ؛ ${M('AB = 7,5 m')} ؛ ${M('BC = 12 m')}. احسب طول الدعامة ${M('MN')}.`,
+   fig: () => figThales(),
+   th1: 'في الشكل مستقيمان متوازيان ومستقيمان متقاطعان: أيّ أداة تناسب هذا الوضع؟', th2: 'لا يوجد مثلث قائم هنا، فالنسب المثلثية لا تفيد.',
+   h1: 'اكتب نسب طالس الثلاث، ثم احتفظ بالمساواة التي فيها MN والأطوال المعلومة.', h2: `${EQ(F('AM', 'AB'), '=', F('MN', 'BC'))} أي ${EQ(F('3', '7,5'), '=', F('MN', '12'))}`,
+   m: 'خاصية طالس، نحتفظ بالمساواة المناسبة ثم الجداء المتصالب (الكتاب ص 107).',
+   s: [`${M('(BM)')} و ${M('(CN)')} متقاطعان في ${M('A')}، و ${M('(MN) // (BC)')}، حسب خاصية طالس:`, EQ(F('AM', 'AB'), '=', F('AN', 'AC'), '=', F('MN', 'BC')), `نحتفظ بالمساواة: ${EQ(F('AM', 'AB'), '=', F('MN', 'BC'))} أي ${EQ(F('3', '7,5'), '=', F('MN', '12'))}`, EQ('MN', '=', F('3 × 12', '7,5'), '=', F('36', '7,5'), '=', '4,8')],
+   c: `طول الدعامة ${M('MN = 4,8 m')}.`, sc: [['ذكر الشروط وكتابة النسب', 1], ['المساواة المناسبة', 1], ['النتيجة', 1]] },
+ { id: 'm2', name: 'سلّم المسرح الروماني بقالمة 🏛️', tool: 'cos', unit: 'm', a: 2.5, tol: 1e-9,
+   txt: `لترميم جدار المسرح الروماني بقالمة، أُسند سلّم ${M('[AC]')} طوله ${M('5 m')} إلى الجدار، فصنع مع الأرض زاوية ${M('BAC = 60°')}. الجدار عمودي على الأرض في ${M('B')}. احسب المسافة ${M('AB')} بين أسفل السلّم والجدار.`,
+   fig: () => figRight(['A', 'B', 'C'], '60°', [[130, 180, '؟'], [128, 92, '5 m']]),
+   th1: 'المثلث قائم: المعلوم الوتر (السلّم)، والمطلوب ضلع مجاور للزاوية 60°.', th2: 'النسبة التي تربط المجاور بالوتر هي جيب التمام.',
+   h1: `اكتب ${EQ('cos 60°', '=', F('AB', 'AC'))}`, h2: `${EQ('AB', '=', 'AC × cos 60°', '=', '5 × cos 60°')}، و ${EQ('cos 60°', '=', '0,5')}`,
+   m: 'في المثلث القائم نستعمل جيب التمام: المجاور ÷ الوتر.',
+   s: [`المثلث ${M('ABC')} قائم في ${M('B')}، إذن:`, EQ('cos BAC', '=', F('AB', 'AC')), EQ('cos 60°', '=', F('AB', '5')), EQ('AB', '=', '5 × cos 60°', '=', '5 × 0,5', '=', '2,5')],
+   c: `المسافة ${M('AB = 2,5 m')}.`, sc: [['كتابة النسبة', 1], ['التعويض', 1], ['النتيجة', 1]] },
+ { id: 'm3', name: 'شجرة ساحة المتوسطة 🌳', tool: 'tan', unit: 'm', a: 14, tol: 0.05,
+   txt: `من نقطة ${M('A')} على الأرض، تبعد ${M('AB = 20 m')} عن جذع شجرة ${M('[BC]')} عمودية على الأرض، نرى قمّتها ${M('C')} بزاوية ${M('BAC = 35°')}. احسب ارتفاع الشجرة ${M('BC')} (دوّر النتيجة إلى ${M('0,1')}). 🌱 الشجرة تمنحنا الظل والهواء النقي.`,
+   fig: () => figRight(['A', 'B', 'C'], '35°', [[125, 180, '20 m'], [262, 104, '؟']]),
+   th1: 'المثلث قائم: المعلوم المجاور للزاوية، والمطلوب المقابل لها.', th2: 'النسبة التي تربط المقابل بالمجاور هي الظل.',
+   h1: `اكتب ${EQ('tan 35°', '=', F('BC', 'AB'))}`, h2: `${EQ('BC', '=', '20 × tan 35°')}، احسبها بالحاسبة (وضع DEG).`,
+   m: 'في المثلث القائم نستعمل الظل: المقابل ÷ المجاور.',
+   s: [`المثلث ${M('ABC')} قائم في ${M('B')}، إذن:`, EQ('tan BAC', '=', F('BC', 'AB')), EQ('tan 35°', '=', F('BC', '20')), EQ('BC', '=', '20 × tan 35°', '≈', '14,004'), EQ('BC', '≈', '14,0')],
+   c: `ارتفاع الشجرة ${M('BC ≈ 14 m')} (بالتدوير إلى ${M('0,1')}).`, sc: [['كتابة النسبة', 1], ['التعويض', 1], ['النتيجة المدوّرة', 1]] },
+ { id: 'm4', name: 'طائرة ورقية في بوشقوف 🪁', tool: 'sin', unit: 'm', a: 32.1, tol: 0.05,
+   txt: `ربط أنس خيط طائرته الورقية بوتد ${M('A')} على الأرض. طول الخيط المشدود ${M('AC = 50 m')}، ويصنع مع الأرض زاوية ${M('BAC = 40°')}. ${M('B')} المسقط العمودي للطائرة ${M('C')} على الأرض. احسب ارتفاع الطائرة ${M('BC')} (دوّر إلى ${M('0,1')}).`,
+   fig: () => figRight(['A', 'B', 'C'], '40°', [[128, 92, '50 m'], [262, 104, '؟']]),
+   th1: 'المثلث قائم: المعلوم الوتر (الخيط)، والمطلوب الضلع المقابل للزاوية.', th2: 'النسبة التي تربط المقابل بالوتر هي الجيب.',
+   h1: `اكتب ${EQ('sin 40°', '=', F('BC', 'AC'))}`, h2: `${EQ('BC', '=', '50 × sin 40°')}، احسبها بالحاسبة (وضع DEG).`,
+   m: 'في المثلث القائم نستعمل الجيب: المقابل ÷ الوتر.',
+   s: [`المثلث ${M('ABC')} قائم في ${M('B')}، إذن:`, EQ('sin BAC', '=', F('BC', 'AC')), EQ('sin 40°', '=', F('BC', '50')), EQ('BC', '=', '50 × sin 40°', '≈', '32,139'), EQ('BC', '≈', '32,1')],
+   c: `ارتفاع الطائرة ${M('BC ≈ 32,1 m')}.`, sc: [['كتابة النسبة', 1], ['التعويض', 1], ['النتيجة المدوّرة', 1]] },
+ { id: 'm5', name: 'ظلّ عصا قرب مئذنة القرية 🕌', tool: 'tan', unit: '°', a: 53, tol: 1e-9,
+   txt: `غرس التلاميذ عصا ${M('[BC]')} طولها ${M('1,2 m')} عموديا على الأرض، فكان طول ظلّها ${M('AB = 0,9 m')}. ${M('A')} طرف الظل. احسب قيس الزاوية ${M('BAC')} التي تصنعها أشعة الشمس مع الأرض (دوّر إلى الدرجة).`,
+   fig: () => figRight(['A', 'B', 'C'], '؟', [[125, 180, '0,9 m'], [262, 104, '1,2 m']]),
+   th1: 'المثلث قائم: نعرف الضلع المقابل والضلع المجاور للزاوية المطلوبة.', th2: 'النسبة التي تربط المقابل بالمجاور هي الظل.',
+   h1: `احسب أولا ${EQ('tan BAC', '=', F('BC', 'AB'), '=', F('1,2', '0,9'))}`, h2: `استعمل الحاسبة: ${M('tan⁻¹')} (أو ${M('shift tan')}) للعدد ${EQ(F('1,2', '0,9'))}`,
+   m: 'نحسب الظل ثم نستعمل الحاسبة لإيجاد الزاوية.',
+   s: [`المثلث ${M('ABC')} قائم في ${M('B')}، إذن:`, EQ('tan BAC', '=', F('BC', 'AB'), '=', F('1,2', '0,9'), '=', F('4', '3')), `بالحاسبة: ${EQ('BAC', '≈', '53,13°')}`, EQ('BAC', '≈', '53°')],
+   c: `قيس الزاوية ${M('BAC ≈ 53°')}.`, sc: [['كتابة الظل', 1], ['حساب النسبة', 1], ['قيس الزاوية', 1]] }
+];
+const TOOLNAME = Object.fromEntries(TOOLS);
+function game1(idx) {
+  if (idx == null) idx = Math.max(0, MS.findIndex(r => !(S.r[r.id + 'v']))); if (idx < 0) idx = 0;
+  const R = MS[idx], host = $('#g1');
+  const dots = MS.map((r, i) => { const x = S.r[r.id + 'v']; return `<span class="${x ? (x.pts ? 'ok' : 'ko') : (i === idx ? 'cur' : '')}">${i + 1}</span>`; }).join('');
+  host.innerHTML = `<div class="dots">${dots}</div>
+   <div class="qtext">🧭 <b>المهمّة ${idx + 1}: ${R.name}</b></div><div>${R.txt}</div><div class="fig">${R.fig()}</div>
+   <div class="q"><b>الخطوة 1 (1 ن):</b> ما الأداة المناسبة؟<div class="tools">${TOOLS.map(t => `<button class="btn light" data-t="${t[0]}">${t[1]}</button>`).join('')}</div><div class="fb" id="cfb"></div></div>
+   <div class="q" id="stepB" style="display:none"><b>الخطوة 2 (3 ن):</b> احسب المطلوب.
+     <div class="ans"><input type="text" inputmode="decimal" autocomplete="off" aria-label="الجواب"><span class="unit">${R.unit}</span><button class="btn chk">تحقّق ✓</button></div>
+     <div class="keys"><button data-k=",">,</button><button data-k="⌫">⌫</button></div><div class="fb" id="vfb"></div><div id="vsol"></div></div>
+   <div class="row" id="g1nx"></div>`;
+  const cfb = $('#cfb'), vfb = $('#vfb'), inp = $('#stepB input');
+  const next = () => { $('#g1nx').innerHTML = idx < MS.length - 1 ? `<button class="btn green wide" id="g1go">المهمّة التالية ←</button>` : NXA('#s2', 'إلى الشهادة'); const g = $('#g1go'); if (g) g.addEventListener('click', () => { game1(idx + 1); $('#s1').scrollIntoView({ behavior: 'smooth' }); }); };
+  const sol = () => solHTML(R.m, R.s, R.c, R.sc);
+  const showTool = () => { $$('.tools button', host).forEach(b => { b.disabled = true; b.className = 'btn ' + (b.dataset.t === R.tool ? 'green' : 'light'); }); };
+  const openB = () => { $('#stepB').style.display = ''; };
+  const lockB = () => $$('#stepB input, #stepB button').forEach(b => b.disabled = true);
+  const cst = S.r[R.id + 'c'], vst = S.r[R.id + 'v'];
+  if (cst) { showTool(); cfb.innerHTML = `<span class="g">منجزة: ${fmt(cst.pts)} / 1 ن ${'⭐'.repeat(cst.st)} — الأداة: <b>${TOOLNAME[R.tool]}</b></span>`; openB(); }
+  if (vst) { lockB(); vfb.innerHTML = `<span class="g">منجزة: ${fmt(vst.pts)} / 3 ن ${'⭐'.repeat(vst.st)}</span>`; $('#vsol').innerHTML = solBox(!!vst.pts, sol()); next(); return; }
+  if (!cst) {
+    let tries = 0;
+    $$('.tools button', host).forEach(b => b.addEventListener('click', () => {
+      if (S.r[R.id + 'c']) return; tries++;
+      if (b.dataset.t === R.tool) { sOk(); burst(b); cfb.innerHTML = `<span class="g">✅ ${pick('ok')} ${'⭐'.repeat(Math.max(1, 4 - tries))}</span>`; rec(R.id + 'c', 1, Math.max(1, 4 - tries)); showTool(); openB(); inp.focus(); return; }
+      sBad(); shake(b); b.disabled = true; b.className = 'btn red';
+      if (tries === 1) { cfb.innerHTML = `<span class="w">${pick('w1')}</span><span class="h">💡 ${R.th1}</span>`; hintFx(cfb); }
+      else if (tries === 2) { cfb.innerHTML = `<span class="w">${pick('w2')}</span><span class="h">💡 ${R.th2}</span>`; hintFx(cfb); }
+      else { cfb.innerHTML = `<span class="w">🌱 ${pick('fail')} الأداة المناسبة: <b>${TOOLNAME[R.tool]}</b>.</span>`; rec(R.id + 'c', 0, 0); showTool(); openB(); }
+    }));
+  }
+  let vt = 0;
+  $$('#stepB .keys button').forEach(b => b.addEventListener('click', () => { const k = b.dataset.k; inp.value = k === '⌫' ? inp.value.slice(0, -1) : inp.value + k; inp.focus(); }));
+  const check = () => {
+    if (S.r[R.id + 'v']) return; const v = num(inp.value);
+    if (v === null) { vfb.innerHTML = '<span class="h">اكتب عددا (الفاصلة بالزر ,).</span>'; shake(inp); return; }
+    vt++;
+    const fin = ok => { const stn = ok ? Math.max(1, 4 - vt) : 0; rec(R.id + 'v', ok ? 3 : 0, stn); lockB(); $('#vsol').innerHTML = solBox(ok, sol()); $$('.dots span', host)[idx].className = ok ? 'ok' : 'ko'; next(); };
+    if (Math.abs(v - R.a) <= R.tol + 1e-9) { sOk(); burst(inp); vfb.innerHTML = `<span class="g">✅ ${pick('ok')} ${'⭐'.repeat(Math.max(1, 4 - vt))}</span>`; toast('🧭 +3 ن'); fin(true); return; }
+    sBad(); shake(inp);
+    if (vt === 1) { vfb.innerHTML = `<span class="w">${pick('w1')}</span><span class="h">💡 ${R.h1}</span>`; hintFx(vfb); }
+    else if (vt === 2) { vfb.innerHTML = `<span class="w">${pick('w2')}</span><span class="h">💡 ${R.h2}</span>`; hintFx(vfb); }
+    else { vfb.innerHTML = `<span class="w">🌱 ${pick('fail')}</span>`; fin(false); }
+  };
+  $('#stepB .chk').addEventListener('click', check); inp.addEventListener('keydown', e => { if (e.key === 'Enter') check(); });
+}
+
+/* ================= CERTIFICATE ================= */
+const GT = { g1: '🧭 المهمّات الخمس' };
+function medal() { const s = score(); return s >= 17 ? ['🥇', 'الذهبية', '#b45309'] : s >= 12 ? ['🥈', 'الفضية', '#475569'] : ['🥉', 'البرونزية', '#9a3412']; }
+let certBuilt = false;
+function renderCert() {
+  const host = $('#cert'); if (!host) return;
+  const left = Object.keys(ITEMS).filter(k => !doneK(k));
+  if (left.length) { certBuilt = false; host.innerHTML = `<div style="text-align:center"><div class="lock">🔒</div><p>أكمل المهمّات الخمس لتفتح شهادتك.</p><p>بقي: ${left.map(k => `<b>${GT[k]}</b>`).join(' ، ')}</p></div>`; return; }
+  if (certBuilt) { drawCert(); return; }
+  certBuilt = true; const [ic, nm] = medal();
+  host.innerHTML = `<p>🎉 مبروك! علامتك <b>${fmt(score())} / 20</b> و ${stars()} ⭐: الشهادة <b>${nm}</b> ${ic}</p>
+   <label>اكتب اسمك ولقبك:</label><input class="namebox" id="nm" maxlength="40" value="${(S.name || '').replace(/"/g, '')}">
+   <div class="row"><button class="btn orange" id="mk">✨ أنشئ الشهادة</button><button class="btn" id="dl">⬇️ تحميل صورة</button><button class="btn light" id="pr">🖨️ طباعة</button></div>
+   <canvas id="cv" width="1400" height="990"></canvas>
+   <div class="row"><button class="btn light" id="rst">🔁 العب من جديد</button></div>`;
+  const go = async () => { S.name = $('#nm').value.trim(); save(); await drawCert(); };
+  $('#mk').addEventListener('click', go); $('#nm').addEventListener('change', go);
+  $('#dl').addEventListener('click', async () => { await go(); try { const a = document.createElement('a'); a.download = 'شهادة_مهمات_المساح.png'; a.href = $('#cv').toDataURL('image/png'); a.click(); } catch (e) { toast('تعذّر التحميل: استعمل الطباعة أو لقطة شاشة.', 1); } });
+  $('#pr').addEventListener('click', async () => { await go(); window.print(); });
+  $('#rst').addEventListener('click', e => { const b = e.currentTarget; if (!b.dataset.c) { b.dataset.c = 1; b.textContent = 'اضغط مرة أخرى للتأكيد'; return; } S.r = {}; save(); location.hash = ''; location.reload(); });
+  go();
+}
+async function drawCert() {
+  const cv = $('#cv'); if (!cv) return; const x = cv.getContext('2d'), W = cv.width, H = cv.height, [ic, nm, col] = medal();
+  try { await document.fonts.load('900 40px Cairo'); await document.fonts.load('700 30px Cairo'); } catch (e) {}
+  const g = x.createLinearGradient(0, 0, W, H); g.addColorStop(0, '#fffdf3'); g.addColorStop(1, '#eaf6ff'); x.fillStyle = g; x.fillRect(0, 0, W, H);
+  x.lineWidth = 14; x.strokeStyle = '#0369a1'; x.strokeRect(24, 24, W - 48, H - 48); x.lineWidth = 4; x.strokeStyle = '#f59e0b'; x.strokeRect(48, 48, W - 96, H - 96);
+  x.direction = 'rtl'; x.textAlign = 'center';
+  const T = (t, y, f, c = '#0f172a') => { x.font = f; x.fillStyle = c; x.fillText(t, W / 2, y); };
+  T('الجمهورية الجزائرية الديمقراطية الشعبية', 110, '700 30px Cairo'); T('وزارة التربية الوطنية', 152, '700 26px Cairo', '#475569');
+  T('متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة', 196, '700 26px Cairo', '#475569');
+  T('شهادة إنجاز', 300, '900 84px Cairo', '#0369a1'); T('تُمنح هذه الشهادة للتلميذ(ة)', 380, '700 32px Cairo');
+  T(S.name || '..............................', 470, '900 64px Cairo', '#c2410c');
+  T('لإتمامه(ا) بنجاح لعبة «مهمّات المسّاح»', 545, '700 32px Cairo'); T('المقطع الثاني (طالس والنسب المثلثية) — السنة الرابعة متوسط', 592, '700 28px Cairo', '#475569');
+  T(`العلامة: ${fmt(score())} / 20 — النجوم: ${stars()} ⭐`, 660, '800 34px Cairo', '#1e3a8a'); T(`${ic} الشهادة ${nm}`, 735, '900 46px Cairo', col);
+  const d = new Date(); x.font = '700 26px Cairo'; x.fillStyle = '#0f172a';
+  x.textAlign = 'right'; x.fillText('الأستاذ: يوسفي السوفي', W - 110, 860); x.textAlign = 'left'; x.fillText(`التاريخ: ${d.getDate()} / ${d.getMonth() + 1} / ${d.getFullYear()}`, 110, 860);
+  x.textAlign = 'center'; x.font = '60px serif'; x.fillText('🧭', W / 2, 880);
+}
+
+$('#snd').addEventListener('click', () => { S.snd = !S.snd; save(); upd(); });
+game1(); upd();
+</script>
+</body>
+</html>
