@@ -140,6 +140,17 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:16px}
 .vop{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Courier New",monospace;font-weight:900;font-size:1.15rem;color:#1e3a8a;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:4px 14px;margin:4px 0;line-height:1.45;text-align:right}
 .vop div{white-space:pre}.vop .rule{border-top:3px solid #1e3a8a;height:0;margin:2px 0}
 .fig svg{max-width:300px}
+.gw .fig svg,.fw .fig svg{max-width:340px}
+.hz,.gn{cursor:pointer}
+.pool{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:62px;margin-top:10px}
+.pool .opt,.bc .opt{min-height:50px;padding:4px 12px;font-size:1.05rem}
+.bins{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.bin{border:3px dashed #0d9488;border-radius:14px;background:#f0fdfa;min-height:120px;padding:6px;cursor:pointer}
+.bh{font-weight:900;color:#0f766e;text-align:center;border-bottom:2px solid #99f6e4;margin-bottom:6px}
+.bc{display:flex;flex-direction:column;gap:6px}
+.nlw .fig{margin-bottom:4px}
+.slrow{display:flex;gap:8px;align-items:center;direction:ltr}.slrow .btn{min-width:56px;padding:4px}
+.slrow input{flex:1;height:44px;accent-color:#dc2626}
 .chips a.cur{border-color:var(--yel)}
 </style>
 </head>
@@ -160,8 +171,8 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:16px}
 <section class="card" id="s0">
   <div class="ct">📌 كيف ألعب؟ (اقرأ مرة واحدة)</div>
   <ol class="howto">
-    <li>👆 اضغط على <b>جواب واحد</b>، فيتلوّن بالأصفر.</li>
-    <li>✔ ثم اضغط الزر الأخضر <b>«تحقّق»</b>. إذا ضغطت جوابا بالخطأ، اضغط جوابا آخر قبل «تحقّق» ولا تخسر شيئا.</li>
+    <li>🎲 طرق الإجابة متنوعة: تختار، تكتب، تحرّك نقطة، تضع نقطة على المرصوفة، تضغط على الشكل، تصل، ترتّب، أو تصنّف. اقرأ التعليمة الزرقاء فوق كل سؤال.</li>
+    <li>✔ لا يُصحَّح شيء قبل أن تضغط الزر الأخضر <b>«تحقّق»</b>. إذا ضغطت بالخطأ، غيّر جوابك قبل «تحقّق» ولا تخسر شيئا.</li>
     <li>💡 إذا أخطأت: يظهر تلميح وتجرّب مرة أخرى. لك <b>3 محاولات</b>، وبعد الثالثة يظهر الحل المفصّل.</li>
     <li>🎯 كل سؤال بنقطة: من المحاولة الأولى <b>1</b>، الثانية <b>0,5</b>، الثالثة <b>0,25</b>.</li>
     <li>✍️ اكتب الحساب في كراسك قبل أن تختار. تقدّمك محفوظ في هاتفك.</li>
@@ -294,6 +305,30 @@ const PAGE = {
  ]}
  ]
 };
+/* v3: varied answer methods (his rules 2026-11-12) */
+const X = (q, o) => Object.assign({}, q, o);
+const RK = { txt: 1, keys: ['√', '+', '−'] };
+{ const [g1, g2, g3] = PAGE.games;
+  g1.qs[0] = { t: 'bin', q: `صنّف الأعداد: قاسم للعدد ${M('84')} أم لا؟`, bins: [`قاسم للعدد ${M('84')}`, `ليس قاسما للعدد ${M('84')}`], it: [[M('7'), 0], [M('12'), 0], [M('21'), 0], [M('4'), 0], [M('9'), 1], [M('5'), 1], [M('8'), 1]],
+    h1: 'القاسم يعطي باقي قسمة معدوما.', h2: `${M('84 = 7 × 12 = 4 × 21')}.`,
+    m: { w: 'نقسم 84 على كل عدد ونفحص الباقي.', s: [M('84 = 7 × 12 = 4 × 21'), M('84 = 9 × 9 + 3'), M('84 = 5 × 16 + 4'), M('84 = 8 × 10 + 4')], c: `قواسم: ${M('7 ; 12 ; 21 ; 4')}. ليست قواسم: ${M('9 ; 5 ; 8')}.` } };
+  g1.qs[1] = X(g1.qs[1], { t: 'n', a: 12 });
+  g1.qs[3] = X(g1.qs[3], { t: 'n', a: 18 });
+  g1.qs[6] = X(g1.qs[6], { t: 'n', a: 12, u: 'كيسا' });
+  g2.qs[0] = X(g2.qs[0], { t: 'n', a: 7 });
+  g2.qs[2] = X(g2.qs[2], Object.assign({ t: 'n', acc: ['2√3'], show: '2√3' }, RK));
+  g2.qs[3] = X(g2.qs[3], { t: 'n', a: 6 });
+  g2.qs[4] = X(g2.qs[4], Object.assign({ t: 'n', acc: ['8√2'], show: '8√2' }, RK));
+  g2.qs[6] = X(g2.qs[6], Object.assign({ t: 'n', acc: ['2√3'], show: '2√3' }, RK));
+  g3.qs[0] = X(g3.qs[0], Object.assign({ t: 'n', acc: ['√5', '1√5'], show: '√5' }, RK));
+  g3.qs[3] = { t: 'nl', q: `${M('2√3 = √12')}. حرّك المؤشر إلى القيمة المقرّبة إلى ${M('0,1')} للعدد ${M('√12')}.`, a0: '3', b0: '4', n: 10, k: 5, lab: '√12',
+    h1: `${M('3,4² = 11,56')} و ${M('3,5² = 12,25')}.`, h2: `${M('√12 ≈ 3,46')}: أيّهما أقرب، ${M('3,4')} أم ${M('3,5')}؟`,
+    m: { w: 'نحصر العدد بين عشرين متتاليين بمقارنة المربعات، ثم نأخذ الأقرب.', s: [M('3,4² = 11,56 < 12 < 12,25 = 3,5²'), M('√12 ≈ 3,464'), M('3,464 ≈ 3,5')], c: `القيمة المقربة إلى 0,1 هي ${M('3,5')}.` } };
+  g3.qs[4] = { t: 'bin', q: 'صنّف الأعداد: ناطق أم غير ناطق؟', bins: ['عدد ناطق', 'عدد غير ناطق'], it: [[F('√16', '√9'), 0], [M('√49'), 0], [M('0,25'), 0], [M('√2'), 1], [M('3√7'), 1], [M('√5 + 1'), 1]],
+    h1: 'هل الجذر جذر لمربع تام؟', h2: `${M('√16 = 4')} ، ${M('√9 = 3')} ، ${M('√49 = 7')}.`,
+    m: { w: 'العدد الناطق يُكتب على شكل كسر بين عددين صحيحين.', s: [EQ(F('√16', '√9'), '=', F('4', '3')), M('√49 = 7'), EQ('0,25 =', F('1', '4')), `${M('√2')} و ${M('√7')} و ${M('√5')} ليست مربعات تامة`], c: 'ثلاثة أعداد ناطقة وثلاثة غير ناطقة.' } };
+  g3.qs[5] = X(g3.qs[5], { t: 'n', a: 24, u: 'cm' });
+}
 
 /* ---------- state ---------- */
 const KEY = PAGE.key;
@@ -350,7 +385,7 @@ function showGame(gi, force) {
 function renderQ(gi, qi) {
   const g = PAGE.games[gi], q = g.qs[qi], sec = $(`#g${gi + 1}`), st = $('.stage', sec);
   const t = q.t || 'c';
-  const doTxt = { c: '👆 اختر جوابا واحدا ثم اضغط «تحقّق».', m: '👆 اضغط بطاقة من اليمين ثم البطاقة التي تناسبها من اليسار، ثم «تحقّق».', o: '👆 اضغط البطاقات بالترتيب المطلوب، ثم «تحقّق». للتصحيح اضغط «امسح».' }[t];
+  const doTxt = { c: '👆 اختر جوابا واحدا ثم اضغط «تحقّق».', m: '👆 اضغط بطاقة من اليمين ثم البطاقة التي تناسبها من اليسار، ثم «تحقّق».', o: '👆 اضغط البطاقات بالترتيب المطلوب، ثم «تحقّق». للتصحيح اضغط «امسح».', n: '✍️ اكتب جوابك (الأرقام من لوحة هاتفك، والرموز من الأزرار)، ثم «تحقّق».', nl: '↔️ حرّك النقطة الحمراء بالأزرار ◀ ▶ أو بالمؤشر حتى تصل إلى المكان الصحيح، ثم «تحقّق».', grid: '📍 اضغط على عقدة من المرصوفة لتضع النقطة، ثم «تحقّق».', fig: '👆 اضغط مباشرة على الشكل، ثم «تحقّق».', bin: '🗂️ اضغط بطاقة، ثم اضغط الصندوق المناسب لها. عند الانتهاء اضغط «تحقّق».' }[t];
   st.innerHTML = `<div class="qbox"><div class="muted">السؤال ${qi + 1} من ${g.qs.length}${q.bk ? ` <span class="bk">📖 ${q.bk}</span>` : ''}</div><div class="qtext">${q.q}</div>${q.fig || ''}${q.j ? `<div class="muted">✍️ علّل جوابك في كراسك، ثم اختر.</div>` : ''}<span class="do">${doTxt}</span>
     <div class="play"></div><div class="tries">${'❤️'.repeat(3)}</div><div class="fb"></div>
     <button class="btn green wide go" disabled>✔ تحقّق</button><div class="after"></div></div>`;
@@ -388,6 +423,63 @@ function renderQ(gi, qi) {
     paint();
     state = { check: () => seq.every((v, k) => v === k), onWrong: () => { let k = 0; while (k < seq.length && seq[k] === k) k++; seq = seq.slice(0, k); paint(); },
       reveal: () => { seq = q.it.map((x, i) => i); paint(); $('.clr', play).style.display = 'none'; } };
+  }
+  /* --- typed answer (phone keyboard for digits + symbol keys) --- */
+  if (t === 'n') {
+    const keys = q.keys || ['−', ','];
+    play.innerHTML = `<div class="ans"><input class="nin" autocomplete="off" inputmode="${q.txt ? 'text' : 'decimal'}" placeholder="اكتب هنا"><span class="unit">${q.u || ''}</span></div><div class="keys">${keys.map(k => `<button data-k="${k}">${k}</button>`).join('')}<button data-k="⌫">⌫</button></div>`;
+    const inp = $('.nin', play);
+    const sync = () => { go.disabled = !inp.value.trim(); };
+    inp.addEventListener('input', sync); inp.addEventListener('keydown', e => { if (e.key === 'Enter' && !go.disabled) go.click(); });
+    $$('.keys button', play).forEach(b => b.addEventListener('click', () => { if (finished) return; sClick(); const k = b.dataset.k; inp.value = k === '⌫' ? inp.value.slice(0, -1) : inp.value + k; sync(); inp.focus(); }));
+    const norm = s => String(s).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[٫.]/g, ',').replace(/[-–]/g, '−').replace(/\s+/g, '').replace(/[*x]/g, m => m === '*' ? '×' : m).toLowerCase();
+    const val = s => { const v = norm(s).replace(/^\+/, '').replace(',', '.').replace('−', '-'); return v === '' || isNaN(+v) ? null : +v; };
+    state = { check: () => { const v = inp.value; if (q.rng) { const x = val(v); return x !== null && x > q.rng[0] && x < q.rng[1]; } if (q.acc) return q.acc.some(a => norm(a) === norm(v)); if (typeof q.a === 'number') { const x = val(v); return x !== null && Math.abs(x - q.a) < 1e-9; } return (q.acc || [q.a]).some(a => norm(a) === norm(v)); },
+      onWrong: () => { inp.select && inp.select(); }, reveal: ok => { if (!ok) inp.value = q.show || String(q.a).replace('.', ','); inp.disabled = true; inp.style.borderColor = ok ? 'var(--ok)' : '#0284c7'; $$('.keys button', play).forEach(b => b.disabled = true); } };
+  }
+  /* --- move a point on a graduated line --- */
+  if (t === 'nl') {
+    let k = q.start || 0;
+    play.innerHTML = `<div class="nlw"></div><div class="slrow"><button class="btn light mv" data-d="-1">◀</button><input type="range" min="0" max="${q.n}" step="1" value="${k}"><button class="btn light mv" data-d="1">▶</button></div>`;
+    const draw = () => { $('.nlw', play).innerHTML = NL(q.a0, q.b0, q.n, [[k, q.lab || '●']]); $('input', play).value = k; go.disabled = false; };
+    $('input', play).addEventListener('input', e => { if (finished) return; k = +e.target.value; draw(); });
+    $$('.mv', play).forEach(b => b.addEventListener('click', () => { if (finished) return; sClick(); k = Math.max(0, Math.min(q.n, k + +b.dataset.d)); draw(); }));
+    draw(); go.disabled = true;
+    state = { check: () => k === q.k, onWrong: () => {}, reveal: () => { k = q.k; draw(); $$('.mv,input', play).forEach(b => b.disabled = true); } };
+  }
+  /* --- place a point on a grid --- */
+  if (t === 'grid') {
+    let pt = null; const o = q.go, s = o.grid;
+    const draw = () => { let svg = G(o); const nodes = []; for (let x = s; x < o.w; x += s) for (let y = s; y < o.h; y += s) nodes.push(`<circle class="gn" data-x="${x}" data-y="${y}" cx="${x}" cy="${y}" r="13" fill="transparent"/><circle cx="${x}" cy="${y}" r="2.5" fill="#94a3b8" pointer-events="none"/>`);
+      if (pt) nodes.push(`<circle cx="${pt[0]}" cy="${pt[1]}" r="7" fill="#dc2626" pointer-events="none"/><text x="${pt[0] + 10}" y="${pt[1] - 10}" font-size="18" fill="#dc2626" pointer-events="none">${q.lab}</text>`);
+      $('.gw', play).innerHTML = svg.replace('</svg>', nodes.join('') + '</svg>');
+      $$('.gn', play).forEach(c => c.addEventListener('click', () => { if (finished) return; sClick(); pt = [+c.dataset.x, +c.dataset.y]; go.disabled = false; draw(); })); };
+    play.innerHTML = `<div class="gw"></div>`; draw();
+    state = { check: () => pt && pt[0] === q.ans[0] && pt[1] === q.ans[1], onWrong: () => {}, reveal: () => { pt = q.ans; finished = true; draw(); } };
+  }
+  /* --- tap a part of the figure --- */
+  if (t === 'fig') {
+    let sel2 = null; const o = q.go, P = o.P;
+    const draw = () => { const hits = q.hit.map((h, i) => Array.isArray(h) ? `<line class="hz" data-i="${i}" x1="${P[h[0]][0]}" y1="${P[h[0]][1]}" x2="${P[h[1]][0]}" y2="${P[h[1]][1]}" stroke="${sel2 === i ? '#f59e0b' : 'transparent'}" stroke-width="${sel2 === i ? 8 : 26}" stroke-linecap="round"/>` : `<circle class="hz" data-i="${i}" cx="${P[h][0]}" cy="${P[h][1]}" r="${sel2 === i ? 11 : 18}" fill="${sel2 === i ? '#f59e0b' : 'transparent'}"/>`).join('');
+      $('.fw', play).innerHTML = G(o).replace('</svg>', hits + '</svg>');
+      $$('.hz', play).forEach(c => c.addEventListener('click', () => { if (finished) return; sClick(); sel2 = +c.dataset.i; go.disabled = false; draw(); })); };
+    play.innerHTML = `<div class="fw"></div>`; draw();
+    state = { check: () => sel2 === q.a, onWrong: () => { sel2 = null; go.disabled = true; draw(); }, reveal: () => { finished = true; sel2 = q.a; draw(); } };
+  }
+  /* --- sort cards into two boxes --- */
+  if (t === 'bin') {
+    const items = shuffle(q.it.map((x, i) => i)); const where = {}; let cur = null; const locked = {};
+    play.innerHTML = `<div class="pool"></div><div class="bins">${q.bins.map((b, j) => `<div class="bin" data-j="${j}"><div class="bh">${b}</div><div class="bc"></div></div>`).join('')}</div>`;
+    const paint = () => {
+      $('.pool', play).innerHTML = items.filter(i => where[i] === undefined).map(i => `<button class="opt bi ${cur === i ? 'sel' : ''}" data-i="${i}">${q.it[i][0]}</button>`).join('') || '<span class="em">✔ صنّفت كل البطاقات</span>';
+      $$('.bin', play).forEach(b => { const j = +b.dataset.j; $('.bc', b).innerHTML = items.filter(i => where[i] === j).map(i => `<button class="opt bi ${locked[i] ? 'good' : ''}" data-i="${i}">${q.it[i][0]}</button>`).join(''); });
+      $$('.bi', play).forEach(b => b.addEventListener('click', e => { e.stopPropagation(); if (finished) return; const i = +b.dataset.i; sClick(); if (where[i] !== undefined && cur !== null && cur !== i) { where[cur] = where[i]; cur = null; paint(); return; } if (locked[i]) return; if (where[i] !== undefined) { delete where[i]; cur = i; } else cur = cur === i ? null : i; paint(); }));
+      go.disabled = items.some(i => where[i] === undefined);
+    };
+    $$('.bin', play).forEach(b => b.addEventListener('click', () => { if (finished) return; if (cur === null) { toast('اضغط أولا بطاقة من الأعلى 👆', 1); return; } sClick(); where[cur] = +b.dataset.j; cur = null; paint(); }));
+    paint();
+    state = { check: () => items.every(i => where[i] === q.it[i][1]), onWrong: () => { items.forEach(i => { if (where[i] !== q.it[i][1]) delete where[i]; else locked[i] = 1; }); paint(); },
+      reveal: () => { items.forEach(i => { where[i] = q.it[i][1]; locked[i] = 1; }); finished = true; paint(); } };
   }
   go.addEventListener('click', () => {
     if (busy || finished || go.disabled) return; busy = true; setTimeout(() => busy = false, 450);
