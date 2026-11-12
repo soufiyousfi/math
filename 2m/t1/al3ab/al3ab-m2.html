@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>أين النظيرة؟ لعبة المقطع الثاني (الثانية متوسط)</title>
-<meta name="description" content="لعبة للسنة الثانية متوسط على التناظر المركزي: المس نظيرة نقطة وقطعة ودائرة على المرصوفة، وابحث عن مركز التناظر. نجوم وشهادة باسمك.">
+<title>ألعاب المقطع الثاني: التناظر المركزي (الثانية متوسط)</title>
+<meta name="description" content="ثلاث ألعاب سهلة بأزرار اختيار للسنة الثانية متوسط: نظيرة نقطة، خواص التناظر المركزي، مركز تناظر شكل. 20 سؤالا و20 نقطة وشهادة.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="🎯 أين النظيرة؟ لعبة التناظر المركزي للثانية متوسط!">
-<meta property="og:description" content="عشر مهمّات على المرصوفة: المس النظيرة أو مركز التناظر. 20 نقطة وشهادة باسمك.">
+<meta property="og:title" content="🎮 ألعاب المقطع الثاني للثانية متوسط: التناظر المركزي في 20 سؤالا!">
+<meta property="og:description" content="أين النظيرة؟ ماذا يحفظ التناظر؟ من له مركز تناظر؟ اضغط الجواب واربح الشهادة.">
 <meta property="og:image" content="https://soufiyousfi.github.io/math/2m/t1/al3ab/img/al3ab-m2-fb.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&display=swap" rel="stylesheet">
 <style>
+
 :root{
   --bg:#eef7fb; --card:#fff; --ink:#0f172a; --muted:#475569; --line:#cbd5e1;
   --c1:#0369a1; --c2:#0d9488; --yel:#f59e0b; --ok:#16a34a; --ok-soft:#dcfce7;
@@ -71,57 +72,6 @@ table.vt{border-collapse:collapse;margin:6px auto;direction:ltr;font-weight:900;
 table.vt td{border:2px solid #0369a1;padding:3px 14px;text-align:center;background:#fff}
 table.vt tr:first-child td{background:#e0f2fe}
 .bk{font-size:.85rem;color:#64748b;text-align:center}
-/* game 1 */
-.bank{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;direction:ltr;margin:10px 0}
-.tile{min-width:62px;min-height:50px;padding:6px 12px;border-radius:12px;border:3px solid #0284c7;background:#fff;color:#0369a1;font-weight:900;font-size:1.15rem;box-shadow:0 5px 0 #0284c7}
-.tile.sel{background:var(--yel);border-color:#b45309;color:#fff;box-shadow:0 5px 0 #b45309;transform:translateY(-2px)}
-.tile.used{visibility:hidden}
-.build{direction:ltr;display:flex;align-items:center;justify-content:center;gap:6px;margin:14px 0;background:#eff6ff;border:2px dashed #93c5fd;border-radius:14px;padding:12px 4px}
-.frz{display:flex;flex-direction:column;align-items:center;gap:5px;padding:4px;border-radius:12px}
-.frz .bar2{width:62px;height:4px;background:#0369a1;border-radius:2px}
-.zone{width:62px;height:44px;border:3px dashed #94a3b8;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem;color:#0369a1}
-.zone.on{border-color:var(--yel);background:#fef3c7}
-.zone.full{border-style:solid;border-color:#0284c7;background:#e0f2fe}
-.frz.good{background:var(--ok-soft);outline:3px solid var(--ok)}
-.frz.badz{background:var(--bad-soft);outline:3px solid var(--bad)}
-.eqs{font-size:1.6rem;font-weight:900;color:#0369a1}
-/* game 2 safe */
-.safe{background:#334155;border-radius:18px;padding:14px;color:#fff;text-align:center}
-.safe .m,.safe>.eq,.safe>div>.eq{color:#fde68a}
-.screen{background:#0f172a;border:4px solid #64748b;border-radius:10px;padding:8px;font-family:monospace;font-size:1.8rem;letter-spacing:4px;color:#4ade80;direction:ltr;min-height:62px;display:flex;align-items:center;justify-content:center}
-.screen.err{color:#f87171}
-.pad{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:300px;margin:12px auto 0;direction:ltr}
-.pad button{min-height:56px;border:0;border-radius:14px;background:#e2e8f0;color:#0f172a;font-size:1.4rem;font-weight:900;box-shadow:0 5px 0 #94a3b8}
-.pad button:active{transform:translateY(4px);box-shadow:none}
-.pad .c{background:#fecaca;color:#7f1d1d;box-shadow:0 5px 0 #f87171}
-.pad .open{grid-column:span 4;background:var(--yel);color:#3b2600;box-shadow:0 5px 0 #b45309}
-.lock{font-size:2.4rem;line-height:1}
-.steps3{display:flex;gap:6px;justify-content:center;margin-bottom:8px}
-.steps3 span{width:34px;height:34px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-weight:900}
-.steps3 span.ok{background:var(--ok);color:#fff}.steps3 span.cur{background:var(--yel);color:#fff}.steps3 span.ko{background:#94a3b8;color:#fff}
-/* game 3 */
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-.duo .btn{min-height:60px;font-size:1.05rem}
-.data{display:grid;grid-template-columns:1fr 1fr;gap:6px;direction:ltr;margin:6px 0}
-.data div{background:#f1f5f9;border-radius:10px;padding:2px 8px;font-weight:800;text-align:center;color:#1e3a8a}
-/* new games */
-.bem{display:inline-block;background:#fef9c3;border:1px solid #facc15;color:#713f12;border-radius:999px;padding:0 10px;font-size:.82rem;font-weight:800;margin-bottom:4px}
-.match{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:300px;margin:10px auto}
-.match .col{display:flex;flex-direction:column;gap:12px;align-items:stretch}.match .hd{text-align:center}
-.pairs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;direction:ltr;margin:8px 0;min-height:10px}
-.pairs .p{padding:4px 10px;border-radius:12px;border:3px solid transparent}
-.pairs .p.good{border-color:var(--ok)}.pairs .p.badz{border-color:var(--bad)}
-.cards{display:flex;flex-direction:column;gap:8px;margin:8px 0}
-.scard{width:100%;text-align:start;font:inherit;font-size:.95rem;font-weight:700;background:#fff;border:3px solid #0284c7;border-radius:12px;padding:6px 10px;box-shadow:0 4px 0 #0284c7;color:var(--ink)}
-.scard.in{border-color:var(--ok);box-shadow:0 4px 0 #15803d;background:#f0fdf4}
-.seqh{font-weight:900;color:var(--c1);margin-top:6px}
-ol.seq{margin:4px 0;padding-inline-start:26px;min-height:40px;background:#f8fafc;border:2px dashed #86efac;border-radius:12px;padding-top:6px;padding-bottom:6px}
-ol.seq li{margin:6px 0;font-weight:900}
-.pl{cursor:pointer}.pl .vis{stroke:#0369a1;stroke-width:3}.pl .hit{stroke:transparent;stroke-width:24}
-.pl.on .vis{stroke:#f59e0b;stroke-width:7}.pl.off{pointer-events:none}
-.opts{display:flex;flex-direction:column;gap:10px;margin-top:8px}.opts .btn{font-size:1rem}
-.slrow{display:flex;gap:8px;align-items:center;direction:ltr}.slrow .btn{min-width:56px;padding:4px}
-.slrow input{flex:1;height:44px;accent-color:#f59e0b}
 /* feedback */
 .fb{margin-top:10px;font-weight:700}
 .fb .w{display:block;background:var(--bad-soft);color:#991b1b;border-radius:12px;padding:6px 10px}
@@ -156,42 +106,48 @@ canvas#cv{width:100%;height:auto;border-radius:10px;box-shadow:0 4px 18px rgba(0
 footer{text-align:center;color:var(--muted);font-size:.85rem;padding:16px}
 @media print{body *{visibility:hidden}#cv{visibility:visible;position:fixed;inset:0;width:100%;box-shadow:none}}
 
-/* ---- games page additions ---- */
-.res{display:inline-block;background:#ecfeff;border:1px solid #67e8f9;color:#155e75;border-radius:999px;padding:0 10px;font-size:.82rem;font-weight:800;margin-bottom:4px}
-.dots{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin:6px 0}
-.dots span{width:26px;height:26px;border-radius:50%;background:#e2e8f0;font-size:.8rem;font-weight:900;display:flex;align-items:center;justify-content:center}
-.dots span.ok{background:var(--ok);color:#fff}.dots span.ko{background:#94a3b8;color:#fff}.dots span.cur{background:var(--yel);color:#fff}
-.timer{display:flex;align-items:center;gap:8px;margin:6px 0}
-.tbar{flex:1;height:14px;background:#e2e8f0;border-radius:8px;overflow:hidden}
-.tbar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#f59e0b,#16a34a);transition:width .25s linear}
-.tbar.off i{background:#cbd5e1}
-.tsec{font-weight:900;min-width:46px;text-align:center;direction:ltr}
-.tbtn{min-height:40px;border:2px solid var(--line);background:#fff;border-radius:12px;font-weight:800;padding:0 10px}
-.qtext{font-size:1.08rem;font-weight:700;margin:6px 0}
-.mc{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-.mc .btn{min-height:56px;font-size:1.2rem;direction:ltr}
-.vop{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Courier New",monospace;font-weight:900;font-size:1.2rem;color:#1e3a8a;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:4px 14px;margin:4px 0;line-height:1.45;text-align:right}
+
+/* ---- simple games v2 ---- */
+.res{display:inline-block;background:#ecfeff;border:1px solid #67e8f9;color:#155e75;border-radius:999px;padding:0 10px;font-size:.82rem;font-weight:800;margin:2px 0}
+.bk{display:inline-block;background:#fef9c3;border:1px solid #facc15;color:#713f12;border-radius:999px;padding:0 10px;font-size:.8rem;font-weight:800;margin:2px 0}
+.dots{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin:8px 0}
+.dots span{width:30px;height:30px;border-radius:50%;background:#e2e8f0;font-size:.85rem;font-weight:900;display:flex;align-items:center;justify-content:center}
+.dots span.ok{background:var(--ok);color:#fff}.dots span.ko{background:#94a3b8;color:#fff}.dots span.cur{background:var(--yel);color:#fff;transform:scale(1.15)}
+.qbox{background:#f8fafc;border:2px solid #e2e8f0;border-radius:14px;padding:10px 12px;margin-top:6px}
+.qtext{font-size:1.12rem;font-weight:700}
+.do{display:block;background:#e0f2fe;color:#075985;border-radius:10px;padding:4px 10px;margin:8px 0 0;font-weight:800;font-size:.95rem}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.opts.one{grid-template-columns:1fr}
+.opt{min-height:62px;border-radius:16px;border:3px solid #0284c7;background:#fff;color:#0c4a6e;font-weight:900;font-size:1.15rem;box-shadow:0 5px 0 #0284c7;padding:6px 8px;line-height:1.4}
+.opt.sel{background:#fef3c7;border-color:#d97706;box-shadow:0 5px 0 #b45309;transform:translateY(-2px)}
+.opt.good{background:var(--ok-soft);border-color:var(--ok);box-shadow:0 5px 0 #15803d;color:#14532d}
+.opt.bad{background:var(--bad-soft);border-color:var(--bad);box-shadow:0 5px 0 #991b1b;color:#7f1d1d;text-decoration:line-through;opacity:.7}
+.opt:disabled{cursor:default}
+.mcols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+.mcols .col{display:flex;flex-direction:column;gap:10px}
+.olist{direction:ltr;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:62px;background:#f0fdf4;border:2px dashed #86efac;border-radius:14px;padding:8px;margin:10px 0 4px;align-items:center}
+.olist .pk{background:#dcfce7;border:2px solid #16a34a;border-radius:10px;padding:2px 12px;font-weight:900;font-size:1.1rem;color:#14532d}
+.olist.vert{direction:rtl;flex-direction:column;align-items:stretch}.olist.vert .pk{text-align:start}
+.olist .em{color:#94a3b8;font-weight:700}
+.go{margin-top:14px}
+.hint3{font-size:.85rem;color:var(--muted);text-align:center;margin-top:6px}
+.tries{display:flex;gap:4px;justify-content:center;margin-top:8px;font-size:1.2rem}
+.gsum{text-align:center}
+.gsum .big{font-size:2.2rem}
+.lock{font-size:2.4rem;line-height:1}
+.intro{background:#fff7ed;border:2px dashed #fb923c;border-radius:12px;padding:6px 10px;margin:6px 0;font-weight:700}
+.howto li{margin:4px 0}
+.vop{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Courier New",monospace;font-weight:900;font-size:1.15rem;color:#1e3a8a;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:4px 14px;margin:4px 0;line-height:1.45;text-align:right}
 .vop div{white-space:pre}.vop .rule{border-top:3px solid #1e3a8a;height:0;margin:2px 0}
-.mcol{display:flex;flex-direction:column;gap:10px}
-.mtile{min-height:56px;border-radius:14px;border:3px solid #0284c7;background:#fff;color:#0369a1;font-weight:900;font-size:1.2rem;box-shadow:0 5px 0 #0284c7;display:flex;align-items:center;justify-content:center}
-.mtile.sel{background:var(--yel);border-color:#b45309;color:#fff;box-shadow:0 5px 0 #b45309}
-.mtile.done{background:var(--ok-soft);border-color:var(--ok);color:#14532d;box-shadow:0 5px 0 #15803d;pointer-events:none}
-.mtile.bad{background:var(--bad-soft);border-color:var(--bad)}
-.machine{background:#334155;border-radius:18px;padding:12px;color:#fff;text-align:center}
-.machine .mbox{display:inline-block;background:var(--yel);color:#3b2600;border-radius:12px;padding:4px 16px;font-size:1.5rem;font-weight:900;direction:ltr;margin:6px 0}
-.machine .inn{font-size:1.6rem;font-weight:900;color:#fde68a;direction:ltr}
-.olist{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;direction:ltr;min-height:60px;background:#f0fdf4;border:2px dashed #86efac;border-radius:14px;padding:8px;margin:8px 0;align-items:center}
-#mo .tile.used{display:none}
-.olist .sg{font-weight:900;font-size:1.4rem;color:#15803d}
-.olist .pk{background:#dcfce7;border:2px solid #16a34a;border-radius:10px;padding:2px 10px;font-weight:900;font-size:1.15rem;color:#14532d}
-.fig svg.grid{max-width:420px}.node{cursor:pointer}.pt{cursor:pointer}.pt .hitp{fill:transparent}.pt .dotp{fill:#0f172a}.pt text{pointer-events:none}.el.good .vis{stroke:#16a34a!important;stroke-width:7}.pt.good .dotp{fill:#16a34a;r:8px}.el.bad .vis{stroke:#dc2626!important;stroke-width:7}.pt.bad .dotp{fill:#dc2626;r:8px}.el.off{pointer-events:none}
+.fig svg{max-width:300px}
+.chips a.cur{border-color:var(--yel)}
 </style>
 </head>
 <body>
 <header class="top">
   <div class="school">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
-  <h1>🎮 أين النظيرة؟</h1>
-  <div style="font-size:.85rem">السنة الثانية متوسط — المقطع 2 (الجزء الأول): التناظر المركزي</div>
+  <h1>🎮 ألعاب المقطع الثاني</h1>
+  <div style="font-size:.85rem">السنة الثانية متوسط — التناظر المركزي</div>
 </header>
 <div class="bar">
   <span class="pill">🎯 <b id="score">0</b> / 20</span>
@@ -199,170 +155,286 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:16px}
   <span class="prog"><i id="progi"></i></span>
   <button class="snd" id="snd" aria-label="الصوت">🔊</button>
 </div>
-<nav class="chips" id="chips">
-  <a href="#s1" data-k="g1">🎯 اللعبة</a><a href="#s2">🎓 الشهادة</a>
-</nav>
-<main>
-<section class="card" id="s1">
-  <div class="ct">🎯 أين النظيرة؟ <span class="pts">20 ن</span></div>
-  <div class="muted">على المرصوفة، <b>المس العقدة</b> (تقاطع خطّين) المطلوبة.</div>
-  <div class="key"><span class="m">M′</span> نظيرة <span class="m">M</span> بالنسبة إلى <span class="m">O</span> يعني أن <span class="m">O</span> منتصف القطعة <span class="m">[MM′]</span>.</div>
-  <div id="g1"></div>
+<nav class="chips" id="chips"></nav>
+<main id="main">
+<section class="card" id="s0">
+  <div class="ct">📌 كيف ألعب؟ (اقرأ مرة واحدة)</div>
+  <ol class="howto">
+    <li>👆 اضغط على <b>جواب واحد</b>، فيتلوّن بالأصفر.</li>
+    <li>✔ ثم اضغط الزر الأخضر <b>«تحقّق»</b>. إذا ضغطت جوابا بالخطأ، اضغط جوابا آخر قبل «تحقّق» ولا تخسر شيئا.</li>
+    <li>💡 إذا أخطأت: يظهر تلميح وتجرّب مرة أخرى. لك <b>3 محاولات</b>، وبعد الثالثة يظهر الحل المفصّل.</li>
+    <li>🎯 كل سؤال بنقطة: من المحاولة الأولى <b>1</b>، الثانية <b>0,5</b>، الثالثة <b>0,25</b>.</li>
+    <li>✍️ اكتب الحساب في كراسك قبل أن تختار. تقدّمك محفوظ في هاتفك.</li>
+  </ol>
 </section>
-<section class="card" id="s2">
+<div id="games"></div>
+<section class="card" id="sc">
   <div class="ct">🎓 الشهادة</div>
   <div id="cert"></div>
 </section>
 </main>
 <div id="toast"></div>
-<footer>متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي<br>المرجع: منهاج السنة الثانية متوسط والمخططات السنوية 2022، المقطع الثاني «التناظر المركزي».</footer>
-
+<footer>متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي<br>المرجع: منهاج السنة الثانية متوسط والمخطط السنوي 2022، المقطع الثاني، والكتاب المدرسي.</footer>
 <script>
 "use strict";
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+/* math helpers: everything inside M() is written left to right */
 const F = (a, b) => `<span class="fr"><span>${a}</span><span>${b}</span></span>`;
-const EQP = p => p.map(x => x.startsWith('<') ? x : `<span>${x}</span>`).join('');
-const EQ = (...p) => `<span class="eq">${EQP(p)}</span>`;
-const EQB = (...p) => `<span class="eq blk">${EQP(p)}</span>`;
 const M = t => `<span class="m">${t}</span>`;
-const fmt = x => String(Math.round(x * 1000) / 1000).replace('.', ',');
-const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
-/* vertical operation: rows right-aligned, '—' = rule */
+const EQ = (...p) => `<span class="eq">${p.map(x => String(x).startsWith('<') ? x : `<span>${x}</span>`).join('')}</span>`;
 const VOP = rows => `<div class="vop">${rows.map(r => r === '—' ? '<div class="rule"></div>' : `<div>${r}</div>`).join('')}</div>`;
-const num = s => { const t = String(s).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[٫,]/g, '.').replace(/\s/g, '').replace(/DA|kg|m/gi, ''); return t === '' || isNaN(+t) ? null : +t; };
-
-/* ---------- messages (change from question to question) ---------- */
+const fmt = x => String(Math.round(x * 100) / 100).replace('.', ',');
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+/* geometry figure: P = {A:[x,y]}, seg/line/ray = [['A','B']], circ = [[cx,cy,r,dashed]], ra = [['A','B','C']] (right angle at B), extra = raw svg */
+function G(o) {
+  const W = o.w || 300, H = o.h || 200, P = o.P || {}, out = [];
+  if (o.grid) { for (let x = 0; x <= W; x += o.grid) out.push(`<line x1="${x}" y1="0" x2="${x}" y2="${H}" stroke="#e2e8f0"/>`); for (let y = 0; y <= H; y += o.grid) out.push(`<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="#e2e8f0"/>`); }
+  const ext = (a, b, k1, k2) => { const [x1, y1] = P[a], [x2, y2] = P[b], dx = x2 - x1, dy = y2 - y1; return [x1 - k1 * dx, y1 - k1 * dy, x2 + k2 * dx, y2 + k2 * dy]; };
+  (o.poly || []).forEach(p => out.push(`<polygon points="${p.map(k => P[k].join(',')).join(' ')}" fill="${o.fill || '#e0f2fe'}" stroke="#0369a1" stroke-width="2.5"/>`));
+  (o.circ || []).forEach(c => out.push(`<circle cx="${c[0]}" cy="${c[1]}" r="${c[2]}" fill="none" stroke="${c[4] || '#0369a1'}" stroke-width="2.5" ${c[3] ? 'stroke-dasharray="6 5"' : ''}/>`));
+  (o.line || []).forEach(([a, b, col]) => { const e = ext(a, b, .6, .6); out.push(`<line x1="${e[0]}" y1="${e[1]}" x2="${e[2]}" y2="${e[3]}" stroke="${col || '#0369a1'}" stroke-width="2.5"/>`); });
+  (o.ray || []).forEach(([a, b, col]) => { const e = ext(a, b, 0, .8); out.push(`<line x1="${e[0]}" y1="${e[1]}" x2="${e[2]}" y2="${e[3]}" stroke="${col || '#0369a1'}" stroke-width="2.5"/>`); });
+  (o.seg || []).forEach(([a, b, col, dash]) => out.push(`<line x1="${P[a][0]}" y1="${P[a][1]}" x2="${P[b][0]}" y2="${P[b][1]}" stroke="${col || '#0369a1'}" stroke-width="${col ? 3.5 : 2.5}" ${dash ? 'stroke-dasharray="6 5"' : ''}/>`));
+  (o.ra || []).forEach(([a, b, c]) => { const [bx, by] = P[b], u = (p) => { const dx = P[p][0] - bx, dy = P[p][1] - by, n = Math.hypot(dx, dy); return [dx / n * 11, dy / n * 11]; }; const [ux, uy] = u(a), [vx, vy] = u(c); out.push(`<polyline points="${bx + ux},${by + uy} ${bx + ux + vx},${by + uy + vy} ${bx + vx},${by + vy}" fill="none" stroke="#dc2626" stroke-width="2"/>`); });
+  if (o.extra) out.push(o.extra);
+  Object.entries(P).forEach(([k, [x, y]]) => { if ((o.hide || []).includes(k)) return; const d = (o.lab || {})[k] || [8, -8]; out.push(`<circle cx="${x}" cy="${y}" r="3.5" fill="#0f172a"/><text x="${x + d[0]}" y="${y + d[1]}" font-size="17" fill="#0f172a" text-anchor="middle">${k}</text>`); });
+  return `<div class="fig"><svg viewBox="0 0 ${W} ${H}">${out.join('')}</svg></div>`;
+}
+/* graduated line: labels a (left) and b (right), n equal parts, point lab at tick k (marks = [[k,label],...]) */
+function NL(a, b, n, marks) {
+  const x0 = 25, x1 = 295, y = 55, out = [`<line x1="10" y1="${y}" x2="310" y2="${y}" stroke="#0369a1" stroke-width="3"/>`];
+  for (let i = 0; i <= n; i++) { const x = x0 + (x1 - x0) * i / n, big = i === 0 || i === n || (n === 10 && i === 5); out.push(`<line x1="${x}" y1="${y - (big ? 12 : 7)}" x2="${x}" y2="${y + (big ? 12 : 7)}" stroke="#0369a1" stroke-width="2"/>`); }
+  out.push(`<text x="${x0}" y="${y + 34}" font-size="18" text-anchor="middle" fill="#0f172a">${a}</text><text x="${x1}" y="${y + 34}" font-size="18" text-anchor="middle" fill="#0f172a">${b}</text>`);
+  marks.forEach(([k, l]) => { const x = x0 + (x1 - x0) * k / n; out.push(`<circle cx="${x}" cy="${y}" r="6" fill="#dc2626"/><text x="${x}" y="${y - 18}" font-size="19" text-anchor="middle" fill="#dc2626">${l}</text>`); });
+  return `<div class="fig"><svg viewBox="0 0 320 100">${out.join('')}</svg></div>`;
+}
+/* ---------- messages: change from question to question ---------- */
 const MSG = {
-  ok: ['أحسنت! تركيزك أوصلك إلى الجواب الصحيح.', 'ممتاز! الدقة أهم من السرعة، وأنت أثبتّ ذلك.', 'رائع! جهدك يستحق هذه النجوم.', 'برافو! التأنّي يصنع النجاح.', 'إجابة صحيحة! واصل بنفس الهدوء.', 'بارك الله فيك! تقدّم خطوة بخطوة كما فعلت.'],
+  ok: ['أحسنت! تركيزك أوصلك إلى الجواب الصحيح.', 'ممتاز! الدقة أهم من السرعة، وأنت أثبتّ ذلك.', 'رائع! جهدك يستحق هذه النجوم.', 'برافو! التأنّي يصنع النجاح.', 'إجابة صحيحة! واصل بنفس الهدوء.', 'بارك الله فيك! تقدّم خطوة بخطوة كما فعلت.', 'جميل جدا! فكّرت جيدا قبل أن تختار.'],
   w1: ['لا بأس، الخطأ جزء من التعلّم. اقرأ التلميح بهدوء.', 'تمهّل قليلا: كلما أسرعت قلّ تركيزك.', 'كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.', 'أنت قريب. أعطِ السؤال الوقت الذي يحتاجه.'],
-  w2: ['محاولة أخيرة: اكتب الحساب على ورقة قبل أن تجيب.', 'لا تيأس! التركيز يأتي مع الهدوء.', 'السرعة والتركيز لا يجتمعان: تمهّل.', 'ابذل جهدا صغيرا آخر، فالحل قريب منك.'],
-  fail: ['لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. تأمّل الحل خطوة بخطوة.', 'المهم أن نفهم لماذا أخطأنا. اقرأ الحل ثم أعده وحدك على ورقة.', 'الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة.']
+  w2: ['محاولة أخيرة: اكتب الحساب في كراسك قبل أن تختار.', 'لا تيأس! التركيز يأتي مع الهدوء.', 'السرعة والتركيز لا يجتمعان: تمهّل.', 'ابذل جهدا صغيرا آخر، فالحل قريب منك.'],
+  fail: ['لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. تأمّل الحل خطوة بخطوة.', 'المهم أن نفهم لماذا أخطأنا. اقرأ الحل ثم أعده وحدك في كراسك.', 'الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة.']
 };
 let mi = 0; const pick = k => MSG[k][(mi++) % MSG[k].length];
+/*META {"TITLE":"ألعاب المقطع الثاني: التناظر المركزي (الثانية متوسط)","DESC":"ثلاث ألعاب سهلة بأزرار اختيار للسنة الثانية متوسط: نظيرة نقطة، خواص التناظر المركزي، مركز تناظر شكل. 20 سؤالا و20 نقطة وشهادة.","OGT":"🎮 ألعاب المقطع الثاني للثانية متوسط: التناظر المركزي في 20 سؤالا!","OGD":"أين النظيرة؟ ماذا يحفظ التناظر؟ من له مركز تناظر؟ اضغط الجواب واربح الشهادة.","L":"2m","N":"2","H1":"🎮 ألعاب المقطع الثاني","SUB":"السنة الثانية متوسط — التناظر المركزي","REF":"المرجع: منهاج السنة الثانية متوسط والمخطط السنوي 2022، المقطع الثاني، والكتاب المدرسي."} */
+const SYM = `تعريف: ${M('A′')} نظيرة ${M('A')} بالنسبة إلى ${M('O')} يعني أن ${M('O')} منتصف القطعة ${M('[AA′]')}.`;
+const KEEP = 'التناظر المركزي يحافظ على الأطوال وأقياس الزوايا والمساحات واستقامية النقط.';
+const PAGE = {
+ key: 'al3ab_2m_m2_v2', file: 'ألعاب_المقطع_الثاني_2م',
+ certLine: 'لإتمامه(ا) ألعاب «أين النظيرة؟» و«ماذا يحفظ التناظر؟» و«مركز التناظر»', certSub: 'المقطع الثاني — السنة الثانية متوسط',
+ games: [
+ { icon: '🎯', name: 'أين النظيرة؟', res: ['نظيرة نقطة بالنسبة إلى نقطة', 'نظير قطعة ومستقيم'],
+   intro: `النقطة ${M('O')} هي دائما منتصف القطعة بين النقطة ونظيرتها.`, qs: [
+  { q: `أيّ نقطة هي نظيرة ${M('A')} بالنسبة إلى ${M('O')}؟`, j: 1, fig: G({ w: 300, h: 180, grid: 30, P: { A: [90, 60], O: [150, 90], B: [210, 120], C: [210, 60], D: [90, 120], E: [180, 105] }, seg: [['A', 'O', '#94a3b8', 1]], lab: { O: [0, -10], E: [10, 18] } }), o: [M('B'), M('C'), M('D'), M('E')], a: 0,
+    h1: `ارسم في ذهنك القطعة من ${M('A')} مرورا بـ ${M('O')}، ثم واصل بالطول نفسه.`, h2: `من ${M('A')} إلى ${M('O')}: مربعان يمينا ومربع نزولا. كرّر ذلك انطلاقا من ${M('O')}.`,
+    m: { w: SYM, s: [`من ${M('A')} إلى ${M('O')}: 2 مربع أفقيا و1 عموديا`, `من ${M('O')} نكرر الانتقال نفسه فنصل إلى ${M('B')}`, `${M('O')} منتصف ${M('[AB]')}`], c: `نظيرة ${M('A')} هي ${M('B')}.` } },
+  { q: `${M('A′')} نظيرة ${M('A')} بالنسبة إلى ${M('O')} و ${M('OA = 3,5 cm')}. ما الطول ${M('AA′')}؟`, o: [M('7 cm'), M('3,5 cm'), M('1,75 cm'), M('10,5 cm')], a: 0,
+    h1: `أين تقع ${M('O')} على القطعة ${M('[AA′]')}؟`, h2: `${M('O')} منتصف ${M('[AA′]')}، إذن ${M('AA′ = 2 × OA')}.`,
+    m: { w: SYM, s: [M('OA′ = OA = 3,5 cm'), M('AA′ = 2 × 3,5 = 7')], c: `${M('AA′ = 7 cm')}.` } },
+  { q: `«${M('A′')} نظيرة ${M('A')} بالنسبة إلى ${M('O')}» يعني:`, o: [`${M('O')} منتصف ${M('[AA′]')}`, `${M('A')} منتصف ${M('[OA′]')}`, M('OA = AA′'), `${M('(AA′)')} يعامد ${M('(OA)')}`], a: 0,
+    h1: 'تذكّر التعريف في الدرس.', h2: `${M('O')} في الوسط بين ${M('A')} و ${M('A′')}.`,
+    m: { w: 'نستعمل تعريف نظيرة نقطة بالنسبة إلى نقطة.', s: [SYM], c: `${M('O')} منتصف ${M('[AA′]')}.` } },
+  { q: `ما نظيرة النقطة ${M('O')} بالنسبة إلى ${M('O')} نفسها؟`, o: [M('O'), 'لا توجد', 'كل نقطة', 'نقطة بعيدة'], a: 0,
+    h1: `نبحث عن نقطة يكون ${M('O')} منتصف القطعة بينها وبين ${M('O')}.`, h2: 'المسافة بين النقطة ونظيرتها صفر.',
+    m: { w: SYM, s: [`${M('O')} منتصف ${M('[OO]')} (قطعة منعدمة)`], c: `نظيرة ${M('O')} هي ${M('O')}: مركز التناظر نظير نفسه.` } },
+  { q: `أيّ نقطة هي نظيرة ${M('M')} بالنسبة إلى ${M('O')}؟`, j: 1, fig: G({ w: 300, h: 180, grid: 30, P: { M: [120, 30], O: [150, 90], P: [180, 150], Q: [180, 30], R: [120, 150], S: [150, 150] }, seg: [['M', 'O', '#94a3b8', 1]], lab: { O: [14, -6] } }), o: [M('P'), M('Q'), M('R'), M('S')], a: 0,
+    h1: `من ${M('M')} إلى ${M('O')}: كم مربعا أفقيا وكم مربعا عموديا؟`, h2: 'مربع واحد يمينا ومربعان نزولا. كرّر من O.',
+    m: { w: SYM, s: [`من ${M('M')} إلى ${M('O')}: 1 أفقيا و2 عموديا`, `من ${M('O')} الانتقال نفسه يوصل إلى ${M('P')}`], c: `نظيرة ${M('M')} هي ${M('P')}.` } },
+  { q: `${M('[A′B′]')} نظيرة القطعة ${M('[AB]')} بالنسبة إلى ${M('O')} و ${M('AB = 4,6 cm')}. ما الطول ${M('A′B′')}؟`, o: [M('4,6 cm'), M('9,2 cm'), M('2,3 cm'), 'لا يمكن معرفته'], a: 0,
+    h1: 'التناظر المركزي لا يغيّر الأطوال.', h2: 'نظيرة قطعة قطعة تقايسها.',
+    m: { w: KEEP, s: [M('A′B′ = AB')], c: `${M('A′B′ = 4,6 cm')}.` } },
+  { q: `ما نظير مستقيم ${M('(d)')} لا يشمل ${M('O')} بالنسبة إلى ${M('O')}؟`, o: [`مستقيم يوازي ${M('(d)')}`, `مستقيم يعامد ${M('(d)')}`, `${M('(d)')} نفسه`, 'نقطة'], a: 0,
+    h1: 'تخيّل نصف دورة حول O: هل يتغيّر اتجاه المستقيم؟', h2: 'نصف الدورة يحافظ على الاتجاه.',
+    m: { w: 'خاصية: نظير مستقيم بالنسبة إلى نقطة مستقيم يوازيه.', s: [`${M('(d′)')} نظير ${M('(d)')}`], c: `${M('(d′) // (d)')}.` } }
+ ]},
+ { icon: '🧩', name: 'ماذا يحفظ التناظر؟', res: ['خواص التناظر المركزي', 'نظيرة دائرة'],
+   intro: 'التناظر المركزي «ينسخ» الشكل بعد نصف دورة: فماذا يبقى كما هو؟', qs: [
+  { q: `نظيرة دائرة مركزها ${M('C')} ونصف قطرها ${M('2,5 cm')} بالنسبة إلى ${M('O')} هي دائرة:`, o: [`مركزها ${M('C′')} نظيرة ${M('C')} ونصف قطرها ${M('2,5 cm')}`, `مركزها ${M('O')} ونصف قطرها ${M('2,5 cm')}`, `مركزها ${M('C′')} ونصف قطرها ${M('5 cm')}`, `مركزها ${M('C')} ونصف قطرها ${M('2,5 cm')}`], a: 0,
+    h1: 'مركز الدائرة الجديدة هو نظير المركز القديم.', h2: 'نصف القطر طول، والأطوال محفوظة.',
+    m: { w: 'نظيرة دائرة دائرة تقايسها، مركزها نظير المركز.', s: [`المركز: ${M('C′')} نظيرة ${M('C')}`, `نصف القطر: ${M('2,5 cm')}`], c: `الدائرة مركزها ${M('C′')} ونصف قطرها ${M('2,5 cm')}.` } },
+  { q: `زاوية قيسها ${M('48°')}. ما قيس نظيرتها بالنسبة إلى نقطة؟`, o: [M('48°'), M('132°'), M('96°'), M('24°')], a: 0,
+    h1: 'هل يغيّر التناظر المركزي أقياس الزوايا؟', h2: KEEP,
+    m: { w: KEEP, s: ['أقياس الزوايا محفوظة'], c: `قيس النظيرة ${M('48°')}.` } },
+  { q: `مستطيل طوله ${M('12 cm')} وعرضه ${M('5 cm')}. ما مساحة نظيره بالنسبة إلى نقطة؟`, o: [M('60 cm²'), M('34 cm²'), M('120 cm²'), M('17 cm²')], a: 0,
+    h1: 'المساحة محفوظة، فاحسب مساحة المستطيل الأصلي.', h2: `${M('12 × 5')}.`,
+    m: { w: KEEP, s: [M('12 × 5 = 60'), 'المساحة محفوظة'], c: `مساحة النظير ${M('60 cm²')}.` }, sc: [['حساب المساحة', .5], ['استعمال الخاصية', .5]] },
+  { q: `في زخرفة زليج من تراثنا، مثلث ${M('ABC')} فيه ${M('Â = 48°')} و ${M('B̂ = 62°')}. نظيره ${M('A′B′C′')} بالنسبة إلى ${M('O')}. ما قيس ${M('Ĉ′')}؟`, o: [M('70°'), M('110°'), M('48°'), M('62°')], a: 0,
+    h1: `احسب أولا ${M('Ĉ')} في المثلث ${M('ABC')}.`, h2: `${M('Ĉ = 180° − 48° − 62°')}، ثم ${M('Ĉ′ = Ĉ')}.`,
+    m: { w: `مجموع أقياس زوايا مثلث ${M('180°')}، ثم ${KEEP}`, s: [M('Ĉ = 180° − 48° − 62° = 70°'), M('Ĉ′ = Ĉ')], c: `${M('Ĉ′ = 70°')}.` }, sc: [['حساب Ĉ', .5], ['الخاصية', .5]] },
+  { q: `مثلث أطوال أضلاعه ${M('5 cm')} و ${M('6 cm')} و ${M('7 cm')}. ما محيط نظيره بالنسبة إلى نقطة؟`, o: [M('18 cm'), M('36 cm'), M('9 cm'), M('210 cm')], a: 0,
+    h1: 'الأطوال محفوظة، فالمحيط محفوظ.', h2: `${M('5 + 6 + 7')}.`,
+    m: { w: KEEP, s: [M('5 + 6 + 7 = 18')], c: `محيط النظير ${M('18 cm')}.` } },
+  { t: 'm', q: 'صِل كل شكل بنظيره بالنسبة إلى نقطة.', p: [['نظير قطعة مستقيم', 'قطعة تقايسها'], ['نظير مستقيم', 'مستقيم يوازيه'], ['نظير دائرة', 'دائرة لها نصف القطر نفسه'], ['نظير زاوية', 'زاوية لها القيس نفسه']],
+    h1: 'التناظر المركزي يحافظ على الأطوال والزوايا.', h2: 'المستقيم يبقى موازيا لنفسه بعد نصف دورة.',
+    m: { w: KEEP, s: ['قطعة ← قطعة تقايسها', 'مستقيم ← مستقيم يوازيه', 'دائرة ← دائرة تقايسها', 'زاوية ← زاوية تقايسها'], c: 'التناظر المركزي يحفظ الأشكال وقياساتها.' } },
+  { q: `النقط ${M('A')} و ${M('B')} و ${M('C')} على استقامة واحدة. ماذا عن نظائرها ${M('A′')} و ${M('B′')} و ${M('C′')} بالنسبة إلى ${M('O')}؟`, o: ['على استقامة واحدة', 'ليست على استقامة واحدة', 'تشكل مثلثا قائما', 'تنطبق على O'], a: 0,
+    h1: 'من الخواص: الاستقامية.', h2: KEEP,
+    m: { w: KEEP, s: ['الاستقامية محفوظة'], c: `${M('A′')} و ${M('B′')} و ${M('C′')} على استقامة واحدة.` } }
+ ]},
+ { icon: '🌀', name: 'مركز التناظر', res: ['مركز تناظر شكل'],
+   intro: 'الشكل الذي له مركز تناظر يبقى كما هو إذا أدرناه نصف دورة حول هذا المركز.', qs: [
+  { q: 'أيّ حرف له مركز تناظر؟', j: 1, o: [M('N'), M('A'), M('E'), M('T')], a: 0,
+    h1: 'أدر الورقة نصف دورة في ذهنك: أيّ حرف يبقى كما هو؟', h2: `${M('A')} و ${M('E')} و ${M('T')} لها محور تناظر فقط.`,
+    m: { w: 'نتحقق: هل ينطبق الحرف على نفسه بعد نصف دورة؟', s: [`${M('N')} بعد نصف دورة يبقى ${M('N')}`, `${M('A')} يصبح مقلوبا`], c: `الحرف ${M('N')} له مركز تناظر.` } },
+  { q: 'أيّ شكل ليس له مركز تناظر؟', j: 1, o: ['المثلث متقايس الأضلاع', 'المربع', 'المستطيل', 'الدائرة'], a: 0,
+    h1: 'المربع والمستطيل والدائرة لها مركز: أين؟', h2: 'أدر المثلث نصف دورة: هل يبقى رأسه إلى الأعلى؟',
+    m: { w: 'نتحقق بنصف دورة.', s: ['المربع والمستطيل: مركزهما تقاطع القطرين', 'الدائرة: مركزها', 'المثلث: لا ينطبق على نفسه بعد نصف دورة'], c: 'المثلث متقايس الأضلاع ليس له مركز تناظر (له محاور تناظر فقط).' } },
+  { q: 'مركز تناظر المستطيل هو:', o: ['نقطة تقاطع قطريه', 'أحد رؤوسه', 'منتصف أحد أضلاعه', 'ليس له مركز'], a: 0,
+    h1: 'القطران يتناصفان.', h2: 'النقطة التي تقع في وسط المستطيل تماما.',
+    m: { w: 'قطرا المستطيل متناصفان، فنقطة تقاطعهما منتصف كل قطر.', s: ['كل رأس نظير الرأس المقابل له بالنسبة إلى نقطة تقاطع القطرين'], c: 'مركز التناظر هو نقطة تقاطع القطرين.' } },
+  { q: 'مركز تناظر الدائرة هو:', o: ['مركزها', 'أيّ نقطة منها', 'نقطة خارجها', 'ليس لها مركز تناظر'], a: 0,
+    h1: 'كل قطر يمر بنقطة واحدة في وسطه.', h2: 'طرفا القطر متناظران بالنسبة إلى...',
+    m: { w: 'طرفا كل قطر متناظران بالنسبة إلى مركز الدائرة.', s: ['المركز منتصف كل قطر'], c: 'مركز تناظر الدائرة هو مركزها.' } },
+  { q: `من بين الحروف ${M('H ; N ; A ; S ; E ; Z ; X')}، كم حرفا له مركز تناظر؟`, o: [M('5'), M('4'), M('6'), M('3')], a: 0,
+    h1: 'افحص الحروف واحدا واحدا بنصف دورة.', h2: `${M('A')} و ${M('E')} ليس لهما مركز تناظر.`,
+    m: { w: 'نختبر كل حرف بنصف دورة.', s: [`لها مركز: ${M('H ; N ; S ; Z ; X')}`, `ليس لها: ${M('A ; E')}`], c: 'خمسة حروف.' } },
+  { q: 'أيّ عدد يبقى كما هو إذا أدرنا الورقة نصف دورة؟', o: [M('69'), M('65'), M('71'), M('47')], a: 0,
+    h1: `الرقم ${M('6')} بعد نصف دورة يصبح...`, h2: `${M('6')} يصبح ${M('9')}، و ${M('9')} يصبح ${M('6')}.`,
+    m: { w: 'نصف دورة تقلب الأرقام وتعكس ترتيبها.', s: [`${M('6')} يصبح ${M('9')} و ${M('9')} يصبح ${M('6')}، فـ ${M('69')} يبقى ${M('69')}`, `الأعداد ${M('65')} و ${M('71')} و ${M('47')} لا تبقى كما هي`], c: `العدد ${M('69')} له مركز تناظر.` } }
+ ]}
+ ]
+};
 
 /* ---------- state ---------- */
-const KEY = 'al3ab_2m_m2_v1';
-let S = { r: {}, name: '', snd: true };
+const KEY = PAGE.key;
+let S = { r: {}, snd: true, name: '', at: {} };
 try { const t = localStorage.getItem(KEY); if (t) S = Object.assign(S, JSON.parse(t)); } catch (e) {}
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
-const ITEMS = { g1: ['n1', 'n2', 'n3', 'n4', 'n5', 'n6', 'n7', 'n8', 'n9', 'n10'] };
-const ALL = Object.values(ITEMS).flat();
-const score = () => ALL.reduce((n, k) => n + ((S.r[k] || {}).pts || 0), 0);
-const stars = () => ALL.reduce((n, k) => n + ((S.r[k] || {}).st || 0), 0);
-const doneK = k => ITEMS[k].every(i => S.r[i] && S.r[i].done);
-function rec(id, pts, st) { S.r[id] = { done: true, pts, st }; save(); upd(); }
-function upd() {
-  $('#score').textContent = fmt(score()); $('#stars').textContent = stars();
-  $('#progi').style.width = Math.round(100 * ALL.filter(k => S.r[k] && S.r[k].done).length / ALL.length) + '%';
-  $('#snd').textContent = S.snd ? '🔊' : '🔇';
-  $$('#chips a[data-k]').forEach(a => a.classList.toggle('ok', doneK(a.dataset.k)));
-  Object.keys(ITEMS).forEach((k, i) => $('#s' + (i + 1)).classList.toggle('done', doneK(k)));
-  renderCert();
-}
-
+PAGE.games.forEach((g, gi) => g.qs.forEach((q, qi) => { q.id = `g${gi + 1}q${qi + 1}`; }));
+const ALLQ = PAGE.games.flatMap(g => g.qs);
+const TOT = ALLQ.length;
+const PT = 20 / TOT;
+const score = () => ALLQ.reduce((n, q) => n + ((S.r[q.id] || {}).pts || 0), 0);
+const stars = () => ALLQ.reduce((n, q) => n + ((S.r[q.id] || {}).st || 0), 0);
+const gDone = g => g.qs.every(q => S.r[q.id]);
 /* ---------- sound & effects ---------- */
 let AC = null;
 function tone(fs, d = .12, type = 'triangle') { if (!S.snd) return; try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); fs.forEach((f, i) => { const o = AC.createOscillator(), g = AC.createGain(); o.type = type; o.frequency.value = f; g.gain.setValueAtTime(.15, AC.currentTime + i * d); g.gain.exponentialRampToValueAtTime(.001, AC.currentTime + (i + 1) * d); o.connect(g); g.connect(AC.destination); o.start(AC.currentTime + i * d); o.stop(AC.currentTime + (i + 1) * d); }); } catch (e) {} }
-const sOk = () => tone([523, 659, 784]), sBad = () => tone([220, 180], .18, 'sawtooth'), sClick = () => tone([800], .05, 'sine');
-function toast(t, w) { const d = document.createElement('div'); d.className = w ? 'w' : ''; d.innerHTML = t; $('#toast').appendChild(d); setTimeout(() => d.remove(), 3000); }
+const sOk = () => tone([523, 659, 784]), sBad = () => tone([220, 180], .18, 'sawtooth'), sClick = () => tone([700], .04, 'sine');
+function toast(t, w) { $('#toast').innerHTML = ''; const d = document.createElement('div'); d.className = w ? 'w' : ''; d.innerHTML = t; $('#toast').appendChild(d); setTimeout(() => d.remove(), 3000); }
 function burst(el, n = 10, set = ['⭐', '✨']) { const r = el.getBoundingClientRect(); for (let i = 0; i < n; i++) { const s = document.createElement('span'); s.className = 'burst'; s.textContent = set[i % set.length]; s.style.left = (r.left + r.width / 2) + 'px'; s.style.top = (r.top + 10) + 'px'; s.style.setProperty('--dx', (Math.random() * 240 - 120) + 'px'); s.style.setProperty('--dy', (-60 - Math.random() * 130) + 'px'); document.body.appendChild(s); setTimeout(() => s.remove(), 1000); } }
 const hintFx = el => burst(el, 5, ['💡', '⭐', '✨']);
 function shake(el) { el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake'); }
-const solHTML = (m, steps, c, sc) => `<div class="sol"><h4>📘 الحل النموذجي</h4><div><b>الطريقة:</b> ${m}</div>${steps.map(s => `<div class="ln">${s}</div>`).join('')}<div class="ccl"><b>الاستنتاج:</b> ${c}</div>${sc ? `<table class="sc"><tr><th>سلم التنقيط</th><th>النقاط</th></tr>${sc.map(r => `<tr><td>${r[0]}</td><td>${fmt(r[1])}</td></tr>`).join('')}<tr class="tot"><td>المجموع</td><td>${fmt(sc.reduce((a, r) => a + r[1], 0))}</td></tr></table>` : ''}</div>`;
-const solBox = (ok, html) => ok ? `<details><summary style="cursor:pointer;font-weight:800;color:#0369a1">📘 اطّلع على الحل المفصّل</summary>${html}</details>` : html;
-const RES = t => `<div class="res">📚 ${t}</div>`;
-const NXA = (href, t) => `<a class="btn green wide" href="${href}" style="text-decoration:none">${t} ←</a>`;
-
-
-const GS = 32, G0 = 20, P = (x, y) => [G0 + x * GS, G0 + y * GS];
-const GT2 = [
- { id: 'n1', ask: 'المس النظيرة <b class="m">M′</b> للنقطة <b class="m">M</b> بالنسبة إلى <b class="m">O</b>.', O: [4, 4], pts: { M: [6, 5] }, t: [2, 3], name: 'M′' },
- { id: 'n2', ask: 'المس النظيرة <b class="m">M′</b> للنقطة <b class="m">M</b> بالنسبة إلى <b class="m">O</b>.', O: [4, 4], pts: { M: [1, 2] }, t: [7, 6], name: 'M′' },
- { id: 'n3', ask: 'المس النظيرة <b class="m">E′</b> للنقطة <b class="m">E</b> بالنسبة إلى <b class="m">O</b>.', O: [3, 4], pts: { E: [5, 1] }, t: [1, 7], name: 'E′' },
- { id: 'n4', ask: 'المس النظيرة <b class="m">K′</b> للنقطة <b class="m">K</b> بالنسبة إلى <b class="m">O</b>.', O: [4, 3], pts: { K: [4, 6] }, t: [4, 0], name: 'K′' },
- { id: 'n5', ask: 'نريد نظيرة القطعة <b class="m">[AB]</b> بالنسبة إلى <b class="m">O</b>. المس أولا <b class="m">A′</b> نظيرة <b class="m">A</b>.', O: [4, 4], pts: { A: [2, 1], B: [6, 2] }, seg: ['A', 'B'], t: [6, 7], name: 'A′' },
- { id: 'n6', ask: 'المس الآن <b class="m">B′</b> نظيرة <b class="m">B</b> بالنسبة إلى <b class="m">O</b>.', O: [4, 4], pts: { A: [2, 1], B: [6, 2], 'A′': [6, 7] }, seg: ['A', 'B'], t: [2, 6], name: 'B′', after: [['A′', 'B′']] },
- { id: 'n7', ask: '<b class="m">N′</b> نظيرة <b class="m">N</b> بالنسبة إلى نقطة مجهولة. المس <b>مركز التناظر</b> <b class="m">O</b>.', O: null, pts: { N: [1, 1], 'N′': [7, 5] }, t: [4, 3], name: 'O' },
- { id: 'n8', ask: '<b class="m">R′</b> نظيرة <b class="m">R</b>. المس <b>مركز التناظر</b> <b class="m">O</b>.', O: null, pts: { R: [2, 7], 'R′': [6, 1] }, t: [4, 4], name: 'O' },
- { id: 'n9', ask: 'المس النظيرة <b class="m">O′</b> للنقطة <b class="m">O</b> نفسها بالنسبة إلى <b class="m">O</b>.', O: [5, 3], pts: {}, t: [5, 3], name: 'O′' },
- { id: 'n10', ask: '<b class="m">(C)</b> دائرة مركزها <b class="m">I</b>. المس مركز الدائرة <b class="m">(C′)</b> نظيرة <b class="m">(C)</b> بالنسبة إلى <b class="m">O</b>.', O: [4, 4], pts: { I: [2, 2] }, circ: [2, 2, 1.5], t: [6, 6], name: 'I′', after: [], circAfter: true }
-];
-function gridSVG(R, done) {
-  let g = '';
-  for (let i = 0; i <= 8; i++) { const [x0, y0] = P(i, 0), [x1, y1] = P(i, 8); g += `<line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y1}" stroke="#cbd5e1"/>`; const [a0, b0] = P(0, i), [a1, b1] = P(8, i); g += `<line x1="${a0}" y1="${b0}" x2="${a1}" y2="${b1}" stroke="#cbd5e1"/>`; }
-  const dot = (p, lab, c) => { const [x, y] = P(...p); return `<circle cx="${x}" cy="${y}" r="5.5" fill="${c}"/><text x="${x + 7}" y="${y - 7}" font-size="16" fill="${c}">${lab}</text>`; };
-  if (R.circ) { const [x, y] = P(R.circ[0], R.circ[1]); g += `<circle cx="${x}" cy="${y}" r="${R.circ[2] * GS}" fill="none" stroke="#0d9488" stroke-width="3"/>`; }
-  if (R.seg) { const [x0, y0] = P(...R.pts[R.seg[0]]), [x1, y1] = P(...R.pts[R.seg[1]]); g += `<line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y1}" stroke="#0369a1" stroke-width="3"/>`; }
-  if (done) {
-    const [tx, ty] = P(...R.t);
-    if (R.O) { const all = Object.values(R.pts); const src = R.id === 'n6' ? R.pts.B : all[0]; if (src) { const [sx, sy] = P(...src); g += `<line x1="${sx}" y1="${sy}" x2="${tx}" y2="${ty}" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="6 5"/>`; } }
-    else { const v = Object.values(R.pts); const [ax, ay] = P(...v[0]), [bx, by] = P(...v[1]); g += `<line x1="${ax}" y1="${ay}" x2="${bx}" y2="${by}" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="6 5"/>`; }
-    if (R.id === 'n6') { const [ax, ay] = P(6, 7); g += `<line x1="${ax}" y1="${ay}" x2="${tx}" y2="${ty}" stroke="#16a34a" stroke-width="3"/>`; }
-    if (R.circAfter) g += `<circle cx="${tx}" cy="${ty}" r="${R.circ[2] * GS}" fill="none" stroke="#16a34a" stroke-width="3"/>`;
+function solHTML(q) {
+  const m = q.m, sc = q.sc || m.sc || [['الجواب الصحيح', 1]], k = PT;
+  return `<div class="sol"><h4>📘 الحل النموذجي</h4><div><b>الطريقة:</b> ${m.w}</div>${m.s.map(s => `<div class="ln">${s}</div>`).join('')}<div class="ccl"><b>الاستنتاج:</b> ${m.c}</div><table class="sc"><tr><th>سلم التنقيط</th><th>النقاط</th></tr>${sc.map(r => `<tr><td>${r[0]}</td><td>${fmt(r[1] * k)}</td></tr>`).join('')}<tr class="tot"><td>المجموع</td><td>${fmt(sc.reduce((a, r) => a + r[1], 0) * k)}</td></tr></table></div>`;
+}
+const solBox = (ok, q) => ok ? `<details><summary style="cursor:pointer;font-weight:800;color:#0369a1">📘 اطّلع على الحل المفصّل</summary>${solHTML(q)}</details>` : solHTML(q);
+const RATE = [1, .5, .25];
+/* ---------- build page ---------- */
+const host = $('#games');
+$('#chips').innerHTML = PAGE.games.map((g, i) => `<a href="#g${i + 1}" data-g="${i}">${g.icon} اللعبة ${i + 1}</a>`).join('') + `<a href="#sc">🎓 الشهادة</a>`;
+PAGE.games.forEach((g, gi) => {
+  const sec = document.createElement('section'); sec.className = 'card'; sec.id = `g${gi + 1}`;
+  sec.innerHTML = `<div class="ct">${g.icon} اللعبة ${gi + 1}: ${g.name} <span class="pts">${fmt(g.qs.length * PT)} ن</span></div>${g.res.map(r => `<span class="res">📚 ${r}</span>`).join(' ')}${g.intro ? `<div class="intro">${g.intro}</div>` : ''}<div class="dots"></div><div class="stage"></div>`;
+  host.appendChild(sec);
+  showGame(gi);
+});
+function dotsOf(g, cur) { return g.qs.map((q, i) => { const r = S.r[q.id]; return `<span class="${r ? (r.pts > 0 ? 'ok' : 'ko') : (i === cur ? 'cur' : '')}">${i + 1}</span>`; }).join(''); }
+function showGame(gi, force) {
+  const g = PAGE.games[gi], sec = $(`#g${gi + 1}`), st = $('.stage', sec);
+  let cur = g.qs.findIndex(q => !S.r[q.id]);
+  if (force !== undefined) cur = force;
+  $('.dots', sec).innerHTML = dotsOf(g, cur);
+  sec.classList.toggle('done', gDone(g));
+  if (cur < 0) {
+    const p = g.qs.reduce((n, q) => n + S.r[q.id].pts, 0), s = g.qs.reduce((n, q) => n + S.r[q.id].st, 0);
+    const nxt = gi + 1 < PAGE.games.length ? `#g${gi + 2}` : '#sc';
+    st.innerHTML = `<div class="gsum"><div class="big">🏁</div><p>انتهت اللعبة! نقاطك <b>${fmt(p * PT)} / ${fmt(g.qs.length * PT)}</b> و ${s} ⭐</p>
+      <div class="row"><a class="btn green" href="${nxt}" style="text-decoration:none">${gi + 1 < PAGE.games.length ? 'إلى اللعبة التالية' : 'إلى الشهادة'} ←</a><button class="btn light rg">🔁 أعد هذه اللعبة</button></div></div>`;
+    $('.rg', st).addEventListener('click', e => { const b = e.currentTarget; if (!b.dataset.c) { b.dataset.c = 1; b.textContent = 'اضغط مرة أخرى للتأكيد'; return; } g.qs.forEach(q => delete S.r[q.id]); save(); upd(); showGame(gi); });
+    return;
   }
-  if (R.O) g += dot(R.O, 'O', '#dc2626');
-  Object.entries(R.pts).forEach(([k, p]) => { g += dot(p, k, k.includes('′') ? '#16a34a' : '#0369a1'); });
-  if (done) g += dot(R.t, R.name, '#16a34a');
-  for (let i = 0; i <= 8; i++) for (let j = 0; j <= 8; j++) { const [x, y] = P(i, j); g += `<circle class="node" data-x="${i}" data-y="${j}" cx="${x}" cy="${y}" r="15" fill="transparent"/>`; }
-  return `<svg viewBox="0 0 296 296" class="grid">${g}</svg>`;
+  renderQ(gi, cur);
 }
-function stepsFor(R) {
-  const [tx, ty] = R.t;
-  if (!R.O) { const v = Object.entries(R.pts); const [[a, pa], [b, pb]] = v; return { m: 'مركز التناظر هو منتصف القطعة الواصلة بين النقطة ونظيرتها.', s: [`${M('O')} منتصف القطعة ${M('[' + a + b + ']')}`, `من ${M(a)} إلى ${M(b)}: ${Math.abs(pb[0] - pa[0])} مربعات أفقيا و ${Math.abs(pb[1] - pa[1])} مربعات عموديا، ونصفها: ${Math.abs(pb[0] - pa[0]) / 2} و ${Math.abs(pb[1] - pa[1]) / 2}.`], c: `مركز التناظر ${M('O')} هو العقدة الواقعة في منتصف ${M('[' + a + b + ']')}.` }; }
-  if (R.id === 'n9') return { m: 'مركز التناظر نظير نفسه.', s: [`${M('O')} منتصف القطعة ${M('[OO]')} (قطعة منعدمة).`], c: `نظيرة ${M('O')} هي ${M('O')} نفسها.` };
-  const srcName = R.id === 'n6' ? 'B' : Object.keys(R.pts)[0], src = R.pts[srcName], dx = R.O[0] - src[0], dy = R.O[1] - src[1];
-  const sqn = n => n === 1 ? 'مربع واحد' : n === 2 ? 'مربعان' : n + ' مربعات';
-  const dir = (d, h) => d === 0 ? '' : `${sqn(Math.abs(d))} ${h ? (d > 0 ? 'نحو اليمين' : 'نحو اليسار') : (d > 0 ? 'نحو الأسفل' : 'نحو الأعلى')}`;
-  const mv = [dir(dx, true), dir(dy, false)].filter(Boolean).join(' و ');
-  const s = [`للانتقال من ${M(srcName)} إلى ${M('O')}: ${mv}.`, `نكرّر نفس الانتقال انطلاقا من ${M('O')} فنصل إلى ${M(R.name)}.`, `إذن ${M('O')} منتصف ${M('[' + srcName + R.name + ']')}.`];
-  if (R.id === 'n6') s.push(`نظيرة القطعة ${M('[AB]')} هي القطعة ${M('[A′B′]')} ولهما نفس الطول (التناظر المركزي يحافظ على الأطوال).`);
-  if (R.circAfter) s.push(`نظيرة الدائرة دائرة لها نفس نصف القطر، ومركزها ${M('I′')} نظيرة ${M('I')}.`);
-  return { m: 'نظيرة نقطة بالنسبة إلى O هي النقطة التي تجعل O منتصف القطعة.', s, c: `${M(R.name)} هي العقدة المظلّلة بالأخضر.` };
+function renderQ(gi, qi) {
+  const g = PAGE.games[gi], q = g.qs[qi], sec = $(`#g${gi + 1}`), st = $('.stage', sec);
+  const t = q.t || 'c';
+  const doTxt = { c: '👆 اختر جوابا واحدا ثم اضغط «تحقّق».', m: '👆 اضغط بطاقة من اليمين ثم البطاقة التي تناسبها من اليسار، ثم «تحقّق».', o: '👆 اضغط البطاقات بالترتيب المطلوب، ثم «تحقّق». للتصحيح اضغط «امسح».' }[t];
+  st.innerHTML = `<div class="qbox"><div class="muted">السؤال ${qi + 1} من ${g.qs.length}${q.bk ? ` <span class="bk">📖 ${q.bk}</span>` : ''}</div><div class="qtext">${q.q}</div>${q.fig || ''}${q.j ? `<div class="muted">✍️ علّل جوابك في كراسك، ثم اختر.</div>` : ''}<span class="do">${doTxt}</span>
+    <div class="play"></div><div class="tries">${'❤️'.repeat(3)}</div><div class="fb"></div>
+    <button class="btn green wide go" disabled>✔ تحقّق</button><div class="after"></div></div>`;
+  const play = $('.play', st), go = $('.go', st), fb = $('.fb', st), after = $('.after', st), tr = $('.tries', st);
+  let wrong = 0, busy = false, finished = false;
+  const showTries = () => tr.innerHTML = '❤️'.repeat(3 - wrong) + '🤍'.repeat(wrong);
+  /* --- choice --- */
+  let sel = null, state = null;
+  if (t === 'c') {
+    const opts = q.keep ? q.o.map((x, i) => [x, i]) : shuffle(q.o.map((x, i) => [x, i]));
+    play.innerHTML = `<div class="opts ${q.o.some(x => String(x).length > 26) ? 'one' : ''}">${opts.map(([x, i]) => `<button class="opt" data-i="${i}">${x}</button>`).join('')}</div>`;
+    $$('.opt', play).forEach(b => b.addEventListener('click', () => { if (busy || finished || b.disabled) return; sClick(); $$('.opt', play).forEach(x => x.classList.remove('sel')); b.classList.add('sel'); sel = +b.dataset.i; go.disabled = false; }));
+    state = { check: () => sel === q.a, onWrong: () => { const b = $(`.opt[data-i="${sel}"]`, play); b.classList.remove('sel'); b.classList.add('bad'); b.disabled = true; sel = null; go.disabled = true; },
+      reveal: ok => { $$('.opt', play).forEach(b => { b.disabled = true; b.classList.remove('sel'); if (+b.dataset.i === q.a) b.classList.add('good'); }); } };
+  }
+  /* --- matching --- */
+  if (t === 'm') {
+    const L = q.p.map((p, i) => [p[0], i]), R = shuffle(q.p.map((p, i) => [p[1], i]));
+    const pairs = {}; let lsel = null; const COL = ['#fde68a', '#bfdbfe', '#fbcfe8', '#bbf7d0', '#ddd6fe'];
+    play.innerHTML = `<div class="mcols"><div class="col">${L.map(([x, i]) => `<button class="opt ml" data-i="${i}">${x}</button>`).join('')}</div><div class="col">${R.map(([x, i]) => `<button class="opt mr" data-i="${i}">${x}</button>`).join('')}</div></div>`;
+    const paint = () => { $$('.ml,.mr', play).forEach(b => { b.style.background = ''; b.classList.remove('sel'); }); Object.entries(pairs).forEach(([l, r], k) => { $(`.ml[data-i="${l}"]`, play).style.background = COL[k % 5]; $(`.mr[data-i="${r}"]`, play).style.background = COL[k % 5]; }); if (lsel !== null) $(`.ml[data-i="${lsel}"]`, play).classList.add('sel'); go.disabled = Object.keys(pairs).length < q.p.length; };
+    $$('.ml', play).forEach(b => b.addEventListener('click', () => { if (busy || finished) return; sClick(); const i = +b.dataset.i; delete pairs[i]; lsel = i; paint(); }));
+    $$('.mr', play).forEach(b => b.addEventListener('click', () => { if (busy || finished) return; if (lsel === null) { toast('اضغط أولا بطاقة من العمود الأيمن 👉', 1); return; } sClick(); const r = +b.dataset.i; Object.keys(pairs).forEach(l => { if (pairs[l] === r) delete pairs[l]; }); pairs[lsel] = r; lsel = null; paint(); }));
+    state = { check: () => q.p.every((p, i) => pairs[i] === i), onWrong: () => { Object.keys(pairs).forEach(l => { if (pairs[l] !== +l) delete pairs[l]; }); paint(); $$('.ml', play).forEach(b => { if (pairs[b.dataset.i] !== undefined) b.disabled = true; }); $$('.mr', play).forEach(b => { if (Object.values(pairs).includes(+b.dataset.i)) b.disabled = true; }); },
+      reveal: () => { Object.keys(pairs).forEach(k => delete pairs[k]); q.p.forEach((p, i) => pairs[i] = i); lsel = null; paint(); $$('.ml,.mr', play).forEach(b => b.disabled = true); } };
+  }
+  /* --- ordering --- */
+  if (t === 'o') {
+    const items = shuffle(q.it.map((x, i) => [x, i])); let seq = [];
+    play.innerHTML = `<div class="olist"></div><div class="opts">${items.map(([x, i]) => `<button class="opt oi" data-i="${i}">${x}</button>`).join('')}</div><div class="row"><button class="btn light clr" style="min-height:44px">⌫ امسح</button></div>`;
+    const ol = $('.olist', play); if (q.vert) ol.classList.add('vert');
+    const paint = () => { ol.innerHTML = seq.length ? seq.map((i, k) => `<span class="pk">${q.vert ? (k + 1) + ') ' : ''}${q.it[i]}</span>`).join(q.vert ? '' : `<span class="sg">${q.sepS || ''}</span>`) : `<span class="em">${q.ph || 'اضغط البطاقات بالترتيب'}</span>`; $$('.oi', play).forEach(b => b.style.visibility = seq.includes(+b.dataset.i) ? 'hidden' : ''); go.disabled = seq.length < q.it.length; };
+    $$('.oi', play).forEach(b => b.addEventListener('click', () => { if (busy || finished) return; sClick(); seq.push(+b.dataset.i); paint(); }));
+    $('.clr', play).addEventListener('click', () => { if (finished) return; seq = []; paint(); });
+    paint();
+    state = { check: () => seq.every((v, k) => v === k), onWrong: () => { let k = 0; while (k < seq.length && seq[k] === k) k++; seq = seq.slice(0, k); paint(); },
+      reveal: () => { seq = q.it.map((x, i) => i); paint(); $('.clr', play).style.display = 'none'; } };
+  }
+  go.addEventListener('click', () => {
+    if (busy || finished || go.disabled) return; busy = true; setTimeout(() => busy = false, 450);
+    if (state.check()) {
+      finished = true; state.reveal(true); const stn = 3 - wrong, pts = RATE[wrong];
+      S.r[q.id] = { pts, st: stn }; save(); sOk(); burst(go, 8 + stn * 3); toast('⭐'.repeat(stn) + ' ' + pick('ok'));
+      fb.innerHTML = `<span class="g">✅ ${pick('ok')} — ربحت ${M(fmt(pts * PT))} ن</span>`; end(true);
+    } else {
+      wrong++; showTries(); sBad(); shake(st);
+      if (wrong >= 3) { finished = true; state.reveal(false); S.r[q.id] = { pts: 0, st: 0 }; save(); fb.innerHTML = `<span class="w">${pick('fail')}</span>`; end(false); }
+      else { state.onWrong(); hintFx(go); fb.innerHTML = `<span class="w">❌ ${pick(wrong === 1 ? 'w1' : 'w2')}</span><span class="h">💡 تلميح ${wrong}: ${wrong === 1 ? q.h1 : q.h2}</span>`; }
+    }
+  });
+  function end(ok) {
+    go.style.display = 'none'; upd();
+    $('.dots', sec).innerHTML = dotsOf(g, qi);
+    after.innerHTML = solBox(ok, q) + `<button class="btn wide nx" style="margin-top:12px">${qi + 1 < g.qs.length ? 'السؤال التالي ←' : 'النتيجة ←'}</button>`;
+    $('.nx', after).addEventListener('click', () => { showGame(gi); sec.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  }
 }
-function game1(idx) {
-  if (idx == null) idx = Math.max(0, GT2.findIndex(r => !S.r[r.id])); if (idx < 0) idx = 0;
-  const R = GT2[idx], host = $('#g1'), st = S.r[R.id], X = stepsFor(R);
-  const dots = GT2.map((r, i) => { const x = S.r[r.id]; return `<span class="${x ? (x.pts ? 'ok' : 'ko') : (i === idx ? 'cur' : '')}">${i + 1}</span>`; }).join('');
-  host.innerHTML = `${RES('الموارد: نظيرة نقطة وقطعة ودائرة بالنسبة إلى نقطة، مركز التناظر')}
-   <div class="dots">${dots}</div><div class="qtext">🎯 <b>المهمّة ${idx + 1} (2 ن):</b> ${R.ask}</div>
-   <div class="fig" id="gf">${gridSVG(R, !!st)}</div><div class="fb" id="gfb"></div><div id="gsol"></div><div class="row" id="g1nx"></div>`;
-  const fb = $('#gfb'), sol = () => solHTML(X.m, X.s, X.c, [['الطريقة (المنتصف)', 1], ['العقدة الصحيحة', 1]]);
-  const next = () => { $('#g1nx').innerHTML = idx < GT2.length - 1 ? `<button class="btn green wide" id="g1go">المهمّة التالية ←</button>` : NXA('#s2', 'إلى الشهادة'); const g = $('#g1go'); if (g) g.addEventListener('click', () => { game1(idx + 1); $('#s1').scrollIntoView({ behavior: 'smooth' }); }); };
-  if (st) { fb.innerHTML = `<span class="g">منجزة: ${fmt(st.pts)} / 2 ن ${'⭐'.repeat(st.st)}</span>`; $('#gsol').innerHTML = solBox(!!st.pts, sol()); next(); return; }
-  let tries = 0;
-  const hint1 = R.O ? 'O منتصف القطعة التي تصل النقطة بنظيرتها: عدّ المربعات من النقطة إلى O.' : 'مركز التناظر هو منتصف القطعة التي تصل النقطة بنظيرتها.';
-  const hint2 = X.s[0].replace(/<[^>]+>/g, '');
-  $$('#gf .node').forEach(n => n.addEventListener('click', () => {
-    if (S.r[R.id]) return; tries++;
-    const ok = +n.dataset.x === R.t[0] && +n.dataset.y === R.t[1];
-    const fin = good => { rec(R.id, good ? 2 : 0, good ? Math.max(1, 4 - tries) : 0); $('#gf').innerHTML = gridSVG(R, true); $('#gsol').innerHTML = solBox(good, sol()); $$('.dots span', host)[idx].className = good ? 'ok' : 'ko'; next(); };
-    if (ok) { sOk(); burst(n); fb.innerHTML = `<span class="g">✅ ${pick('ok')} ${'⭐'.repeat(Math.max(1, 4 - tries))}</span>`; toast('🎯 +2 ن'); fin(true); return; }
-    sBad(); shake($('#gf')); n.setAttribute('fill', 'rgba(220,38,38,.35)'); setTimeout(() => n.setAttribute('fill', 'transparent'), 700);
-    if (tries === 1) { fb.innerHTML = `<span class="w">${pick('w1')}</span><span class="h">💡 ${hint1}</span>`; hintFx(fb); }
-    else if (tries === 2) { fb.innerHTML = `<span class="w">${pick('w2')}</span><span class="h">💡 ${hint2}</span>`; hintFx(fb); }
-    else { fb.innerHTML = `<span class="w">🌱 ${pick('fail')}</span>`; fin(false); }
-  }));
+/* ---------- score bar ---------- */
+function upd() {
+  $('#score').textContent = fmt(score() * PT); $('#stars').textContent = stars();
+  $('#progi').style.width = Math.round(100 * ALLQ.filter(q => S.r[q.id]).length / TOT) + '%';
+  $('#snd').textContent = S.snd ? '🔊' : '🔇';
+  $$('#chips a[data-g]').forEach(a => a.classList.toggle('ok', gDone(PAGE.games[+a.dataset.g])));
+  PAGE.games.forEach((g, i) => $(`#g${i + 1}`).classList.toggle('done', gDone(g)));
+  renderCert();
 }
-
-/* ================= CERTIFICATE ================= */
-const GT = { g1: '🎯 المهمّات العشر' };
-function medal() { const s = score(); return s >= 17 ? ['🥇', 'الذهبية', '#b45309'] : s >= 12 ? ['🥈', 'الفضية', '#475569'] : ['🥉', 'البرونزية', '#9a3412']; }
+/* ---------- certificate ---------- */
+function medal() { const s = score() * PT; return s >= 17 ? ['🥇', 'الذهبية', '#b45309'] : s >= 12 ? ['🥈', 'الفضية', '#475569'] : ['🥉', 'البرونزية', '#9a3412']; }
 let certBuilt = false;
 function renderCert() {
-  const host = $('#cert'); if (!host) return;
-  const left = Object.keys(ITEMS).filter(k => !doneK(k));
-  if (left.length) { certBuilt = false; host.innerHTML = `<div style="text-align:center"><div class="lock">🔒</div><p>أكمل المهمّات العشر لتفتح شهادتك.</p><p>بقي: ${left.map(k => `<b>${GT[k]}</b>`).join(' ، ')}</p></div>`; return; }
+  const hostc = $('#cert'); if (!hostc) return;
+  const left = PAGE.games.map((g, i) => [g, i]).filter(([g]) => !gDone(g));
+  if (left.length) { certBuilt = false; hostc.innerHTML = `<div style="text-align:center"><div class="lock">🔒</div><p>أكمل كل الألعاب لتفتح شهادتك.</p><p>بقي: ${left.map(([g, i]) => `<b>${g.icon} اللعبة ${i + 1}</b>`).join(' ، ')}</p></div>`; return; }
   if (certBuilt) { drawCert(); return; }
   certBuilt = true; const [ic, nm] = medal();
-  host.innerHTML = `<p>🎉 مبروك! علامتك <b>${fmt(score())} / 20</b> و ${stars()} ⭐: الشهادة <b>${nm}</b> ${ic}</p>
+  hostc.innerHTML = `<p>🎉 مبروك! علامتك <b>${fmt(score() * PT)} / 20</b> و ${stars()} ⭐: الشهادة <b>${nm}</b> ${ic}</p>
    <label>اكتب اسمك ولقبك:</label><input class="namebox" id="nm" maxlength="40" value="${(S.name || '').replace(/"/g, '')}">
    <div class="row"><button class="btn orange" id="mk">✨ أنشئ الشهادة</button><button class="btn" id="dl">⬇️ تحميل صورة</button><button class="btn light" id="pr">🖨️ طباعة</button></div>
    <canvas id="cv" width="1400" height="990"></canvas>
-   <div class="row"><button class="btn light" id="rst">🔁 العب من جديد</button></div>`;
+   <div class="row"><button class="btn light" id="rst">🔁 العب كل الألعاب من جديد</button></div>`;
   const go = async () => { S.name = $('#nm').value.trim(); save(); await drawCert(); };
   $('#mk').addEventListener('click', go); $('#nm').addEventListener('change', go);
-  $('#dl').addEventListener('click', async () => { await go(); try { const a = document.createElement('a'); a.download = 'شهادة_أين_النظيرة.png'; a.href = $('#cv').toDataURL('image/png'); a.click(); } catch (e) { toast('تعذّر التحميل: استعمل الطباعة أو لقطة شاشة.', 1); } });
+  $('#dl').addEventListener('click', async () => { await go(); try { const a = document.createElement('a'); a.download = 'شهادة_' + PAGE.file + '.png'; a.href = $('#cv').toDataURL('image/png'); a.click(); } catch (e) { toast('تعذّر التحميل: استعمل الطباعة أو لقطة شاشة.', 1); } });
   $('#pr').addEventListener('click', async () => { await go(); window.print(); });
   $('#rst').addEventListener('click', e => { const b = e.currentTarget; if (!b.dataset.c) { b.dataset.c = 1; b.textContent = 'اضغط مرة أخرى للتأكيد'; return; } S.r = {}; save(); location.hash = ''; location.reload(); });
   go();
@@ -378,15 +450,14 @@ async function drawCert() {
   T('متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة', 196, '700 26px Cairo', '#475569');
   T('شهادة إنجاز', 300, '900 84px Cairo', '#0369a1'); T('تُمنح هذه الشهادة للتلميذ(ة)', 380, '700 32px Cairo');
   T(S.name || '..............................', 470, '900 64px Cairo', '#c2410c');
-  T('لإتمامه(ا) بنجاح لعبة «أين النظيرة؟»', 545, '700 32px Cairo'); T('المقطع الثاني (التناظر المركزي) — السنة الثانية متوسط', 592, '700 28px Cairo', '#475569');
-  T(`العلامة: ${fmt(score())} / 20 — النجوم: ${stars()} ⭐`, 660, '800 34px Cairo', '#1e3a8a'); T(`${ic} الشهادة ${nm}`, 735, '900 46px Cairo', col);
+  T(PAGE.certLine, 545, '700 30px Cairo'); T(PAGE.certSub, 592, '700 28px Cairo', '#475569');
+  T(`العلامة: ${fmt(score() * PT)} / 20 — النجوم: ${stars()} ⭐`, 660, '800 34px Cairo', '#1e3a8a'); T(`${ic} الشهادة ${nm}`, 735, '900 46px Cairo', col);
   const d = new Date(); x.font = '700 26px Cairo'; x.fillStyle = '#0f172a';
   x.textAlign = 'right'; x.fillText('الأستاذ: يوسفي السوفي', W - 110, 860); x.textAlign = 'left'; x.fillText(`التاريخ: ${d.getDate()} / ${d.getMonth() + 1} / ${d.getFullYear()}`, 110, 860);
-  x.textAlign = 'center'; x.font = '60px serif'; x.fillText('🎯', W / 2, 880);
+  x.textAlign = 'center'; x.font = '60px serif'; x.fillText('🎮', W / 2, 880);
 }
-
 $('#snd').addEventListener('click', () => { S.snd = !S.snd; save(); upd(); });
-game1(); upd();
+upd();
 </script>
 </body>
 </html>

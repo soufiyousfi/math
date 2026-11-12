@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ألعاب المقطع الأول: سوق بوشقوف ورتّب الأعداد (الأولى متوسط)</title>
-<meta name="description" content="لعبتان للسنة الأولى متوسط على موارد المقطع الأول: العمليات على الأعداد الطبيعية والعشرية ورتبة مقدار، ثم الكتابة الكسرية والعشرية والضرب والقسمة على 10 و100 و0,1 وترتيب الأعداد العشرية. نجوم ومؤقّت وشهادة باسمك.">
+<title>ألعاب المقطع الأول: الأعداد الطبيعية والأعداد العشرية (الأولى متوسط)</title>
+<meta name="description" content="ثلاث ألعاب سهلة بأزرار اختيار للسنة الأولى متوسط: العمليات ورتبة مقدار، الكتابات العشرية والكسرية والضرب في 10 و100 و0,1، ونصف المستقيم المدرج والترتيب. 20 سؤالا و20 نقطة وشهادة.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="🎮 ألعاب المقطع الأول للأولى متوسط: سوق بوشقوف ورتّب الأعداد!">
-<meta property="og:description" content="لعبتان، 20 نقطة، نجوم إضافية للأسرع، وشهادة إنجاز باسمك. هل تحصل على 20/20؟">
+<meta property="og:title" content="🎮 ألعاب المقطع الأول للأولى متوسط: 3 ألعاب و20 سؤالا!">
+<meta property="og:description" content="سوق بوشقوف، الكتابات العشرية، نصف المستقيم المدرج: اضغط الجواب واربح النجوم والشهادة.">
 <meta property="og:image" content="https://soufiyousfi.github.io/math/1m/t1/al3ab/img/al3ab-m1-fb.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&display=swap" rel="stylesheet">
 <style>
+
 :root{
   --bg:#eef7fb; --card:#fff; --ink:#0f172a; --muted:#475569; --line:#cbd5e1;
   --c1:#0369a1; --c2:#0d9488; --yel:#f59e0b; --ok:#16a34a; --ok-soft:#dcfce7;
@@ -71,57 +72,6 @@ table.vt{border-collapse:collapse;margin:6px auto;direction:ltr;font-weight:900;
 table.vt td{border:2px solid #0369a1;padding:3px 14px;text-align:center;background:#fff}
 table.vt tr:first-child td{background:#e0f2fe}
 .bk{font-size:.85rem;color:#64748b;text-align:center}
-/* game 1 */
-.bank{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;direction:ltr;margin:10px 0}
-.tile{min-width:62px;min-height:50px;padding:6px 12px;border-radius:12px;border:3px solid #0284c7;background:#fff;color:#0369a1;font-weight:900;font-size:1.15rem;box-shadow:0 5px 0 #0284c7}
-.tile.sel{background:var(--yel);border-color:#b45309;color:#fff;box-shadow:0 5px 0 #b45309;transform:translateY(-2px)}
-.tile.used{visibility:hidden}
-.build{direction:ltr;display:flex;align-items:center;justify-content:center;gap:6px;margin:14px 0;background:#eff6ff;border:2px dashed #93c5fd;border-radius:14px;padding:12px 4px}
-.frz{display:flex;flex-direction:column;align-items:center;gap:5px;padding:4px;border-radius:12px}
-.frz .bar2{width:62px;height:4px;background:#0369a1;border-radius:2px}
-.zone{width:62px;height:44px;border:3px dashed #94a3b8;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem;color:#0369a1}
-.zone.on{border-color:var(--yel);background:#fef3c7}
-.zone.full{border-style:solid;border-color:#0284c7;background:#e0f2fe}
-.frz.good{background:var(--ok-soft);outline:3px solid var(--ok)}
-.frz.badz{background:var(--bad-soft);outline:3px solid var(--bad)}
-.eqs{font-size:1.6rem;font-weight:900;color:#0369a1}
-/* game 2 safe */
-.safe{background:#334155;border-radius:18px;padding:14px;color:#fff;text-align:center}
-.safe .m,.safe>.eq,.safe>div>.eq{color:#fde68a}
-.screen{background:#0f172a;border:4px solid #64748b;border-radius:10px;padding:8px;font-family:monospace;font-size:1.8rem;letter-spacing:4px;color:#4ade80;direction:ltr;min-height:62px;display:flex;align-items:center;justify-content:center}
-.screen.err{color:#f87171}
-.pad{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:300px;margin:12px auto 0;direction:ltr}
-.pad button{min-height:56px;border:0;border-radius:14px;background:#e2e8f0;color:#0f172a;font-size:1.4rem;font-weight:900;box-shadow:0 5px 0 #94a3b8}
-.pad button:active{transform:translateY(4px);box-shadow:none}
-.pad .c{background:#fecaca;color:#7f1d1d;box-shadow:0 5px 0 #f87171}
-.pad .open{grid-column:span 4;background:var(--yel);color:#3b2600;box-shadow:0 5px 0 #b45309}
-.lock{font-size:2.4rem;line-height:1}
-.steps3{display:flex;gap:6px;justify-content:center;margin-bottom:8px}
-.steps3 span{width:34px;height:34px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-weight:900}
-.steps3 span.ok{background:var(--ok);color:#fff}.steps3 span.cur{background:var(--yel);color:#fff}.steps3 span.ko{background:#94a3b8;color:#fff}
-/* game 3 */
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-.duo .btn{min-height:60px;font-size:1.05rem}
-.data{display:grid;grid-template-columns:1fr 1fr;gap:6px;direction:ltr;margin:6px 0}
-.data div{background:#f1f5f9;border-radius:10px;padding:2px 8px;font-weight:800;text-align:center;color:#1e3a8a}
-/* new games */
-.bem{display:inline-block;background:#fef9c3;border:1px solid #facc15;color:#713f12;border-radius:999px;padding:0 10px;font-size:.82rem;font-weight:800;margin-bottom:4px}
-.match{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:300px;margin:10px auto}
-.match .col{display:flex;flex-direction:column;gap:12px;align-items:stretch}.match .hd{text-align:center}
-.pairs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;direction:ltr;margin:8px 0;min-height:10px}
-.pairs .p{padding:4px 10px;border-radius:12px;border:3px solid transparent}
-.pairs .p.good{border-color:var(--ok)}.pairs .p.badz{border-color:var(--bad)}
-.cards{display:flex;flex-direction:column;gap:8px;margin:8px 0}
-.scard{width:100%;text-align:start;font:inherit;font-size:.95rem;font-weight:700;background:#fff;border:3px solid #0284c7;border-radius:12px;padding:6px 10px;box-shadow:0 4px 0 #0284c7;color:var(--ink)}
-.scard.in{border-color:var(--ok);box-shadow:0 4px 0 #15803d;background:#f0fdf4}
-.seqh{font-weight:900;color:var(--c1);margin-top:6px}
-ol.seq{margin:4px 0;padding-inline-start:26px;min-height:40px;background:#f8fafc;border:2px dashed #86efac;border-radius:12px;padding-top:6px;padding-bottom:6px}
-ol.seq li{margin:6px 0;font-weight:900}
-.pl{cursor:pointer}.pl .vis{stroke:#0369a1;stroke-width:3}.pl .hit{stroke:transparent;stroke-width:24}
-.pl.on .vis{stroke:#f59e0b;stroke-width:7}.pl.off{pointer-events:none}
-.opts{display:flex;flex-direction:column;gap:10px;margin-top:8px}.opts .btn{font-size:1rem}
-.slrow{display:flex;gap:8px;align-items:center;direction:ltr}.slrow .btn{min-width:56px;padding:4px}
-.slrow input{flex:1;height:44px;accent-color:#f59e0b}
 /* feedback */
 .fb{margin-top:10px;font-weight:700}
 .fb .w{display:block;background:var(--bad-soft);color:#991b1b;border-radius:12px;padding:6px 10px}
@@ -156,34 +106,41 @@ canvas#cv{width:100%;height:auto;border-radius:10px;box-shadow:0 4px 18px rgba(0
 footer{text-align:center;color:var(--muted);font-size:.85rem;padding:16px}
 @media print{body *{visibility:hidden}#cv{visibility:visible;position:fixed;inset:0;width:100%;box-shadow:none}}
 
-/* ---- games page additions ---- */
-.res{display:inline-block;background:#ecfeff;border:1px solid #67e8f9;color:#155e75;border-radius:999px;padding:0 10px;font-size:.82rem;font-weight:800;margin-bottom:4px}
-.dots{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin:6px 0}
-.dots span{width:26px;height:26px;border-radius:50%;background:#e2e8f0;font-size:.8rem;font-weight:900;display:flex;align-items:center;justify-content:center}
-.dots span.ok{background:var(--ok);color:#fff}.dots span.ko{background:#94a3b8;color:#fff}.dots span.cur{background:var(--yel);color:#fff}
-.timer{display:flex;align-items:center;gap:8px;margin:6px 0}
-.tbar{flex:1;height:14px;background:#e2e8f0;border-radius:8px;overflow:hidden}
-.tbar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#f59e0b,#16a34a);transition:width .25s linear}
-.tbar.off i{background:#cbd5e1}
-.tsec{font-weight:900;min-width:46px;text-align:center;direction:ltr}
-.tbtn{min-height:40px;border:2px solid var(--line);background:#fff;border-radius:12px;font-weight:800;padding:0 10px}
-.qtext{font-size:1.08rem;font-weight:700;margin:6px 0}
-.mc{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-.mc .btn{min-height:56px;font-size:1.2rem;direction:ltr}
-.vop{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Courier New",monospace;font-weight:900;font-size:1.2rem;color:#1e3a8a;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:4px 14px;margin:4px 0;line-height:1.45;text-align:right}
+
+/* ---- simple games v2 ---- */
+.res{display:inline-block;background:#ecfeff;border:1px solid #67e8f9;color:#155e75;border-radius:999px;padding:0 10px;font-size:.82rem;font-weight:800;margin:2px 0}
+.bk{display:inline-block;background:#fef9c3;border:1px solid #facc15;color:#713f12;border-radius:999px;padding:0 10px;font-size:.8rem;font-weight:800;margin:2px 0}
+.dots{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin:8px 0}
+.dots span{width:30px;height:30px;border-radius:50%;background:#e2e8f0;font-size:.85rem;font-weight:900;display:flex;align-items:center;justify-content:center}
+.dots span.ok{background:var(--ok);color:#fff}.dots span.ko{background:#94a3b8;color:#fff}.dots span.cur{background:var(--yel);color:#fff;transform:scale(1.15)}
+.qbox{background:#f8fafc;border:2px solid #e2e8f0;border-radius:14px;padding:10px 12px;margin-top:6px}
+.qtext{font-size:1.12rem;font-weight:700}
+.do{display:block;background:#e0f2fe;color:#075985;border-radius:10px;padding:4px 10px;margin:8px 0 0;font-weight:800;font-size:.95rem}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.opts.one{grid-template-columns:1fr}
+.opt{min-height:62px;border-radius:16px;border:3px solid #0284c7;background:#fff;color:#0c4a6e;font-weight:900;font-size:1.15rem;box-shadow:0 5px 0 #0284c7;padding:6px 8px;line-height:1.4}
+.opt.sel{background:#fef3c7;border-color:#d97706;box-shadow:0 5px 0 #b45309;transform:translateY(-2px)}
+.opt.good{background:var(--ok-soft);border-color:var(--ok);box-shadow:0 5px 0 #15803d;color:#14532d}
+.opt.bad{background:var(--bad-soft);border-color:var(--bad);box-shadow:0 5px 0 #991b1b;color:#7f1d1d;text-decoration:line-through;opacity:.7}
+.opt:disabled{cursor:default}
+.mcols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+.mcols .col{display:flex;flex-direction:column;gap:10px}
+.olist{direction:ltr;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:62px;background:#f0fdf4;border:2px dashed #86efac;border-radius:14px;padding:8px;margin:10px 0 4px;align-items:center}
+.olist .pk{background:#dcfce7;border:2px solid #16a34a;border-radius:10px;padding:2px 12px;font-weight:900;font-size:1.1rem;color:#14532d}
+.olist.vert{direction:rtl;flex-direction:column;align-items:stretch}.olist.vert .pk{text-align:start}
+.olist .em{color:#94a3b8;font-weight:700}
+.go{margin-top:14px}
+.hint3{font-size:.85rem;color:var(--muted);text-align:center;margin-top:6px}
+.tries{display:flex;gap:4px;justify-content:center;margin-top:8px;font-size:1.2rem}
+.gsum{text-align:center}
+.gsum .big{font-size:2.2rem}
+.lock{font-size:2.4rem;line-height:1}
+.intro{background:#fff7ed;border:2px dashed #fb923c;border-radius:12px;padding:6px 10px;margin:6px 0;font-weight:700}
+.howto li{margin:4px 0}
+.vop{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Courier New",monospace;font-weight:900;font-size:1.15rem;color:#1e3a8a;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:4px 14px;margin:4px 0;line-height:1.45;text-align:right}
 .vop div{white-space:pre}.vop .rule{border-top:3px solid #1e3a8a;height:0;margin:2px 0}
-.mcol{display:flex;flex-direction:column;gap:10px}
-.mtile{min-height:56px;border-radius:14px;border:3px solid #0284c7;background:#fff;color:#0369a1;font-weight:900;font-size:1.2rem;box-shadow:0 5px 0 #0284c7;display:flex;align-items:center;justify-content:center}
-.mtile.sel{background:var(--yel);border-color:#b45309;color:#fff;box-shadow:0 5px 0 #b45309}
-.mtile.done{background:var(--ok-soft);border-color:var(--ok);color:#14532d;box-shadow:0 5px 0 #15803d;pointer-events:none}
-.mtile.bad{background:var(--bad-soft);border-color:var(--bad)}
-.machine{background:#334155;border-radius:18px;padding:12px;color:#fff;text-align:center}
-.machine .mbox{display:inline-block;background:var(--yel);color:#3b2600;border-radius:12px;padding:4px 16px;font-size:1.5rem;font-weight:900;direction:ltr;margin:6px 0}
-.machine .inn{font-size:1.6rem;font-weight:900;color:#fde68a;direction:ltr}
-.olist{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;direction:ltr;min-height:60px;background:#f0fdf4;border:2px dashed #86efac;border-radius:14px;padding:8px;margin:8px 0;align-items:center}
-#mo .tile.used{display:none}
-.olist .sg{font-weight:900;font-size:1.4rem;color:#15803d}
-.olist .pk{background:#dcfce7;border:2px solid #16a34a;border-radius:10px;padding:2px 10px;font-weight:900;font-size:1.15rem;color:#14532d}
+.fig svg{max-width:300px}
+.chips a.cur{border-color:var(--yel)}
 </style>
 </head>
 <body>
@@ -198,311 +155,284 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:16px}
   <span class="prog"><i id="progi"></i></span>
   <button class="snd" id="snd" aria-label="الصوت">🔊</button>
 </div>
-<nav class="chips" id="chips">
-  <a href="#s1" data-k="g1">🛒 اللعبة 1</a><a href="#s2" data-k="g2">🔢 اللعبة 2</a><a href="#s3">🎓 الشهادة</a>
-</nav>
-<main>
+<nav class="chips" id="chips"></nav>
+<main id="main">
 <section class="card" id="s0">
-  <div class="ct">📌 كيف ألعب؟</div>
-  <div>في كل لعبة <b>3 محاولات</b> لكل سؤال: بعد الخطأ الأول تلميح، وبعد الثاني تلميح أقوى، وبعد الثالث يظهر الحل النموذجي. اكتب الحساب على ورقة قبل أن تجيب.</div>
-  <div>⏱️ في اللعبة الأولى مؤقّت: إذا أجبت صحيحا قبل نهاية الوقت ربحت <b>نجمة إضافية ⚡</b>. انتهاء الوقت لا يُسقطك، ويمكنك إيقاف المؤقّت متى شئت.</div>
+  <div class="ct">📌 كيف ألعب؟ (اقرأ مرة واحدة)</div>
+  <ol class="howto">
+    <li>👆 اضغط على <b>جواب واحد</b>، فيتلوّن بالأصفر.</li>
+    <li>✔ ثم اضغط الزر الأخضر <b>«تحقّق»</b>. إذا ضغطت جوابا بالخطأ، اضغط جوابا آخر قبل «تحقّق» ولا تخسر شيئا.</li>
+    <li>💡 إذا أخطأت: يظهر تلميح وتجرّب مرة أخرى. لك <b>3 محاولات</b>، وبعد الثالثة يظهر الحل المفصّل.</li>
+    <li>🎯 كل سؤال بنقطة: من المحاولة الأولى <b>1</b>، الثانية <b>0,5</b>، الثالثة <b>0,25</b>.</li>
+    <li>✍️ اكتب الحساب في كراسك قبل أن تختار. تقدّمك محفوظ في هاتفك.</li>
+  </ol>
 </section>
-<section class="card" id="s1">
-  <div class="ct">🛒 اللعبة 1: سوق بوشقوف <span class="pts">10 ن</span></div>
-  <div id="g1"></div>
-</section>
-<section class="card" id="s2">
-  <div class="ct">🔢 اللعبة 2: رحلة الفاصلة <span class="pts">10 ن</span></div>
-  <div id="g2"></div>
-</section>
-<section class="card" id="s3">
+<div id="games"></div>
+<section class="card" id="sc">
   <div class="ct">🎓 الشهادة</div>
   <div id="cert"></div>
 </section>
 </main>
 <div id="toast"></div>
-<footer>متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي<br>المرجع: منهاج السنة الأولى متوسط والمخطط السنوي، المقطع الأول «الأعداد الطبيعية والأعداد العشرية».</footer>
-
+<footer>متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي<br>المرجع: منهاج السنة الأولى متوسط والمخطط السنوي 2022، المقطع الأول، والكتاب المدرسي.</footer>
 <script>
 "use strict";
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+/* math helpers: everything inside M() is written left to right */
 const F = (a, b) => `<span class="fr"><span>${a}</span><span>${b}</span></span>`;
-const EQP = p => p.map(x => x.startsWith('<') ? x : `<span>${x}</span>`).join('');
-const EQ = (...p) => `<span class="eq">${EQP(p)}</span>`;
 const M = t => `<span class="m">${t}</span>`;
-const fmt = x => String(Math.round(x * 1000) / 1000).replace('.', ',');
-const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
-/* vertical operation: rows right-aligned, '—' = rule */
+const EQ = (...p) => `<span class="eq">${p.map(x => String(x).startsWith('<') ? x : `<span>${x}</span>`).join('')}</span>`;
 const VOP = rows => `<div class="vop">${rows.map(r => r === '—' ? '<div class="rule"></div>' : `<div>${r}</div>`).join('')}</div>`;
-const num = s => { const t = String(s).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[٫,]/g, '.').replace(/\s/g, '').replace(/DA|kg|m/gi, ''); return t === '' || isNaN(+t) ? null : +t; };
-
-/* ---------- messages (change from question to question) ---------- */
+const fmt = x => String(Math.round(x * 100) / 100).replace('.', ',');
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+/* geometry figure: P = {A:[x,y]}, seg/line/ray = [['A','B']], circ = [[cx,cy,r,dashed]], ra = [['A','B','C']] (right angle at B), extra = raw svg */
+function G(o) {
+  const W = o.w || 300, H = o.h || 200, P = o.P || {}, out = [];
+  if (o.grid) { for (let x = 0; x <= W; x += o.grid) out.push(`<line x1="${x}" y1="0" x2="${x}" y2="${H}" stroke="#e2e8f0"/>`); for (let y = 0; y <= H; y += o.grid) out.push(`<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="#e2e8f0"/>`); }
+  const ext = (a, b, k1, k2) => { const [x1, y1] = P[a], [x2, y2] = P[b], dx = x2 - x1, dy = y2 - y1; return [x1 - k1 * dx, y1 - k1 * dy, x2 + k2 * dx, y2 + k2 * dy]; };
+  (o.poly || []).forEach(p => out.push(`<polygon points="${p.map(k => P[k].join(',')).join(' ')}" fill="${o.fill || '#e0f2fe'}" stroke="#0369a1" stroke-width="2.5"/>`));
+  (o.circ || []).forEach(c => out.push(`<circle cx="${c[0]}" cy="${c[1]}" r="${c[2]}" fill="none" stroke="${c[4] || '#0369a1'}" stroke-width="2.5" ${c[3] ? 'stroke-dasharray="6 5"' : ''}/>`));
+  (o.line || []).forEach(([a, b, col]) => { const e = ext(a, b, .6, .6); out.push(`<line x1="${e[0]}" y1="${e[1]}" x2="${e[2]}" y2="${e[3]}" stroke="${col || '#0369a1'}" stroke-width="2.5"/>`); });
+  (o.ray || []).forEach(([a, b, col]) => { const e = ext(a, b, 0, .8); out.push(`<line x1="${e[0]}" y1="${e[1]}" x2="${e[2]}" y2="${e[3]}" stroke="${col || '#0369a1'}" stroke-width="2.5"/>`); });
+  (o.seg || []).forEach(([a, b, col, dash]) => out.push(`<line x1="${P[a][0]}" y1="${P[a][1]}" x2="${P[b][0]}" y2="${P[b][1]}" stroke="${col || '#0369a1'}" stroke-width="${col ? 3.5 : 2.5}" ${dash ? 'stroke-dasharray="6 5"' : ''}/>`));
+  (o.ra || []).forEach(([a, b, c]) => { const [bx, by] = P[b], u = (p) => { const dx = P[p][0] - bx, dy = P[p][1] - by, n = Math.hypot(dx, dy); return [dx / n * 11, dy / n * 11]; }; const [ux, uy] = u(a), [vx, vy] = u(c); out.push(`<polyline points="${bx + ux},${by + uy} ${bx + ux + vx},${by + uy + vy} ${bx + vx},${by + vy}" fill="none" stroke="#dc2626" stroke-width="2"/>`); });
+  if (o.extra) out.push(o.extra);
+  Object.entries(P).forEach(([k, [x, y]]) => { if ((o.hide || []).includes(k)) return; const d = (o.lab || {})[k] || [8, -8]; out.push(`<circle cx="${x}" cy="${y}" r="3.5" fill="#0f172a"/><text x="${x + d[0]}" y="${y + d[1]}" font-size="17" fill="#0f172a" text-anchor="middle">${k}</text>`); });
+  return `<div class="fig"><svg viewBox="0 0 ${W} ${H}">${out.join('')}</svg></div>`;
+}
+/* graduated line: labels a (left) and b (right), n equal parts, point lab at tick k (marks = [[k,label],...]) */
+function NL(a, b, n, marks) {
+  const x0 = 25, x1 = 295, y = 55, out = [`<line x1="10" y1="${y}" x2="310" y2="${y}" stroke="#0369a1" stroke-width="3"/>`];
+  for (let i = 0; i <= n; i++) { const x = x0 + (x1 - x0) * i / n, big = i === 0 || i === n || (n === 10 && i === 5); out.push(`<line x1="${x}" y1="${y - (big ? 12 : 7)}" x2="${x}" y2="${y + (big ? 12 : 7)}" stroke="#0369a1" stroke-width="2"/>`); }
+  out.push(`<text x="${x0}" y="${y + 34}" font-size="18" text-anchor="middle" fill="#0f172a">${a}</text><text x="${x1}" y="${y + 34}" font-size="18" text-anchor="middle" fill="#0f172a">${b}</text>`);
+  marks.forEach(([k, l]) => { const x = x0 + (x1 - x0) * k / n; out.push(`<circle cx="${x}" cy="${y}" r="6" fill="#dc2626"/><text x="${x}" y="${y - 18}" font-size="19" text-anchor="middle" fill="#dc2626">${l}</text>`); });
+  return `<div class="fig"><svg viewBox="0 0 320 100">${out.join('')}</svg></div>`;
+}
+/* ---------- messages: change from question to question ---------- */
 const MSG = {
-  ok: ['أحسنت! تركيزك أوصلك إلى الجواب الصحيح.', 'ممتاز! الدقة أهم من السرعة، وأنت أثبتّ ذلك.', 'رائع! جهدك يستحق هذه النجوم.', 'برافو! التأنّي يصنع النجاح.', 'إجابة صحيحة! واصل بنفس الهدوء.', 'بارك الله فيك! تقدّم خطوة بخطوة كما فعلت.'],
+  ok: ['أحسنت! تركيزك أوصلك إلى الجواب الصحيح.', 'ممتاز! الدقة أهم من السرعة، وأنت أثبتّ ذلك.', 'رائع! جهدك يستحق هذه النجوم.', 'برافو! التأنّي يصنع النجاح.', 'إجابة صحيحة! واصل بنفس الهدوء.', 'بارك الله فيك! تقدّم خطوة بخطوة كما فعلت.', 'جميل جدا! فكّرت جيدا قبل أن تختار.'],
   w1: ['لا بأس، الخطأ جزء من التعلّم. اقرأ التلميح بهدوء.', 'تمهّل قليلا: كلما أسرعت قلّ تركيزك.', 'كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.', 'أنت قريب. أعطِ السؤال الوقت الذي يحتاجه.'],
-  w2: ['محاولة أخيرة: اكتب الحساب على ورقة قبل أن تجيب.', 'لا تيأس! التركيز يأتي مع الهدوء.', 'السرعة والتركيز لا يجتمعان: تمهّل.', 'ابذل جهدا صغيرا آخر، فالحل قريب منك.'],
-  fail: ['لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. تأمّل الحل خطوة بخطوة.', 'المهم أن نفهم لماذا أخطأنا. اقرأ الحل ثم أعده وحدك على ورقة.', 'الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة.']
+  w2: ['محاولة أخيرة: اكتب الحساب في كراسك قبل أن تختار.', 'لا تيأس! التركيز يأتي مع الهدوء.', 'السرعة والتركيز لا يجتمعان: تمهّل.', 'ابذل جهدا صغيرا آخر، فالحل قريب منك.'],
+  fail: ['لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. تأمّل الحل خطوة بخطوة.', 'المهم أن نفهم لماذا أخطأنا. اقرأ الحل ثم أعده وحدك في كراسك.', 'الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة.']
 };
 let mi = 0; const pick = k => MSG[k][(mi++) % MSG[k].length];
+/*META {"TITLE":"ألعاب المقطع الأول: الأعداد الطبيعية والأعداد العشرية (الأولى متوسط)","DESC":"ثلاث ألعاب سهلة بأزرار اختيار للسنة الأولى متوسط: العمليات ورتبة مقدار، الكتابات العشرية والكسرية والضرب في 10 و100 و0,1، ونصف المستقيم المدرج والترتيب. 20 سؤالا و20 نقطة وشهادة.","OGT":"🎮 ألعاب المقطع الأول للأولى متوسط: 3 ألعاب و20 سؤالا!","OGD":"سوق بوشقوف، الكتابات العشرية، نصف المستقيم المدرج: اضغط الجواب واربح النجوم والشهادة.","L":"1m","N":"1","H1":"🎮 ألعاب المقطع الأول","SUB":"السنة الأولى متوسط — الأعداد الطبيعية والأعداد العشرية","REF":"المرجع: منهاج السنة الأولى متوسط والمخطط السنوي 2022، المقطع الأول، والكتاب المدرسي."} */
+const PAGE = {
+ key: 'al3ab_1m_m1_v2', file: 'ألعاب_المقطع_الأول_1م',
+ certLine: 'لإتمامه(ا) ألعاب «سوق بوشقوف» و«الكتابات العشرية» و«نصف المستقيم المدرّج»', certSub: 'المقطع الأول — السنة الأولى متوسط',
+ games: [
+ { icon: '🛒', name: 'سوق بوشقوف', res: ['العمليات على الأعداد الطبيعية والعشرية', 'رتبة مقدار نتيجة'],
+   intro: 'أنت تساعد فلاحي بوشقوف في بيع خضرهم. اختر الجواب الصحيح!', qs: [
+  { q: `باع فلاح من بوشقوف ${M('1275 kg')} من الطماطم صباحا و ${M('948 kg')} مساء. لنعرف ما باعه في اليوم كله، أيّ عملية نُجري؟`, o: ['الجمع', 'الطرح', 'الضرب', 'القسمة'], a: 0,
+    h1: 'هل نريد الكمية كلها معا أم الفرق بين الكميتين؟', h2: '«في اليوم كله» تعني: الصباح مع المساء.',
+    m: { w: 'نبحث عن الكلمة التي تدل على العملية: «كله» أو «معا» تدل على الجمع.', s: ['نريد الكمية الكلية = كمية الصباح + كمية المساء', VOP([' 1275', '+ 948', '—', ' 2223'])], c: `العملية هي الجمع، وباع الفلاح ${M('2223 kg')}.` } },
+  { q: `كان مع الفلاح ${M('3500 DA')}، فاشترى بذورا بـ ${M('1875 DA')}. كم بقي معه؟`, o: [M('1625 DA'), M('2375 DA'), M('1735 DA'), M('5375 DA')], a: 0,
+    h1: 'الكلمة «بقي» تعني أننا نطرح.', h2: `اكتب العملية عموديا: ${M('3500 − 1875')} ولا تنس الاستلاف.`,
+    m: { w: 'طرح عددين طبيعيين عموديا (الآحاد تحت الآحاد).', s: [VOP([' 3500', '− 1875', '—', ' 1625'])], c: `بقي مع الفلاح ${M('1625 DA')}.` }, sc: [['كتابة العملية', .5], ['النتيجة', .5]] },
+  { q: `اشترت أمينة كيس بطاطا كتلته ${M('12,5 kg')} وكيس بصل كتلته ${M('7,75 kg')}. قال أخوها: «المجموع ${M('8,00 kg')}». ما المجموع الصحيح؟`, o: [M('20,25 kg'), M('8,00 kg'), M('19,80 kg'), M('20,3 kg')], a: 0,
+    h1: 'أخوها وضع الأرقام تحت بعضها دون أن ينتبه للفاصلة.', h2: `اكتب ${M('12,5')} على الشكل ${M('12,50')} ثم ضع الفاصلة تحت الفاصلة.`,
+    m: { w: 'جمع عددين عشريين عموديا: الفاصلة تحت الفاصلة.', s: [VOP(['12,50', '+ 7,75', '—', '20,25'])], c: `كتلة الكيسين معا ${M('20,25 kg')}، وخطأ الأخ أنه لم يضع الفاصلة تحت الفاصلة.` } },
+  { q: `نريد حساب ${M('25 + 38 + 75 + 62')} ذهنيا. أيّ تجميع يعطي أعدادا مدوّرة فيسهل الحساب؟`, o: [M('(25 + 75) + (38 + 62)'), M('(25 + 38) + (75 + 62)'), M('(25 + 62) + (38 + 75)'), M('25 + (38 + 75) + 62')], a: 0,
+    h1: 'ابحث عن عددين مجموعهما 100.', h2: `${M('25 + 75 = 100')}، وماذا عن ${M('38')}؟`,
+    m: { w: 'في الجمع يمكن تغيير ترتيب الحدود وتجميعها لنحصل على أعداد مدوّرة.', s: [M('25 + 75 = 100'), M('38 + 62 = 100'), M('100 + 100 = 200')], c: `أسهل تجميع هو ${M('(25 + 75) + (38 + 62) = 200')}.` } },
+  { q: `انطلقت حافلة من بوشقوف نحو قالمة على الساعة ${M('7 h 45 min')}، ودامت الرحلة ${M('35 min')}. متى وصلت؟`, o: [M('8 h 20 min'), M('7 h 80 min'), M('8 h 10 min'), M('8 h 80 min')], a: 0,
+    h1: `الساعة فيها ${M('60 min')} فقط، وليس ${M('100')}.`, h2: `${M('45 min + 35 min = 80 min')} و ${M('80 min = 1 h 20 min')}.`,
+    m: { w: 'نجمع الدقائق مع الدقائق، ثم نحوّل كل 60 دقيقة إلى ساعة.', s: [M('45 min + 35 min = 80 min'), M('80 min = 60 min + 20 min = 1 h 20 min'), M('7 h + 1 h 20 min = 8 h 20 min')], c: `وصلت الحافلة على الساعة ${M('8 h 20 min')}.` } },
+  { q: `ثمن الكيلوغرام من البرتقال ${M('120 DA')}. اشترى سليم ${M('2,5 kg')}. كم دفع؟`, o: [M('300 DA'), M('240 DA'), M('3000 DA'), M('122,5 DA')], a: 0,
+    h1: 'الثمن = ثمن الكيلوغرام × عدد الكيلوغرامات.', h2: `احسب ${M('120 × 25')} ثم ضع فاصلة واحدة في النتيجة.`,
+    m: { w: 'ضرب عدد عشري في عدد طبيعي: نضرب دون فاصلة، ثم نضع في الجداء عدد الأرقام بعد الفاصلة.', s: [VOP(['  120', '× 2,5', '—', '  600', ' 240 ', '—', '300,0'])], c: `دفع سليم ${M('300 DA')}.` }, sc: [['كتابة العملية', .5], ['النتيجة', .5]] },
+  { q: `اشترت سعاد ${M('3 kg')} من الطماطم بـ ${M('45 DA')} للكيلوغرام، فطلب منها البائع ${M('1350 DA')}. هل النتيجة معقولة؟`, o: [`لا، رتبة المقدار قريبة من ${M('150 DA')}`, 'نعم، النتيجة معقولة', `لا، رتبة المقدار قريبة من ${M('15 DA')}`, `لا، رتبة المقدار قريبة من ${M('1500 DA')}`], a: 0,
+    h1: `قرّب ${M('45')} إلى ${M('50')} ثم احسب ذهنيا.`, h2: `${M('3 × 50 = 150')}، فهل ${M('1350')} قريب من ${M('150')}؟`,
+    m: { w: 'نحسب رتبة مقدار النتيجة بتقريب الأعداد، ثم نقارن.', s: [M('45 ≈ 50'), M('3 × 50 = 150'), `الثمن الصحيح ${M('3 × 45 = 135 DA')}`], c: `النتيجة ${M('1350 DA')} غير معقولة، لأن رتبة المقدار ${M('150 DA')}. الأمانة في البيع من أخلاق التاجر.` } }
+ ]},
+ { icon: '🔢', name: 'الكتابات العشرية والكسرية', res: ['الكتابة العشرية والكتابة الكسرية', 'الضرب والقسمة على 10، 100، 1000 و0,1'],
+   intro: 'كل سؤال فكرة جديدة: الكسر العشري، دلالة الأرقام، التفكيك، والضرب في 10 و100 و0,1.', qs: [
+  { t: 'm', q: 'صِل كل كسر عشري بكتابته العشرية.', p: [[F('7', '10'), M('0,7')], [F('7', '100'), M('0,07')], [F('75', '10'), M('7,5')], [F('75', '100'), M('0,75')]],
+    h1: `المقام ${M('10')} يعني رقما واحدا بعد الفاصلة.`, h2: `المقام ${M('100')} يعني رقمين بعد الفاصلة: ${F('7', '100')} ${M('= 0,07')}.`,
+    m: { w: 'عدد الأصفار في المقام = عدد الأرقام بعد الفاصلة.', s: [EQ(F('7', '10'), '= 0,7'), EQ(F('7', '100'), '= 0,07'), EQ(F('75', '10'), '= 7,5'), EQ(F('75', '100'), '= 0,75')], c: 'كل كسر عشري يُكتب كتابة عشرية.' } },
+  { q: `في العدد ${M('352,48')}، الرقم ${M('4')} هو رقم:`, o: ['الأعشار', 'الأجزاء من مئة', 'العشرات', 'الآحاد'], a: 0,
+    h1: 'انظر إلى موقع الرقم بالنسبة إلى الفاصلة.', h2: 'أول رقم بعد الفاصلة مباشرة هو رقم الأعشار.',
+    m: { w: 'نكتب العدد في جدول المراتب.', s: ['مئات: 3 ، عشرات: 5 ، آحاد: 2', 'بعد الفاصلة: أعشار: 4 ، أجزاء من مئة: 8'], c: `${M('4')} هو رقم الأعشار.` } },
+  { q: `ما العدد الذي تفكيكه ${EQ('3 +', F('5', '10'), '+', F('2', '100'))}؟`, o: [M('3,52'), M('3,502'), M('35,2'), M('3,25')], a: 0,
+    h1: `${F('5', '10')} هي 5 أعشار.`, h2: `${F('2', '100')} هي جزءان من مئة: الرقم الثاني بعد الفاصلة.`,
+    m: { w: 'نضع كل رقم في مرتبته.', s: ['الآحاد: 3', 'الأعشار: 5', 'الأجزاء من مئة: 2'], c: `العدد هو ${M('3,52')}.` } },
+  { q: `أيّ عدد يساوي ${M('4,50')}؟`, o: [M('4,5'), M('4,05'), M('45'), M('0,45')], a: 0,
+    h1: 'الصفر في آخر الجزء العشري صفر غير ضروري.', h2: `${M('4,50')} = 4 وحدات و5 أعشار.`,
+    m: { w: 'نحذف الأصفار غير الضرورية (في آخر الجزء العشري).', s: [M('4,50 = 4,5')], c: `${M('4,50 = 4,5')}، أما ${M('4,05')} فهو عدد آخر.` } },
+  { q: `${M('3,7 × 100 = ?')}`, o: [M('370'), M('3,700'), M('37'), M('0,037')], a: 0,
+    h1: 'الضرب في 100 يكبّر العدد.', h2: 'ننقل الفاصلة مرتبتين نحو اليمين (نضيف صفرا عند الحاجة).',
+    m: { w: 'للضرب في 100 ننقل الفاصلة مرتبتين نحو اليمين.', s: [M('3,7 = 3,70'), M('3,70 × 100 = 370')], c: `${M('3,7 × 100 = 370')}.` } },
+  { q: `${M('52 × 0,1 = ?')}`, o: [M('5,2'), M('520'), M('0,52'), M('52,1')], a: 0,
+    h1: `الضرب في ${M('0,1')} يعني أخذ العُشر، فالعدد يصغر.`, h2: `الضرب في ${M('0,1')} مثل القسمة على ${M('10')}.`,
+    m: { w: `الضرب في ${M('0,1')} = القسمة على ${M('10')}: ننقل الفاصلة مرتبة واحدة نحو اليسار.`, s: [M('52 = 52,0'), M('52 × 0,1 = 5,2')], c: `${M('52 × 0,1 = 5,2')}.` } },
+  { q: `ما العدد الناقص؟ ${M('0,6 × … = 60')}`, o: [M('100'), M('10'), M('1000'), M('0,1')], a: 0,
+    h1: `انتقلنا من ${M('0,6')} إلى ${M('60')}: كم مرتبة تحرّكت الفاصلة؟`, h2: 'تحرّكت الفاصلة مرتبتين نحو اليمين.',
+    m: { w: 'نعدّ المراتب التي انتقلت بها الفاصلة.', s: [M('0,6 → 6 → 60'), 'مرتبتان نحو اليمين = الضرب في 100', M('0,6 × 100 = 60')], c: `العدد الناقص هو ${M('100')}.` } }
+ ]},
+ { icon: '📏', name: 'نصف المستقيم المدرّج والترتيب', res: ['ترتيب أعداد عشرية', 'المقارنة والحصر والإدراج'],
+   intro: 'رتّب، قارن، واقرأ التدريج على نصف المستقيم.', qs: [
+  { t: 'o', q: 'رتّب الأعداد من الأصغر إلى الأكبر.', it: [M('2,09'), M('2,1'), M('2,25'), M('2,3')], sepS: '<',
+    h1: 'الجزء الصحيح نفسه (2)، فقارن الأعشار.', h2: `اكتب الأعداد برقمين بعد الفاصلة: ${M('2,10')} ، ${M('2,30')} ...`,
+    m: { w: 'نكتب الأعداد بالعدد نفسه من الأرقام بعد الفاصلة ثم نقارن.', s: [M('2,09 ; 2,10 ; 2,25 ; 2,30')], c: `${M('2,09 < 2,1 < 2,25 < 2,3')}.` } },
+  { q: `قارن العددين ${M('7,8')} و ${M('7,15')}.`, o: [M('7,8 > 7,15'), M('7,8 < 7,15'), M('7,8 = 7,15'), 'لا يمكن المقارنة'], a: 0,
+    h1: 'لا تقارن طول الأعداد، بل قارن الأرقام مرتبة بمرتبة.', h2: `${M('7,8 = 7,80')}، قارن ${M('80')} و ${M('15')}.`,
+    m: { w: 'الجزءان الصحيحان متساويان، فنقارن الأعشار.', s: [M('7,8 = 7,80'), 'رقم الأعشار: 8 > 1'], c: `${M('7,8 > 7,15')}.` } },
+  { q: 'ما فاصلة النقطة A؟', fig: NL('3', '4', 10, [[6, 'A']]), o: [M('3,6'), M('3,06'), M('3,4'), M('36')], a: 0,
+    h1: 'الوحدة بين 3 و4 مقسمة إلى 10 أجزاء متساوية: كل جزء عُشر.', h2: 'عُدّ الأجزاء من 3 حتى النقطة A.',
+    m: { w: 'نقسم الوحدة إلى 10 أجزاء: كل جزء = 0,1.', s: ['من 3 إلى A ستة أجزاء', M('3 + 6 × 0,1 = 3,6')], c: `فاصلة A هي ${M('3,6')}.` } },
+  { q: `أيّ عدد يقع بين ${M('5,4')} و ${M('5,5')}؟`, o: [M('5,45'), M('5,54'), M('5,05'), M('4,5')], a: 0,
+    h1: `اكتب العددين على الشكل ${M('5,40')} و ${M('5,50')}.`, h2: `ابحث عن عدد بين ${M('5,40')} و ${M('5,50')}.`,
+    m: { w: 'للإدراج نكتب العددين برقمين بعد الفاصلة.', s: [M('5,4 = 5,40'), M('5,5 = 5,50'), M('5,40 < 5,45 < 5,50')], c: `${M('5,45')} يقع بين ${M('5,4')} و ${M('5,5')}.` } },
+  { q: `حصر العدد ${M('12,7')} بين عددين طبيعيين متتاليين هو:`, o: [M('12 < 12,7 < 13'), M('11 < 12,7 < 12'), M('12 < 12,7 < 12,8'), M('13 < 12,7 < 14')], a: 0,
+    h1: 'الجزء الصحيح للعدد هو أول عدد في الحصر.', h2: `الجزء الصحيح لـ ${M('12,7')} هو ${M('12')}، والعدد الذي بعده...`,
+    m: { w: 'نأخذ الجزء الصحيح ثم العدد الطبيعي الموالي.', s: ['الجزء الصحيح: 12', 'الموالي: 13'], c: `${M('12 < 12,7 < 13')}.` } },
+  { t: 'o', q: 'في مزرعة بوشقوف أنابيب سقي أطوالها مختلفة. رتّب أطوالها من الأصغر إلى الأكبر (الماء ثروة، فلنسقِ دون تبذير).', it: [M('1,05 m'), M('1,5 m'), M('1,505 m'), M('1,55 m')], sepS: '<',
+    h1: 'اكتب كل الأطوال بثلاثة أرقام بعد الفاصلة.', h2: `${M('1,050 ; 1,500 ; 1,505 ; 1,550')}`,
+    m: { w: 'نكتب الأعداد بالعدد نفسه من الأرقام بعد الفاصلة ثم نقارن.', s: [M('1,050 < 1,500 < 1,505 < 1,550')], c: `${M('1,05 m < 1,5 m < 1,505 m < 1,55 m')}.` } }
+ ]}
+ ]
+};
 
 /* ---------- state ---------- */
-const KEY = 'al3ab_1m_m1_v1';
-let S = { r: {}, name: '', snd: true, tm: true };
+const KEY = PAGE.key;
+let S = { r: {}, snd: true, name: '', at: {} };
 try { const t = localStorage.getItem(KEY); if (t) S = Object.assign(S, JSON.parse(t)); } catch (e) {}
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
-const ITEMS = { g1: ['a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8', 'a9', 'a10'], g2: ['mt', 'b1', 'b2', 'b3', 'b4', 'o1', 'o2'] };
-const ALL = Object.values(ITEMS).flat();
-const score = () => ALL.reduce((n, k) => n + ((S.r[k] || {}).pts || 0), 0);
-const stars = () => ALL.reduce((n, k) => n + ((S.r[k] || {}).st || 0), 0);
-const doneK = k => ITEMS[k].every(i => S.r[i] && S.r[i].done);
-function rec(id, pts, st) { S.r[id] = { done: true, pts, st }; save(); upd(); }
-function upd() {
-  $('#score').textContent = fmt(score()); $('#stars').textContent = stars();
-  $('#progi').style.width = Math.round(100 * ALL.filter(k => S.r[k] && S.r[k].done).length / ALL.length) + '%';
-  $('#snd').textContent = S.snd ? '🔊' : '🔇';
-  $$('#chips a[data-k]').forEach(a => a.classList.toggle('ok', doneK(a.dataset.k)));
-  Object.keys(ITEMS).forEach((k, i) => $('#s' + (i + 1)).classList.toggle('done', doneK(k)));
-  renderCert();
-}
-
+PAGE.games.forEach((g, gi) => g.qs.forEach((q, qi) => { q.id = `g${gi + 1}q${qi + 1}`; }));
+const ALLQ = PAGE.games.flatMap(g => g.qs);
+const TOT = ALLQ.length;
+const PT = 20 / TOT;
+const score = () => ALLQ.reduce((n, q) => n + ((S.r[q.id] || {}).pts || 0), 0);
+const stars = () => ALLQ.reduce((n, q) => n + ((S.r[q.id] || {}).st || 0), 0);
+const gDone = g => g.qs.every(q => S.r[q.id]);
 /* ---------- sound & effects ---------- */
 let AC = null;
 function tone(fs, d = .12, type = 'triangle') { if (!S.snd) return; try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); fs.forEach((f, i) => { const o = AC.createOscillator(), g = AC.createGain(); o.type = type; o.frequency.value = f; g.gain.setValueAtTime(.15, AC.currentTime + i * d); g.gain.exponentialRampToValueAtTime(.001, AC.currentTime + (i + 1) * d); o.connect(g); g.connect(AC.destination); o.start(AC.currentTime + i * d); o.stop(AC.currentTime + (i + 1) * d); }); } catch (e) {} }
-const sOk = () => tone([523, 659, 784]), sBad = () => tone([220, 180], .18, 'sawtooth'), sClick = () => tone([800], .05, 'sine');
-function toast(t, w) { const d = document.createElement('div'); d.className = w ? 'w' : ''; d.innerHTML = t; $('#toast').appendChild(d); setTimeout(() => d.remove(), 3000); }
+const sOk = () => tone([523, 659, 784]), sBad = () => tone([220, 180], .18, 'sawtooth'), sClick = () => tone([700], .04, 'sine');
+function toast(t, w) { $('#toast').innerHTML = ''; const d = document.createElement('div'); d.className = w ? 'w' : ''; d.innerHTML = t; $('#toast').appendChild(d); setTimeout(() => d.remove(), 3000); }
 function burst(el, n = 10, set = ['⭐', '✨']) { const r = el.getBoundingClientRect(); for (let i = 0; i < n; i++) { const s = document.createElement('span'); s.className = 'burst'; s.textContent = set[i % set.length]; s.style.left = (r.left + r.width / 2) + 'px'; s.style.top = (r.top + 10) + 'px'; s.style.setProperty('--dx', (Math.random() * 240 - 120) + 'px'); s.style.setProperty('--dy', (-60 - Math.random() * 130) + 'px'); document.body.appendChild(s); setTimeout(() => s.remove(), 1000); } }
 const hintFx = el => burst(el, 5, ['💡', '⭐', '✨']);
 function shake(el) { el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake'); }
-const solHTML = (m, steps, c, sc) => `<div class="sol"><h4>📘 الحل النموذجي</h4><div><b>الطريقة:</b> ${m}</div>${steps.map(s => `<div class="ln">${s}</div>`).join('')}<div class="ccl"><b>الاستنتاج:</b> ${c}</div>${sc ? `<table class="sc"><tr><th>سلم التنقيط</th><th>النقاط</th></tr>${sc.map(r => `<tr><td>${r[0]}</td><td>${fmt(r[1])}</td></tr>`).join('')}<tr class="tot"><td>المجموع</td><td>${fmt(sc.reduce((a, r) => a + r[1], 0))}</td></tr></table>` : ''}</div>`;
-const solBox = (ok, html) => ok ? `<details><summary style="cursor:pointer;font-weight:800;color:#0369a1">📘 اطّلع على الحل المفصّل</summary>${html}</details>` : html;
-const RES = t => `<div class="res">📚 ${t}</div>`;
-const NXA = (href, t) => `<a class="btn green wide" href="${href}" style="text-decoration:none">${t} ←</a>`;
-
-/* ================= GAME 1: Bouchegouf market (timer = bonus star only) ================= */
-const T1 = 45;
-const G1 = [
- { id: 'a1', q: `في سوق بوشقوف، باع فلاح طماطم ${M('1275 kg')} صباحا و ${M('948 kg')} مساء. كم كيلوغراما باع في اليوم؟`, a: 2223, unit: 'kg',
-   h1: 'الكلمة «في اليوم» تعني أننا نجمع الكميتين.', h2: `اكتب العملية عموديا: الآحاد تحت الآحاد: ${M('1275 + 948')}`,
-   m: 'جمع عددين طبيعيين عموديا (الآحاد تحت الآحاد).', s: [VOP([' 1275', '+ 948', '—', ' 2223'])], c: `باع الفلاح ${M('2223 kg')} من الطماطم.`, sc: [['كتابة العملية', .5], ['النتيجة', .5]] },
- { id: 'a2', kind: 'mc', q: `رتبة مقدار المجموع ${M('498 + 203')} هي:`, opts: ['70', '700', '7 000', '70 000'], ai: 1,
-   h1: 'قرّب كل عدد إلى أقرب مئة قبل الجمع.', h2: `${M('498')} قريب من ${M('500')} و ${M('203')} قريب من ${M('200')}.`,
-   m: 'نقرّب كل حد إلى عدد سهل (أقرب مئة) ثم نحسب ذهنيا.', s: [M('498 ≈ 500') + ' و ' + M('203 ≈ 200'), M('500 + 200 = 700')], c: `رتبة مقدار المجموع هي ${M('700')}.`, sc: [['التقريب', .5], ['رتبة المقدار', .5]] },
- { id: 'a3', q: `كان مع الفلاح ${M('3500 DA')}، فاشترى بذورا بـ ${M('1875 DA')}. كم بقي معه؟`, a: 1625, unit: 'DA',
-   h1: 'الكلمة «بقي» تعني أننا نطرح.', h2: `اكتب العملية عموديا: ${M('3500 − 1875')}`,
-   m: 'طرح عددين طبيعيين عموديا.', s: [VOP([' 3500', '− 1875', '—', ' 1625'])], c: `بقي مع الفلاح ${M('1625 DA')}.`, sc: [['كتابة العملية', .5], ['النتيجة', .5]] },
- { id: 'a4', q: `اشترت أمينة كيس بطاطا كتلته ${M('12,5 kg')} وكيس بصل كتلته ${M('7,75 kg')}. ما كتلة الكيسين معا؟`, a: 20.25, unit: 'kg',
-   h1: 'نجمع العددين العشريين، والفاصلة تحت الفاصلة.', h2: `اكتب ${M('12,5')} على الشكل ${M('12,50')} ثم اجمع.`,
-   m: 'جمع عددين عشريين عموديا (الفاصلة تحت الفاصلة).', s: [VOP(['12,50', '+ 7,75', '—', '20,25'])], c: `كتلة الكيسين ${M('20,25 kg')}.`, sc: [['وضع الفاصلة تحت الفاصلة', .5], ['النتيجة', .5]] },
- { id: 'a5', kind: 'mc', q: `رتبة مقدار الجداء ${M('29,8 × 4,1')} هي:`, opts: ['12', '120', '1 200', '12 000'], ai: 1,
-   h1: 'قرّب كل عدد إلى أقرب عدد طبيعي سهل.', h2: `${M('29,8')} قريب من ${M('30')} و ${M('4,1')} قريب من ${M('4')}.`,
-   m: 'نقرّب كل عامل ثم نضرب ذهنيا.', s: [M('29,8 ≈ 30') + ' و ' + M('4,1 ≈ 4'), M('30 × 4 = 120')], c: `رتبة مقدار الجداء هي ${M('120')}.`, sc: [['التقريب', .5], ['رتبة المقدار', .5]] },
- { id: 'a6', q: `ملأ فلاح من بوشقوف ${M('24')} صندوقا من الطماطم، في كل صندوق ${M('15 kg')}. ما الكتلة الكلية؟`, a: 360, unit: 'kg',
-   h1: 'كمية متكررة 24 مرة: نضرب.', h2: `اضرب عموديا: ${M('24 × 15')} (اضرب في 5 ثم في 1 مع إزاحة).`,
-   m: 'ضرب عددين طبيعيين عموديا.', s: [VOP([' 24', '× 15', '—', '120', '24 ', '—', '360'])], c: `الكتلة الكلية ${M('360 kg')}.`, sc: [['الجداءان الجزئيان', .5], ['النتيجة', .5]] },
- { id: 'a7', q: `كان مع سمير ${M('500 DA')}، فاشترى كتابا بـ ${M('187,5 DA')}. كم بقي معه؟`, a: 312.5, unit: 'DA',
-   h1: 'نطرح، والفاصلة تحت الفاصلة.', h2: `اكتب ${M('500')} على الشكل ${M('500,0')} ثم اطرح.`,
-   m: 'طرح عددين عشريين عموديا (الفاصلة تحت الفاصلة).', s: [VOP([' 500,0', '− 187,5', '—', ' 312,5'])], c: `بقي مع سمير ${M('312,5 DA')}.`, sc: [['وضع الفاصلة تحت الفاصلة', .5], ['النتيجة', .5]] },
- { id: 'a8', q: `ثمن ${M('1 kg')} من العنب ${M('240 DA')}. اشترت خديجة ${M('3,5 kg')}. كم دفعت؟`, a: 840, unit: 'DA',
-   h1: 'نضرب الثمن في الكتلة.', h2: `اضرب ${M('240 × 35')} دون فاصلة، ثم ضع رقما واحدا بعد الفاصلة.`,
-   m: 'ضرب عدد عشري في عدد طبيعي: نضرب دون فاصلة، ثم نضع في النتيجة من الأرقام بعد الفاصلة بقدر ما في العاملين.', s: [VOP(['  240', '× 3,5', '—', ' 1200', ' 720 ', '—', '840,0'])], c: `دفعت خديجة ${M('840 DA')}.`, sc: [['الضرب دون فاصلة', .5], ['وضع الفاصلة', .5]] },
- { id: 'a9', kind: 'mc', q: `جمعية خيرية في بوشقوف اشترت ${M('51')} محفظة للتلاميذ المحتاجين 🤝، ثمن المحفظة ${M('980 DA')}. رتبة مقدار المبلغ هي:`, opts: ['5 000', '50 000', '500 000', '5 000 000'], ai: 1,
-   h1: 'قرّب 51 إلى أقرب عشرة، و 980 إلى أقرب ألف.', h2: `${M('51 ≈ 50')} و ${M('980 ≈ 1000')}.`,
-   m: 'نقرّب كل عامل ثم نضرب ذهنيا.', s: [M('51 ≈ 50') + ' و ' + M('980 ≈ 1000'), M('50 × 1000 = 50000')], c: `رتبة مقدار المبلغ ${M('50 000 DA')}. التكافل يجعل الجميع يدرسون في ظروف حسنة.`, sc: [['التقريب', .5], ['رتبة المقدار', .5]] },
- { id: 'a10', q: `ثمن ${M('1 kg')} من التمر ${M('650 DA')}. اشترى أنس ${M('0,8 kg')}. كم دفع؟`, a: 520, unit: 'DA',
-   h1: 'نضرب الثمن في الكتلة، والنتيجة أصغر من 650 لأن 0,8 أصغر من 1.', h2: `احسب ${M('650 × 8')} ثم ضع رقما واحدا بعد الفاصلة.`,
-   m: 'ضرب عدد عشري في عدد طبيعي.', s: [VOP(['  650', '× 0,8', '—', '520,0'])], c: `دفع أنس ${M('520 DA')}.`, sc: [['الضرب دون فاصلة', .5], ['وضع الفاصلة', .5]] }
-];
-let tmI = null, tmLeft = T1, tmPause = false;
-function stopTimer() { if (tmI) clearInterval(tmI); tmI = null; }
-function drawTimer() {
-  const b = $('#tb'), s = $('#ts'); if (!b) return;
-  $('#tbar').classList.toggle('off', !S.tm);
-  b.style.width = S.tm ? (100 * tmLeft / T1) + '%' : '100%';
-  s.textContent = S.tm ? tmLeft + ' s' : '—';
-  $('#tp').textContent = tmPause ? '▶️ استئناف' : '⏸️ إيقاف';
-  $('#tp').disabled = !S.tm; $('#toff').textContent = S.tm ? '⏱️ بدون مؤقّت' : '⏱️ شغّل المؤقّت';
+function solHTML(q) {
+  const m = q.m, sc = q.sc || m.sc || [['الجواب الصحيح', 1]], k = PT;
+  return `<div class="sol"><h4>📘 الحل النموذجي</h4><div><b>الطريقة:</b> ${m.w}</div>${m.s.map(s => `<div class="ln">${s}</div>`).join('')}<div class="ccl"><b>الاستنتاج:</b> ${m.c}</div><table class="sc"><tr><th>سلم التنقيط</th><th>النقاط</th></tr>${sc.map(r => `<tr><td>${r[0]}</td><td>${fmt(r[1] * k)}</td></tr>`).join('')}<tr class="tot"><td>المجموع</td><td>${fmt(sc.reduce((a, r) => a + r[1], 0) * k)}</td></tr></table></div>`;
 }
-function startTimer() {
-  stopTimer(); tmLeft = T1; tmPause = false; drawTimer();
-  tmI = setInterval(() => { if (!S.tm || tmPause) return; if (tmLeft > 0) tmLeft--; drawTimer(); if (tmLeft === 0) { stopTimer(); toast('⏱️ انتهى الوقت، لا بأس: أكمل بهدوء.', 1); } }, 1000);
+const solBox = (ok, q) => ok ? `<details><summary style="cursor:pointer;font-weight:800;color:#0369a1">📘 اطّلع على الحل المفصّل</summary>${solHTML(q)}</details>` : solHTML(q);
+const RATE = [1, .5, .25];
+/* ---------- build page ---------- */
+const host = $('#games');
+$('#chips').innerHTML = PAGE.games.map((g, i) => `<a href="#g${i + 1}" data-g="${i}">${g.icon} اللعبة ${i + 1}</a>`).join('') + `<a href="#sc">🎓 الشهادة</a>`;
+PAGE.games.forEach((g, gi) => {
+  const sec = document.createElement('section'); sec.className = 'card'; sec.id = `g${gi + 1}`;
+  sec.innerHTML = `<div class="ct">${g.icon} اللعبة ${gi + 1}: ${g.name} <span class="pts">${fmt(g.qs.length * PT)} ن</span></div>${g.res.map(r => `<span class="res">📚 ${r}</span>`).join(' ')}${g.intro ? `<div class="intro">${g.intro}</div>` : ''}<div class="dots"></div><div class="stage"></div>`;
+  host.appendChild(sec);
+  showGame(gi);
+});
+function dotsOf(g, cur) { return g.qs.map((q, i) => { const r = S.r[q.id]; return `<span class="${r ? (r.pts > 0 ? 'ok' : 'ko') : (i === cur ? 'cur' : '')}">${i + 1}</span>`; }).join(''); }
+function showGame(gi, force) {
+  const g = PAGE.games[gi], sec = $(`#g${gi + 1}`), st = $('.stage', sec);
+  let cur = g.qs.findIndex(q => !S.r[q.id]);
+  if (force !== undefined) cur = force;
+  $('.dots', sec).innerHTML = dotsOf(g, cur);
+  sec.classList.toggle('done', gDone(g));
+  if (cur < 0) {
+    const p = g.qs.reduce((n, q) => n + S.r[q.id].pts, 0), s = g.qs.reduce((n, q) => n + S.r[q.id].st, 0);
+    const nxt = gi + 1 < PAGE.games.length ? `#g${gi + 2}` : '#sc';
+    st.innerHTML = `<div class="gsum"><div class="big">🏁</div><p>انتهت اللعبة! نقاطك <b>${fmt(p * PT)} / ${fmt(g.qs.length * PT)}</b> و ${s} ⭐</p>
+      <div class="row"><a class="btn green" href="${nxt}" style="text-decoration:none">${gi + 1 < PAGE.games.length ? 'إلى اللعبة التالية' : 'إلى الشهادة'} ←</a><button class="btn light rg">🔁 أعد هذه اللعبة</button></div></div>`;
+    $('.rg', st).addEventListener('click', e => { const b = e.currentTarget; if (!b.dataset.c) { b.dataset.c = 1; b.textContent = 'اضغط مرة أخرى للتأكيد'; return; } g.qs.forEach(q => delete S.r[q.id]); save(); upd(); showGame(gi); });
+    return;
+  }
+  renderQ(gi, cur);
 }
-function game1(idx) {
-  if (idx == null) idx = Math.max(0, G1.findIndex(r => !S.r[r.id])); if (idx < 0) idx = 0;
-  const R = G1[idx], host = $('#g1'), st = S.r[R.id];
-  let tries = 0, over = !!st;
-  const dots = G1.map((r, i) => { const x = S.r[r.id]; return `<span class="${x ? (x.pts ? 'ok' : 'ko') : (i === idx ? 'cur' : '')}">${i + 1}</span>`; }).join('');
-  host.innerHTML = `${RES('الموارد: جمع وطرح وضرب الأعداد الطبيعية والعشرية، رتبة مقدار')}
-   <div class="dots">${dots}</div>
-   <div class="timer"><span class="tbar" id="tbar"><i id="tb"></i></span><span class="tsec" id="ts"></span><button class="tbtn" id="tp"></button><button class="tbtn" id="toff"></button></div>
-   <div class="qtext"><b>السؤال ${idx + 1} (1 ن):</b> ${R.q}</div>
-   ${R.kind === 'mc' ? `<div class="mc">${R.opts.map((o, i) => `<button class="btn light" data-i="${i}">${o}</button>`).join('')}</div>`
-    : `<div class="ans"><input type="text" inputmode="decimal" autocomplete="off" aria-label="الجواب"><span class="unit">${R.unit}</span><button class="btn chk">تحقّق ✓</button></div><div class="keys"><button data-k=",">,</button><button data-k="⌫">⌫</button></div>`}
-   <div class="fb" id="g1fb"></div><div id="g1sol"></div><div class="row" id="g1nx"></div>`;
-  $('#tp').addEventListener('click', () => { tmPause = !tmPause; drawTimer(); });
-  $('#toff').addEventListener('click', () => { S.tm = !S.tm; save(); drawTimer(); });
-  const fb = $('#g1fb');
-  const next = () => { $('#g1nx').innerHTML = idx < G1.length - 1 ? `<button class="btn green wide" id="g1go">السؤال التالي ←</button>` : NXA('#s2', 'إلى اللعبة 2'); const g = $('#g1go'); if (g) g.addEventListener('click', () => { game1(idx + 1); $('#s1').scrollIntoView({ behavior: 'smooth' }); }); };
-  const lockUI = () => $$('#g1 .mc button, #g1 .ans input, #g1 .ans button, #g1 .keys button').forEach(b => b.disabled = true);
-  const finish = ok => {
-    over = true; stopTimer(); lockUI();
-    const bonus = ok && S.tm && tmLeft > 0 ? 1 : 0, stn = ok ? Math.max(1, 4 - tries) + bonus : 0;
-    rec(R.id, ok ? 1 : 0, stn);
-    if (ok) fb.innerHTML = `<span class="g">✅ ${pick('ok')} ${'⭐'.repeat(stn - bonus)}${bonus ? ' ⚡⭐ نجمة السرعة!' : ''}</span>`;
-    $('#g1sol').innerHTML = solBox(ok, solHTML(R.m, R.s, R.c, R.sc));
-    $$('.dots span', host)[idx].className = ok ? 'ok' : 'ko';
-    next();
-  };
-  const wrong = el => {
-    sBad(); shake(el);
-    if (tries === 1) { fb.innerHTML = `<span class="w">${pick('w1')}</span><span class="h">💡 ${R.h1}</span>`; hintFx(fb); }
-    else if (tries === 2) { fb.innerHTML = `<span class="w">${pick('w2')}</span><span class="h">💡 ${R.h2}</span>`; hintFx(fb); }
-    else { fb.innerHTML = `<span class="w">🌱 ${pick('fail')}</span>`; finish(false); }
-  };
-  if (st) { stopTimer(); lockUI(); drawTimer(); fb.innerHTML = `<span class="g">منجز: ${fmt(st.pts)} / 1 ن ${'⭐'.repeat(st.st)}</span>`; $('#g1sol').innerHTML = solBox(!!st.pts, solHTML(R.m, R.s, R.c, R.sc)); next(); return; }
-  startTimer();
-  if (R.kind === 'mc') {
-    $$('.mc button', host).forEach(b => b.addEventListener('click', () => {
-      if (over) return; tries++;
-      if (+b.dataset.i === R.ai) { b.className = 'btn green'; sOk(); burst(b); toast('🛒 +1 ن'); finish(true); }
-      else { b.disabled = true; b.className = 'btn red'; wrong(b); }
-    }));
-  } else {
-    const inp = $('.ans input', host);
-    $$('.keys button', host).forEach(b => b.addEventListener('click', () => { const k = b.dataset.k; inp.value = k === '⌫' ? inp.value.slice(0, -1) : inp.value + k; inp.focus(); }));
-    const check = () => {
-      if (over) return; const v = num(inp.value);
-      if (v === null) { fb.innerHTML = '<span class="h">اكتب عددا (الفاصلة بالزر ,).</span>'; shake(inp); return; }
-      tries++;
-      if (Math.abs(v - R.a) < 1e-9) { sOk(); burst(inp); toast('🛒 +1 ن'); finish(true); } else wrong(inp);
-    };
-    $('.chk', host).addEventListener('click', check); inp.addEventListener('keydown', e => { if (e.key === 'Enter') check(); });
+function renderQ(gi, qi) {
+  const g = PAGE.games[gi], q = g.qs[qi], sec = $(`#g${gi + 1}`), st = $('.stage', sec);
+  const t = q.t || 'c';
+  const doTxt = { c: '👆 اختر جوابا واحدا ثم اضغط «تحقّق».', m: '👆 اضغط بطاقة من اليمين ثم البطاقة التي تناسبها من اليسار، ثم «تحقّق».', o: '👆 اضغط البطاقات بالترتيب المطلوب، ثم «تحقّق». للتصحيح اضغط «امسح».' }[t];
+  st.innerHTML = `<div class="qbox"><div class="muted">السؤال ${qi + 1} من ${g.qs.length}${q.bk ? ` <span class="bk">📖 ${q.bk}</span>` : ''}</div><div class="qtext">${q.q}</div>${q.fig || ''}${q.j ? `<div class="muted">✍️ علّل جوابك في كراسك، ثم اختر.</div>` : ''}<span class="do">${doTxt}</span>
+    <div class="play"></div><div class="tries">${'❤️'.repeat(3)}</div><div class="fb"></div>
+    <button class="btn green wide go" disabled>✔ تحقّق</button><div class="after"></div></div>`;
+  const play = $('.play', st), go = $('.go', st), fb = $('.fb', st), after = $('.after', st), tr = $('.tries', st);
+  let wrong = 0, busy = false, finished = false;
+  const showTries = () => tr.innerHTML = '❤️'.repeat(3 - wrong) + '🤍'.repeat(wrong);
+  /* --- choice --- */
+  let sel = null, state = null;
+  if (t === 'c') {
+    const opts = q.keep ? q.o.map((x, i) => [x, i]) : shuffle(q.o.map((x, i) => [x, i]));
+    play.innerHTML = `<div class="opts ${q.o.some(x => String(x).length > 26) ? 'one' : ''}">${opts.map(([x, i]) => `<button class="opt" data-i="${i}">${x}</button>`).join('')}</div>`;
+    $$('.opt', play).forEach(b => b.addEventListener('click', () => { if (busy || finished || b.disabled) return; sClick(); $$('.opt', play).forEach(x => x.classList.remove('sel')); b.classList.add('sel'); sel = +b.dataset.i; go.disabled = false; }));
+    state = { check: () => sel === q.a, onWrong: () => { const b = $(`.opt[data-i="${sel}"]`, play); b.classList.remove('sel'); b.classList.add('bad'); b.disabled = true; sel = null; go.disabled = true; },
+      reveal: ok => { $$('.opt', play).forEach(b => { b.disabled = true; b.classList.remove('sel'); if (+b.dataset.i === q.a) b.classList.add('good'); }); } };
+  }
+  /* --- matching --- */
+  if (t === 'm') {
+    const L = q.p.map((p, i) => [p[0], i]), R = shuffle(q.p.map((p, i) => [p[1], i]));
+    const pairs = {}; let lsel = null; const COL = ['#fde68a', '#bfdbfe', '#fbcfe8', '#bbf7d0', '#ddd6fe'];
+    play.innerHTML = `<div class="mcols"><div class="col">${L.map(([x, i]) => `<button class="opt ml" data-i="${i}">${x}</button>`).join('')}</div><div class="col">${R.map(([x, i]) => `<button class="opt mr" data-i="${i}">${x}</button>`).join('')}</div></div>`;
+    const paint = () => { $$('.ml,.mr', play).forEach(b => { b.style.background = ''; b.classList.remove('sel'); }); Object.entries(pairs).forEach(([l, r], k) => { $(`.ml[data-i="${l}"]`, play).style.background = COL[k % 5]; $(`.mr[data-i="${r}"]`, play).style.background = COL[k % 5]; }); if (lsel !== null) $(`.ml[data-i="${lsel}"]`, play).classList.add('sel'); go.disabled = Object.keys(pairs).length < q.p.length; };
+    $$('.ml', play).forEach(b => b.addEventListener('click', () => { if (busy || finished) return; sClick(); const i = +b.dataset.i; delete pairs[i]; lsel = i; paint(); }));
+    $$('.mr', play).forEach(b => b.addEventListener('click', () => { if (busy || finished) return; if (lsel === null) { toast('اضغط أولا بطاقة من العمود الأيمن 👉', 1); return; } sClick(); const r = +b.dataset.i; Object.keys(pairs).forEach(l => { if (pairs[l] === r) delete pairs[l]; }); pairs[lsel] = r; lsel = null; paint(); }));
+    state = { check: () => q.p.every((p, i) => pairs[i] === i), onWrong: () => { Object.keys(pairs).forEach(l => { if (pairs[l] !== +l) delete pairs[l]; }); paint(); $$('.ml', play).forEach(b => { if (pairs[b.dataset.i] !== undefined) b.disabled = true; }); $$('.mr', play).forEach(b => { if (Object.values(pairs).includes(+b.dataset.i)) b.disabled = true; }); },
+      reveal: () => { Object.keys(pairs).forEach(k => delete pairs[k]); q.p.forEach((p, i) => pairs[i] = i); lsel = null; paint(); $$('.ml,.mr', play).forEach(b => b.disabled = true); } };
+  }
+  /* --- ordering --- */
+  if (t === 'o') {
+    const items = shuffle(q.it.map((x, i) => [x, i])); let seq = [];
+    play.innerHTML = `<div class="olist"></div><div class="opts">${items.map(([x, i]) => `<button class="opt oi" data-i="${i}">${x}</button>`).join('')}</div><div class="row"><button class="btn light clr" style="min-height:44px">⌫ امسح</button></div>`;
+    const ol = $('.olist', play); if (q.vert) ol.classList.add('vert');
+    const paint = () => { ol.innerHTML = seq.length ? seq.map((i, k) => `<span class="pk">${q.vert ? (k + 1) + ') ' : ''}${q.it[i]}</span>`).join(q.vert ? '' : `<span class="sg">${q.sepS || ''}</span>`) : `<span class="em">${q.ph || 'اضغط البطاقات بالترتيب'}</span>`; $$('.oi', play).forEach(b => b.style.visibility = seq.includes(+b.dataset.i) ? 'hidden' : ''); go.disabled = seq.length < q.it.length; };
+    $$('.oi', play).forEach(b => b.addEventListener('click', () => { if (busy || finished) return; sClick(); seq.push(+b.dataset.i); paint(); }));
+    $('.clr', play).addEventListener('click', () => { if (finished) return; seq = []; paint(); });
+    paint();
+    state = { check: () => seq.every((v, k) => v === k), onWrong: () => { let k = 0; while (k < seq.length && seq[k] === k) k++; seq = seq.slice(0, k); paint(); },
+      reveal: () => { seq = q.it.map((x, i) => i); paint(); $('.clr', play).style.display = 'none'; } };
+  }
+  go.addEventListener('click', () => {
+    if (busy || finished || go.disabled) return; busy = true; setTimeout(() => busy = false, 450);
+    if (state.check()) {
+      finished = true; state.reveal(true); const stn = 3 - wrong, pts = RATE[wrong];
+      S.r[q.id] = { pts, st: stn }; save(); sOk(); burst(go, 8 + stn * 3); toast('⭐'.repeat(stn) + ' ' + pick('ok'));
+      fb.innerHTML = `<span class="g">✅ ${pick('ok')} — ربحت ${M(fmt(pts * PT))} ن</span>`; end(true);
+    } else {
+      wrong++; showTries(); sBad(); shake(st);
+      if (wrong >= 3) { finished = true; state.reveal(false); S.r[q.id] = { pts: 0, st: 0 }; save(); fb.innerHTML = `<span class="w">${pick('fail')}</span>`; end(false); }
+      else { state.onWrong(); hintFx(go); fb.innerHTML = `<span class="w">❌ ${pick(wrong === 1 ? 'w1' : 'w2')}</span><span class="h">💡 تلميح ${wrong}: ${wrong === 1 ? q.h1 : q.h2}</span>`; }
+    }
+  });
+  function end(ok) {
+    go.style.display = 'none'; upd();
+    $('.dots', sec).innerHTML = dotsOf(g, qi);
+    after.innerHTML = solBox(ok, q) + `<button class="btn wide nx" style="margin-top:12px">${qi + 1 < g.qs.length ? 'السؤال التالي ←' : 'النتيجة ←'}</button>`;
+    $('.nx', after).addEventListener('click', () => { showGame(gi); sec.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
   }
 }
-
-/* ================= GAME 2: the comma's journey (3 stations) ================= */
-/* station A: match decimal fraction <-> decimal writing (3 pts) */
-const MT = [['375', '100', '3,75'], ['42', '10', '4,2'], ['7', '1000', '0,007'], ['205', '100', '2,05']];
-/* station B: the ×/÷ machine (4 × 1 pt) */
-const MB = [
- { id: 'b1', x: '3,7', op: '× 100', a: 370, h1: 'الضرب في 100 يجعل العدد أكبر: الفاصلة تنتقل نحو اليمين.', h2: 'انقل الفاصلة مرتبتين نحو اليمين، وأضف صفرا إن لزم: 3,70.', s: [M('3,7 = 3,70'), `ننقل الفاصلة مرتبتين نحو اليمين: ${M('3,7 × 100 = 370')}`], c: M('3,7 × 100 = 370'), m: 'لضرب عدد عشري في 100 ننقل الفاصلة مرتبتين نحو اليمين.' },
- { id: 'b2', x: '45', op: '÷ 10', a: 4.5, h1: 'القسمة على 10 تجعل العدد أصغر: الفاصلة تنتقل نحو اليسار.', h2: 'اكتب 45 على الشكل 45,0 ثم انقل الفاصلة مرتبة واحدة نحو اليسار.', s: [M('45 = 45,0'), `ننقل الفاصلة مرتبة واحدة نحو اليسار: ${M('45 ÷ 10 = 4,5')}`], c: M('45 ÷ 10 = 4,5'), m: 'لقسمة عدد على 10 ننقل الفاصلة مرتبة واحدة نحو اليسار.' },
- { id: 'b3', x: '2,6', op: '× 0,1', a: 0.26, h1: 'الضرب في 0,1 يعني أخذ عُشر العدد: النتيجة أصغر.', h2: 'الضرب في 0,1 هو نفسه القسمة على 10.', s: [`الضرب في ${M('0,1')} هو القسمة على ${M('10')}`, `ننقل الفاصلة مرتبة واحدة نحو اليسار: ${M('2,6 × 0,1 = 0,26')}`], c: M('2,6 × 0,1 = 0,26'), m: 'لضرب عدد في 0,1 ننقل الفاصلة مرتبة واحدة نحو اليسار.' },
- { id: 'b4', x: '8,4', op: '÷ 0,1', a: 84, h1: 'القسمة على 0,1 تجعل العدد أكبر.', h2: 'القسمة على 0,1 هي نفسها الضرب في 10.', s: [`القسمة على ${M('0,1')} هي الضرب في ${M('10')}`, `ننقل الفاصلة مرتبة واحدة نحو اليمين: ${M('8,4 ÷ 0,1 = 84')}`], c: M('8,4 ÷ 0,1 = 84'), m: 'لقسمة عدد على 0,1 ننقل الفاصلة مرتبة واحدة نحو اليمين.' }
-];
-/* station C: order (2 × 1,5 pt) */
-const MO = [
- { id: 'o1', asc: true, ctx: 'أطوال قفزات تلاميذ القسم في حصة التربية البدنية (بالمتر):', v: ['3,4', '3,04', '3,401', '3,14', '3,1'],
-   h1: 'الأجزاء الصحيحة كلها 3: قارن رقم الأجزاء من عشرة، ثم من مئة، ثم من ألف.', h2: 'اكتب الأعداد بثلاثة أرقام بعد الفاصلة: 3,400 ؛ 3,040 ؛ 3,401 ؛ 3,140 ؛ 3,100' },
- { id: 'o2', asc: false, ctx: 'كميات الحليب (باللتر) التي جمعتها 4 مزارع في وادي فراغة صباحا:', v: ['12,5', '12,05', '12,55', '12,505'],
-   h1: 'رتّب من الأكبر إلى الأصغر: قارن الأجزاء من عشرة أولا.', h2: 'اكتب الأعداد بثلاثة أرقام بعد الفاصلة: 12,500 ؛ 12,050 ؛ 12,550 ؛ 12,505' }
-];
-const sorted = R => R.v.slice().sort((a, b) => R.asc ? num(a) - num(b) : num(b) - num(a));
-function game2() {
-  const host = $('#g2');
-  host.innerHTML = `${RES('الموارد: الكتابة الكسرية والعشرية، الضرب والقسمة على 10 و100 و1000 و0,1، مقارنة وترتيب أعداد عشرية')}
-   <div class="q" style="border:0;margin:0;padding:0"><b>🚉 المحطة 1 (3 ن):</b> صِل كل كسر عشري بكتابته العشرية: المس كسرا، ثم المس العدد الذي يساويه.<div id="mt"></div></div>
-   <div class="q"><b>🚉 المحطة 2 (4 ن):</b> الآلة العجيبة: ماذا يخرج من الآلة؟<div id="mb"></div></div>
-   <div class="q"><b>🚉 المحطة 3 (3 ن):</b> رتّب الأعداد: المسها بالترتيب المطلوب.<div id="mo"></div></div>
-   <div class="row" id="g2nx"></div>`;
-  stMatch(); stMachine(0); stOrder(0);
+/* ---------- score bar ---------- */
+function upd() {
+  $('#score').textContent = fmt(score() * PT); $('#stars').textContent = stars();
+  $('#progi').style.width = Math.round(100 * ALLQ.filter(q => S.r[q.id]).length / TOT) + '%';
+  $('#snd').textContent = S.snd ? '🔊' : '🔇';
+  $$('#chips a[data-g]').forEach(a => a.classList.toggle('ok', gDone(PAGE.games[+a.dataset.g])));
+  PAGE.games.forEach((g, i) => $(`#g${i + 1}`).classList.toggle('done', gDone(g)));
+  renderCert();
 }
-function g2end() { if (doneK('g2')) $('#g2nx').innerHTML = NXA('#s3', 'إلى الشهادة'); }
-function stMatch() {
-  const host = $('#mt'), st = S.r.mt, sol = () => solHTML('الكسر العشري الذي مقامه 10 أو 100 أو 1000 يُكتب بعدد عشري فيه رقم أو رقمان أو ثلاثة أرقام بعد الفاصلة.', MT.map(p => EQ(F(p[0], p[1]), '=', p[2])), 'عدد الأصفار في المقام يساوي عدد الأرقام بعد الفاصلة.', MT.map(p => [EQ(F(p[0], p[1]), '=', p[2]), .75]));
-  const R = shuffle(MT.map((p, i) => i));
-  host.innerHTML = `<div class="match"><div class="mcol">${MT.map((p, i) => `<button class="mtile" data-l="${i}">${F(p[0], p[1])}</button>`).join('')}</div><div class="mcol">${R.map(i => `<button class="mtile" data-r="${i}" style="direction:ltr">${MT[i][2]}</button>`).join('')}</div></div><div class="fb"></div><div class="mdl"></div>`;
-  const fb = $('.fb', host);
-  if (st) { $$('.mtile', host).forEach(b => b.classList.add('done')); fb.innerHTML = `<span class="g">منجزة: ${fmt(st.pts)} / 3 ن ${'⭐'.repeat(st.st)}</span>`; $('.mdl', host).innerHTML = solBox(!!st.pts, sol()); return; }
-  let L = null, err = 0, good = 0, over = false;
-  const fin = () => { over = true; const pts = err >= 3 ? good * .75 : 3, stn = err >= 3 ? 0 : 3 - err; rec('mt', pts, stn); $$('.mtile', host).forEach(b => b.classList.add('done')); $('.mdl', host).innerHTML = solBox(err < 3, sol()); g2end(); };
-  $$('[data-l]', host).forEach(b => b.addEventListener('click', () => { if (over) return; $$('[data-l]', host).forEach(x => x.classList.remove('sel')); b.classList.add('sel'); L = b; sClick(); }));
-  $$('[data-r]', host).forEach(b => b.addEventListener('click', () => {
-    if (over || !L) { if (!L) fb.innerHTML = '<span class="h">المس الكسر أولا ثم العدد العشري.</span>'; return; }
-    if (L.dataset.l === b.dataset.r) { L.classList.remove('sel'); L.classList.add('done'); b.classList.add('done'); L = null; good++; sOk(); burst(b, 6); fb.innerHTML = `<span class="g">✅ ${pick('ok')}</span>`; if (good === MT.length) { toast('🚉 +3 ن'); fin(); fb.innerHTML = `<span class="g">🎉 المحطة 1 منجزة! ${'⭐'.repeat(Math.max(1, 3 - err))}</span>`; } }
-    else {
-      err++; sBad(); shake(b); b.classList.add('bad'); setTimeout(() => b.classList.remove('bad'), 600);
-      if (err === 1) { fb.innerHTML = `<span class="w">${pick('w1')}</span><span class="h">💡 انظر إلى المقام: كم صفرا فيه؟</span>`; hintFx(fb); }
-      else if (err === 2) { fb.innerHTML = `<span class="w">${pick('w2')}</span><span class="h">💡 المقام 100 (صفران) ← رقمان بعد الفاصلة، والمقام 1000 ← ثلاثة أرقام.</span>`; hintFx(fb); }
-      else { fb.innerHTML = `<span class="w">🌱 ${pick('fail')}</span>`; fin(); }
-    }
-  }));
-}
-function stMachine(i) {
-  if (i == null) i = 0; const R = MB[i], host = $('#mb'), st = S.r[R.id];
-  host.innerHTML = `<div class="dots">${MB.map((r, k) => { const x = S.r[r.id]; return `<span class="${x ? (x.pts ? 'ok' : 'ko') : (k === i ? 'cur' : '')}">${k + 1}</span>`; }).join('')}</div>
-   <div class="machine"><div class="inn">${R.x}</div><div>⬇️</div><div class="mbox">⚙️ ${R.op}</div><div>⬇️</div><div>؟</div></div>
-   <div class="ans"><input type="text" inputmode="decimal" autocomplete="off" aria-label="الجواب"><button class="btn chk">تحقّق ✓</button></div><div class="keys"><button data-k=",">,</button><button data-k="⌫">⌫</button></div>
-   <div class="fb"></div><div class="mdl"></div><div class="row nx"></div>`;
-  const fb = $('.fb', host), inp = $('input', host); let tries = 0, over = false;
-  const sol = () => solHTML(R.m, R.s, R.c, [['اتجاه انتقال الفاصلة', .5], ['النتيجة', .5]]);
-  const next = () => { const nx = $('.nx', host); if (i < MB.length - 1) { nx.innerHTML = `<button class="btn green wide">العدد التالي ←</button>`; $('button', nx).addEventListener('click', () => stMachine(i + 1)); } g2end(); };
-  const lock = () => $$('input,.ans button,.keys button', host).forEach(b => b.disabled = true);
-  if (st) { lock(); fb.innerHTML = `<span class="g">منجز: ${fmt(st.pts)} / 1 ن ${'⭐'.repeat(st.st)}</span>`; $('.mdl', host).innerHTML = solBox(!!st.pts, sol()); next(); return; }
-  const fin = ok => { over = true; lock(); rec(R.id, ok ? 1 : 0, ok ? Math.max(1, 4 - tries) : 0); $('.mdl', host).innerHTML = solBox(ok, sol()); $$('.dots span', host)[i].className = ok ? 'ok' : 'ko'; next(); };
-  $$('.keys button', host).forEach(b => b.addEventListener('click', () => { const k = b.dataset.k; inp.value = k === '⌫' ? inp.value.slice(0, -1) : inp.value + k; inp.focus(); }));
-  const check = () => {
-    if (over) return; const v = num(inp.value);
-    if (v === null) { fb.innerHTML = '<span class="h">اكتب عددا (الفاصلة بالزر ,).</span>'; shake(inp); return; }
-    tries++;
-    if (Math.abs(v - R.a) < 1e-9) { sOk(); burst(inp); fb.innerHTML = `<span class="g">✅ ${pick('ok')} ${'⭐'.repeat(Math.max(1, 4 - tries))}</span>`; toast('⚙️ +1 ن'); fin(true); return; }
-    sBad(); shake(inp);
-    if (tries === 1) { fb.innerHTML = `<span class="w">${pick('w1')}</span><span class="h">💡 ${R.h1}</span>`; hintFx(fb); }
-    else if (tries === 2) { fb.innerHTML = `<span class="w">${pick('w2')}</span><span class="h">💡 ${R.h2}</span>`; hintFx(fb); }
-    else { fb.innerHTML = `<span class="w">🌱 ${pick('fail')}</span>`; fin(false); }
-  };
-  $('.chk', host).addEventListener('click', check); inp.addEventListener('keydown', e => { if (e.key === 'Enter') check(); });
-}
-function stOrder(i) {
-  const R = MO[i], host = $('#mo'), st = S.r[R.id], sg = R.asc ? '<' : '>', ok = sorted(R);
-  const line = arr => arr.map((v, k) => (k ? `<span class="sg">${sg}</span>` : '') + `<span class="pk">${v}</span>`).join('');
-  const sol = () => solHTML('نقارن الأجزاء الصحيحة، ثم أرقام الأجزاء من عشرة، ثم من مئة، ثم من ألف (يمكن إضافة أصفار بعد آخر رقم عشري).', [R.v.map(v => { const [a, b = ''] = v.split(','); return M(a + ',' + b.padEnd(3, '0')); }).join(' ؛ '), `<div class="olist">${line(ok)}</div>`], (R.asc ? 'الترتيب التصاعدي: ' : 'الترتيب التنازلي: ') + `<span class="m">${ok.join(' ' + sg + ' ')}</span>`, [['المقارنة', .75], ['الترتيب كاملا', .75]]);
-  host.innerHTML = `<div class="dots">${MO.map((r, k) => { const x = S.r[r.id]; return `<span class="${x ? (x.pts ? 'ok' : 'ko') : (k === i ? 'cur' : '')}">${k + 1}</span>`; }).join('')}</div>
-   <div>${R.ctx} رتّبها <b>${R.asc ? 'تصاعديا (من الأصغر إلى الأكبر)' : 'تنازليا (من الأكبر إلى الأصغر)'}</b>.</div>
-   <div class="bank">${shuffle(R.v).map(v => `<button class="tile" data-v="${v}">${v}</button>`).join('')}</div>
-   <div class="olist" id="ol"></div>
-   <div class="row"><button class="btn light" id="oc">↩️ ابدأ من جديد</button><button class="btn orange" id="ok">تحقّق من الترتيب ✨</button></div>
-   <div class="fb"></div><div class="mdl"></div><div class="row nx"></div>`;
-  const fb = $('.fb', host); let seq = [], tries = 0, over = false;
-  const draw = () => { $('#ol').innerHTML = seq.length ? line(seq) : '<span class="muted">المس الأعداد هنا بالترتيب…</span>'; $$('.tile', host).forEach(b => b.classList.toggle('used', seq.includes(b.dataset.v))); };
-  const next = () => { const nx = $('.nx', host); if (i < MO.length - 1) { nx.innerHTML = `<button class="btn green wide">الترتيب التالي ←</button>`; $('button', nx).addEventListener('click', () => stOrder(i + 1)); } g2end(); };
-  const lock = () => $$('.tile,#oc,#ok', host).forEach(b => b.disabled = true);
-  if (st) { seq = ok.slice(); draw(); lock(); fb.innerHTML = `<span class="g">منجز: ${fmt(st.pts)} / 1,5 ن ${'⭐'.repeat(st.st)}</span>`; $('.mdl', host).innerHTML = solBox(!!st.pts, sol()); next(); return; }
-  draw();
-  $$('.tile', host).forEach(b => b.addEventListener('click', () => { if (over || seq.includes(b.dataset.v)) return; seq.push(b.dataset.v); sClick(); draw(); }));
-  $('#oc').addEventListener('click', () => { if (over) return; seq = []; draw(); });
-  const fin = good => { over = true; lock(); rec(R.id, good ? 1.5 : 0, good ? Math.max(1, 4 - tries) : 0); $('.mdl', host).innerHTML = solBox(good, sol()); $$('.dots span', host)[i].className = good ? 'ok' : 'ko'; next(); };
-  $('#ok').addEventListener('click', () => {
-    if (over) return;
-    if (seq.length < R.v.length) { fb.innerHTML = '<span class="h">المس كل الأعداد أولا.</span>'; return; }
-    tries++;
-    if (seq.join() === ok.join()) { sOk(); burst($('#ol')); fb.innerHTML = `<span class="g">✅ ${pick('ok')} ${'⭐'.repeat(Math.max(1, 4 - tries))}</span>`; toast('🔢 +1,5 ن'); fin(true); return; }
-    sBad(); shake($('#ol'));
-    if (tries === 1) { fb.innerHTML = `<span class="w">${pick('w1')}</span><span class="h">💡 ${R.h1}</span>`; hintFx(fb); }
-    else if (tries === 2) { fb.innerHTML = `<span class="w">${pick('w2')}</span><span class="h">💡 ${R.h2}</span>`; hintFx(fb); }
-    else { fb.innerHTML = `<span class="w">🌱 ${pick('fail')}</span>`; seq = ok.slice(); draw(); fin(false); return; }
-    seq = []; draw();
-  });
-}
-
-/* ================= CERTIFICATE ================= */
-const GT = { g1: '🛒 اللعبة 1', g2: '🔢 اللعبة 2' };
-function medal() { const s = score(); return s >= 17 ? ['🥇', 'الذهبية', '#b45309'] : s >= 12 ? ['🥈', 'الفضية', '#475569'] : ['🥉', 'البرونزية', '#9a3412']; }
+/* ---------- certificate ---------- */
+function medal() { const s = score() * PT; return s >= 17 ? ['🥇', 'الذهبية', '#b45309'] : s >= 12 ? ['🥈', 'الفضية', '#475569'] : ['🥉', 'البرونزية', '#9a3412']; }
 let certBuilt = false;
 function renderCert() {
-  const host = $('#cert'); if (!host) return;
-  const left = Object.keys(ITEMS).filter(k => !doneK(k));
-  if (left.length) { certBuilt = false; host.innerHTML = `<div style="text-align:center"><div class="lock">🔒</div><p>أكمل اللعبتين لتفتح شهادتك.</p><p>بقي: ${left.map(k => `<b>${GT[k]}</b>`).join(' ، ')}</p></div>`; return; }
+  const hostc = $('#cert'); if (!hostc) return;
+  const left = PAGE.games.map((g, i) => [g, i]).filter(([g]) => !gDone(g));
+  if (left.length) { certBuilt = false; hostc.innerHTML = `<div style="text-align:center"><div class="lock">🔒</div><p>أكمل كل الألعاب لتفتح شهادتك.</p><p>بقي: ${left.map(([g, i]) => `<b>${g.icon} اللعبة ${i + 1}</b>`).join(' ، ')}</p></div>`; return; }
   if (certBuilt) { drawCert(); return; }
   certBuilt = true; const [ic, nm] = medal();
-  host.innerHTML = `<p>🎉 مبروك! علامتك <b>${fmt(score())} / 20</b> و ${stars()} ⭐: الشهادة <b>${nm}</b> ${ic}</p>
+  hostc.innerHTML = `<p>🎉 مبروك! علامتك <b>${fmt(score() * PT)} / 20</b> و ${stars()} ⭐: الشهادة <b>${nm}</b> ${ic}</p>
    <label>اكتب اسمك ولقبك:</label><input class="namebox" id="nm" maxlength="40" value="${(S.name || '').replace(/"/g, '')}">
    <div class="row"><button class="btn orange" id="mk">✨ أنشئ الشهادة</button><button class="btn" id="dl">⬇️ تحميل صورة</button><button class="btn light" id="pr">🖨️ طباعة</button></div>
    <canvas id="cv" width="1400" height="990"></canvas>
-   <div class="row"><button class="btn light" id="rst">🔁 العب من جديد</button></div>`;
+   <div class="row"><button class="btn light" id="rst">🔁 العب كل الألعاب من جديد</button></div>`;
   const go = async () => { S.name = $('#nm').value.trim(); save(); await drawCert(); };
   $('#mk').addEventListener('click', go); $('#nm').addEventListener('change', go);
-  $('#dl').addEventListener('click', async () => { await go(); try { const a = document.createElement('a'); a.download = 'شهادة_ألعاب_المقطع_الأول.png'; a.href = $('#cv').toDataURL('image/png'); a.click(); } catch (e) { toast('تعذّر التحميل: استعمل الطباعة أو لقطة شاشة.', 1); } });
+  $('#dl').addEventListener('click', async () => { await go(); try { const a = document.createElement('a'); a.download = 'شهادة_' + PAGE.file + '.png'; a.href = $('#cv').toDataURL('image/png'); a.click(); } catch (e) { toast('تعذّر التحميل: استعمل الطباعة أو لقطة شاشة.', 1); } });
   $('#pr').addEventListener('click', async () => { await go(); window.print(); });
   $('#rst').addEventListener('click', e => { const b = e.currentTarget; if (!b.dataset.c) { b.dataset.c = 1; b.textContent = 'اضغط مرة أخرى للتأكيد'; return; } S.r = {}; save(); location.hash = ''; location.reload(); });
   go();
@@ -518,15 +448,14 @@ async function drawCert() {
   T('متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة', 196, '700 26px Cairo', '#475569');
   T('شهادة إنجاز', 300, '900 84px Cairo', '#0369a1'); T('تُمنح هذه الشهادة للتلميذ(ة)', 380, '700 32px Cairo');
   T(S.name || '..............................', 470, '900 64px Cairo', '#c2410c');
-  T('لإتمامه(ا) بنجاح لعبتي «سوق بوشقوف» و«رحلة الفاصلة»', 545, '700 32px Cairo'); T('المقطع الأول — السنة الأولى متوسط', 592, '700 28px Cairo', '#475569');
-  T(`العلامة: ${fmt(score())} / 20 — النجوم: ${stars()} ⭐`, 660, '800 34px Cairo', '#1e3a8a'); T(`${ic} الشهادة ${nm}`, 735, '900 46px Cairo', col);
+  T(PAGE.certLine, 545, '700 30px Cairo'); T(PAGE.certSub, 592, '700 28px Cairo', '#475569');
+  T(`العلامة: ${fmt(score() * PT)} / 20 — النجوم: ${stars()} ⭐`, 660, '800 34px Cairo', '#1e3a8a'); T(`${ic} الشهادة ${nm}`, 735, '900 46px Cairo', col);
   const d = new Date(); x.font = '700 26px Cairo'; x.fillStyle = '#0f172a';
   x.textAlign = 'right'; x.fillText('الأستاذ: يوسفي السوفي', W - 110, 860); x.textAlign = 'left'; x.fillText(`التاريخ: ${d.getDate()} / ${d.getMonth() + 1} / ${d.getFullYear()}`, 110, 860);
-  x.textAlign = 'center'; x.font = '60px serif'; x.fillText('🔢', W / 2, 880);
+  x.textAlign = 'center'; x.font = '60px serif'; x.fillText('🎮', W / 2, 880);
 }
-
 $('#snd').addEventListener('click', () => { S.snd = !S.snd; save(); upd(); });
-game1(); game2(); upd();
+upd();
 </script>
 </body>
 </html>

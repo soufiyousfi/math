@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>المس الشكل: لعبة المقطع الثاني (الأولى متوسط)</title>
-<meta name="description" content="لعبة للسنة الأولى متوسط على الجزء الأول من المقطع الثاني: المس المستقيم ونصف المستقيم والقطعة والمنتصف، والمستقيم العمودي والموازي، ومركز الدائرة ونصف قطرها وقطرها. نجوم وشهادة باسمك.">
+<title>ألعاب المقطع الثاني: مماثلات الأشكال المستوية والمساحات (الأولى متوسط)</title>
+<meta name="description" content="ثلاث ألعاب سهلة بأزرار اختيار للسنة الأولى متوسط: المستقيمات والرموز والتعامد والتوازي، المثيلات والدائرة، المحيطات والمساحات. 20 سؤالا و20 نقطة وشهادة.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="👆 المس الشكل: لعبة المقطع الثاني للأولى متوسط!">
-<meta property="og:description" content="عشر مهمّات: المس الخط أو النقطة المطلوبة. 20 نقطة وشهادة إنجاز باسمك.">
+<meta property="og:title" content="🎮 ألعاب المقطع الثاني للأولى متوسط: 3 ألعاب و20 سؤالا!">
+<meta property="og:description" content="الرموز، الدائرة، المساحة: اضغط الجواب واربح النجوم والشهادة.">
 <meta property="og:image" content="https://soufiyousfi.github.io/math/1m/t1/al3ab/img/al3ab-m2-fb.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&display=swap" rel="stylesheet">
 <style>
+
 :root{
   --bg:#eef7fb; --card:#fff; --ink:#0f172a; --muted:#475569; --line:#cbd5e1;
   --c1:#0369a1; --c2:#0d9488; --yel:#f59e0b; --ok:#16a34a; --ok-soft:#dcfce7;
@@ -71,57 +72,6 @@ table.vt{border-collapse:collapse;margin:6px auto;direction:ltr;font-weight:900;
 table.vt td{border:2px solid #0369a1;padding:3px 14px;text-align:center;background:#fff}
 table.vt tr:first-child td{background:#e0f2fe}
 .bk{font-size:.85rem;color:#64748b;text-align:center}
-/* game 1 */
-.bank{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;direction:ltr;margin:10px 0}
-.tile{min-width:62px;min-height:50px;padding:6px 12px;border-radius:12px;border:3px solid #0284c7;background:#fff;color:#0369a1;font-weight:900;font-size:1.15rem;box-shadow:0 5px 0 #0284c7}
-.tile.sel{background:var(--yel);border-color:#b45309;color:#fff;box-shadow:0 5px 0 #b45309;transform:translateY(-2px)}
-.tile.used{visibility:hidden}
-.build{direction:ltr;display:flex;align-items:center;justify-content:center;gap:6px;margin:14px 0;background:#eff6ff;border:2px dashed #93c5fd;border-radius:14px;padding:12px 4px}
-.frz{display:flex;flex-direction:column;align-items:center;gap:5px;padding:4px;border-radius:12px}
-.frz .bar2{width:62px;height:4px;background:#0369a1;border-radius:2px}
-.zone{width:62px;height:44px;border:3px dashed #94a3b8;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem;color:#0369a1}
-.zone.on{border-color:var(--yel);background:#fef3c7}
-.zone.full{border-style:solid;border-color:#0284c7;background:#e0f2fe}
-.frz.good{background:var(--ok-soft);outline:3px solid var(--ok)}
-.frz.badz{background:var(--bad-soft);outline:3px solid var(--bad)}
-.eqs{font-size:1.6rem;font-weight:900;color:#0369a1}
-/* game 2 safe */
-.safe{background:#334155;border-radius:18px;padding:14px;color:#fff;text-align:center}
-.safe .m,.safe>.eq,.safe>div>.eq{color:#fde68a}
-.screen{background:#0f172a;border:4px solid #64748b;border-radius:10px;padding:8px;font-family:monospace;font-size:1.8rem;letter-spacing:4px;color:#4ade80;direction:ltr;min-height:62px;display:flex;align-items:center;justify-content:center}
-.screen.err{color:#f87171}
-.pad{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:300px;margin:12px auto 0;direction:ltr}
-.pad button{min-height:56px;border:0;border-radius:14px;background:#e2e8f0;color:#0f172a;font-size:1.4rem;font-weight:900;box-shadow:0 5px 0 #94a3b8}
-.pad button:active{transform:translateY(4px);box-shadow:none}
-.pad .c{background:#fecaca;color:#7f1d1d;box-shadow:0 5px 0 #f87171}
-.pad .open{grid-column:span 4;background:var(--yel);color:#3b2600;box-shadow:0 5px 0 #b45309}
-.lock{font-size:2.4rem;line-height:1}
-.steps3{display:flex;gap:6px;justify-content:center;margin-bottom:8px}
-.steps3 span{width:34px;height:34px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-weight:900}
-.steps3 span.ok{background:var(--ok);color:#fff}.steps3 span.cur{background:var(--yel);color:#fff}.steps3 span.ko{background:#94a3b8;color:#fff}
-/* game 3 */
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-.duo .btn{min-height:60px;font-size:1.05rem}
-.data{display:grid;grid-template-columns:1fr 1fr;gap:6px;direction:ltr;margin:6px 0}
-.data div{background:#f1f5f9;border-radius:10px;padding:2px 8px;font-weight:800;text-align:center;color:#1e3a8a}
-/* new games */
-.bem{display:inline-block;background:#fef9c3;border:1px solid #facc15;color:#713f12;border-radius:999px;padding:0 10px;font-size:.82rem;font-weight:800;margin-bottom:4px}
-.match{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:300px;margin:10px auto}
-.match .col{display:flex;flex-direction:column;gap:12px;align-items:stretch}.match .hd{text-align:center}
-.pairs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;direction:ltr;margin:8px 0;min-height:10px}
-.pairs .p{padding:4px 10px;border-radius:12px;border:3px solid transparent}
-.pairs .p.good{border-color:var(--ok)}.pairs .p.badz{border-color:var(--bad)}
-.cards{display:flex;flex-direction:column;gap:8px;margin:8px 0}
-.scard{width:100%;text-align:start;font:inherit;font-size:.95rem;font-weight:700;background:#fff;border:3px solid #0284c7;border-radius:12px;padding:6px 10px;box-shadow:0 4px 0 #0284c7;color:var(--ink)}
-.scard.in{border-color:var(--ok);box-shadow:0 4px 0 #15803d;background:#f0fdf4}
-.seqh{font-weight:900;color:var(--c1);margin-top:6px}
-ol.seq{margin:4px 0;padding-inline-start:26px;min-height:40px;background:#f8fafc;border:2px dashed #86efac;border-radius:12px;padding-top:6px;padding-bottom:6px}
-ol.seq li{margin:6px 0;font-weight:900}
-.pl{cursor:pointer}.pl .vis{stroke:#0369a1;stroke-width:3}.pl .hit{stroke:transparent;stroke-width:24}
-.pl.on .vis{stroke:#f59e0b;stroke-width:7}.pl.off{pointer-events:none}
-.opts{display:flex;flex-direction:column;gap:10px;margin-top:8px}.opts .btn{font-size:1rem}
-.slrow{display:flex;gap:8px;align-items:center;direction:ltr}.slrow .btn{min-width:56px;padding:4px}
-.slrow input{flex:1;height:44px;accent-color:#f59e0b}
 /* feedback */
 .fb{margin-top:10px;font-weight:700}
 .fb .w{display:block;background:var(--bad-soft);color:#991b1b;border-radius:12px;padding:6px 10px}
@@ -156,42 +106,48 @@ canvas#cv{width:100%;height:auto;border-radius:10px;box-shadow:0 4px 18px rgba(0
 footer{text-align:center;color:var(--muted);font-size:.85rem;padding:16px}
 @media print{body *{visibility:hidden}#cv{visibility:visible;position:fixed;inset:0;width:100%;box-shadow:none}}
 
-/* ---- games page additions ---- */
-.res{display:inline-block;background:#ecfeff;border:1px solid #67e8f9;color:#155e75;border-radius:999px;padding:0 10px;font-size:.82rem;font-weight:800;margin-bottom:4px}
-.dots{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin:6px 0}
-.dots span{width:26px;height:26px;border-radius:50%;background:#e2e8f0;font-size:.8rem;font-weight:900;display:flex;align-items:center;justify-content:center}
-.dots span.ok{background:var(--ok);color:#fff}.dots span.ko{background:#94a3b8;color:#fff}.dots span.cur{background:var(--yel);color:#fff}
-.timer{display:flex;align-items:center;gap:8px;margin:6px 0}
-.tbar{flex:1;height:14px;background:#e2e8f0;border-radius:8px;overflow:hidden}
-.tbar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#f59e0b,#16a34a);transition:width .25s linear}
-.tbar.off i{background:#cbd5e1}
-.tsec{font-weight:900;min-width:46px;text-align:center;direction:ltr}
-.tbtn{min-height:40px;border:2px solid var(--line);background:#fff;border-radius:12px;font-weight:800;padding:0 10px}
-.qtext{font-size:1.08rem;font-weight:700;margin:6px 0}
-.mc{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-.mc .btn{min-height:56px;font-size:1.2rem;direction:ltr}
-.vop{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Courier New",monospace;font-weight:900;font-size:1.2rem;color:#1e3a8a;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:4px 14px;margin:4px 0;line-height:1.45;text-align:right}
+
+/* ---- simple games v2 ---- */
+.res{display:inline-block;background:#ecfeff;border:1px solid #67e8f9;color:#155e75;border-radius:999px;padding:0 10px;font-size:.82rem;font-weight:800;margin:2px 0}
+.bk{display:inline-block;background:#fef9c3;border:1px solid #facc15;color:#713f12;border-radius:999px;padding:0 10px;font-size:.8rem;font-weight:800;margin:2px 0}
+.dots{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin:8px 0}
+.dots span{width:30px;height:30px;border-radius:50%;background:#e2e8f0;font-size:.85rem;font-weight:900;display:flex;align-items:center;justify-content:center}
+.dots span.ok{background:var(--ok);color:#fff}.dots span.ko{background:#94a3b8;color:#fff}.dots span.cur{background:var(--yel);color:#fff;transform:scale(1.15)}
+.qbox{background:#f8fafc;border:2px solid #e2e8f0;border-radius:14px;padding:10px 12px;margin-top:6px}
+.qtext{font-size:1.12rem;font-weight:700}
+.do{display:block;background:#e0f2fe;color:#075985;border-radius:10px;padding:4px 10px;margin:8px 0 0;font-weight:800;font-size:.95rem}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.opts.one{grid-template-columns:1fr}
+.opt{min-height:62px;border-radius:16px;border:3px solid #0284c7;background:#fff;color:#0c4a6e;font-weight:900;font-size:1.15rem;box-shadow:0 5px 0 #0284c7;padding:6px 8px;line-height:1.4}
+.opt.sel{background:#fef3c7;border-color:#d97706;box-shadow:0 5px 0 #b45309;transform:translateY(-2px)}
+.opt.good{background:var(--ok-soft);border-color:var(--ok);box-shadow:0 5px 0 #15803d;color:#14532d}
+.opt.bad{background:var(--bad-soft);border-color:var(--bad);box-shadow:0 5px 0 #991b1b;color:#7f1d1d;text-decoration:line-through;opacity:.7}
+.opt:disabled{cursor:default}
+.mcols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+.mcols .col{display:flex;flex-direction:column;gap:10px}
+.olist{direction:ltr;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:62px;background:#f0fdf4;border:2px dashed #86efac;border-radius:14px;padding:8px;margin:10px 0 4px;align-items:center}
+.olist .pk{background:#dcfce7;border:2px solid #16a34a;border-radius:10px;padding:2px 12px;font-weight:900;font-size:1.1rem;color:#14532d}
+.olist.vert{direction:rtl;flex-direction:column;align-items:stretch}.olist.vert .pk{text-align:start}
+.olist .em{color:#94a3b8;font-weight:700}
+.go{margin-top:14px}
+.hint3{font-size:.85rem;color:var(--muted);text-align:center;margin-top:6px}
+.tries{display:flex;gap:4px;justify-content:center;margin-top:8px;font-size:1.2rem}
+.gsum{text-align:center}
+.gsum .big{font-size:2.2rem}
+.lock{font-size:2.4rem;line-height:1}
+.intro{background:#fff7ed;border:2px dashed #fb923c;border-radius:12px;padding:6px 10px;margin:6px 0;font-weight:700}
+.howto li{margin:4px 0}
+.vop{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Courier New",monospace;font-weight:900;font-size:1.15rem;color:#1e3a8a;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:4px 14px;margin:4px 0;line-height:1.45;text-align:right}
 .vop div{white-space:pre}.vop .rule{border-top:3px solid #1e3a8a;height:0;margin:2px 0}
-.mcol{display:flex;flex-direction:column;gap:10px}
-.mtile{min-height:56px;border-radius:14px;border:3px solid #0284c7;background:#fff;color:#0369a1;font-weight:900;font-size:1.2rem;box-shadow:0 5px 0 #0284c7;display:flex;align-items:center;justify-content:center}
-.mtile.sel{background:var(--yel);border-color:#b45309;color:#fff;box-shadow:0 5px 0 #b45309}
-.mtile.done{background:var(--ok-soft);border-color:var(--ok);color:#14532d;box-shadow:0 5px 0 #15803d;pointer-events:none}
-.mtile.bad{background:var(--bad-soft);border-color:var(--bad)}
-.machine{background:#334155;border-radius:18px;padding:12px;color:#fff;text-align:center}
-.machine .mbox{display:inline-block;background:var(--yel);color:#3b2600;border-radius:12px;padding:4px 16px;font-size:1.5rem;font-weight:900;direction:ltr;margin:6px 0}
-.machine .inn{font-size:1.6rem;font-weight:900;color:#fde68a;direction:ltr}
-.olist{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;direction:ltr;min-height:60px;background:#f0fdf4;border:2px dashed #86efac;border-radius:14px;padding:8px;margin:8px 0;align-items:center}
-#mo .tile.used{display:none}
-.olist .sg{font-weight:900;font-size:1.4rem;color:#15803d}
-.olist .pk{background:#dcfce7;border:2px solid #16a34a;border-radius:10px;padding:2px 10px;font-weight:900;font-size:1.15rem;color:#14532d}
-.fig.tap svg{max-width:420px}.pt{cursor:pointer}.pt .hitp{fill:transparent}.pt .dotp{fill:#0f172a}.pt text{pointer-events:none}.el.good .vis{stroke:#16a34a!important;stroke-width:7}.pt.good .dotp{fill:#16a34a;r:8px}.el.bad .vis{stroke:#dc2626!important;stroke-width:7}.pt.bad .dotp{fill:#dc2626;r:8px}.el.off{pointer-events:none}
+.fig svg{max-width:300px}
+.chips a.cur{border-color:var(--yel)}
 </style>
 </head>
 <body>
 <header class="top">
   <div class="school">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
-  <h1>🎮 المس الشكل</h1>
-  <div style="font-size:.85rem">السنة الأولى متوسط — المقطع 2 (الجزء الأول): المستقيم، التعامد والتوازي، الدائرة</div>
+  <h1>🎮 ألعاب المقطع الثاني</h1>
+  <div style="font-size:.85rem">السنة الأولى متوسط — مماثلات الأشكال المستوية والمساحات</div>
 </header>
 <div class="bar">
   <span class="pill">🎯 <b id="score">0</b> / 20</span>
@@ -199,165 +155,285 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:16px}
   <span class="prog"><i id="progi"></i></span>
   <button class="snd" id="snd" aria-label="الصوت">🔊</button>
 </div>
-<nav class="chips" id="chips">
-  <a href="#s1" data-k="g1">👆 اللعبة</a><a href="#s2">🎓 الشهادة</a>
-</nav>
-<main>
-<section class="card" id="s1">
-  <div class="ct">👆 المس الشكل <span class="pts">20 ن</span></div>
-  <div class="muted">اقرأ المطلوب، ثم <b>المس</b> في الشكل الخط أو النقطة المطلوبة. لكل مهمّة 3 محاولات وتلميحات.</div>
-  <div id="g1"></div>
+<nav class="chips" id="chips"></nav>
+<main id="main">
+<section class="card" id="s0">
+  <div class="ct">📌 كيف ألعب؟ (اقرأ مرة واحدة)</div>
+  <ol class="howto">
+    <li>👆 اضغط على <b>جواب واحد</b>، فيتلوّن بالأصفر.</li>
+    <li>✔ ثم اضغط الزر الأخضر <b>«تحقّق»</b>. إذا ضغطت جوابا بالخطأ، اضغط جوابا آخر قبل «تحقّق» ولا تخسر شيئا.</li>
+    <li>💡 إذا أخطأت: يظهر تلميح وتجرّب مرة أخرى. لك <b>3 محاولات</b>، وبعد الثالثة يظهر الحل المفصّل.</li>
+    <li>🎯 كل سؤال بنقطة: من المحاولة الأولى <b>1</b>، الثانية <b>0,5</b>، الثالثة <b>0,25</b>.</li>
+    <li>✍️ اكتب الحساب في كراسك قبل أن تختار. تقدّمك محفوظ في هاتفك.</li>
+  </ol>
 </section>
-<section class="card" id="s2">
+<div id="games"></div>
+<section class="card" id="sc">
   <div class="ct">🎓 الشهادة</div>
   <div id="cert"></div>
 </section>
 </main>
 <div id="toast"></div>
-<footer>متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي<br>المرجع: منهاج السنة الأولى متوسط والمخطط السنوي، المقطع الثاني «مماثلات الأشكال المستوية والمساحات» (الموارد الأولى).</footer>
-
+<footer>متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي<br>المرجع: منهاج السنة الأولى متوسط والمخطط السنوي 2022، المقطع الثاني، والكتاب المدرسي.</footer>
 <script>
 "use strict";
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+/* math helpers: everything inside M() is written left to right */
 const F = (a, b) => `<span class="fr"><span>${a}</span><span>${b}</span></span>`;
-const EQP = p => p.map(x => x.startsWith('<') ? x : `<span>${x}</span>`).join('');
-const EQ = (...p) => `<span class="eq">${EQP(p)}</span>`;
-const EQB = (...p) => `<span class="eq blk">${EQP(p)}</span>`;
 const M = t => `<span class="m">${t}</span>`;
-const fmt = x => String(Math.round(x * 1000) / 1000).replace('.', ',');
-const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
-/* vertical operation: rows right-aligned, '—' = rule */
+const EQ = (...p) => `<span class="eq">${p.map(x => String(x).startsWith('<') ? x : `<span>${x}</span>`).join('')}</span>`;
 const VOP = rows => `<div class="vop">${rows.map(r => r === '—' ? '<div class="rule"></div>' : `<div>${r}</div>`).join('')}</div>`;
-const num = s => { const t = String(s).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[٫,]/g, '.').replace(/\s/g, '').replace(/DA|kg|m/gi, ''); return t === '' || isNaN(+t) ? null : +t; };
-
-/* ---------- messages (change from question to question) ---------- */
+const fmt = x => String(Math.round(x * 100) / 100).replace('.', ',');
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+/* geometry figure: P = {A:[x,y]}, seg/line/ray = [['A','B']], circ = [[cx,cy,r,dashed]], ra = [['A','B','C']] (right angle at B), extra = raw svg */
+function G(o) {
+  const W = o.w || 300, H = o.h || 200, P = o.P || {}, out = [];
+  if (o.grid) { for (let x = 0; x <= W; x += o.grid) out.push(`<line x1="${x}" y1="0" x2="${x}" y2="${H}" stroke="#e2e8f0"/>`); for (let y = 0; y <= H; y += o.grid) out.push(`<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="#e2e8f0"/>`); }
+  const ext = (a, b, k1, k2) => { const [x1, y1] = P[a], [x2, y2] = P[b], dx = x2 - x1, dy = y2 - y1; return [x1 - k1 * dx, y1 - k1 * dy, x2 + k2 * dx, y2 + k2 * dy]; };
+  (o.poly || []).forEach(p => out.push(`<polygon points="${p.map(k => P[k].join(',')).join(' ')}" fill="${o.fill || '#e0f2fe'}" stroke="#0369a1" stroke-width="2.5"/>`));
+  (o.circ || []).forEach(c => out.push(`<circle cx="${c[0]}" cy="${c[1]}" r="${c[2]}" fill="none" stroke="${c[4] || '#0369a1'}" stroke-width="2.5" ${c[3] ? 'stroke-dasharray="6 5"' : ''}/>`));
+  (o.line || []).forEach(([a, b, col]) => { const e = ext(a, b, .6, .6); out.push(`<line x1="${e[0]}" y1="${e[1]}" x2="${e[2]}" y2="${e[3]}" stroke="${col || '#0369a1'}" stroke-width="2.5"/>`); });
+  (o.ray || []).forEach(([a, b, col]) => { const e = ext(a, b, 0, .8); out.push(`<line x1="${e[0]}" y1="${e[1]}" x2="${e[2]}" y2="${e[3]}" stroke="${col || '#0369a1'}" stroke-width="2.5"/>`); });
+  (o.seg || []).forEach(([a, b, col, dash]) => out.push(`<line x1="${P[a][0]}" y1="${P[a][1]}" x2="${P[b][0]}" y2="${P[b][1]}" stroke="${col || '#0369a1'}" stroke-width="${col ? 3.5 : 2.5}" ${dash ? 'stroke-dasharray="6 5"' : ''}/>`));
+  (o.ra || []).forEach(([a, b, c]) => { const [bx, by] = P[b], u = (p) => { const dx = P[p][0] - bx, dy = P[p][1] - by, n = Math.hypot(dx, dy); return [dx / n * 11, dy / n * 11]; }; const [ux, uy] = u(a), [vx, vy] = u(c); out.push(`<polyline points="${bx + ux},${by + uy} ${bx + ux + vx},${by + uy + vy} ${bx + vx},${by + vy}" fill="none" stroke="#dc2626" stroke-width="2"/>`); });
+  if (o.extra) out.push(o.extra);
+  Object.entries(P).forEach(([k, [x, y]]) => { if ((o.hide || []).includes(k)) return; const d = (o.lab || {})[k] || [8, -8]; out.push(`<circle cx="${x}" cy="${y}" r="3.5" fill="#0f172a"/><text x="${x + d[0]}" y="${y + d[1]}" font-size="17" fill="#0f172a" text-anchor="middle">${k}</text>`); });
+  return `<div class="fig"><svg viewBox="0 0 ${W} ${H}">${out.join('')}</svg></div>`;
+}
+/* graduated line: labels a (left) and b (right), n equal parts, point lab at tick k (marks = [[k,label],...]) */
+function NL(a, b, n, marks) {
+  const x0 = 25, x1 = 295, y = 55, out = [`<line x1="10" y1="${y}" x2="310" y2="${y}" stroke="#0369a1" stroke-width="3"/>`];
+  for (let i = 0; i <= n; i++) { const x = x0 + (x1 - x0) * i / n, big = i === 0 || i === n || (n === 10 && i === 5); out.push(`<line x1="${x}" y1="${y - (big ? 12 : 7)}" x2="${x}" y2="${y + (big ? 12 : 7)}" stroke="#0369a1" stroke-width="2"/>`); }
+  out.push(`<text x="${x0}" y="${y + 34}" font-size="18" text-anchor="middle" fill="#0f172a">${a}</text><text x="${x1}" y="${y + 34}" font-size="18" text-anchor="middle" fill="#0f172a">${b}</text>`);
+  marks.forEach(([k, l]) => { const x = x0 + (x1 - x0) * k / n; out.push(`<circle cx="${x}" cy="${y}" r="6" fill="#dc2626"/><text x="${x}" y="${y - 18}" font-size="19" text-anchor="middle" fill="#dc2626">${l}</text>`); });
+  return `<div class="fig"><svg viewBox="0 0 320 100">${out.join('')}</svg></div>`;
+}
+/* ---------- messages: change from question to question ---------- */
 const MSG = {
-  ok: ['أحسنت! تركيزك أوصلك إلى الجواب الصحيح.', 'ممتاز! الدقة أهم من السرعة، وأنت أثبتّ ذلك.', 'رائع! جهدك يستحق هذه النجوم.', 'برافو! التأنّي يصنع النجاح.', 'إجابة صحيحة! واصل بنفس الهدوء.', 'بارك الله فيك! تقدّم خطوة بخطوة كما فعلت.'],
+  ok: ['أحسنت! تركيزك أوصلك إلى الجواب الصحيح.', 'ممتاز! الدقة أهم من السرعة، وأنت أثبتّ ذلك.', 'رائع! جهدك يستحق هذه النجوم.', 'برافو! التأنّي يصنع النجاح.', 'إجابة صحيحة! واصل بنفس الهدوء.', 'بارك الله فيك! تقدّم خطوة بخطوة كما فعلت.', 'جميل جدا! فكّرت جيدا قبل أن تختار.'],
   w1: ['لا بأس، الخطأ جزء من التعلّم. اقرأ التلميح بهدوء.', 'تمهّل قليلا: كلما أسرعت قلّ تركيزك.', 'كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.', 'أنت قريب. أعطِ السؤال الوقت الذي يحتاجه.'],
-  w2: ['محاولة أخيرة: اكتب الحساب على ورقة قبل أن تجيب.', 'لا تيأس! التركيز يأتي مع الهدوء.', 'السرعة والتركيز لا يجتمعان: تمهّل.', 'ابذل جهدا صغيرا آخر، فالحل قريب منك.'],
-  fail: ['لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. تأمّل الحل خطوة بخطوة.', 'المهم أن نفهم لماذا أخطأنا. اقرأ الحل ثم أعده وحدك على ورقة.', 'الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة.']
+  w2: ['محاولة أخيرة: اكتب الحساب في كراسك قبل أن تختار.', 'لا تيأس! التركيز يأتي مع الهدوء.', 'السرعة والتركيز لا يجتمعان: تمهّل.', 'ابذل جهدا صغيرا آخر، فالحل قريب منك.'],
+  fail: ['لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. تأمّل الحل خطوة بخطوة.', 'المهم أن نفهم لماذا أخطأنا. اقرأ الحل ثم أعده وحدك في كراسك.', 'الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة.']
 };
 let mi = 0; const pick = k => MSG[k][(mi++) % MSG[k].length];
+/*META {"TITLE":"ألعاب المقطع الثاني: مماثلات الأشكال المستوية والمساحات (الأولى متوسط)","DESC":"ثلاث ألعاب سهلة بأزرار اختيار للسنة الأولى متوسط: المستقيمات والرموز والتعامد والتوازي، المثيلات والدائرة، المحيطات والمساحات. 20 سؤالا و20 نقطة وشهادة.","OGT":"🎮 ألعاب المقطع الثاني للأولى متوسط: 3 ألعاب و20 سؤالا!","OGD":"الرموز، الدائرة، المساحة: اضغط الجواب واربح النجوم والشهادة.","L":"1m","N":"2","H1":"🎮 ألعاب المقطع الثاني","SUB":"السنة الأولى متوسط — مماثلات الأشكال المستوية والمساحات","REF":"المرجع: منهاج السنة الأولى متوسط والمخطط السنوي 2022، المقطع الثاني، والكتاب المدرسي."} */
+const CIRC = G({ w: 300, h: 210, P: { O: [150, 105], A: [150, 30], B: [75, 105], C: [225, 105], D: [90, 150], E: [210, 150] }, circ: [[150, 105, 75]], seg: [['O', 'A'], ['B', 'C'], ['D', 'E']], lab: { O: [16, -6], A: [0, -10], B: [-14, 6], C: [14, 6], D: [-12, 16], E: [12, 16] } });
+const PAGE = {
+ key: 'al3ab_1m_m2_v2', file: 'ألعاب_المقطع_الثاني_1م',
+ certLine: 'لإتمامه(ا) ألعاب «الرموز والمستقيمات» و«المثيلات والدائرة» و«المساحات»', certSub: 'المقطع الثاني — السنة الأولى متوسط',
+ games: [
+ { icon: '📐', name: 'الرموز والمستقيمات', res: ['المستقيم ونصف المستقيم والقطعة', 'التعامد والتوازي والمنتصف'],
+   intro: 'اقرأ الرموز جيدا: الأقواس تغيّر المعنى!', qs: [
+  { t: 'm', q: 'صِل كل كتابة بمعناها.', p: [[M('(AB)'), 'المستقيم الذي يشمل A و B'], [M('[AB)'), 'نصف مستقيم مبدؤه A'], [M('[AB]'), 'قطعة مستقيم طرفاها A و B'], [M('AB'), 'طول القطعة']],
+    h1: 'القوسان ( ) يعنيان أن الخط لا ينتهي من الجهتين.', h2: 'المعقوفان [ ] يعنيان أن الخط ينتهي عند النقطة.',
+    m: { w: 'نقرأ نوع الأقواس عند كل نقطة.', s: [`${M('(AB)')}: مستقيم لا ينتهي`, `${M('[AB)')}: يبدأ من A ولا ينتهي من جهة B`, `${M('[AB]')}: قطعة تبدأ من A وتنتهي عند B`, `${M('AB')} دون أقواس: عدد هو الطول`], c: 'لكل كتابة معنى مختلف.' } },
+  { q: 'في الشكل، أيّ ثلاث نقط على استقامة واحدة؟', j: 1, fig: G({ w: 300, h: 170, P: { A: [30, 140], B: [130, 95], C: [250, 41], D: [170, 150] }, line: [['A', 'C']] }), o: [M('A ، B ، C'), M('A ، B ، D'), M('B ، C ، D'), M('A ، C ، D')], a: 0,
+    h1: 'النقط على استقامة واحدة تقع على المستقيم نفسه.', h2: 'ابحث عن النقطة التي ليست على المستقيم المرسوم.',
+    m: { w: 'نتحقق بالمسطرة: النقط التي يمر بها المستقيم نفسه.', s: [`المستقيم يشمل ${M('A')} و ${M('B')} و ${M('C')}`, `النقطة ${M('D')} خارج المستقيم`], c: `النقط ${M('A ، B ، C')} على استقامة واحدة.` } },
+  { q: 'ما وضعية المستقيمين (d) و (Δ)؟', j: 1, fig: G({ w: 300, h: 190, P: { I: [150, 95], X1: [40, 95], X2: [260, 95], Y1: [150, 15], Y2: [150, 175] }, seg: [['X1', 'X2'], ['Y1', 'Y2']], ra: [['X2', 'I', 'Y1']], hide: ['X1', 'X2', 'Y1', 'Y2'], lab: { I: [-12, 20] }, extra: '<text x="270" y="90" font-size="17">(d)</text><text x="160" y="25" font-size="17">(Δ)</text>' }), o: ['متعامدان', 'متوازيان', 'منطبقان', 'لا يتقاطعان'], a: 0,
+    h1: 'انظر إلى الرمز الأحمر عند نقطة التقاطع.', h2: 'الرمز الأحمر يعني زاوية قائمة.',
+    m: { w: 'مستقيمان متقاطعان يشكلان زاوية قائمة هما متعامدان.', s: [`(d) و (Δ) يتقاطعان في ${M('I')}`, 'الزاوية بينهما قائمة'], c: `${M('(d) ⊥ (Δ)')}.` } },
+  { q: 'المستقيمان (d₁) و (d₂) عموديان كلاهما على المستقيم (Δ). ما وضعية (d₁) و (d₂)؟', j: 1, fig: G({ w: 300, h: 180, P: { P1: [90, 140], P2: [210, 140], L: [30, 140], R: [270, 140], U1: [90, 20], U2: [210, 20] }, seg: [['L', 'R'], ['P1', 'U1'], ['P2', 'U2']], ra: [['R', 'P1', 'U1'], ['R', 'P2', 'U2']], hide: ['P1', 'P2', 'L', 'R', 'U1', 'U2'], extra: '<text x="98" y="35" font-size="16">(d₁)</text><text x="218" y="35" font-size="16">(d₂)</text><text x="240" y="165" font-size="16">(Δ)</text>' }), o: ['متوازيان', 'متعامدان', 'متقاطعان', 'لا نستطيع المعرفة'], a: 0,
+    h1: 'هذه خاصية من خواص التعامد والتوازي.', h2: 'مستقيمان عموديان على مستقيم واحد...',
+    m: { w: 'نستعمل الخاصية: إذا كان مستقيمان عموديين على مستقيم واحد فهما متوازيان.', s: [`${M('(d₁) ⊥ (Δ)')} و ${M('(d₂) ⊥ (Δ)')}`], c: `${M('(d₁) // (d₂)')}.` } },
+  { q: `${M('I')} منتصف القطعة ${M('[AB]')} و ${M('AB = 8 cm')}. ما الطول ${M('AI')}؟`, o: [M('4 cm'), M('8 cm'), M('16 cm'), M('2 cm')], a: 0,
+    h1: 'المنتصف يقسم القطعة إلى جزأين متساويين.', h2: `${M('AI = AB ÷ 2')}.`,
+    m: { w: 'منتصف قطعة: نقطة منها تبعد بالمسافة نفسها عن الطرفين.', s: [M('AI = IB'), M('AI = 8 ÷ 2 = 4')], c: `${M('AI = 4 cm')}.` } },
+  { q: 'لرسم مستقيم عمودي على مستقيم معلوم ويشمل نقطة معلومة، نستعمل:', o: ['الكوس والمسطرة', 'المنقلة وحدها', 'المدور وحده', 'المسطرة وحدها'], a: 0,
+    h1: 'نحتاج أداة فيها زاوية قائمة.', h2: 'الأداة التي على شكل مثلث قائم...',
+    m: { w: 'الكوس فيه زاوية قائمة، والمسطرة لرسم المستقيم.', s: ['نضع ضلع الزاوية القائمة للكوس على المستقيم', 'نزلق الكوس حتى يمر ضلعه الآخر بالنقطة ونرسم'], c: 'نستعمل الكوس والمسطرة.' } },
+  { q: `النقطة ${M('M')} تقع على القطعة ${M('[AB]')}. كيف نكتب ذلك؟`, o: [M('M ∈ [AB]'), M('M ∉ [AB]'), M('[AB] ∈ M'), M('M = AB')], a: 0,
+    h1: `الرمز ${M('∈')} يعني «تنتمي إلى».`, h2: 'النقطة تُكتب أولا، ثم الرمز، ثم القطعة.',
+    m: { w: `نستعمل رمز الانتماء ${M('∈')}، ورمز عدم الانتماء ${M('∉')}.`, s: [`${M('M')} تنتمي إلى ${M('[AB]')}`], c: `نكتب ${M('M ∈ [AB]')}.` } }
+ ]},
+ { icon: '🔺', name: 'المثيلات والدائرة', res: ['إنجاز مثيل لشكل', 'الدائرة ومصطلحاتها'],
+   intro: 'المثيل شكل يطابق الأصل تماما. والدائرة لها مصطلحات تعرّف عليها.', qs: [
+  { q: 'نريد رسم مثيل لمثلث نعرف أطوال أضلاعه الثلاثة. ما الأدوات المناسبة؟', o: ['المسطرة المدرّجة والمدور', 'المنقلة وحدها', 'الكوس وحده', 'الآلة الحاسبة'], a: 0,
+    h1: 'نحتاج نقل أطوال، ثم إيجاد الرأس الثالث.', h2: 'الرأس الثالث يوجد بتقاطع قوسين.',
+    m: { w: 'نرسم ضلعا بالمسطرة، ثم نجد الرأس الثالث بتقاطع قوسين بالمدور.', s: ['نرسم الضلع الأول بطوله', 'نفتح المدور بطول الضلع الثاني ونرسم قوسا', 'نفتحه بطول الضلع الثالث ونرسم قوسا ثانيا', 'تقاطع القوسين هو الرأس الثالث'], c: 'الأدوات: المسطرة المدرّجة والمدور.' } },
+  { q: 'رباعي أضلاعه الأربعة متقايسة وزواياه الأربع قائمة. ما هو؟', j: 1, o: ['مربع', 'مستطيل', 'معين', 'مثلث'], a: 0,
+    h1: 'المستطيل زواياه قائمة، لكن هل أضلاعه كلها متقايسة؟', h2: 'المعين أضلاعه متقايسة، لكن هل زواياه قائمة؟',
+    m: { w: 'نقارن الشروط بتعاريف الرباعيات الخاصة.', s: ['أضلاع متقايسة: مربع أو معين', 'زوايا قائمة: مربع أو مستطيل', 'الشرطان معا: مربع'], c: 'الرباعي مربع.' } },
+  { t: 'm', q: `صِل كل قطعة بمصطلحها في الدائرة التي مركزها ${M('O')}.`, fig: CIRC, p: [[M('[OA]'), 'نصف قطر'], [M('[BC]'), 'قطر'], [M('[DE]'), 'وتر']],
+    h1: `نصف القطر يربط المركز ${M('O')} بنقطة من الدائرة.`, h2: `القطر وتر يمر بالمركز ${M('O')}.`,
+    m: { w: 'نتأمل أين يقع طرفا كل قطعة.', s: [`${M('[OA]')}: من المركز إلى الدائرة = نصف قطر`, `${M('[BC]')}: يربط نقطتين من الدائرة ويمر بالمركز = قطر`, `${M('[DE]')}: يربط نقطتين من الدائرة ولا يمر بالمركز = وتر`], c: 'كل قطر وتر، لكن ليس كل وتر قطرا.' } },
+  { q: `دائرة نصف قطرها ${M('3,5 cm')}. ما طول قطرها؟`, o: [M('7 cm'), M('3,5 cm'), M('1,75 cm'), M('10,5 cm')], a: 0,
+    h1: 'القطر يتكون من نصفي قطر.', h2: `القطر ${M('= 2 × نصف القطر')}.`,
+    m: { w: 'القطر ضعف نصف القطر.', s: [M('2 × 3,5 = 7')], c: `طول القطر ${M('7 cm')}.` } },
+  { q: `دائرة مركزها ${M('O')} ونصف قطرها ${M('4 cm')}. النقطة ${M('M')} حيث ${M('OM = 5 cm')}. أين تقع ${M('M')}؟`, o: ['خارج الدائرة', 'على الدائرة', 'داخل الدائرة', 'في المركز'], a: 0,
+    h1: `قارن ${M('OM')} بنصف القطر.`, h2: `${M('5 > 4')}: هل هي أبعد من الدائرة أم أقرب؟`,
+    m: { w: 'نقارن بعد النقطة عن المركز بنصف القطر.', s: [M('OM = 5 cm'), M('5 cm > 4 cm')], c: `${M('M')} تقع خارج الدائرة.` } },
+  { q: `نريد رسم دائرة مركزها ${M('O')} وتشمل النقطة ${M('A')}. نفتح المدور بطول:`, o: [M('OA'), M('2 × OA'), M('OA ÷ 2'), 'أيّ طول'], a: 0,
+    h1: `النقطة ${M('A')} يجب أن تكون على الدائرة.`, h2: 'كل نقطة من الدائرة تبعد عن المركز بنصف القطر.',
+    m: { w: 'نصف القطر هو بعد أي نقطة من الدائرة عن المركز.', s: [`نضع رأس المدور في ${M('O')}`, `نفتحه حتى ${M('A')}: نصف القطر ${M('= OA')}`], c: `نفتح المدور بطول ${M('OA')}.` } },
+  { q: 'رباعي أضلاعه الأربعة متقايسة، لكن زواياه ليست قائمة. ما هو؟', j: 1, o: ['معين', 'مربع', 'مستطيل', 'مثلث'], a: 0,
+    h1: 'المربع زواياه قائمة، فليس هو.', h2: 'الرباعي الذي أضلاعه متقايسة يسمى...',
+    m: { w: 'نستعمل تعريف المعين.', s: ['الأضلاع الأربعة متقايسة: مربع أو معين', 'الزوايا ليست قائمة: ليس مربعا'], c: 'الرباعي معين.' } }
+ ]},
+ { icon: '🌾', name: 'المساحات في مزارع قالمة', res: ['المساحة بالرصف ومقارنة المساحات', 'محيط ومساحة المستطيل والمثلث القائم ومحيط الدائرة'],
+   intro: 'ساعد فلاحي قالمة في حساب السياج والأرض. وحدة المساحة في الرصف هي المربع الصغير.', qs: [
+  { q: 'كم مربعا صغيرا يغطي الشكل الملوّن؟ (المربع الصغير هو وحدة المساحة)', fig: G({ w: 240, h: 160, grid: 40, P: { a: [40, 40], b: [160, 40], c: [160, 80], d: [200, 80], e: [200, 120], f: [40, 120] }, poly: [['a', 'b', 'c', 'd', 'e', 'f']], hide: ['a', 'b', 'c', 'd', 'e', 'f'] }), o: [M('7'), M('6'), M('8'), M('14')], a: 0,
+    h1: 'عُدّ المربعات سطرا سطرا.', h2: 'السطر العلوي فيه 3 مربعات، والسطر السفلي فيه...',
+    m: { w: 'نعدّ مربعات الرصف داخل الشكل.', s: ['السطر العلوي: 3 مربعات', 'السطر السفلي: 4 مربعات', M('3 + 4 = 7')], c: 'مساحة الشكل 7 وحدات.' } },
+  { q: 'الشكلان A و B مرسومان على المرصوفة نفسها. ماذا تقول عن مساحتيهما؟', fig: G({ w: 300, h: 140, grid: 30, P: { a: [30, 30], b: [120, 30], c: [120, 90], d: [30, 90], e: [180, 30], f: [270, 30], g: [270, 60], h: [240, 60], i: [240, 90], k: [210, 90], l: [210, 120], j: [180, 120] }, poly: [['a', 'b', 'c', 'd'], ['e', 'f', 'g', 'h', 'i', 'k', 'l', 'j']], hide: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'k', 'l', 'j'], extra: '<text x="75" y="125" font-size="18" text-anchor="middle">A</text><text x="240" y="125" font-size="18" text-anchor="middle">B</text>' }), o: ['لهما المساحة نفسها', 'مساحة A أكبر', 'مساحة B أكبر', 'لا يمكن المقارنة'], a: 0,
+    h1: 'لا تحكم بالعين: عُدّ مربعات كل شكل.', h2: 'A فيه سطران من 3 مربعات. وB فيه 3 أسطر: عُدّ كل سطر.',
+    m: { w: 'نعدّ مربعات كل شكل ثم نقارن.', s: [`A: ${M('3 + 3 = 6')} مربعات`, `B: ${M('3 + 2 + 1 = 6')} مربعات`, 'العددان متساويان'], c: 'للشكلين المساحة نفسها رغم اختلاف شكليهما.' } },
+  { q: `حقل قمح مستطيل الشكل في قالمة طوله ${M('40 m')} وعرضه ${M('25 m')}. ما طول السياج اللازم لإحاطته؟`, o: [M('130 m'), M('65 m'), M('1000 m'), M('100 m')], a: 0,
+    h1: 'السياج يدور حول الحقل: نحسب المحيط.', h2: `محيط المستطيل ${M('= 2 × (الطول + العرض)')}.`,
+    m: { w: 'محيط المستطيل = 2 × (الطول + العرض).', s: [M('40 + 25 = 65'), M('2 × 65 = 130')], c: `طول السياج ${M('130 m')}.` }, sc: [['القانون', .5], ['النتيجة', .5]] },
+  { q: `ما مساحة الحقل نفسه (${M('40 m')} في ${M('25 m')})؟`, o: [M('1000 m²'), M('130 m²'), M('65 m²'), M('100 m²')], a: 0,
+    h1: 'المساحة تقيس سطح الأرض، لا الحدود.', h2: `مساحة المستطيل ${M('= الطول × العرض')}.`,
+    m: { w: 'مساحة المستطيل = الطول × العرض.', s: [VOP(['  40', '× 25', '—', ' 200', '80 ', '—', '1000'])], c: `مساحة الحقل ${M('1000 m²')}.` }, sc: [['القانون', .5], ['النتيجة', .5]] },
+  { q: `قطعة أرض على شكل مثلث قائم، ضلعا الزاوية القائمة ${M('6 m')} و ${M('4 m')}. ما مساحتها؟`, fig: G({ w: 260, h: 160, P: { A: [40, 130], B: [220, 130], C: [40, 20] }, poly: [['A', 'B', 'C']], ra: [['B', 'A', 'C']], lab: { A: [-12, 14], B: [10, 14], C: [-12, 0] }, extra: '<text x="130" y="152" font-size="16" text-anchor="middle">6 m</text><text x="18" y="80" font-size="16" text-anchor="middle">4 m</text>' }), o: [M('12 m²'), M('24 m²'), M('10 m²'), M('20 m²')], a: 0,
+    h1: 'المثلث القائم نصف مستطيل.', h2: `المساحة ${M('= (6 × 4) ÷ 2')}.`,
+    m: { w: 'مساحة المثلث القائم = (جداء ضلعي الزاوية القائمة) ÷ 2.', s: [M('6 × 4 = 24'), M('24 ÷ 2 = 12')], c: `مساحة القطعة ${M('12 m²')}.` }, sc: [['القانون', .5], ['النتيجة', .5]] },
+  { q: `حوض ماء دائري في مزرعة قطره ${M('2 m')}. ما محيطه؟ (نأخذ ${M('π ≈ 3,14')})`, o: [M('6,28 m'), M('3,14 m'), M('12,56 m'), M('5,14 m')], a: 0,
+    h1: `محيط الدائرة ${M('= القطر × π')}.`, h2: `${M('2 × 3,14')}.`,
+    m: { w: 'محيط الدائرة = القطر × π.', s: [VOP(['  3,14', '×    2', '—', '  6,28'])], c: `محيط الحوض ${M('6,28 m')}. لنحافظ على ماء الحوض فهو ثروة.` }, sc: [['القانون', .5], ['النتيجة', .5]] }
+ ]}
+ ]
+};
 
 /* ---------- state ---------- */
-const KEY = 'al3ab_1m_m2_v1';
-let S = { r: {}, name: '', snd: true };
+const KEY = PAGE.key;
+let S = { r: {}, snd: true, name: '', at: {} };
 try { const t = localStorage.getItem(KEY); if (t) S = Object.assign(S, JSON.parse(t)); } catch (e) {}
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
-const ITEMS = { g1: ['t1', 't2', 't3', 't4', 't5', 't6', 't7', 't8', 't9', 't10'] };
-const ALL = Object.values(ITEMS).flat();
-const score = () => ALL.reduce((n, k) => n + ((S.r[k] || {}).pts || 0), 0);
-const stars = () => ALL.reduce((n, k) => n + ((S.r[k] || {}).st || 0), 0);
-const doneK = k => ITEMS[k].every(i => S.r[i] && S.r[i].done);
-function rec(id, pts, st) { S.r[id] = { done: true, pts, st }; save(); upd(); }
-function upd() {
-  $('#score').textContent = fmt(score()); $('#stars').textContent = stars();
-  $('#progi').style.width = Math.round(100 * ALL.filter(k => S.r[k] && S.r[k].done).length / ALL.length) + '%';
-  $('#snd').textContent = S.snd ? '🔊' : '🔇';
-  $$('#chips a[data-k]').forEach(a => a.classList.toggle('ok', doneK(a.dataset.k)));
-  Object.keys(ITEMS).forEach((k, i) => $('#s' + (i + 1)).classList.toggle('done', doneK(k)));
-  renderCert();
-}
-
+PAGE.games.forEach((g, gi) => g.qs.forEach((q, qi) => { q.id = `g${gi + 1}q${qi + 1}`; }));
+const ALLQ = PAGE.games.flatMap(g => g.qs);
+const TOT = ALLQ.length;
+const PT = 20 / TOT;
+const score = () => ALLQ.reduce((n, q) => n + ((S.r[q.id] || {}).pts || 0), 0);
+const stars = () => ALLQ.reduce((n, q) => n + ((S.r[q.id] || {}).st || 0), 0);
+const gDone = g => g.qs.every(q => S.r[q.id]);
 /* ---------- sound & effects ---------- */
 let AC = null;
 function tone(fs, d = .12, type = 'triangle') { if (!S.snd) return; try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); fs.forEach((f, i) => { const o = AC.createOscillator(), g = AC.createGain(); o.type = type; o.frequency.value = f; g.gain.setValueAtTime(.15, AC.currentTime + i * d); g.gain.exponentialRampToValueAtTime(.001, AC.currentTime + (i + 1) * d); o.connect(g); g.connect(AC.destination); o.start(AC.currentTime + i * d); o.stop(AC.currentTime + (i + 1) * d); }); } catch (e) {} }
-const sOk = () => tone([523, 659, 784]), sBad = () => tone([220, 180], .18, 'sawtooth'), sClick = () => tone([800], .05, 'sine');
-function toast(t, w) { const d = document.createElement('div'); d.className = w ? 'w' : ''; d.innerHTML = t; $('#toast').appendChild(d); setTimeout(() => d.remove(), 3000); }
+const sOk = () => tone([523, 659, 784]), sBad = () => tone([220, 180], .18, 'sawtooth'), sClick = () => tone([700], .04, 'sine');
+function toast(t, w) { $('#toast').innerHTML = ''; const d = document.createElement('div'); d.className = w ? 'w' : ''; d.innerHTML = t; $('#toast').appendChild(d); setTimeout(() => d.remove(), 3000); }
 function burst(el, n = 10, set = ['⭐', '✨']) { const r = el.getBoundingClientRect(); for (let i = 0; i < n; i++) { const s = document.createElement('span'); s.className = 'burst'; s.textContent = set[i % set.length]; s.style.left = (r.left + r.width / 2) + 'px'; s.style.top = (r.top + 10) + 'px'; s.style.setProperty('--dx', (Math.random() * 240 - 120) + 'px'); s.style.setProperty('--dy', (-60 - Math.random() * 130) + 'px'); document.body.appendChild(s); setTimeout(() => s.remove(), 1000); } }
 const hintFx = el => burst(el, 5, ['💡', '⭐', '✨']);
 function shake(el) { el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake'); }
-const solHTML = (m, steps, c, sc) => `<div class="sol"><h4>📘 الحل النموذجي</h4><div><b>الطريقة:</b> ${m}</div>${steps.map(s => `<div class="ln">${s}</div>`).join('')}<div class="ccl"><b>الاستنتاج:</b> ${c}</div>${sc ? `<table class="sc"><tr><th>سلم التنقيط</th><th>النقاط</th></tr>${sc.map(r => `<tr><td>${r[0]}</td><td>${fmt(r[1])}</td></tr>`).join('')}<tr class="tot"><td>المجموع</td><td>${fmt(sc.reduce((a, r) => a + r[1], 0))}</td></tr></table>` : ''}</div>`;
-const solBox = (ok, html) => ok ? `<details><summary style="cursor:pointer;font-weight:800;color:#0369a1">📘 اطّلع على الحل المفصّل</summary>${html}</details>` : html;
-const RES = t => `<div class="res">📚 ${t}</div>`;
-const NXA = (href, t) => `<a class="btn green wide" href="${href}" style="text-decoration:none">${t} ←</a>`;
-
-
-/* every element has data-id; lines have a wide transparent hit stroke; points have a big hit circle */
-const LN = (id, x1, y1, x2, y2, c = '#0369a1') => `<g class="pl el" data-id="${id}"><line class="hit" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/><line class="vis" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" style="stroke:${c}"/></g>`;
-const PT = (id, x, y, lab, dx = 6, dy = -8) => `<g class="pt el" data-id="${id}"><circle class="hitp" cx="${x}" cy="${y}" r="16"/><circle class="dotp" cx="${x}" cy="${y}" r="4.5"/><text x="${x + dx}" y="${y + dy}" font-size="16">${lab}</text></g>`;
-const LB = (x, y, t, c = '#475569') => `<text x="${x}" y="${y}" font-size="15" fill="${c}" style="pointer-events:none">${t}</text>`;
-const TICK = (x, y) => `<line x1="${x - 3}" y1="${y + 7}" x2="${x + 3}" y2="${y - 7}" stroke="#dc2626" stroke-width="2.5"/>`;
-const FIG = {
-  lines: () => `<svg viewBox="0 0 320 260">
-    ${LN('L', 10, 40, 310, 100)}${LN('H', 40, 150, 310, 200)}${LN('S', 60, 230, 260, 230)}
-    ${TICK(110, 230)}${TICK(210, 230)}
-    ${PT('A', 80, 54, 'A')}${PT('B', 200, 78, 'B')}${PT('G', 260, 90, 'G')}${PT('C', 40, 150, 'C', -6, -10)}${PT('D', 160, 172, 'D')}
-    ${PT('E', 60, 230, 'E', -14, -8)}${PT('M', 160, 230, 'M', -5, -12)}${PT('F', 260, 230, 'F', 6, -8)}${PT('K', 120, 205, 'K', 6, 16)}</svg>`,
-  perp: () => `<svg viewBox="0 0 320 260">
-    ${LN('d', 10, 130, 310, 130)}${LN('d1', 100, 15, 100, 245)}${LN('d2', 180, 245, 262, 20)}${LN('d3', 10, 55, 310, 55)}${LN('d4', 10, 190, 310, 245)}
-    ${LB(286, 124, '(d)', '#0369a1')}${LB(106, 28, '(d₁)')}${LB(238, 30, '(d₂)')}${LB(10, 48, '(d₃)')}${LB(16, 186, '(d₄)')}</svg>`,
-  circle: () => `<svg viewBox="0 0 320 260"><circle cx="160" cy="130" r="95" fill="#f0fdfa" stroke="#0d9488" stroke-width="3" style="pointer-events:none"/>
-    ${LN('OA', 160, 130, 242, 82)}${LN('BC', 65, 130, 255, 130)}${LN('DE', 78, 178, 242, 178)}
-    ${PT('O', 160, 130, 'O', -6, -10)}${PT('A', 242, 82, 'A', 8, -4)}${PT('B', 65, 130, 'B', -18, 5)}${PT('C', 255, 130, 'C', 8, 5)}${PT('D', 78, 178, 'D', -16, 12)}${PT('E', 242, 178, 'E', 6, 14)}</svg>`
-};
-const TK = [
- { id: 't1', fig: 'lines', ask: `المس <b>المستقيم</b> ${M('(AB)')}.`, ok: 'L', h1: 'المستقيم لا بداية ولا نهاية له: يمتدّ من الجهتين.', h2: 'ابحث عن الخط الذي يشمل النقطتين A و B.',
-   s: [`${M('(AB)')} مستقيم يشمل ${M('A')} و ${M('B')}، ولا بداية ولا نهاية له.`], c: `المستقيم ${M('(AB)')} هو الخط العلوي الذي يشمل ${M('A, B, G')}.` },
- { id: 't2', fig: 'lines', ask: `المس <b>نصف المستقيم</b> ${M('[CD)')}.`, ok: 'H', h1: 'نصف المستقيم له بداية واحدة ولا نهاية له.', h2: 'بدايته النقطة C، ويشمل النقطة D.',
-   s: [`${M('[CD)')} نصف مستقيم مبدؤه ${M('C')} ويشمل ${M('D')}.`, 'له بداية ولا نهاية له.'], c: `نصف المستقيم ${M('[CD)')} هو الخط الذي يبدأ عند ${M('C')}.` },
- { id: 't3', fig: 'lines', ask: `المس <b>القطعة</b> ${M('[EF]')}.`, ok: 'S', h1: 'القطعة لها طرفان.', h2: 'طرفاها النقطتان E و F.',
-   s: [`${M('[EF]')} قطعة مستقيم طرفاها ${M('E')} و ${M('F')}.`], c: `القطعة ${M('[EF]')} هي الخط السفلي المحدود بالنقطتين ${M('E')} و ${M('F')}.` },
- { id: 't4', fig: 'lines', ask: `المس <b>منتصف</b> القطعة ${M('[EF]')}.`, ok: 'M', h1: 'المنتصف نقطة من القطعة تبعد بنفس المسافة عن طرفيها.', h2: 'انظر إلى العلامتين الحمراوين: تدلّان على طولين متساويين.',
-   s: [`${M('M ∈ [EF]')}`, `${M('ME = MF')} (العلامتان المتماثلتان)`], c: `${M('M')} منتصف القطعة ${M('[EF]')}.` },
- { id: 't5', fig: 'lines', ask: `المس النقطة التي <b>على استقامة واحدة</b> مع ${M('A')} و ${M('B')} (غير A و B).`, ok: 'G', h1: 'النقط على استقامة واحدة تقع على نفس المستقيم.', h2: 'ابحث عن نقطة أخرى على المستقيم (AB).',
-   s: [`${M('G')} تنتمي إلى المستقيم ${M('(AB)')}.`], c: `النقط ${M('A, B, G')} على استقامة واحدة.` },
- { id: 't6', fig: 'perp', ask: `المس المستقيم <b>العمودي</b> على المستقيم ${M('(d)')}.`, ok: 'd1', h1: 'المستقيمان المتعامدان يتقاطعان مشكّلين زاوية قائمة.', h2: 'تحقّق بالكوس: أيّ مستقيم يقطع (d) بزاوية قائمة تماما؟',
-   s: [`${M('(d₁)')} يقطع ${M('(d)')} مشكّلا زاوية قائمة (نتحقّق بالكوس).`, `${M('(d₂)')} يقطع ${M('(d)')} لكن الزاوية ليست قائمة.`], c: `${M('(d₁) ⊥ (d)')}.` },
- { id: 't7', fig: 'perp', ask: `المس المستقيم <b>الموازي</b> للمستقيم ${M('(d)')}.`, ok: 'd3', h1: 'المستقيمان المتوازيان لا يتقاطعان مهما مددناهما.', h2: 'المسافة بين المستقيمين المتوازيين تبقى نفسها في كل مكان.',
-   s: [`${M('(d₃)')} و ${M('(d)')} لا يتقاطعان: المسافة بينهما ثابتة.`, `${M('(d₄)')} يقترب من ${M('(d)')}، فهو يقطعه إذا مددناه.`], c: `${M('(d₃) // (d)')}.` },
- { id: 't8', fig: 'circle', ask: `المس <b>مركز</b> الدائرة.`, ok: 'O', h1: 'المركز نقطة داخل الدائرة تبعد بنفس المسافة عن كل نقاطها.', h2: 'المركز يقع في منتصف القطر.',
-   s: [`${M('O')} تبعد بنفس المسافة عن كل نقط الدائرة.`], c: `${M('O')} مركز الدائرة.` },
- { id: 't9', fig: 'circle', ask: `المس <b>نصف قطر</b> للدائرة.`, ok: 'OA', h1: 'نصف القطر قطعة تصل المركز بنقطة من الدائرة.', h2: 'طرفها الأول هو المركز O.',
-   s: [`${M('[OA]')} طرفها ${M('O')} المركز و ${M('A')} نقطة من الدائرة.`], c: `${M('[OA]')} نصف قطر للدائرة.` },
- { id: 't10', fig: 'circle', ask: `المس <b>قطرا</b> للدائرة.`, ok: 'BC', h1: 'القطر وتر يشمل المركز.', h2: 'طرفاه على الدائرة، ويمرّ بالنقطة O.',
-   s: [`${M('[BC]')} طرفاها ${M('B')} و ${M('C')} من الدائرة، وتشمل المركز ${M('O')}.`, `${M('[DE]')} وتر لا يشمل المركز، فليست قطرا.`], c: `${M('[BC]')} قطر للدائرة، وطوله ضعف طول نصف القطر.` }
-];
-function game1(idx) {
-  if (idx == null) idx = Math.max(0, TK.findIndex(r => !S.r[r.id])); if (idx < 0) idx = 0;
-  const R = TK[idx], host = $('#g1'), st = S.r[R.id];
-  const dots = TK.map((r, i) => { const x = S.r[r.id]; return `<span class="${x ? (x.pts ? 'ok' : 'ko') : (i === idx ? 'cur' : '')}">${i + 1}</span>`; }).join('');
-  host.innerHTML = `${RES('الموارد: المستقيم ونصف المستقيم والقطعة والمنتصف والاستقامية، التعامد والتوازي، الدائرة ومصطلحاتها')}
-   <div class="dots">${dots}</div><div class="qtext">👆 <b>المهمّة ${idx + 1} (2 ن):</b> ${R.ask}</div>
-   <div class="fig tap" id="tf">${FIG[R.fig]()}</div><div class="fb" id="tfb"></div><div id="tsol"></div><div class="row" id="g1nx"></div>`;
-  const fb = $('#tfb'), sol = () => solHTML('نتعرّف على العنصر من تعريفه.', R.s, R.c, [['التعرّف على العنصر', 1], ['المسّ الصحيح', 1]]);
-  const mark = () => { $$('#tf .el').forEach(e => e.classList.add('off')); const g = $(`#tf .el[data-id="${R.ok}"]`); g && g.classList.add('good'); };
-  const next = () => { $('#g1nx').innerHTML = idx < TK.length - 1 ? `<button class="btn green wide" id="g1go">المهمّة التالية ←</button>` : NXA('#s2', 'إلى الشهادة'); const g = $('#g1go'); if (g) g.addEventListener('click', () => { game1(idx + 1); $('#s1').scrollIntoView({ behavior: 'smooth' }); }); };
-  if (st) { mark(); fb.innerHTML = `<span class="g">منجزة: ${fmt(st.pts)} / 2 ن ${'⭐'.repeat(st.st)}</span>`; $('#tsol').innerHTML = solBox(!!st.pts, sol()); next(); return; }
-  let tries = 0;
-  $$('#tf .el').forEach(e => e.addEventListener('click', ev => {
-    ev.stopPropagation(); if (S.r[R.id]) return;
-    const isPt = e.classList.contains('pt'), wantPt = !/^[LHS]$|^d|^(OA|BC|DE)$/.test(R.ok);
-    if (isPt !== wantPt) { fb.innerHTML = `<span class="h">${wantPt ? 'المطلوب نقطة: المس نقطة.' : 'المطلوب خط: المس الخط نفسه لا النقطة.'}</span>`; return; }
-    tries++;
-    const fin = ok => { rec(R.id, ok ? 2 : 0, ok ? Math.max(1, 4 - tries) : 0); mark(); $('#tsol').innerHTML = solBox(ok, sol()); $$('.dots span', host)[idx].className = ok ? 'ok' : 'ko'; next(); };
-    if (e.dataset.id === R.ok) { sOk(); burst(e); fb.innerHTML = `<span class="g">✅ ${pick('ok')} ${'⭐'.repeat(Math.max(1, 4 - tries))}</span>`; toast('👆 +2 ن'); fin(true); return; }
-    sBad(); e.classList.add('bad'); setTimeout(() => e.classList.remove('bad'), 700); shake($('#tf'));
-    if (tries === 1) { fb.innerHTML = `<span class="w">${pick('w1')}</span><span class="h">💡 ${R.h1}</span>`; hintFx(fb); }
-    else if (tries === 2) { fb.innerHTML = `<span class="w">${pick('w2')}</span><span class="h">💡 ${R.h2}</span>`; hintFx(fb); }
-    else { fb.innerHTML = `<span class="w">🌱 ${pick('fail')}</span>`; fin(false); }
-  }));
+function solHTML(q) {
+  const m = q.m, sc = q.sc || m.sc || [['الجواب الصحيح', 1]], k = PT;
+  return `<div class="sol"><h4>📘 الحل النموذجي</h4><div><b>الطريقة:</b> ${m.w}</div>${m.s.map(s => `<div class="ln">${s}</div>`).join('')}<div class="ccl"><b>الاستنتاج:</b> ${m.c}</div><table class="sc"><tr><th>سلم التنقيط</th><th>النقاط</th></tr>${sc.map(r => `<tr><td>${r[0]}</td><td>${fmt(r[1] * k)}</td></tr>`).join('')}<tr class="tot"><td>المجموع</td><td>${fmt(sc.reduce((a, r) => a + r[1], 0) * k)}</td></tr></table></div>`;
 }
-
-/* ================= CERTIFICATE ================= */
-const GT = { g1: '👆 المهمّات العشر' };
-function medal() { const s = score(); return s >= 17 ? ['🥇', 'الذهبية', '#b45309'] : s >= 12 ? ['🥈', 'الفضية', '#475569'] : ['🥉', 'البرونزية', '#9a3412']; }
+const solBox = (ok, q) => ok ? `<details><summary style="cursor:pointer;font-weight:800;color:#0369a1">📘 اطّلع على الحل المفصّل</summary>${solHTML(q)}</details>` : solHTML(q);
+const RATE = [1, .5, .25];
+/* ---------- build page ---------- */
+const host = $('#games');
+$('#chips').innerHTML = PAGE.games.map((g, i) => `<a href="#g${i + 1}" data-g="${i}">${g.icon} اللعبة ${i + 1}</a>`).join('') + `<a href="#sc">🎓 الشهادة</a>`;
+PAGE.games.forEach((g, gi) => {
+  const sec = document.createElement('section'); sec.className = 'card'; sec.id = `g${gi + 1}`;
+  sec.innerHTML = `<div class="ct">${g.icon} اللعبة ${gi + 1}: ${g.name} <span class="pts">${fmt(g.qs.length * PT)} ن</span></div>${g.res.map(r => `<span class="res">📚 ${r}</span>`).join(' ')}${g.intro ? `<div class="intro">${g.intro}</div>` : ''}<div class="dots"></div><div class="stage"></div>`;
+  host.appendChild(sec);
+  showGame(gi);
+});
+function dotsOf(g, cur) { return g.qs.map((q, i) => { const r = S.r[q.id]; return `<span class="${r ? (r.pts > 0 ? 'ok' : 'ko') : (i === cur ? 'cur' : '')}">${i + 1}</span>`; }).join(''); }
+function showGame(gi, force) {
+  const g = PAGE.games[gi], sec = $(`#g${gi + 1}`), st = $('.stage', sec);
+  let cur = g.qs.findIndex(q => !S.r[q.id]);
+  if (force !== undefined) cur = force;
+  $('.dots', sec).innerHTML = dotsOf(g, cur);
+  sec.classList.toggle('done', gDone(g));
+  if (cur < 0) {
+    const p = g.qs.reduce((n, q) => n + S.r[q.id].pts, 0), s = g.qs.reduce((n, q) => n + S.r[q.id].st, 0);
+    const nxt = gi + 1 < PAGE.games.length ? `#g${gi + 2}` : '#sc';
+    st.innerHTML = `<div class="gsum"><div class="big">🏁</div><p>انتهت اللعبة! نقاطك <b>${fmt(p * PT)} / ${fmt(g.qs.length * PT)}</b> و ${s} ⭐</p>
+      <div class="row"><a class="btn green" href="${nxt}" style="text-decoration:none">${gi + 1 < PAGE.games.length ? 'إلى اللعبة التالية' : 'إلى الشهادة'} ←</a><button class="btn light rg">🔁 أعد هذه اللعبة</button></div></div>`;
+    $('.rg', st).addEventListener('click', e => { const b = e.currentTarget; if (!b.dataset.c) { b.dataset.c = 1; b.textContent = 'اضغط مرة أخرى للتأكيد'; return; } g.qs.forEach(q => delete S.r[q.id]); save(); upd(); showGame(gi); });
+    return;
+  }
+  renderQ(gi, cur);
+}
+function renderQ(gi, qi) {
+  const g = PAGE.games[gi], q = g.qs[qi], sec = $(`#g${gi + 1}`), st = $('.stage', sec);
+  const t = q.t || 'c';
+  const doTxt = { c: '👆 اختر جوابا واحدا ثم اضغط «تحقّق».', m: '👆 اضغط بطاقة من اليمين ثم البطاقة التي تناسبها من اليسار، ثم «تحقّق».', o: '👆 اضغط البطاقات بالترتيب المطلوب، ثم «تحقّق». للتصحيح اضغط «امسح».' }[t];
+  st.innerHTML = `<div class="qbox"><div class="muted">السؤال ${qi + 1} من ${g.qs.length}${q.bk ? ` <span class="bk">📖 ${q.bk}</span>` : ''}</div><div class="qtext">${q.q}</div>${q.fig || ''}${q.j ? `<div class="muted">✍️ علّل جوابك في كراسك، ثم اختر.</div>` : ''}<span class="do">${doTxt}</span>
+    <div class="play"></div><div class="tries">${'❤️'.repeat(3)}</div><div class="fb"></div>
+    <button class="btn green wide go" disabled>✔ تحقّق</button><div class="after"></div></div>`;
+  const play = $('.play', st), go = $('.go', st), fb = $('.fb', st), after = $('.after', st), tr = $('.tries', st);
+  let wrong = 0, busy = false, finished = false;
+  const showTries = () => tr.innerHTML = '❤️'.repeat(3 - wrong) + '🤍'.repeat(wrong);
+  /* --- choice --- */
+  let sel = null, state = null;
+  if (t === 'c') {
+    const opts = q.keep ? q.o.map((x, i) => [x, i]) : shuffle(q.o.map((x, i) => [x, i]));
+    play.innerHTML = `<div class="opts ${q.o.some(x => String(x).length > 26) ? 'one' : ''}">${opts.map(([x, i]) => `<button class="opt" data-i="${i}">${x}</button>`).join('')}</div>`;
+    $$('.opt', play).forEach(b => b.addEventListener('click', () => { if (busy || finished || b.disabled) return; sClick(); $$('.opt', play).forEach(x => x.classList.remove('sel')); b.classList.add('sel'); sel = +b.dataset.i; go.disabled = false; }));
+    state = { check: () => sel === q.a, onWrong: () => { const b = $(`.opt[data-i="${sel}"]`, play); b.classList.remove('sel'); b.classList.add('bad'); b.disabled = true; sel = null; go.disabled = true; },
+      reveal: ok => { $$('.opt', play).forEach(b => { b.disabled = true; b.classList.remove('sel'); if (+b.dataset.i === q.a) b.classList.add('good'); }); } };
+  }
+  /* --- matching --- */
+  if (t === 'm') {
+    const L = q.p.map((p, i) => [p[0], i]), R = shuffle(q.p.map((p, i) => [p[1], i]));
+    const pairs = {}; let lsel = null; const COL = ['#fde68a', '#bfdbfe', '#fbcfe8', '#bbf7d0', '#ddd6fe'];
+    play.innerHTML = `<div class="mcols"><div class="col">${L.map(([x, i]) => `<button class="opt ml" data-i="${i}">${x}</button>`).join('')}</div><div class="col">${R.map(([x, i]) => `<button class="opt mr" data-i="${i}">${x}</button>`).join('')}</div></div>`;
+    const paint = () => { $$('.ml,.mr', play).forEach(b => { b.style.background = ''; b.classList.remove('sel'); }); Object.entries(pairs).forEach(([l, r], k) => { $(`.ml[data-i="${l}"]`, play).style.background = COL[k % 5]; $(`.mr[data-i="${r}"]`, play).style.background = COL[k % 5]; }); if (lsel !== null) $(`.ml[data-i="${lsel}"]`, play).classList.add('sel'); go.disabled = Object.keys(pairs).length < q.p.length; };
+    $$('.ml', play).forEach(b => b.addEventListener('click', () => { if (busy || finished) return; sClick(); const i = +b.dataset.i; delete pairs[i]; lsel = i; paint(); }));
+    $$('.mr', play).forEach(b => b.addEventListener('click', () => { if (busy || finished) return; if (lsel === null) { toast('اضغط أولا بطاقة من العمود الأيمن 👉', 1); return; } sClick(); const r = +b.dataset.i; Object.keys(pairs).forEach(l => { if (pairs[l] === r) delete pairs[l]; }); pairs[lsel] = r; lsel = null; paint(); }));
+    state = { check: () => q.p.every((p, i) => pairs[i] === i), onWrong: () => { Object.keys(pairs).forEach(l => { if (pairs[l] !== +l) delete pairs[l]; }); paint(); $$('.ml', play).forEach(b => { if (pairs[b.dataset.i] !== undefined) b.disabled = true; }); $$('.mr', play).forEach(b => { if (Object.values(pairs).includes(+b.dataset.i)) b.disabled = true; }); },
+      reveal: () => { Object.keys(pairs).forEach(k => delete pairs[k]); q.p.forEach((p, i) => pairs[i] = i); lsel = null; paint(); $$('.ml,.mr', play).forEach(b => b.disabled = true); } };
+  }
+  /* --- ordering --- */
+  if (t === 'o') {
+    const items = shuffle(q.it.map((x, i) => [x, i])); let seq = [];
+    play.innerHTML = `<div class="olist"></div><div class="opts">${items.map(([x, i]) => `<button class="opt oi" data-i="${i}">${x}</button>`).join('')}</div><div class="row"><button class="btn light clr" style="min-height:44px">⌫ امسح</button></div>`;
+    const ol = $('.olist', play); if (q.vert) ol.classList.add('vert');
+    const paint = () => { ol.innerHTML = seq.length ? seq.map((i, k) => `<span class="pk">${q.vert ? (k + 1) + ') ' : ''}${q.it[i]}</span>`).join(q.vert ? '' : `<span class="sg">${q.sepS || ''}</span>`) : `<span class="em">${q.ph || 'اضغط البطاقات بالترتيب'}</span>`; $$('.oi', play).forEach(b => b.style.visibility = seq.includes(+b.dataset.i) ? 'hidden' : ''); go.disabled = seq.length < q.it.length; };
+    $$('.oi', play).forEach(b => b.addEventListener('click', () => { if (busy || finished) return; sClick(); seq.push(+b.dataset.i); paint(); }));
+    $('.clr', play).addEventListener('click', () => { if (finished) return; seq = []; paint(); });
+    paint();
+    state = { check: () => seq.every((v, k) => v === k), onWrong: () => { let k = 0; while (k < seq.length && seq[k] === k) k++; seq = seq.slice(0, k); paint(); },
+      reveal: () => { seq = q.it.map((x, i) => i); paint(); $('.clr', play).style.display = 'none'; } };
+  }
+  go.addEventListener('click', () => {
+    if (busy || finished || go.disabled) return; busy = true; setTimeout(() => busy = false, 450);
+    if (state.check()) {
+      finished = true; state.reveal(true); const stn = 3 - wrong, pts = RATE[wrong];
+      S.r[q.id] = { pts, st: stn }; save(); sOk(); burst(go, 8 + stn * 3); toast('⭐'.repeat(stn) + ' ' + pick('ok'));
+      fb.innerHTML = `<span class="g">✅ ${pick('ok')} — ربحت ${M(fmt(pts * PT))} ن</span>`; end(true);
+    } else {
+      wrong++; showTries(); sBad(); shake(st);
+      if (wrong >= 3) { finished = true; state.reveal(false); S.r[q.id] = { pts: 0, st: 0 }; save(); fb.innerHTML = `<span class="w">${pick('fail')}</span>`; end(false); }
+      else { state.onWrong(); hintFx(go); fb.innerHTML = `<span class="w">❌ ${pick(wrong === 1 ? 'w1' : 'w2')}</span><span class="h">💡 تلميح ${wrong}: ${wrong === 1 ? q.h1 : q.h2}</span>`; }
+    }
+  });
+  function end(ok) {
+    go.style.display = 'none'; upd();
+    $('.dots', sec).innerHTML = dotsOf(g, qi);
+    after.innerHTML = solBox(ok, q) + `<button class="btn wide nx" style="margin-top:12px">${qi + 1 < g.qs.length ? 'السؤال التالي ←' : 'النتيجة ←'}</button>`;
+    $('.nx', after).addEventListener('click', () => { showGame(gi); sec.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  }
+}
+/* ---------- score bar ---------- */
+function upd() {
+  $('#score').textContent = fmt(score() * PT); $('#stars').textContent = stars();
+  $('#progi').style.width = Math.round(100 * ALLQ.filter(q => S.r[q.id]).length / TOT) + '%';
+  $('#snd').textContent = S.snd ? '🔊' : '🔇';
+  $$('#chips a[data-g]').forEach(a => a.classList.toggle('ok', gDone(PAGE.games[+a.dataset.g])));
+  PAGE.games.forEach((g, i) => $(`#g${i + 1}`).classList.toggle('done', gDone(g)));
+  renderCert();
+}
+/* ---------- certificate ---------- */
+function medal() { const s = score() * PT; return s >= 17 ? ['🥇', 'الذهبية', '#b45309'] : s >= 12 ? ['🥈', 'الفضية', '#475569'] : ['🥉', 'البرونزية', '#9a3412']; }
 let certBuilt = false;
 function renderCert() {
-  const host = $('#cert'); if (!host) return;
-  const left = Object.keys(ITEMS).filter(k => !doneK(k));
-  if (left.length) { certBuilt = false; host.innerHTML = `<div style="text-align:center"><div class="lock">🔒</div><p>أكمل المهمّات العشر لتفتح شهادتك.</p><p>بقي: ${left.map(k => `<b>${GT[k]}</b>`).join(' ، ')}</p></div>`; return; }
+  const hostc = $('#cert'); if (!hostc) return;
+  const left = PAGE.games.map((g, i) => [g, i]).filter(([g]) => !gDone(g));
+  if (left.length) { certBuilt = false; hostc.innerHTML = `<div style="text-align:center"><div class="lock">🔒</div><p>أكمل كل الألعاب لتفتح شهادتك.</p><p>بقي: ${left.map(([g, i]) => `<b>${g.icon} اللعبة ${i + 1}</b>`).join(' ، ')}</p></div>`; return; }
   if (certBuilt) { drawCert(); return; }
   certBuilt = true; const [ic, nm] = medal();
-  host.innerHTML = `<p>🎉 مبروك! علامتك <b>${fmt(score())} / 20</b> و ${stars()} ⭐: الشهادة <b>${nm}</b> ${ic}</p>
+  hostc.innerHTML = `<p>🎉 مبروك! علامتك <b>${fmt(score() * PT)} / 20</b> و ${stars()} ⭐: الشهادة <b>${nm}</b> ${ic}</p>
    <label>اكتب اسمك ولقبك:</label><input class="namebox" id="nm" maxlength="40" value="${(S.name || '').replace(/"/g, '')}">
    <div class="row"><button class="btn orange" id="mk">✨ أنشئ الشهادة</button><button class="btn" id="dl">⬇️ تحميل صورة</button><button class="btn light" id="pr">🖨️ طباعة</button></div>
    <canvas id="cv" width="1400" height="990"></canvas>
-   <div class="row"><button class="btn light" id="rst">🔁 العب من جديد</button></div>`;
+   <div class="row"><button class="btn light" id="rst">🔁 العب كل الألعاب من جديد</button></div>`;
   const go = async () => { S.name = $('#nm').value.trim(); save(); await drawCert(); };
   $('#mk').addEventListener('click', go); $('#nm').addEventListener('change', go);
-  $('#dl').addEventListener('click', async () => { await go(); try { const a = document.createElement('a'); a.download = 'شهادة_المس_الشكل.png'; a.href = $('#cv').toDataURL('image/png'); a.click(); } catch (e) { toast('تعذّر التحميل: استعمل الطباعة أو لقطة شاشة.', 1); } });
+  $('#dl').addEventListener('click', async () => { await go(); try { const a = document.createElement('a'); a.download = 'شهادة_' + PAGE.file + '.png'; a.href = $('#cv').toDataURL('image/png'); a.click(); } catch (e) { toast('تعذّر التحميل: استعمل الطباعة أو لقطة شاشة.', 1); } });
   $('#pr').addEventListener('click', async () => { await go(); window.print(); });
   $('#rst').addEventListener('click', e => { const b = e.currentTarget; if (!b.dataset.c) { b.dataset.c = 1; b.textContent = 'اضغط مرة أخرى للتأكيد'; return; } S.r = {}; save(); location.hash = ''; location.reload(); });
   go();
@@ -373,15 +449,14 @@ async function drawCert() {
   T('متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة', 196, '700 26px Cairo', '#475569');
   T('شهادة إنجاز', 300, '900 84px Cairo', '#0369a1'); T('تُمنح هذه الشهادة للتلميذ(ة)', 380, '700 32px Cairo');
   T(S.name || '..............................', 470, '900 64px Cairo', '#c2410c');
-  T('لإتمامه(ا) بنجاح لعبة «المس الشكل»', 545, '700 32px Cairo'); T('المقطع الثاني — السنة الأولى متوسط', 592, '700 28px Cairo', '#475569');
-  T(`العلامة: ${fmt(score())} / 20 — النجوم: ${stars()} ⭐`, 660, '800 34px Cairo', '#1e3a8a'); T(`${ic} الشهادة ${nm}`, 735, '900 46px Cairo', col);
+  T(PAGE.certLine, 545, '700 30px Cairo'); T(PAGE.certSub, 592, '700 28px Cairo', '#475569');
+  T(`العلامة: ${fmt(score() * PT)} / 20 — النجوم: ${stars()} ⭐`, 660, '800 34px Cairo', '#1e3a8a'); T(`${ic} الشهادة ${nm}`, 735, '900 46px Cairo', col);
   const d = new Date(); x.font = '700 26px Cairo'; x.fillStyle = '#0f172a';
   x.textAlign = 'right'; x.fillText('الأستاذ: يوسفي السوفي', W - 110, 860); x.textAlign = 'left'; x.fillText(`التاريخ: ${d.getDate()} / ${d.getMonth() + 1} / ${d.getFullYear()}`, 110, 860);
-  x.textAlign = 'center'; x.font = '60px serif'; x.fillText('📐', W / 2, 880);
+  x.textAlign = 'center'; x.font = '60px serif'; x.fillText('🎮', W / 2, 880);
 }
-
 $('#snd').addEventListener('click', () => { S.snd = !S.snd; save(); upd(); });
-game1(); upd();
+upd();
 </script>
 </body>
 </html>

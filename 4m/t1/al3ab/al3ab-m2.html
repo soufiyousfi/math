@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>مهمّات المسّاح: طالس والنسب المثلثية (الرابعة متوسط)</title>
-<meta name="description" content="لعبة للسنة الرابعة متوسط على المقطع الثاني: خمس مهمّات من ولاية قالمة، اختر الأداة المناسبة (خاصية طالس أو cos أو sin أو tan) ثم احسب. نجوم وشهادة باسمك.">
+<title>ألعاب المقطع الثاني: خاصية طالس والنسب المثلثية (الرابعة متوسط)</title>
+<meta name="description" content="ثلاث ألعاب سهلة بأزرار اختيار للسنة الرابعة متوسط: خاصية طالس، الخاصية العكسية (متوازيان أم لا؟)، النسب المثلثية. 20 سؤالا و20 نقطة وشهادة.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="🧭 مهمّات المسّاح للرابعة متوسط: طالس أم cos أم sin أم tan؟">
-<meta property="og:description" content="خمس مهمّات من قالمة: اختر الأداة واحسب. 20 نقطة وشهادة إنجاز باسمك.">
+<meta property="og:title" content="🎮 ألعاب المقطع الثاني للرابعة متوسط: طالس والنسب المثلثية في 20 سؤالا!">
+<meta property="og:description" content="احسب الأطوال، احكم على التوازي، استعمل cos وsin وtan: اضغط الجواب واربح الشهادة.">
 <meta property="og:image" content="https://soufiyousfi.github.io/math/4m/t1/al3ab/img/al3ab-m2-fb.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&display=swap" rel="stylesheet">
 <style>
+
 :root{
   --bg:#eef7fb; --card:#fff; --ink:#0f172a; --muted:#475569; --line:#cbd5e1;
   --c1:#0369a1; --c2:#0d9488; --yel:#f59e0b; --ok:#16a34a; --ok-soft:#dcfce7;
@@ -71,57 +72,6 @@ table.vt{border-collapse:collapse;margin:6px auto;direction:ltr;font-weight:900;
 table.vt td{border:2px solid #0369a1;padding:3px 14px;text-align:center;background:#fff}
 table.vt tr:first-child td{background:#e0f2fe}
 .bk{font-size:.85rem;color:#64748b;text-align:center}
-/* game 1 */
-.bank{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;direction:ltr;margin:10px 0}
-.tile{min-width:62px;min-height:50px;padding:6px 12px;border-radius:12px;border:3px solid #0284c7;background:#fff;color:#0369a1;font-weight:900;font-size:1.15rem;box-shadow:0 5px 0 #0284c7}
-.tile.sel{background:var(--yel);border-color:#b45309;color:#fff;box-shadow:0 5px 0 #b45309;transform:translateY(-2px)}
-.tile.used{visibility:hidden}
-.build{direction:ltr;display:flex;align-items:center;justify-content:center;gap:6px;margin:14px 0;background:#eff6ff;border:2px dashed #93c5fd;border-radius:14px;padding:12px 4px}
-.frz{display:flex;flex-direction:column;align-items:center;gap:5px;padding:4px;border-radius:12px}
-.frz .bar2{width:62px;height:4px;background:#0369a1;border-radius:2px}
-.zone{width:62px;height:44px;border:3px dashed #94a3b8;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem;color:#0369a1}
-.zone.on{border-color:var(--yel);background:#fef3c7}
-.zone.full{border-style:solid;border-color:#0284c7;background:#e0f2fe}
-.frz.good{background:var(--ok-soft);outline:3px solid var(--ok)}
-.frz.badz{background:var(--bad-soft);outline:3px solid var(--bad)}
-.eqs{font-size:1.6rem;font-weight:900;color:#0369a1}
-/* game 2 safe */
-.safe{background:#334155;border-radius:18px;padding:14px;color:#fff;text-align:center}
-.safe .m,.safe>.eq,.safe>div>.eq{color:#fde68a}
-.screen{background:#0f172a;border:4px solid #64748b;border-radius:10px;padding:8px;font-family:monospace;font-size:1.8rem;letter-spacing:4px;color:#4ade80;direction:ltr;min-height:62px;display:flex;align-items:center;justify-content:center}
-.screen.err{color:#f87171}
-.pad{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:300px;margin:12px auto 0;direction:ltr}
-.pad button{min-height:56px;border:0;border-radius:14px;background:#e2e8f0;color:#0f172a;font-size:1.4rem;font-weight:900;box-shadow:0 5px 0 #94a3b8}
-.pad button:active{transform:translateY(4px);box-shadow:none}
-.pad .c{background:#fecaca;color:#7f1d1d;box-shadow:0 5px 0 #f87171}
-.pad .open{grid-column:span 4;background:var(--yel);color:#3b2600;box-shadow:0 5px 0 #b45309}
-.lock{font-size:2.4rem;line-height:1}
-.steps3{display:flex;gap:6px;justify-content:center;margin-bottom:8px}
-.steps3 span{width:34px;height:34px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-weight:900}
-.steps3 span.ok{background:var(--ok);color:#fff}.steps3 span.cur{background:var(--yel);color:#fff}.steps3 span.ko{background:#94a3b8;color:#fff}
-/* game 3 */
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-.duo .btn{min-height:60px;font-size:1.05rem}
-.data{display:grid;grid-template-columns:1fr 1fr;gap:6px;direction:ltr;margin:6px 0}
-.data div{background:#f1f5f9;border-radius:10px;padding:2px 8px;font-weight:800;text-align:center;color:#1e3a8a}
-/* new games */
-.bem{display:inline-block;background:#fef9c3;border:1px solid #facc15;color:#713f12;border-radius:999px;padding:0 10px;font-size:.82rem;font-weight:800;margin-bottom:4px}
-.match{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:300px;margin:10px auto}
-.match .col{display:flex;flex-direction:column;gap:12px;align-items:stretch}.match .hd{text-align:center}
-.pairs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;direction:ltr;margin:8px 0;min-height:10px}
-.pairs .p{padding:4px 10px;border-radius:12px;border:3px solid transparent}
-.pairs .p.good{border-color:var(--ok)}.pairs .p.badz{border-color:var(--bad)}
-.cards{display:flex;flex-direction:column;gap:8px;margin:8px 0}
-.scard{width:100%;text-align:start;font:inherit;font-size:.95rem;font-weight:700;background:#fff;border:3px solid #0284c7;border-radius:12px;padding:6px 10px;box-shadow:0 4px 0 #0284c7;color:var(--ink)}
-.scard.in{border-color:var(--ok);box-shadow:0 4px 0 #15803d;background:#f0fdf4}
-.seqh{font-weight:900;color:var(--c1);margin-top:6px}
-ol.seq{margin:4px 0;padding-inline-start:26px;min-height:40px;background:#f8fafc;border:2px dashed #86efac;border-radius:12px;padding-top:6px;padding-bottom:6px}
-ol.seq li{margin:6px 0;font-weight:900}
-.pl{cursor:pointer}.pl .vis{stroke:#0369a1;stroke-width:3}.pl .hit{stroke:transparent;stroke-width:24}
-.pl.on .vis{stroke:#f59e0b;stroke-width:7}.pl.off{pointer-events:none}
-.opts{display:flex;flex-direction:column;gap:10px;margin-top:8px}.opts .btn{font-size:1rem}
-.slrow{display:flex;gap:8px;align-items:center;direction:ltr}.slrow .btn{min-width:56px;padding:4px}
-.slrow input{flex:1;height:44px;accent-color:#f59e0b}
 /* feedback */
 .fb{margin-top:10px;font-weight:700}
 .fb .w{display:block;background:var(--bad-soft);color:#991b1b;border-radius:12px;padding:6px 10px}
@@ -156,42 +106,48 @@ canvas#cv{width:100%;height:auto;border-radius:10px;box-shadow:0 4px 18px rgba(0
 footer{text-align:center;color:var(--muted);font-size:.85rem;padding:16px}
 @media print{body *{visibility:hidden}#cv{visibility:visible;position:fixed;inset:0;width:100%;box-shadow:none}}
 
-/* ---- games page additions ---- */
-.res{display:inline-block;background:#ecfeff;border:1px solid #67e8f9;color:#155e75;border-radius:999px;padding:0 10px;font-size:.82rem;font-weight:800;margin-bottom:4px}
-.dots{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin:6px 0}
-.dots span{width:26px;height:26px;border-radius:50%;background:#e2e8f0;font-size:.8rem;font-weight:900;display:flex;align-items:center;justify-content:center}
-.dots span.ok{background:var(--ok);color:#fff}.dots span.ko{background:#94a3b8;color:#fff}.dots span.cur{background:var(--yel);color:#fff}
-.timer{display:flex;align-items:center;gap:8px;margin:6px 0}
-.tbar{flex:1;height:14px;background:#e2e8f0;border-radius:8px;overflow:hidden}
-.tbar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#f59e0b,#16a34a);transition:width .25s linear}
-.tbar.off i{background:#cbd5e1}
-.tsec{font-weight:900;min-width:46px;text-align:center;direction:ltr}
-.tbtn{min-height:40px;border:2px solid var(--line);background:#fff;border-radius:12px;font-weight:800;padding:0 10px}
-.qtext{font-size:1.08rem;font-weight:700;margin:6px 0}
-.mc{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-.mc .btn{min-height:56px;font-size:1.2rem;direction:ltr}
-.vop{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Courier New",monospace;font-weight:900;font-size:1.2rem;color:#1e3a8a;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:4px 14px;margin:4px 0;line-height:1.45;text-align:right}
+
+/* ---- simple games v2 ---- */
+.res{display:inline-block;background:#ecfeff;border:1px solid #67e8f9;color:#155e75;border-radius:999px;padding:0 10px;font-size:.82rem;font-weight:800;margin:2px 0}
+.bk{display:inline-block;background:#fef9c3;border:1px solid #facc15;color:#713f12;border-radius:999px;padding:0 10px;font-size:.8rem;font-weight:800;margin:2px 0}
+.dots{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin:8px 0}
+.dots span{width:30px;height:30px;border-radius:50%;background:#e2e8f0;font-size:.85rem;font-weight:900;display:flex;align-items:center;justify-content:center}
+.dots span.ok{background:var(--ok);color:#fff}.dots span.ko{background:#94a3b8;color:#fff}.dots span.cur{background:var(--yel);color:#fff;transform:scale(1.15)}
+.qbox{background:#f8fafc;border:2px solid #e2e8f0;border-radius:14px;padding:10px 12px;margin-top:6px}
+.qtext{font-size:1.12rem;font-weight:700}
+.do{display:block;background:#e0f2fe;color:#075985;border-radius:10px;padding:4px 10px;margin:8px 0 0;font-weight:800;font-size:.95rem}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.opts.one{grid-template-columns:1fr}
+.opt{min-height:62px;border-radius:16px;border:3px solid #0284c7;background:#fff;color:#0c4a6e;font-weight:900;font-size:1.15rem;box-shadow:0 5px 0 #0284c7;padding:6px 8px;line-height:1.4}
+.opt.sel{background:#fef3c7;border-color:#d97706;box-shadow:0 5px 0 #b45309;transform:translateY(-2px)}
+.opt.good{background:var(--ok-soft);border-color:var(--ok);box-shadow:0 5px 0 #15803d;color:#14532d}
+.opt.bad{background:var(--bad-soft);border-color:var(--bad);box-shadow:0 5px 0 #991b1b;color:#7f1d1d;text-decoration:line-through;opacity:.7}
+.opt:disabled{cursor:default}
+.mcols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+.mcols .col{display:flex;flex-direction:column;gap:10px}
+.olist{direction:ltr;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:62px;background:#f0fdf4;border:2px dashed #86efac;border-radius:14px;padding:8px;margin:10px 0 4px;align-items:center}
+.olist .pk{background:#dcfce7;border:2px solid #16a34a;border-radius:10px;padding:2px 12px;font-weight:900;font-size:1.1rem;color:#14532d}
+.olist.vert{direction:rtl;flex-direction:column;align-items:stretch}.olist.vert .pk{text-align:start}.nb{display:inline-flex;width:24px;height:24px;border-radius:50%;background:#16a34a;color:#fff;align-items:center;justify-content:center;font-size:.85rem;margin-inline-end:4px}
+.olist .em{color:#94a3b8;font-weight:700}
+.go{margin-top:14px}
+.hint3{font-size:.85rem;color:var(--muted);text-align:center;margin-top:6px}
+.tries{display:flex;gap:4px;justify-content:center;margin-top:8px;font-size:1.2rem}
+.gsum{text-align:center}
+.gsum .big{font-size:2.2rem}
+.lock{font-size:2.4rem;line-height:1}
+.intro{background:#fff7ed;border:2px dashed #fb923c;border-radius:12px;padding:6px 10px;margin:6px 0;font-weight:700}
+.howto li{margin:4px 0}
+.vop{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Courier New",monospace;font-weight:900;font-size:1.15rem;color:#1e3a8a;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:4px 14px;margin:4px 0;line-height:1.45;text-align:right}
 .vop div{white-space:pre}.vop .rule{border-top:3px solid #1e3a8a;height:0;margin:2px 0}
-.mcol{display:flex;flex-direction:column;gap:10px}
-.mtile{min-height:56px;border-radius:14px;border:3px solid #0284c7;background:#fff;color:#0369a1;font-weight:900;font-size:1.2rem;box-shadow:0 5px 0 #0284c7;display:flex;align-items:center;justify-content:center}
-.mtile.sel{background:var(--yel);border-color:#b45309;color:#fff;box-shadow:0 5px 0 #b45309}
-.mtile.done{background:var(--ok-soft);border-color:var(--ok);color:#14532d;box-shadow:0 5px 0 #15803d;pointer-events:none}
-.mtile.bad{background:var(--bad-soft);border-color:var(--bad)}
-.machine{background:#334155;border-radius:18px;padding:12px;color:#fff;text-align:center}
-.machine .mbox{display:inline-block;background:var(--yel);color:#3b2600;border-radius:12px;padding:4px 16px;font-size:1.5rem;font-weight:900;direction:ltr;margin:6px 0}
-.machine .inn{font-size:1.6rem;font-weight:900;color:#fde68a;direction:ltr}
-.olist{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;direction:ltr;min-height:60px;background:#f0fdf4;border:2px dashed #86efac;border-radius:14px;padding:8px;margin:8px 0;align-items:center}
-#mo .tile.used{display:none}
-.olist .sg{font-weight:900;font-size:1.4rem;color:#15803d}
-.olist .pk{background:#dcfce7;border:2px solid #16a34a;border-radius:10px;padding:2px 10px;font-weight:900;font-size:1.15rem;color:#14532d}
-.tools{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}.tools .btn{direction:ltr}
+.fig svg{max-width:300px}
+.chips a.cur{border-color:var(--yel)}
 </style>
 </head>
 <body>
 <header class="top">
   <div class="school">متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
-  <h1>🎮 مهمّات المسّاح</h1>
-  <div style="font-size:.85rem">السنة الرابعة متوسط — المقطع 2: خاصية طالس والنسب المثلثية</div>
+  <h1>🎮 ألعاب المقطع الثاني</h1>
+  <div style="font-size:.85rem">السنة الرابعة متوسط — خاصية طالس والنسب المثلثية</div>
 </header>
 <div class="bar">
   <span class="pill">🎯 <b id="score">0</b> / 20</span>
@@ -199,225 +155,289 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:16px}
   <span class="prog"><i id="progi"></i></span>
   <button class="snd" id="snd" aria-label="الصوت">🔊</button>
 </div>
-<nav class="chips" id="chips">
-  <a href="#s0">📖 تذكير</a><a href="#s1" data-k="g1">🧭 المهمّات</a><a href="#s2">🎓 الشهادة</a>
-</nav>
-<main>
+<nav class="chips" id="chips"></nav>
+<main id="main">
 <section class="card" id="s0">
-  <div class="ct">📖 تذكير في دقيقة</div>
-  <div class="row" style="margin-top:0"><button class="btn" id="t1">طالس</button><button class="btn light" id="t2">النسب المثلثية</button></div>
-  <div id="recap"></div>
+  <div class="ct">📌 كيف ألعب؟ (اقرأ مرة واحدة)</div>
+  <ol class="howto">
+    <li>👆 اضغط على <b>جواب واحد</b>، فيتلوّن بالأصفر.</li>
+    <li>✔ ثم اضغط الزر الأخضر <b>«تحقّق»</b>. إذا ضغطت جوابا بالخطأ، اضغط جوابا آخر قبل «تحقّق» ولا تخسر شيئا.</li>
+    <li>💡 إذا أخطأت: يظهر تلميح وتجرّب مرة أخرى. لك <b>3 محاولات</b>، وبعد الثالثة يظهر الحل المفصّل.</li>
+    <li>🎯 كل سؤال بنقطة: من المحاولة الأولى <b>1</b>، الثانية <b>0,5</b>، الثالثة <b>0,25</b>.</li>
+    <li>✍️ اكتب الحساب في كراسك قبل أن تختار. تقدّمك محفوظ في هاتفك.</li>
+  </ol>
 </section>
-<section class="card" id="s1">
-  <div class="ct">🧭 مهمّات المسّاح <span class="pts">20 ن</span></div>
-  <div class="muted">أنت مسّاح شابّ في ولاية قالمة. في كل مهمّة: <b>1)</b> اختر الأداة المناسبة (1 ن)، ثم <b>2)</b> احسب المطلوب (3 ن). لكل خطوة 3 محاولات. جهّز الحاسبة على وضع <b class="m">DEG</b>.</div>
-  <div id="g1"></div>
-</section>
-<section class="card" id="s2">
+<div id="games"></div>
+<section class="card" id="sc">
   <div class="ct">🎓 الشهادة</div>
   <div id="cert"></div>
 </section>
 </main>
 <div id="toast"></div>
-<footer>متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي<br>المرجع: منهاج السنة الرابعة متوسط والكتاب المدرسي، الباب 9 «خاصية طالس» والباب 10 «النسب المثلثية».</footer>
-
+<footer>متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي<br>المرجع: منهاج السنة الرابعة متوسط والمخطط السنوي 2022، المقطع الثاني، والكتاب المدرسي.</footer>
 <script>
 "use strict";
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+/* math helpers: everything inside M() is written left to right */
 const F = (a, b) => `<span class="fr"><span>${a}</span><span>${b}</span></span>`;
-const EQP = p => p.map(x => x.startsWith('<') ? x : `<span>${x}</span>`).join('');
-const EQ = (...p) => `<span class="eq">${EQP(p)}</span>`;
-const EQB = (...p) => `<span class="eq blk">${EQP(p)}</span>`;
 const M = t => `<span class="m">${t}</span>`;
-const fmt = x => String(Math.round(x * 1000) / 1000).replace('.', ',');
-const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
-/* vertical operation: rows right-aligned, '—' = rule */
+const EQ = (...p) => `<span class="eq">${p.map(x => String(x).startsWith('<') ? x : `<span>${x}</span>`).join('')}</span>`;
 const VOP = rows => `<div class="vop">${rows.map(r => r === '—' ? '<div class="rule"></div>' : `<div>${r}</div>`).join('')}</div>`;
-const num = s => { const t = String(s).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[٫,]/g, '.').replace(/\s/g, '').replace(/DA|kg|m/gi, ''); return t === '' || isNaN(+t) ? null : +t; };
-
-/* ---------- messages (change from question to question) ---------- */
+const fmt = x => String(Math.round(x * 100) / 100).replace('.', ',');
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+/* geometry figure: P = {A:[x,y]}, seg/line/ray = [['A','B']], circ = [[cx,cy,r,dashed]], ra = [['A','B','C']] (right angle at B), extra = raw svg */
+function G(o) {
+  const W = o.w || 300, H = o.h || 200, P = o.P || {}, out = [];
+  if (o.grid) { for (let x = 0; x <= W; x += o.grid) out.push(`<line x1="${x}" y1="0" x2="${x}" y2="${H}" stroke="#e2e8f0"/>`); for (let y = 0; y <= H; y += o.grid) out.push(`<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="#e2e8f0"/>`); }
+  const ext = (a, b, k1, k2) => { const [x1, y1] = P[a], [x2, y2] = P[b], dx = x2 - x1, dy = y2 - y1; return [x1 - k1 * dx, y1 - k1 * dy, x2 + k2 * dx, y2 + k2 * dy]; };
+  (o.poly || []).forEach(p => out.push(`<polygon points="${p.map(k => P[k].join(',')).join(' ')}" fill="${o.fill || '#e0f2fe'}" stroke="#0369a1" stroke-width="2.5"/>`));
+  (o.circ || []).forEach(c => out.push(`<circle cx="${c[0]}" cy="${c[1]}" r="${c[2]}" fill="none" stroke="${c[4] || '#0369a1'}" stroke-width="2.5" ${c[3] ? 'stroke-dasharray="6 5"' : ''}/>`));
+  (o.line || []).forEach(([a, b, col]) => { const e = ext(a, b, .6, .6); out.push(`<line x1="${e[0]}" y1="${e[1]}" x2="${e[2]}" y2="${e[3]}" stroke="${col || '#0369a1'}" stroke-width="2.5"/>`); });
+  (o.ray || []).forEach(([a, b, col]) => { const e = ext(a, b, 0, .8); out.push(`<line x1="${e[0]}" y1="${e[1]}" x2="${e[2]}" y2="${e[3]}" stroke="${col || '#0369a1'}" stroke-width="2.5"/>`); });
+  (o.seg || []).forEach(([a, b, col, dash]) => out.push(`<line x1="${P[a][0]}" y1="${P[a][1]}" x2="${P[b][0]}" y2="${P[b][1]}" stroke="${col || '#0369a1'}" stroke-width="${col ? 3.5 : 2.5}" ${dash ? 'stroke-dasharray="6 5"' : ''}/>`));
+  (o.ra || []).forEach(([a, b, c]) => { const [bx, by] = P[b], u = (p) => { const dx = P[p][0] - bx, dy = P[p][1] - by, n = Math.hypot(dx, dy); return [dx / n * 11, dy / n * 11]; }; const [ux, uy] = u(a), [vx, vy] = u(c); out.push(`<polyline points="${bx + ux},${by + uy} ${bx + ux + vx},${by + uy + vy} ${bx + vx},${by + vy}" fill="none" stroke="#dc2626" stroke-width="2"/>`); });
+  if (o.extra) out.push(o.extra);
+  Object.entries(P).forEach(([k, [x, y]]) => { if ((o.hide || []).includes(k)) return; const d = (o.lab || {})[k] || [8, -8]; out.push(`<circle cx="${x}" cy="${y}" r="3.5" fill="#0f172a"/><text x="${x + d[0]}" y="${y + d[1]}" font-size="17" fill="#0f172a" text-anchor="middle">${k}</text>`); });
+  return `<div class="fig"><svg viewBox="0 0 ${W} ${H}">${out.join('')}</svg></div>`;
+}
+/* graduated line: labels a (left) and b (right), n equal parts, point lab at tick k (marks = [[k,label],...]) */
+function NL(a, b, n, marks) {
+  const x0 = 25, x1 = 295, y = 55, out = [`<line x1="10" y1="${y}" x2="310" y2="${y}" stroke="#0369a1" stroke-width="3"/>`];
+  for (let i = 0; i <= n; i++) { const x = x0 + (x1 - x0) * i / n, big = i === 0 || i === n || (n === 10 && i === 5); out.push(`<line x1="${x}" y1="${y - (big ? 12 : 7)}" x2="${x}" y2="${y + (big ? 12 : 7)}" stroke="#0369a1" stroke-width="2"/>`); }
+  out.push(`<text x="${x0}" y="${y + 34}" font-size="18" text-anchor="middle" fill="#0f172a">${a}</text><text x="${x1}" y="${y + 34}" font-size="18" text-anchor="middle" fill="#0f172a">${b}</text>`);
+  marks.forEach(([k, l]) => { const x = x0 + (x1 - x0) * k / n; out.push(`<circle cx="${x}" cy="${y}" r="6" fill="#dc2626"/><text x="${x}" y="${y - 18}" font-size="19" text-anchor="middle" fill="#dc2626">${l}</text>`); });
+  return `<div class="fig"><svg viewBox="0 0 320 100">${out.join('')}</svg></div>`;
+}
+/* ---------- messages: change from question to question ---------- */
 const MSG = {
-  ok: ['أحسنت! تركيزك أوصلك إلى الجواب الصحيح.', 'ممتاز! الدقة أهم من السرعة، وأنت أثبتّ ذلك.', 'رائع! جهدك يستحق هذه النجوم.', 'برافو! التأنّي يصنع النجاح.', 'إجابة صحيحة! واصل بنفس الهدوء.', 'بارك الله فيك! تقدّم خطوة بخطوة كما فعلت.'],
+  ok: ['أحسنت! تركيزك أوصلك إلى الجواب الصحيح.', 'ممتاز! الدقة أهم من السرعة، وأنت أثبتّ ذلك.', 'رائع! جهدك يستحق هذه النجوم.', 'برافو! التأنّي يصنع النجاح.', 'إجابة صحيحة! واصل بنفس الهدوء.', 'بارك الله فيك! تقدّم خطوة بخطوة كما فعلت.', 'جميل جدا! فكّرت جيدا قبل أن تختار.'],
   w1: ['لا بأس، الخطأ جزء من التعلّم. اقرأ التلميح بهدوء.', 'تمهّل قليلا: كلما أسرعت قلّ تركيزك.', 'كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.', 'أنت قريب. أعطِ السؤال الوقت الذي يحتاجه.'],
-  w2: ['محاولة أخيرة: اكتب الحساب على ورقة قبل أن تجيب.', 'لا تيأس! التركيز يأتي مع الهدوء.', 'السرعة والتركيز لا يجتمعان: تمهّل.', 'ابذل جهدا صغيرا آخر، فالحل قريب منك.'],
-  fail: ['لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. تأمّل الحل خطوة بخطوة.', 'المهم أن نفهم لماذا أخطأنا. اقرأ الحل ثم أعده وحدك على ورقة.', 'الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة.']
+  w2: ['محاولة أخيرة: اكتب الحساب في كراسك قبل أن تختار.', 'لا تيأس! التركيز يأتي مع الهدوء.', 'السرعة والتركيز لا يجتمعان: تمهّل.', 'ابذل جهدا صغيرا آخر، فالحل قريب منك.'],
+  fail: ['لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. تأمّل الحل خطوة بخطوة.', 'المهم أن نفهم لماذا أخطأنا. اقرأ الحل ثم أعده وحدك في كراسك.', 'الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة.']
 };
 let mi = 0; const pick = k => MSG[k][(mi++) % MSG[k].length];
+/*META {"TITLE":"ألعاب المقطع الثاني: خاصية طالس والنسب المثلثية (الرابعة متوسط)","DESC":"ثلاث ألعاب سهلة بأزرار اختيار للسنة الرابعة متوسط: خاصية طالس، الخاصية العكسية (متوازيان أم لا؟)، النسب المثلثية. 20 سؤالا و20 نقطة وشهادة.","OGT":"🎮 ألعاب المقطع الثاني للرابعة متوسط: طالس والنسب المثلثية في 20 سؤالا!","OGD":"احسب الأطوال، احكم على التوازي، استعمل cos وsin وtan: اضغط الجواب واربح الشهادة.","L":"4m","N":"2","H1":"🎮 ألعاب المقطع الثاني","SUB":"السنة الرابعة متوسط — خاصية طالس والنسب المثلثية","REF":"المرجع: منهاج السنة الرابعة متوسط والمخطط السنوي 2022، المقطع الثاني، والكتاب المدرسي."} */
+const TH = G({ w: 300, h: 195, P: { A: [150, 20], B: [40, 175], C: [260, 175], M: [84, 113], N: [216, 113] }, seg: [['A', 'B'], ['A', 'C'], ['B', 'C'], ['M', 'N', '#ea580c']], lab: { A: [0, -8], B: [-12, 14], C: [12, 14], M: [-14, 0], N: [14, 0] } });
+const BF = G({ w: 300, h: 190, P: { A: [150, 95], B: [55, 170], C: [245, 170], M: [197, 58], N: [103, 58] }, seg: [['B', 'M'], ['C', 'N'], ['B', 'C'], ['M', 'N', '#ea580c']], lab: { A: [0, 22], B: [-12, 14], C: [12, 14], M: [12, -6], N: [-12, -6] } });
+const RT = G({ w: 300, h: 190, P: { A: [60, 160], B: [240, 160], C: [60, 40] }, poly: [['A', 'B', 'C']], ra: [['B', 'A', 'C']], lab: { A: [-12, 14], B: [12, 14], C: [-12, 0] } });
+const RAT = (a, b) => F(a, b);
+const THP = `خاصية طالس: ${M('(BM)')} و ${M('(CN)')} متقاطعان في ${M('A')}، إذا كان ${M('(MN) // (BC)')} فإن ${EQ(RAT('AM', 'AB'), '=', RAT('AN', 'AC'), '=', RAT('MN', 'BC'))}.`;
+const PAGE = {
+ key: 'al3ab_4m_m2_v2', file: 'ألعاب_المقطع_الثاني_4م',
+ certLine: 'لإتمامه(ا) ألعاب «خاصية طالس» و«متوازيان أم لا؟» و«النسب المثلثية»', certSub: 'المقطع الثاني — السنة الرابعة متوسط',
+ games: [
+ { icon: '📐', name: 'خاصية طالس', res: ['خاصية طالس وحساب أطوال'],
+   intro: `في الأشكال: ${M('(MN) // (BC)')}. الضلع البرتقالي هو ${M('[MN]')}.`, qs: [
+  { q: `${M('(MN) // (BC)')}. أيّ مساواة صحيحة حسب خاصية طالس؟`, fig: TH, o: [EQ(RAT('AM', 'AB'), '=', RAT('AN', 'AC'), '=', RAT('MN', 'BC')), EQ(RAT('AM', 'MB'), '=', RAT('AN', 'AC'), '=', RAT('MN', 'BC')), EQ(RAT('AM', 'AB'), '=', RAT('AC', 'AN'), '=', RAT('MN', 'BC')), EQ(RAT('AB', 'AM'), '=', RAT('AN', 'AC'), '=', RAT('BC', 'MN'))], a: 0,
+    h1: 'في كل نسبة: ضلع من المثلث الصغير AMN على الضلع الذي يقابله في المثلث الكبير ABC.', h2: `جدول الرؤوس: ${M('A M N')} فوق ${M('A B C')}.`,
+    m: { w: 'نكتب جدول الرؤوس المتقابلة: A مع A، M مع B، N مع C.', s: [THP], c: `${EQ(RAT('AM', 'AB'), '=', RAT('AN', 'AC'), '=', RAT('MN', 'BC'))}.` } },
+  { q: `${M('(MN) // (BC)')} و ${M('AM = 3 cm')} و ${M('AB = 5 cm')} و ${M('AC = 7,5 cm')}. احسب ${M('AN')}.`, fig: TH, o: [M('4,5 cm'), M('12,5 cm'), M('2 cm'), M('5,5 cm')], a: 0,
+    h1: `نحتفظ بالمساواة المناسبة: ${EQ(RAT('AM', 'AB'), '=', RAT('AN', 'AC'))}.`, h2: `${EQ(RAT('3', '5'), '=', RAT('AN', '7,5'))}، ثم الجداء المتصالب.`,
+    m: { w: 'خاصية طالس ثم الجداء المتصالب.', s: [EQ(RAT('AM', 'AB'), '=', RAT('AN', 'AC')), EQ(RAT('3', '5'), '=', RAT('AN', '7,5')), M('AN = 3 × 7,5 ÷ 5'), M('AN = 4,5')], c: `${M('AN = 4,5 cm')}.` }, sc: [['المساواة', .5], ['النتيجة', .5]] },
+  { q: `${M('(MN) // (BC)')} و ${M('AM = 2 cm')} و ${M('AB = 6 cm')} و ${M('BC = 9 cm')}. احسب ${M('MN')}.`, fig: TH, o: [M('3 cm'), M('27 cm'), M('4,5 cm'), M('6 cm')], a: 0,
+    h1: `نستعمل ${EQ(RAT('AM', 'AB'), '=', RAT('MN', 'BC'))}.`, h2: `${EQ(RAT('2', '6'), '=', RAT('MN', '9'))}.`,
+    m: { w: 'خاصية طالس ثم الجداء المتصالب.', s: [EQ(RAT('2', '6'), '=', RAT('MN', '9')), M('MN = 2 × 9 ÷ 6'), M('MN = 3')], c: `${M('MN = 3 cm')}.` }, sc: [['المساواة', .5], ['النتيجة', .5]] },
+  { q: `وضعية «الفراشة»: ${M('(BM)')} و ${M('(CN)')} متقاطعان في ${M('A')} و ${M('(MN) // (BC)')}. ${M('AM = 2 cm')} و ${M('AB = 4 cm')} و ${M('MN = 3 cm')}. احسب ${M('BC')}.`, fig: BF, o: [M('6 cm'), M('1,5 cm'), M('8 cm'), M('2,67 cm')], a: 0,
+    h1: 'الخاصية نفسها تبقى صحيحة في وضعية الفراشة.', h2: `${EQ(RAT('2', '4'), '=', RAT('3', 'BC'))}.`,
+    m: { w: 'خاصية طالس في وضعية الفراشة.', s: [EQ(RAT('AM', 'AB'), '=', RAT('MN', 'BC')), EQ(RAT('2', '4'), '=', RAT('3', 'BC')), M('BC = 4 × 3 ÷ 2 = 6')], c: `${M('BC = 6 cm')}.` } },
+  { t: 'o', vert: 1, q: `رتّب خطوات تحرير حساب ${M('AN')}.`, it: [`${M('(BM)')} و ${M('(CN)')} متقاطعان في ${M('A')} و ${M('(MN) // (BC)')}`, `حسب خاصية طالس: ${EQ(RAT('AM', 'AB'), '=', RAT('AN', 'AC'))}`, `${M('AN = AM × AC ÷ AB')}`, `${M('AN = 4,5 cm')}`], ph: 'اضغط الخطوة الأولى أولا',
+    h1: 'نبدأ دائما بالمعطيات (الشروط).', h2: 'بعد الشروط نكتب الخاصية، ثم الحساب، ثم النتيجة.',
+    m: { w: 'تحرير منظم: المعطيات ← الخاصية ← الحساب ← النتيجة.', s: ['أولا: المعطيات: التقاطع والتوازي', 'ثانيا: خاصية طالس والمساواة المناسبة', 'ثالثا: الجداء المتصالب', 'رابعا: النتيجة مع الوحدة'], c: 'هكذا يُحرَّر الحل في الشهادة.' } },
+  { q: `عصا طولها ${M('1,5 m')} ظلها ${M('2 m')}، وفي اللحظة نفسها ظل شجرة زيتون في بوشقوف ${M('12 m')}. ما طول الشجرة؟`, o: [M('9 m'), M('16 m'), M('10,5 m'), M('8 m')], a: 0,
+    h1: 'أشعة الشمس متوازية: الأطوال متناسبة.', h2: `${EQ(RAT('h', '1,5'), '=', RAT('12', '2'))}.`,
+    m: { w: 'خاصية طالس (أشعة الشمس متوازية) ثم التناسب.', s: [EQ(RAT('h', '1,5'), '=', RAT('12', '2')), M('h = 1,5 × 12 ÷ 2 = 9')], c: `طول الشجرة ${M('9 m')}. لنحافظ على أشجار الزيتون، فهي ثروة منطقتنا.` } },
+  { q: `حل المعادلة ${EQ(RAT('x', '6'), '=', RAT('4', '8'))}.`, o: [M('x = 3'), M('x = 12'), M('x = 2'), M('x = 5,33')], a: 0,
+    h1: `الجداء المتصالب: ${M('8 × x = 6 × 4')}.`, h2: `${M('x = 24 ÷ 8')}.`,
+    m: { w: 'الجداء المتصالب.', s: [M('8x = 6 × 4'), M('8x = 24'), M('x = 3')], c: `${M('x = 3')}.` } }
+ ]},
+ { icon: '↔️', name: 'متوازيان أم لا؟', res: ['الخاصية العكسية لخاصية طالس'],
+   intro: 'قارن النسبتين: إن تساوتا (والنقط بنفس الترتيب) فالمستقيمان متوازيان، وإلا فليسا متوازيين.', qs: [
+  { q: `${M('M ∈ [AB]')} و ${M('N ∈ [AC]')}، ${M('AM = 2')} و ${M('AB = 5')} و ${M('AN = 3')} و ${M('AC = 7,5')}. هل ${M('(MN) // (BC)')}؟`, j: 1, fig: TH, o: ['نعم، حسب الخاصية العكسية لخاصية طالس', 'لا، حسب خاصية طالس', 'نعم، حسب خاصية طالس', 'لا يمكن الحكم'], a: 0,
+    h1: `احسب ${EQ(RAT('2', '5'))} و ${EQ(RAT('3', '7,5'))} كعددين عشريين.`, h2: `${M('2 ÷ 5 = 0,4')} و ${M('3 ÷ 7,5 = 0,4')}.`,
+    m: { w: 'نقارن النسبتين، ونتأكد أن النقط بنفس الترتيب.', s: [EQ(RAT('AM', 'AB'), '=', RAT('2', '5'), '= 0,4'), EQ(RAT('AN', 'AC'), '=', RAT('3', '7,5'), '= 0,4'), `النقط ${M('A, M, B')} و ${M('A, N, C')} بنفس الترتيب`], c: `${M('(MN) // (BC)')} حسب الخاصية العكسية لخاصية طالس.` } },
+  { q: `${M('AM = 3')} و ${M('AB = 5')} و ${M('AN = 4')} و ${M('AC = 6')} (النقط بنفس الترتيب). هل ${M('(MN) // (BC)')}؟`, j: 1, fig: TH, o: ['لا، حسب خاصية طالس', 'نعم، حسب الخاصية العكسية لخاصية طالس', 'نعم، حسب خاصية طالس', 'لا يمكن الحكم'], a: 0,
+    h1: `${M('3 ÷ 5 = 0,6')}. وكم ${M('4 ÷ 6')}؟`, h2: `${M('4 ÷ 6 ≈ 0,67')}: النسبتان غير متساويتين.`,
+    m: { w: 'لو كان المستقيمان متوازيين لكانت النسبتان متساويتين حسب خاصية طالس.', s: [EQ(RAT('AM', 'AB'), '=', RAT('3', '5'), '= 0,6'), EQ(RAT('AN', 'AC'), '=', RAT('4', '6'), '≈ 0,67'), 'النسبتان غير متساويتين'], c: `${M('(MN)')} و ${M('(BC)')} غير متوازيين حسب خاصية طالس.` } },
+  { q: `هل النسبتان ${EQ(RAT('4', '10'))} و ${EQ(RAT('6', '15'))} متساويتان؟ (استعمل الجداء المتصالب)`, o: [`نعم، لأن ${M('4 × 15 = 10 × 6')}`, `لا، لأن ${M('4 × 6 ≠ 10 × 15')}`, `لا، لأن ${M('4 ≠ 6')}`, 'لا يمكن الحكم'], a: 0,
+    h1: `قارن ${M('4 × 15')} و ${M('10 × 6')}.`, h2: `${M('4 × 15 = 60')} و ${M('10 × 6 = 60')}.`,
+    m: { w: 'تتساوى نسبتان إذا تساوى الجداءان المتصالبان.', s: [M('4 × 15 = 60'), M('10 × 6 = 60')], c: 'النسبتان متساويتان.' } },
+  { q: 'لتطبيق الخاصية العكسية لخاصية طالس، يجب أن تكون النقط A, M, B والنقط A, N, C:', o: ['على استقامة واحدة وبنفس الترتيب', 'على دائرة واحدة', 'رؤوس مثلث قائم', 'متساوية البعد عن A'], a: 0,
+    h1: 'انظر إلى نص الخاصية العكسية في الكتاب.', h2: '«... مرتبة بنفس الترتيب».',
+    m: { w: 'شروط الخاصية العكسية: الاستقامية، الترتيب نفسه، تساوي النسبتين.', s: [`${M('A, M, B')} على استقامة و ${M('A, N, C')} على استقامة`, 'النقط مرتبة بنفس الترتيب'], c: 'على استقامة واحدة وبنفس الترتيب.' } },
+  { q: `وضعية الفراشة: ${M('AM = 1,5')} و ${M('AB = 3')} و ${M('AN = 2')} و ${M('AC = 4')}، والنقط بنفس الترتيب. هل ${M('(MN) // (BC)')}؟`, j: 1, fig: BF, o: ['نعم، حسب الخاصية العكسية لخاصية طالس', 'لا، حسب خاصية طالس', 'لا، لأن M ليست على [AB]', 'لا يمكن الحكم'], a: 0,
+    h1: `${M('1,5 ÷ 3')} و ${M('2 ÷ 4')}.`, h2: 'كلتاهما تساوي 0,5.',
+    m: { w: 'الخاصية العكسية تصلح في وضعية الفراشة أيضا.', s: [EQ(RAT('1,5', '3'), '= 0,5'), EQ(RAT('2', '4'), '= 0,5'), 'النقط بنفس الترتيب'], c: `${M('(MN) // (BC)')} حسب الخاصية العكسية لخاصية طالس.` } },
+  { q: `${EQ(RAT('AM', 'AB'), '=', RAT('7', '8'))} و ${EQ(RAT('AN', 'AC'), '= 0,87')} (النقط بنفس الترتيب). هل ${M('(MN) // (BC)')}؟`, j: 1, o: ['لا، حسب خاصية طالس', 'نعم، حسب الخاصية العكسية لخاصية طالس', 'نعم، لأن النسبتين متقاربتان', 'لا يمكن الحكم'], a: 0,
+    h1: `احسب ${M('7 ÷ 8')} بدقة.`, h2: `${M('7 ÷ 8 = 0,875')}، و ${M('0,875 ≠ 0,87')}.`,
+    m: { w: 'النسبتان المتقاربتان ليستا متساويتين.', s: [M('7 ÷ 8 = 0,875'), M('0,875 ≠ 0,87')], c: `${M('(MN)')} و ${M('(BC)')} غير متوازيين حسب خاصية طالس.` } }
+ ]},
+ { icon: '📏', name: 'النسب المثلثية', res: ['جيب التمام، الجيب، الظل في مثلث قائم'],
+   intro: `في الشكل: المثلث ${M('ABC')} قائم في ${M('A')}، ووتره ${M('[BC]')}.`, qs: [
+  { t: 'm', q: `صِل كل نسبة للزاوية الحادة ${M('B̂')} بتعريفها.`, p: [[M('cos B̂'), 'المجاور ÷ الوتر'], [M('sin B̂'), 'المقابل ÷ الوتر'], [M('tan B̂'), 'المقابل ÷ المجاور']],
+    h1: 'جيب التمام (cos) يبدأ بالمجاور.', h2: 'الظل (tan) لا يستعمل الوتر.',
+    m: { w: 'تعاريف النسب المثلثية في مثلث قائم.', s: [`${M('cos B̂')} = المجاور ÷ الوتر`, `${M('sin B̂')} = المقابل ÷ الوتر`, `${M('tan B̂')} = المقابل ÷ المجاور`], c: 'كل نسبة لها تعريفها.' } },
+  { q: `${M('AB = 3')} و ${M('AC = 4')} و ${M('BC = 5')}. ما ${M('cos B̂')}؟`, fig: RT, o: [EQ(RAT('3', '5')), EQ(RAT('4', '5')), EQ(RAT('3', '4')), EQ(RAT('5', '3'))], a: 0,
+    h1: `الضلع المجاور للزاوية ${M('B̂')} (غير الوتر) هو ${M('[AB]')}.`, h2: `${EQ('cos B̂ =', RAT('AB', 'BC'))}.`,
+    m: { w: 'جيب التمام = المجاور ÷ الوتر.', s: [EQ('cos B̂ =', RAT('AB', 'BC'), '=', RAT('3', '5'))], c: `${EQ('cos B̂ =', RAT('3', '5'))}.` } },
+  { q: `في المثلث نفسه (${M('AB = 3')}، ${M('AC = 4')}، ${M('BC = 5')})، ما ${M('tan B̂')}؟`, fig: RT, o: [EQ(RAT('4', '3')), EQ(RAT('3', '4')), EQ(RAT('4', '5')), EQ(RAT('3', '5'))], a: 0,
+    h1: `المقابل للزاوية ${M('B̂')} هو ${M('[AC]')}.`, h2: `${EQ('tan B̂ =', RAT('AC', 'AB'))}.`,
+    m: { w: 'الظل = المقابل ÷ المجاور.', s: [EQ('tan B̂ =', RAT('AC', 'AB'), '=', RAT('4', '3'))], c: `${EQ('tan B̂ =', RAT('4', '3'))}.` } },
+  { q: `${M('cos B̂ = 0,6')}. باستعمال الآلة الحاسبة، ${M('B̂')} يساوي تقريبا (إلى الوحدة):`, o: [M('53°'), M('37°'), M('60°'), M('0,6°')], a: 0,
+    h1: `نستعمل ${M('cos⁻¹')} (أو SHIFT ثم cos) في الآلة الحاسبة.`, h2: `${M('cos⁻¹(0,6) ≈ 53,13')}.`,
+    m: { w: 'نستعمل الدالة العكسية في الآلة الحاسبة.', s: [M('B̂ = cos⁻¹(0,6)'), M('B̂ ≈ 53,13°')], c: `${M('B̂ ≈ 53°')}.` } },
+  { q: `سلّم طوله ${M('4 m')} مستند إلى جدار، ويصنع مع الأرض زاوية ${M('60°')}. ما بعد أسفل السلم عن الجدار؟ (${M('cos 60° = 0,5')})`, o: [M('2 m'), M('8 m'), M('3,46 m'), M('0,5 m')], a: 0,
+    h1: 'السلم هو الوتر، والمسافة على الأرض هي الضلع المجاور للزاوية.', h2: `${M('d = 4 × cos 60°')}.`,
+    m: { w: 'جيب التمام = المجاور ÷ الوتر، إذن المجاور = الوتر × cos.', s: [EQ('cos 60° =', RAT('d', '4')), M('d = 4 × 0,5 = 2')], c: `المسافة ${M('2 m')}.` } },
+  { q: `${M('x')} زاوية حادة حيث ${M('sin x = 0,6')}. ما ${M('cos x')}؟ (${M('cos²x + sin²x = 1')})`, o: [M('0,8'), M('0,4'), M('0,64'), M('1,6')], a: 0,
+    h1: `${M('cos²x = 1 − 0,36')}.`, h2: `${M('cos²x = 0,64')}، و ${M('cos x')} موجب.`,
+    m: { w: 'نستعمل العلاقة cos²x + sin²x = 1.', s: [M('cos²x = 1 − 0,6² = 1 − 0,36 = 0,64'), M('cos x = √0,64 = 0,8')], c: `${M('cos x = 0,8')}.` } },
+  { q: `للزاوية نفسها (${M('sin x = 0,6')} و ${M('cos x = 0,8')}) ما ${M('tan x')}؟`, o: [M('0,75'), M('1,33'), M('0,48'), M('1,4')], a: 0,
+    h1: `${EQ('tan x =', RAT('sin x', 'cos x'))}.`, h2: `${M('0,6 ÷ 0,8')}.`,
+    m: { w: 'العلاقة tan x = sin x ÷ cos x.', s: [EQ('tan x =', RAT('0,6', '0,8'), '= 0,75')], c: `${M('tan x = 0,75')}.` } }
+ ]}
+ ]
+};
 
 /* ---------- state ---------- */
-const KEY = 'al3ab_4m_m2_v1';
-let S = { r: {}, name: '', snd: true };
+const KEY = PAGE.key;
+let S = { r: {}, snd: true, name: '', at: {} };
 try { const t = localStorage.getItem(KEY); if (t) S = Object.assign(S, JSON.parse(t)); } catch (e) {}
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
-const ITEMS = { g1: ['m1c', 'm1v', 'm2c', 'm2v', 'm3c', 'm3v', 'm4c', 'm4v', 'm5c', 'm5v'] };
-const ALL = Object.values(ITEMS).flat();
-const score = () => ALL.reduce((n, k) => n + ((S.r[k] || {}).pts || 0), 0);
-const stars = () => ALL.reduce((n, k) => n + ((S.r[k] || {}).st || 0), 0);
-const doneK = k => ITEMS[k].every(i => S.r[i] && S.r[i].done);
-function rec(id, pts, st) { S.r[id] = { done: true, pts, st }; save(); upd(); }
-function upd() {
-  $('#score').textContent = fmt(score()); $('#stars').textContent = stars();
-  $('#progi').style.width = Math.round(100 * ALL.filter(k => S.r[k] && S.r[k].done).length / ALL.length) + '%';
-  $('#snd').textContent = S.snd ? '🔊' : '🔇';
-  $$('#chips a[data-k]').forEach(a => a.classList.toggle('ok', doneK(a.dataset.k)));
-  Object.keys(ITEMS).forEach((k, i) => $('#s' + (i + 1)).classList.toggle('done', doneK(k)));
-  renderCert();
-}
-
+PAGE.games.forEach((g, gi) => g.qs.forEach((q, qi) => { q.id = `g${gi + 1}q${qi + 1}`; }));
+const ALLQ = PAGE.games.flatMap(g => g.qs);
+const TOT = ALLQ.length;
+const PT = 20 / TOT;
+const score = () => ALLQ.reduce((n, q) => n + ((S.r[q.id] || {}).pts || 0), 0);
+const stars = () => ALLQ.reduce((n, q) => n + ((S.r[q.id] || {}).st || 0), 0);
+const gDone = g => g.qs.every(q => S.r[q.id]);
 /* ---------- sound & effects ---------- */
 let AC = null;
 function tone(fs, d = .12, type = 'triangle') { if (!S.snd) return; try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); fs.forEach((f, i) => { const o = AC.createOscillator(), g = AC.createGain(); o.type = type; o.frequency.value = f; g.gain.setValueAtTime(.15, AC.currentTime + i * d); g.gain.exponentialRampToValueAtTime(.001, AC.currentTime + (i + 1) * d); o.connect(g); g.connect(AC.destination); o.start(AC.currentTime + i * d); o.stop(AC.currentTime + (i + 1) * d); }); } catch (e) {} }
-const sOk = () => tone([523, 659, 784]), sBad = () => tone([220, 180], .18, 'sawtooth'), sClick = () => tone([800], .05, 'sine');
-function toast(t, w) { const d = document.createElement('div'); d.className = w ? 'w' : ''; d.innerHTML = t; $('#toast').appendChild(d); setTimeout(() => d.remove(), 3000); }
+const sOk = () => tone([523, 659, 784]), sBad = () => tone([220, 180], .18, 'sawtooth'), sClick = () => tone([700], .04, 'sine');
+function toast(t, w) { $('#toast').innerHTML = ''; const d = document.createElement('div'); d.className = w ? 'w' : ''; d.innerHTML = t; $('#toast').appendChild(d); setTimeout(() => d.remove(), 3000); }
 function burst(el, n = 10, set = ['⭐', '✨']) { const r = el.getBoundingClientRect(); for (let i = 0; i < n; i++) { const s = document.createElement('span'); s.className = 'burst'; s.textContent = set[i % set.length]; s.style.left = (r.left + r.width / 2) + 'px'; s.style.top = (r.top + 10) + 'px'; s.style.setProperty('--dx', (Math.random() * 240 - 120) + 'px'); s.style.setProperty('--dy', (-60 - Math.random() * 130) + 'px'); document.body.appendChild(s); setTimeout(() => s.remove(), 1000); } }
 const hintFx = el => burst(el, 5, ['💡', '⭐', '✨']);
 function shake(el) { el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake'); }
-const solHTML = (m, steps, c, sc) => `<div class="sol"><h4>📘 الحل النموذجي</h4><div><b>الطريقة:</b> ${m}</div>${steps.map(s => `<div class="ln">${s}</div>`).join('')}<div class="ccl"><b>الاستنتاج:</b> ${c}</div>${sc ? `<table class="sc"><tr><th>سلم التنقيط</th><th>النقاط</th></tr>${sc.map(r => `<tr><td>${r[0]}</td><td>${fmt(r[1])}</td></tr>`).join('')}<tr class="tot"><td>المجموع</td><td>${fmt(sc.reduce((a, r) => a + r[1], 0))}</td></tr></table>` : ''}</div>`;
-const solBox = (ok, html) => ok ? `<details><summary style="cursor:pointer;font-weight:800;color:#0369a1">📘 اطّلع على الحل المفصّل</summary>${html}</details>` : html;
-const RES = t => `<div class="res">📚 ${t}</div>`;
-const NXA = (href, t) => `<a class="btn green wide" href="${href}" style="text-decoration:none">${t} ←</a>`;
-
-
-/* ---------- figures (no parallel arrows: parallelism is stated in the text; right angles marked) ---------- */
-const TX = (x, y, t, c = '#0f172a', s = 16) => `<text x="${x}" y="${y}" font-size="${s}" fill="${c}">${t}</text>`;
-function figThales() {
-  return `<svg viewBox="0 0 300 180"><polygon points="150,18 40,165 260,165" fill="#e0f2fe" stroke="#0369a1" stroke-width="3"/>
-  <line x1="106" y1="77" x2="194" y2="77" stroke="#dc2626" stroke-width="3"/>
-  ${TX(144, 14, 'A')}${TX(22, 175, 'B')}${TX(266, 175, 'C')}${TX(86, 78, 'M', '#dc2626')}${TX(200, 78, 'N', '#dc2626')}</svg>`;
+function solHTML(q) {
+  const m = q.m, sc = q.sc || m.sc || [['الجواب الصحيح', 1]], k = PT;
+  return `<div class="sol"><h4>📘 الحل النموذجي</h4><div><b>الطريقة:</b> ${m.w}</div>${m.s.map(s => `<div class="ln">${s}</div>`).join('')}<div class="ccl"><b>الاستنتاج:</b> ${m.c}</div><table class="sc"><tr><th>سلم التنقيط</th><th>النقاط</th></tr>${sc.map(r => `<tr><td>${r[0]}</td><td>${fmt(r[1] * k)}</td></tr>`).join('')}<tr class="tot"><td>المجموع</td><td>${fmt(sc.reduce((a, r) => a + r[1], 0) * k)}</td></tr></table></div>`;
 }
-/* right triangle: right angle at R (bottom right), angle α at P (bottom left), top T */
-function figRight(L, angTxt, sides) {
-  return `<svg viewBox="0 0 330 190"><polygon points="40,160 250,160 250,40" fill="#ecfdf5" stroke="#0d9488" stroke-width="3"/>
-  <polyline points="234,160 234,144 250,144" fill="none" stroke="#0d9488" stroke-width="2.5"/>
-  <path d="M 85 160 A 45 45 0 0 0 80 138" fill="none" stroke="#ea580c" stroke-width="3"/>
-  ${TX(92, 152, angTxt, '#ea580c', 15)}
-  ${TX(18, 172, L[0])}${TX(256, 176, L[1])}${TX(256, 38, L[2])}
-  ${sides.map(s => TX(s[0], s[1], s[2], '#1e3a8a', 15)).join('')}</svg>`;
-}
-const recapHTML = {
-  1: () => `<div class="fig">${figThales()}</div>
-    <div><b>خاصية طالس:</b> ${M('(BM)')} و ${M('(CN)')} مستقيمان متقاطعان في ${M('A')}. إذا كان ${M('(MN)')} و ${M('(BC)')} متوازيين فإنّ:</div>${EQB(F('AM', 'AB'), '=', F('AN', 'AC'), '=', F('MN', 'BC'))}
-    <div>ثم <b>نحتفظ بالمساواة المناسبة</b> ونستعمل الجداء المتصالب.</div><div class="bk">الكتاب المدرسي ص 106 و 107</div>`,
-  2: () => `<div class="fig">${figRight(['A', 'B', 'C'], '', [[120, 182, 'المجاور'], [130, 92, 'الوتر'], [260, 104, 'المقابل']])}</div>
-    <div>في المثلث ${M('ABC')} القائم في ${M('B')}:</div>
-    ${EQB('cos A', '=', F('AB', 'AC'))}<div class="muted" style="text-align:center">جيب التمام = المجاور ÷ الوتر</div>
-    ${EQB('sin A', '=', F('BC', 'AC'))}<div class="muted" style="text-align:center">الجيب = المقابل ÷ الوتر</div>
-    ${EQB('tan A', '=', F('BC', 'AB'))}<div class="muted" style="text-align:center">الظل = المقابل ÷ المجاور</div>
-    <div>💡 لاختيار النسبة: نحدّد الضلع المعلوم والضلع المطلوب بالنسبة إلى الزاوية المعلومة.</div>`
-};
-function recap(k) { ['#t1', '#t2'].forEach((id, i) => $(id).className = 'btn' + (k === i + 1 ? '' : ' light')); $('#recap').innerHTML = recapHTML[k](); }
-$('#t1').addEventListener('click', () => recap(1)); $('#t2').addEventListener('click', () => recap(2)); recap(1);
-
-const TOOLS = [['th', 'خاصية طالس'], ['cos', 'cos'], ['sin', 'sin'], ['tan', 'tan']];
-const MS = [
- { id: 'm1', name: 'جسر على وادي سيبوس 🌊', tool: 'th', unit: 'm', a: 4.8, tol: 1e-9,
-   txt: `رسم مهندس مخطّط جسر صغير على وادي سيبوس. الدعامة ${M('[MN]')} توازي الأرضية ${M('[BC]')}، أي ${M('(MN) // (BC)')}، والنقط ${M('A, M, B')} و ${M('A, N, C')} في استقامة.<br>${M('AM = 3 m')} ؛ ${M('AB = 7,5 m')} ؛ ${M('BC = 12 m')}. احسب طول الدعامة ${M('MN')}.`,
-   fig: () => figThales(),
-   th1: 'في الشكل مستقيمان متوازيان ومستقيمان متقاطعان: أيّ أداة تناسب هذا الوضع؟', th2: 'لا يوجد مثلث قائم هنا، فالنسب المثلثية لا تفيد.',
-   h1: 'اكتب نسب طالس الثلاث، ثم احتفظ بالمساواة التي فيها MN والأطوال المعلومة.', h2: `${EQ(F('AM', 'AB'), '=', F('MN', 'BC'))} أي ${EQ(F('3', '7,5'), '=', F('MN', '12'))}`,
-   m: 'خاصية طالس، نحتفظ بالمساواة المناسبة ثم الجداء المتصالب (الكتاب ص 107).',
-   s: [`${M('(BM)')} و ${M('(CN)')} متقاطعان في ${M('A')}، و ${M('(MN) // (BC)')}، حسب خاصية طالس:`, EQ(F('AM', 'AB'), '=', F('AN', 'AC'), '=', F('MN', 'BC')), `نحتفظ بالمساواة: ${EQ(F('AM', 'AB'), '=', F('MN', 'BC'))} أي ${EQ(F('3', '7,5'), '=', F('MN', '12'))}`, EQ('MN', '=', F('3 × 12', '7,5'), '=', F('36', '7,5'), '=', '4,8')],
-   c: `طول الدعامة ${M('MN = 4,8 m')}.`, sc: [['ذكر الشروط وكتابة النسب', 1], ['المساواة المناسبة', 1], ['النتيجة', 1]] },
- { id: 'm2', name: 'سلّم المسرح الروماني بقالمة 🏛️', tool: 'cos', unit: 'm', a: 2.5, tol: 1e-9,
-   txt: `لترميم جدار المسرح الروماني بقالمة، أُسند سلّم ${M('[AC]')} طوله ${M('5 m')} إلى الجدار، فصنع مع الأرض زاوية ${M('BAC = 60°')}. الجدار عمودي على الأرض في ${M('B')}. احسب المسافة ${M('AB')} بين أسفل السلّم والجدار.`,
-   fig: () => figRight(['A', 'B', 'C'], '60°', [[130, 180, '؟'], [128, 92, '5 m']]),
-   th1: 'المثلث قائم: المعلوم الوتر (السلّم)، والمطلوب ضلع مجاور للزاوية 60°.', th2: 'النسبة التي تربط المجاور بالوتر هي جيب التمام.',
-   h1: `اكتب ${EQ('cos 60°', '=', F('AB', 'AC'))}`, h2: `${EQ('AB', '=', 'AC × cos 60°', '=', '5 × cos 60°')}، و ${EQ('cos 60°', '=', '0,5')}`,
-   m: 'في المثلث القائم نستعمل جيب التمام: المجاور ÷ الوتر.',
-   s: [`المثلث ${M('ABC')} قائم في ${M('B')}، إذن:`, EQ('cos BAC', '=', F('AB', 'AC')), EQ('cos 60°', '=', F('AB', '5')), EQ('AB', '=', '5 × cos 60°', '=', '5 × 0,5', '=', '2,5')],
-   c: `المسافة ${M('AB = 2,5 m')}.`, sc: [['كتابة النسبة', 1], ['التعويض', 1], ['النتيجة', 1]] },
- { id: 'm3', name: 'شجرة ساحة المتوسطة 🌳', tool: 'tan', unit: 'm', a: 14, tol: 0.05,
-   txt: `من نقطة ${M('A')} على الأرض، تبعد ${M('AB = 20 m')} عن جذع شجرة ${M('[BC]')} عمودية على الأرض، نرى قمّتها ${M('C')} بزاوية ${M('BAC = 35°')}. احسب ارتفاع الشجرة ${M('BC')} (دوّر النتيجة إلى ${M('0,1')}). 🌱 الشجرة تمنحنا الظل والهواء النقي.`,
-   fig: () => figRight(['A', 'B', 'C'], '35°', [[125, 180, '20 m'], [262, 104, '؟']]),
-   th1: 'المثلث قائم: المعلوم المجاور للزاوية، والمطلوب المقابل لها.', th2: 'النسبة التي تربط المقابل بالمجاور هي الظل.',
-   h1: `اكتب ${EQ('tan 35°', '=', F('BC', 'AB'))}`, h2: `${EQ('BC', '=', '20 × tan 35°')}، احسبها بالحاسبة (وضع DEG).`,
-   m: 'في المثلث القائم نستعمل الظل: المقابل ÷ المجاور.',
-   s: [`المثلث ${M('ABC')} قائم في ${M('B')}، إذن:`, EQ('tan BAC', '=', F('BC', 'AB')), EQ('tan 35°', '=', F('BC', '20')), EQ('BC', '=', '20 × tan 35°', '≈', '14,004'), EQ('BC', '≈', '14,0')],
-   c: `ارتفاع الشجرة ${M('BC ≈ 14 m')} (بالتدوير إلى ${M('0,1')}).`, sc: [['كتابة النسبة', 1], ['التعويض', 1], ['النتيجة المدوّرة', 1]] },
- { id: 'm4', name: 'طائرة ورقية في بوشقوف 🪁', tool: 'sin', unit: 'm', a: 32.1, tol: 0.05,
-   txt: `ربط أنس خيط طائرته الورقية بوتد ${M('A')} على الأرض. طول الخيط المشدود ${M('AC = 50 m')}، ويصنع مع الأرض زاوية ${M('BAC = 40°')}. ${M('B')} المسقط العمودي للطائرة ${M('C')} على الأرض. احسب ارتفاع الطائرة ${M('BC')} (دوّر إلى ${M('0,1')}).`,
-   fig: () => figRight(['A', 'B', 'C'], '40°', [[128, 92, '50 m'], [262, 104, '؟']]),
-   th1: 'المثلث قائم: المعلوم الوتر (الخيط)، والمطلوب الضلع المقابل للزاوية.', th2: 'النسبة التي تربط المقابل بالوتر هي الجيب.',
-   h1: `اكتب ${EQ('sin 40°', '=', F('BC', 'AC'))}`, h2: `${EQ('BC', '=', '50 × sin 40°')}، احسبها بالحاسبة (وضع DEG).`,
-   m: 'في المثلث القائم نستعمل الجيب: المقابل ÷ الوتر.',
-   s: [`المثلث ${M('ABC')} قائم في ${M('B')}، إذن:`, EQ('sin BAC', '=', F('BC', 'AC')), EQ('sin 40°', '=', F('BC', '50')), EQ('BC', '=', '50 × sin 40°', '≈', '32,139'), EQ('BC', '≈', '32,1')],
-   c: `ارتفاع الطائرة ${M('BC ≈ 32,1 m')}.`, sc: [['كتابة النسبة', 1], ['التعويض', 1], ['النتيجة المدوّرة', 1]] },
- { id: 'm5', name: 'ظلّ عصا قرب مئذنة القرية 🕌', tool: 'tan', unit: '°', a: 53, tol: 1e-9,
-   txt: `غرس التلاميذ عصا ${M('[BC]')} طولها ${M('1,2 m')} عموديا على الأرض، فكان طول ظلّها ${M('AB = 0,9 m')}. ${M('A')} طرف الظل. احسب قيس الزاوية ${M('BAC')} التي تصنعها أشعة الشمس مع الأرض (دوّر إلى الدرجة).`,
-   fig: () => figRight(['A', 'B', 'C'], '؟', [[125, 180, '0,9 m'], [262, 104, '1,2 m']]),
-   th1: 'المثلث قائم: نعرف الضلع المقابل والضلع المجاور للزاوية المطلوبة.', th2: 'النسبة التي تربط المقابل بالمجاور هي الظل.',
-   h1: `احسب أولا ${EQ('tan BAC', '=', F('BC', 'AB'), '=', F('1,2', '0,9'))}`, h2: `استعمل الحاسبة: ${M('tan⁻¹')} (أو ${M('shift tan')}) للعدد ${EQ(F('1,2', '0,9'))}`,
-   m: 'نحسب الظل ثم نستعمل الحاسبة لإيجاد الزاوية.',
-   s: [`المثلث ${M('ABC')} قائم في ${M('B')}، إذن:`, EQ('tan BAC', '=', F('BC', 'AB'), '=', F('1,2', '0,9'), '=', F('4', '3')), `بالحاسبة: ${EQ('BAC', '≈', '53,13°')}`, EQ('BAC', '≈', '53°')],
-   c: `قيس الزاوية ${M('BAC ≈ 53°')}.`, sc: [['كتابة الظل', 1], ['حساب النسبة', 1], ['قيس الزاوية', 1]] }
-];
-const TOOLNAME = Object.fromEntries(TOOLS);
-function game1(idx) {
-  if (idx == null) idx = Math.max(0, MS.findIndex(r => !(S.r[r.id + 'v']))); if (idx < 0) idx = 0;
-  const R = MS[idx], host = $('#g1');
-  const dots = MS.map((r, i) => { const x = S.r[r.id + 'v']; return `<span class="${x ? (x.pts ? 'ok' : 'ko') : (i === idx ? 'cur' : '')}">${i + 1}</span>`; }).join('');
-  host.innerHTML = `<div class="dots">${dots}</div>
-   <div class="qtext">🧭 <b>المهمّة ${idx + 1}: ${R.name}</b></div><div>${R.txt}</div><div class="fig">${R.fig()}</div>
-   <div class="q"><b>الخطوة 1 (1 ن):</b> ما الأداة المناسبة؟<div class="tools">${TOOLS.map(t => `<button class="btn light" data-t="${t[0]}">${t[1]}</button>`).join('')}</div><div class="fb" id="cfb"></div></div>
-   <div class="q" id="stepB" style="display:none"><b>الخطوة 2 (3 ن):</b> احسب المطلوب.
-     <div class="ans"><input type="text" inputmode="decimal" autocomplete="off" aria-label="الجواب"><span class="unit">${R.unit}</span><button class="btn chk">تحقّق ✓</button></div>
-     <div class="keys"><button data-k=",">,</button><button data-k="⌫">⌫</button></div><div class="fb" id="vfb"></div><div id="vsol"></div></div>
-   <div class="row" id="g1nx"></div>`;
-  const cfb = $('#cfb'), vfb = $('#vfb'), inp = $('#stepB input');
-  const next = () => { $('#g1nx').innerHTML = idx < MS.length - 1 ? `<button class="btn green wide" id="g1go">المهمّة التالية ←</button>` : NXA('#s2', 'إلى الشهادة'); const g = $('#g1go'); if (g) g.addEventListener('click', () => { game1(idx + 1); $('#s1').scrollIntoView({ behavior: 'smooth' }); }); };
-  const sol = () => solHTML(R.m, R.s, R.c, R.sc);
-  const showTool = () => { $$('.tools button', host).forEach(b => { b.disabled = true; b.className = 'btn ' + (b.dataset.t === R.tool ? 'green' : 'light'); }); };
-  const openB = () => { $('#stepB').style.display = ''; };
-  const lockB = () => $$('#stepB input, #stepB button').forEach(b => b.disabled = true);
-  const cst = S.r[R.id + 'c'], vst = S.r[R.id + 'v'];
-  if (cst) { showTool(); cfb.innerHTML = `<span class="g">منجزة: ${fmt(cst.pts)} / 1 ن ${'⭐'.repeat(cst.st)} — الأداة: <b>${TOOLNAME[R.tool]}</b></span>`; openB(); }
-  if (vst) { lockB(); vfb.innerHTML = `<span class="g">منجزة: ${fmt(vst.pts)} / 3 ن ${'⭐'.repeat(vst.st)}</span>`; $('#vsol').innerHTML = solBox(!!vst.pts, sol()); next(); return; }
-  if (!cst) {
-    let tries = 0;
-    $$('.tools button', host).forEach(b => b.addEventListener('click', () => {
-      if (S.r[R.id + 'c']) return; tries++;
-      if (b.dataset.t === R.tool) { sOk(); burst(b); cfb.innerHTML = `<span class="g">✅ ${pick('ok')} ${'⭐'.repeat(Math.max(1, 4 - tries))}</span>`; rec(R.id + 'c', 1, Math.max(1, 4 - tries)); showTool(); openB(); inp.focus(); return; }
-      sBad(); shake(b); b.disabled = true; b.className = 'btn red';
-      if (tries === 1) { cfb.innerHTML = `<span class="w">${pick('w1')}</span><span class="h">💡 ${R.th1}</span>`; hintFx(cfb); }
-      else if (tries === 2) { cfb.innerHTML = `<span class="w">${pick('w2')}</span><span class="h">💡 ${R.th2}</span>`; hintFx(cfb); }
-      else { cfb.innerHTML = `<span class="w">🌱 ${pick('fail')} الأداة المناسبة: <b>${TOOLNAME[R.tool]}</b>.</span>`; rec(R.id + 'c', 0, 0); showTool(); openB(); }
-    }));
+const solBox = (ok, q) => ok ? `<details><summary style="cursor:pointer;font-weight:800;color:#0369a1">📘 اطّلع على الحل المفصّل</summary>${solHTML(q)}</details>` : solHTML(q);
+const RATE = [1, .5, .25];
+/* ---------- build page ---------- */
+const host = $('#games');
+$('#chips').innerHTML = PAGE.games.map((g, i) => `<a href="#g${i + 1}" data-g="${i}">${g.icon} اللعبة ${i + 1}</a>`).join('') + `<a href="#sc">🎓 الشهادة</a>`;
+PAGE.games.forEach((g, gi) => {
+  const sec = document.createElement('section'); sec.className = 'card'; sec.id = `g${gi + 1}`;
+  sec.innerHTML = `<div class="ct">${g.icon} اللعبة ${gi + 1}: ${g.name} <span class="pts">${fmt(g.qs.length * PT)} ن</span></div>${g.res.map(r => `<span class="res">📚 ${r}</span>`).join(' ')}${g.intro ? `<div class="intro">${g.intro}</div>` : ''}<div class="dots"></div><div class="stage"></div>`;
+  host.appendChild(sec);
+  showGame(gi);
+});
+function dotsOf(g, cur) { return g.qs.map((q, i) => { const r = S.r[q.id]; return `<span class="${r ? (r.pts > 0 ? 'ok' : 'ko') : (i === cur ? 'cur' : '')}">${i + 1}</span>`; }).join(''); }
+function showGame(gi, force) {
+  const g = PAGE.games[gi], sec = $(`#g${gi + 1}`), st = $('.stage', sec);
+  let cur = g.qs.findIndex(q => !S.r[q.id]);
+  if (force !== undefined) cur = force;
+  $('.dots', sec).innerHTML = dotsOf(g, cur);
+  sec.classList.toggle('done', gDone(g));
+  if (cur < 0) {
+    const p = g.qs.reduce((n, q) => n + S.r[q.id].pts, 0), s = g.qs.reduce((n, q) => n + S.r[q.id].st, 0);
+    const nxt = gi + 1 < PAGE.games.length ? `#g${gi + 2}` : '#sc';
+    st.innerHTML = `<div class="gsum"><div class="big">🏁</div><p>انتهت اللعبة! نقاطك <b>${fmt(p * PT)} / ${fmt(g.qs.length * PT)}</b> و ${s} ⭐</p>
+      <div class="row"><a class="btn green" href="${nxt}" style="text-decoration:none">${gi + 1 < PAGE.games.length ? 'إلى اللعبة التالية' : 'إلى الشهادة'} ←</a><button class="btn light rg">🔁 أعد هذه اللعبة</button></div></div>`;
+    $('.rg', st).addEventListener('click', e => { const b = e.currentTarget; if (!b.dataset.c) { b.dataset.c = 1; b.textContent = 'اضغط مرة أخرى للتأكيد'; return; } g.qs.forEach(q => delete S.r[q.id]); save(); upd(); showGame(gi); });
+    return;
   }
-  let vt = 0;
-  $$('#stepB .keys button').forEach(b => b.addEventListener('click', () => { const k = b.dataset.k; inp.value = k === '⌫' ? inp.value.slice(0, -1) : inp.value + k; inp.focus(); }));
-  const check = () => {
-    if (S.r[R.id + 'v']) return; const v = num(inp.value);
-    if (v === null) { vfb.innerHTML = '<span class="h">اكتب عددا (الفاصلة بالزر ,).</span>'; shake(inp); return; }
-    vt++;
-    const fin = ok => { const stn = ok ? Math.max(1, 4 - vt) : 0; rec(R.id + 'v', ok ? 3 : 0, stn); lockB(); $('#vsol').innerHTML = solBox(ok, sol()); $$('.dots span', host)[idx].className = ok ? 'ok' : 'ko'; next(); };
-    if (Math.abs(v - R.a) <= R.tol + 1e-9) { sOk(); burst(inp); vfb.innerHTML = `<span class="g">✅ ${pick('ok')} ${'⭐'.repeat(Math.max(1, 4 - vt))}</span>`; toast('🧭 +3 ن'); fin(true); return; }
-    sBad(); shake(inp);
-    if (vt === 1) { vfb.innerHTML = `<span class="w">${pick('w1')}</span><span class="h">💡 ${R.h1}</span>`; hintFx(vfb); }
-    else if (vt === 2) { vfb.innerHTML = `<span class="w">${pick('w2')}</span><span class="h">💡 ${R.h2}</span>`; hintFx(vfb); }
-    else { vfb.innerHTML = `<span class="w">🌱 ${pick('fail')}</span>`; fin(false); }
-  };
-  $('#stepB .chk').addEventListener('click', check); inp.addEventListener('keydown', e => { if (e.key === 'Enter') check(); });
+  renderQ(gi, cur);
 }
-
-/* ================= CERTIFICATE ================= */
-const GT = { g1: '🧭 المهمّات الخمس' };
-function medal() { const s = score(); return s >= 17 ? ['🥇', 'الذهبية', '#b45309'] : s >= 12 ? ['🥈', 'الفضية', '#475569'] : ['🥉', 'البرونزية', '#9a3412']; }
+function renderQ(gi, qi) {
+  const g = PAGE.games[gi], q = g.qs[qi], sec = $(`#g${gi + 1}`), st = $('.stage', sec);
+  const t = q.t || 'c';
+  const doTxt = { c: '👆 اختر جوابا واحدا ثم اضغط «تحقّق».', m: '👆 اضغط بطاقة من اليمين ثم البطاقة التي تناسبها من اليسار، ثم «تحقّق».', o: '👆 اضغط البطاقات بالترتيب المطلوب، ثم «تحقّق». للتصحيح اضغط «امسح».' }[t];
+  st.innerHTML = `<div class="qbox"><div class="muted">السؤال ${qi + 1} من ${g.qs.length}${q.bk ? ` <span class="bk">📖 ${q.bk}</span>` : ''}</div><div class="qtext">${q.q}</div>${q.fig || ''}${q.j ? `<div class="muted">✍️ علّل جوابك في كراسك، ثم اختر.</div>` : ''}<span class="do">${doTxt}</span>
+    <div class="play"></div><div class="tries">${'❤️'.repeat(3)}</div><div class="fb"></div>
+    <button class="btn green wide go" disabled>✔ تحقّق</button><div class="after"></div></div>`;
+  const play = $('.play', st), go = $('.go', st), fb = $('.fb', st), after = $('.after', st), tr = $('.tries', st);
+  let wrong = 0, busy = false, finished = false;
+  const showTries = () => tr.innerHTML = '❤️'.repeat(3 - wrong) + '🤍'.repeat(wrong);
+  /* --- choice --- */
+  let sel = null, state = null;
+  if (t === 'c') {
+    const opts = q.keep ? q.o.map((x, i) => [x, i]) : shuffle(q.o.map((x, i) => [x, i]));
+    play.innerHTML = `<div class="opts ${q.o.some(x => String(x).length > 26) ? 'one' : ''}">${opts.map(([x, i]) => `<button class="opt" data-i="${i}">${x}</button>`).join('')}</div>`;
+    $$('.opt', play).forEach(b => b.addEventListener('click', () => { if (busy || finished || b.disabled) return; sClick(); $$('.opt', play).forEach(x => x.classList.remove('sel')); b.classList.add('sel'); sel = +b.dataset.i; go.disabled = false; }));
+    state = { check: () => sel === q.a, onWrong: () => { const b = $(`.opt[data-i="${sel}"]`, play); b.classList.remove('sel'); b.classList.add('bad'); b.disabled = true; sel = null; go.disabled = true; },
+      reveal: ok => { $$('.opt', play).forEach(b => { b.disabled = true; b.classList.remove('sel'); if (+b.dataset.i === q.a) b.classList.add('good'); }); } };
+  }
+  /* --- matching --- */
+  if (t === 'm') {
+    const L = q.p.map((p, i) => [p[0], i]), R = shuffle(q.p.map((p, i) => [p[1], i]));
+    const pairs = {}; let lsel = null; const COL = ['#fde68a', '#bfdbfe', '#fbcfe8', '#bbf7d0', '#ddd6fe'];
+    play.innerHTML = `<div class="mcols"><div class="col">${L.map(([x, i]) => `<button class="opt ml" data-i="${i}">${x}</button>`).join('')}</div><div class="col">${R.map(([x, i]) => `<button class="opt mr" data-i="${i}">${x}</button>`).join('')}</div></div>`;
+    const paint = () => { $$('.ml,.mr', play).forEach(b => { b.style.background = ''; b.classList.remove('sel'); }); Object.entries(pairs).forEach(([l, r], k) => { $(`.ml[data-i="${l}"]`, play).style.background = COL[k % 5]; $(`.mr[data-i="${r}"]`, play).style.background = COL[k % 5]; }); if (lsel !== null) $(`.ml[data-i="${lsel}"]`, play).classList.add('sel'); go.disabled = Object.keys(pairs).length < q.p.length; };
+    $$('.ml', play).forEach(b => b.addEventListener('click', () => { if (busy || finished) return; sClick(); const i = +b.dataset.i; delete pairs[i]; lsel = i; paint(); }));
+    $$('.mr', play).forEach(b => b.addEventListener('click', () => { if (busy || finished) return; if (lsel === null) { toast('اضغط أولا بطاقة من العمود الأيمن 👉', 1); return; } sClick(); const r = +b.dataset.i; Object.keys(pairs).forEach(l => { if (pairs[l] === r) delete pairs[l]; }); pairs[lsel] = r; lsel = null; paint(); }));
+    state = { check: () => q.p.every((p, i) => pairs[i] === i), onWrong: () => { Object.keys(pairs).forEach(l => { if (pairs[l] !== +l) delete pairs[l]; }); paint(); $$('.ml', play).forEach(b => { if (pairs[b.dataset.i] !== undefined) b.disabled = true; }); $$('.mr', play).forEach(b => { if (Object.values(pairs).includes(+b.dataset.i)) b.disabled = true; }); },
+      reveal: () => { Object.keys(pairs).forEach(k => delete pairs[k]); q.p.forEach((p, i) => pairs[i] = i); lsel = null; paint(); $$('.ml,.mr', play).forEach(b => b.disabled = true); } };
+  }
+  /* --- ordering --- */
+  if (t === 'o') {
+    const items = shuffle(q.it.map((x, i) => [x, i])); let seq = [];
+    play.innerHTML = `<div class="olist"></div><div class="opts">${items.map(([x, i]) => `<button class="opt oi" data-i="${i}">${x}</button>`).join('')}</div><div class="row"><button class="btn light clr" style="min-height:44px">⌫ امسح</button></div>`;
+    const ol = $('.olist', play); if (q.vert) ol.classList.add('vert');
+    const paint = () => { ol.innerHTML = seq.length ? seq.map((i, k) => `<span class="pk">${q.vert ? `<b class="nb">${k + 1}</b> ` : ''}${q.it[i]}</span>`).join(q.vert ? '' : `<span class="sg">${q.sepS || ''}</span>`) : `<span class="em">${q.ph || 'اضغط البطاقات بالترتيب'}</span>`; $$('.oi', play).forEach(b => b.style.visibility = seq.includes(+b.dataset.i) ? 'hidden' : ''); go.disabled = seq.length < q.it.length; };
+    $$('.oi', play).forEach(b => b.addEventListener('click', () => { if (busy || finished) return; sClick(); seq.push(+b.dataset.i); paint(); }));
+    $('.clr', play).addEventListener('click', () => { if (finished) return; seq = []; paint(); });
+    paint();
+    state = { check: () => seq.every((v, k) => v === k), onWrong: () => { let k = 0; while (k < seq.length && seq[k] === k) k++; seq = seq.slice(0, k); paint(); },
+      reveal: () => { seq = q.it.map((x, i) => i); paint(); $('.clr', play).style.display = 'none'; } };
+  }
+  go.addEventListener('click', () => {
+    if (busy || finished || go.disabled) return; busy = true; setTimeout(() => busy = false, 450);
+    if (state.check()) {
+      finished = true; state.reveal(true); const stn = 3 - wrong, pts = RATE[wrong];
+      S.r[q.id] = { pts, st: stn }; save(); sOk(); burst(go, 8 + stn * 3); toast('⭐'.repeat(stn) + ' ' + pick('ok'));
+      fb.innerHTML = `<span class="g">✅ ${pick('ok')} — ربحت ${M(fmt(pts * PT))} ن</span>`; end(true);
+    } else {
+      wrong++; showTries(); sBad(); shake(st);
+      if (wrong >= 3) { finished = true; state.reveal(false); S.r[q.id] = { pts: 0, st: 0 }; save(); fb.innerHTML = `<span class="w">${pick('fail')}</span>`; end(false); }
+      else { state.onWrong(); hintFx(go); fb.innerHTML = `<span class="w">❌ ${pick(wrong === 1 ? 'w1' : 'w2')}</span><span class="h">💡 تلميح ${wrong}: ${wrong === 1 ? q.h1 : q.h2}</span>`; }
+    }
+  });
+  function end(ok) {
+    go.style.display = 'none'; upd();
+    $('.dots', sec).innerHTML = dotsOf(g, qi);
+    after.innerHTML = solBox(ok, q) + `<button class="btn wide nx" style="margin-top:12px">${qi + 1 < g.qs.length ? 'السؤال التالي ←' : 'النتيجة ←'}</button>`;
+    $('.nx', after).addEventListener('click', () => { showGame(gi); sec.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  }
+}
+/* ---------- score bar ---------- */
+function upd() {
+  $('#score').textContent = fmt(score() * PT); $('#stars').textContent = stars();
+  $('#progi').style.width = Math.round(100 * ALLQ.filter(q => S.r[q.id]).length / TOT) + '%';
+  $('#snd').textContent = S.snd ? '🔊' : '🔇';
+  $$('#chips a[data-g]').forEach(a => a.classList.toggle('ok', gDone(PAGE.games[+a.dataset.g])));
+  PAGE.games.forEach((g, i) => $(`#g${i + 1}`).classList.toggle('done', gDone(g)));
+  renderCert();
+}
+/* ---------- certificate ---------- */
+function medal() { const s = score() * PT; return s >= 17 ? ['🥇', 'الذهبية', '#b45309'] : s >= 12 ? ['🥈', 'الفضية', '#475569'] : ['🥉', 'البرونزية', '#9a3412']; }
 let certBuilt = false;
 function renderCert() {
-  const host = $('#cert'); if (!host) return;
-  const left = Object.keys(ITEMS).filter(k => !doneK(k));
-  if (left.length) { certBuilt = false; host.innerHTML = `<div style="text-align:center"><div class="lock">🔒</div><p>أكمل المهمّات الخمس لتفتح شهادتك.</p><p>بقي: ${left.map(k => `<b>${GT[k]}</b>`).join(' ، ')}</p></div>`; return; }
+  const hostc = $('#cert'); if (!hostc) return;
+  const left = PAGE.games.map((g, i) => [g, i]).filter(([g]) => !gDone(g));
+  if (left.length) { certBuilt = false; hostc.innerHTML = `<div style="text-align:center"><div class="lock">🔒</div><p>أكمل كل الألعاب لتفتح شهادتك.</p><p>بقي: ${left.map(([g, i]) => `<b>${g.icon} اللعبة ${i + 1}</b>`).join(' ، ')}</p></div>`; return; }
   if (certBuilt) { drawCert(); return; }
   certBuilt = true; const [ic, nm] = medal();
-  host.innerHTML = `<p>🎉 مبروك! علامتك <b>${fmt(score())} / 20</b> و ${stars()} ⭐: الشهادة <b>${nm}</b> ${ic}</p>
+  hostc.innerHTML = `<p>🎉 مبروك! علامتك <b>${fmt(score() * PT)} / 20</b> و ${stars()} ⭐: الشهادة <b>${nm}</b> ${ic}</p>
    <label>اكتب اسمك ولقبك:</label><input class="namebox" id="nm" maxlength="40" value="${(S.name || '').replace(/"/g, '')}">
    <div class="row"><button class="btn orange" id="mk">✨ أنشئ الشهادة</button><button class="btn" id="dl">⬇️ تحميل صورة</button><button class="btn light" id="pr">🖨️ طباعة</button></div>
    <canvas id="cv" width="1400" height="990"></canvas>
-   <div class="row"><button class="btn light" id="rst">🔁 العب من جديد</button></div>`;
+   <div class="row"><button class="btn light" id="rst">🔁 العب كل الألعاب من جديد</button></div>`;
   const go = async () => { S.name = $('#nm').value.trim(); save(); await drawCert(); };
   $('#mk').addEventListener('click', go); $('#nm').addEventListener('change', go);
-  $('#dl').addEventListener('click', async () => { await go(); try { const a = document.createElement('a'); a.download = 'شهادة_مهمات_المساح.png'; a.href = $('#cv').toDataURL('image/png'); a.click(); } catch (e) { toast('تعذّر التحميل: استعمل الطباعة أو لقطة شاشة.', 1); } });
+  $('#dl').addEventListener('click', async () => { await go(); try { const a = document.createElement('a'); a.download = 'شهادة_' + PAGE.file + '.png'; a.href = $('#cv').toDataURL('image/png'); a.click(); } catch (e) { toast('تعذّر التحميل: استعمل الطباعة أو لقطة شاشة.', 1); } });
   $('#pr').addEventListener('click', async () => { await go(); window.print(); });
   $('#rst').addEventListener('click', e => { const b = e.currentTarget; if (!b.dataset.c) { b.dataset.c = 1; b.textContent = 'اضغط مرة أخرى للتأكيد'; return; } S.r = {}; save(); location.hash = ''; location.reload(); });
   go();
@@ -433,15 +453,14 @@ async function drawCert() {
   T('متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة', 196, '700 26px Cairo', '#475569');
   T('شهادة إنجاز', 300, '900 84px Cairo', '#0369a1'); T('تُمنح هذه الشهادة للتلميذ(ة)', 380, '700 32px Cairo');
   T(S.name || '..............................', 470, '900 64px Cairo', '#c2410c');
-  T('لإتمامه(ا) بنجاح لعبة «مهمّات المسّاح»', 545, '700 32px Cairo'); T('المقطع الثاني (طالس والنسب المثلثية) — السنة الرابعة متوسط', 592, '700 28px Cairo', '#475569');
-  T(`العلامة: ${fmt(score())} / 20 — النجوم: ${stars()} ⭐`, 660, '800 34px Cairo', '#1e3a8a'); T(`${ic} الشهادة ${nm}`, 735, '900 46px Cairo', col);
+  T(PAGE.certLine, 545, '700 30px Cairo'); T(PAGE.certSub, 592, '700 28px Cairo', '#475569');
+  T(`العلامة: ${fmt(score() * PT)} / 20 — النجوم: ${stars()} ⭐`, 660, '800 34px Cairo', '#1e3a8a'); T(`${ic} الشهادة ${nm}`, 735, '900 46px Cairo', col);
   const d = new Date(); x.font = '700 26px Cairo'; x.fillStyle = '#0f172a';
   x.textAlign = 'right'; x.fillText('الأستاذ: يوسفي السوفي', W - 110, 860); x.textAlign = 'left'; x.fillText(`التاريخ: ${d.getDate()} / ${d.getMonth() + 1} / ${d.getFullYear()}`, 110, 860);
-  x.textAlign = 'center'; x.font = '60px serif'; x.fillText('🧭', W / 2, 880);
+  x.textAlign = 'center'; x.font = '60px serif'; x.fillText('🎮', W / 2, 880);
 }
-
 $('#snd').addEventListener('click', () => { S.snd = !S.snd; save(); upd(); });
-game1(); upd();
+upd();
 </script>
 </body>
 </html>
