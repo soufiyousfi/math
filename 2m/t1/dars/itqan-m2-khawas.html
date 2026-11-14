@@ -41,6 +41,7 @@ main{max-width:820px;margin:0 auto;padding:14px 16px 60px}
 .qt{font-weight:600;margin-bottom:8px}
 .qt .qp{font-size:12px;font-weight:700;color:var(--b1);background:#e4effa;border-radius:10px;padding:0 8px;margin-inline-start:6px}
 .mt{font-family:inherit!important;font-size:1em!important}
+.key{direction:ltr}
 .m{direction:ltr;unicode-bidi:isolate;display:inline-block;white-space:nowrap;font-family:"Cambria Math","Times New Roman",serif;font-size:1.08em}
 .mb{direction:ltr;unicode-bidi:isolate;display:block;text-align:center;font-family:"Cambria Math","Times New Roman",serif;font-size:1.12em;margin:4px 0}
 .fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 2px;line-height:1.15}
@@ -381,7 +382,7 @@ function drawCert(){const nm=$('#nm').value.trim();if(!nm){$('#nm').focus();$('#
  x.fillText('الأستاذ: يوسفي السوفي',W/2,605);fly($('#mk'),14,['⭐','🌟','✨','🏅']);beep(true);}
 if(typeof TWINS!=='undefined'){L.sections.forEach(s=>(s.qs||[]).forEach(q=>{if(TWINS[q.id]&&!q.twin)q.twin=TWINS[q.id];}));}
 /* LTR math in plain Arabic text: wrap runs that contain an operator or a root sign */
-const MATH_RUN=/[A-Za-z0-9√(\[][A-Za-z0-9√×÷+\-−=<>≤≥≠,.()\[\]'’\/²³° ]*[A-Za-z0-9)\]'’²³°]|√[A-Za-z0-9]+/g;
+const MATH_RUN=/[A-Za-z0-9√(\[][A-Za-z0-9√×÷+\-−=<>≤≥≠,.()\[\]'’\/²³° ]*[A-Za-z0-9)\]'’²³°]|√[A-Za-z0-9]*/g;
 function bidiFix(root){if(!root||root.nodeType!==1)return;if(root.closest('.m,.mb,.key,svg,script,style,textarea,input'))return;
  const tw=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement.closest('.m,.mb,.key,svg,script,style,textarea')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
  const list=[];let t;while(t=tw.nextNode())if(/[√×÷=+−<>≤≥≠]/.test(t.data))list.push(t);
