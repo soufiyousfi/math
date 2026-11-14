@@ -40,6 +40,7 @@ main{max-width:820px;margin:0 auto;padding:14px 16px 60px}
 .q:first-of-type{border-top:0;margin-top:4px;padding-top:4px}
 .qt{font-weight:600;margin-bottom:8px}
 .qt .qp{font-size:12px;font-weight:700;color:var(--b1);background:#e4effa;border-radius:10px;padding:0 8px;margin-inline-start:6px}
+.mt{font-family:inherit!important;font-size:1em!important}
 .m{direction:ltr;unicode-bidi:isolate;display:inline-block;white-space:nowrap;font-family:"Cambria Math","Times New Roman",serif;font-size:1.08em}
 .mb{direction:ltr;unicode-bidi:isolate;display:block;text-align:center;font-family:"Cambria Math","Times New Roman",serif;font-size:1.12em;margin:4px 0}
 .fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 2px;line-height:1.15}
@@ -382,7 +383,16 @@ function drawCert(){const nm=$('#nm').value.trim();if(!nm){$('#nm').focus();$('#
  const d=new Date();x.font='22px Tahoma,Arial';x.fillText('التاريخ: '+d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear(),W/2,560);
  x.fillText('الأستاذ: يوسفي السوفي',W/2,605);fly($('#mk'),14,['⭐','🌟','✨','🏅']);beep(true);}
 if(typeof TWINS!=='undefined'){L.sections.forEach(s=>(s.qs||[]).forEach(q=>{if(TWINS[q.id]&&!q.twin)q.twin=TWINS[q.id];}));}
-render();
+/* LTR math in plain Arabic text: wrap runs that contain an operator or a root sign */
+const MATH_RUN=/[A-Za-z0-9√(\[][A-Za-z0-9√×÷+\-−=<>≤≥≠,.()\[\]'’\/²³° ]*[A-Za-z0-9)\]'’²³°]|√[A-Za-z0-9]+/g;
+function bidiFix(root){if(!root||root.nodeType!==1)return;if(root.closest('.m,.mb,.key,svg,script,style,textarea,input'))return;
+ const tw=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement.closest('.m,.mb,.key,svg,script,style,textarea')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
+ const list=[];let t;while(t=tw.nextNode())if(/[√×÷=+−<>≤≥≠]/.test(t.data))list.push(t);
+ list.forEach(t=>{const s=t.data;let last=0,out=document.createDocumentFragment(),m,hit=false;MATH_RUN.lastIndex=0;
+  while(m=MATH_RUN.exec(s)){if(!/[√×÷=+−<>≤≥≠]/.test(m[0]))continue;hit=true;out.appendChild(document.createTextNode(s.slice(last,m.index)));const sp=document.createElement('span');sp.className='m mt';sp.textContent=m[0];out.appendChild(sp);last=m.index+m[0].length;}
+  if(!hit)return;out.appendChild(document.createTextNode(s.slice(last)));t.parentNode.replaceChild(out,t);});}
+new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>bidiFix(n.nodeType===3?n.parentElement:n)))).observe(document.body,{childList:true,subtree:true});
+render();bidiFix(document.body);
 })();
 </script>
 </body>
