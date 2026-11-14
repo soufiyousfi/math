@@ -2176,7 +2176,12 @@
      "<span class=\"math\"><span class=\"fr\"><span>10</span><span>12</span></span> &gt; <span class=\"fr\"><span>7</span><span>12</span></span></span>",
      "<span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span> &gt; <span class=\"fr\"><span>7</span><span>12</span></span></span>",
      "النتيجة: <span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span></span>"
-    ]
+    ],
+    "partialHalf": [
+     "10/12"
+    ],
+    "partialPts": 0.25,
+    "halfMsg": "قارنت جيدا! لكن اكتب الكسر الأكبر كما ورد في السؤال: اختزل الكسر الذي وجدته."
    },
    {
     "text": "2) أي الكسرين أصغر: <span class=\"math\"><span class=\"fr\"><span>3</span><span>4</span></span></span> أم <span class=\"math\"><span class=\"fr\"><span>13</span><span>16</span></span></span>؟ (اكتب الكسر الأصغر)",
@@ -2218,7 +2223,12 @@
      "<span class=\"math\"><span class=\"fr\"><span>12</span><span>16</span></span> &lt; <span class=\"fr\"><span>13</span><span>16</span></span></span>",
      "<span class=\"math\"><span class=\"fr\"><span>3</span><span>4</span></span> &lt; <span class=\"fr\"><span>13</span><span>16</span></span></span>",
      "النتيجة: <span class=\"math\"><span class=\"fr\"><span>3</span><span>4</span></span></span>"
-    ]
+    ],
+    "partialHalf": [
+     "12/16"
+    ],
+    "partialPts": 0.25,
+    "halfMsg": "قارنت جيدا! لكن اكتب الكسر الأكبر كما ورد في السؤال: اختزل الكسر الذي وجدته."
    }
   ]
  },
@@ -2567,14 +2577,15 @@
 
             const isPartialMatch = q.partial && q.partial.some(ans => normalizeInput(ans) === val);
             if (isPartialMatch) {
-                if (q.partialZero) { handleWrongAttempt(q, q.partialMsg); return; }
-                const halfPts = Math.round((q.pts / 2) * 100) / 100;
+                const isRed = (q.partialHalf || []).some(ans => normalizeInput(ans) === val);
+                if (q.partialZero && !isRed) { handleWrongAttempt(q, q.partialMsg); return; }
+                const halfPts = (isRed && q.partialPts != null) ? q.partialPts : Math.round((q.pts / 2) * 100) / 100;
                 const prevPts = questionEarned[qId] || 0;
                 if (halfPts > prevPts) {
                     totalScore += (halfPts - prevPts);
                     questionEarned[qId] = halfPts;
                 }
-                handleWrongAttempt(q, `${q.partialMsg} (حصلت على نصف العلامة <span class="math">${String(halfPts).replace('.', ',')} ن</span>، صحّح الشكل لتنال العلامة الكاملة).`);
+                handleWrongAttempt(q, isRed ? `${q.halfMsg} (حصلت على <span class="math">${String(halfPts).replace('.', ',')} ن</span> مقابل الخطوات الصحيحة، اختزل لتنال العلامة الكاملة).` : `${q.partialMsg} (حصلت على نصف العلامة <span class="math">${String(halfPts).replace('.', ',')} ن</span>، صحّح الشكل لتنال العلامة الكاملة).`);
                 updateHeaderStats();
                 return;
             }
@@ -2609,7 +2620,7 @@
                 document.getElementById(`qbox-${qId}`).classList.add('failed');
 
                 fb.className = 'feedback-box fail';
-                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 ' + fbPick('fail', qId);
+                fb.innerHTML = (questionEarned[qId] > 0 && q.halfMsg ? `احتفظت بـ <span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span> مقابل الخطوات الصحيحة التي أنجزتها.<br>` : '') + (questionEarned[qId] > 0 && !q.halfMsg ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 ' + fbPick('fail', qId);
                 document.getElementById(`sol-${qId}`).style.display = 'block';
                 updateHeaderStats();
             }
