@@ -95,6 +95,11 @@ table.sc td:last-child{text-align:center;width:70px;font-weight:700}
 .toast.ko{border-color:#e0a100}
 .fly{position:fixed;z-index:60;pointer-events:none;font-size:22px;animation:fly 1.1s ease-out forwards}
 @keyframes fly{to{transform:translate(var(--dx),var(--dy)) scale(.6);opacity:0}}
+.twin{margin-top:14px;border:2px dashed var(--b2);border-radius:14px;padding:10px 12px 12px;background:#f1fbfa}
+.twin>.twh{font-weight:700;color:#0a6f6b;margin-bottom:2px}
+.twin>.twn{font-size:15px;color:var(--mut);margin-bottom:6px}
+.twin .q{border-top:0;margin-top:0;padding-top:0}
+.fig{display:block;max-width:100%;height:auto;margin:8px auto;direction:ltr}
 .diagmsg{margin-top:8px;font-weight:600}
 #cert{text-align:center}
 #cert canvas{max-width:100%;border:1px solid var(--line);border-radius:10px;margin-top:10px}
@@ -127,6 +132,14 @@ function M(s){return '<span class="m">'+s+'</span>';}
 function MB(s){return '<div class="mb">'+s+'</div>';}
 function R(s){return '√<span>'+s+'</span>';}
 function SQ(s){return '<span class="sq">'+R(s)+'</span>';}
+/* SVG figure helpers (no parallel-marker arrows; right-angle marks allowed) */
+function SVG(w,h,inner){return '<svg class="fig" viewBox="0 0 '+w+' '+h+'" width="'+w+'" xmlns="http://www.w3.org/2000/svg">'+inner+'</svg>';}
+function LN(a,b,c,d,o){return '<line x1="'+a+'" y1="'+b+'" x2="'+c+'" y2="'+d+'" stroke="'+((o&&o.c)||'#1d2433')+'" stroke-width="'+((o&&o.w)||2)+'"'+((o&&o.dash)?' stroke-dasharray="6 5"':'')+'/>';}
+function PT(x,y,t,dx,dy,col){return '<circle cx="'+x+'" cy="'+y+'" r="3.2" fill="'+(col||'#0b4f8a')+'"/>'+(t?'<text x="'+(x+(dx||6))+'" y="'+(y+(dy==null?-6:dy))+'" font-size="17" font-family="Times New Roman,serif" font-style="italic" fill="#1d2433">'+t+'</text>':'');}
+function TX(x,y,t,sz,col){return '<text x="'+x+'" y="'+y+'" font-size="'+(sz||15)+'" font-family="Times New Roman,serif" fill="'+(col||'#1d2433')+'" text-anchor="middle">'+t+'</text>';}
+function PG(pts,fill,st){return '<polygon points="'+pts+'" fill="'+(fill||'none')+'" stroke="'+(st||'#1d2433')+'" stroke-width="2"/>';}
+function RA(x,y,ux,uy,vx,vy,k){k=k||11;return '<path d="M'+(x+ux*k)+' '+(y+uy*k)+' L'+(x+ux*k+vx*k)+' '+(y+uy*k+vy*k)+' L'+(x+vx*k)+' '+(y+vy*k)+'" fill="none" stroke="#1d2433" stroke-width="1.6"/>';}
+function TK(x1,y1,x2,y2,n){const mx=(x1+x2)/2,my=(y1+y2)/2,L=Math.hypot(x2-x1,y2-y1),nx=-(y2-y1)/L,ny=(x2-x1)/L,ux=(x2-x1)/L,uy=(y2-y1)/L;let h='';for(let i=0;i<n;i++){const o=(i-(n-1)/2)*5;h+=LN(mx+ux*o-nx*6,my+uy*o-ny*6,mx+ux*o+nx*6,my+uy*o+ny*6,{w:1.6});}return h;}
 </script>
 <script>
 const LESSON={
@@ -211,6 +224,20 @@ sections:[
   scale:[['كتابة √18 = 3√2',1],['المجموع 8√2',1]]}
 ]}
 ]};
+const TWINS={
+ d1:{text:'احسب: '+M(SQ('36 + 64')),ans:['10'],half:['√100'],wrong:{'14':'الجذر لا يتوزّع على الجمع.'},h1:'احسب ما تحت الجذر أوّلا.',h2:M(SQ(100))+'.',model:{m:'ما تحت الجذر أوّلا.',s:[SQ('36 + 64')+' = '+SQ(100)+' = 10'],c:M('10')+'.'}},
+ e1:{text:'بسّط سمير '+M(SQ(12)+' + '+SQ(27))+': السطر 1: '+M(SQ(12)+' = 2'+SQ(3))+' ؛ السطر 2: '+M(SQ(27)+' = 3'+SQ(3))+' ؛ السطر 3: '+M('2'+SQ(3)+' + 3'+SQ(3)+' = 5'+SQ(6))+'. أين الخطأ؟',lines:['السطر 1','السطر 2','السطر 3'],ok:2,
+  h1:'السطران 1 و2 صحيحان.',h2:'هل نجمع ما تحت الجذرين؟',model:{m:'نخرج √3 عاملا مشتركا.',s:['2'+SQ(3)+' + 3'+SQ(3)+' = 5'+SQ(3)],c:'الخطأ في السطر 3.'}},
+ e2:{text:'ما التصحيح؟',opts:[M('2'+SQ(3)+' + 3'+SQ(3)+' = 5'+SQ(3)),M('2'+SQ(3)+' + 3'+SQ(3)+' = 6'+SQ(9)),M('2'+SQ(3)+' + 3'+SQ(3)+' = 5'+SQ(6))],ok:0,h1:M('2x + 3x = 5x')+'.',h2:'نحتفظ بـ '+M(SQ(3))+'.',model:{m:'التوزيعية.',s:['(2 + 3)'+SQ(3)+' = 5'+SQ(3)],c:'الأولى.'}},
+ t1a:{text:'احكم على كل مساواة.',items:[{t:M(SQ('9 × 5')+' = 3'+SQ(5)),b:0},{t:M(SQ('25 − 9')+' = 5 − 3'),b:1},{t:M(SQ(F(4,9))+' = '+F(2,3)),b:0}],h1:'الجذر يتوزّع على الضرب والقسمة فقط.',h2:M(SQ('25 − 9')+' = '+SQ(16)+' = 4')+'.',
+  model:{m:'خاصية 1 و2 وملاحظة 3.',s:[SQ('25 − 9')+' = 4 ≠ 2'],c:'الثانية خاطئة.'}},
+ t1b:{text:'احسب: '+M(SQ(8)+' × '+SQ(2)),ans:['4'],half:['√16'],h1:M(SQ('8 × 2'))+'.',h2:M(SQ(16))+'.',model:{m:'الخاصية 1.',s:[SQ(8)+' × '+SQ(2)+' = '+SQ(16)+' = 4'],c:M('4')+'.'}},
+ t2a:{text:'اكتب '+M(SQ(32))+' على الشكل '+M('a'+SQ('b')),ans:['4√2'],half:['2√8'],wrong:{'16√2':M(SQ(16)+' = 4')+'.'},h1:'أكبر مربع تامّ يقسم 32: 16.',h2:M('32 = 16 × 2')+'.',model:{m:'أكبر مربع تامّ.',s:[SQ(32)+' = 4'+SQ(2)],c:M('4'+SQ(2))+'.'}},
+ t2b:{text:'احسب: '+M(SQ(F(16,49))),ans:['4/7'],wrong:{'16/7':'نأخذ جذر البسط.','4/49':'نأخذ جذر المقام.'},h1:'الخاصية 2.',h2:M(F(SQ(16),SQ(49)))+'.',model:{m:'الخاصية 2.',s:[SQ(F(16,49))+' = '+F(4,7)],c:M(F(4,7))+'.'}},
+ t3:{text:'احسب: '+M('5'+SQ(3)+' − 2'+SQ(3)+' + '+SQ(3)),ans:['4√3'],wrong:{'3√3':'لا تنسَ + 1√3.','4√9':'لا نجمع ما تحت الجذور.'},h1:'المعاملات: 5 و −2 و 1.',h2:M('5 − 2 + 1')+'.',model:{m:'العامل المشترك.',s:['(5 − 2 + 1)'+SQ(3)+' = 4'+SQ(3)],c:M('4'+SQ(3))+'.'}},
+ c1:{text:'مربع مساحته '+M('12 m²')+'. اكتب طول ضلعه على الشكل '+M('a'+SQ('b')),ans:['2√3'],half:['√12'],wrong:{'6':'الجذر وليس النصف.'},h1:M(SQ(12))+'.',h2:M('12 = 4 × 3')+'.',model:{m:'جذر المساحة.',s:[SQ(12)+' = 2'+SQ(3)],c:M('2'+SQ(3)+' m')+'.'}},
+ c2:{text:'احسب '+M(SQ(12)+' + '+SQ(27))+' على الشكل '+M('a'+SQ('b')),ans:['5√3'],wrong:{'√39':'الجذر لا يتوزّع على الجمع.'},h1:M(SQ(12)+' = 2'+SQ(3))+' و '+M(SQ(27)+' = 3'+SQ(3))+'.',h2:M('2 + 3')+'.',model:{m:'نكتب كل جذر على الشكل a√3.',s:['2'+SQ(3)+' + 3'+SQ(3)+' = 5'+SQ(3)],c:M('5'+SQ(3))+'.'}}
+};
 
 </script>
 <script>
@@ -258,7 +285,7 @@ function judge(q,raw){const a=norm(raw);if(!a)return {r:'empty'};
  if(q.between){const v=evalx(a);if(/^−?\d+(,\d+)?$/.test(a)&&v>q.between[0]&&v<q.between[1])return {r:'ok'};}
  return {r:'ko'};}
 /* ===== rendering ===== */
-const ALLQ=[];let TOTAL=0;
+const ALLQ=[],TW=[];let TOTAL=0;
 function el(h){const d=document.createElement('div');d.innerHTML=h.trim();return d.firstChild;}
 function modelHtml(q){const md=q.model||{};let h='<h4>الإجابة النموذجية</h4>';
  if(md.m)h+='<div><b>الطريقة:</b> '+md.m+'</div>';
@@ -286,7 +313,7 @@ function render(){
 }
 let resetArmed=false;function confirmReset(){if(resetArmed)return true;resetArmed=true;$('#reset').textContent='اضغط مرة ثانية للتأكيد';setTimeout(()=>{resetArmed=false;$('#reset').textContent='إعادة الدرس من البداية';},3000);return false;}
 function buildQ(q){
- const w=el('<div class="q" id="q_'+q.id+'"><div class="qt">'+q.text+'<span class="qp">'+String(q.pts).replace('.',',')+' ن</span></div></div>');
+ const w=el('<div class="q" id="q_'+q.id+'"><div class="qt">'+q.text+(q.isTwin?'':'<span class="qp">'+String(q.pts).replace('.',',')+' ن</span>')+'</div></div>');
  const body=document.createElement('div');w.appendChild(body);const ui={w,body,sel:null};q._ui=ui;
  if(q.type==='mc'||q.type==='line'){
   const isLong=(q.opts||q.lines).some(t=>t.replace(/<[^>]+>/g,'').length>16);const o=el('<div class="opts'+(q.type==='line'?' lines col':(isLong?' col':''))+'"></div>');
@@ -339,18 +366,25 @@ function finish(q,pts,stars,restore){const ui=q._ui,s=st[q.id]=st[q.id]||{tries:
  ui.btn.disabled=true;ui.w.querySelectorAll('.ans').forEach(x=>x.disabled=true);
  const full=pts>=q.pts;
  ui.fb.className='fb show '+(full?'okm':'kom');
- ui.fb.innerHTML=full?('✅ <b>جواب صحيح.</b> '+'⭐'.repeat(stars)+' — '+String(pts).replace('.',',')+' / '+String(q.pts).replace('.',','))+(q.after?'<div>'+q.after+'</div>':''):
-  ((pts>0?'🟡 حصلت على '+String(pts).replace('.',',')+' من '+String(q.pts).replace('.',',')+' (خطوات صحيحة).':'لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح.')+' اقرأ الإجابة النموذجية بتمعّن.');
+ ui.fb.innerHTML=full?('✅ <b>جواب صحيح.</b> '+'⭐'.repeat(stars)+(q.isTwin?'':' — '+String(pts).replace('.',',')+' / '+String(q.pts).replace('.',',')))+(q.after?'<div>'+q.after+'</div>':''):
+  ((pts>0&&!q.isTwin?'🟡 حصلت على '+String(pts).replace('.',',')+' من '+String(q.pts).replace('.',',')+' (خطوات صحيحة).':'لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح.')+' اقرأ الإجابة النموذجية بتمعّن.');
  ui.tries.textContent='';
  if(q.type==='mc'||q.type==='line')ui.opts.querySelectorAll('.opt')[q.ok].classList.add('good');
  if(!full||q.showModel){ui.model.innerHTML=modelHtml(q);ui.model.classList.add('show');}
  else{const b=el('<button class="btn sec" style="margin-top:8px">عرض الإجابة النموذجية</button>');b.onclick=()=>{ui.model.innerHTML=modelHtml(q);ui.model.classList.toggle('show');};ui.fb.appendChild(b);}
+ if(q.isTwin){const ps=st[q.parent.id];if(full&&ps){ps.rec=Math.round((q.parent.pts-(ps.pts||0))/2*100)/100;}ui.fb.innerHTML+=full?'<div>🔁 أتقنتَ الفكرة! استرجعتَ نصف النقاط التي فاتتك في السؤال الأصلي.</div>':'<div>راجع الإجابة النموذجية للسؤالين، ثم اسأل أستاذك عن هذه الفكرة.</div>';}
+ else if(!full&&q.twin)showTwin(q);
  if(q.diag){ui.dm.innerHTML=full&&(restore||s.tries===1)?q.diag.ok:q.diag.ko;}
  save();upd();
 }
-function upd(){let sc=0,stn=0,dn=0;ALLQ.forEach(q=>{const s=st[q.id];if(s&&s.done){sc+=s.pts;stn+=s.stars||0;dn++;}});
+function showTwin(q){if(q._tw)return;const t=Object.assign({pts:q.pts,type:q.type,keys:q.keys,unit:q.unit,bins:q.bins,frac:q.frac,num:q.num,ph:q.ph,halfPts:q.halfPts,halfMsg:q.halfMsg,sep:q.sep,scale:q.scale},q.twin,{id:q.id+'_tw',isTwin:true,parent:q});q._tw=t;TW.push(t);
+ const box=el('<div class="twin"><div class="twh">🔁 مثال مماثل: طبّق ما تعلّمته من الإجابة النموذجية</div><div class="twn">اقرأ الإجابة النموذجية أعلاه، ثم أجب عن هذا المثال. إن أجبت صحيحا تسترجع نصف النقاط التي فاتتك.</div></div>');
+ box.appendChild(buildQ(t));q._ui.w.after(box);
+ const s=st[t.id];if(s&&s.done)finish(t,s.pts,s.stars,true);else if(s&&s.tries)t._ui.tries.textContent='المحاولة '+(s.tries+1)+' من '+TRIES;}
+function upd(){let sc=0,stn=0,dn=0;ALLQ.forEach(q=>{const s=st[q.id];if(s&&s.done){sc+=Math.min(q.pts,s.pts+(s.rec||0));stn+=s.stars||0;dn++;}});
+ TW.forEach(t=>{const s=st[t.id];if(s&&s.done)stn+=s.stars||0;});const twp=TW.filter(t=>!(st[t.id]&&st[t.id].done)).length;
  $('#score').textContent=String(Math.round(sc*100)/100).replace('.',',')+' / '+TOTAL;$('#stars').textContent='⭐ '+stn;$('#prog').style.width=(100*dn/ALLQ.length)+'%';
- if(dn===ALLQ.length){$('#certlock').style.display='none';$('#certbox').style.display='block';}
+ if(dn===ALLQ.length&&!twp){$('#certlock').style.display='none';$('#certbox').style.display='block';}else if(dn===ALLQ.length){$('#certlock').textContent='بقي '+twp+' مثال(أمثلة) مماثلة: أكملها لتُفتح الشهادة.';}
  return sc;}
 function drawCert(){const nm=$('#nm').value.trim();if(!nm){$('#nm').focus();$('#nm').classList.add('shake');return;}
  const sc=upd(),cv=$('#cv'),x=cv.getContext('2d'),W=1000,H=680;cv.style.display='block';$('#dl').style.display='inline-block';
@@ -366,6 +400,7 @@ function drawCert(){const nm=$('#nm').value.trim();if(!nm){$('#nm').focus();$('#
  x.fillStyle='#1d2433';x.font='bold 34px Tahoma,Arial';x.fillText('العلامة: '+String(Math.round(sc*100)/100).replace('.',',')+' / 20',W/2,495);
  const d=new Date();x.font='22px Tahoma,Arial';x.fillText('التاريخ: '+d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear(),W/2,560);
  x.fillText('الأستاذ: يوسفي السوفي',W/2,605);fly($('#mk'),14,['⭐','🌟','✨','🏅']);beep(true);}
+if(typeof TWINS!=='undefined'){L.sections.forEach(s=>(s.qs||[]).forEach(q=>{if(TWINS[q.id]&&!q.twin)q.twin=TWINS[q.id];}));}
 render();
 })();
 </script>
