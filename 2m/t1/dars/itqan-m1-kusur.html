@@ -3,23 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>علاج: مقارنة وترتيب الأعداد العشرية (الأولى متوسط)</title>
+<title>أُتقِن: جمع وطرح كسرين (الثانية متوسط)</title>
 <meta name="description" content="سؤال تشخيصي، أين الخطأ؟، تذكير من الكتاب، تمارين بتصحيح فوري، تحدٍّ وشهادة إنجاز.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="درس علاجي للأولى متوسط: لماذا 2,9 أكبر من 2,12؟">
+<meta property="og:title" content="أُتقِن (الثانية متوسط): لماذا 1/2 + 1/4 لا يساوي 2/6؟ تحدَّ نفسك واربح شهادتك">
 <meta property="og:description" content="سؤال تشخيصي، أين الخطأ؟، تذكير من الكتاب، تمارين بتصحيح فوري، تحدٍّ وشهادة إنجاز.">
-<meta property="og:image" content="https://soufiyousfi.github.io/math/1m/t1/dars/img/ilaj-m1-tartib-fb.png">
+<meta property="og:image" content="https://soufiyousfi.github.io/math/2m/t1/dars/img/itqan-m1-kusur-fb.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://soufiyousfi.github.io/math/1m/t1/dars/ilaj-m1-tartib.html">
+<meta property="og:url" content="https://soufiyousfi.github.io/math/2m/t1/dars/itqan-m1-kusur.html">
 <meta name="twitter:card" content="summary_large_image">
 <style>
 :root{--b1:#0b4f8a;--b2:#0e8f8a;--y:#f5c518;--ok:#1e8e3e;--ko:#c62828;--ink:#1d2433;--mut:#5b6474;--bg:#eef3f8;--card:#fff;--line:#d7dee8;--soft:#f6f9fc}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",Tahoma,"Noto Naskh Arabic",Arial,sans-serif;font-size:17px;line-height:1.7}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",Tahoma,"Noto Naskh Arabic",Arial,sans-serif;font-size:19px;line-height:1.75}
 header.top{background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff;padding:14px 16px 12px;border-bottom:5px solid var(--y)}
 header .school{font-size:13px;opacity:.92}
-header h1{margin:6px 0 2px;font-size:22px;line-height:1.4}
+header h1{margin:6px 0 2px;font-size:25px;line-height:1.4}
+header .badge{display:inline-block;background:var(--y);color:#3a2c00;border-radius:16px;padding:1px 12px;font-size:15px;font-weight:700;margin-bottom:4px}
 header .sub{font-size:14px;opacity:.95}
 .bar{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);padding:8px 12px;display:flex;align-items:center;gap:10px;box-shadow:0 2px 6px rgba(0,0,0,.06)}
 .bar .pill{background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:2px 12px;font-weight:700;white-space:nowrap}
@@ -27,10 +28,10 @@ header .sub{font-size:14px;opacity:.95}
 .bar .prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--b2),var(--b1));transition:width .4s}
 .bar button{border:1px solid var(--line);background:#fff;border-radius:10px;font-size:18px;padding:2px 8px;cursor:pointer}
 main{max-width:820px;margin:0 auto;padding:14px 16px 60px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:14px 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.card>h2{margin:0 0 6px;font-size:19px;color:var(--b1);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.card>h2 .tag{font-size:12px;background:var(--b1);color:#fff;border-radius:12px;padding:1px 10px}
-.card>h2 .pts{margin-inline-start:auto;font-size:13px;background:var(--y);color:#3a2c00;border-radius:12px;padding:1px 10px}
+.card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--b2);border-radius:16px;padding:16px 18px;margin:16px 0;box-shadow:0 4px 14px rgba(11,79,138,.07)}
+.card>h2{margin:0 0 8px;font-size:21px;color:var(--b1);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.card>h2 .tag{font-size:15px;background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff;border-radius:50%;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center}
+.card>h2 .pts{margin-inline-start:auto;font-size:14px;background:var(--y);color:#3a2c00;border-radius:12px;padding:1px 10px}
 .intro{color:var(--mut);margin:0 0 6px}
 .book{background:#fffbea;border:1px solid #f0dc8c}
 .book .src{font-size:13px;color:#7a6200;margin-top:6px}
@@ -45,19 +46,22 @@ main{max-width:820px;margin:0 auto;padding:14px 16px 60px}
 .fr>span:first-child{border-bottom:1.6px solid currentColor;padding:0 3px}
 .fr>span:last-child{padding:0 3px}
 .sq{white-space:nowrap}.sq>span{border-top:1.6px solid currentColor;padding:0 2px}
-.opts{display:flex;flex-direction:column;gap:8px}
-.opt{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;text-align:start;font-size:17px;cursor:pointer;font-family:inherit;color:inherit}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(95px,1fr));gap:10px}
+.opts.col{display:flex;flex-direction:column}
+.opt{border:2px solid var(--line);background:#fff;border-radius:14px;padding:12px 12px;text-align:center;font-size:19px;cursor:pointer;font-family:inherit;color:inherit;box-shadow:0 2px 0 #dfe6ef;transition:transform .12s,border-color .12s}
+.opts.col .opt{text-align:start}
+.opt:active{transform:scale(.97)}
 .opt.sel{border-color:var(--b1);background:#eaf3fd}
 .opt.good{border-color:var(--ok);background:#e8f6ec}
-.lines .opt{font-size:17px}
+.lines .opt{font-size:18px}
 .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
-.ans{flex:1;min-width:150px;max-width:280px;font-size:20px;padding:8px 10px;border:2px solid var(--line);border-radius:10px;direction:ltr;text-align:center;font-family:"Cambria Math","Times New Roman",serif}
+.ans{flex:1;min-width:150px;max-width:280px;font-size:22px;padding:8px 10px;border:2px solid var(--line);border-radius:10px;direction:ltr;text-align:center;font-family:"Cambria Math","Times New Roman",serif}
 .ans:focus{outline:none;border-color:var(--b1)}
 .unit{font-weight:700}
 .keys{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;margin-top:8px;padding-bottom:2px}
-.key{min-width:44px;height:44px;font-size:20px;border:1px solid var(--line);border-radius:10px;background:var(--soft);cursor:pointer;font-family:"Cambria Math","Times New Roman",serif;flex:0 0 auto}
-.btn{background:var(--b1);color:#fff;border:0;border-radius:12px;padding:10px 22px;font-size:17px;font-weight:700;cursor:pointer;font-family:inherit}
-.btn.sec{background:#fff;color:var(--b1);border:2px solid var(--b1)}
+.key{min-width:50px;height:50px;font-size:22px;border:1px solid var(--line);border-radius:10px;background:var(--soft);cursor:pointer;font-family:"Cambria Math","Times New Roman",serif;flex:0 0 auto}
+.btn{background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff;border:0;border-radius:14px;padding:11px 26px;font-size:19px;box-shadow:0 3px 0 #083a66;font-weight:700;cursor:pointer;font-family:inherit}
+.btn.sec{background:#fff;color:var(--b1);border:2px solid var(--b1);box-shadow:none}
 .btn:disabled{opacity:.5;cursor:default}
 .fb{margin-top:8px;border-radius:10px;padding:8px 12px;display:none}
 .fb.show{display:block}
@@ -70,18 +74,18 @@ main{max-width:820px;margin:0 auto;padding:14px 16px 60px}
 .model h4{margin:0 0 4px;color:var(--b1);font-size:16px}
 .model .st{direction:ltr;text-align:left;font-family:"Cambria Math","Times New Roman",serif;margin:2px 0;white-space:nowrap;overflow-x:auto}
 .model .st.ar{direction:rtl;text-align:right;font-family:inherit;white-space:normal}
-table.sc{width:100%;border-collapse:collapse;margin-top:8px;font-size:15px}
+table.sc{width:100%;border-collapse:collapse;margin-top:8px;font-size:16px}
 table.sc td,table.sc th{border:1px solid var(--line);padding:4px 8px}
 table.sc th{background:#e4effa}
 table.sc td:last-child{text-align:center;width:70px;font-weight:700}
 .seq{display:flex;flex-wrap:wrap;gap:8px}
-.chip{border:2px solid var(--line);background:#fff;border-radius:22px;padding:6px 14px;font-size:18px;cursor:pointer;font-family:"Cambria Math","Times New Roman",serif;direction:ltr}
+.chip{border:2px solid var(--line);background:#fff;border-radius:22px;padding:8px 16px;font-size:20px;box-shadow:0 2px 0 #dfe6ef;cursor:pointer;font-family:"Cambria Math","Times New Roman",serif;direction:ltr}
 .chip.used{opacity:.35}
 .picked{min-height:46px;border:2px dashed var(--line);border-radius:12px;padding:6px 10px;margin:8px 0;direction:ltr;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-family:"Cambria Math","Times New Roman",serif;font-size:18px}
 .picked .lt{color:var(--mut)}
 .bins .it{display:flex;align-items:center;gap:8px;justify-content:space-between;border-bottom:1px solid var(--line);padding:6px 0;flex-wrap:wrap}
 .bins .seg{display:flex;gap:6px}
-.bins .seg button{border:2px solid var(--line);background:#fff;border-radius:10px;padding:5px 12px;font-size:15px;cursor:pointer;font-family:inherit}
+.bins .seg button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:7px 14px;font-size:17px;cursor:pointer;font-family:inherit}
 .bins .seg button.on{border-color:var(--b1);background:#eaf3fd;font-weight:700}
 .done-tag{font-weight:700}
 .shake{animation:shk .45s}
@@ -97,12 +101,13 @@ table.sc td:last-child{text-align:center;width:70px;font-weight:700}
 .namebox{font-size:18px;padding:8px 10px;border:2px solid var(--line);border-radius:10px;width:min(320px,100%);font-family:inherit}
 .lock{color:var(--mut)}
 footer{text-align:center;color:var(--mut);font-size:13px;padding:10px}
-@media (max-width:420px){header h1{font-size:19px}.card{padding:12px}body{font-size:16px}}
+@media (max-width:420px){header h1{font-size:22px}.card{padding:14px}body{font-size:18px}}
 </style>
 </head>
 <body>
 <header class="top">
   <div class="school">متوسطة العربي بن مهيدي، وادي فراغة، قالمة — الأستاذ: يوسفي السوفي</div>
+  <div class="badge">✨ أُتقِن خطوة بخطوة</div>
   <h1 id="ttl"></h1>
   <div class="sub" id="sub"></div>
 </header>
@@ -113,7 +118,7 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:10px}
   <button id="snd" title="الصوت">🔊</button>
 </div>
 <main id="app"></main>
-<footer>درس علاجي تفاعلي — رياضيات المتوسط</footer>
+<footer>أُتقِن خطوة بخطوة — رياضيات المتوسط</footer>
 <div class="toast" id="toast"></div>
 <script>
 /* ===== helpers usable in lesson data ===== */
@@ -125,83 +130,83 @@ function SQ(s){return '<span class="sq">'+R(s)+'</span>';}
 </script>
 <script>
 const LESSON={
-key:'1m_m1_tartib',
-docTitle:'علاج: مقارنة وترتيب الأعداد العشرية (الأولى متوسط)',
-title:'درس علاجي: مقارنة وترتيب الأعداد العشرية',
-sub:'السنة الأولى متوسط · المقطع الأول: الأعداد الطبيعية والأعداد العشرية',
-certName:'مقارنة وترتيب الأعداد العشرية',
+key:'2m_m1_kusur',
+docTitle:'أُتقِن: جمع وطرح كسرين (الثانية متوسط)',
+title:'جمع وطرح كسرين',
+sub:'السنة الثانية متوسط · المقطع الأول: العمليات والكسور',
+certName:'جمع وطرح كسرين',
 sections:[
-{tag:'1',title:'سؤال تشخيصي',intro:'أجب بصدق ودون حاسبة، فجوابك يحدّد الخطأ الذي سنعالجه معا.',qs:[
- {id:'d1',type:'mc',pts:2,text:'أيّ العددين أكبر: '+M('2,12')+' أم '+M('2,9')+'؟ مع التعليل؟ ✍️ علّل في كراسك، ثم اختر.',
-  opts:[M('2,12'),M('2,9'),'العددان متساويان'],ok:1,
-  wrong:{0:'انتبه: لا نقارن الجزأين العشريين '+M('12')+' و '+M('9')+' كأنهما عددان طبيعيان.'},
-  h1:'الجزآن الصحيحان متساويان '+M('2 = 2')+'. قارن الآن رقمي الأجزاء من عشرة.',
-  h2:'اكتب العددين بنفس عدد الأرقام بعد الفاصلة: '+M('2,12')+' و '+M('2,90')+'، ثم قارن '+M('12')+' و '+M('90')+' جزءا من مائة.',
-  model:{m:'نقارن الجزأين الصحيحين، فإن تساويا نقارن رقمي الأجزاء من عشرة، ثم رقمي الأجزاء من مائة…',
-   s:['2 = 2',{ar:'رقم الأجزاء من عشرة في '+M('2,12')+' هو 1، وفي '+M('2,9')+' هو 9، و '+M('1 < 9')+'.'},'2,12 = 2,12   ;   2,9 = 2,90','12 < 90'],
-   c:M('2,12 < 2,9')+'، إذن العدد الأكبر هو '+M('2,9')+'.'},
-  scale:[['مقارنة الجزأين الصحيحين ثم الأجزاء من عشرة',1],['الجواب: '+M('2,9')+' هو الأكبر',1]],
-  diag:{ok:'👍 أحسنت، أنت تقارن بالرجوع إلى دلالة الأرقام. تابع الدرس لتثبيت هذه الطريقة.',ko:'📌 هذا هو الخطأ الذي يعالجه هذا الدرس: العدد العشري ليس «عددين طبيعيين بينهما فاصلة». تابع خطوة خطوة.'}}
+{tag:'1',title:'سؤال تشخيصي',intro:'أجب دون حاسبة. اكتب الجواب على شكل كسر مختزل، مثل '+M('a/b')+' باستعمال الزر '+M('/')+'.',qs:[
+ {id:'d1',type:'type',pts:2,text:'احسب: '+M(F(1,2)+' + '+F(1,4)),ans:['3/4'],frac:true,
+  wrong:{'2/6':'انتبه: جمعتَ البسطين وجمعتَ المقامين. لا نجمع المقامين أبدا.','1/3':'انتبه: '+M('2/6')+' ثم الاختزال لا يصحّ، لأن الخطوة الأولى خاطئة: لا نجمع المقامين.'},
+  halfMsg:'جوابك صحيح، لكن الكسر غير مختزل. اختزله.',halfPts:1,
+  h1:'المقام '+M('4')+' مضاعف للمقام '+M('2')+'. اكتب '+M(F(1,2))+' بمقام 4 أوّلا.',
+  h2:M(F(1,2)+' = '+F('1 × 2','2 × 2')+' = '+F(2,4))+'، ثم اجمع البسطين واحتفظ بالمقام 4.',
+  model:{m:'توحيد المقامات ثم جمع البسطين مع الاحتفاظ بالمقام المشترك.',s:[F(1,2)+' + '+F(1,4)+' = '+F('1 × 2','2 × 2')+' + '+F(1,4),'= '+F(2,4)+' + '+F(1,4),'= '+F('2 + 1',4)+' = '+F(3,4)],c:M(F(1,2)+' + '+F(1,4)+' = '+F(3,4))+'.'},
+  scale:[['توحيد المقامات',1],['جمع البسطين والنتيجة',1]],
+  diag:{ok:'👍 أحسنت، أنت توحّد المقامات قبل الجمع. تابع الدرس لتثبيت ذلك.',ko:'📌 الخطأ الشائع هنا هو جمع المقامين: '+M(F(1,2)+' + '+F(1,4)+' ≠ '+F(2,6))+'. هذه هي الفكرة التي سنتقنها معا، تابع خطوة خطوة.'}}
 ]},
-{tag:'2',title:'أين الخطأ؟',intro:'قارن يوسف بين العددين '+M('3,45')+' و '+M('3,5')+' فكتب الأسطر الآتية.',qs:[
+{tag:'2',title:'أين الخطأ؟',intro:'حسبت سارة: '+M(F(2,3)+' + '+F(1,6))+' فكتبت الأسطر الآتية.',qs:[
  {id:'e1',type:'line',pts:2,text:'اضغط على السطر الذي فيه الخطأ، ثم اضغط «تحقّق».',
-  lines:['السطر 1: الجزآن الصحيحان متساويان '+M('3 = 3'),'السطر 2: '+M('45')+' أكبر من '+M('5')+'، إذن الجزء العشري الأول أكبر.','السطر 3: إذن '+M('3,45 > 3,5')],ok:1,
-  h1:'السطر 1 صحيح. هل نقارن '+M('45')+' و '+M('5')+' كعددين طبيعيين؟',
-  h2:'في '+M('3,45')+' رقم الأجزاء من عشرة هو 4، وفي '+M('3,5')+' هو 5. أين بدأ الخطأ؟',
-  model:{m:'نبحث عن أول سطر لا يحترم دلالة الأرقام.',s:[{ar:'السطر 2 خاطئ: قارن يوسف '+M('45')+' و '+M('5')+' كأنهما عددان طبيعيان.'},{ar:'السطر 3 نتيجة لهذا الخطأ.'}],c:'الخطأ في السطر 2.'},
+  lines:['السطر 1: '+M(F(2,3)+' + '+F(1,6)+' = '+F('2 + 1','3 + 6')),'السطر 2: '+M('= '+F(3,9)),'السطر 3: '+M('= '+F('3 ÷ 3','9 ÷ 3')+' = '+F(1,3))],ok:0,
+  h1:'الاختزال في السطر 3 صحيح حسابيا. ابحث عن الخطأ قبله.',
+  h2:'هل يجوز جمع المقامين '+M('3 + 6')+'؟',
+  model:{m:'نبحث عن أول سطر يخالف قاعدة الجمع.',s:[{ar:'السطر 1 خاطئ: جمعت سارة المقامين، والصحيح أن نوحّد المقامات ثم نجمع البسطين فقط.'},{ar:'السطران 2 و3 نتيجة لهذا الخطأ.'}],c:'الخطأ في السطر 1.'},
   scale:[['تحديد السطر الخاطئ',2]]},
- {id:'e2',type:'mc',pts:2,text:'ما التصحيح الصحيح لعمل يوسف؟',
-  opts:[M('3,45 > 3,5')+' لأن عدد أرقامه بعد الفاصلة أكثر',M('3,45 < 3,5')+' لأن رقم الأجزاء من عشرة '+M('4 < 5'),M('3,45 = 3,5')],ok:1,
-  wrong:{0:'انتبه: العدد الأطول ليس بالضرورة الأكبر.'},
-  h1:'اكتب '+M('3,5')+' بثلاثة أرقام كما في '+M('3,45')+': '+M('3,5 = 3,50')+'.',
-  h2:'قارن '+M('45')+' و '+M('50')+' جزءا من مائة.',
-  model:{m:'نكتب العددين بنفس عدد الأرقام بعد الفاصلة.',s:['3,5 = 3,50','3,45 < 3,50   (45 < 50)'],c:M('3,45 < 3,5')+'.'},
-  scale:[['اختيار التصحيح مع التبرير',2]]}
+ {id:'e2',type:'mc',pts:2,text:'ما الخطوة الأولى الصحيحة لحساب '+M(F(2,3)+' + '+F(1,6))+'؟',
+  opts:['نكتب '+M(F(2,3))+' بمقام 6: '+M(F(2,3)+' = '+F('2 × 2','3 × 2')+' = '+F(4,6)),'نجمع البسطين ونجمع المقامين','نضرب المقامين ونجمع البسطين'],ok:0,
+  wrong:{1:'هذا هو خطأ سارة نفسه.',2:'نضرب البسطين والمقامين في الضرب فقط، لا في الجمع.'},
+  h1:'المقام 6 مضاعف للمقام 3.',h2:'لكي نجمع، يجب أن يكون للكسرين نفس المقام.',
+  model:{m:'توحيد المقامات (6 مضاعف لـ 3).',s:[F(2,3)+' = '+F('2 × 2','3 × 2')+' = '+F(4,6),F(4,6)+' + '+F(1,6)+' = '+F('4 + 1',6)+' = '+F(5,6)],c:M(F(2,3)+' + '+F(1,6)+' = '+F(5,6))+'.'},
+  scale:[['اختيار الخطوة الصحيحة',2]]}
 ]},
 {tag:'3',kind:'book',title:'تذكير من الكتاب المدرسي',html:
- '<div class="rule"><b>مقارنة عددين عشريين</b>: «مقارنة عددين عشريين، تعني تحديد فيما إذا كانا متساويين أو أن أحدهما أكبر من الآخر.»</div>'+
- '<div>مثال: '+M('2,3 < 15,04')+' ؛ '+M('5,03 < 5,2')+'</div>'+
- '<div class="rule"><b>ترتيب أعداد عشرية</b>: «ترتيب أعداد عشرية ترتيبا تصاعديا يعني ترتيبها من الأصغر إلى الأكبر.»</div>'+
- '<div>مثال: '+M('0,4 < 1,04 < 1,5 < 2,72 < 3')+'</div>'+
- '<div class="rule"><b>الطريقة</b>: نقارن الجزأين الصحيحين، فإن تساويا نقارن رقمي الأجزاء من عشرة، ثم الأجزاء من مائة، وهكذا. ويمكن أن نكتب العددين بنفس عدد الأرقام بعد الفاصلة: '+M('2,9 = 2,90')+'.</div>'+
- '<div class="src">المصدر: الكتاب المدرسي للسنة الأولى متوسط، الباب 1، «أحوصل تعلماتي» ص 15.</div>'},
-{tag:'4',title:'تمرين 1: ضع الرمز المناسب',intro:'اكتب الرمز '+M('<')+' أو '+M('>')+' أو '+M('=')+' باستعمال الأزرار.',qs:[
- {id:'t1a',type:'type',pts:2,text:M('7,08 … 7,8'),keys:['<','>','=','⌫'],ans:['<'],ph:'الرمز',
-  wrong:{'>':'انتبه: '+M('08')+' ليس أكبر من '+M('8')+' هنا؛ قارن رقم الأجزاء من عشرة.'},
-  h1:'الجزآن الصحيحان متساويان. رقم الأجزاء من عشرة في '+M('7,08')+' هو 0، وفي '+M('7,8')+' هو 8.',
-  h2:M('7,8 = 7,80')+'، فقارن '+M('08')+' و '+M('80')+' جزءا من مائة.',
-  model:{m:'نقارن رقمي الأجزاء من عشرة لأن الجزأين الصحيحين متساويان.',s:['7 = 7','0 < 8'],c:M('7,08 < 7,8')+'.'},scale:[['الرمز الصحيح',2]]},
- {id:'t1b',type:'type',pts:2,text:M('0,6 … 0,60'),keys:['<','>','=','⌫'],ans:['='],ph:'الرمز',
-  wrong:{'<':'هل يغيّر الصفر في آخر الجزء العشري قيمة العدد؟'},
-  h1:'الصفر في آخر الجزء العشري لا يغيّر قيمة العدد.',h2:M('0,6')+' هو 6 أجزاء من عشرة، و '+M('0,60')+' هو 60 جزءا من مائة. هل هما نفس الكمية؟',
-  model:{m:'نكتب العددين بنفس عدد الأرقام بعد الفاصلة.',s:['0,6 = 0,60'],c:M('0,6 = 0,60')+'.'},scale:[['الرمز الصحيح',2]]}
+ '<div class="rule"><b>جمع (أو طرح) كسرين لهما نفس المقام</b>: «لجمع (أو طرح) عددين مكتوبين على شكل كسرين لهما نفس المقام نقوم بما يلي: نجمع (أو نطرح) البسطين ونحتفظ بالمقام المشترك.»</div>'+
+ MB(F(13,7)+' + '+F(11,7)+' = '+F('13 + 11',7)+' = '+F(24,7))+
+ '<div class="rule"><b>جمع (أو طرح) كسرين مقام أحدهما مضاعف لمقام الآخر</b>: «نكتب الكسرين بنفس المقام (توحيد المقامات). ثمّ نجمع (أو نطرح) البسطين اللذين حصلنا عليهما محتفظين بالمقام المشترك الجديد.»</div>'+
+ MB(F(3,4)+' − '+F(5,12)+' = '+F('3 × 3','4 × 3')+' − '+F(5,12))+MB('= '+F(9,12)+' − '+F(5,12)+' = '+F('9 − 5',12))+MB('= '+F(4,12)+' = '+F('4 ÷ 4','12 ÷ 4')+' = '+F(1,3))+
+ '<div class="rule">⚠️ لا نجمع المقامين أبدا: '+M(F(1,2)+' + '+F(1,4)+' ≠ '+F(2,6))+'</div>'+
+ '<div class="src">المصدر: الكتاب المدرسي للسنة الثانية متوسط، الباب 2 «الكسور والعمليات عليها»، فقرة «معارف».</div>'},
+{tag:'4',title:'تمرين 1: نفس المقام',intro:'اكتب كل نتيجة على شكل كسر مختزل.',qs:[
+ {id:'t1a',type:'type',pts:2,text:'احسب: '+M(F(5,8)+' − '+F(3,8)),ans:['1/4'],frac:true,halfPts:1,
+  wrong:{'2/0':'لا نطرح المقامين! نحتفظ بالمقام المشترك 8.'},
+  h1:'للكسرين نفس المقام 8: نطرح البسطين ونحتفظ بالمقام.',h2:'بعد الطرح اختزل الكسر بقسمة البسط والمقام على 2.',
+  model:{m:'طرح البسطين مع الاحتفاظ بالمقام المشترك، ثم الاختزال.',s:[F(5,8)+' − '+F(3,8)+' = '+F('5 − 3',8)+' = '+F(2,8),F(2,8)+' = '+F('2 ÷ 2','8 ÷ 2')+' = '+F(1,4)],c:M(F(5,8)+' − '+F(3,8)+' = '+F(1,4))+'.'},
+  scale:[['طرح البسطين مع الاحتفاظ بالمقام',1],['الاختزال',1]]},
+ {id:'t1b',type:'type',pts:2,text:'أكمل لتوحيد المقامات: '+M(F(3,4)+' = '+F('…',12))+' (اكتب البسط فقط)',keys:['⌫'],ans:['9'],num:true,
+  h1:'بأي عدد نضرب 4 لنحصل على 12؟',h2:M('4 × 3 = 12')+'، فاضرب البسط أيضا في نفس العدد.',
+  model:{m:'نضرب البسط والمقام في نفس العدد.',s:['4 × 3 = 12',F(3,4)+' = '+F('3 × 3','4 × 3')+' = '+F(9,12)],c:'البسط هو '+M('9')+'.'},
+  scale:[['إيجاد المعامل 3',1],['البسط 9',1]]}
 ]},
-{tag:'5',title:'تمرين 2: رتّب تصاعديا',qs:[
- {id:'t2',type:'order',pts:4,text:'هذه أطوال قفزات خمسة تلاميذ من متوسطتنا في حصة التربية البدنية (بالمتر). اضغط عليها من الأصغر إلى الأكبر.',
-  items:[M('3,4'),M('3,08'),M('3,45'),M('3,5'),M('3,045')],answer:[4,1,0,2,3],
-  h1:'كل الأعداد جزؤها الصحيح 3. ابدأ بالأعداد التي رقم الأجزاء من عشرة فيها 0.',
-  h2:'اكتبها كلها بثلاثة أرقام بعد الفاصلة: '+M('3,400 ; 3,080 ; 3,450 ; 3,500 ; 3,045')+'.',
-  model:{m:'نكتب الأعداد بنفس عدد الأرقام بعد الفاصلة ثم نقارن.',s:['3,400 ; 3,080 ; 3,450 ; 3,500 ; 3,045','045 < 080 < 400 < 450 < 500'],c:M('3,045 < 3,08 < 3,4 < 3,45 < 3,5')+'.'},
-  scale:[['كتابة الأعداد بنفس عدد الأرقام بعد الفاصلة',1],['المقارنة',1],['الترتيب التصاعدي الكامل',2]]}
+{tag:'5',title:'تمرين 2: مقام أحدهما مضاعف للآخر',qs:[
+ {id:'t2a',type:'type',pts:2,text:'احسب: '+M(F(7,10)+' + '+F(1,5)),ans:['9/10'],frac:true,halfPts:1,
+  wrong:{'8/15':'انتبه: لا نجمع المقامين. وحّد المقامات أوّلا.'},
+  h1:'المقام 10 مضاعف للمقام 5.',h2:'اكتب '+M(F(1,5))+' بمقام 10، ثم اجمع البسطين.',
+  model:{m:'توحيد المقامات ثم جمع البسطين.',s:[F(1,5)+' = '+F('1 × 2','5 × 2')+' = '+F(2,10),F(7,10)+' + '+F(2,10)+' = '+F('7 + 2',10)+' = '+F(9,10)],c:M(F(7,10)+' + '+F(1,5)+' = '+F(9,10))+'.'},
+  scale:[['توحيد المقامات',1],['الجمع والنتيجة',1]]},
+ {id:'t2b',type:'type',pts:2,text:'احسب: '+M(F(5,6)+' − '+F(1,3)),ans:['1/2'],frac:true,halfPts:1,
+  wrong:{'4/3':'انتبه: لا نطرح المقامين.'},
+  h1:'المقام 6 مضاعف للمقام 3.',h2:'اكتب '+M(F(1,3))+' بمقام 6، ثم اطرح البسطين، ثم اختزل.',
+  model:{m:'توحيد المقامات ثم طرح البسطين ثم الاختزال.',s:[F(1,3)+' = '+F('1 × 2','3 × 2')+' = '+F(2,6),F(5,6)+' − '+F(2,6)+' = '+F('5 − 2',6)+' = '+F(3,6),F(3,6)+' = '+F('3 ÷ 3','6 ÷ 3')+' = '+F(1,2)],c:M(F(5,6)+' − '+F(1,3)+' = '+F(1,2))+'.'},
+  scale:[['توحيد المقامات',0.5],['طرح البسطين',0.5],['الاختزال',1]]}
 ]},
-{tag:'6',title:'تمرين 3: صنّف',qs:[
- {id:'t3',type:'bins',pts:2,text:'هل العدد أصغر من '+M('4,5')+' أم أكبر منه؟',bins:['أصغر','أكبر'],
-  items:[{t:M('4,49'),b:0},{t:M('4,6'),b:1},{t:M('4,05'),b:0},{t:M('4,512'),b:1},{t:M('4,499'),b:0}],
-  h1:'قارن كل عدد مع '+M('4,5 = 4,500')+'.',h2:'اكتب كل عدد بثلاثة أرقام بعد الفاصلة: '+M('4,490 ; 4,600 ; 4,050 ; 4,512 ; 4,499')+'.',
-  model:{m:'نقارن مع '+M('4,500')+' بالرجوع إلى الأجزاء من عشرة ثم من مائة ثم من ألف.',s:['4,490 < 4,500   ;   4,600 > 4,500','4,050 < 4,500   ;   4,512 > 4,500','4,499 < 4,500'],c:'أصغر: '+M('4,49 ; 4,05 ; 4,499')+' — أكبر: '+M('4,6 ; 4,512')+'.'},
-  scale:[['تصنيف الأعداد الخمسة',2]]}
+{tag:'6',title:'تمرين 3: صحيحة أم خاطئة؟',qs:[
+ {id:'t3',type:'bins',pts:2,text:'احكم على كل مساواة.',bins:['صحيحة','خاطئة'],
+  items:[{t:M(F(1,5)+' + '+F(2,5)+' = '+F(3,5)),b:0},{t:M(F(1,3)+' + '+F(1,3)+' = '+F(2,6)),b:1},{t:M(F(3,4)+' − '+F(1,2)+' = '+F(1,4)),b:0},{t:M(F(1,2)+' + '+F(1,8)+' = '+F(2,10)),b:1}],
+  h1:'ابحث عن المساواة التي جُمعت فيها المقامات.',h2:'احسب الثالثة: '+M(F(1,2)+' = '+F(2,4))+'.',
+  model:{m:'نطبّق القاعدة على كل مساواة.',s:[F(1,5)+' + '+F(2,5)+' = '+F(3,5)+'   ✔',F(1,3)+' + '+F(1,3)+' = '+F(2,3)+' ≠ '+F(2,6)+'   ✘',F(3,4)+' − '+F(2,4)+' = '+F(1,4)+'   ✔',F(4,8)+' + '+F(1,8)+' = '+F(5,8)+' ≠ '+F(2,10)+'   ✘'],c:'الأولى والثالثة صحيحتان، الثانية والرابعة خاطئتان.'},
+  scale:[['الحكم على المساواات الأربع',2]]}
 ]},
-{tag:'7',title:'التحدي: أمطار بوشقوف',intro:'سُجّلت كمية الأمطار ببوشقوف خلال أربعة أيام (بالسنتيمتر): الأحد '+M('1,5')+' ؛ الاثنين '+M('1,15')+' ؛ الثلاثاء '+M('1,05')+' ؛ الأربعاء '+M('1,4')+'. ماء المطر نعمة، نحافظ عليه ولا نبذّره.',qs:[
- {id:'c1',type:'mc',pts:2,text:'في أي يوم كانت كمية الأمطار أكبر؟ مع التعليل؟ ✍️ علّل في كراسك، ثم اختر.',
-  opts:['الأحد','الاثنين','الثلاثاء','الأربعاء'],ok:0,
-  wrong:{1:'هل '+M('15')+' أكبر من '+M('5')+' تعني أن '+M('1,15')+' أكبر من '+M('1,5')+'؟ قارن الأجزاء من عشرة.'},
-  h1:'كل الأعداد جزؤها الصحيح 1. قارن أرقام الأجزاء من عشرة: 5 ؛ 1 ؛ 0 ؛ 4.',h2:'اكتبها بنفس عدد الأرقام: '+M('1,50 ; 1,15 ; 1,05 ; 1,40')+'.',
-  model:{m:'نقارن رقم الأجزاء من عشرة لأن الأجزاء الصحيحة متساوية.',s:['1,50 ; 1,15 ; 1,05 ; 1,40','1,05 < 1,15 < 1,4 < 1,5'],c:'أكبر كمية كانت يوم الأحد ('+M('1,5 cm')+').'},
-  scale:[['المقارنة مع التبرير',1],['اليوم الصحيح',1]]},
- {id:'c2',type:'type',pts:2,text:'اكتب عددا عشريا محصورا بين '+M('1,4')+' و '+M('1,5')+'.',keys:[',','⌫'],between:[1.4,1.5],ans:['1,45'],ph:'مثلا ... ,1',
-  h1:'اكتب '+M('1,4 = 1,40')+' و '+M('1,5 = 1,50')+'، ثم ابحث عن عدد بينهما.',h2:'أضف بعد '+M('1,4')+' رقما للأجزاء من مائة غير الصفر، ثم تحقّق أن العدد أصغر من '+M('1,50')+'.',
-  model:{m:'نكتب العددين بنفس عدد الأرقام بعد الفاصلة.',s:['1,4 = 1,40   ;   1,5 = 1,50','1,40 < 1,45 < 1,50'],c:'مثلا '+M('1,45')+' (وكل عدد مثل '+M('1,41')+' أو '+M('1,49')+' أو '+M('1,405')+' صحيح أيضا).'},
-  scale:[['عدد عشري محصور بين العددين',2]]}
+{tag:'7',title:'التحدي: أرض فلاح من بوشقوف',intro:'زرع فلاح من بوشقوف '+M(F(1,4))+' أرضه طماطم و '+M(F(3,8))+' منها بطاطا. الأرض الطيبة أمانة، نخدمها ونحافظ عليها.',qs:[
+ {id:'c1',type:'type',pts:2,text:'ما الكسر الذي يمثّل الجزء المزروع من الأرض؟',ans:['5/8'],frac:true,halfPts:1,
+  wrong:{'4/12':'انتبه: لا نجمع المقامين.','1/3':'انتبه: لا نجمع المقامين.'},
+  h1:'نجمع الكسرين: '+M(F(1,4)+' + '+F(3,8))+'.',h2:'المقام 8 مضاعف للمقام 4: اكتب '+M(F(1,4))+' بمقام 8.',
+  model:{m:'جمع كسرين مقام أحدهما مضاعف لمقام الآخر.',s:[F(1,4)+' + '+F(3,8)+' = '+F('1 × 2','4 × 2')+' + '+F(3,8),'= '+F(2,8)+' + '+F(3,8)+' = '+F(5,8)],c:'الجزء المزروع هو '+M(F(5,8))+' الأرض.'},
+  scale:[['توحيد المقامات',1],['النتيجة',1]]},
+ {id:'c2',type:'type',pts:2,text:'ما الكسر الذي يمثّل الجزء غير المزروع؟',ans:['3/8'],frac:true,halfPts:1,
+  h1:'الأرض كلها تمثَّل بالعدد 1.',h2:'اكتب 1 على شكل كسر مقامه 8، ثم اطرح الجزء المزروع.',
+  model:{m:'نطرح الجزء المزروع من الأرض كلها (1).',s:['1 − '+F(5,8)+' = '+F(8,8)+' − '+F(5,8),'= '+F('8 − 5',8)+' = '+F(3,8)],c:'الجزء غير المزروع هو '+M(F(3,8))+' الأرض.'},
+  scale:[['كتابة 1 على شكل '+M(F(8,8)),1],['الطرح والنتيجة',1]]}
 ]}
 ]};
 
@@ -282,7 +287,7 @@ function buildQ(q){
  const w=el('<div class="q" id="q_'+q.id+'"><div class="qt">'+q.text+'<span class="qp">'+String(q.pts).replace('.',',')+' ن</span></div></div>');
  const body=document.createElement('div');w.appendChild(body);const ui={w,body,sel:null};q._ui=ui;
  if(q.type==='mc'||q.type==='line'){
-  const o=el('<div class="opts'+(q.type==='line'?' lines':'')+'"></div>');
+  const isLong=(q.opts||q.lines).some(t=>t.replace(/<[^>]+>/g,'').length>16);const o=el('<div class="opts'+(q.type==='line'?' lines col':(isLong?' col':''))+'"></div>');
   (q.opts||q.lines).forEach((t,i)=>{const b=el('<button class="opt">'+t+'</button>');b.onclick=()=>{if(ui.locked)return;o.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');ui.sel=i;};o.appendChild(b);});
   body.appendChild(o);ui.opts=o;
  } else if(q.type==='type'){
@@ -354,7 +359,7 @@ function drawCert(){const nm=$('#nm').value.trim();if(!nm){$('#nm').focus();$('#
  x.font='bold 46px Tahoma,Arial';x.fillStyle=g[0];x.fillText(g[2],W/2,170);
  x.fillStyle='#1d2433';x.font='26px Tahoma,Arial';x.fillText('تُمنح للتلميذ(ة)',W/2,240);
  x.font='bold 42px Tahoma,Arial';x.fillText(nm,W/2,305);
- x.font='26px Tahoma,Arial';x.fillText('لإتمامه(ا) الدرس العلاجي:',W/2,370);
+ x.font='26px Tahoma,Arial';x.fillText('لإتقانه(ا) درس «أُتقِن»:',W/2,370);
  x.font='bold 30px Tahoma,Arial';x.fillStyle='#0b4f8a';x.fillText(L.certName,W/2,420);
  x.fillStyle='#1d2433';x.font='bold 34px Tahoma,Arial';x.fillText('العلامة: '+String(Math.round(sc*100)/100).replace('.',',')+' / 20',W/2,495);
  const d=new Date();x.font='22px Tahoma,Arial';x.fillText('التاريخ: '+d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear(),W/2,560);

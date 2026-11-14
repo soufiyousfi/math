@@ -3,23 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>علاج: جمع وطرح كسرين (الثانية متوسط)</title>
+<title>أُتقِن: الحساب على الجذور التربيعية (الرابعة متوسط)</title>
 <meta name="description" content="سؤال تشخيصي، أين الخطأ؟، تذكير من الكتاب، تمارين بتصحيح فوري، تحدٍّ وشهادة إنجاز.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="درس علاجي للثانية متوسط: لماذا 1/2 + 1/4 لا يساوي 2/6؟">
+<meta property="og:title" content="أُتقِن (الرابعة متوسط): هل √(9+16) = 3+4؟ تحدَّ نفسك واربح شهادتك">
 <meta property="og:description" content="سؤال تشخيصي، أين الخطأ؟، تذكير من الكتاب، تمارين بتصحيح فوري، تحدٍّ وشهادة إنجاز.">
-<meta property="og:image" content="https://soufiyousfi.github.io/math/2m/t1/dars/img/ilaj-m1-kusur-fb.png">
+<meta property="og:image" content="https://soufiyousfi.github.io/math/4m/t1/dars/img/itqan-m1-judhur-fb.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://soufiyousfi.github.io/math/2m/t1/dars/ilaj-m1-kusur.html">
+<meta property="og:url" content="https://soufiyousfi.github.io/math/4m/t1/dars/itqan-m1-judhur.html">
 <meta name="twitter:card" content="summary_large_image">
 <style>
 :root{--b1:#0b4f8a;--b2:#0e8f8a;--y:#f5c518;--ok:#1e8e3e;--ko:#c62828;--ink:#1d2433;--mut:#5b6474;--bg:#eef3f8;--card:#fff;--line:#d7dee8;--soft:#f6f9fc}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",Tahoma,"Noto Naskh Arabic",Arial,sans-serif;font-size:17px;line-height:1.7}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",Tahoma,"Noto Naskh Arabic",Arial,sans-serif;font-size:19px;line-height:1.75}
 header.top{background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff;padding:14px 16px 12px;border-bottom:5px solid var(--y)}
 header .school{font-size:13px;opacity:.92}
-header h1{margin:6px 0 2px;font-size:22px;line-height:1.4}
+header h1{margin:6px 0 2px;font-size:25px;line-height:1.4}
+header .badge{display:inline-block;background:var(--y);color:#3a2c00;border-radius:16px;padding:1px 12px;font-size:15px;font-weight:700;margin-bottom:4px}
 header .sub{font-size:14px;opacity:.95}
 .bar{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);padding:8px 12px;display:flex;align-items:center;gap:10px;box-shadow:0 2px 6px rgba(0,0,0,.06)}
 .bar .pill{background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:2px 12px;font-weight:700;white-space:nowrap}
@@ -27,10 +28,10 @@ header .sub{font-size:14px;opacity:.95}
 .bar .prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--b2),var(--b1));transition:width .4s}
 .bar button{border:1px solid var(--line);background:#fff;border-radius:10px;font-size:18px;padding:2px 8px;cursor:pointer}
 main{max-width:820px;margin:0 auto;padding:14px 16px 60px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:14px 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.card>h2{margin:0 0 6px;font-size:19px;color:var(--b1);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.card>h2 .tag{font-size:12px;background:var(--b1);color:#fff;border-radius:12px;padding:1px 10px}
-.card>h2 .pts{margin-inline-start:auto;font-size:13px;background:var(--y);color:#3a2c00;border-radius:12px;padding:1px 10px}
+.card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--b2);border-radius:16px;padding:16px 18px;margin:16px 0;box-shadow:0 4px 14px rgba(11,79,138,.07)}
+.card>h2{margin:0 0 8px;font-size:21px;color:var(--b1);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.card>h2 .tag{font-size:15px;background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff;border-radius:50%;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center}
+.card>h2 .pts{margin-inline-start:auto;font-size:14px;background:var(--y);color:#3a2c00;border-radius:12px;padding:1px 10px}
 .intro{color:var(--mut);margin:0 0 6px}
 .book{background:#fffbea;border:1px solid #f0dc8c}
 .book .src{font-size:13px;color:#7a6200;margin-top:6px}
@@ -45,19 +46,22 @@ main{max-width:820px;margin:0 auto;padding:14px 16px 60px}
 .fr>span:first-child{border-bottom:1.6px solid currentColor;padding:0 3px}
 .fr>span:last-child{padding:0 3px}
 .sq{white-space:nowrap}.sq>span{border-top:1.6px solid currentColor;padding:0 2px}
-.opts{display:flex;flex-direction:column;gap:8px}
-.opt{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;text-align:start;font-size:17px;cursor:pointer;font-family:inherit;color:inherit}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(95px,1fr));gap:10px}
+.opts.col{display:flex;flex-direction:column}
+.opt{border:2px solid var(--line);background:#fff;border-radius:14px;padding:12px 12px;text-align:center;font-size:19px;cursor:pointer;font-family:inherit;color:inherit;box-shadow:0 2px 0 #dfe6ef;transition:transform .12s,border-color .12s}
+.opts.col .opt{text-align:start}
+.opt:active{transform:scale(.97)}
 .opt.sel{border-color:var(--b1);background:#eaf3fd}
 .opt.good{border-color:var(--ok);background:#e8f6ec}
-.lines .opt{font-size:17px}
+.lines .opt{font-size:18px}
 .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
-.ans{flex:1;min-width:150px;max-width:280px;font-size:20px;padding:8px 10px;border:2px solid var(--line);border-radius:10px;direction:ltr;text-align:center;font-family:"Cambria Math","Times New Roman",serif}
+.ans{flex:1;min-width:150px;max-width:280px;font-size:22px;padding:8px 10px;border:2px solid var(--line);border-radius:10px;direction:ltr;text-align:center;font-family:"Cambria Math","Times New Roman",serif}
 .ans:focus{outline:none;border-color:var(--b1)}
 .unit{font-weight:700}
 .keys{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;margin-top:8px;padding-bottom:2px}
-.key{min-width:44px;height:44px;font-size:20px;border:1px solid var(--line);border-radius:10px;background:var(--soft);cursor:pointer;font-family:"Cambria Math","Times New Roman",serif;flex:0 0 auto}
-.btn{background:var(--b1);color:#fff;border:0;border-radius:12px;padding:10px 22px;font-size:17px;font-weight:700;cursor:pointer;font-family:inherit}
-.btn.sec{background:#fff;color:var(--b1);border:2px solid var(--b1)}
+.key{min-width:50px;height:50px;font-size:22px;border:1px solid var(--line);border-radius:10px;background:var(--soft);cursor:pointer;font-family:"Cambria Math","Times New Roman",serif;flex:0 0 auto}
+.btn{background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff;border:0;border-radius:14px;padding:11px 26px;font-size:19px;box-shadow:0 3px 0 #083a66;font-weight:700;cursor:pointer;font-family:inherit}
+.btn.sec{background:#fff;color:var(--b1);border:2px solid var(--b1);box-shadow:none}
 .btn:disabled{opacity:.5;cursor:default}
 .fb{margin-top:8px;border-radius:10px;padding:8px 12px;display:none}
 .fb.show{display:block}
@@ -70,18 +74,18 @@ main{max-width:820px;margin:0 auto;padding:14px 16px 60px}
 .model h4{margin:0 0 4px;color:var(--b1);font-size:16px}
 .model .st{direction:ltr;text-align:left;font-family:"Cambria Math","Times New Roman",serif;margin:2px 0;white-space:nowrap;overflow-x:auto}
 .model .st.ar{direction:rtl;text-align:right;font-family:inherit;white-space:normal}
-table.sc{width:100%;border-collapse:collapse;margin-top:8px;font-size:15px}
+table.sc{width:100%;border-collapse:collapse;margin-top:8px;font-size:16px}
 table.sc td,table.sc th{border:1px solid var(--line);padding:4px 8px}
 table.sc th{background:#e4effa}
 table.sc td:last-child{text-align:center;width:70px;font-weight:700}
 .seq{display:flex;flex-wrap:wrap;gap:8px}
-.chip{border:2px solid var(--line);background:#fff;border-radius:22px;padding:6px 14px;font-size:18px;cursor:pointer;font-family:"Cambria Math","Times New Roman",serif;direction:ltr}
+.chip{border:2px solid var(--line);background:#fff;border-radius:22px;padding:8px 16px;font-size:20px;box-shadow:0 2px 0 #dfe6ef;cursor:pointer;font-family:"Cambria Math","Times New Roman",serif;direction:ltr}
 .chip.used{opacity:.35}
 .picked{min-height:46px;border:2px dashed var(--line);border-radius:12px;padding:6px 10px;margin:8px 0;direction:ltr;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-family:"Cambria Math","Times New Roman",serif;font-size:18px}
 .picked .lt{color:var(--mut)}
 .bins .it{display:flex;align-items:center;gap:8px;justify-content:space-between;border-bottom:1px solid var(--line);padding:6px 0;flex-wrap:wrap}
 .bins .seg{display:flex;gap:6px}
-.bins .seg button{border:2px solid var(--line);background:#fff;border-radius:10px;padding:5px 12px;font-size:15px;cursor:pointer;font-family:inherit}
+.bins .seg button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:7px 14px;font-size:17px;cursor:pointer;font-family:inherit}
 .bins .seg button.on{border-color:var(--b1);background:#eaf3fd;font-weight:700}
 .done-tag{font-weight:700}
 .shake{animation:shk .45s}
@@ -97,12 +101,13 @@ table.sc td:last-child{text-align:center;width:70px;font-weight:700}
 .namebox{font-size:18px;padding:8px 10px;border:2px solid var(--line);border-radius:10px;width:min(320px,100%);font-family:inherit}
 .lock{color:var(--mut)}
 footer{text-align:center;color:var(--mut);font-size:13px;padding:10px}
-@media (max-width:420px){header h1{font-size:19px}.card{padding:12px}body{font-size:16px}}
+@media (max-width:420px){header h1{font-size:22px}.card{padding:14px}body{font-size:18px}}
 </style>
 </head>
 <body>
 <header class="top">
   <div class="school">متوسطة العربي بن مهيدي، وادي فراغة، قالمة — الأستاذ: يوسفي السوفي</div>
+  <div class="badge">✨ أُتقِن خطوة بخطوة</div>
   <h1 id="ttl"></h1>
   <div class="sub" id="sub"></div>
 </header>
@@ -113,7 +118,7 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:10px}
   <button id="snd" title="الصوت">🔊</button>
 </div>
 <main id="app"></main>
-<footer>درس علاجي تفاعلي — رياضيات المتوسط</footer>
+<footer>أُتقِن خطوة بخطوة — رياضيات المتوسط</footer>
 <div class="toast" id="toast"></div>
 <script>
 /* ===== helpers usable in lesson data ===== */
@@ -125,83 +130,85 @@ function SQ(s){return '<span class="sq">'+R(s)+'</span>';}
 </script>
 <script>
 const LESSON={
-key:'2m_m1_kusur',
-docTitle:'علاج: جمع وطرح كسرين (الثانية متوسط)',
-title:'درس علاجي: جمع وطرح كسرين',
-sub:'السنة الثانية متوسط · المقطع الأول: العمليات والكسور',
-certName:'جمع وطرح كسرين',
+key:'4m_m1_judhur',
+docTitle:'أُتقِن: الحساب على الجذور التربيعية (الرابعة متوسط)',
+title:'الحساب على الجذور التربيعية',
+sub:'السنة الرابعة متوسط · المقطع الأول: الأعداد الطبيعية والأعداد الناطقة والحساب على الجذور',
+certName:'الحساب على الجذور التربيعية',
 sections:[
-{tag:'1',title:'سؤال تشخيصي',intro:'أجب دون حاسبة. اكتب الجواب على شكل كسر مختزل، مثل '+M('a/b')+' باستعمال الزر '+M('/')+'.',qs:[
- {id:'d1',type:'type',pts:2,text:'احسب: '+M(F(1,2)+' + '+F(1,4)),ans:['3/4'],frac:true,
-  wrong:{'2/6':'انتبه: جمعتَ البسطين وجمعتَ المقامين. لا نجمع المقامين أبدا.','1/3':'انتبه: '+M('2/6')+' ثم الاختزال لا يصحّ، لأن الخطوة الأولى خاطئة: لا نجمع المقامين.'},
-  halfMsg:'جوابك صحيح، لكن الكسر غير مختزل. اختزله.',halfPts:1,
-  h1:'المقام '+M('4')+' مضاعف للمقام '+M('2')+'. اكتب '+M(F(1,2))+' بمقام 4 أوّلا.',
-  h2:M(F(1,2)+' = '+F('1 × 2','2 × 2')+' = '+F(2,4))+'، ثم اجمع البسطين واحتفظ بالمقام 4.',
-  model:{m:'توحيد المقامات ثم جمع البسطين مع الاحتفاظ بالمقام المشترك.',s:[F(1,2)+' + '+F(1,4)+' = '+F('1 × 2','2 × 2')+' + '+F(1,4),'= '+F(2,4)+' + '+F(1,4),'= '+F('2 + 1',4)+' = '+F(3,4)],c:M(F(1,2)+' + '+F(1,4)+' = '+F(3,4))+'.'},
-  scale:[['توحيد المقامات',1],['جمع البسطين والنتيجة',1]],
-  diag:{ok:'👍 أحسنت، أنت توحّد المقامات قبل الجمع. تابع الدرس لتثبيت ذلك.',ko:'📌 الخطأ الشائع هنا هو جمع المقامين: '+M(F(1,2)+' + '+F(1,4)+' ≠ '+F(2,6))+'. هذا ما يعالجه الدرس، تابع خطوة خطوة.'}}
+{tag:'1',title:'سؤال تشخيصي',intro:'أجب دون حاسبة. الزر '+M('√')+' يكتب رمز الجذر.',qs:[
+ {id:'d1',type:'type',pts:2,text:'احسب: '+M(SQ('9 + 16')),keys:['√','(',')','⌫'],ans:['5'],num:true,half:['√25','√(25)'],halfMsg:'صحيح، لكن '+M(SQ(25))+' يُكتب دون جذر. أكمل الحساب.',halfPts:1,
+  wrong:{'7':'انتبه: '+M(SQ('9 + 16')+' ≠ '+SQ(9)+' + '+SQ(16))+'. الجذر لا يتوزّع على الجمع.','3+4':'انتبه: الجذر لا يتوزّع على الجمع.'},
+  h1:'احسب ما تحت الجذر أوّلا: '+M('9 + 16')+'.',h2:'ما العدد الموجب الذي مربعه '+M('25')+'؟',
+  model:{m:'نحسب العبارة تحت الجذر أوّلا، لأن الجذر لا يتوزّع على الجمع.',s:[SQ('9 + 16')+' = '+SQ(25)+' = 5',{ar:'بينما '+M(SQ(9)+' + '+SQ(16)+' = 3 + 4 = 7')+'، و '+M('5 ≠ 7')+'.'}],c:M(SQ('9 + 16')+' = 5')+'.'},
+  scale:[['حساب ما تحت الجذر',1],['النتيجة 5',1]],
+  diag:{ok:'👍 أحسنت، أنت تعرف أن الجذر لا يتوزّع على الجمع. تابع الدرس لتثبيت قواعد الجداء والقسمة.',ko:'📌 الخطأ الشائع هنا هو '+M(SQ('a + b')+' = '+SQ('a')+' + '+SQ('b'))+'، وهي مساواة خاطئة. هذه هي الفكرة التي سنتقنها معا، تابع خطوة خطوة.'}}
 ]},
-{tag:'2',title:'أين الخطأ؟',intro:'حسبت سارة: '+M(F(2,3)+' + '+F(1,6))+' فكتبت الأسطر الآتية.',qs:[
+{tag:'2',title:'أين الخطأ؟',intro:'بسّطت ريم العبارة '+M(SQ(50)+' + '+SQ(8))+' فكتبت الأسطر الآتية.',qs:[
  {id:'e1',type:'line',pts:2,text:'اضغط على السطر الذي فيه الخطأ، ثم اضغط «تحقّق».',
-  lines:['السطر 1: '+M(F(2,3)+' + '+F(1,6)+' = '+F('2 + 1','3 + 6')),'السطر 2: '+M('= '+F(3,9)),'السطر 3: '+M('= '+F('3 ÷ 3','9 ÷ 3')+' = '+F(1,3))],ok:0,
-  h1:'الاختزال في السطر 3 صحيح حسابيا. ابحث عن الخطأ قبله.',
-  h2:'هل يجوز جمع المقامين '+M('3 + 6')+'؟',
-  model:{m:'نبحث عن أول سطر يخالف قاعدة الجمع.',s:[{ar:'السطر 1 خاطئ: جمعت سارة المقامين، والصحيح أن نوحّد المقامات ثم نجمع البسطين فقط.'},{ar:'السطران 2 و3 نتيجة لهذا الخطأ.'}],c:'الخطأ في السطر 1.'},
+  lines:['السطر 1: '+M(SQ(50)+' = '+SQ('25 × 2')+' = 5'+SQ(2)),'السطر 2: '+M(SQ(8)+' = '+SQ('4 × 2')+' = 2'+SQ(2)),'السطر 3: '+M('5'+SQ(2)+' + 2'+SQ(2)+' = 7'+SQ(4)+' = 14')],ok:2,
+  h1:'السطران 1 و2 يطبّقان الخاصية '+M(SQ('a × b')+' = '+SQ('a')+' × '+SQ('b'))+' تطبيقا صحيحا.',
+  h2:'كم يساوي '+M('5x + 2x')+'؟ هل نجمع ما تحت الجذرين؟',
+  model:{m:'نبحث عن أول سطر يخالف قواعد الحساب.',s:[{ar:'السطر 3 خاطئ: جمعت ريم ما تحت الجذرين '+M(SQ(2)+' + '+SQ(2))+' فكتبت '+M(SQ(4))+'.'},'5'+SQ(2)+' + 2'+SQ(2)+' = (5 + 2)'+SQ(2)+' = 7'+SQ(2)],c:'الخطأ في السطر 3.'},
   scale:[['تحديد السطر الخاطئ',2]]},
- {id:'e2',type:'mc',pts:2,text:'ما الخطوة الأولى الصحيحة لحساب '+M(F(2,3)+' + '+F(1,6))+'؟',
-  opts:['نكتب '+M(F(2,3))+' بمقام 6: '+M(F(2,3)+' = '+F('2 × 2','3 × 2')+' = '+F(4,6)),'نجمع البسطين ونجمع المقامين','نضرب المقامين ونجمع البسطين'],ok:0,
-  wrong:{1:'هذا هو خطأ سارة نفسه.',2:'نضرب البسطين والمقامين في الضرب فقط، لا في الجمع.'},
-  h1:'المقام 6 مضاعف للمقام 3.',h2:'لكي نجمع، يجب أن يكون للكسرين نفس المقام.',
-  model:{m:'توحيد المقامات (6 مضاعف لـ 3).',s:[F(2,3)+' = '+F('2 × 2','3 × 2')+' = '+F(4,6),F(4,6)+' + '+F(1,6)+' = '+F('4 + 1',6)+' = '+F(5,6)],c:M(F(2,3)+' + '+F(1,6)+' = '+F(5,6))+'.'},
-  scale:[['اختيار الخطوة الصحيحة',2]]}
+ {id:'e2',type:'mc',pts:2,text:'ما التصحيح الصحيح للسطر 3؟',
+  opts:[M('5'+SQ(2)+' + 2'+SQ(2)+' = 7'+SQ(2)),M('5'+SQ(2)+' + 2'+SQ(2)+' = 10'+SQ(4)+' = 20'),M('5'+SQ(2)+' + 2'+SQ(2)+' = 7'+SQ(4)+' = 14')],ok:0,
+  wrong:{1:'هذا ضرب وليس جمعا.',2:'هذا خطأ ريم نفسه.'},
+  h1:'فكّر في '+M('5x + 2x = 7x')+' مع '+M('x = '+SQ(2))+'.',h2:'نجمع المعاملين 5 و 2 ونحتفظ بـ '+M(SQ(2))+'.',
+  model:{m:'نخرج '+M(SQ(2))+' عاملا مشتركا (التوزيعية).',s:['5'+SQ(2)+' + 2'+SQ(2)+' = (5 + 2)'+SQ(2)+' = 7'+SQ(2)],c:M(SQ(50)+' + '+SQ(8)+' = 7'+SQ(2))+'.'},
+  scale:[['اختيار التصحيح',2]]}
 ]},
 {tag:'3',kind:'book',title:'تذكير من الكتاب المدرسي',html:
- '<div class="rule"><b>جمع (أو طرح) كسرين لهما نفس المقام</b>: «لجمع (أو طرح) عددين مكتوبين على شكل كسرين لهما نفس المقام نقوم بما يلي: نجمع (أو نطرح) البسطين ونحتفظ بالمقام المشترك.»</div>'+
- MB(F(13,7)+' + '+F(11,7)+' = '+F('13 + 11',7)+' = '+F(24,7))+
- '<div class="rule"><b>جمع (أو طرح) كسرين مقام أحدهما مضاعف لمقام الآخر</b>: «نكتب الكسرين بنفس المقام (توحيد المقامات). ثمّ نجمع (أو نطرح) البسطين اللذين حصلنا عليهما محتفظين بالمقام المشترك الجديد.»</div>'+
- MB(F(3,4)+' − '+F(5,12)+' = '+F('3 × 3','4 × 3')+' − '+F(5,12))+MB('= '+F(9,12)+' − '+F(5,12)+' = '+F('9 − 5',12))+MB('= '+F(4,12)+' = '+F('4 ÷ 4','12 ÷ 4')+' = '+F(1,3))+
- '<div class="rule">⚠️ لا نجمع المقامين أبدا: '+M(F(1,2)+' + '+F(1,4)+' ≠ '+F(2,6))+'</div>'+
- '<div class="src">المصدر: الكتاب المدرسي للسنة الثانية متوسط، الباب 2 «الكسور والعمليات عليها»، فقرة «معارف».</div>'},
-{tag:'4',title:'تمرين 1: نفس المقام',intro:'اكتب كل نتيجة على شكل كسر مختزل.',qs:[
- {id:'t1a',type:'type',pts:2,text:'احسب: '+M(F(5,8)+' − '+F(3,8)),ans:['1/4'],frac:true,halfPts:1,
-  wrong:{'2/0':'لا نطرح المقامين! نحتفظ بالمقام المشترك 8.'},
-  h1:'للكسرين نفس المقام 8: نطرح البسطين ونحتفظ بالمقام.',h2:'بعد الطرح اختزل الكسر بقسمة البسط والمقام على 2.',
-  model:{m:'طرح البسطين مع الاحتفاظ بالمقام المشترك، ثم الاختزال.',s:[F(5,8)+' − '+F(3,8)+' = '+F('5 − 3',8)+' = '+F(2,8),F(2,8)+' = '+F('2 ÷ 2','8 ÷ 2')+' = '+F(1,4)],c:M(F(5,8)+' − '+F(3,8)+' = '+F(1,4))+'.'},
-  scale:[['طرح البسطين مع الاحتفاظ بالمقام',1],['الاختزال',1]]},
- {id:'t1b',type:'type',pts:2,text:'أكمل لتوحيد المقامات: '+M(F(3,4)+' = '+F('…',12))+' (اكتب البسط فقط)',keys:['⌫'],ans:['9'],num:true,
-  h1:'بأي عدد نضرب 4 لنحصل على 12؟',h2:M('4 × 3 = 12')+'، فاضرب البسط أيضا في نفس العدد.',
-  model:{m:'نضرب البسط والمقام في نفس العدد.',s:['4 × 3 = 12',F(3,4)+' = '+F('3 × 3','4 × 3')+' = '+F(9,12)],c:'البسط هو '+M('9')+'.'},
-  scale:[['إيجاد المعامل 3',1],['البسط 9',1]]}
+ '<div class="rule"><b>خاصية 1</b>: «من أجل كل عددين موجبين '+M('a')+' و '+M('b')+': '+M(SQ('a')+' × '+SQ('b')+' = '+SQ('a × b'))+'.»</div>'+
+ MB(SQ(12)+' × '+SQ(3)+' = '+SQ('12 × 3')+' = '+SQ(36)+' = 6')+MB(SQ(28)+' = '+SQ('4 × 7')+' = 2'+SQ(7))+
+ '<div class="rule"><b>خاصية 2</b>: «من أجل كل عددين موجبين '+M('a')+' و '+M('b')+' حيث '+M('b ≠ 0')+': '+M(F(SQ('a'),SQ('b'))+' = '+SQ(F('a','b')))+'.»</div>'+
+ MB(SQ(F(25,9))+' = '+F(SQ(25),SQ(9))+' = '+F(5,3))+
+ '<div class="rule"><b>ملاحظة 3</b>: «المساواة غير محقّقة في كل من الجمع والطرح على الجذور التربيعية»: '+M(SQ('a + b')+' ≠ '+SQ('a')+' + '+SQ('b'))+' و '+M(SQ('a − b')+' ≠ '+SQ('a')+' − '+SQ('b'))+' ('+M('a')+' و '+M('b')+' موجبان تماما).</div>'+
+ MB(SQ('16 + 9')+' = '+SQ(25)+' = 5')+MB(SQ(16)+' + '+SQ(9)+' = 4 + 3 = 7')+
+ '<div class="src">المصدر: الكتاب المدرسي للسنة الرابعة متوسط، الباب 2 «الحساب على الجذور التربيعية»، معارف ص 24.</div>'},
+{tag:'4',title:'تمرين 1: صحيحة أم خاطئة؟',qs:[
+ {id:'t1a',type:'bins',pts:2,text:'احكم على كل مساواة.',bins:['صحيحة','خاطئة'],
+  items:[{t:M(SQ('16 + 9')+' = '+SQ(16)+' + '+SQ(9)),b:1},{t:M(SQ('4 × 7')+' = 2'+SQ(7)),b:0},{t:M(SQ(36)+' − '+SQ(16)+' = '+SQ(20)),b:1},{t:M(SQ('100 − 36')+' = 8'),b:0}],
+  h1:'الجذر يتوزّع على الضرب والقسمة فقط.',h2:'احسب كل طرف: مثلا '+M(SQ(36)+' − '+SQ(16)+' = 6 − 4')+'.',
+  model:{m:'خاصية 1 وملاحظة 3 من الكتاب.',s:[SQ('16 + 9')+' = 5 ,  '+SQ(16)+' + '+SQ(9)+' = 7   ✘',SQ('4 × 7')+' = '+SQ(4)+' × '+SQ(7)+' = 2'+SQ(7)+'   ✔',SQ(36)+' − '+SQ(16)+' = 2 ,  '+SQ(20)+' ≠ 2   ✘',SQ('100 − 36')+' = '+SQ(64)+' = 8   ✔'],c:'الثانية والرابعة صحيحتان، الأولى والثالثة خاطئتان.'},
+  scale:[['الحكم على المساواات الأربع',2]]},
+ {id:'t1b',type:'type',pts:2,text:'احسب: '+M(SQ(12)+' × '+SQ(3)),keys:['√','(',')','⌫'],ans:['6'],num:true,half:['√36'],halfMsg:'صحيح، لكن '+M(SQ(36))+' يُكتب دون جذر. أكمل الحساب.',halfPts:1,
+  h1:'طبّق الخاصية 1: '+M(SQ('a')+' × '+SQ('b')+' = '+SQ('a × b'))+'.',h2:M(SQ(12)+' × '+SQ(3)+' = '+SQ(36))+'. ما العدد الموجب الذي مربعه 36؟',
+  model:{m:'الخاصية 1.',s:[SQ(12)+' × '+SQ(3)+' = '+SQ('12 × 3')+' = '+SQ(36)+' = 6'],c:M(SQ(12)+' × '+SQ(3)+' = 6')+'.'},
+  scale:[['تطبيق الخاصية 1',1],['النتيجة 6',1]]}
 ]},
-{tag:'5',title:'تمرين 2: مقام أحدهما مضاعف للآخر',qs:[
- {id:'t2a',type:'type',pts:2,text:'احسب: '+M(F(7,10)+' + '+F(1,5)),ans:['9/10'],frac:true,halfPts:1,
-  wrong:{'8/15':'انتبه: لا نجمع المقامين. وحّد المقامات أوّلا.'},
-  h1:'المقام 10 مضاعف للمقام 5.',h2:'اكتب '+M(F(1,5))+' بمقام 10، ثم اجمع البسطين.',
-  model:{m:'توحيد المقامات ثم جمع البسطين.',s:[F(1,5)+' = '+F('1 × 2','5 × 2')+' = '+F(2,10),F(7,10)+' + '+F(2,10)+' = '+F('7 + 2',10)+' = '+F(9,10)],c:M(F(7,10)+' + '+F(1,5)+' = '+F(9,10))+'.'},
-  scale:[['توحيد المقامات',1],['الجمع والنتيجة',1]]},
- {id:'t2b',type:'type',pts:2,text:'احسب: '+M(F(5,6)+' − '+F(1,3)),ans:['1/2'],frac:true,halfPts:1,
-  wrong:{'4/3':'انتبه: لا نطرح المقامين.'},
-  h1:'المقام 6 مضاعف للمقام 3.',h2:'اكتب '+M(F(1,3))+' بمقام 6، ثم اطرح البسطين، ثم اختزل.',
-  model:{m:'توحيد المقامات ثم طرح البسطين ثم الاختزال.',s:[F(1,3)+' = '+F('1 × 2','3 × 2')+' = '+F(2,6),F(5,6)+' − '+F(2,6)+' = '+F('5 − 2',6)+' = '+F(3,6),F(3,6)+' = '+F('3 ÷ 3','6 ÷ 3')+' = '+F(1,2)],c:M(F(5,6)+' − '+F(1,3)+' = '+F(1,2))+'.'},
-  scale:[['توحيد المقامات',0.5],['طرح البسطين',0.5],['الاختزال',1]]}
+{tag:'5',title:'تمرين 2: أبسط شكل',intro:'اكتب على الشكل '+M('a'+SQ('b'))+' حيث '+M('b')+' أصغر ما يمكن، أو على شكل كسر مختزل.',qs:[
+ {id:'t2a',type:'type',pts:2,text:'اكتب '+M(SQ(72))+' على الشكل '+M('a'+SQ('b')),keys:['√','⌫'],ans:['6√2'],
+  half:['2√18','3√8'],halfMsg:'صحيح، لكنه ليس أبسط شكل: ما زال تحت الجذر مربع تامّ يمكن إخراجه.',halfPts:1,
+  wrong:{'36√2':'انتبه: '+M(SQ(36)+' = 6')+' وليس 36.','√72':'المطلوب الكتابة على الشكل '+M('a'+SQ('b'))+'.'},
+  h1:'ابحث عن أكبر مربع تامّ يقسم 72: 4 ؟ 9 ؟ 36 ؟',h2:M('72 = 36 × 2')+'، ثم طبّق الخاصية 1.',
+  model:{m:'نكتب 72 على شكل جداء أكبر مربع تامّ في عدد، ثم الخاصية 1.',s:['72 = 36 × 2',SQ(72)+' = '+SQ('36 × 2')+' = '+SQ(36)+' × '+SQ(2)+' = 6'+SQ(2)],c:M(SQ(72)+' = 6'+SQ(2))+'.'},
+  scale:[['كتابة 72 = 36 × 2',1],['النتيجة 6√2',1]]},
+ {id:'t2b',type:'type',pts:2,text:'احسب: '+M(SQ(F(25,9))),keys:['/','√','⌫'],ans:['5/3'],frac:true,halfPts:1,
+  wrong:{'25/3':'انتبه: نأخذ جذر البسط أيضا.','5/9':'انتبه: نأخذ جذر المقام أيضا.'},
+  h1:'طبّق الخاصية 2: '+M(SQ(F('a','b'))+' = '+F(SQ('a'),SQ('b')))+'.',h2:'احسب '+M(SQ(25))+' و '+M(SQ(9))+'.',
+  model:{m:'الخاصية 2.',s:[SQ(F(25,9))+' = '+F(SQ(25),SQ(9))+' = '+F(5,3)],c:M(SQ(F(25,9))+' = '+F(5,3))+'.'},
+  scale:[['تطبيق الخاصية 2',1],['النتيجة',1]]}
 ]},
-{tag:'6',title:'تمرين 3: صحيحة أم خاطئة؟',qs:[
- {id:'t3',type:'bins',pts:2,text:'احكم على كل مساواة.',bins:['صحيحة','خاطئة'],
-  items:[{t:M(F(1,5)+' + '+F(2,5)+' = '+F(3,5)),b:0},{t:M(F(1,3)+' + '+F(1,3)+' = '+F(2,6)),b:1},{t:M(F(3,4)+' − '+F(1,2)+' = '+F(1,4)),b:0},{t:M(F(1,2)+' + '+F(1,8)+' = '+F(2,10)),b:1}],
-  h1:'ابحث عن المساواة التي جُمعت فيها المقامات.',h2:'احسب الثالثة: '+M(F(1,2)+' = '+F(2,4))+'.',
-  model:{m:'نطبّق القاعدة على كل مساواة.',s:[F(1,5)+' + '+F(2,5)+' = '+F(3,5)+'   ✔',F(1,3)+' + '+F(1,3)+' = '+F(2,3)+' ≠ '+F(2,6)+'   ✘',F(3,4)+' − '+F(2,4)+' = '+F(1,4)+'   ✔',F(4,8)+' + '+F(1,8)+' = '+F(5,8)+' ≠ '+F(2,10)+'   ✘'],c:'الأولى والثالثة صحيحتان، الثانية والرابعة خاطئتان.'},
-  scale:[['الحكم على المساواات الأربع',2]]}
+{tag:'6',title:'تمرين 3: جمع جذور متشابهة',qs:[
+ {id:'t3',type:'type',pts:2,text:'احسب: '+M('3'+SQ(5)+' + 4'+SQ(5)+' − '+SQ(5)),keys:['√','−','⌫'],ans:['6√5'],
+  wrong:{'7√5':'لا تنسَ '+M('− '+SQ(5)+' = − 1'+SQ(5))+'.','6√15':'لا نجمع ما تحت الجذور.','√30':'لا نجمع ما تحت الجذور.'},
+  h1:'كل الحدود فيها '+M(SQ(5))+': اجمع المعاملات فقط.',h2:M('− '+SQ(5)+' = − 1 × '+SQ(5))+'، فالمعاملات هي 3 و 4 و −1.',
+  model:{m:'نخرج '+M(SQ(5))+' عاملا مشتركا.',s:['3'+SQ(5)+' + 4'+SQ(5)+' − '+SQ(5)+' = (3 + 4 − 1)'+SQ(5),'= 6'+SQ(5)],c:'النتيجة '+M('6'+SQ(5))+'.'},
+  scale:[['إخراج √5 عاملا مشتركا',1],['النتيجة',1]]}
 ]},
-{tag:'7',title:'التحدي: أرض فلاح من بوشقوف',intro:'زرع فلاح من بوشقوف '+M(F(1,4))+' أرضه طماطم و '+M(F(3,8))+' منها بطاطا. الأرض الطيبة أمانة، نخدمها ونحافظ عليها.',qs:[
- {id:'c1',type:'type',pts:2,text:'ما الكسر الذي يمثّل الجزء المزروع من الأرض؟',ans:['5/8'],frac:true,halfPts:1,
-  wrong:{'4/12':'انتبه: لا نجمع المقامين.','1/3':'انتبه: لا نجمع المقامين.'},
-  h1:'نجمع الكسرين: '+M(F(1,4)+' + '+F(3,8))+'.',h2:'المقام 8 مضاعف للمقام 4: اكتب '+M(F(1,4))+' بمقام 8.',
-  model:{m:'جمع كسرين مقام أحدهما مضاعف لمقام الآخر.',s:[F(1,4)+' + '+F(3,8)+' = '+F('1 × 2','4 × 2')+' + '+F(3,8),'= '+F(2,8)+' + '+F(3,8)+' = '+F(5,8)],c:'الجزء المزروع هو '+M(F(5,8))+' الأرض.'},
-  scale:[['توحيد المقامات',1],['النتيجة',1]]},
- {id:'c2',type:'type',pts:2,text:'ما الكسر الذي يمثّل الجزء غير المزروع؟',ans:['3/8'],frac:true,halfPts:1,
-  h1:'الأرض كلها تمثَّل بالعدد 1.',h2:'اكتب 1 على شكل كسر مقامه 8، ثم اطرح الجزء المزروع.',
-  model:{m:'نطرح الجزء المزروع من الأرض كلها (1).',s:['1 − '+F(5,8)+' = '+F(8,8)+' − '+F(5,8),'= '+F('8 − 5',8)+' = '+F(3,8)],c:'الجزء غير المزروع هو '+M(F(3,8))+' الأرض.'},
-  scale:[['كتابة 1 على شكل '+M(F(8,8)),1],['الطرح والنتيجة',1]]}
+{tag:'7',title:'التحدي: قطعتا أرض بوادي فراغة',intro:'قطعة أرض مربعة الشكل بوادي فراغة مساحتها '+M('50 m²')+'، وقطعة مربعة أخرى مساحتها '+M('18 m²')+'. يريد صاحبهما إحاطتهما بسياج وغرس أشجار الزيتون حولهما.',qs:[
+ {id:'c1',type:'type',pts:2,text:'اكتب طول ضلع القطعة الأولى على الشكل '+M('a'+SQ('b')),keys:['√','⌫'],ans:['5√2'],unit:'m',
+  half:['√50'],halfMsg:'صحيح، لكن المطلوب الشكل '+M('a'+SQ('b'))+'.',halfPts:1,
+  wrong:{'25':'طول ضلع مربع مساحته 50 هو الجذر التربيعي لـ 50، وليس نصفها.','25√2':'انتبه: '+M(SQ(25)+' = 5')+'.'},
+  h1:'طول ضلع مربع مساحته '+M('S')+' هو '+M(SQ('S'))+'.',h2:M('50 = 25 × 2')+'، ثم طبّق الخاصية 1.',
+  model:{m:'طول الضلع هو الجذر التربيعي للمساحة، ثم الخاصية 1.',s:[SQ(50)+' = '+SQ('25 × 2')+' = '+SQ(25)+' × '+SQ(2)+' = 5'+SQ(2)],c:'طول ضلع القطعة الأولى '+M('5'+SQ(2)+' m')+'.'},
+  scale:[['طول الضلع = √50',1],['الشكل 5√2',1]]},
+ {id:'c2',type:'type',pts:2,text:'احسب مجموع طولي ضلعي القطعتين على الشكل '+M('a'+SQ('b')),keys:['√','⌫'],ans:['8√2'],unit:'m',
+  wrong:{'√68':'انتبه: '+M(SQ(50)+' + '+SQ(18)+' ≠ '+SQ(68))+'. الجذر لا يتوزّع على الجمع.','2√17':'انتبه: '+M(SQ(50)+' + '+SQ(18)+' ≠ '+SQ(68))+'.'},
+  h1:'اكتب '+M(SQ(18))+' أيضا على الشكل '+M('a'+SQ(2))+'.',h2:M(SQ(18)+' = '+SQ('9 × 2'))+'، ثم اجمع المعاملين.',
+  model:{m:'نكتب كل جذر على الشكل a√2 ثم نخرج √2 عاملا مشتركا.',s:[SQ(18)+' = '+SQ('9 × 2')+' = 3'+SQ(2),SQ(50)+' + '+SQ(18)+' = 5'+SQ(2)+' + 3'+SQ(2)+' = (5 + 3)'+SQ(2)+' = 8'+SQ(2)],c:'مجموع الطولين '+M('8'+SQ(2)+' m')+'.'},
+  scale:[['كتابة √18 = 3√2',1],['المجموع 8√2',1]]}
 ]}
 ]};
 
@@ -282,7 +289,7 @@ function buildQ(q){
  const w=el('<div class="q" id="q_'+q.id+'"><div class="qt">'+q.text+'<span class="qp">'+String(q.pts).replace('.',',')+' ن</span></div></div>');
  const body=document.createElement('div');w.appendChild(body);const ui={w,body,sel:null};q._ui=ui;
  if(q.type==='mc'||q.type==='line'){
-  const o=el('<div class="opts'+(q.type==='line'?' lines':'')+'"></div>');
+  const isLong=(q.opts||q.lines).some(t=>t.replace(/<[^>]+>/g,'').length>16);const o=el('<div class="opts'+(q.type==='line'?' lines col':(isLong?' col':''))+'"></div>');
   (q.opts||q.lines).forEach((t,i)=>{const b=el('<button class="opt">'+t+'</button>');b.onclick=()=>{if(ui.locked)return;o.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');ui.sel=i;};o.appendChild(b);});
   body.appendChild(o);ui.opts=o;
  } else if(q.type==='type'){
@@ -354,7 +361,7 @@ function drawCert(){const nm=$('#nm').value.trim();if(!nm){$('#nm').focus();$('#
  x.font='bold 46px Tahoma,Arial';x.fillStyle=g[0];x.fillText(g[2],W/2,170);
  x.fillStyle='#1d2433';x.font='26px Tahoma,Arial';x.fillText('تُمنح للتلميذ(ة)',W/2,240);
  x.font='bold 42px Tahoma,Arial';x.fillText(nm,W/2,305);
- x.font='26px Tahoma,Arial';x.fillText('لإتمامه(ا) الدرس العلاجي:',W/2,370);
+ x.font='26px Tahoma,Arial';x.fillText('لإتقانه(ا) درس «أُتقِن»:',W/2,370);
  x.font='bold 30px Tahoma,Arial';x.fillStyle='#0b4f8a';x.fillText(L.certName,W/2,420);
  x.fillStyle='#1d2433';x.font='bold 34px Tahoma,Arial';x.fillText('العلامة: '+String(Math.round(sc*100)/100).replace('.',',')+' / 20',W/2,495);
  const d=new Date();x.font='22px Tahoma,Arial';x.fillText('التاريخ: '+d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear(),W/2,560);
