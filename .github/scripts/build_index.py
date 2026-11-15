@@ -59,6 +59,56 @@ def inject_og(path, item):
         f.write(page)
 
 
+EX_RE = re.compile(r"const exercises = (\[.*?\n\]);", re.S)
+TAG_RE = re.compile(r"<[^>]+>")
+
+
+def page_meta(path):
+    """Number of exercises / questions / points and exercise titles of an exercise page (for the index cards)."""
+    try:
+        with open(path, encoding="utf-8", errors="ignore") as f:
+            m = EX_RE.search(f.read())
+        if not m:
+            return {}
+        ex = json.loads(m.group(1))
+        names = []
+        for e in ex:
+            t = html.unescape(TAG_RE.sub("", e.get("title", ""))).strip()
+            t = re.sub(r"^(التمرين|تمرين)\s*\S*\s*[:：-]\s*", "", t)
+            if t and t not in names:
+                names.append(t)
+        return {"nEx": len(ex), "nQ": sum(len(e.get("questions", [])) for e in ex),
+                "pts": round(sum(q.get("pts", 0) for e in ex for q in e.get("questions", [])), 2),
+                "topics": names[:6]}
+    except (OSError, ValueError, AttributeError):
+        return {}
+
+
+def inject_site_js(path):
+    """Add the shared layer assets/site.js to the DEPLOYED copy of a page (CI only)."""
+    with open(path, encoding="utf-8", errors="ignore") as f:
+        page = f.read()
+    if "assets/site.js" in page:
+        return
+    depth = path.replace(os.sep, "/").count("/")
+    tag = f'<script src="{"../" * depth}assets/site.js" defer></script>'
+    i = page.lower().rfind("</body>")
+    page = page[:i] + tag + "\n" + page[i:] if i >= 0 else page + tag
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(page)
+
+
+def inline_index(items):
+    """Put the list inside the deployed index.html so it opens without «جارٍ التحميل…»."""
+    with open("index.html", encoding="utf-8") as f:
+        page = f.read()
+    data = json.dumps(items, ensure_ascii=False).replace("</", "<\\/")
+    page = re.sub(r'(<script id="items" type="application/json">).*?(</script>)',
+                  lambda m: m.group(1) + data + m.group(2), page, count=1, flags=re.S)
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(page)
+
+
 def html_title(path):
     try:
         with open(path, encoding="utf-8", errors="ignore") as f:
@@ -79,6 +129,11 @@ def name_title(name):
 
 def last_commit_date(path):
     try:
+        # date the page was ADDED (a later correction does not make it «جديد» again)
+        out = subprocess.run(["git", "log", "--diff-filter=A", "--format=%cI", "--", path],
+                             capture_output=True, text=True, check=True).stdout.strip().splitlines()
+        if out:
+            return out[-1]
         out = subprocess.run(["git", "log", "-1", "--format=%cI", "--", path],
                              capture_output=True, text=True, check=True).stdout.strip()
         return out or None
@@ -114,12 +169,25 @@ def main():
                         kind = EXTS[ext]
                         title = (html_title(full) if kind == "html" else None) or name_title(name)
                         date = last_commit_date(full)
-                    items.append({"level": lv, "term": tm, "section": sec,
-                                  "title": title, "url": url, "type": kind, "date": date})
-    if os.environ.get("GITHUB_ACTIONS") == "true":
+                    item = {"level": lv, "term": tm, "section": sec,
+                            "title": title, "url": url, "type": kind, "date": date}
+                    if kind == "html":
+                        item.update(page_meta(url + "index.html" if url.endswith("/") else url))
+                    items.append(item)
+    deploy = os.environ.get("GITHUB_ACTIONS") == "true" or os.environ.get("SITE_BUILD") == "1"
+    if deploy:
         for it in items:
             if it["type"] == "html":
-                inject_og(it["url"] + "index.html" if it["url"].endswith("/") else it["url"], it)
+                page = it["url"] + "index.html" if it["url"].endswith("/") else it["url"]
+                inject_og(page, it)
+                inject_site_js(page)
+        for lv in LEVELS:
+            pack = os.path.join(lv, "bem")
+            if os.path.isdir(pack):
+                for name in sorted(os.listdir(pack)):
+                    if name.endswith(".html"):
+                        inject_site_js(os.path.join(pack, name))
+        inline_index(items)
     with open("files.json", "w", encoding="utf-8") as f:
         json.dump({"items": items}, f, ensure_ascii=False, indent=1)
     print(f"files.json: {len(items)} items")
