@@ -6,6 +6,9 @@
 <title>رياضيات التعليم المتوسط — الأستاذ يوسفي السوفي</title>
 <meta name="description" content="تمارين تفاعلية بتصحيح فوري وتلميحات: سلاسل، فروض، واجبات، تحديات وألعاب في الرياضيات للسنوات الأولى إلى الرابعة متوسط.">
 <meta name="theme-color" content="#0f4c81">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_AR">
 <meta property="og:url" content="https://soufiyousfi.github.io/math/">
@@ -41,7 +44,7 @@
 }
 *{box-sizing:border-box}
 html,body{margin:0}
-body{font-family:"Tajawal",system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-tap-highlight-color:transparent}
+body{font-family:"Tajawal",system-ui,-apple-system,sans-serif;font-size:17px;background:var(--bg);color:var(--text);line-height:1.65;-webkit-tap-highlight-color:transparent}
 .app{max-width:960px;margin:0 auto;padding:0 14px 30px}
 /* ---------- header ---------- */
 .hero{position:relative;overflow:hidden;color:#fff;margin:0 -14px 16px;padding:20px 18px 18px;
@@ -58,6 +61,12 @@ body{font-family:"Tajawal",system-ui,-apple-system,sans-serif;background:var(--b
 .hero h1 .x{display:inline-block;direction:ltr;font-family:"Times New Roman",serif;color:#fde68a;font-weight:700;margin-inline-start:6px}
 .hero p{margin:0 0 12px;color:rgba(255,255,255,.92);font-size:.95rem}
 .pills{display:flex;flex-wrap:wrap;gap:7px}
+.hero .slogan{font-size:1.12rem;font-weight:900;color:#fde68a;margin:0 0 4px}
+.cta{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+.cta a{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:900;border-radius:12px;padding:9px 16px;font-size:1rem}
+.cta a[hidden]{display:none}
+.cta .start{background:#fbbf24;color:#0a355c;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.cta .resume{background:rgba(255,255,255,.16);color:#fff;border:1.5px solid rgba(255,255,255,.5);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pill{background:rgba(15,23,42,.28);border:1px solid rgba(255,255,255,.18);padding:3px 10px;border-radius:8px;font-size:.78rem;font-weight:700}
 .prof-bar{display:none;margin-top:12px;background:var(--accent-light);color:#92400e;border:2px solid var(--accent);border-radius:12px;padding:8px 12px;font-size:.85rem;font-weight:700}
 body.prof .prof-bar{display:block}
@@ -118,25 +127,25 @@ nav.terms{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 @media (max-width:640px){.grid{grid-template-columns:minmax(0,1fr)}}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .go{color:#0f172a}}
-.card{background:var(--surface);border:1px solid var(--border);border-top:4px solid var(--c);border-radius:16px;padding:12px 13px;box-shadow:var(--shadow-sm);
+.card{background:linear-gradient(180deg,var(--bgc) 0,var(--surface) 70px);border:1px solid var(--border);border-top:4px solid var(--c);border-radius:16px;padding:12px 13px;box-shadow:var(--shadow-sm);
   display:flex;flex-direction:column;gap:8px;min-width:0}
 .card.done{border-color:#86efac;border-top-color:var(--ok)}
 .card .top{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .type{font-size:.74rem;font-weight:800;color:var(--c);background:var(--bgc);border-radius:7px;padding:1px 8px}
 .seq{font-size:.72rem;font-weight:700;color:var(--muted);border:1px solid var(--border);border-radius:7px;padding:0 6px}
 .new{margin-inline-start:auto;font-size:.72rem;font-weight:800;color:#fff;background:#dc2626;border-radius:7px;padding:1px 7px}
-.card h3{margin:0;font-size:1rem;font-weight:800;line-height:1.45}
+.card h3{margin:0;font-size:1.1rem;font-weight:800;line-height:1.45}
 .card h3 bdi{direction:ltr}
 .meta{display:flex;gap:6px;flex-wrap:wrap}
-.meta span{font-size:.74rem;font-weight:700;color:var(--muted);background:var(--soft);border:1px solid var(--border);border-radius:7px;padding:0 7px}
-.topics{margin:0;font-size:.8rem;color:var(--muted);line-height:1.55}
+.meta span{font-size:.8rem;font-weight:700;color:var(--muted);background:var(--soft);border:1px solid var(--border);border-radius:7px;padding:0 7px}
+.topics{margin:0;font-size:.88rem;color:var(--text);opacity:.85;line-height:1.55}
 .pbox{background:var(--soft);border:1px dashed var(--border);border-radius:10px;padding:6px 9px;font-size:.78rem;font-weight:700;color:var(--muted)}
 .pbox .row{display:flex;justify-content:space-between;gap:6px;margin-bottom:4px}
 .pbox .sc{color:var(--text);direction:ltr;unicode-bidi:isolate}
 .card.done .pbox{background:var(--ok-bg);border-color:#86efac;color:#166534}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .card.done .pbox{color:#86efac}}
 .acts{display:flex;gap:6px;align-items:stretch;margin-top:auto}
-.go{flex:1;display:flex;justify-content:space-between;align-items:center;gap:8px;text-decoration:none;font-weight:800;font-size:.92rem;color:#fff;
+.go{flex:1;display:flex;justify-content:space-between;align-items:center;gap:8px;text-decoration:none;font-weight:800;font-size:1rem;color:#fff;
   background:var(--c);border-radius:11px;padding:9px 13px}
 .go:hover{filter:brightness(1.08)}
 .alt{display:flex;align-items:center;text-decoration:none;font-weight:800;font-size:.8rem;color:var(--c);border:1.5px solid var(--c);border-radius:11px;padding:0 10px;white-space:nowrap}
@@ -183,7 +192,9 @@ dialog::backdrop{background:rgba(10,20,25,.5)}
   <header class="hero" id="hero">
     <div class="school" id="school">🏫 متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
     <h1>رياضيات التعليم المتوسط <span class="x">√π ∑</span></h1>
-    <p>تمارين تفاعلية تصحّح نفسها فورا، مع تلميحات وحلول نموذجية مفصّلة — على الهاتف ودون تحميل.</p>
+    <p class="slogan">تعلّم، جرّب، أخطئ، صحّح… وتفوّق! ✨</p>
+    <p>هنا لا نعطيك الجواب فقط، بل نساعدك على اكتشافه بنفسك: تصحيح فوري، تلميحان لكل سؤال، وحل نموذجي مفصّل.</p>
+    <div class="cta"><a class="start" href="#levels-step">🚀 ابدأ التعلّم</a><a class="resume" id="resume" hidden></a></div>
     <div class="pills">
       <span class="pill">⚡ تصحيح فوري</span>
       <span class="pill">💡 تلميحان لكل سؤال</span>
@@ -209,7 +220,7 @@ dialog::backdrop{background:rgba(10,20,25,.5)}
     <ul id="recent-list"></ul>
   </section>
 
-  <div class="step"><span>1. اختر مستواك الدراسي</span><span class="here" id="here"></span></div>
+  <div class="step" id="levels-step"><span>1. اختر مستواك الدراسي</span><span class="here" id="here"></span></div>
   <nav class="levels" id="levels" aria-label="المستوى"></nav>
   <div class="step"><span>2. اختر الفصل</span></div>
   <nav class="terms" id="terms" aria-label="الفصل"></nav>
@@ -416,7 +427,14 @@ function renderRecent() {
     `<li><a href="${esc(it.url)}"><b>${LEVELS.find(l => l[0] === it.level)[1]}م</b>${SEC[it.section][3]} ${esc(cleanTitle(it).t)}</a></li>`).join("");
   box.hidden = false;
 }
-function render() { renderNav(); renderContent(); }
+function renderResume() {
+  const P = progress(), a = document.getElementById("resume");
+  let best = null;
+  for (const it of state.items) { const p = P[it.url]; if (p && !p.d && (p.a || p.s) && (!best || p.t > P[best.url].t)) best = it; }
+  if (!best) { a.hidden = true; return; }
+  a.href = best.url; a.textContent = "▶ أكمل: " + cleanTitle(best).t; a.hidden = false;
+}
+function render() { renderNav(); renderContent(); renderResume(); }
 
 document.addEventListener("click", e => {
   const lb = e.target.closest("[data-level]"), tb = e.target.closest("[data-term]"), fb = e.target.closest("[data-filter]");
@@ -430,7 +448,7 @@ document.getElementById("q").addEventListener("input", e => { state.q = e.target
 window.addEventListener("hashchange", () => { if (readHash()) render(); });
 // coming back with the phone «back» button: refresh the marks
 window.addEventListener("pageshow", () => { if (state.items.length) renderContent(); });
-document.addEventListener("visibilitychange", () => { if (!document.hidden && state.items.length) renderContent(); });
+document.addEventListener("visibilitychange", () => { if (!document.hidden && state.items.length) { renderContent(); renderResume(); } });
 
 // Math symbols floating in the header
 (function () {
@@ -606,6 +624,7 @@ document.getElementById("dadd").onclick = () => {
   document.getElementById("dname").value = ""; document.getElementById("durl").value = "";
   renderDests(); toast("✓ تم الحفظ");
 };
+if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
 loadPrefs(); renderNav();
 loadItems()
   .then(items => { state.items = items; render(); renderRecent(); })

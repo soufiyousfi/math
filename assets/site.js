@@ -81,6 +81,22 @@
 .sx-ov .sx-sheet p{margin:4px 0}
 .sx-ov .sx-top{position:sticky;top:-12px;background:#fff;display:flex;gap:8px;justify-content:space-between;align-items:center;padding:4px 0 8px;border-bottom:1px solid #e2e8f0;margin-bottom:6px;z-index:2}
 .sx-ov .sx-top b{color:#1e3a8a}
+.sx-resume{direction:rtl;max-width:860px;margin:10px auto 0;padding:10px 12px;border-radius:12px;background:#fef3c7;border:1.5px solid #f59e0b;color:#78350f;
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-weight:700;font-size:.9rem}
+.sx-resume span{flex:1 1 100%}
+.sx-resume button{font:inherit;font-weight:800;cursor:pointer;border-radius:10px;padding:8px 12px;border:0;background:#1e3a8a;color:#fff;flex:1}
+.sx-resume button.new{background:#fff;color:#78350f;border:1.5px solid #f59e0b}
+.sx-report{text-align:right;margin:12px 0 4px;font-size:.88rem}
+.sx-report .h{font-weight:800;color:#1e3a8a;margin-bottom:6px}
+.sx-report .r{display:flex;justify-content:space-between;gap:8px;padding:5px 8px;border-radius:8px;margin-bottom:4px;background:#f8fafc}
+.sx-report .r.ok{background:#dcfce7} .sx-report .r.mid{background:#fef3c7} .sx-report .r.low{background:#fee2e2}
+.sx-report .r b{direction:ltr;unicode-bidi:isolate;white-space:nowrap}
+.sx-report .tip{margin:6px 0 0;font-size:.82rem;color:#475569}
+.sx-sharecard{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.sx-sharecard input{flex:1 1 150px;font:inherit;padding:7px 10px;border-radius:10px;border:1.5px solid #cbd5e1}
+.sx-sharecard button{font:inherit;font-weight:800;cursor:pointer;border-radius:10px;padding:8px 12px;border:0;background:#1877f2;color:#fff}
+.modal-card{max-height:92vh;overflow:auto}
+#finalScoreText,.modal-score,#scoreVal,#globalScore{direction:ltr;unicode-bidi:isolate}
 .sx-modal-btns{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:10px}
 .sx-modal-btns a,.sx-modal-btns button{font:inherit;font-weight:800;text-decoration:none;cursor:pointer;border-radius:10px;padding:8px 14px;border:1.5px solid #1e3a8a;background:#fff;color:#1e3a8a}
 .sx-calc-fab{position:fixed;left:12px;bottom:14px;z-index:2500;font:inherit;font-weight:800;cursor:pointer;border:0;border-radius:999px;
@@ -96,6 +112,34 @@
 .sx-calc .k button.inv{background:#2563eb}
 .sx-calc .r{margin-top:8px;padding:8px 10px;border-radius:10px;background:#1e293b;color:#7dd3fc;font-weight:800;direction:ltr;text-align:left;min-height:1.6em}
 .sx-calc .n{font-size:.74rem;color:#94a3b8;margin-top:6px}
+/* clearer text and more colour on the exercise pages (his ask 2026-11-15) */
+body.sx-ex{font-size:17px}
+body.sx-ex .q-title{font-size:1.1rem;color:#0f172a;line-height:1.75}
+body.sx-ex .context-box{font-size:1.06rem;line-height:1.85;color:#0f172a;background:#fffbeb;border-color:#f59e0b}
+body.sx-ex .math{font-size:1.02em;font-weight:700;color:#0f172a}
+body.sx-ex .card-header h2{font-size:1.18rem}
+body.sx-ex .feedback-box{font-size:1rem;line-height:1.75}
+body.sx-ex .model-solution{font-size:1rem;line-height:1.85}
+body.sx-ex input[type="text"]{font-size:1.15rem;padding:11px 12px;min-height:48px}
+body.sx-ex .btn-check{font-size:1rem;padding:11px 18px;background:linear-gradient(135deg,#1e3a8a,#0f766e)}
+body.sx-ex .q-meta{font-size:.82rem;background:#e0f2fe;color:#075985}
+body.sx-ex .sym-toolbar{flex-wrap:wrap;gap:6px;margin-top:8px}
+body.sx-ex .sym-btn{min-width:42px;min-height:42px;font-size:1.12rem;border-radius:10px;background:#e0f2fe;border:1.5px solid #7dd3fc;color:#075985}
+body.sx-ex .sym-btn:nth-child(3n+2){background:#fef3c7;border-color:#fcd34d;color:#92400e}
+body.sx-ex .sym-btn:nth-child(3n){background:#ede9fe;border-color:#c4b5fd;color:#5b21b6}
+body.sx-ex .sym-btn:last-child{background:#fee2e2;border-color:#fca5a5;color:#991b1b}
+body.sx-ex .exercise-card{--ac:#2563eb;--acb:#eff6ff;border-top:6px solid var(--ac)}
+body.sx-ex .exercise-card.sx-c2{--ac:#0d9488;--acb:#f0fdfa}
+body.sx-ex .exercise-card.sx-c3{--ac:#7c3aed;--acb:#f5f3ff}
+body.sx-ex .exercise-card.sx-c4{--ac:#ea580c;--acb:#fff7ed}
+body.sx-ex .exercise-card .card-header{background:var(--acb);border-color:var(--ac)}
+body.sx-ex .exercise-card .card-header h2{color:var(--ac)}
+body.sx-ex .exercise-card .pts-badge{border-color:var(--ac);color:var(--ac)}
+body.sx-ex .q-box{border-inline-start:5px solid var(--ac)}
+body.sx-ex .q-box.solved{border-inline-start-color:#16a34a;background:#f0fdf4}
+body.sx-ex .q-box.failed{border-inline-start-color:#dc2626;background:#fef2f2}
+body.sx-ex .sx-chip{font-size:.84rem}
+body.sx-ex .sx-choice{font-size:1.06rem;min-height:48px}
 @media print{.sx-bar,.sx-calc,.sx-calc-fab,.sx-ov,.sx-step,.sx-chips,.sx-choices{display:none!important}}
 `;
   document.head.appendChild(el("style", null, css));
@@ -106,6 +150,8 @@
   bar.innerHTML = '<a class="sx-home" href="' + home + '">🏠 الفهرس</a><span class="sx-crumb">' + LEVEL[level] +
     " · " + TERM[term] + " · <b>" + (SECTION[section] || "") + "</b></span>";
   document.body.insertBefore(bar, document.body.firstChild);
+
+  if ("serviceWorker" in navigator) window.addEventListener("load", function () { navigator.serviceWorker.register(ROOT.href + "sw.js").catch(function () {}); });
 
   /* ---------- 2. progress saved for the index ---------- */
   var KEY = "math-progress";
@@ -217,6 +263,8 @@
   function enhanceExercises(data, root) {
     var cards = $$(".exercise-card", root);
     if (!cards.length || cards.length !== data.length) return;
+    document.body.classList.add("sx-ex");
+    cards.forEach(function (c, i) { c.classList.add("sx-c" + (i % 4 + 1)); });
     var sticky = $(".sticky-inner") || $(".sticky-bar");
     var stickyBar = $(".sticky-bar");
     function stickyH() { return stickyBar ? stickyBar.getBoundingClientRect().height : 0; }
@@ -251,7 +299,9 @@
               if (inp.disabled) return;
               inp.value = c.v;
               btn.click();
-              setTimeout(function () {
+              setTimeout(function () { markPick(b); }, 60);
+            };
+            function markPick(b) {
                 var solved = box.classList.contains("solved");
                 if (solved) b.classList.add("right");
                 else b.classList.add("picked");
@@ -261,8 +311,8 @@
                     if (q.exact.some(function (a) { return norm(a) === norm(choices[i].v); })) x.classList.add("right");
                   });
                 }
-              }, 60);
-            };
+            }
+            b.__v = c.v; b.__mark = function () { markPick(b); };
             wrap.appendChild(b);
           });
           area.parentElement.insertBefore(wrap, area);
@@ -396,8 +446,126 @@
     if (mc && !$(".sx-modal-btns", mc)) {
       var mb = el("div", "sx-modal-btns");
       mb.innerHTML = '<a href="' + home + '">🏠 العودة إلى الفهرس</a><button type="button">🔁 أعد المحاولة</button>';
-      mb.querySelector("button").onclick = function () { location.reload(); };
+      mb.querySelector("button").onclick = function () { clearLog(); location.reload(); };
       mc.appendChild(mb);
+    }
+
+    /* ---- answers saved on this device, «▶ أكمل من حيث توقفت» ---- */
+    var LOGK = "math-answers:" + rel, replaying = false;
+    function getLog() { try { return JSON.parse(store(LOGK) || "{}") || {}; } catch (e) { return {}; } }
+    function clearLog() { try { localStorage.removeItem(LOGK); } catch (e) {} }
+    var allQ = [];
+    data.forEach(function (ex) { (ex.questions || []).forEach(function (q) { allQ.push(q); }); });
+    root.addEventListener("click", function (e) {
+      if (replaying) return;
+      var b = e.target.closest && e.target.closest(".btn-check");
+      if (!b || b.disabled) return;
+      var qid = b.id.replace(/^btn-/, ""), inp = document.getElementById("in-" + qid);
+      if (!inp || inp.disabled || !inp.value.trim()) return;
+      var L = getLog(); (L[qid] = L[qid] || []).push(inp.value.trim()); L._t = Date.now();
+      store(LOGK, JSON.stringify(L));
+    }, true);
+    function replay() {
+      var L = getLog(), snd, fly = window.flyStars;
+      replaying = true;
+      try { snd = soundEnabled; soundEnabled = false; } catch (e) {}
+      window.flyStars = function () {};
+      allQ.forEach(function (q) {
+        var vals = L[q.qId] || [], inp = document.getElementById("in-" + q.qId), btn = document.getElementById("btn-" + q.qId);
+        if (!inp || !btn) return;
+        vals.forEach(function (v) {
+          if (inp.disabled) return;
+          inp.value = v; btn.click();
+          var box = document.getElementById("qbox-" + q.qId);
+          $$(".sx-choice", box).forEach(function (cb) { if (cb.__v === v) cb.__mark(); });
+        });
+        if (!inp.disabled) inp.value = "";
+      });
+      window.flyStars = fly;
+      try { soundEnabled = snd; } catch (e) {}
+      $$(".shake").forEach(function (x) { x.classList.remove("shake"); });
+      replaying = false;
+      paint(); save();
+      var first = 0;
+      data.some(function (ex, i) { first = i; return (ex.questions || []).some(function (q) { try { return !questionLocked[q.qId]; } catch (e) { return false; } }); });
+      go(first, true);
+    }
+    var saved = getLog(), nSaved = allQ.filter(function (q) { return (saved[q.qId] || []).length; }).length;
+    if (nSaved) {
+      var rb = el("div", "sx-resume");
+      rb.innerHTML = '<span>📌 لديك محاولة محفوظة على هذا الجهاز (' + nSaved + " من " + allQ.length + ' سؤالا).</span>' +
+        '<button type="button" class="go">▶ أكمل من حيث توقفت</button><button type="button" class="new">↺ ابدأ من جديد</button>';
+      $(".go", rb).onclick = function () { rb.remove(); replay(); };
+      $(".new", rb).onclick = function () { clearLog(); rb.remove(); };
+      root.parentElement.insertBefore(rb, root);
+    }
+
+    /* ---- end of the page: strong and weak exercises + result card to share ---- */
+    var fm = $("#finalModal");
+    function report() {
+      if (!mc || !fm || getComputedStyle(fm).display === "none") return;
+      var rows = data.map(function (ex, i) {
+        var e = 0; (ex.questions || []).forEach(function (q) { try { e += +questionEarned[q.qId] || 0; } catch (x) {} });
+        var r = ex.pts ? e / ex.pts : 0;
+        return { i: i, t: plain(ex.title || "").replace(/^(التمرين|تمرين)\s*\S*\s*[:：-]\s*/, ""), e: e, p: ex.pts || 0, r: r };
+      });
+      var box = $(".sx-report", mc) || el("div", "sx-report");
+      box.innerHTML = '<div class="h">📋 حصيلتك في كل تمرين</div>' + rows.map(function (r) {
+        return '<div class="r ' + (r.r >= 0.75 ? "ok" : r.r >= 0.5 ? "mid" : "low") + '"><span>' + (r.r >= 0.75 ? "✅" : r.r >= 0.5 ? "🟡" : "🔁") + " " + r.t +
+          '</span><b>' + fmt(r.e) + " / " + fmt(r.p) + "</b></div>";
+      }).join("") + (rows.some(function (r) { return r.r < 0.5; })
+        ? '<p class="tip">🔁 أعد قراءة الحل النموذجي للتمارين المعلّمة، ثم أعد الفرض غدا بهدوء.</p>'
+        : '<p class="tip">🌟 عمل متقن! جرّب تحديا أو سلسلة أخرى من الفهرس.</p>');
+      var btns = $(".sx-modal-btns", mc);
+      if (!box.parentNode) mc.insertBefore(box, btns);
+      if (!$(".sx-sharecard", mc)) {
+        var sc = el("div", "sx-sharecard");
+        var nm = ""; try { nm = localStorage.getItem("math-name") || ""; } catch (e) {}
+        sc.innerHTML = '<input type="text" maxlength="30" placeholder="اسمك على البطاقة (اختياري)" value="' + nm.replace(/"/g, "") + '">' +
+          '<button type="button">📤 بطاقة نتيجتي</button>';
+        $("button", sc).onclick = function () { var n = $("input", sc).value.trim(); try { localStorage.setItem("math-name", n); } catch (e) {} shareCard(n); };
+        mc.insertBefore(sc, btns);
+      }
+    }
+    document.addEventListener("click", function () { setTimeout(report, 900); }, true);
+    if (fm && window.MutationObserver) new MutationObserver(function () { setTimeout(report, 50); }).observe(fm, { attributes: true, attributeFilter: ["style"] });
+
+    function shareCard(name) {
+      var r = readScore() || { s: 0, m: 20, st: 0 };
+      var c = document.createElement("canvas"); c.width = 1080; c.height = 1080;
+      var x = c.getContext("2d"), g = x.createLinearGradient(0, 0, 1080, 1080);
+      g.addColorStop(0, "#0a355c"); g.addColorStop(0.55, "#0f4c81"); g.addColorStop(1, "#0d9488");
+      x.fillStyle = g; x.fillRect(0, 0, 1080, 1080);
+      x.globalAlpha = 0.1; x.fillStyle = "#fff"; x.font = "bold 120px serif";
+      [["√", 90, 200], ["π", 900, 230], ["∑", 120, 930], ["÷", 930, 950], ["x²", 820, 620], ["∠", 160, 600]].forEach(function (a) { x.fillText(a[0], a[1], a[2]); });
+      x.globalAlpha = 1; x.textAlign = "center"; x.direction = "rtl";
+      var F = '"Tajawal", "Segoe UI", Tahoma, sans-serif';
+      x.fillStyle = "#fbbf24"; x.fillRect(0, 1040, 1080, 40);
+      x.font = "120px " + F; x.fillText("🏆", 540, 220);
+      x.fillStyle = "#fff"; x.font = "bold 66px " + F;
+      x.fillText(r.s / (r.m || 20) >= 0.5 ? "أحسنت! إنجاز رائع" : "أتممتُ المحاولة، وسأتحسّن!", 540, 330);
+      if (name) { x.font = "bold 58px " + F; x.fillStyle = "#fde68a"; x.fillText(name, 540, 420); }
+      x.fillStyle = "#fff"; x.font = "bold 190px " + F; x.direction = "ltr";
+      x.fillText(fmt(r.s) + " / " + (r.m || 20), 540, 640);
+      x.direction = "rtl"; x.font = "bold 54px " + F; x.fillStyle = "#fde68a";
+      if (r.st) x.fillText("⭐ " + r.st + " نجمة", 540, 730);
+      x.fillStyle = "#fff"; x.font = "44px " + F;
+      var t = document.title.split(" - ")[0].slice(0, 40);
+      x.fillText(t, 540, 820);
+      x.fillText((LEVEL[level] ? "السنة " + LEVEL[level] : "") + " — الأستاذ يوسفي السوفي", 540, 885);
+      x.font = "36px " + F; x.fillStyle = "#cbd5e1"; x.direction = "ltr";
+      x.fillText(ROOT.host + ROOT.pathname, 540, 980);
+      c.toBlob(function (blob) {
+        if (!blob) return;
+        var file = new File([blob], "natijati.png", { type: "image/png" });
+        var text = "حصلت على " + fmt(r.s) + " / " + (r.m || 20) + " في «" + t + "». جرّبه أنت أيضا: " + location.href.split("#")[0];
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          navigator.share({ files: [file], text: text }).catch(function () {});
+        } else {
+          var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "natijati.png";
+          document.body.appendChild(a); a.click(); a.remove();
+        }
+      }, "image/png");
     }
 
     /* «📄 الموضوع كاملا» : the printed sheet (questions only) on the screen */
