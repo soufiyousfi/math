@@ -112,32 +112,22 @@
 .sx-calc .k button.inv{background:#2563eb}
 .sx-calc .r{margin-top:8px;padding:8px 10px;border-radius:10px;background:#1e293b;color:#7dd3fc;font-weight:800;direction:ltr;text-align:left;min-height:1.6em}
 .sx-calc .n{font-size:.74rem;color:#94a3b8;margin-top:6px}
-/* clearer text and more colour on the exercise pages (his ask 2026-11-15) */
+/* clearer text, calm colours (his asks 2026-11-15: «الكتابة واضحة», then «نقص شوي من الألوان») */
 body.sx-ex{font-size:17px}
 body.sx-ex .q-title{font-size:1.1rem;color:#0f172a;line-height:1.75}
-body.sx-ex .context-box{font-size:1.06rem;line-height:1.85;color:#0f172a;background:#fffbeb;border-color:#f59e0b}
+body.sx-ex .context-box{font-size:1.06rem;line-height:1.85;color:#0f172a}
 body.sx-ex .math{font-size:1.02em;font-weight:700;color:#0f172a}
 body.sx-ex .card-header h2{font-size:1.18rem}
 body.sx-ex .feedback-box{font-size:1rem;line-height:1.75}
 body.sx-ex .model-solution{font-size:1rem;line-height:1.85}
 body.sx-ex input[type="text"]{font-size:1.15rem;padding:11px 12px;min-height:48px}
-body.sx-ex .btn-check{font-size:1rem;padding:11px 18px;background:linear-gradient(135deg,#1e3a8a,#0f766e)}
-body.sx-ex .q-meta{font-size:.82rem;background:#e0f2fe;color:#075985}
+body.sx-ex .btn-check{font-size:1rem;padding:11px 18px}
+body.sx-ex .q-meta{font-size:.82rem}
 body.sx-ex .sym-toolbar{flex-wrap:wrap;gap:6px;margin-top:8px}
-body.sx-ex .sym-btn{min-width:42px;min-height:42px;font-size:1.12rem;border-radius:10px;background:#e0f2fe;border:1.5px solid #7dd3fc;color:#075985}
-body.sx-ex .sym-btn:nth-child(3n+2){background:#fef3c7;border-color:#fcd34d;color:#92400e}
-body.sx-ex .sym-btn:nth-child(3n){background:#ede9fe;border-color:#c4b5fd;color:#5b21b6}
-body.sx-ex .sym-btn:last-child{background:#fee2e2;border-color:#fca5a5;color:#991b1b}
-body.sx-ex .exercise-card{--ac:#2563eb;--acb:#eff6ff;border-top:6px solid var(--ac)}
-body.sx-ex .exercise-card.sx-c2{--ac:#0d9488;--acb:#f0fdfa}
-body.sx-ex .exercise-card.sx-c3{--ac:#7c3aed;--acb:#f5f3ff}
-body.sx-ex .exercise-card.sx-c4{--ac:#ea580c;--acb:#fff7ed}
-body.sx-ex .exercise-card .card-header{background:var(--acb);border-color:var(--ac)}
-body.sx-ex .exercise-card .card-header h2{color:var(--ac)}
-body.sx-ex .exercise-card .pts-badge{border-color:var(--ac);color:var(--ac)}
-body.sx-ex .q-box{border-inline-start:5px solid var(--ac)}
-body.sx-ex .q-box.solved{border-inline-start-color:#16a34a;background:#f0fdf4}
-body.sx-ex .q-box.failed{border-inline-start-color:#dc2626;background:#fef2f2}
+body.sx-ex .sym-btn{min-width:42px;min-height:42px;font-size:1.12rem;border-radius:10px}
+body.sx-ex .exercise-card{border-top:4px solid #1e3a8a}
+body.sx-ex .q-box.solved{border-inline-start:4px solid #16a34a}
+body.sx-ex .q-box.failed{border-inline-start:4px solid #dc2626}
 body.sx-ex .sx-chip{font-size:.84rem}
 body.sx-ex .sx-choice{font-size:1.06rem;min-height:48px}
 @media print{.sx-bar,.sx-calc,.sx-calc-fab,.sx-ov,.sx-step,.sx-chips,.sx-choices{display:none!important}}
@@ -264,7 +254,6 @@ body.sx-ex .sx-choice{font-size:1.06rem;min-height:48px}
     var cards = $$(".exercise-card", root);
     if (!cards.length || cards.length !== data.length) return;
     document.body.classList.add("sx-ex");
-    cards.forEach(function (c, i) { c.classList.add("sx-c" + (i % 4 + 1)); });
     var sticky = $(".sticky-inner") || $(".sticky-bar");
     var stickyBar = $(".sticky-bar");
     function stickyH() { return stickyBar ? stickyBar.getBoundingClientRect().height : 0; }
