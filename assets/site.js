@@ -21,6 +21,68 @@
   var path = decodeURIComponent(location.pathname);
   var rootPath = decodeURIComponent(ROOT.pathname);
   var rel = path.indexOf(rootPath) === 0 ? path.slice(rootPath.length) : path.replace(/^\//, "");
+
+  /* ---------- 0a. visits counter: the teacher's OWN Google Sheet (Apps Script web app) ----------
+     Each page sends ONE request per visit (once per page and per browser session): date + page address only,
+     no name, no IP kept, no cookie. The teacher's device (?prof=1) is not counted.
+     The index shows the teacher (and only him) a card with the numbers. Script: tools/stats-apps-script.gs */
+  var STATS_URL = "";
+  (function () {
+    if (!STATS_URL || !window.fetch) return;
+    var prof = false, page = rel.replace(/index\.html$/, "") || "/";
+    try { prof = localStorage.getItem("math-prof") === "1"; } catch (e) {}
+    if (!prof && /^(?:[1-4]m\/|$|\/$|index\.html$)/.test(page)) {
+      var key = "math-hit:" + page, seen = false;
+      try { seen = sessionStorage.getItem(key) === "1"; sessionStorage.setItem(key, "1"); } catch (e) {}
+      if (!seen) fetch(STATS_URL + "?a=hit&p=" + encodeURIComponent(page), { mode: "no-cors", cache: "no-store", keepalive: true }).catch(function () {});
+    }
+    var itemsEl = document.getElementById("items");
+    if (!prof || !itemsEl) return;
+    var hid = false;
+    try { hid = sessionStorage.getItem("math-stats-hide") === "1"; } catch (e) {}
+    if (hid) return;
+    var titles = {};
+    try { JSON.parse(itemsEl.textContent).forEach(function (it) { titles[it.url] = it.title; }); } catch (e) {}
+    var st = document.createElement("style");
+    st.textContent = ".sx-stats{position:fixed;left:12px;bottom:12px;z-index:3500;width:min(330px,calc(100vw - 24px));max-height:70vh;overflow:auto;direction:rtl;" +
+      "background:#0f172a;color:#e2e8f0;border:1.5px solid #38bdf8;border-radius:14px;padding:12px 14px;box-shadow:0 10px 28px rgba(0,0,0,.4);font-family:inherit;font-size:.86rem}" +
+      ".sx-stats h4{margin:0 0 8px;font-size:.95rem;color:#38bdf8;display:flex;justify-content:space-between;gap:8px;align-items:center}" +
+      ".sx-stats .n{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px;text-align:center}" +
+      ".sx-stats .n b{display:block;font-size:1.25rem;color:#fff}.sx-stats .n span{color:#94a3b8;font-size:.72rem}" +
+      ".sx-stats ol{margin:0;padding-inline-start:18px;line-height:1.55}.sx-stats ol small{color:#94a3b8}" +
+      ".sx-stats button{font:inherit;font-weight:800;cursor:pointer;border-radius:9px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;padding:4px 9px}" +
+      ".sx-stats .row{display:flex;gap:6px;margin-top:8px}@media print{.sx-stats{display:none!important}}";
+    document.head.appendChild(st);
+    var box = document.createElement("div");
+    box.className = "sx-stats";
+    box.innerHTML = '<h4><span>👁️ زيارات المنصة (لك وحدك)</span><button type="button" data-x="1" aria-label="إخفاء">✕</button></h4><div class="b">…</div>' +
+      '<div class="row"><button type="button" data-copy="1">🔗 نسخ رابط الموقع</button><button type="button" data-r="1">🔄 تحديث</button></div>';
+    document.body.appendChild(box);
+    function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+    function load() {
+      box.querySelector(".b").textContent = "…";
+      fetch(STATS_URL + "?a=stats", { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (d) {
+        var pages = Object.keys(d.pages || {}).map(function (k) { return [k, d.pages[k][0], d.pages[k][1]]; })
+          .filter(function (p) { return p[0] !== "/"; }).sort(function (a, b) { return b[2] - a[2] || b[1] - a[1]; }).slice(0, 10);
+        var home = (d.pages || {})["/"];
+        box.querySelector(".b").innerHTML =
+          '<div class="n"><div><b>' + d.today + '</b><span>اليوم</span></div><div><b>' + d.week + '</b><span>7 أيام</span></div><div><b>' + d.total + '</b><span>المجموع</span></div></div>' +
+          (home ? '<div style="margin-bottom:6px">🏠 الصفحة الرئيسية: <b>' + home[1] + '</b> هذا الأسبوع · ' + home[0] + ' في المجموع</div>' : "") +
+          (pages.length ? '<div style="margin-bottom:4px;color:#94a3b8">الأكثر زيارة هذا الأسبوع:</div><ol>' + pages.map(function (p) {
+            return "<li>" + esc(titles[p[0]] || p[0]) + " <small>(" + p[2] + " · " + p[1] + ")</small></li>";
+          }).join("") + "</ol>" : "");
+      }).catch(function () { box.querySelector(".b").textContent = "تعذّر الاتصال بجدول الإحصاء. تحقّق من الإنترنت."; });
+    }
+    box.addEventListener("click", function (e) {
+      if (e.target.closest("[data-x]")) { box.remove(); try { sessionStorage.setItem("math-stats-hide", "1"); } catch (x) {} }
+      else if (e.target.closest("[data-r]")) load();
+      else if (e.target.closest("[data-copy]")) {
+        var u = ROOT.href, b = e.target.closest("[data-copy]");
+        (navigator.clipboard ? navigator.clipboard.writeText(u) : Promise.reject()).then(function () { b.textContent = "✓ نُسخ"; }, function () { prompt("انسخ الرابط:", u); });
+      }
+    });
+    load();
+  })();
   /* ---------- 0. new version of the site («🔄 تتوفر تمارين جديدة من الأستاذ») ----------
      Each deployed page carries the version it was built with (data-v, added by build_index.py).
      When the app comes back to the screen, or the connection returns, version.json is read:
