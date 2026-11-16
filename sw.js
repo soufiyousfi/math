@@ -1,7 +1,9 @@
-/* Service worker: the site can be added to the phone's home screen and pages already opened work without internet.
-   Network first (a new version is always taken when there is internet), the saved copy only when offline. */
-const CACHE = "math-v1";
-const CORE = ["./", "index.html", "assets/site.js", "manifest.webmanifest", "icon-192.png", "icon-512.png"];
+/* Service worker: the site can be installed on the phone (home-screen app) and works without internet.
+   Network first: with internet the newest version published on GitHub is always taken (and saved on the phone);
+   without internet the last saved copy opens. The page itself shows «🔄 تتوفر تمارين جديدة من الأستاذ»
+   when a newer version is published while the app is open (assets/site.js + version.json). */
+const CACHE = "math-v2";
+const CORE = ["./", "index.html", "manifest.webmanifest", "icon-192.png", "icon-512.png"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).catch(() => {}));
   self.skipWaiting();
@@ -10,12 +12,22 @@ self.addEventListener("activate", e => {
   e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim()));
 });
 self.addEventListener("fetch", e => {
-  const r = e.request;
-  if (r.method !== "GET" || new URL(r.url).origin !== location.origin) return;
+  const r = e.request, url = new URL(r.url);
+  if (r.method !== "GET" || url.origin !== location.origin || /\/version\.json$/.test(url.pathname)) return;
+  const nav = r.mode === "navigate";
+  const key = nav ? url.origin + url.pathname : r;
   e.respondWith(
-    fetch(r).then(res => {
-      if (res && res.ok) { const copy = res.clone(); caches.open(CACHE).then(c => c.put(r, copy)); }
+    fetch(new Request(r, { cache: "no-cache" })).then(res => {
+      if (res && res.ok && res.type === "basic") {
+        const copy = res.clone();
+        caches.open(CACHE).then(async c => {
+          if (url.search && /\/assets\//.test(url.pathname)) {   /* keep one copy of site.js?v=… */
+            for (const k of await c.keys()) { const u = new URL(k.url); if (u.pathname === url.pathname && u.search !== url.search) c.delete(k); }
+          }
+          c.put(key, copy);
+        });
+      }
       return res;
-    }).catch(() => caches.match(r, { ignoreSearch: true }).then(m => m || caches.match("index.html")))
+    }).catch(() => caches.match(key, { ignoreSearch: true }).then(m => m || (nav ? caches.match("index.html") : Response.error())))
   );
 });
