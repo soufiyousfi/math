@@ -1097,7 +1097,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       if (!$(".sx-sharecard", mc)) {
         var sc = el("div", "sx-sharecard");
         var nm = store("math-name") || "", cl = store("math-class") || "";
-        sc.innerHTML = '<input type="text" class="nm" maxlength="30" placeholder="اسمك (اختياري)" value="' + esc(nm) + '">' +
+        sc.innerHTML = '<input type="text" class="nm" maxlength="30" placeholder="اسمك الأول (اختياري)" value="' + esc(nm) + '">' +
           '<input type="text" class="cl" maxlength="12" placeholder="القسم، مثلا ' + level.charAt(0) + 'م2" value="' + esc(cl) + '">' +
           '<button type="button" class="cert">🎓 شهادتي (صورة)</button><button type="button" class="ch">🏁 تحدَّ زميلك</button>';
         function who() { var n = $(".nm", sc).value.trim(), c = $(".cl", sc).value.trim(); store("math-name", n); store("math-class", c); return { n: n, c: c }; }
@@ -1175,6 +1175,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       } catch (e) { return null; }
     }
     function challenge(name, tu) {
+      name = String(name || "").trim().split(/\s+/)[0].slice(0, 15); // first name only in shared links (privacy)
       var r = readScore() || { s: 0, m: 20 }, mins = tu ? Math.max(1, Math.round(tu.ms / 60000)) : 0;
       var code = btoa(unescape(encodeURIComponent(JSON.stringify({ n: name, s: r.s, m: r.m, t: mins })))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
       var url = location.href.split("#")[0].split("?")[0] + "?c=" + code;
