@@ -26,7 +26,7 @@
      Each page sends ONE request per visit (once per page and per browser session): date + page address only,
      no name, no IP kept, no cookie. The teacher's device (?prof=1) is not counted.
      The index shows the teacher (and only him) a card with the numbers. Script: tools/stats-apps-script.gs */
-  var STATS_URL = "";
+  var STATS_URL = "https://script.google.com/macros/s/AKfycbzlY66fSXWEjM0rbBllJPBvAzS2FyOVFfzoe35ZA1rAREiZR_biQKQypTzIRK0RcnA/exec";
   (function () {
     if (!STATS_URL || !window.fetch) return;
     var prof = false, page = rel.replace(/index\.html$/, "") || "/";
