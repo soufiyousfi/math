@@ -1200,7 +1200,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       x.textAlign = "center"; x.direction = "rtl"; x.fillStyle = "#334155";
       x.font = "bold 30px " + F;
       x.fillText("الجمهورية الجزائرية الديمقراطية الشعبية — وزارة التربية", W / 2, 120);
-      x.fillText("متوسطة العربي بن مهيدي، وادي فراغة، قالمة", W / 2, 165);
+      x.fillText("متوسطة محمد العربي بن مهيدي، وادي فراغة، قالمة", W / 2, 165);
       var title = ratio >= 0.8 ? "شهادة تفوّق" : ratio >= 0.5 ? "شهادة نجاح" : "شهادة مثابرة";
       x.font = "120px " + F; x.fillText(ratio >= 0.8 ? "🏆" : ratio >= 0.5 ? "🎓" : "💪", W / 2, 310);
       x.fillStyle = "#1e3a8a"; x.font = "bold 82px " + F; x.fillText(title, W / 2, 420);
