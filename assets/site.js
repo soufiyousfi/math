@@ -59,6 +59,29 @@
     setInterval(check, 15 * 60000);
   })();
 
+  /* ---------- 0b. the phone closed the app in the background (2026-11-16 his report) ----------
+     Android may kill the app while the pupil is in another app; it then reopens on the start page.
+     The last page is remembered and reopened (if left less than 3 hours ago), and its answers are replayed. */
+  var LASTK = "math-last";
+  var isPage = /^([1-4]m)\//.test(rel);
+  function remember() {
+    if (!isPage) return;
+    try { localStorage.setItem(LASTK, JSON.stringify({ u: location.pathname + location.search.replace(/[?&]exam=\d+/, ""), y: Math.round(window.scrollY), t: Date.now() })); } catch (e) {}
+  }
+  document.addEventListener("visibilitychange", function () { if (document.visibilityState === "hidden") remember(); });
+  window.addEventListener("pagehide", remember);
+  if (!isPage) {
+    try {
+      var ls = JSON.parse(localStorage.getItem(LASTK) || "null"), app = /[?&]app=1/.test(location.search) ||
+        (window.matchMedia && matchMedia("(display-mode: standalone)").matches && !document.referrer && !location.hash);
+      if (ls && app && !sessionStorage.getItem("math-opened") && Date.now() - ls.t < 3 * 3600000) {
+        sessionStorage.setItem("math-opened", "1");
+        location.replace(ls.u);
+      }
+      sessionStorage.setItem("math-opened", "1");
+    } catch (e) {}
+  }
+
   var pm = rel.match(/^([1-4]m)\/(?:(t[1-3])\/([a-z0-9]+)|(bem))\//);
   if (!pm) return;
   var level = pm[1], term = pm[2] || "t1", section = pm[3] || pm[4];
@@ -185,6 +208,11 @@ body.sx-ex .sx-chip{background:#fff;color:#334155;border-color:#cbd5e1}
 body.sx-ex .sx-chip.u{background:#fff;color:#334155;border-color:#94a3b8}
 body.sx-ex .sx-chip.u.sit{background:#fffbeb;color:#92400e;border-color:#f59e0b}
 .sx-unit-warn{margin-top:6px;padding:6px 10px;border-radius:8px;background:#fffbeb;color:#92400e;border:1px solid #fde68a;border-right:4px solid #d97706;font-weight:700}
+html.sx-dark{filter:invert(.9) hue-rotate(180deg);background:#fff}
+html.sx-dark img,html.sx-dark video,html.sx-dark canvas,html.sx-dark .sx-pad-area,html.sx-dark .fly-star,html.sx-dark .star-burst{filter:invert(1) hue-rotate(180deg)}
+html.sx-dark .sx-pad-area canvas{filter:none}
+html.sx-dark body>header,html.sx-dark .hero{filter:invert(1) hue-rotate(180deg)}
+@media print{html.sx-dark{filter:none}}
 @media print{.sx-bar,.sx-calc,.sx-calc-fab,.sx-ov,.sx-step,.sx-chips,.sx-choices{display:none!important}}
 /* 2026-11-16 tools: calm look, white sheet, coloured edges only */
 .sx-toast{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:5000;max-width:min(92vw,520px);direction:rtl;background:#fff;color:#0f172a;
@@ -279,6 +307,19 @@ body.sx-exam .sx-calc-fab{bottom:74px}
   padB.type = "button"; padB.title = "مسودة الحساب: اكتب بإصبعك";
   padB.onclick = function () { openPad("page", document.title.split(" - ")[0]); };
   bar.appendChild(padB);
+  /* 🌙 / ☀️ night or day (his ask 2026-11-16 «اجعل اللون ليلي او نهاري») */
+  var thB = el("button", "sx-btn sx-theme", "");
+  thB.type = "button";
+  function thPaint() { var d = document.documentElement.classList.contains("sx-dark"); thB.textContent = d ? "☀️" : "🌙"; thB.title = d ? "الوضع النهاري" : "الوضع الليلي"; }
+  thB.onclick = function () {
+    var d = !document.documentElement.classList.contains("sx-dark");
+    document.documentElement.classList.toggle("sx-dark", d);
+    store("math-theme", d ? "dark" : "light");
+    thPaint();
+  };
+  if (store("math-theme") === "dark") document.documentElement.classList.add("sx-dark");
+  thPaint();
+  bar.appendChild(thB);
 
   if ("serviceWorker" in navigator) window.addEventListener("load", function () { navigator.serviceWorker.register(ROOT.href + "sw.js").catch(function () {}); });
 
@@ -648,7 +689,17 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       go(first, true);
     }
     var saved = getLog(), nSaved = allQ.filter(function (q) { return (saved[q.qId] || []).length; }).length;
-    if (nSaved) {
+    var recent = nSaved && saved._t && Date.now() - saved._t < 3 * 3600000 && !store("math-exam:" + rel);
+    if (recent) {
+      setTimeout(function () {
+        replay();
+        try {
+          var ls = JSON.parse(store("math-last") || "null");
+          if (ls && ls.u === location.pathname + location.search && ls.y) window.scrollTo(0, ls.y);
+        } catch (e) {}
+        toast("▶ أكملتَ من حيث توقفت (" + nSaved + " من " + allQ.length + " سؤالا).");
+      }, 60);
+    } else if (nSaved) {
       var rb = el("div", "sx-resume");
       rb.innerHTML = '<span>📌 لديك محاولة محفوظة على هذا الجهاز (' + nSaved + " من " + allQ.length + ' سؤالا).</span>' +
         '<button type="button" class="go">▶ أكمل من حيث توقفت</button><button type="button" class="new">↺ ابدأ من جديد</button>';
