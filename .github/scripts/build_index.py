@@ -96,6 +96,14 @@ def site_version():
 VERSION = site_version()
 
 
+KID_SHIM = ('<script>(function(){try{var L=window.localStorage,S=Storage.prototype,g=S.getItem,s=S.setItem,r=S.removeItem,'
+            'G={"math-theme":1,"math-kids":1,"math-kid":1,"math-kid-tip":1,"math-prof":1,"math-dests":1},'
+            'id=g.call(L,"math-kid")||"",k=function(t,x){return t===L&&id&&!G[x]?"kid"+id+"|"+x:x};'
+            'window.__kid=id;window.__kidRaw={g:function(x){return g.call(L,x)},s:function(x,v){return s.call(L,x,v)},r:function(x){return r.call(L,x)}};'
+            'S.getItem=function(x){return g.call(this,k(this,x))};S.setItem=function(x,v){return s.call(this,k(this,x),v)};'
+            'S.removeItem=function(x){return r.call(this,k(this,x))}}catch(e){}})();</script>')
+
+
 def inject_site_js(path):
     """Add the shared layer assets/site.js to the DEPLOYED copy of a page (CI only)."""
     with open(path, encoding="utf-8", errors="ignore") as f:
@@ -104,11 +112,14 @@ def inject_site_js(path):
         return
     depth = path.replace(os.sep, "/").count("/")
     tag = f'<script src="{"../" * depth}assets/site.js?v={VERSION}" data-v="{VERSION}" defer></script>'
+    # 👪 several children on one phone: every localStorage key of the active child gets its own prefix,
+    # before any script of the page runs (the first child keeps the keys without prefix = data already saved)
+    early = KID_SHIM
     if path.replace(os.sep, "/") != "index.html":
         # night mode before the first paint (no white flash)
-        early = '<script>try{if(localStorage.getItem("math-theme")==="dark")document.documentElement.classList.add("sx-dark")}catch(e){}</script>'
-        h = re.search(r"<head[^>]*>", page, re.I)
-        page = page[:h.end()] + early + page[h.end():] if h else early + page
+        early += '<script>try{if(localStorage.getItem("math-theme")==="dark")document.documentElement.classList.add("sx-dark")}catch(e){}</script>'
+    h = re.search(r"<head[^>]*>", page, re.I)
+    page = page[:h.end()] + early + page[h.end():] if h else early + page
     i = page.lower().rfind("</body>")
     page = page[:i] + tag + "\n" + page[i:] if i >= 0 else page + tag
     with open(path, "w", encoding="utf-8") as f:

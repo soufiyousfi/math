@@ -106,6 +106,124 @@
     } catch (e) {}
   }
 
+  /* ---------- 0c. 👪 several children on one phone (2026-11-16 his remark «اذا انتقل الولي من مستوى إلى آخر معناه لديه تلميذين او ابنين او أكثر») ----------
+     Each child has a profile; the early script added by build_index.py keeps every localStorage key of the active profile apart
+     (marks, stars, saved answers, last page, name, level). The first child keeps the data already on the phone. */
+  var KIDS = (function () {
+    var raw = window.__kidRaw || { g: function (k) { return localStorage.getItem(k); }, s: function (k, v) { localStorage.setItem(k, v); } };
+    var LV = { "1m": "1م", "2m": "2م", "3m": "3م", "4m": "4م" };
+    function list() {
+      var a = null;
+      try { a = JSON.parse(raw.g("math-kids") || "null"); } catch (e) {}
+      if (!a || !a.length) {
+        var n = "", l = "";
+        try { n = raw.g("math-name") || ""; l = raw.g("math-level") || ""; } catch (e) {}
+        a = [{ id: "", n: n || "تلميذ 1", l: l }];
+      }
+      return a;
+    }
+    function save(a) { try { raw.s("math-kids", JSON.stringify(a)); } catch (e) {} }
+    function curId() { return window.__kid || ""; }
+    function cur() { var a = list(), c = curId(); for (var i = 0; i < a.length; i++) if (a[i].id === c) return a[i]; return a[0]; }
+    function pre(id) { return id ? "kid" + id + "|" : ""; }
+    var st = document.createElement("style");
+    st.textContent = ".sx-kid-btn{font:inherit;font-weight:800;cursor:pointer;border-radius:999px;padding:6px 12px;background:#fff;color:#1e3a8a;border:1.5px solid #93c5fd;max-width:55vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}" +
+      ".sx-kids{position:fixed;inset:0;z-index:4500;background:rgba(15,23,42,.45);display:flex;align-items:flex-end;justify-content:center;direction:rtl;font-family:inherit}" +
+      ".sx-kids>div{background:#fff;color:#0f172a;width:100%;max-width:520px;border-radius:16px 16px 0 0;padding:14px 16px 18px;max-height:88vh;overflow:auto;border-top:5px solid #1e3a8a}" +
+      ".sx-kids h3{margin:0 0 4px;font-size:1.1rem}.sx-kids p{margin:0 0 10px;color:#475569;font-size:.88rem;line-height:1.6}" +
+      ".sx-kids .row{display:flex;gap:8px;align-items:center;margin:6px 0}.sx-kids .row button.k{flex:1;text-align:right;font:inherit;font-weight:800;cursor:pointer;border-radius:12px;padding:10px 12px;background:#fff;color:#0f172a;border:1.5px solid #cbd5e1}" +
+      ".sx-kids .row button.k.on{border-color:#1e3a8a;border-right:6px solid #1e3a8a;background:#eff6ff}.sx-kids .row button.k small{color:#64748b;font-weight:700}" +
+      ".sx-kids .row button.d{font:inherit;cursor:pointer;border-radius:10px;padding:8px 10px;background:#fff;color:#991b1b;border:1px solid #fecaca;font-size:.8rem;white-space:nowrap}" +
+      ".sx-kids form{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;padding-top:10px;border-top:1px dashed #cbd5e1}" +
+      ".sx-kids input,.sx-kids select{font:inherit;font-size:1rem;padding:8px;border:1.5px solid #cbd5e1;border-radius:10px;background:#fff;color:#0f172a}.sx-kids input{flex:1 1 140px;min-width:0}" +
+      ".sx-kids form button,.sx-kids .close{font:inherit;font-weight:800;cursor:pointer;border-radius:10px;padding:8px 12px;border:0;background:#1e3a8a;color:#fff}" +
+      ".sx-kids .close{background:#fff;color:#475569;border:1px solid #cbd5e1;margin-top:12px;width:100%}" +
+      ".sx-kid-tip{position:fixed;left:10px;right:10px;bottom:14px;z-index:4400;max-width:520px;margin:0 auto;direction:rtl;background:#fff;color:#0f172a;border:1.5px solid #cbd5e1;border-right:5px solid #1e3a8a;border-radius:12px;padding:10px 12px;box-shadow:0 8px 24px rgba(0,0,0,.18);font-weight:700;display:flex;gap:8px;align-items:center;flex-wrap:wrap}" +
+      ".sx-kid-tip span{flex:1 1 200px}.sx-kid-tip button{font:inherit;font-weight:800;cursor:pointer;border-radius:10px;padding:7px 11px;border:0;background:#1e3a8a;color:#fff}.sx-kid-tip button.x{background:#fff;color:#475569;border:1px solid #cbd5e1}" +
+      "@media print{.sx-kid-btn,.sx-kids,.sx-kid-tip{display:none!important}}";
+    document.head.appendChild(st);
+    var btns = [];
+    function label() { var c = cur(); return "👤 " + c.n + (c.l && LV[c.l] ? " · " + LV[c.l] : ""); }
+    function button() {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "sx-kid-btn"; b.textContent = label(); b.title = "من يتعلّم الآن على هذا الهاتف؟";
+      b.onclick = open; btns.push(b); return b;
+    }
+    function go(k) {
+      try { raw.s("math-kid", k.id); sessionStorage.setItem("math-opened", "1"); } catch (e) {}
+      location.href = ROOT.href + (k.l ? "#" + k.l : "");
+      if (!isPage) setTimeout(function () { location.reload(); }, 50);
+    }
+    function open() {
+      var a = list(), c = curId(), ov = document.createElement("div"), del = null;
+      ov.className = "sx-kids";
+      function draw() {
+        a = list();
+        var h = '<div role="dialog" aria-label="من يتعلّم الآن؟"><h3>👪 من يتعلّم الآن على هذا الهاتف؟</h3>' +
+          '<p>لكل ابن ملفّه: نقاطه ونجومه وأجوبته ومستواه، فلا تختلط النتائج بين الإخوة. المعطيات تبقى في هذا الهاتف فقط.</p>';
+        a.forEach(function (k, i) {
+          h += '<div class="row"><button type="button" class="k' + (k.id === c ? " on" : "") + '" data-i="' + i + '">' + (k.id === c ? "✓ " : "") + esc(k.n) +
+            (k.l && LV[k.l] ? " <small>· السنة " + LV[k.l] + "</small>" : "") + '</button>' +
+            (k.id && k.id !== c ? '<button type="button" class="d" data-d="' + i + '">' + (del === i ? "اضغط للتأكيد" : "🗑️ حذف") + '</button>' : "") + '</div>';
+        });
+        h += '<form><input name="n" maxlength="30" placeholder="اسم الابن (مثلا: أمينة)" autocomplete="off" required>' +
+          '<select name="l" aria-label="المستوى"><option value="1m">السنة 1م</option><option value="2m">السنة 2م</option><option value="3m">السنة 3م</option><option value="4m">السنة 4م</option></select>' +
+          '<button type="submit">➕ إضافة</button></form><button type="button" class="close">إغلاق</button></div>';
+        ov.innerHTML = h;
+        ov.querySelector("form").onsubmit = function (e) {
+          e.preventDefault();
+          var n = this.n.value.trim().slice(0, 30), l = this.l.value;
+          if (!n) return;
+          var id = String(Date.now() % 1e9), all = list();
+          all.push({ id: id, n: n, l: l }); save(all);
+          try { raw.s(pre(id) + "math-name", n); raw.s(pre(id) + "math-level", l); } catch (e2) {}
+          go({ id: id, l: l });
+        };
+        ov.querySelector(".close").onclick = function () { ov.remove(); };
+      }
+      ov.onclick = function (e) {
+        if (e.target === ov) return ov.remove();
+        var k = e.target.closest("[data-i]"), d = e.target.closest("[data-d]");
+        if (k) { var x = list()[+k.getAttribute("data-i")]; if (x.id === c) return ov.remove(); go(x); }
+        else if (d) {
+          var i = +d.getAttribute("data-d");
+          if (del !== i) { del = i; return draw(); }
+          var all = list(), gone = all.splice(i, 1)[0]; save(all);
+          try { var p = pre(gone.id), ks = []; for (var j = 0; j < localStorage.length; j++) { var kk = localStorage.key(j); if (kk && kk.indexOf(p) === 0) ks.push(kk); } ks.forEach(function (kk) { (window.__kidRaw ? window.__kidRaw.r : function (q) { localStorage.removeItem(q); })(kk); }); } catch (e3) {}
+          del = null; draw();
+        }
+      };
+      draw();
+      document.body.appendChild(ov);
+    }
+    /* keep the level of the child up to date, and on the index tell the parent once that each child can have a profile */
+    function levelChanged(l) {
+      var a = list(), c = curId(), me2 = null;
+      a.forEach(function (k) { if (k.id === c) me2 = k; });
+      if (!me2) { me2 = a[0]; }
+      var old = me2.l; me2.l = l; save(a);
+      btns.forEach(function (b) { b.textContent = label(); });
+      if (old && old !== l && a.length < 2 && !raw.g("math-kid-tip")) {
+        try { raw.s("math-kid-tip", "1"); } catch (e) {}
+        var t = document.createElement("div");
+        t.className = "sx-kid-tip"; t.setAttribute("role", "status");
+        t.innerHTML = "<span>👪 هل لديك أكثر من ابن؟ أنشئ ملفًّا لكل واحد حتى لا تختلط نقاطهم وأجوبتهم.</span><button type='button' class='go'>👤 إنشاء ملف</button><button type='button' class='x'>✕</button>";
+        t.querySelector(".go").onclick = function () { t.remove(); open(); };
+        t.querySelector(".x").onclick = function () { t.remove(); };
+        document.body.appendChild(t);
+        setTimeout(function () { if (t.parentNode) t.remove(); }, 15000);
+      }
+    }
+    if (!window.__kidRaw) return { button: button, open: open, levelChanged: function () {} , off: true };
+    return { button: button, open: open, levelChanged: levelChanged };
+  })();
+  window.__sxKids = KIDS;
+  if (!isPage && !KIDS.off) {
+    var heroK = document.querySelector("#hero .cta");
+    if (heroK) { var kb = KIDS.button(); kb.style.marginTop = "8px"; heroK.parentNode.insertBefore(kb, heroK.nextSibling); }
+    document.addEventListener("click", function (e) { var lb = e.target.closest && e.target.closest("[data-level]"); if (lb) KIDS.levelChanged(lb.getAttribute("data-level")); }, true);
+  }
+
   var pm = rel.match(/^([1-4]m)\/(?:(t[1-3])\/([a-z0-9]+)|(bem))\//);
   if (!pm) return;
   var level = pm[1], term = pm[2] || "t1", section = pm[3] || pm[4];
@@ -354,6 +472,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
   if (store("math-theme") === "dark") document.documentElement.classList.add("sx-dark");
   thPaint();
   bar.appendChild(thB);
+  if (!KIDS.off) { var kidB = KIDS.button(); kidB.classList.add("sx-btn"); bar.appendChild(kidB); }
 
   if ("serviceWorker" in navigator) window.addEventListener("load", function () { navigator.serviceWorker.register(ROOT.href + "sw.js").catch(function () {}); });
 
