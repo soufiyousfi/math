@@ -5,6 +5,8 @@
       instead of «اكتب 1 نعم أو 2 لا», answer-format chips, numeric keyboard, Enter = check,
       question kept visible above the phone keyboard, «📄 الموضوع كاملا», buttons in the final window.
    4. 4AM pages with sin/cos/tan: angle calculator in degrees (DEG).
+   5. 2026-11-16: 📝 scratchpad, 🗣️ Arabic reading, ⏱️ optional exam mode, 🩺 diagnosis by resource,
+      🔄 similar exercise with new numbers, 🎓 certificate + 🏁 challenge link, 🔄 «new exercises» update bar.
    Nothing here changes the questions, the answers, the hints or the marks. */
 (function () {
   "use strict";
@@ -19,6 +21,44 @@
   var path = decodeURIComponent(location.pathname);
   var rootPath = decodeURIComponent(ROOT.pathname);
   var rel = path.indexOf(rootPath) === 0 ? path.slice(rootPath.length) : path.replace(/^\//, "");
+  /* ---------- 0. new version of the site («🔄 تتوفر تمارين جديدة من الأستاذ») ----------
+     Each deployed page carries the version it was built with (data-v, added by build_index.py).
+     When the app comes back to the screen, or the connection returns, version.json is read:
+     if the teacher has published something since, a small bar offers to reload. */
+  var VER = me.getAttribute("data-v") || "";
+  (function () {
+    if (!VER || !window.fetch) return;
+    var shown = false, st = document.createElement("style");
+    st.textContent = ".sx-upd{position:fixed;left:10px;right:10px;bottom:12px;z-index:4000;max-width:520px;margin:0 auto;direction:rtl;display:flex;gap:8px;align-items:center;flex-wrap:wrap;" +
+      "background:#fff;color:#0f172a;border:1.5px solid #cbd5e1;border-right:5px solid #0f766e;border-radius:12px;padding:10px 12px;box-shadow:0 8px 24px rgba(0,0,0,.18);font-family:inherit;font-weight:700;font-size:.95rem}" +
+      ".sx-upd span{flex:1 1 180px}.sx-upd button{font:inherit;font-weight:800;cursor:pointer;border-radius:10px;padding:8px 12px;border:0;background:#0f766e;color:#fff}" +
+      ".sx-upd button.x{background:#fff;color:#475569;border:1px solid #cbd5e1;padding:8px 10px}@media print{.sx-upd{display:none!important}}";
+    document.head.appendChild(st);
+    function show() {
+      if (shown) return;
+      shown = true;
+      var b = document.createElement("div");
+      b.className = "sx-upd";
+      b.setAttribute("role", "status");
+      b.innerHTML = '<span>🔄 تتوفر تمارين جديدة من الأستاذ</span><button type="button" class="go">اضغط للتحديث</button><button type="button" class="x" aria-label="لاحقا">✕</button>';
+      b.querySelector(".go").onclick = function () { location.reload(); };
+      b.querySelector(".x").onclick = function () { b.remove(); };
+      document.body.appendChild(b);
+    }
+    function check() {
+      if (shown || navigator.onLine === false) return;
+      fetch(ROOT.href + "version.json?t=" + Date.now(), { cache: "no-store" })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (j) { if (j && j.v && j.v !== VER) show(); })
+        .catch(function () {});
+    }
+    window.__sxUpdate = check;
+    setTimeout(check, 5000);
+    document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible") check(); });
+    window.addEventListener("online", check);
+    setInterval(check, 15 * 60000);
+  })();
+
   var pm = rel.match(/^([1-4]m)\/(?:(t[1-3])\/([a-z0-9]+)|(bem))\//);
   if (!pm) return;
   var level = pm[1], term = pm[2] || "t1", section = pm[3] || pm[4];
@@ -146,6 +186,86 @@ body.sx-ex .sx-chip.u{background:#fff;color:#334155;border-color:#94a3b8}
 body.sx-ex .sx-chip.u.sit{background:#fffbeb;color:#92400e;border-color:#f59e0b}
 .sx-unit-warn{margin-top:6px;padding:6px 10px;border-radius:8px;background:#fffbeb;color:#92400e;border:1px solid #fde68a;border-right:4px solid #d97706;font-weight:700}
 @media print{.sx-bar,.sx-calc,.sx-calc-fab,.sx-ov,.sx-step,.sx-chips,.sx-choices{display:none!important}}
+/* 2026-11-16 tools: calm look, white sheet, coloured edges only */
+.sx-toast{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:5000;max-width:min(92vw,520px);direction:rtl;background:#fff;color:#0f172a;
+  border:1.5px solid #cbd5e1;border-right:5px solid #0f766e;border-radius:12px;padding:10px 14px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.18);transition:opacity .5s}
+.sx-toast.out{opacity:0}
+.sx-tools{display:flex;gap:6px;flex-wrap:wrap;margin:-4px 0 12px}
+.sx-tool,.sx-gen-btn{font:inherit;font-weight:800;font-size:.86rem;cursor:pointer;border-radius:10px;padding:5px 11px;background:#fff;color:#1e3a8a;border:1.5px solid #c7d2fe}
+.sx-tool:hover,.sx-gen-btn:hover{background:#eef2ff}
+.sx-gen-btn{display:block;margin:8px 0 2px;border-color:#99f6e4;color:#115e59}
+.sx-say{font:inherit;font-size:.82rem;line-height:1.5;cursor:pointer;border-radius:8px;padding:0 6px;margin-inline-end:6px;background:#fff;border:1px solid #cbd5e1;vertical-align:middle}
+.sx-say.on{border-color:#0f766e;box-shadow:0 0 0 2px #ccfbf1}
+html.sx-noscroll,html.sx-noscroll body{overflow:hidden}
+.sx-pad{position:fixed;inset:0;z-index:3500;background:#fff;display:flex;flex-direction:column;direction:rtl;font-family:inherit}
+.sx-pad-top{display:flex;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid #e2e8f0}
+.sx-pad-top b{color:#1e3a8a;white-space:nowrap}
+.sx-pad-top .t{flex:1;min-width:0;color:#475569;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sx-pad-top button,.sx-pad-tools button{font:inherit;font-weight:800;cursor:pointer;border-radius:10px;padding:6px 10px;background:#fff;color:#1e293b;border:1.5px solid #cbd5e1;font-size:.86rem}
+.sx-pad-tools{display:flex;gap:6px;flex-wrap:wrap;padding:6px 10px;border-bottom:1px solid #e2e8f0}
+.sx-pad-tools .col{padding:4px 8px}
+.sx-pad-tools .col i{display:block;width:18px;height:18px;border-radius:50%}
+.sx-pad-tools .on{border-color:#1e3a8a;box-shadow:0 0 0 2px #c7d2fe}
+.sx-pad-q{padding:4px 12px;border-bottom:1px solid #e2e8f0;font-size:.92rem}
+.sx-pad-q summary{cursor:pointer;font-weight:800;color:#1e3a8a}
+.sx-pad-q div{max-height:26vh;overflow:auto}
+.sx-pad-q p{margin:4px 0}
+.sx-pad-area{flex:1;position:relative;touch-action:none;background-color:#fff;
+  background-image:linear-gradient(#e0e7ff 1px,transparent 1px),linear-gradient(90deg,#e0e7ff 1px,transparent 1px);background-size:22px 22px}
+.sx-pad-area canvas{position:absolute;inset:0;touch-action:none;cursor:crosshair}
+.sx-pad-note{font-size:.78rem;color:#64748b;padding:5px 10px;border-top:1px solid #e2e8f0}
+.sx-dlg{max-width:520px!important;margin-top:8vh}
+.sx-dlg p{margin:8px 0;line-height:1.7}
+.sx-list{margin:6px 0 10px;padding-inline-start:20px;line-height:1.75}
+.sx-lbl{font-weight:800;margin:6px 0 4px}
+.sx-durs{display:flex;gap:6px;flex-wrap:wrap}
+.sx-durs button{font:inherit;font-weight:800;cursor:pointer;border-radius:10px;padding:7px 11px;background:#fff;color:#1e293b;border:1.5px solid #cbd5e1}
+.sx-durs button.on{border-color:#1e3a8a;background:#eef2ff;color:#1e3a8a}
+.sx-warn{background:#fffbeb;border:1px solid #fde68a;border-right:4px solid #d97706;border-radius:8px;padding:6px 10px;color:#92400e;font-weight:700}
+.sx-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.sx-main{flex:1;font:inherit;font-weight:800;cursor:pointer;border-radius:12px;padding:11px 14px;border:0;background:#1e3a8a;color:#fff;font-size:1rem}
+.sx-exbar{position:fixed;left:0;right:0;bottom:0;z-index:2700;direction:rtl;display:flex;align-items:center;gap:8px;flex-wrap:nowrap;justify-content:space-between;
+  background:#fff;border-top:1.5px solid #cbd5e1;border-right:6px solid #1e3a8a;padding:8px 12px;box-shadow:0 -6px 18px rgba(0,0,0,.08);font-weight:800}
+.sx-exbar .tm{font-size:1.25rem;color:#1e3a8a;direction:ltr;unicode-bidi:isolate}
+.sx-exbar.warn{border-right-color:#dc2626}
+.sx-exbar.warn .tm{color:#b91c1c}
+.sx-exbar .ct{color:#475569;font-size:.8rem;flex:1;min-width:0;line-height:1.3}
+.sx-exbar button{font:inherit;font-weight:800;cursor:pointer;border-radius:10px;padding:8px 12px;border:0;background:#1e3a8a;color:#fff;white-space:nowrap}
+body.sx-exam{padding-bottom:64px}
+body.sx-exam .model-solution,body.sx-exam .sx-resume,body.sx-exam .sx-gen-btn,body.sx-exam .sol-btn,body.sx-exam .sol-wait{display:none!important}
+body.sx-exam .sx-calc-fab{bottom:74px}
+.feedback-box.sx-exnote{display:block;background:#fff;border:1px solid #cbd5e1;border-right:4px solid #1e3a8a;color:#1e293b}
+.sx-choice.sel{border-color:#1e3a8a;background:#eef2ff;color:#1e3a8a;box-shadow:0 0 0 2px #c7d2fe}
+.sx-chal{direction:rtl;max-width:860px;margin:10px auto 0;padding:10px 12px;border-radius:12px;background:#fff;border:1.5px solid #cbd5e1;border-right:5px solid #d97706;color:#78350f;font-weight:800}
+.sx-report .r small{display:block;font-size:.76rem;font-weight:700;color:#475569}
+.sx-report .r.ok,.sx-report .r.mid,.sx-report .r.low{background:#fff;border:1px solid #e2e8f0}
+.sx-report .r.ok{border-right:4px solid #16a34a}
+.sx-report .r.mid{border-right:4px solid #d97706}
+.sx-report .r.low{border-right:4px solid #dc2626}
+.sx-report .acts{display:flex;gap:6px;flex-wrap:wrap;margin:-1px 0 8px;padding-inline-start:8px}
+.sx-report .acts button,.sx-report .acts a{font:inherit;font-size:.8rem;font-weight:800;cursor:pointer;border-radius:8px;padding:3px 9px;background:#fff;color:#1e3a8a;border:1px solid #c7d2fe;text-decoration:none}
+.sx-report .acts .rem{display:contents}
+.sx-sharecard input{flex:1 1 120px}
+.sx-sharecard button.ch{background:#fff;color:#92400e;border:1.5px solid #f59e0b}
+.sx-gen{max-width:640px!important}
+.sx-gen .sx-note{margin:4px 0 8px;font-size:.84rem;color:#475569}
+.sx-gq{font-size:1.06rem;line-height:1.9;margin:6px 0 8px;font-weight:700}
+.sx-gq .math,.sx-gen .sol-line .math,.sx-gen .sol-result .math{direction:ltr;unicode-bidi:isolate;display:inline-block;background:#f1f5f9;border-radius:6px;padding:0 5px}
+.sx-gin{display:flex;gap:8px;flex-wrap:wrap}
+.sx-gin input{flex:1 1 160px;font:inherit;font-size:1.15rem;padding:10px 12px;min-height:46px;border-radius:10px;border:1.5px solid #cbd5e1;direction:ltr;text-align:center;box-sizing:border-box}
+.sx-gin .btn-check{font:inherit;font-weight:800}
+.sx-gen .sym-toolbar{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;direction:ltr}
+.sx-gen .sym-btn{min-width:42px;min-height:40px;font-size:1.1rem;border-radius:10px;cursor:pointer;background:#fff;border:1.5px solid #cbd5e1}
+.sx-gen .feedback-box{margin-top:8px}
+.sx-gen .feedback-box:empty{display:none}
+.sx-gsol{margin-top:10px;background:#fff;border:1px solid #cbd5e1;border-right:4px solid #0f766e;border-radius:10px;padding:8px 12px;line-height:1.85}
+.sx-ov .sx-sheet .sx-gsol h4{margin:0 0 6px;color:#0f766e;text-decoration:none}
+.sx-gsol .sol-line.sx-rule{background:#fffbeb;border:1px solid #fde68a;border-right:4px solid #d97706;border-radius:8px;padding:6px 10px;margin:4px 0 6px;color:#713f12}
+.sx-gsol .sol-result{border-right:4px solid #1e3a8a;padding:4px 8px;margin-top:4px}
+.sx-vert{font-family:"Courier New",monospace;font-size:1.05rem;line-height:1.35;background:#fff;border:1px dashed #94a3b8;border-radius:8px;padding:6px 12px;display:inline-block;margin:4px 0}
+.sx-gen .fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.05;margin:0 2px;font-size:.92em}
+.sx-gen .fr>span:first-child{border-bottom:1.5px solid currentColor;padding:0 3px}
+@media print{.sx-tools,.sx-gen-btn,.sx-say,.sx-exbar,.sx-pad,.sx-chal,.sx-toast{display:none!important}}
 `;
   document.head.appendChild(el("style", null, css));
 
@@ -155,6 +275,10 @@ body.sx-ex .sx-chip.u.sit{background:#fffbeb;color:#92400e;border-color:#f59e0b}
   bar.innerHTML = '<a class="sx-home" href="' + home + '">🏠 الفهرس</a><span class="sx-crumb">' + LEVEL[level] +
     " · " + TERM[term] + " · <b>" + (SECTION[section] || "") + "</b></span>";
   document.body.insertBefore(bar, document.body.firstChild);
+  var padB = el("button", "sx-btn", "📝 مسودة");
+  padB.type = "button"; padB.title = "مسودة الحساب: اكتب بإصبعك";
+  padB.onclick = function () { openPad("page", document.title.split(" - ")[0]); };
+  bar.appendChild(padB);
 
   if ("serviceWorker" in navigator) window.addEventListener("load", function () { navigator.serviceWorker.register(ROOT.href + "sw.js").catch(function () {}); });
 
@@ -495,7 +619,7 @@ body.sx-ex .sx-chip.u.sit{background:#fffbeb;color:#92400e;border-color:#f59e0b}
       if (!b || b.disabled) return;
       var qid = b.id.replace(/^btn-/, ""), inp = document.getElementById("in-" + qid);
       if (!inp || inp.disabled || !inp.value.trim()) return;
-      var L = getLog(); (L[qid] = L[qid] || []).push(inp.value.trim()); L._t = Date.now();
+      var L = getLog(); (L[qid] = L[qid] || []).push(inp.value.trim()); L._t = Date.now(); if (!L._s) L._s = L._t;
       store(LOGK, JSON.stringify(L));
     }, true);
     function replay() {
@@ -533,73 +657,388 @@ body.sx-ex .sx-chip.u.sit{background:#fffbeb;color:#92400e;border-color:#f59e0b}
       root.parentElement.insertBefore(rb, root);
     }
 
-    /* ---- end of the page: strong and weak exercises + result card to share ---- */
-    var fm = $("#finalModal");
-    function report() {
-      if (!mc || !fm || getComputedStyle(fm).display === "none") return;
-      var rows = data.map(function (ex, i) {
-        var e = 0; (ex.questions || []).forEach(function (q) { try { e += +questionEarned[q.qId] || 0; } catch (x) {} });
-        var r = ex.pts ? e / ex.pts : 0;
-        return { i: i, t: plain(ex.title || "").replace(/^(التمرين|تمرين)\s*\S*\s*[:：-]\s*/, ""), e: e, p: ex.pts || 0, r: r };
+    /* ================= 2026-11-16: his 7 features =================
+       A. 🗣️ Arabic reading (speechSynthesis)   B. 📝 scratchpad per exercise
+       C. ⏱️ exam mode (OPTIONAL)                D. 🩺 diagnosis by resource
+       E. 🔄 similar exercise with new numbers   F. 🎓 certificate + 🏁 challenge link */
+    var fm = $("#finalModal"), fbs = {};
+    allQ.forEach(function (q) { fbs[q.qId] = document.getElementById("fb-" + q.qId); });
+    var exOf = {};
+    data.forEach(function (ex, i) { (ex.questions || []).forEach(function (q) { exOf[q.qId] = i; }); });
+    function earnedOf(q) { try { return +questionEarned[q.qId] || 0; } catch (e) { return 0; } }
+    function lockedOf(q) { try { return !!questionLocked[q.qId]; } catch (e) { return false; } }
+    function leftOf(q) { try { return +attemptsLeft[q.qId]; } catch (e) { return 3; } }
+
+    /* ---- A. reading aloud ---- */
+    cards.forEach(function (c, i) {
+      var cb = $(".context-box", c);
+      var tools = el("div", "sx-tools");
+      var pb = el("button", "sx-tool", "📝 مسودة الحساب");
+      pb.type = "button";
+      pb.onclick = function () { openPad("ex" + i, plain(data[i].title || ""), c); };
+      tools.appendChild(pb);
+      if (cb) cb.parentNode.insertBefore(tools, cb.nextSibling);
+      else c.insertBefore(tools, c.firstChild.nextSibling);
+    });
+    whenVoice(function () {
+      cards.forEach(function (c) {
+        var cb = $(".context-box", c);
+        if (cb && plain(cb.innerHTML).length > 3) cb.insertBefore(sayBtn(cb), cb.firstChild);
       });
+      allQ.forEach(function (q) {
+        var box = document.getElementById("qbox-" + q.qId), sp = box && $(".q-title > span", box);
+        if (sp) sp.insertBefore(sayBtn(sp), sp.firstChild);
+        var fb = fbs[q.qId];
+        if (fb && window.MutationObserver) new MutationObserver(function () {
+          if (fb.classList.contains("hint") && !$(".sx-say", fb) && plain(fb.innerHTML).length > 3) fb.insertBefore(sayBtn(fb), fb.firstChild);
+        }).observe(fb, { childList: true });
+      });
+    });
+
+    /* ---- C. exam mode (optional) ---- */
+    var EXK = "math-exam:" + rel, examOn = false, exTimer = null, exBar = null, warned = false;
+    var EXMIN = { fard: 60, wadjib: 60, series: 60, tahaddi: 45, chahada: 120, bem: 120, ikhtibar: level === "4m" ? 120 : 90 };
+    function exGet() { try { return JSON.parse(store(EXK) || "null"); } catch (e) { return null; } }
+    function exPut(s) { store(EXK, JSON.stringify(s)); }
+    function exDel() { try { localStorage.removeItem(EXK); } catch (e) {} }
+    function mmss(ms) { var s = Math.max(0, Math.ceil(ms / 1000)), m = Math.floor(s / 60); s %= 60; return (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s; }
+    if (EXMIN[section]) {
+      var exB = el("button", "sx-pill tool", "⏱️ وضع الامتحان");
+      exB.type = "button";
+      exB.title = "اختياري: عدّاد تنازلي، دون تلميحات، والتصحيح في النهاية";
+      exB.onclick = function () { examDialog(); };
+      pills.insertBefore(exB, modeB.nextSibling);
+    }
+    function examDialog(preset) {
+      var started = allQ.some(function (q) { return lockedOf(q) || earnedOf(q) > 0; }) || nSaved;
+      var def = preset || EXMIN[section] || 60, opts = [30, 45, 60, 90, 120];
+      if (opts.indexOf(def) < 0) opts.push(def), opts.sort(function (a, b) { return a - b; });
+      var ov = el("div", "sx-ov"), box = el("div", "sx-sheet sx-dlg");
+      box.innerHTML = '<div class="sx-top"><b>⏱️ وضع الامتحان (اختياري)</b><button type="button" class="sx-btn x">✕</button></div>' +
+        '<ul class="sx-list"><li>عدّاد تنازلي كما في الفرض أو امتحان الشهادة.</li>' +
+        '<li>لا تلميحات ولا تصحيح أثناء الامتحان: تُسجَّل إجابتك فقط، ويمكنك تغييرها قبل التسليم.</li>' +
+        '<li>عند «📥 سلّم ورقتك» أو انتهاء الوقت تُصحَّح الورقة كلها مرة واحدة: الجواب الصحيح يأخذ علامته كاملة، ويظهر الحل النموذجي وسلم التنقيط وبطاقة التشخيص.</li>' +
+        '<li>لا تنس الوحدة في كل جواب، خاصة في الوضعية الإدماجية.</li></ul>' +
+        '<div class="sx-lbl">المدة:</div><div class="sx-durs">' + opts.map(function (m) {
+          return '<button type="button" data-m="' + m + '" class="' + (m === def ? "on" : "") + '">' + (m >= 60 && m % 60 === 0 ? (m === 60 ? "ساعة" : m === 120 ? "ساعتان" : m / 60 + " ساعات") : m === 90 ? "ساعة ونصف" : m + " دقيقة") + "</button>";
+        }).join("") + "</div>" +
+        (started ? '<p class="sx-warn">⚠️ ستبدأ الورقة من جديد (تُمحى محاولتك الحالية على هذا الجهاز).</p>' : "") +
+        '<div class="sx-row"><button type="button" class="sx-main go">▶ ابدأ الامتحان</button><button type="button" class="sx-btn x2">إلغاء</button></div>';
+      ov.appendChild(box);
+      document.body.appendChild(ov);
+      var dur = def;
+      $$(".sx-durs button", box).forEach(function (b) { b.onclick = function () { dur = +b.dataset.m; $$(".sx-durs button", box).forEach(function (x) { x.classList.toggle("on", x === b); }); }; });
+      function close() { ov.remove(); }
+      $(".x", box).onclick = close; $(".x2", box).onclick = close;
+      ov.addEventListener("click", function (e) { if (e.target === ov) close(); });
+      $(".go", box).onclick = function () {
+        var now = Date.now();
+        exPut({ start: now, end: now + dur * 60000, dur: dur, ans: {} });
+        clearLog();
+        try { localStorage.removeItem("math-time:" + rel); } catch (e) {}
+        location.href = location.href.split("#")[0].replace(/[?&]exam=\d+/, "");
+      };
+    }
+    function examStart(st) {
+      examOn = true;
+      document.body.classList.add("sx-exam");
+      exBar = el("div", "sx-exbar");
+      exBar.innerHTML = '<span class="tm" aria-live="off">⏱️ --:--</span><span class="ct"></span><button type="button">📥 سلّم ورقتك</button>';
+      document.body.appendChild(exBar);
+      $("button", exBar).onclick = function () { handIn(); };
+      allQ.forEach(function (q) {
+        var v = st.ans[q.qId];
+        if (v != null) { var inp = document.getElementById("in-" + q.qId); if (inp) inp.value = v; noteSaved(q.qId, v); }
+      });
+      count();
+      tick();
+      exTimer = setInterval(tick, 1000);
+      var rb = $(".sx-resume"); if (rb) rb.remove();
+    }
+    function count() {
+      var st = exGet(); if (!st || !exBar) return;
+      var n = allQ.filter(function (q) { return st.ans[q.qId] != null && String(st.ans[q.qId]).trim(); }).length;
+      $(".ct", exBar).textContent = "أجبت عن " + n + " من " + allQ.length;
+    }
+    function tick() {
+      var st = exGet(); if (!st) return;
+      var left = st.end - Date.now();
+      $(".tm", exBar).textContent = "⏱️ " + mmss(left);
+      exBar.classList.toggle("warn", left <= 5 * 60000);
+      if (left <= 5 * 60000 && !warned && left > 0) { warned = true; toast("⏳ بقيت 5 دقائق: راجع إجاباتك ولا تنس الوحدات."); }
+      if (left <= 0) finishExam(true);
+    }
+    function noteSaved(qid, v) {
+      var fb = fbs[qid]; if (!fb) return;
+      fb.className = "feedback-box sx-exnote";
+      fb.innerHTML = "📝 سُجّلت إجابتك: <bdi dir=\"ltr\">" + esc(v) + "</bdi>. يمكنك تغييرها قبل تسليم الورقة.";
+      var box = document.getElementById("qbox-" + qid);
+      $$(".sx-choice", box).forEach(function (cb) { cb.classList.remove("picked", "right"); cb.classList.toggle("sel", cb.__v === v); });
+    }
+    /* during the exam a check only records the answer (no hint, no mark) */
+    window.addEventListener("click", function (e) {
+      if (!examOn) return;
+      var b = e.target && e.target.closest && e.target.closest(".btn-check");
+      if (!b || !root.contains(b)) return;
+      e.stopImmediatePropagation(); e.preventDefault();
+      var qid = b.id.replace(/^btn-/, ""), inp = document.getElementById("in-" + qid), st = exGet();
+      if (!inp || !st) return;
+      var v = inp.value.trim();
+      if (!v) { var fb = fbs[qid]; if (fb) { fb.className = "feedback-box sx-exnote"; fb.textContent = "اكتب إجابتك أولا في الخانة."; } return; }
+      st.ans[qid] = v; exPut(st); count();
+      noteSaved(qid, v);
+      setTimeout(function () { noteSaved(qid, v); }, 150);
+    }, true);
+    function handIn() {
+      var st = exGet(); if (!st) return;
+      var miss = allQ.filter(function (q) { return !(st.ans[q.qId] && String(st.ans[q.qId]).trim()); }).length;
+      var ov = el("div", "sx-ov"), box = el("div", "sx-sheet sx-dlg");
+      box.innerHTML = '<div class="sx-top"><b>📥 تسليم الورقة</b></div><p>هل تريد تسليم ورقتك الآن؟ بقي من الوقت <bdi dir="ltr">' + mmss(st.end - Date.now()) + "</bdi>." +
+        (miss ? "<br>⚠️ لم تُجب عن " + miss + " سؤالا." : "") + '</p><div class="sx-row"><button type="button" class="sx-main go">نعم، سلّم الورقة</button><button type="button" class="sx-btn no">أكمل الامتحان</button></div>';
+      ov.appendChild(box); document.body.appendChild(ov);
+      $(".no", box).onclick = function () { ov.remove(); };
+      $(".go", box).onclick = function () { ov.remove(); finishExam(false); };
+    }
+    function finishExam(auto) {
+      var st = exGet(); if (!st) return;
+      examOn = false;
+      if (exTimer) clearInterval(exTimer);
+      if (exBar) exBar.remove();
+      document.body.classList.remove("sx-exam");
+      var used = Math.min(st.dur * 60000, Math.max(0, Date.now() - st.start));
+      store("math-time:" + rel, JSON.stringify({ ms: used, exam: st.dur, t: Date.now() }));
+      exDel();
+      var snd, fly = window.flyStars;
+      try { snd = soundEnabled; soundEnabled = false; } catch (e) {}
+      window.flyStars = function () {};
+      allQ.forEach(function (q) {
+        var inp = document.getElementById("in-" + q.qId), btn = document.getElementById("btn-" + q.qId);
+        if (!inp || !btn || inp.disabled) return;
+        var v = st.ans[q.qId] && String(st.ans[q.qId]).trim() ? String(st.ans[q.qId]).trim() : "—";
+        for (var k = 0; k < 3 && !inp.disabled; k++) { inp.value = v; btn.click(); }
+        var box = document.getElementById("qbox-" + q.qId);
+        $$(".sx-choice", box).forEach(function (cb) { cb.classList.remove("sel"); if (cb.__v === v) cb.__mark(); });
+      });
+      window.flyStars = fly;
+      try { soundEnabled = snd; } catch (e) {}
+      $$(".shake").forEach(function (x) { x.classList.remove("shake"); });
+      paint(); save(); genButtons();
+      toast(auto ? "⏰ انتهى الوقت: سُلّمت ورقتك وصُحّحت." : "📥 سُلّمت ورقتك وصُحّحت. انظر الحل النموذجي وبطاقة التشخيص.");
+    }
+
+    /* ---- E. similar exercise with new numbers ---- */
+    function genButtons() {
+      allQ.forEach(function (q) {
+        if (!lockedOf(q)) return;
+        var box = document.getElementById("qbox-" + q.qId);
+        if (!box || $(".sx-gen-btn", box)) return;
+        var g = genFor(data[exOf[q.qId]], q);
+        if (!g) return;
+        var b = el("button", "sx-gen-btn", "🔄 تدرّب على تمرين مشابه بأرقام جديدة");
+        b.type = "button";
+        b.onclick = function () { openGen(g); };
+        box.appendChild(b);
+      });
+    }
+    document.addEventListener("click", function () { setTimeout(genButtons, 250); }, true);
+
+    /* ---- D + F. end of the page: diagnosis by resource, certificate, challenge ---- */
+    var chal = readChallenge();
+    if (chal) {
+      var cbn = el("div", "sx-chal");
+      cbn.innerHTML = "🏁 <span></span>";
+      $("span", cbn).textContent = "تحدٍّ من " + (chal.n || "زميلك") + ": " + fmt(chal.s) + " / " + chal.m + (chal.t ? " خلال " + chal.t + " دقيقة" : "") + ". هل تتغلّب على هذه النتيجة؟";
+      root.parentElement.insertBefore(cbn, root);
+    }
+    function timeUsed() {
+      try { var t = JSON.parse(store("math-time:" + rel) || "null"); if (t && t.ms) return t; } catch (e) {}
+      var L = getLog();
+      if (L._s && L._t && L._t > L._s) { var ms = L._t - L._s; if (ms < 4 * 3600000) return { ms: ms }; }
+      return null;
+    }
+    function report() {
+      if (!mc || !fm || getComputedStyle(fm).display === "none" || examOn) return;
+      var rows = diagnose();
       var box = $(".sx-report", mc) || el("div", "sx-report");
-      box.innerHTML = '<div class="h">📋 حصيلتك في كل تمرين</div>' + rows.map(function (r) {
-        return '<div class="r ' + (r.r >= 0.75 ? "ok" : r.r >= 0.5 ? "mid" : "low") + '"><span>' + (r.r >= 0.75 ? "✅" : r.r >= 0.5 ? "🟡" : "🔁") + " " + r.t +
-          '</span><b>' + fmt(r.e) + " / " + fmt(r.p) + "</b></div>";
-      }).join("") + (rows.some(function (r) { return r.r < 0.5; })
-        ? '<p class="tip">🔁 أعد قراءة الحل النموذجي للتمارين المعلّمة، ثم أعد الفرض غدا بهدوء.</p>'
-        : '<p class="tip">🌟 عمل متقن! جرّب تحديا أو سلسلة أخرى من الفهرس.</p>');
+      var tu = timeUsed(), mins = tu ? Math.max(1, Math.round(tu.ms / 60000)) : 0;
+      var r0 = readScore() || { s: 0, m: 20 };
+      var html = '<div class="h">🩺 بطاقة التشخيص: مواردك في هذه الورقة</div>' + rows.map(function (o, k) {
+        return '<div class="r ' + o.st + '"><span>' + (o.st === "ok" ? "🟢" : o.st === "mid" ? "🟡" : "🔴") + " " + esc(o.n) +
+          '<small>' + (o.st === "ok" ? "متحكَّم فيه" : o.st === "mid" ? "يحتاج تدعيما" + (o.h && o.r >= 0.75 ? " (استعملت التلميحات)" : "") : "غير مكتسب بعد: راجع الدرس") + "</small></span><b>" + fmt(o.e) + " / " + fmt(o.p) + "</b></div>" +
+          (o.st === "ok" ? "" : '<div class="acts" data-k="' + k + '"><button type="button" class="see">📖 راجع الحل</button>' +
+            (o.g ? '<button type="button" class="gen">🔄 تمرين مشابه</button>' : "") + '<span class="rem"></span></div>');
+      }).join("") +
+        (tu ? '<p class="tip">⏱️ ' + (tu.exam ? "وضع الامتحان: استغرقت " + mins + " دقيقة من " + tu.exam : "المدة: حوالي " + mins + " دقيقة") + ".</p>" : "") +
+        (rows.some(function (o) { return o.st !== "ok"; }) ? '<p class="tip">🔁 ابدأ بالموارد 🔴 ثم 🟡: اقرأ الحل النموذجي، ثم تدرّب بتمرين مشابه، وأعد الورقة غدا بهدوء.</p>'
+          : '<p class="tip">🌟 كل الموارد متحكَّم فيها! جرّب تحديا أو سلسلة أخرى من الفهرس.</p>');
+      if (chal) {
+        var win = r0.s > chal.s || (r0.s === chal.s && chal.t && mins && mins < chal.t);
+        html += '<p class="tip sx-chal-res">' + (win ? "🏆 تغلّبت على التحدي!" : r0.s === chal.s ? "🤝 تعادلت مع صاحب التحدي." : "💪 لم تتغلّب على التحدي هذه المرة. راجع مواردك وأعد غدا.") + "</p>";
+      }
+      if (box.__h === html) return;
+      box.__h = html;
+      box.innerHTML = html;
+      $$(".acts", box).forEach(function (a) {
+        var o = rows[+a.dataset.k];
+        $(".see", a).onclick = function () { fm.style.display = "none"; go(o.ex, true); };
+        var gb = $(".gen", a); if (gb) gb.onclick = function () { openGen(o.g); };
+        remedial(o.n, function (it) {
+          if (!it) return;
+          var l = el("a", "", "📘 " + esc(it.title));
+          l.href = ROOT.href + it.url;
+          $(".rem", a).appendChild(l);
+        });
+      });
       var btns = $(".sx-modal-btns", mc);
       if (!box.parentNode) mc.insertBefore(box, btns);
       if (!$(".sx-sharecard", mc)) {
         var sc = el("div", "sx-sharecard");
-        var nm = ""; try { nm = localStorage.getItem("math-name") || ""; } catch (e) {}
-        sc.innerHTML = '<input type="text" maxlength="30" placeholder="اسمك على البطاقة (اختياري)" value="' + nm.replace(/"/g, "") + '">' +
-          '<button type="button">📤 بطاقة نتيجتي</button>';
-        $("button", sc).onclick = function () { var n = $("input", sc).value.trim(); try { localStorage.setItem("math-name", n); } catch (e) {} shareCard(n); };
+        var nm = store("math-name") || "", cl = store("math-class") || "";
+        sc.innerHTML = '<input type="text" class="nm" maxlength="30" placeholder="اسمك (اختياري)" value="' + esc(nm) + '">' +
+          '<input type="text" class="cl" maxlength="12" placeholder="القسم، مثلا ' + level.charAt(0) + 'م2" value="' + esc(cl) + '">' +
+          '<button type="button" class="cert">🎓 شهادتي (صورة)</button><button type="button" class="ch">🏁 تحدَّ زميلك</button>';
+        function who() { var n = $(".nm", sc).value.trim(), c = $(".cl", sc).value.trim(); store("math-name", n); store("math-class", c); return { n: n, c: c }; }
+        $(".cert", sc).onclick = function () { var w = who(); certificate(w.n, w.c, rows, tu); };
+        $(".ch", sc).onclick = function () { var w = who(); challenge(w.n, tu); };
         mc.insertBefore(sc, btns);
       }
     }
     document.addEventListener("click", function () { setTimeout(report, 900); }, true);
     if (fm && window.MutationObserver) new MutationObserver(function () { setTimeout(report, 50); }).observe(fm, { attributes: true, attributeFilter: ["style"] });
 
-    function shareCard(name) {
-      var r = readScore() || { s: 0, m: 20, st: 0 };
-      var c = document.createElement("canvas"); c.width = 1080; c.height = 1080;
-      var x = c.getContext("2d"), g = x.createLinearGradient(0, 0, 1080, 1080);
-      g.addColorStop(0, "#0a355c"); g.addColorStop(0.55, "#0f4c81"); g.addColorStop(1, "#0d9488");
-      x.fillStyle = g; x.fillRect(0, 0, 1080, 1080);
-      x.globalAlpha = 0.1; x.fillStyle = "#fff"; x.font = "bold 120px serif";
-      [["√", 90, 200], ["π", 900, 230], ["∑", 120, 930], ["÷", 930, 950], ["x²", 820, 620], ["∠", 160, 600]].forEach(function (a) { x.fillText(a[0], a[1], a[2]); });
-      x.globalAlpha = 1; x.textAlign = "center"; x.direction = "rtl";
-      var F = '"Tajawal", "Segoe UI", Tahoma, sans-serif';
-      x.fillStyle = "#fbbf24"; x.fillRect(0, 1040, 1080, 40);
-      x.font = "120px " + F; x.fillText("🏆", 540, 220);
-      x.fillStyle = "#fff"; x.font = "bold 66px " + F;
-      x.fillText(r.s / (r.m || 20) >= 0.5 ? "أحسنت! إنجاز رائع" : "أتممتُ المحاولة، وسأتحسّن!", 540, 330);
-      if (name) { x.font = "bold 58px " + F; x.fillStyle = "#fde68a"; x.fillText(name, 540, 420); }
-      x.fillStyle = "#fff"; x.font = "bold 190px " + F; x.direction = "ltr";
-      x.fillText(fmt(r.s) + " / " + (r.m || 20), 540, 640);
-      x.direction = "rtl"; x.font = "bold 54px " + F; x.fillStyle = "#fde68a";
-      if (r.st) x.fillText("⭐ " + r.st + " نجمة", 540, 730);
-      x.fillStyle = "#fff"; x.font = "44px " + F;
-      var t = document.title.split(" - ")[0].slice(0, 40);
-      x.fillText(t, 540, 820);
-      x.fillText((LEVEL[level] ? "السنة " + LEVEL[level] : "") + " — الأستاذ يوسفي السوفي", 540, 885);
-      x.font = "36px " + F; x.fillStyle = "#cbd5e1"; x.direction = "ltr";
-      x.fillText(ROOT.host + ROOT.pathname, 540, 980);
+    function resOf(ex, q) {
+      var t = plain(ex.title || "");
+      if (/وضعية/.test(t)) return "الوضعية الإدماجية (توظيف الموارد)";
+      var m = t.match(/\(المورد\s*\d*\s*:\s*([^—)]+?)\s*(?:—|\)|$)/);
+      if (m) return m[1].trim();
+      if (level === "4m") {
+        var KW = [[/طالس|\/\//, "خاصية طالس وعكسها"], [/\b(cos|sin|tan)\b|جيب|ظل زاوية/, "النسب المثلثية في المثلث القائم"], [/فيثاغورس/, "خاصية فيثاغورس"],
+          [/PGCD|إقليدس|القواسم|قواسم/, "القواسم والقاسم المشترك الأكبر"], [/غير قابل للاختزال|اختزل/, "الكسر غير القابل للاختزال"],
+          [/x\s*²\s*=|المعادلة/, "المعادلة x² = a"], [/كتابة علمية|الكتابة العلمية/, "الكتابة العلمية"], [/√/, "الحساب على الجذور التربيعية"]];
+        var p = plain(q.text), i;
+        for (i = 0; i < KW.length; i++) if (KW[i][0].test(p)) return KW[i][1];
+        for (i = 0; i < KW.length; i++) if (KW[i][0].test(t)) return KW[i][1];
+      }
+      return t.replace(/^(التمرين|تمرين)\s*\S*\s*[:：-]\s*/, "").replace(/^(تطبيق مباشر|ربط|وضعية)\s*:\s*/, "").replace(/\s*\(.*$/, "").trim() || t;
+    }
+    function diagnose() {
+      var map = {}, order = [];
+      data.forEach(function (ex, i) {
+        (ex.questions || []).forEach(function (q) {
+          var n = resOf(ex, q);
+          if (!map[n]) { map[n] = { n: n, e: 0, p: 0, q: 0, h: 0, ex: i, g: null }; order.push(n); }
+          var o = map[n], E = earnedOf(q);
+          o.p += +q.pts || 0; o.e += E; o.q++;
+          if (E > 0 && leftOf(q) < 3) o.h++;
+          if (!o.g && !/وضعية/.test(ex.title || "")) o.g = genFor(ex, q);
+        });
+      });
+      return order.map(function (k) {
+        var o = map[k];
+        o.r = o.p ? o.e / o.p : 0;
+        o.st = o.r >= 0.75 && o.h <= o.q / 2 ? "ok" : o.r < 0.5 ? "low" : "mid";
+        return o;
+      });
+    }
+    var filesP = null;
+    function remedial(name, cb) {
+      if (!filesP) filesP = fetch(ROOT.href + "files.json").then(function (r) { return r.ok ? r.json() : { items: [] }; }).catch(function () { return { items: [] }; });
+      var STOP = /^(التمرين|تمرين|تطبيق|مباشر|ربط|الوضعية|الإدماجية|توظيف|الموارد|على|في|من|إلى|مع|حساب)$/;
+      function words(s) { return String(s).replace(/[()،,:؛.]/g, " ").split(/\s+/).map(function (w) { return w.replace(/^(و|ال)/, ""); }).filter(function (w) { return w.length >= 3 && !STOP.test(w); }); }
+      var W = words(name);
+      filesP.then(function (j) {
+        var best = null, bs = 0;
+        (j.items || []).forEach(function (it) {
+          if (it.level !== level || it.type !== "html" || it.url === rel || /وضعية/.test(name)) return;
+          var hay = words(it.title + " " + (it.topics || []).join(" ")), s = 0;
+          W.forEach(function (w) { if (hay.indexOf(w) >= 0) s++; });
+          if (it.section === "dars") s += 0.5;
+          if (s >= 1.5 && s > bs) { bs = s; best = it; }
+        });
+        cb(best);
+      });
+    }
+
+    function readChallenge() {
+      try {
+        var m = location.search.match(/[?&]c=([^&#]+)/);
+        if (m) {
+          var raw = decodeURIComponent(escape(atob(decodeURIComponent(m[1]).replace(/-/g, "+").replace(/_/g, "/"))));
+          var o = JSON.parse(raw), c = { n: String(o.n || "").slice(0, 30), s: Math.max(0, Math.min(+o.m || 20, +o.s || 0)), m: Math.max(1, Math.min(100, +o.m || 20)), t: Math.max(0, Math.min(600, Math.round(+o.t || 0))) };
+          sessionStorage.setItem("math-chal:" + rel, JSON.stringify(c));
+          return c;
+        }
+        return JSON.parse(sessionStorage.getItem("math-chal:" + rel) || "null");
+      } catch (e) { return null; }
+    }
+    function challenge(name, tu) {
+      var r = readScore() || { s: 0, m: 20 }, mins = tu ? Math.max(1, Math.round(tu.ms / 60000)) : 0;
+      var code = btoa(unescape(encodeURIComponent(JSON.stringify({ n: name, s: r.s, m: r.m, t: mins })))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+      var url = location.href.split("#")[0].split("?")[0] + "?c=" + code;
+      var t = document.title.split(" - ")[0];
+      var text = "🏁 أحرزتُ " + fmt(r.s) + "/" + r.m + " في «" + t + "»" + (mins ? " خلال " + mins + " دقيقة" : "") + "، هل يمكنك التغلب على نتيجتي؟";
+      if (navigator.share) { navigator.share({ text: text, url: url }).catch(function () {}); return; }
+      copyTxt(text + "\n" + url);
+      toast("🔗 نُسخت رسالة التحدي: الصقها لزميلك في واتساب أو ماسنجر.");
+    }
+    function copyTxt(t) {
+      function old() { var a = document.createElement("textarea"); a.value = t; document.body.appendChild(a); a.select(); try { document.execCommand("copy"); } catch (e) {} a.remove(); }
+      try { navigator.clipboard.writeText(t).catch(old); } catch (e) { old(); }
+    }
+
+    function certificate(name, cls, rows, tu) {
+      var r = readScore() || { s: 0, m: 20, st: 0 }, ratio = r.s / (r.m || 20);
+      var W = 1080, H = 1350, c = document.createElement("canvas"); c.width = W; c.height = H;
+      var x = c.getContext("2d"), F = '"Tajawal", "Segoe UI", Tahoma, Arial, sans-serif';
+      x.fillStyle = "#fff"; x.fillRect(0, 0, W, H);
+      x.strokeStyle = "#1e3a8a"; x.lineWidth = 14; x.strokeRect(30, 30, W - 60, H - 60);
+      x.strokeStyle = "#d97706"; x.lineWidth = 3; x.strokeRect(56, 56, W - 112, H - 112);
+      x.textAlign = "center"; x.direction = "rtl"; x.fillStyle = "#334155";
+      x.font = "bold 30px " + F;
+      x.fillText("الجمهورية الجزائرية الديمقراطية الشعبية — وزارة التربية", W / 2, 120);
+      x.fillText("متوسطة العربي بن مهيدي، وادي فراغة، قالمة", W / 2, 165);
+      var title = ratio >= 0.8 ? "شهادة تفوّق" : ratio >= 0.5 ? "شهادة نجاح" : "شهادة مثابرة";
+      x.font = "120px " + F; x.fillText(ratio >= 0.8 ? "🏆" : ratio >= 0.5 ? "🎓" : "💪", W / 2, 310);
+      x.fillStyle = "#1e3a8a"; x.font = "bold 82px " + F; x.fillText(title, W / 2, 420);
+      x.fillStyle = "#475569"; x.font = "bold 34px " + F; x.fillText("تُمنح هذه الشهادة إلى التلميذ(ة):", W / 2, 490);
+      x.fillStyle = "#0f172a"; x.font = "bold 64px " + F; x.fillText(name || "....................", W / 2, 575);
+      x.fillStyle = "#475569"; x.font = "bold 34px " + F;
+      x.fillText((cls ? "القسم: " + cls + " — " : "") + (LEVEL[level] ? "السنة " + LEVEL[level] : ""), W / 2, 630);
+      var t = document.title.split(" - ")[0].slice(0, 44);
+      x.fillText("في «" + t + "»", W / 2, 680);
+      x.direction = "ltr"; x.fillStyle = "#1e3a8a"; x.font = "bold 150px " + F; x.fillText(fmt(r.s) + " / " + (r.m || 20), W / 2, 840);
+      x.direction = "rtl"; x.fillStyle = "#92400e"; x.font = "bold 40px " + F;
+      var mins = tu ? Math.max(1, Math.round(tu.ms / 60000)) : 0;
+      x.fillText((r.st ? "⭐ " + r.st + " نجمة" : "") + (r.st && mins ? "   ·   " : "") + (mins ? "⏱️ " + mins + " دقيقة" : ""), W / 2, 910);
+      /* diagnosis, small */
+      var y = 975, shown = rows.slice(0, 5);
+      x.font = "bold 30px " + F; x.textAlign = "right";
+      shown.forEach(function (o) {
+        x.fillStyle = o.st === "ok" ? "#15803d" : o.st === "mid" ? "#b45309" : "#b91c1c";
+        x.beginPath(); x.arc(W - 150, y - 10, 11, 0, 7); x.fill();
+        x.fillStyle = "#334155"; x.fillText(o.n.slice(0, 40), W - 175, y);
+        x.textAlign = "left"; x.direction = "ltr"; x.fillText(fmt(o.e) + " / " + fmt(o.p), 150, y); x.textAlign = "right"; x.direction = "rtl";
+        y += 46;
+      });
+      x.textAlign = "center"; x.fillStyle = "#475569"; x.font = "bold 32px " + F;
+      var d = new Date(), ds = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+      x.fillText("الأستاذ: يوسفي السوفي", W / 2, H - 140);
+      x.font = "28px " + F; x.direction = "ltr"; x.fillStyle = "#64748b";
+      x.fillText(ds + "  ·  " + ROOT.host + ROOT.pathname, W / 2, H - 92);
       c.toBlob(function (blob) {
         if (!blob) return;
-        var file = new File([blob], "natijati.png", { type: "image/png" });
-        var text = "حصلت على " + fmt(r.s) + " / " + (r.m || 20) + " في «" + t + "». جرّبه أنت أيضا: " + location.href.split("#")[0];
-        if (navigator.canShare && navigator.canShare({ files: [file] })) {
-          navigator.share({ files: [file], text: text }).catch(function () {});
-        } else {
-          var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "natijati.png";
-          document.body.appendChild(a); a.click(); a.remove();
-        }
+        var file = new File([blob], "shahada.png", { type: "image/png" });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) navigator.share({ files: [file], text: title + " — " + t }).catch(function () { dl(blob); });
+        else dl(blob);
       }, "image/png");
+      function dl(blob) { var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "shahada.png"; document.body.appendChild(a); a.click(); a.remove(); toast("🎓 حُفظت الشهادة في هاتفك (التنزيلات)."); }
     }
+
+    /* exam mode from a link (?exam=60) or an exam in progress */
+    var est = exGet();
+    if (est) { if (Date.now() >= est.end) setTimeout(function () { finishExam(true); }, 200); else examStart(est); }
+    else { var qm = location.search.match(/[?&]exam=(\d{2,3})/); if (qm && EXMIN[section]) examDialog(+qm[1]); }
+    genButtons();
 
     /* «📄 الموضوع كاملا» : the printed sheet (questions only) on the screen */
     var sheet = $("#paper .copy");
@@ -626,6 +1065,549 @@ body.sx-ex .sx-chip.u.sit{background:#fffbeb;color:#92400e;border-color:#f59e0b}
       if (location.hash === "#sheet") sb.click();
     }
   }
+
+  /* ---------- 5. tools shared by all pages (2026-11-16) ---------- */
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function toast(t) {
+    var d = el("div", "sx-toast", esc(t));
+    document.body.appendChild(d);
+    setTimeout(function () { d.classList.add("out"); }, 3600);
+    setTimeout(function () { d.remove(); }, 4200);
+  }
+
+  /* ---- 🗣️ reading aloud in Arabic (speechSynthesis); the buttons appear only if the device has an Arabic voice ---- */
+  var VOICE = null, voiceWait = [];
+  function whenVoice(fn) {
+    if (VOICE) return fn();
+    voiceWait.push(fn);
+    if (voiceWait.length > 1 || !("speechSynthesis" in window) || !window.SpeechSynthesisUtterance) return;
+    function pickV() {
+      var vs = [];
+      try { vs = speechSynthesis.getVoices() || []; } catch (e) {}
+      var ar = vs.filter(function (v) { return /^ar([-_]|$)/i.test(v.lang); });
+      if (!ar.length) return false;
+      VOICE = ar.filter(function (v) { return /DZ/i.test(v.lang); })[0] || ar.filter(function (v) { return /SA/i.test(v.lang); })[0] || ar[0];
+      voiceWait.splice(0).forEach(function (f) { try { f(); } catch (e) {} });
+      return true;
+    }
+    if (!pickV()) {
+      try { speechSynthesis.addEventListener("voiceschanged", function h() { if (pickV()) speechSynthesis.removeEventListener("voiceschanged", h); }); } catch (e) {}
+      setTimeout(pickV, 1500);
+    }
+  }
+  /* maths written for the eye → words for the ear */
+  function spoken(node) {
+    var d = node.cloneNode(true);
+    $$(".sx-say,.sym-toolbar,.sx-chips,button,svg,.star-burst", d).forEach(function (x) { x.remove(); });
+    $$(".fr", d).forEach(function (f) {
+      var p = f.children;
+      if (p.length === 2) f.textContent = " " + p[0].textContent + " على " + p[1].textContent + " ";
+    });
+    var t = d.textContent;
+    return t
+      .replace(/[\u{1F300}-\u{1FAFF}☀-➿️]/gu, " ")
+      .replace(/PGCD/g, " القاسم المشترك الأكبر ")
+      .replace(/√\s*\(([^)]*)\)/g, " جذر $1 ").replace(/√/g, " جذر ")
+      .replace(/²/g, " مربع ").replace(/³/g, " مكعب ")
+      .replace(/\bcos\b/g, " جيب تمام ").replace(/\bsin\b/g, " جيب ").replace(/\btan\b/g, " ظل ")
+      .replace(/(\d)\s*cm²/g, "$1 سنتيمتر مربع").replace(/(\d)\s*m²/g, "$1 متر مربع")
+      .replace(/(\d)\s*km\b/g, "$1 كيلومتر").replace(/(\d)\s*cm\b/g, "$1 سنتيمتر").replace(/(\d)\s*mm\b/g, "$1 مليمتر").replace(/(\d)\s*m\b/g, "$1 متر")
+      .replace(/(\d)\s*kg\b/g, "$1 كيلوغرام").replace(/(\d)\s*g\b/g, "$1 غرام").replace(/(\d)\s*DA\b/g, "$1 دينار").replace(/\bDA\b/g, " دينار ")
+      .replace(/(\d)\s*°/g, "$1 درجة").replace(/π/g, " بي ")
+      .replace(/(\d),(\d)/g, "$1 فاصلة $2")
+      .replace(/\/\//g, " يوازي ").replace(/(\d)\s*\/\s*(\d)/g, "$1 على $2")
+      .replace(/≈/g, " يساوي تقريبا ").replace(/≠/g, " لا يساوي ").replace(/≤/g, " أصغر من أو يساوي ").replace(/≥/g, " أكبر من أو يساوي ")
+      .replace(/=/g, " يساوي ").replace(/×/g, " ضرب ").replace(/÷/g, " قسمة ").replace(/\+/g, " زائد ").replace(/[−–]/g, " ناقص ")
+      .replace(/(\s|^)-(?=\s*\d)/g, " ناقص ").replace(/</g, " أصغر من ").replace(/>/g, " أكبر من ").replace(/;/g, " و ")
+      .replace(/\s+/g, " ").trim();
+  }
+  var sayCur = null;
+  function sayBtn(node) {
+    var b = el("button", "sx-say", "🗣️");
+    b.type = "button"; b.title = "اقرأ لي"; b.setAttribute("aria-label", "اقرأ النص بصوت عال");
+    b.onclick = function (e) {
+      e.preventDefault(); e.stopPropagation();
+      try { speechSynthesis.cancel(); } catch (x) {}
+      if (sayCur === b) { b.classList.remove("on"); sayCur = null; return; }
+      if (sayCur) sayCur.classList.remove("on");
+      var u = new SpeechSynthesisUtterance(spoken(node));
+      u.voice = VOICE; u.lang = VOICE.lang; u.rate = 0.88;
+      u.onend = u.onerror = function () { b.classList.remove("on"); if (sayCur === b) sayCur = null; };
+      sayCur = b; b.classList.add("on");
+      speechSynthesis.speak(u);
+    };
+    return b;
+  }
+
+  /* ---- 📝 scratchpad: finger drawing on squared paper, colours, eraser, undo ---- */
+  var pads = {};
+  function openPad(key, title, src) {
+    var strokes = pads[key] = pads[key] || [];
+    var ov = el("div", "sx-pad");
+    var COLS = [["#111827", "أسود"], ["#1d4ed8", "أزرق"], ["#dc2626", "أحمر"], ["#15803d", "أخضر"]];
+    ov.innerHTML = '<div class="sx-pad-top"><b>📝 مسودة الحساب</b><span class="t"></span><button type="button" class="x">✕ إغلاق</button></div>' +
+      '<div class="sx-pad-tools">' + COLS.map(function (c, i) { return '<button type="button" class="col' + (i === 0 ? " on" : "") + '" data-c="' + c[0] + '" aria-label="' + c[1] + '"><i style="background:' + c[0] + '"></i></button>'; }).join("") +
+      '<button type="button" class="w" data-w="2.6">✏️ رفيع</button><button type="button" class="er">🧽 ممحاة</button><button type="button" class="un">↶ تراجع</button><button type="button" class="cl">🗑️ مسح</button></div>' +
+      (src ? '<details class="sx-pad-q"><summary>📄 نص التمرين</summary><div></div></details>' : "") +
+      '<div class="sx-pad-area"><canvas></canvas></div><div class="sx-pad-note">المسودة لا تُصحَّح ولا تُرسل: اكتب بإصبعك، ثم انقل النتيجة مع الوحدة إلى خانة الجواب.</div>';
+    $(".t", ov).textContent = title || "";
+    if (src) {
+      var q = $(".sx-pad-q div", ov), cb = $(".context-box", src);
+      if (cb) q.appendChild(el("p", "", cb.innerHTML));
+      $$(".q-title > span:first-child", src).forEach(function (s) { var p = el("p", "", s.innerHTML); $$(".sx-say", p).forEach(function (x) { x.remove(); }); q.appendChild(p); });
+      $$(".sx-say", q).forEach(function (x) { x.remove(); });
+    }
+    document.body.appendChild(ov);
+    document.documentElement.classList.add("sx-noscroll");
+    var cv = $("canvas", ov), area = $(".sx-pad-area", ov), ctx = cv.getContext("2d");
+    var color = COLS[0][0], width = 2.6, erase = false, cur = null, dpr = Math.min(3, window.devicePixelRatio || 1);
+    function size() {
+      var r = area.getBoundingClientRect();
+      cv.width = Math.round(r.width * dpr); cv.height = Math.round(r.height * dpr);
+      cv.style.width = r.width + "px"; cv.style.height = r.height + "px";
+      redraw();
+    }
+    function line(s, a, b) {
+      ctx.globalCompositeOperation = s.er ? "destination-out" : "source-over";
+      ctx.strokeStyle = s.c; ctx.lineWidth = s.w * dpr; ctx.lineCap = "round"; ctx.lineJoin = "round";
+      ctx.beginPath(); ctx.moveTo(a[0] * dpr, a[1] * dpr); ctx.lineTo(b[0] * dpr, b[1] * dpr); ctx.stroke();
+    }
+    function redraw() {
+      ctx.clearRect(0, 0, cv.width, cv.height);
+      strokes.forEach(function (s) { for (var i = 0; i < s.p.length; i++) line(s, s.p[Math.max(0, i - 1)], s.p[i]); });
+    }
+    function pos(e) { var r = cv.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
+    cv.addEventListener("pointerdown", function (e) {
+      e.preventDefault();
+      try { cv.setPointerCapture(e.pointerId); } catch (x) {}
+      cur = { c: color, w: erase ? 26 : width, er: erase, p: [pos(e)] };
+      strokes.push(cur); line(cur, cur.p[0], cur.p[0]);
+    });
+    cv.addEventListener("pointermove", function (e) {
+      if (!cur) return;
+      e.preventDefault();
+      var p = pos(e), l = cur.p[cur.p.length - 1];
+      if (Math.abs(p[0] - l[0]) + Math.abs(p[1] - l[1]) < 1.2) return;
+      cur.p.push(p); line(cur, l, p);
+    });
+    function up() { cur = null; }
+    cv.addEventListener("pointerup", up); cv.addEventListener("pointercancel", up); cv.addEventListener("pointerleave", up);
+    $$(".col", ov).forEach(function (b) {
+      b.onclick = function () { color = b.dataset.c; erase = false; $$(".col,.er", ov).forEach(function (x) { x.classList.toggle("on", x === b); }); };
+    });
+    $(".w", ov).onclick = function () { width = width < 4 ? 5.5 : 2.6; this.textContent = width < 4 ? "✏️ رفيع" : "🖍️ عريض"; };
+    $(".er", ov).onclick = function () { erase = true; $$(".col", ov).forEach(function (x) { x.classList.remove("on"); }); this.classList.add("on"); };
+    $(".un", ov).onclick = function () { strokes.pop(); redraw(); };
+    $(".cl", ov).onclick = function () { strokes.length = 0; redraw(); };
+    function close() { ov.remove(); document.documentElement.classList.remove("sx-noscroll"); window.removeEventListener("resize", size); }
+    $(".x", ov).onclick = close;
+    window.addEventListener("resize", size);
+    var det = $(".sx-pad-q", ov); if (det) det.addEventListener("toggle", function () { setTimeout(size, 30); });
+    setTimeout(size, 20);
+  }
+
+  /* ---- 🔄 similar exercise with new numbers (only for types that can be generated safely, by level) ----
+     Each generator gives: question, accepted answers, hint 1, hint 2, model answer (الطريقة, steps, النتيجة, الاستنتاج). */
+  function ri(a, b) { return a + Math.floor(Math.random() * (b - a + 1)); }
+  function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+  function gcd(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) { var t = a % b; a = b; b = t; } return a; }
+  function dn(v) { return String(Math.round(v * 1000) / 1000).replace(".", ",").replace(/^-/, "−"); }
+  function M(s) { return '<span class="math">' + s + "</span>"; }
+  function FR(a, b) { return '<span class="fr"><span>' + a + "</span><span>" + b + "</span></span>"; }
+  function sg(n) { return n < 0 ? "−" + Math.abs(n) : String(n); }
+  function par(n) { return n < 0 ? "(−" + Math.abs(n) + ")" : "(+" + n + ")"; }
+  function pn(n) { return n < 0 ? "(−" + Math.abs(n) + ")" : String(n); }
+  function SF(n, d) { return d === 1 ? sg(n) : n < 0 ? "−" + FR(-n, d) : FR(n, d); }
+  function euclid(a, b) { var L = []; while (b) { var q = Math.floor(a / b), r = a % b; L.push(a + " = " + b + " × " + q + " + " + r); a = b; b = r; } return { L: L, g: a }; }
+  /* n / 10^s written with a decimal comma */
+  function decS(n, s) {
+    if (s <= 0) return String(n * Math.pow(10, -s));
+    var t = String(Math.abs(n));
+    while (t.length <= s) t = "0" + t;
+    var i = t.length - s, r = (t.slice(0, i) + "," + t.slice(i)).replace(/,?0+$/, "");
+    return (n < 0 ? "−" : "") + r;
+  }
+  function decFix(n, s) { var t = String(n); if (!s) return t; while (t.length <= s) t = "0" + t; return t.slice(0, t.length - s) + "," + t.slice(t.length - s); }
+  function fracAns(P, Q) { if (Q < 0) { P = -P; Q = -Q; } var g = gcd(P, Q), p = P / g, q = Q / g; return q === 1 ? [String(p)] : [p + "/" + q]; }
+  function equivFrac(P, Q) {
+    return function (v) {
+      var m = String(v).match(/^(-?\d+)\/(-?\d+)$/);
+      if (m && +m[2] !== 0) return +m[1] * Q === +m[2] * P;
+      return /^-?\d+$/.test(v) ? +v * Q === P : false;
+    };
+  }
+  /* reduction written in place (detailed-solutions rule) */
+  function reduceLine(name, P, Q) {
+    if (Q < 0) { P = -P; Q = -Q; }
+    var g = gcd(P, Q);
+    if (g === 1) return [];
+    var p = P / g, q = Q / g, n = P < 0 ? "−" : "";
+    return [M(name + " = " + n + FR(Math.abs(P) + " ÷ " + g, Q + " ÷ " + g) + " = " + SF(p, q))];
+  }
+  var SMSG = "إجابتك تساوي النتيجة، لكنها ليست على أبسط شكل: أكمل الاختزال (اقسم البسط والمقام على قاسمهما المشترك الأكبر).";
+  var GEN = {
+    pgcd: function () {
+      var g, n, m, a, b;
+      do { g = ri(4, 45); n = ri(2, 14); m = ri(n + 1, 3 * n); a = g * m; b = g * n; } while (gcd(m, n) !== 1 || a > 1500);
+      var E = euclid(a, b), P = M("PGCD(" + a + " ; " + b + ")");
+      return { q: "عيّن " + P + " باستعمال خوارزمية إقليدس.", ans: [String(g)],
+        h1: "اقسم " + M(a) + " على " + M(b) + "، ثم اقسم القاسم على الباقي، وكرّر حتى تحصل على باقٍ معدوم.",
+        h2: "أول قسمة: " + M(E.L[0]) + ". القاسم المشترك الأكبر هو آخر باقٍ غير معدوم.",
+        steps: ["<b>الطريقة:</b> خوارزمية إقليدس: نقسم العدد الأكبر على الأصغر، ثم نقسم القاسم على الباقي، ونكرر حتى نحصل على باقٍ معدوم. القاسم المشترك الأكبر هو آخر باقٍ غير معدوم."]
+          .concat(E.L.map(M), ["آخر باقٍ غير معدوم " + M(g)]),
+        res: "النتيجة: " + M("PGCD(" + a + " ; " + b + ") = " + g), concl: "<b>الاستنتاج:</b> " + M("PGCD(" + a + " ; " + b + ") = " + g) + "." };
+    },
+    irr: function () {
+      var g, n, m;
+      do { g = ri(6, 40); n = ri(2, 16); m = ri(n + 1, 3 * n); } while (gcd(n, m) !== 1 || g * m > 1200);
+      var a = g * n, b = g * m, E = euclid(b, a);
+      return { q: "اكتب الكسر " + M(FR(a, b)) + " على شكل كسر غير قابل للاختزال.", ans: [n + "/" + m], chip: "➗ اكتب الكسر هكذا: البسط / المقام",
+        h1: "احسب أولا " + M("PGCD(" + b + " ; " + a + ")") + " بخوارزمية إقليدس.",
+        h2: "اقسم البسط والمقام على " + M("PGCD(" + b + " ; " + a + ")") + "، وهو آخر باقٍ غير معدوم في خوارزمية إقليدس.",
+        steps: ["<b>الطريقة:</b> خاصية: بقسمة البسط والمقام على قاسمهما المشترك الأكبر نحصل على كسر غير قابل للاختزال."]
+          .concat(E.L.map(M), [M("PGCD(" + b + " ; " + a + ") = " + g), M(a + " ÷ " + g + " = " + n) + " و" + M(b + " ÷ " + g + " = " + m)]),
+        res: "النتيجة: " + M(FR(a, b) + " = " + FR(a + " ÷ " + g, b + " ÷ " + g) + " = " + FR(n, m)),
+        concl: "<b>الاستنتاج:</b> " + M(FR(n, m)) + " غير قابل للاختزال لأن " + M("PGCD(" + n + " ; " + m + ") = 1") + ".",
+        simp: equivFrac(a, b), sm: SMSG };
+    },
+    aroot: function () {
+      var m, k, N;
+      do { m = pick([2, 3, 5, 6, 7, 10, 11]); k = ri(2, 9); N = k * k * m; } while (N > 450);
+      var R = M("√" + N + " = " + k + "√" + m);
+      return { q: "اكتب " + M("√" + N) + " على الشكل " + M("a√b") + " حيث " + M("a") + " و" + M("b") + " عددان طبيعيان و" + M("b") + " أصغر ما يمكن.",
+        ans: [k + "√" + m], chip: "√ على الشكل a√b",
+        h1: "ابحث عن أكبر مربع تام يقسم " + M(N) + " من بين " + M("4 ; 9 ; 16 ; 25 ; 36 ; 49 ; 64 ; 81") + ".",
+        h2: "اكتب " + M(N) + " على شكل جداء مربع تام في عدد آخر، ثم استعمل " + M("√(a × b) = √a × √b") + ".",
+        steps: ["<b>الطريقة:</b> خاصية: " + M("√(a × b) = √a × √b") + " حيث a وb موجبان. نكتب العدد تحت الجذر على شكل جداء مربع تام (أكبر ما يمكن) في عدد آخر.",
+          M("√" + N + " = √(" + k * k + " × " + m + ")"), M("√" + N + " = √" + k * k + " × √" + m)],
+        res: "النتيجة: " + R, concl: "<b>الاستنتاج:</b> " + R + " أي " + M("a = " + k) + " و" + M("b = " + m) + ".",
+        simp: function (v) { var mm = String(v).match(/^(\d+)√(\d+)$/); return !!(mm && +mm[1] * +mm[1] * +mm[2] === N); },
+        sm: "إجابتك تساوي العدد، لكن " + M("b") + " ليس أصغر ما يمكن: ابحث عن مربع تام أكبر يقسم العدد تحت الجذر." };
+    },
+    rootsum: function () {
+      var m, ks, cs, sn, v;
+      do {
+        m = pick([2, 3, 5, 7]); ks = [ri(2, 5), ri(2, 5), ri(2, 5)]; cs = [ri(1, 3), ri(1, 3), ri(1, 3)]; sn = [1, pick([1, -1]), pick([1, -1])];
+        v = cs[0] * ks[0] + sn[1] * cs[1] * ks[1] + sn[2] * cs[2] * ks[2];
+      } while (v <= 0 || ks[0] === ks[1] || ks[1] === ks[2] || ks[0] === ks[2] || ks.some(function (k) { return k * k * m > 200; }));
+      function op(i) { return sn[i] > 0 ? " + " : " − "; }
+      function term(i) { return (cs[i] === 1 ? "" : cs[i]) + "√" + ks[i] * ks[i] * m; }
+      var co = cs.map(function (c, i) { return c * ks[i]; });
+      var lines = [0, 1, 2].map(function (i) {
+        var N = ks[i] * ks[i] * m, base = "√(" + ks[i] * ks[i] + " × " + m + ")";
+        return M(cs[i] === 1 ? "√" + N + " = " + base + " = " + ks[i] + "√" + m : cs[i] + "√" + N + " = " + cs[i] + " × " + base + " = " + cs[i] + " × " + ks[i] + "√" + m + " = " + co[i] + "√" + m);
+      });
+      var A = (v === 1 ? "" : v) + "√" + m;
+      return { q: "لدينا " + M("A = " + term(0) + op(1) + term(1) + op(2) + term(2)) + "<br>اكتب " + M("A") + " على الشكل " + M("a√" + m) + " حيث " + M("a") + " عدد طبيعي.",
+        ans: v === 1 ? ["√" + m, "1√" + m] : [v + "√" + m], chip: "√ على الشكل a√" + m,
+        h1: "بسّط كل جذر وحده: اكتب العدد تحت الجذر على شكل جداء مربع تام في " + M(m) + ".",
+        h2: "بعد التبسيط تصبح كل الحدود من الشكل " + M("…√" + m) + "، فاجمع المعاملات كما في " + M("5x − 2x + x = (5 − 2 + 1)x") + ".",
+        steps: ["<b>الطريقة:</b> خاصية: " + M("√(a × b) = √a × √b") + " حيث a وb موجبان. نبسّط كل جذر، ثم نجمع الحدود التي لها نفس الجذر " + M("√" + m) + "."]
+          .concat(lines, [M("A = " + co[0] + "√" + m + op(1) + co[1] + "√" + m + op(2) + co[2] + "√" + m), M("A = (" + co[0] + op(1) + co[1] + op(2) + co[2] + ")√" + m)]),
+        res: "النتيجة: " + M("A = " + A), concl: "<b>الاستنتاج:</b> " + M("A = " + A) + "." };
+    },
+    thales: function () {
+      var ask = pick(["AN", "MN"]), AB, AM, X;
+      do { AB = ri(4, 15); AM = ri(2, AB - 1); X = ri(3, 18); } while ((AM * X * 10) % AB !== 0 || X === AB);
+      var v = AM * X / AB, den = ask === "AN" ? "AC" : "BC";
+      return { q: M("ABC") + " مثلث، " + M("M") + " نقطة من " + M("[AB]") + " و" + M("N") + " نقطة من " + M("[AC]") + " حيث " + M("(MN) // (BC)") + ".<br>" +
+          M("AM = " + AM + " cm") + " ، " + M("AB = " + AB + " cm") + " ، " + M(den + " = " + X + " cm") + ".<br>احسب الطول " + M(ask) + " (بـ cm).",
+        ans: [dn(v)].concat(v % 1 ? fracAns(AM * X, AB) : []), unit: "cm",
+        h1: "المستقيمان " + M("(MN)") + " و" + M("(BC)") + " متوازيان: استعمل خاصية طالس في المثلث " + M("ABC") + ".",
+        h2: "اكتب المساواة " + M(FR("AM", "AB") + " = " + FR(ask, den)) + " ثم احسب بالجداء المتصالب.",
+        steps: ["<b>الطريقة:</b> خاصية طالس: النقط " + M("A") + " و" + M("M") + " و" + M("B") + " في استقامية، والنقط " + M("A") + " و" + M("N") + " و" + M("C") + " في استقامية وبنفس الترتيب، و" + M("(MN) // (BC)") + "، إذن:",
+          M(FR("AM", "AB") + " = " + FR("AN", "AC") + " = " + FR("MN", "BC")), M(FR(AM, AB) + " = " + FR(ask, X)), M(ask + " = " + FR(AM + " × " + X, AB)), M(ask + " = " + FR(AM * X, AB))],
+        res: "النتيجة: " + M(ask + " = " + dn(v) + " cm"), concl: "<b>الاستنتاج:</b> طول " + M(ask) + " هو " + M(dn(v) + " cm") + "." };
+    },
+    trig: function () {
+      var h = ri(40, 150) / 10, th = ri(20, 70), f = pick(["cos", "sin"]), R = Math.PI / 180;
+      var val = h * (f === "cos" ? Math.cos(th * R) : Math.sin(th * R)), side = f === "cos" ? "AB" : "AC";
+      var r1 = Math.round(val * 10) / 10, fl = Math.floor(val * 10) / 10, ce = Math.ceil(val * 10) / 10;
+      return { q: M("ABC") + " مثلث قائم في " + M("A") + " حيث " + M("BC = " + dn(h) + " cm") + " وقيس الزاوية " + M("ABC") + " هو " + M(th + "°") + ".<br>احسب الطول " + M(side) + " ثم أعط قيمته المقرّبة إلى " + M("0,1") + " (بـ cm).",
+        ans: [dn(r1), dn(fl), dn(ce)], unit: "cm", chip: "🎯 قيمة مقرّبة إلى 0,1",
+        h1: M("BC") + " هو الوتر، و" + M(side) + " هو الضلع " + (f === "cos" ? "المجاور" : "المقابل") + " للزاوية " + M("ABC") + ": أيّ نسبة مثلثية تربطهما؟",
+        h2: "استعمل " + M(f + " ABC = " + FR(side, "BC")) + " ثم اضرب في " + M("BC") + " (الحاسبة على الدرجات DEG).",
+        steps: ["<b>الطريقة:</b> في المثلث " + M("ABC") + " القائم في " + M("A") + ": " + (f === "cos" ? "جيب تمام زاوية حادة = الضلع المجاور ÷ الوتر." : "جيب زاوية حادة = الضلع المقابل ÷ الوتر."),
+          M(f + " ABC = " + FR(side, "BC")), M(f + " " + th + "° = " + FR(side, dn(h))), M(side + " = " + dn(h) + " × " + f + " " + th + "°"), M(side + " ≈ " + dn(Math.round(val * 1000) / 1000))],
+        res: "النتيجة: " + M(side + " ≈ " + dn(r1) + " cm"), concl: "<b>الاستنتاج:</b> " + M(side + " ≈ " + dn(r1) + " cm") + " (قيمة مقرّبة إلى " + M("0,1") + ")." };
+    },
+    relmul: function () {
+      var a, b, c, v, expr, abs;
+      if (Math.random() < 0.6) {
+        do { a = ri(2, 9) * pick([1, -1]); b = ri(2, 9) * pick([1, -1]); c = ri(2, 6) * pick([1, -1]); } while (a > 0 && b > 0 && c > 0);
+        v = a * b * c; expr = par(a) + " × " + par(b) + " × " + par(c);
+        abs = Math.abs(a) + " × " + Math.abs(b) + " × " + Math.abs(c) + " = " + Math.abs(v);
+      } else {
+        var t; do { a = ri(2, 9) * pick([1, -1]); c = ri(2, 9) * pick([1, -1]); t = ri(2, 6) * pick([1, -1]); } while (a > 0 && c > 0 && t > 0);
+        b = c * t; v = a * t; expr = par(a) + " × " + par(b) + " ÷ " + par(c);
+        abs = Math.abs(a) + " × " + Math.abs(b) + " ÷ " + Math.abs(c) + " = " + Math.abs(a * b) + " ÷ " + Math.abs(c) + " = " + Math.abs(v);
+      }
+      var neg = [a, b, c].filter(function (n) { return n < 0; }).length;
+      return { q: "احسب: " + M("A = " + expr),
+        ans: [String(v)],
+        h1: "ابدأ بإشارة النتيجة: عُدّ الأعداد السالبة.",
+        h2: "عدد الأعداد السالبة " + M(neg) + "؛ إن كان زوجيا فالنتيجة موجبة، وإن كان فرديا فهي سالبة. ثم احسب بالمسافات إلى الصفر.",
+        steps: ["<b>الطريقة:</b> قاعدة الإشارات: جداء (أو حاصل قسمة) أعداد نسبية يكون موجبا إذا كان عدد العوامل السالبة زوجيا، وسالبا إذا كان فرديا؛ ثم نحسب بالمسافات إلى الصفر.",
+          "عدد العوامل السالبة " + M(neg) + " وهو " + (neg % 2 ? "فردي، إذن الإشارة " + M("−") : "زوجي، إذن الإشارة " + M("+")) + ".", M(abs)],
+        res: "النتيجة: " + M("A = " + sg(v)), concl: "<b>الاستنتاج:</b> " + M("A = " + sg(v)) + "." };
+    },
+    fracop: function () {
+      var op = pick(["×", "÷", "+", "−"]), a, b, c, d, P, Q, L;
+      function rf() { var den = ri(2, 9), num; do { num = ri(1, 11) * pick([1, 1, -1]); } while (gcd(num, den) !== 1); return [num, den]; }
+      do {
+        var f1 = rf(), f2 = rf(); a = f1[0]; b = f1[1]; c = f2[0]; d = f2[1];
+        if (op === "×") { P = a * c; Q = b * d; }
+        else if (op === "÷") { P = a * d; Q = b * c; }
+        else { L = b * d / gcd(b, d); P = a * (L / b) + (op === "+" ? 1 : -1) * c * (L / d); Q = L; }
+        if (Q < 0) { P = -P; Q = -Q; }
+      } while (P === 0 || Q > 72 || Math.abs(P) > 120 || (op === "+" || op === "−") && b === d);
+      var B = c < 0 ? "(" + SF(c, d) + ")" : SF(c, d), expr = SF(a, b) + " " + op + " " + B, steps, meth;
+      if (op === "×" || op === "÷") {
+        var cc = op === "÷" ? d * (c < 0 ? -1 : 1) : c, dd = op === "÷" ? Math.abs(c) : d;
+        meth = op === "÷" ? "القسمة على عدد ناطق غير معدوم هي الضرب في مقلوبه، ثم نضرب البسطين معا والمقامين معا (مع قاعدة الإشارات)، ثم نختزل."
+          : "لضرب عددين ناطقين نضرب البسطين معا والمقامين معا (مع قاعدة الإشارات)، ثم نختزل.";
+        steps = (op === "÷" ? [M("A = " + SF(a, b) + " × " + (cc < 0 ? "(" + SF(cc, dd) + ")" : SF(cc, dd)))] : [])
+          .concat([M("A = " + FR(pn(a) + " × " + pn(cc), b + " × " + dd)), M("A = " + SF(a * cc, b * dd))]);
+      } else {
+        var A1 = a * (L / b), C1 = c * (L / d);
+        meth = "نوحّد المقامين (نأخذ المضاعف المشترك الأصغر " + M(L) + ")، ثم " + (op === "+" ? "نجمع" : "نطرح") + " البسطين ونحتفظ بالمقام المشترك، ثم نختزل.";
+        steps = [M("A = " + SF(A1, L) + " " + op + " " + (C1 < 0 ? "(" + SF(C1, L) + ")" : SF(C1, L))), M("A = " + FR(pn(A1) + " " + op + " " + pn(C1), L)), M("A = " + SF(P, Q))];
+      }
+      steps = ["<b>الطريقة:</b> " + meth].concat(steps, reduceLine("A", P, Q));
+      var ans = fracAns(P, Q), g = gcd(P, Q), res = SF(P / g, Q / g);
+      return { q: "احسب العدد الناطق " + M("A") + " ثم اكتبه على أبسط شكل:<br>" + M("A = " + expr), ans: ans, chip: "➗ اكتب الكسر هكذا: البسط / المقام",
+        h1: op === "÷" ? "القسمة على كسر هي الضرب في مقلوبه." : op === "×" ? "اضرب البسطين معا والمقامين معا، وانتبه للإشارة." : "وحّد المقامين أولا: ابحث عن مضاعف مشترك للمقامين " + M(b) + " و" + M(d) + ".",
+        h2: "طبّق قاعدة الإشارات، ثم اختزل الكسر الناتج بقسمة البسط والمقام على قاسمهما المشترك الأكبر.",
+        steps: steps, res: "النتيجة: " + M("A = " + res), concl: "<b>الاستنتاج:</b> " + M("A = " + res) + " على أبسط شكل.",
+        simp: equivFrac(P, Q), sm: SMSG };
+    },
+    midline: function () {
+      var inv = Math.random() < 0.4, x10 = ri(30, 160), v;
+      var data = inv ? M("IJ = " + dn(x10 / 10) + " cm") : M("BC = " + dn(x10 / 10) + " cm"), ask = inv ? "BC" : "IJ";
+      v = inv ? x10 / 5 : x10 / 20;
+      return { q: M("ABC") + " مثلث، " + M("I") + " منتصف " + M("[AB]") + " و" + M("J") + " منتصف " + M("[AC]") + "، و" + data + ".<br>احسب الطول " + M(ask) + " (بـ cm).",
+        ans: [dn(v)], unit: "cm",
+        h1: M("I") + " و" + M("J") + " منتصفا ضلعين في المثلث: تذكّر خاصية مستقيم المنتصفين.",
+        h2: "طول القطعة الواصلة بين منتصفي ضلعين يساوي نصف طول الضلع الثالث: " + M("IJ = " + FR("BC", 2)) + ".",
+        steps: ["<b>الطريقة:</b> خاصية مستقيم المنتصفين: في مثلث، طول القطعة الواصلة بين منتصفي ضلعين يساوي نصف طول الضلع الثالث.",
+          "في المثلث " + M("ABC") + ": " + M("I") + " منتصف " + M("[AB]") + " و" + M("J") + " منتصف " + M("[AC]") + "، إذن " + M("IJ = " + FR("BC", 2)),
+          inv ? M("BC = 2 × IJ = 2 × " + dn(x10 / 10)) : M("IJ = " + FR(dn(x10 / 10), 2))],
+        res: "النتيجة: " + M(ask + " = " + dn(v) + " cm"), concl: "<b>الاستنتاج:</b> " + M(ask + " = " + dn(v) + " cm") + "." };
+    },
+    prio: function () {
+      var f = ri(1, 5), a, b, c, d, s, v, L;
+      if (f === 1) { a = ri(5, 60); b = ri(2, 12); c = ri(2, 12); s = a + " + " + b + " × " + c; L = [a + " + " + b * c]; v = a + b * c; }
+      else if (f === 2) { b = ri(2, 12); c = ri(2, 12); a = ri(b * c + 1, b * c + 60); s = a + " − " + b + " × " + c; L = [a + " − " + b * c]; v = a - b * c; }
+      else if (f === 3) { a = ri(2, 20); b = ri(2, 20); c = ri(2, 9); s = "(" + a + " + " + b + ") × " + c; L = [(a + b) + " × " + c]; v = (a + b) * c; }
+      else if (f === 4) { c = ri(2, 9); b = c * ri(2, 12); a = ri(2, 12); d = ri(2, 9); s = a + " × " + d + " + " + b + " ÷ " + c; L = [a * d + " + " + b / c]; v = a * d + b / c; }
+      else { a = ri(2, 9); c = ri(2, 15); b = c + ri(1, 12); d = ri(1, 30); s = d + " + " + a + " × (" + b + " − " + c + ")"; L = [d + " + " + a + " × " + (b - c), d + " + " + a * (b - c)]; v = d + a * (b - c); }
+      return { q: "احسب: " + M("A = " + s), ans: [String(v)],
+        h1: "تذكّر الأولويات: الأقواس أولا، ثم الضرب والقسمة، ثم الجمع والطرح.",
+        h2: "ابدأ بـ " + M(f === 3 || f === 5 ? "( … )" : f === 4 ? "×  و  ÷" : "×") + " ثم أكمل الحساب.",
+        steps: ["<b>الطريقة:</b> الأولويات: نحسب ما بين الأقواس أولا، ثم الضرب والقسمة، ثم الجمع والطرح من اليسار إلى اليمين.", M("A = " + s)].concat(L.map(function (l) { return M("A = " + l); })),
+        res: "النتيجة: " + M("A = " + v), concl: "<b>الاستنتاج:</b> " + M("A = " + v) + "." };
+    },
+    eucl: function () {
+      var b = ri(6, 25), a, q, r;
+      do { a = ri(100, 999); q = Math.floor(a / b); r = a % b; } while (r === 0);
+      return { q: "أنجز القسمة الإقليدية للعدد " + M(a) + " على " + M(b) + "، ثم اكتب حاصل القسمة والباقي مفصولين بـ " + M(";") + ".",
+        ans: [q + ";" + r], chip: "اكتب: حاصل القسمة ; الباقي",
+        h1: "ابحث عن أكبر مضاعف للعدد " + M(b) + " لا يتجاوز " + M(a) + ".",
+        h2: "تحقّق: المقسوم = القاسم × حاصل القسمة + الباقي، والباقي أصغر من " + M(b) + ".",
+        steps: ["<b>الطريقة:</b> في القسمة الإقليدية: المقسوم = القاسم × حاصل القسمة + الباقي، مع الباقي أصغر من القاسم.",
+          M(b + " × " + q + " = " + b * q), M(a + " − " + b * q + " = " + r), M(r + " < " + b)],
+        res: "النتيجة: " + M(a + " = " + b + " × " + q + " + " + r), concl: "<b>الاستنتاج:</b> حاصل القسمة " + M(q) + " والباقي " + M(r) + "." };
+    },
+    frac2: function () {
+      var op = pick(["+", "−", "×"]), a, b, c, d, k, P, Q, steps;
+      if (op === "×") {
+        do { a = ri(1, 9); b = ri(2, 9); c = ri(1, 9); d = ri(2, 9); } while (gcd(a, b) !== 1 || gcd(c, d) !== 1);
+        P = a * c; Q = b * d;
+        steps = ["<b>الطريقة:</b> لضرب كسرين نضرب البسطين معا والمقامين معا، ثم نختزل إن أمكن.", M("A = " + FR(a + " × " + c, b + " × " + d)), M("A = " + FR(P, Q))];
+      } else {
+        do { b = ri(2, 9); k = ri(2, 4); d = b * k; a = ri(1, 2 * b); c = ri(1, 2 * d); P = op === "+" ? a * k + c : a * k - c; } while (gcd(a, b) !== 1 || gcd(c, d) !== 1 || P <= 0 || d > 36);
+        Q = d;
+        steps = ["<b>الطريقة:</b> نجعل للكسرين نفس المقام، ثم " + (op === "+" ? "نجمع" : "نطرح") + " البسطين ونحتفظ بالمقام، ثم نختزل إن أمكن.",
+          M(FR(a, b) + " = " + FR(a + " × " + k, b + " × " + k) + " = " + FR(a * k, d)), M("A = " + FR(a * k, d) + " " + op + " " + FR(c, d) + " = " + FR(a * k + " " + op + " " + c, d)), M("A = " + FR(P, Q))];
+      }
+      steps = steps.concat(reduceLine("A", P, Q));
+      var g = gcd(P, Q), res = SF(P / g, Q / g), B = op === "×" ? FR(c, d) : FR(c, d);
+      return { q: "احسب، ثم اختزل النتيجة إن أمكن: " + M("A = " + FR(a, b) + " " + op + " " + B), ans: fracAns(P, Q), chip: "➗ اكتب الكسر هكذا: البسط / المقام",
+        h1: op === "×" ? "اضرب البسطين معا والمقامين معا." : "المقام " + M(d) + " مضاعف للمقام " + M(b) + ": اجعل للكسرين نفس المقام.",
+        h2: "بعد الحساب، اختزل الكسر بقسمة البسط والمقام على نفس العدد.",
+        steps: steps, res: "النتيجة: " + M("A = " + res), concl: "<b>الاستنتاج:</b> " + M("A = " + res) + ".", simp: equivFrac(P, Q), sm: SMSG };
+    },
+    x10: function () {
+      var s = ri(1, 2), n = ri(101, 99999), o = pick([["×", 1], ["×", 2], ["×", 3], ["÷", 1], ["÷", 2], ["÷", 3], ["×0", 1], ["×0", 2]]);
+      var k = o[1], by = o[0] === "×0" ? (k === 1 ? "0,1" : "0,01") : String(Math.pow(10, k)), sym = o[0] === "÷" ? "÷" : "×";
+      var right = o[0] === "×", x = decS(n, s), r = decS(n, right ? s - k : s + k), mr = ["", "بمرتبة واحدة", "بمرتبتين", "بثلاث مراتب"][k];
+      var meth = o[0] === "×" ? "لضرب عدد عشري في " + M(by) + " نزيح الفاصلة نحو اليمين " + mr + "، ونضيف أصفارا عند الحاجة."
+        : o[0] === "÷" ? "لقسمة عدد عشري على " + M(by) + " نزيح الفاصلة نحو اليسار " + mr + "، ونضيف أصفارا عند الحاجة."
+          : "الضرب في " + M(by) + " يعني القسمة على " + M(k === 1 ? 10 : 100) + ": نزيح الفاصلة نحو اليسار " + mr + ".";
+      return { q: "احسب: " + M(x + " " + sym + " " + by), ans: [r.replace("−", "-")],
+        h1: "لا حاجة إلى عملية عمودية: يكفي أن تزيح الفاصلة.",
+        h2: (right ? "نحو اليمين " : "نحو اليسار ") + mr + ".",
+        steps: ["<b>الطريقة:</b> " + meth, M(x + " " + sym + " " + by + " = " + r)],
+        res: "النتيجة: " + M(r), concl: "<b>الاستنتاج:</b> " + M(x + " " + sym + " " + by + " = " + r) + "." };
+    },
+    decops: function () {
+      var op = pick(["+", "−"]), s1 = ri(1, 2), s2 = ri(0, 2), a, b;
+      do { a = ri(100, 9999); b = ri(10, 999); } while (a % 10 === 0 || (s2 && b % 10 === 0));
+      var S = Math.max(s1, s2);
+      var A = a * Math.pow(10, S - s1), B = b * Math.pow(10, S - s2);
+      if (op === "−" && B >= A) { var t = A; A = B; B = t; t = a; a = b; b = t; t = s1; s1 = s2; s2 = t; }
+      var R = op === "+" ? A + B : A - B, x = decS(a, s1), y = decS(b, s2), r = decS(R, S);
+      var l1 = decFix(A, S), l2 = decFix(B, S), l3 = decFix(R, S), w = Math.max(l1.length, l2.length, l3.length) + 2;
+      function pad(t, p) { while (t.length < w) t = " " + t; return p + t.slice(1); }
+      var vert = '<pre class="sx-vert" dir="ltr">' + pad(l1, " ") + "\n" + pad(l2, op === "+" ? "+" : "−") + "\n" + new Array(w + 1).join("—") + "\n" + pad(l3, " ") + "</pre>";
+      return { q: "احسب: " + M(x + " " + op + " " + y), ans: [r],
+        h1: "اكتب العددين عموديا بحيث تكون الفاصلة تحت الفاصلة.",
+        h2: "تمّم بالأصفار حتى يكون للعددين نفس عدد الأرقام بعد الفاصلة، ثم " + (op === "+" ? "اجمع" : "اطرح") + " كما في الأعداد الطبيعية.",
+        steps: ["<b>الطريقة:</b> نكتب العددين عموديا: الفاصلة تحت الفاصلة والأرقام من نفس المرتبة بعضها تحت بعض، ونتمّم بالأصفار، ثم " + (op === "+" ? "نجمع" : "نطرح") + " ونضع الفاصلة في مكانها.", vert],
+        res: "النتيجة: " + M(x + " " + op + " " + y + " = " + r), concl: "<b>الاستنتاج:</b> " + M(x + " " + op + " " + y + " = " + r) + "." };
+    },
+    rect: function () {
+      var sq = Math.random() < 0.35, area = Math.random() < 0.5, u = pick(["cm", "m"]), L = ri(3, 25), l = sq ? L : ri(2, L - 1), v, f, calc;
+      if (sq) { v = area ? L * L : L * 4; f = area ? "مساحة المربع = طول الضلع × طول الضلع" : "محيط المربع = طول الضلع × 4"; calc = area ? L + " × " + L : L + " × 4"; }
+      else { v = area ? L * l : (L + l) * 2; f = area ? "مساحة المستطيل = الطول × العرض" : "محيط المستطيل = (الطول + العرض) × 2"; calc = area ? L + " × " + l : "(" + L + " + " + l + ") × 2 = " + (L + l) + " × 2"; }
+      var U = area ? u + "²" : u, what = area ? "مساحته" : "محيطه";
+      return { q: (sq ? "مربع طول ضلعه " + M(L + " " + u) : "مستطيل طوله " + M(L + " " + u) + " وعرضه " + M(l + " " + u)) + ". احسب " + what + " (بـ " + U + ").",
+        ans: [String(v)], unit: U,
+        h1: "تذكّر القاعدة: " + f.split("=")[0].trim() + " = ؟",
+        h2: f + ".",
+        steps: ["<b>الطريقة:</b> " + f + ".", M(calc)], res: "النتيجة: " + M(v + " " + U),
+        concl: "<b>الاستنتاج:</b> " + (area ? "مساحة " : "محيط ") + (sq ? "المربع " : "المستطيل ") + M(v + " " + U) + "." };
+    },
+    circle: function () {
+      var dia = Math.random() < 0.5, r = ri(2, 20), d = 2 * r, v = d * 314 / 100;
+      return { q: "دائرة " + (dia ? "قطرها " + M(d + " cm") : "نصف قطرها " + M(r + " cm")) + ". احسب محيطها (بـ cm) مع أخذ " + M("π ≈ 3,14") + ".",
+        ans: [dn(v)], unit: "cm",
+        h1: "محيط الدائرة = القطر × " + M("3,14") + ".",
+        h2: dia ? "القطر معطى: اضربه في " + M("3,14") + "." : "القطر = نصف القطر × 2، ثم اضرب في " + M("3,14") + ".",
+        steps: ["<b>الطريقة:</b> محيط الدائرة = القطر × " + M("π") + "، مع " + M("π ≈ 3,14") + "."].concat(dia ? [] : [M("القطر = " + r + " × 2 = " + d + " cm")], [M(d + " × 3,14 = " + dn(v))]),
+        res: "النتيجة: " + M(dn(v) + " cm"), concl: "<b>الاستنتاج:</b> محيط الدائرة حوالي " + M(dn(v) + " cm") + "." };
+    },
+    rtri: function () {
+      var a = ri(3, 20), b = ri(3, 20), u = pick(["cm", "m"]), v = a * b / 2;
+      return { q: "مثلث قائم طولا ضلعي الزاوية القائمة فيه " + M(a + " " + u) + " و" + M(b + " " + u) + ". احسب مساحته (بـ " + u + "²).",
+        ans: [dn(v)], unit: u + "²",
+        h1: "المثلث القائم هو نصف مستطيل بعداه ضلعا الزاوية القائمة.",
+        h2: "مساحة المثلث القائم = (ضلع الزاوية القائمة الأول × الضلع الثاني) ÷ 2.",
+        steps: ["<b>الطريقة:</b> مساحة المثلث القائم = (جداء طولي ضلعي الزاوية القائمة) ÷ 2، لأنه نصف مستطيل.", M("(" + a + " × " + b + ") ÷ 2 = " + a * b + " ÷ 2")],
+        res: "النتيجة: " + M(dn(v) + " " + u + "²"), concl: "<b>الاستنتاج:</b> مساحة المثلث القائم " + M(dn(v) + " " + u + "²") + "." };
+    }
+  };
+  function genFor(ex, q) {
+    var p = plain(q.text || ""), t = plain(ex.title || ""), h = q.text || "", c = plain(ex.context || "");
+    if (/وضعية/.test(t)) return null;
+    var e = p.replace(/^\s*\d+\)\s*/, "").replace(/^[A-Z]\s*=\s*/, "");   /* bare expression such as «(−6) × (+7)» */
+    var bare = /^[\d\s,()+−×÷\-]+$/.test(e) && /\d/.test(e);
+    if (!bare && !/احسب|أحسب|عيّن|عين|أوجد|اكتب|بسّط|أنجز/.test(p)) return null;
+    if (bare && !/احسب|أحسب|بسّط|أنجز/.test(p + " " + c + " " + t) && !/[×÷+−]/.test(e)) return null;
+    var fr = /class="fr"/.test(h), roots = (p.match(/√\s*\d+/g) || []).length, noRatio = !/[A-Z]{2}\s*[A-Z]{2}/.test(p);
+    var numFr = /class="fr"><span>\d+<\/span><span>\d+<\/span>/.test(h);
+    if (level === "4m") {
+      if (/PGCD\s*\(/.test(p) && !/اختزال|كسر/.test(p)) return "pgcd";
+      if (/غير قابل للاختزال/.test(p) && numFr && !/[+−×]/.test(p.replace(/^\s*\d+\)/, "")) && noRatio) return "irr";
+      if (/على الشكل\s*a\s*√\s*b/.test(p) && roots === 1) return "aroot";
+      if (/على الشكل\s*a\s*√\s*\d/.test(p) && roots >= 2) return "rootsum";
+      var len = /احسب\s*(الطول|طول)?\s*[A-Z]{2}\b/.test(p) && !/²|قائم|فيثاغورس|قيس|محيط|مساحة/.test(p);
+      if (/طالس/.test(t) && !/عكس/.test(t) && len && !/\b(cos|sin|tan)\b/.test(p)) return "thales";
+      if (/\b(cos|sin|tan)\b|جيب|النسب المثلثية/.test(t + " " + p) && len && !/طالس/.test(t + " " + p)) return "trig";
+    } else if (level === "3m") {
+      if (/نسبي/.test(t) && bare && !fr && /[×÷]/.test(e) && !/[+]\s*\(|\)\s*[+−]\s*\(/.test(e.replace(/\(\s*[+−]/g, "(")) && /\(\s*[−+]/.test(e)) return "relmul";
+      if (/كسر|الكسور|الناطق/.test(t) && fr && /\S\s+[×÷+−]\s+\S/.test(p) && !/قارن|مقلوب|على شكل عدد|الكتابة العشرية|\.\.\./.test(p)) return "fracop";
+      if (/المنتصفين/.test(t) && !/العكسية/.test(t) && /احسب\s*(الطول|طول)?\s*[A-Z]{2}\b/.test(p) && !/محيط|قيس|زاوية|مساحة/.test(p)) return "midline";
+    } else if (level === "2m") {
+      if (/القسمة الإقليدية/.test(p) && /أنجز|احسب|عيّن/.test(p)) return "eucl";
+      if (/سلسلة عمليات|أولوي|الأقواس|الأولويات/.test(t) && !/توزيع|العامل المشترك|ذهني/.test(t) && bare && !fr && /[×÷]/.test(e) && /[+−]|\(/.test(e)) return "prio";
+      if (/كسر|كسرين|الكسور/.test(t) && fr && /\S\s+[+−×]\s+\S/.test(p) && !/قارن|\.\.\./.test(p)) return "frac2";
+    } else if (level === "1m") {
+      if (/[×÷:]\s*(10|100|1000|0,1|0,01)(?![\d,])/.test(p) && (bare || /احسب/.test(p)) && !/\.\.\./.test(p)) return "x10";
+      if ((bare || /احسب/.test(p)) && /\d,\d+\s*[+−-]\s*\d|\d\s*[+−-]\s*\d+,\d/.test(p) && !/[×÷]/.test(p)) return "decops";
+      if (/دائرة/.test(p) && /محيط/.test(p) && /احسب/.test(p)) return "circle";
+      if (/مستطيل|مربع/.test(p) && /محيط|مساحة/.test(p) && /احسب/.test(p) && !/رصف|مثلث|دائرة/.test(p)) return "rect";
+      if (/مثلث/.test(p) && /مثلث قائم/.test(p + " " + t) && /مساحة/.test(p) && /احسب/.test(p)) return "rtri";
+      if (/محيطه|مساحته/.test(p) && /مستطيل|مربع/.test(t + " " + c) && /احسب/.test(p) && !/رصف|مثلث|دائرة/.test(t)) return "rect";
+    }
+    return null;
+  }
+  function nz(s) {
+    try { if (typeof normalizeInput === "function") return normalizeInput(String(s)); } catch (e) {}
+    return String(s).replace(/\s+/g, "").replace(/[−–]/g, "-").replace(/\./g, ",").replace(/(cm²|m²|cm|mm|km|kg|m|g|da)$/i, "").toLowerCase();
+  }
+  function hasUnit(raw, u) {
+    var w = String(raw).replace(/\s+/g, "").toLowerCase(), U = u.toLowerCase();
+    if (U === "da") return /(da|دج|دينار)$/.test(w);
+    return w.slice(-U.length) === U || (/²$/.test(U) && w.slice(-U.length) === U.replace("²", "2"));
+  }
+  var GSYM = { "4m": ["√", "²", "−", ";", ",", "/", "×", "⌫"], "3m": ["−", "/", ",", ";", "⌫"], "2m": ["/", ",", ";", "⌫"], "1m": [",", "⌫"] };
+  function openGen(id) {
+    if (!GEN[id]) return;
+    var ov = el("div", "sx-ov"), box = el("div", "sx-sheet sx-gen"), solved = 0;
+    ov.appendChild(box); document.body.appendChild(ov);
+    function close() { ov.remove(); try { speechSynthesis.cancel(); } catch (e) {} }
+    ov.addEventListener("click", function (e) { if (e.target === ov) close(); });
+    function fresh() {
+      var g = GEN[id](), left = 3, done = false;
+      var numeric = g.ans.every(function (a) { return /^[−-]?\d+(,\d+)?$/.test(a); });
+      box.innerHTML = '<div class="sx-top"><b>🔄 تمرين مشابه بأرقام جديدة</b><button type="button" class="sx-btn x">✕ إغلاق</button></div>' +
+        '<p class="sx-note">للتدرّب فقط، لا يُحسب في علامتك. الأجوبة الصحيحة: <b>' + solved + "</b></p>" +
+        '<div class="sx-gq">' + g.q + "</div>" +
+        (g.chip || g.unit ? '<div class="sx-chips">' + (g.chip ? '<span class="sx-chip">' + g.chip + "</span>" : "") + (g.unit ? '<span class="sx-chip u">📏 اكتب الجواب مع الوحدة: ' + g.unit + "</span>" : "") + "</div>" : "") +
+        '<div class="sx-gin"><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" placeholder="اكتب إجابتك هنا"' + (numeric ? ' inputmode="decimal"' : "") + '><button type="button" class="btn-check go">تحقق</button></div>' +
+        '<div class="sym-toolbar">' + (GSYM[level] || []).map(function (s) { return '<button type="button" class="sym-btn">' + s + "</button>"; }).join("") + "</div>" +
+        '<div class="feedback-box sx-gfb"></div>' +
+        '<div class="sx-gsol" hidden><h4>✔ الإجابة النموذجية المفصلة:</h4>' + g.steps.map(function (s) { return '<div class="sol-line' + (/^<b>الطريقة/.test(s) ? " sx-rule" : "") + '">' + s + "</div>"; }).join("") +
+        '<div class="sol-line">' + g.res + '</div><div class="sol-result">' + g.concl + "</div></div>" +
+        '<div class="sx-row"><button type="button" class="sx-main nx">🔄 أرقام جديدة</button></div>';
+      var inp = $("input", box), fb = $(".sx-gfb", box), sol = $(".sx-gsol", box), gq = $(".sx-gq", box);
+      $(".x", box).onclick = close;
+      $(".nx", box).onclick = fresh;
+      if (VOICE) gq.insertBefore(sayBtn(gq), gq.firstChild);
+      $$(".sym-btn", box).forEach(function (b) {
+        b.onclick = function () { if (done) return; var s = b.textContent; inp.value = s === "⌫" ? inp.value.slice(0, -1) : inp.value + s; inp.focus(); };
+      });
+      function finish(ok, raw) {
+        done = true; inp.disabled = true; $(".go", box).disabled = true; sol.hidden = false;
+        if (ok) {
+          solved++;
+          fb.className = "feedback-box success sx-gfb";
+          fb.innerHTML = '<span class="star-burst">' + "⭐".repeat(left) + "</span> أحسنت! إجابة صحيحة." +
+            (g.unit && !hasUnit(raw, g.unit) ? '<div class="sx-unit-warn">⚠️ انتبه: لم تكتب الوحدة (' + g.unit + ")، فلا تنسها في كراسك وفي الامتحان.</div>" : "");
+          try { if (window.flyStars) window.flyStars(fb, 14); } catch (e) {}
+        } else {
+          fb.className = "feedback-box fail sx-gfb";
+          fb.innerHTML = "🌟 لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. اقرأ الإجابة النموذجية، ثم اضغط «🔄 أرقام جديدة».";
+        }
+        $(".sx-note b", box).textContent = solved;
+      }
+      function check() {
+        if (done) return;
+        var raw = inp.value.trim();
+        if (!raw) { fb.className = "feedback-box hint sx-gfb"; fb.textContent = "اكتب إجابتك أولا في الخانة."; return; }
+        var v = nz(raw);
+        if (g.ans.some(function (a) { return nz(a) === v; })) return finish(true, raw);
+        left--;
+        var simp = g.simp && g.simp(v);
+        try { if (typeof playTone === "function" && soundEnabled) playTone("error"); } catch (e) {}
+        inp.classList.remove("shake"); void inp.offsetWidth; inp.classList.add("shake");
+        if (left === 2 || left === 1) {
+          fb.className = "feedback-box hint sx-gfb";
+          fb.innerHTML = (simp ? g.sm : left === 2 ? "لا بأس، أعد قراءة السؤال بهدوء." : "محاولة أخيرة: اكتب الحساب في المسودة قبل أن تجيب.") +
+            "<br><strong>💡 التلميح " + (3 - left) + ":</strong> " + (left === 2 ? g.h1 : g.h2);
+          if (VOICE) fb.insertBefore(sayBtn(fb), fb.firstChild);
+          try { if (window.flyStars) window.flyStars(fb, 8, ["⭐", "💡", "✨"]); } catch (e) {}
+        } else finish(false, raw);
+      }
+      $(".go", box).onclick = check;
+      inp.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); check(); } });
+      setTimeout(function () { box.scrollIntoView({ block: "start" }); }, 10);
+    }
+    fresh();
+  }
+
+  window.__sx = { GEN: GEN, genFor: genFor, openGen: openGen, openPad: openPad };
 
   /* ---------- 4. angle calculator (DEG) ---------- */
   function addCalc(inBar) {

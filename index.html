@@ -236,6 +236,7 @@ dialog::backdrop{background:rgba(10,20,25,.5)}
     <div class="btns">
       <button type="button" class="main" id="addHome">📲 أضفه إلى الشاشة الرئيسية</button>
       <button type="button" id="copyLink">🔗 نسخ رابط هذا القسم</button>
+      <button type="button" id="offline">📥 حفظ تمارين هذا المستوى للعمل دون إنترنت</button>
     </div>
   </footer>
 
@@ -319,7 +320,7 @@ function cleanTitle(it) {
 function topicsOf(it) {
   return (it.topics || []).map(s => s.replace(/^(تطبيق مباشر|ربط|تميّز|تميز)\s*:\s*/, "").replace(/\s*\(.*?\)\s*/g, " ").trim()).filter(Boolean).slice(0, 4);
 }
-// What the pupil did on this device (saved by assets/site.js)
+// What the pupil did on this device (saved by the shared layer site.js)
 function progress() { try { return JSON.parse(localStorage.getItem("math-progress") || "{}") || {}; } catch (e) { return {}; } }
 
 function renderNav() {
@@ -501,6 +502,32 @@ document.getElementById("addHome").onclick = async () => {
 document.getElementById("copyLink").onclick = () => {
   const t = location.origin + location.pathname + "#" + state.level + "-" + state.term;
   copyText(t); toast("🔗 تم نسخ الرابط: " + LEVEL_NAME[state.level] + " — " + TERM_NAME[state.term]);
+};
+
+// ---------- save a whole level on the phone (works without internet afterwards) ----------
+document.getElementById("offline").onclick = async function () {
+  if (!("serviceWorker" in navigator) || !navigator.onLine) { toast("يلزم اتصال بالإنترنت مرة واحدة للحفظ."); return; }
+  const btn = this, list = (state.items || []).filter(it => it.level === state.level && it.type === "html");
+  if (!list.length) return;
+  btn.disabled = true;
+  const extra = new Set();
+  let done = 0, fail = 0;
+  const one = async it => {
+    try {
+      const r = await fetch(it.url, { cache: "no-cache" });
+      if (!r.ok) throw 0;
+      const m = (await r.text()).match(/assets\/site\.js\?v=[\w-]+/);
+      if (m) extra.add(m[0]);
+    } catch (e) { fail++; }
+    done++;
+    btn.textContent = "📥 جارٍ الحفظ… " + done + " / " + list.length;
+  };
+  for (let i = 0; i < list.length; i += 4) await Promise.all(list.slice(i, i + 4).map(one));
+  for (const u of extra) { try { await fetch(u); } catch (e) {} }
+  btn.disabled = false;
+  btn.textContent = "📥 حفظ تمارين هذا المستوى للعمل دون إنترنت";
+  toast(fail ? "حُفظت " + (list.length - fail) + " صفحة من " + list.length + ". أعد المحاولة لاحقا للبقية."
+    : "✓ حُفظت كل صفحات " + LEVEL_NAME[state.level] + " (" + list.length + "): تفتح الآن حتى دون إنترنت.");
 };
 
 // ---------- Teacher mode & Facebook sharing ----------

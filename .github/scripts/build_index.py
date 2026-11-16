@@ -84,14 +84,26 @@ def page_meta(path):
         return {}
 
 
+def site_version():
+    """Version of this deployment: pages compare it with version.json to show «تتوفر تمارين جديدة»."""
+    sha = os.environ.get("GITHUB_SHA", "")
+    if sha:
+        return sha[:10]
+    import time
+    return time.strftime("%Y%m%d%H%M%S")
+
+
+VERSION = site_version()
+
+
 def inject_site_js(path):
     """Add the shared layer assets/site.js to the DEPLOYED copy of a page (CI only)."""
     with open(path, encoding="utf-8", errors="ignore") as f:
         page = f.read()
-    if "assets/site.js" in page:
+    if re.search(r'<script[^>]+assets/site\.js', page):
         return
     depth = path.replace(os.sep, "/").count("/")
-    tag = f'<script src="{"../" * depth}assets/site.js" defer></script>'
+    tag = f'<script src="{"../" * depth}assets/site.js?v={VERSION}" data-v="{VERSION}" defer></script>'
     i = page.lower().rfind("</body>")
     page = page[:i] + tag + "\n" + page[i:] if i >= 0 else page + tag
     with open(path, "w", encoding="utf-8") as f:
@@ -188,6 +200,9 @@ def main():
                     if name.endswith(".html"):
                         inject_site_js(os.path.join(pack, name))
         inline_index(items)
+        inject_site_js("index.html")
+        with open("version.json", "w", encoding="utf-8") as f:
+            json.dump({"v": VERSION}, f)
     with open("files.json", "w", encoding="utf-8") as f:
         json.dump({"items": items}, f, ensure_ascii=False, indent=1)
     print(f"files.json: {len(items)} items")
