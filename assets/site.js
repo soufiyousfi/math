@@ -130,6 +130,21 @@ body.sx-ex .q-box.solved{border-inline-start:4px solid #16a34a}
 body.sx-ex .q-box.failed{border-inline-start:4px solid #dc2626}
 body.sx-ex .sx-chip{font-size:.84rem}
 body.sx-ex .sx-choice{font-size:1.06rem;min-height:48px}
+/* white sheet, coloured edges only (his ask 2026-11-16 «الحل يكون على ورقة بيضاء ملونة الحواف فقط») */
+body.sx-ex .card-header{background:#fff;border:1px solid #e2e8f0;border-right:4px solid #1e3a8a}
+body.sx-ex .context-box{background:#fff;border:1.5px dashed #94a3b8}
+body.sx-ex .q-box,body.sx-ex .q-box.solved,body.sx-ex .q-box.failed{background:#fff}
+body.sx-ex .q-box.solved{border-color:#bbf7d0}
+body.sx-ex .q-box.failed{border-color:#fecaca}
+body.sx-ex .model-solution{background:#fff;border:1px solid #cbd5e1;border-right:4px solid #0f766e}
+body.sx-ex .sol-result{background:#fff;border:1px solid #bfdbfe;border-right:4px solid #1e3a8a}
+body.sx-ex .sol-line.sx-rule{background:#fffbeb;border:1px solid #fde68a;border-right:4px solid #d97706;border-radius:8px;padding:6px 10px;margin:4px 0 6px;color:#713f12}
+body.sx-ex .sol-line.sx-rule b{color:#b45309}
+body.sx-ex .math{background:#f1f5f9}
+body.sx-ex .sx-chip{background:#fff;color:#334155;border-color:#cbd5e1}
+body.sx-ex .sx-chip.u{background:#fff;color:#334155;border-color:#94a3b8}
+body.sx-ex .sx-chip.u.sit{background:#fffbeb;color:#92400e;border-color:#f59e0b}
+.sx-unit-warn{margin-top:6px;padding:6px 10px;border-radius:8px;background:#fffbeb;color:#92400e;border:1px solid #fde68a;border-right:4px solid #d97706;font-weight:700}
 @media print{.sx-bar,.sx-calc,.sx-calc-fab,.sx-ov,.sx-step,.sx-chips,.sx-choices{display:none!important}}
 `;
   document.head.appendChild(el("style", null, css));
@@ -234,20 +249,45 @@ body.sx-ex .sx-choice{font-size:1.06rem;min-height:48px}
     return out;
   }
 
-  function chipsFor(q) {
+  function chipsFor(q, sit) {
     var p = plain(q.text), chips = [];
     var r = p.match(/قيمة مقرّبة إلى\s*(الوحدة|[\d,]+)/);
     if (r) chips.push(["🎯 قيمة مقرّبة إلى " + r[1], ""]);
     if (/كسرا? مختزلا|غير قابل للاختزال|على أبسط شكل|اختزل/.test(p)) chips.push(["➗ اكتب الكسر هكذا: البسط / المقام", ""]);
     if (/a\s*√\s*b/.test(p)) chips.push(["√ على الشكل a√b", ""]);
     var u = p.match(/\(بـ\s*(cm²|m²|cm|mm|m|km|kg|g|DA|°|L|cl)\b/) || p.match(/بـ\s*(cm²|m²|cm|mm|km|kg|DA)\b/);
-    if (u) chips.push(["📏 الوحدة: " + u[1] + " (كتابتها اختيارية)", "u"]);
+    if (u) chips.push([sit ? "⚠️ الوحدة إلزامية في الوضعية: اكتب الجواب مع الوحدة " + u[1] : "📏 اكتب الجواب مع الوحدة: " + u[1], "u" + (sit ? " sit" : "")]);
     return chips;
   }
 
   function isNumeric(q) {
     return q.exact.some(function (a) { return /^[−-]?\d+(?:[.,]\d+)?$/.test(String(a).trim()); }) &&
       !q.exact.some(function (a) { return /[a-zA-Zأ-ي√]/.test(String(a)); });
+  }
+
+  /* the unit is NOT optional (his ask 2026-11-16 «وضع الوحدة ليس اختياري بل نبه له وفي الوضعيات خاصة»):
+     the mark is unchanged, but a right answer written without its unit gets a visible reminder */
+  function unitWatch(q, box, inp, sit) {
+    var p = plain(q.text);
+    var u = p.match(/\(بـ\s*(cm²|m²|cm|mm|m|km|kg|g|DA|°|L|cl)\b/) || p.match(/بـ\s*(cm²|m²|cm|mm|km|kg|DA)\b/);
+    if (!u) return;
+    var unit = u[1], typed = "";
+    box.addEventListener("click", function (e) {
+      if (e.target && (e.target.id === "btn-" + q.qId || (e.target.closest && e.target.closest(".sx-choice")))) typed = inp.value;
+    }, true);
+    box.addEventListener("click", function (e) {
+      if (!e.target || e.target.id !== "btn-" + q.qId) return;
+      var v = typed;
+      setTimeout(function () {
+        var fb = document.getElementById("fb-" + q.qId);
+        if (!fb || !box.classList.contains("solved") || $(".sx-unit-warn", fb)) return;
+        var w = v.replace(/\s+/g, "").toLowerCase();
+        var has = unit === "DA" ? /(da|دج|دينار)$/.test(w) : w.slice(-unit.length) === unit.toLowerCase();
+        if (has) return;
+        fb.appendChild(el("div", "sx-unit-warn", "⚠️ انتبه: لم تكتب الوحدة. الجواب الكامل يُكتب مع الوحدة (" + unit + ")" +
+          (sit ? "، وفي الوضعية الإدماجية نسيانها يُعدّ نقصا في الإجابة." : "، فلا تنسها في كراسك وفي الامتحان.")));
+      }, 30);
+    });
   }
 
   function enhanceExercises(data, root) {
@@ -258,6 +298,9 @@ body.sx-ex .sx-choice{font-size:1.06rem;min-height:48px}
     var stickyBar = $(".sticky-bar");
     function stickyH() { return stickyBar ? stickyBar.getBoundingClientRect().height : 0; }
 
+    /* rules and properties in a distinct colour (his ask 2026-11-16: white sheet, coloured edges, colour only for warnings, rules, properties) */
+    $$(".sol-line", root).forEach(function (d) { if (/^\s*<b>\s*(الطريقة|الخاصية|القاعدة|تذكير)/.test(d.innerHTML)) d.classList.add("sx-rule"); });
+
     /* questions */
     data.forEach(function (ex) {
       (ex.questions || []).forEach(function (q) {
@@ -265,7 +308,8 @@ body.sx-ex .sx-choice{font-size:1.06rem;min-height:48px}
           btn = document.getElementById("btn-" + q.qId);
         if (!box || !inp || !btn) return;
         var area = $(".answer-area", box) || inp.parentElement;
-        var ch = chipsFor(q);
+        var sit = /وضعية/.test(plain(ex.title || "")), ch = chipsFor(q, sit);
+        unitWatch(q, box, inp, sit);
         if (ch.length) {
           var row = el("div", "sx-chips");
           ch.forEach(function (c) { row.appendChild(el("span", "sx-chip " + c[1], c[0])); });
