@@ -40,20 +40,44 @@
       var b = document.createElement("div");
       b.className = "sx-upd";
       b.setAttribute("role", "status");
-      b.innerHTML = '<span>🔄 تتوفر تمارين جديدة من الأستاذ</span><button type="button" class="go">اضغط للتحديث</button><button type="button" class="x" aria-label="لاحقا">✕</button>';
+      b.innerHTML = '<span>🔄 تتوفر تمارين جديدة من الأستاذ (يُحدَّث وحده عند عودتك، وأجوبتك محفوظة)</span><button type="button" class="go">حدّث الآن</button><button type="button" class="x" aria-label="لاحقا">✕</button>';
       b.querySelector(".go").onclick = function () { location.reload(); };
       b.querySelector(".x").onclick = function () { b.remove(); };
       document.body.appendChild(b);
     }
+    /* 2026-11-16 his ask «لماذا لا يتم التحديث التلقائي… لجميع معطيات الموقع»: the new version is taken by itself.
+       The page reloads on its own unless the pupil is in the middle of something (an answer typed but not yet checked,
+       the draft open, a timed exam): then the bar is shown and the reload happens the next time the app comes back.
+       Answers, stars and progress live in localStorage and are replayed after the reload, so nothing is lost. */
+    var typing = false, newV = "";
+    document.addEventListener("input", function (e) { if (e.target && /^(INPUT|TEXTAREA)$/.test(e.target.tagName)) typing = true; }, true);
+    document.addEventListener("click", function (e) { if (e.target && e.target.closest && e.target.closest(".btn-check")) typing = false; }, true);
+    function busy() {
+      var a = document.activeElement;
+      return typing || document.body.classList.contains("sx-exam") || !!document.querySelector(".sx-pad") ||
+        !!(a && /^(INPUT|TEXTAREA)$/.test(a.tagName) && a.value);
+    }
+    function apply() {
+      var k = "math-upd", t = null;
+      try { t = JSON.parse(sessionStorage.getItem(k) || "null"); } catch (e) {}
+      /* guard: if the reload already gave the old page back (server copy not refreshed yet), do not loop */
+      if (t && t.v === newV && Date.now() - t.t < 3 * 60000) return show();
+      if (busy()) return show();
+      try { sessionStorage.setItem(k, JSON.stringify({ v: newV, t: Date.now() })); } catch (e) {}
+      try { remember(); } catch (e) {}
+      location.reload();
+    }
     function check() {
-      if (shown || navigator.onLine === false) return;
+      if (navigator.onLine === false) return;
+      if (newV) return apply();
+      try { navigator.serviceWorker && navigator.serviceWorker.getRegistration && navigator.serviceWorker.getRegistration().then(function (g) { if (g) g.update(); }).catch(function () {}); } catch (e) {}
       fetch(ROOT.href + "version.json?t=" + Date.now(), { cache: "no-store" })
         .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (j) { if (j && j.v && j.v !== VER) show(); })
+        .then(function (j) { if (j && j.v && j.v !== VER) { newV = j.v; apply(); } })
         .catch(function () {});
     }
     window.__sxUpdate = check;
-    setTimeout(check, 5000);
+    setTimeout(check, 1500);
     document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible") check(); });
     window.addEventListener("online", check);
     setInterval(check, 15 * 60000);
