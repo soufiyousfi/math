@@ -45,7 +45,17 @@ def inject_og(path, item):
         return
     base = site_base()
     esc = lambda t: html.escape(t, quote=True)
-    tags = (f'\n<meta property="og:type" content="website">'
+    url = base + item["url"]
+    desc = f'{item["title"]} — {SECTION_AR[item["section"]]} في الرياضيات، {LEVEL_AR[item["level"]]}: تمارين تفاعلية مع الحل والتصحيح الآلي. الأستاذ يوسفي السوفي.'
+    seo = ""
+    # search engines: one address per page, and a short description when the page has none
+    if not re.search(r'<link[^>]+rel=["\']canonical', page, re.I):
+        seo += f'\n<link rel="canonical" href="{esc(url)}">'
+    if not re.search(r'<meta[^>]+name=["\']description', page, re.I):
+        seo += f'\n<meta name="description" content="{esc(desc)}">'
+    tags = (seo + f'\n<meta property="og:type" content="website">'
+            f'\n<meta property="og:locale" content="ar_DZ">\n<meta property="og:url" content="{esc(url)}">'
+            f'\n<meta property="og:site_name" content="رياضيات المتوسط — الأستاذ يوسفي السوفي">'
             f'\n<meta property="og:title" content="{esc(item["title"])}">'
             f'\n<meta property="og:description" content="{esc(LEVEL_AR[item["level"]] + " · " + SECTION_AR[item["section"]] + " — رياضيات المتوسط")}">'
             f'\n<meta property="og:image" content="{base}{og_image(item)}">'
@@ -137,6 +147,61 @@ def inline_index(items):
         f.write(page)
 
 
+def inline_links(items):
+    """Write every activity as a plain HTML link in the deployed index («فهرس كل الأنشطة»),
+    so search engines find all pages even without running the JavaScript."""
+    esc = lambda t: html.escape(t, quote=True)
+    TERM_AR = {"t1": "الفصل الأول", "t2": "الفصل الثاني", "t3": "الفصل الثالث"}
+    parts = []
+    for lv in LEVELS:
+        mine = [i for i in items if i["level"] == lv]
+        if not mine:
+            continue
+        parts.append(f'<h3>{LEVEL_AR[lv]}</h3><ul>')
+        for it in sorted(mine, key=lambda i: (i["term"], SECTIONS.index(i["section"]), i["url"])):
+            parts.append(f'<li><a href="{esc(it["url"])}">{esc(it["title"])}</a> — {SECTION_AR[it["section"]]}، {TERM_AR[it["term"]]}</li>')
+        parts.append('</ul>')
+    with open("index.html", encoding="utf-8") as f:
+        page = f.read()
+    page = page.replace('<div id="all-list"></div>', '<div id="all-list">' + "".join(parts) + '</div>', 1)
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(page)
+
+
+PRIORITY = {"fard": "0.8", "chahada": "0.8", "series": "0.8", "ikhtibar": "0.8", "wadjib": "0.7",
+            "dars": "0.7", "tahaddi": "0.6", "al3ab": "0.6"}
+
+
+def write_sitemap(items, extra):
+    """sitemap.xml (all pages, date of their last change) + robots.txt that points to it."""
+    base = site_base()
+    def lastmod(path):
+        try:
+            d = subprocess.run(["git", "log", "-1", "--format=%cs", "--", path],
+                               capture_output=True, text=True, check=True).stdout.strip()
+        except (subprocess.CalledProcessError, FileNotFoundError):
+            d = ""
+        return d
+    rows = [(base, lastmod("index.html") or lastmod("."), "weekly", "1.0")]
+    for it in items:
+        pr = PRIORITY.get(it["section"], "0.6") if it["type"] == "html" else "0.4"
+        rows.append((base + it["url"], lastmod(it["url"].rstrip("/")), "monthly", pr))
+    for path in extra:
+        rows.append((base + path, lastmod(path), "monthly", "0.7"))
+    esc = lambda t: html.escape(t, quote=False)
+    out = ['<?xml version="1.0" encoding="UTF-8"?>',
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for loc, mod, freq, pr in rows:
+        out.append(f"  <url><loc>{esc(loc)}</loc>" + (f"<lastmod>{mod}</lastmod>" if mod else "")
+                   + f"<changefreq>{freq}</changefreq><priority>{pr}</priority></url>")
+    out.append("</urlset>\n")
+    with open("sitemap.xml", "w", encoding="utf-8") as f:
+        f.write("\n".join(out))
+    with open("robots.txt", "w", encoding="utf-8") as f:
+        f.write(f"User-agent: *\nAllow: /\n\nSitemap: {base}sitemap.xml\n")
+    return len(rows)
+
+
 def html_title(path):
     try:
         with open(path, encoding="utf-8", errors="ignore") as f:
@@ -209,13 +274,17 @@ def main():
                 page = it["url"] + "index.html" if it["url"].endswith("/") else it["url"]
                 inject_og(page, it)
                 inject_site_js(page)
+        packs = []
         for lv in LEVELS:
             pack = os.path.join(lv, "bem")
             if os.path.isdir(pack):
                 for name in sorted(os.listdir(pack)):
                     if name.endswith(".html"):
                         inject_site_js(os.path.join(pack, name))
+                        packs.append(f"{lv}/bem/{name}")
         inline_index(items)
+        inline_links(items)
+        print(f"sitemap.xml: {write_sitemap(items, packs)} pages")
         inject_site_js("index.html")
         with open("version.json", "w", encoding="utf-8") as f:
             json.dump({"v": VERSION}, f)
