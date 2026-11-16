@@ -236,8 +236,18 @@ html.sx-noscroll,html.sx-noscroll body{overflow:hidden}
 .sx-pad-tools .on{border-color:#1e3a8a;box-shadow:0 0 0 2px #c7d2fe}
 .sx-pad-q{padding:4px 12px;border-bottom:1px solid #e2e8f0;font-size:.92rem}
 .sx-pad-q summary{cursor:pointer;font-weight:800;color:#1e3a8a}
-.sx-pad-q div{max-height:26vh;overflow:auto}
+.sx-pad-q>div{max-height:34vh;overflow:auto;line-height:1.75}
 .sx-pad-q p{margin:4px 0}
+.sx-pad-q .pq{border-top:1px dashed #e2e8f0;padding:4px 0}
+.sx-pad-q .pa{display:flex;gap:6px;margin:2px 0 4px}
+.sx-pad-q .pa input{flex:1;min-width:0;font:inherit;font-size:1rem;padding:5px 8px;border:1.5px solid #cbd5e1;border-radius:8px;direction:ltr;text-align:center}
+.sx-pad-q .pa button{font:inherit;font-weight:800;font-size:.82rem;cursor:pointer;border-radius:8px;padding:4px 9px;border:0;background:#1e3a8a;color:#fff;white-space:nowrap}
+.sx-pad-q .pf{font-size:.82rem;color:#334155}
+.sx-pad-q .pf.ok{color:#166534}.sx-pad-q .pf.no{color:#92400e}
+.sx-pad-fab{position:fixed;right:12px;bottom:14px;z-index:2500;font:inherit;font-weight:800;cursor:pointer;border-radius:999px;padding:10px 14px;
+  background:#fff;color:#1e3a8a;border:2px solid #1e3a8a;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+body.sx-exam .sx-pad-fab{bottom:74px}
+@media print{.sx-pad-fab{display:none!important}}
 .sx-pad-area{flex:1;position:relative;touch-action:none;background-color:#fff;
   background-image:linear-gradient(#e0e7ff 1px,transparent 1px),linear-gradient(90deg,#e0e7ff 1px,transparent 1px);background-size:22px 22px}
 .sx-pad-area canvas{position:absolute;inset:0;touch-action:none;cursor:crosshair}
@@ -723,14 +733,13 @@ body.sx-exam .sx-calc-fab{bottom:74px}
     /* ---- A. reading aloud ---- */
     cards.forEach(function (c, i) {
       var cb = $(".context-box", c);
-      var tools = el("div", "sx-tools");
-      var pb = el("button", "sx-tool", "📝 مسودة الحساب");
-      pb.type = "button";
-      pb.onclick = function () { openPad("ex" + i, plain(data[i].title || ""), c); };
-      tools.appendChild(pb);
-      if (cb) cb.parentNode.insertBefore(tools, cb.nextSibling);
-      else c.insertBefore(tools, c.firstChild.nextSibling);
     });
+    /* 📝 one floating button, always within reach of the thumb; it opens the draft of the exercise on the screen */
+    var padFab = el("button", "sx-pad-fab", "📝 مسودة");
+    padFab.type = "button"; padFab.title = "مسودة الحساب للتمرين المعروض";
+    padFab.onclick = function () { openPad("ex" + cur, plain(data[cur].title || ""), cards[cur]); };
+    document.body.appendChild(padFab);
+    if (padB && padB.parentNode) padB.parentNode.removeChild(padB);
     whenVoice(function () {
       cards.forEach(function (c) {
         var cb = $(".context-box", c);
@@ -1199,13 +1208,41 @@ body.sx-exam .sx-calc-fab{bottom:74px}
     ov.innerHTML = '<div class="sx-pad-top"><b>📝 مسودة الحساب</b><span class="t"></span><button type="button" class="x">✕ إغلاق</button></div>' +
       '<div class="sx-pad-tools">' + COLS.map(function (c, i) { return '<button type="button" class="col' + (i === 0 ? " on" : "") + '" data-c="' + c[0] + '" aria-label="' + c[1] + '"><i style="background:' + c[0] + '"></i></button>'; }).join("") +
       '<button type="button" class="w" data-w="2.6">✏️ رفيع</button><button type="button" class="er">🧽 ممحاة</button><button type="button" class="un">↶ تراجع</button><button type="button" class="cl">🗑️ مسح</button></div>' +
-      (src ? '<details class="sx-pad-q"><summary>📄 نص التمرين</summary><div></div></details>' : "") +
+      (src ? '<details class="sx-pad-q" open><summary>📄 نص التمرين (اضغط للتصغير)</summary><div></div></details>' : "") +
       '<div class="sx-pad-area"><canvas></canvas></div><div class="sx-pad-note">المسودة لا تُصحَّح ولا تُرسل: اكتب بإصبعك، ثم انقل النتيجة مع الوحدة إلى خانة الجواب.</div>';
     $(".t", ov).textContent = title || "";
     if (src) {
       var q = $(".sx-pad-q div", ov), cb = $(".context-box", src);
       if (cb) q.appendChild(el("p", "", cb.innerHTML));
-      $$(".q-title > span:first-child", src).forEach(function (s) { var p = el("p", "", s.innerHTML); $$(".sx-say", p).forEach(function (x) { x.remove(); }); q.appendChild(p); });
+      /* each question stays visible with its own answer box: the result found on the draft goes straight to the page */
+      $$(".q-box", src).forEach(function (box) {
+        var s = $(".q-title > span:first-child", box), inp = $("input[id^='in-']", box), btn = $(".btn-check", box), fb = $(".feedback-box", box);
+        if (!s) return;
+        var w = el("div", "pq"), pp = el("p", "", s.innerHTML);
+        $$(".sx-say", pp).forEach(function (x) { x.parentNode.removeChild(x); });
+        w.appendChild(pp);
+        if (inp && btn && !$$(".sx-choice", box).length) {
+          var row = el("div", "pa", '<input type="text" autocomplete="off" placeholder="جوابك (مع الوحدة)"><button type="button">✔ انقل وتحقق</button>'),
+            mi = $("input", row), mb = $("button", row), pf = el("div", "pf");
+          if (inp.inputMode) mi.inputMode = inp.inputMode;
+          var sync = function () {
+            if (inp.disabled) mi.value = inp.value;
+            mi.disabled = mb.disabled = inp.disabled;
+            var t = fb ? fb.textContent.replace(/\s+/g, " ").trim() : "";
+            pf.textContent = t.length > 160 ? t.slice(0, 160) + "…" : t;
+            pf.className = "pf" + (box.classList.contains("solved") ? " ok" : t ? " no" : "");
+          };
+          mb.onclick = function () {
+            if (!mi.value.trim() || inp.disabled) return;
+            inp.value = mi.value; btn.click();
+            setTimeout(sync, 200);
+          };
+          mi.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); mb.click(); } });
+          sync();
+          w.appendChild(row); w.appendChild(pf);
+        }
+        q.appendChild(w);
+      });
       $$(".sx-say", q).forEach(function (x) { x.remove(); });
     }
     document.body.appendChild(ov);
