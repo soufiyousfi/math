@@ -21,6 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<script>try{var t=localStorage.getItem("math-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <style>
 :root{
   --primary:#0f4c81; --primary-dark:#0a355c; --secondary:#0d9488; --accent:#f59e0b; --accent-light:#fef3c7;
@@ -185,11 +186,28 @@ dialog::backdrop{background:rgba(10,20,25,.5)}
 .toast{position:fixed;inset-inline:16px;bottom:20px;margin:auto;max-width:420px;text-align:center;font-weight:700;background:var(--text);color:var(--bg);
   border-radius:12px;padding:10px 14px;opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none;z-index:10}
 .toast.on{opacity:1;transform:none}
+
+/* explicit night theme chosen with the 🌙/☀️ button */
+:root[data-theme="dark"]{
+    --bg:#0f172a; --surface:#1e293b; --text:#e2e8f0; --muted:#94a3b8; --border:#334155; --soft:#172033;
+    --accent-light:#3a2e12; --ok-bg:#13301f;
+    --dars-bg:#16303a; --al3ab-bg:#381a2b; --series-bg:#1c2a3a; --fard-bg:#33281a; --wadjib-bg:#1b2f23;
+    --ikhtibar-bg:#352022; --chahada-bg:#2a2238; --tahaddi-bg:#332b12;
+    --dars:#5fc4d6; --al3ab:#f472b6; --series:#7fb0e8; --fard:#e3a24f; --wadjib:#74c493; --ikhtibar:#e98282; --chahada:#b79cf2; --tahaddi:#facc15;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.4); --shadow-md:0 6px 18px rgba(0,0,0,.4);
+  }
+:root[data-theme="dark"] .recent{background:var(--surface);border-color:#5b4a1a}
+:root[data-theme="dark"] .step .here{color:#7dd3fc}
+:root[data-theme="dark"] .fc[aria-pressed="true"]{background:#13304a;color:#7dd3fc;border-color:#7dd3fc}
+:root[data-theme="dark"] .go{color:#0f172a}
+:root[data-theme="dark"] .card.done .pbox{color:#86efac}
+.theme-btn{position:absolute;top:12px;left:12px;z-index:3;font:inherit;font-size:1.05rem;cursor:pointer;border-radius:999px;padding:4px 10px;background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.45)}
 </style>
 </head>
 <body>
 <div class="app">
   <header class="hero" id="hero">
+    <button type="button" class="theme-btn" id="themeBtn" aria-label="الوضع الليلي أو النهاري">🌙</button>
     <div class="school" id="school">🏫 متوسطة العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
     <h1>رياضيات التعليم المتوسط <span class="x">√π ∑</span></h1>
     <p class="slogan">تعلّم، جرّب، أخطئ، صحّح… وتفوّق! ✨</p>
@@ -503,6 +521,15 @@ document.getElementById("copyLink").onclick = () => {
   const t = location.origin + location.pathname + "#" + state.level + "-" + state.term;
   copyText(t); toast("🔗 تم نسخ الرابط: " + LEVEL_NAME[state.level] + " — " + TERM_NAME[state.term]);
 };
+
+// ---------- night / day ----------
+(function () {
+  const b = document.getElementById("themeBtn"), root = document.documentElement;
+  const dark = () => root.getAttribute("data-theme") === "dark" || (!root.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+  const paint = () => { b.textContent = dark() ? "☀️" : "🌙"; b.title = dark() ? "الوضع النهاري" : "الوضع الليلي"; };
+  b.onclick = () => { const t = dark() ? "light" : "dark"; root.setAttribute("data-theme", t); try { localStorage.setItem("math-theme", t); } catch (e) {} paint(); };
+  paint();
+})();
 
 // ---------- save a whole level on the phone (works without internet afterwards) ----------
 document.getElementById("offline").onclick = async function () {

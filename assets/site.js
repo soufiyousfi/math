@@ -59,6 +59,29 @@
     setInterval(check, 15 * 60000);
   })();
 
+  /* ---------- 0b. the phone closed the app in the background (2026-11-16 his report) ----------
+     Android may kill the app while the pupil is in another app; it then reopens on the start page.
+     The last page is remembered and reopened (if left less than 3 hours ago), and its answers are replayed. */
+  var LASTK = "math-last";
+  var isPage = /^([1-4]m)\//.test(rel);
+  function remember() {
+    if (!isPage) return;
+    try { localStorage.setItem(LASTK, JSON.stringify({ u: location.pathname + location.search.replace(/[?&]exam=\d+/, ""), y: Math.round(window.scrollY), t: Date.now() })); } catch (e) {}
+  }
+  document.addEventListener("visibilitychange", function () { if (document.visibilityState === "hidden") remember(); });
+  window.addEventListener("pagehide", remember);
+  if (!isPage) {
+    try {
+      var ls = JSON.parse(localStorage.getItem(LASTK) || "null"), app = /[?&]app=1/.test(location.search) ||
+        (window.matchMedia && matchMedia("(display-mode: standalone)").matches && !document.referrer && !location.hash);
+      if (ls && app && !sessionStorage.getItem("math-opened") && Date.now() - ls.t < 3 * 3600000) {
+        sessionStorage.setItem("math-opened", "1");
+        location.replace(ls.u);
+      }
+      sessionStorage.setItem("math-opened", "1");
+    } catch (e) {}
+  }
+
   var pm = rel.match(/^([1-4]m)\/(?:(t[1-3])\/([a-z0-9]+)|(bem))\//);
   if (!pm) return;
   var level = pm[1], term = pm[2] || "t1", section = pm[3] || pm[4];
@@ -185,6 +208,11 @@ body.sx-ex .sx-chip{background:#fff;color:#334155;border-color:#cbd5e1}
 body.sx-ex .sx-chip.u{background:#fff;color:#334155;border-color:#94a3b8}
 body.sx-ex .sx-chip.u.sit{background:#fffbeb;color:#92400e;border-color:#f59e0b}
 .sx-unit-warn{margin-top:6px;padding:6px 10px;border-radius:8px;background:#fffbeb;color:#92400e;border:1px solid #fde68a;border-right:4px solid #d97706;font-weight:700}
+html.sx-dark{filter:invert(.9) hue-rotate(180deg);background:#fff}
+html.sx-dark img,html.sx-dark video,html.sx-dark canvas,html.sx-dark .sx-pad-area,html.sx-dark .fly-star,html.sx-dark .star-burst{filter:invert(1) hue-rotate(180deg)}
+html.sx-dark .sx-pad-area canvas{filter:none}
+html.sx-dark body>header,html.sx-dark .hero{filter:invert(1) hue-rotate(180deg)}
+@media print{html.sx-dark{filter:none}}
 @media print{.sx-bar,.sx-calc,.sx-calc-fab,.sx-ov,.sx-step,.sx-chips,.sx-choices{display:none!important}}
 /* 2026-11-16 tools: calm look, white sheet, coloured edges only */
 .sx-toast{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:5000;max-width:min(92vw,520px);direction:rtl;background:#fff;color:#0f172a;
@@ -208,8 +236,18 @@ html.sx-noscroll,html.sx-noscroll body{overflow:hidden}
 .sx-pad-tools .on{border-color:#1e3a8a;box-shadow:0 0 0 2px #c7d2fe}
 .sx-pad-q{padding:4px 12px;border-bottom:1px solid #e2e8f0;font-size:.92rem}
 .sx-pad-q summary{cursor:pointer;font-weight:800;color:#1e3a8a}
-.sx-pad-q div{max-height:26vh;overflow:auto}
+.sx-pad-q>div{max-height:34vh;overflow:auto;line-height:1.75}
 .sx-pad-q p{margin:4px 0}
+.sx-pad-q .pq{border-top:1px dashed #e2e8f0;padding:4px 0}
+.sx-pad-q .pa{display:flex;gap:6px;margin:2px 0 4px}
+.sx-pad-q .pa input{flex:1;min-width:0;font:inherit;font-size:1rem;padding:5px 8px;border:1.5px solid #cbd5e1;border-radius:8px;direction:ltr;text-align:center}
+.sx-pad-q .pa button{font:inherit;font-weight:800;font-size:.82rem;cursor:pointer;border-radius:8px;padding:4px 9px;border:0;background:#1e3a8a;color:#fff;white-space:nowrap}
+.sx-pad-q .pf{font-size:.82rem;color:#334155}
+.sx-pad-q .pf.ok{color:#166534}.sx-pad-q .pf.no{color:#92400e}
+.sx-pad-fab{position:fixed;right:12px;bottom:14px;z-index:2500;font:inherit;font-weight:800;cursor:pointer;border-radius:999px;padding:10px 14px;
+  background:#fff;color:#1e3a8a;border:2px solid #1e3a8a;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+body.sx-exam .sx-pad-fab{bottom:74px}
+@media print{.sx-pad-fab{display:none!important}}
 .sx-pad-area{flex:1;position:relative;touch-action:none;background-color:#fff;
   background-image:linear-gradient(#e0e7ff 1px,transparent 1px),linear-gradient(90deg,#e0e7ff 1px,transparent 1px);background-size:22px 22px}
 .sx-pad-area canvas{position:absolute;inset:0;touch-action:none;cursor:crosshair}
@@ -279,6 +317,19 @@ body.sx-exam .sx-calc-fab{bottom:74px}
   padB.type = "button"; padB.title = "مسودة الحساب: اكتب بإصبعك";
   padB.onclick = function () { openPad("page", document.title.split(" - ")[0]); };
   bar.appendChild(padB);
+  /* 🌙 / ☀️ night or day (his ask 2026-11-16 «اجعل اللون ليلي او نهاري») */
+  var thB = el("button", "sx-btn sx-theme", "");
+  thB.type = "button";
+  function thPaint() { var d = document.documentElement.classList.contains("sx-dark"); thB.textContent = d ? "☀️" : "🌙"; thB.title = d ? "الوضع النهاري" : "الوضع الليلي"; }
+  thB.onclick = function () {
+    var d = !document.documentElement.classList.contains("sx-dark");
+    document.documentElement.classList.toggle("sx-dark", d);
+    store("math-theme", d ? "dark" : "light");
+    thPaint();
+  };
+  if (store("math-theme") === "dark") document.documentElement.classList.add("sx-dark");
+  thPaint();
+  bar.appendChild(thB);
 
   if ("serviceWorker" in navigator) window.addEventListener("load", function () { navigator.serviceWorker.register(ROOT.href + "sw.js").catch(function () {}); });
 
@@ -648,7 +699,17 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       go(first, true);
     }
     var saved = getLog(), nSaved = allQ.filter(function (q) { return (saved[q.qId] || []).length; }).length;
-    if (nSaved) {
+    var recent = nSaved && saved._t && Date.now() - saved._t < 3 * 3600000 && !store("math-exam:" + rel);
+    if (recent) {
+      setTimeout(function () {
+        replay();
+        try {
+          var ls = JSON.parse(store("math-last") || "null");
+          if (ls && ls.u === location.pathname + location.search && ls.y) window.scrollTo(0, ls.y);
+        } catch (e) {}
+        toast("▶ أكملتَ من حيث توقفت (" + nSaved + " من " + allQ.length + " سؤالا).");
+      }, 60);
+    } else if (nSaved) {
       var rb = el("div", "sx-resume");
       rb.innerHTML = '<span>📌 لديك محاولة محفوظة على هذا الجهاز (' + nSaved + " من " + allQ.length + ' سؤالا).</span>' +
         '<button type="button" class="go">▶ أكمل من حيث توقفت</button><button type="button" class="new">↺ ابدأ من جديد</button>';
@@ -672,14 +733,13 @@ body.sx-exam .sx-calc-fab{bottom:74px}
     /* ---- A. reading aloud ---- */
     cards.forEach(function (c, i) {
       var cb = $(".context-box", c);
-      var tools = el("div", "sx-tools");
-      var pb = el("button", "sx-tool", "📝 مسودة الحساب");
-      pb.type = "button";
-      pb.onclick = function () { openPad("ex" + i, plain(data[i].title || ""), c); };
-      tools.appendChild(pb);
-      if (cb) cb.parentNode.insertBefore(tools, cb.nextSibling);
-      else c.insertBefore(tools, c.firstChild.nextSibling);
     });
+    /* 📝 one floating button, always within reach of the thumb; it opens the draft of the exercise on the screen */
+    var padFab = el("button", "sx-pad-fab", "📝 مسودة");
+    padFab.type = "button"; padFab.title = "مسودة الحساب للتمرين المعروض";
+    padFab.onclick = function () { openPad("ex" + cur, plain(data[cur].title || ""), cards[cur]); };
+    document.body.appendChild(padFab);
+    if (padB && padB.parentNode) padB.parentNode.removeChild(padB);
     whenVoice(function () {
       cards.forEach(function (c) {
         var cb = $(".context-box", c);
@@ -1148,13 +1208,41 @@ body.sx-exam .sx-calc-fab{bottom:74px}
     ov.innerHTML = '<div class="sx-pad-top"><b>📝 مسودة الحساب</b><span class="t"></span><button type="button" class="x">✕ إغلاق</button></div>' +
       '<div class="sx-pad-tools">' + COLS.map(function (c, i) { return '<button type="button" class="col' + (i === 0 ? " on" : "") + '" data-c="' + c[0] + '" aria-label="' + c[1] + '"><i style="background:' + c[0] + '"></i></button>'; }).join("") +
       '<button type="button" class="w" data-w="2.6">✏️ رفيع</button><button type="button" class="er">🧽 ممحاة</button><button type="button" class="un">↶ تراجع</button><button type="button" class="cl">🗑️ مسح</button></div>' +
-      (src ? '<details class="sx-pad-q"><summary>📄 نص التمرين</summary><div></div></details>' : "") +
+      (src ? '<details class="sx-pad-q" open><summary>📄 نص التمرين (اضغط للتصغير)</summary><div></div></details>' : "") +
       '<div class="sx-pad-area"><canvas></canvas></div><div class="sx-pad-note">المسودة لا تُصحَّح ولا تُرسل: اكتب بإصبعك، ثم انقل النتيجة مع الوحدة إلى خانة الجواب.</div>';
     $(".t", ov).textContent = title || "";
     if (src) {
       var q = $(".sx-pad-q div", ov), cb = $(".context-box", src);
       if (cb) q.appendChild(el("p", "", cb.innerHTML));
-      $$(".q-title > span:first-child", src).forEach(function (s) { var p = el("p", "", s.innerHTML); $$(".sx-say", p).forEach(function (x) { x.remove(); }); q.appendChild(p); });
+      /* each question stays visible with its own answer box: the result found on the draft goes straight to the page */
+      $$(".q-box", src).forEach(function (box) {
+        var s = $(".q-title > span:first-child", box), inp = $("input[id^='in-']", box), btn = $(".btn-check", box), fb = $(".feedback-box", box);
+        if (!s) return;
+        var w = el("div", "pq"), pp = el("p", "", s.innerHTML);
+        $$(".sx-say", pp).forEach(function (x) { x.parentNode.removeChild(x); });
+        w.appendChild(pp);
+        if (inp && btn && !$$(".sx-choice", box).length) {
+          var row = el("div", "pa", '<input type="text" autocomplete="off" placeholder="جوابك (مع الوحدة)"><button type="button">✔ انقل وتحقق</button>'),
+            mi = $("input", row), mb = $("button", row), pf = el("div", "pf");
+          if (inp.inputMode) mi.inputMode = inp.inputMode;
+          var sync = function () {
+            if (inp.disabled) mi.value = inp.value;
+            mi.disabled = mb.disabled = inp.disabled;
+            var t = fb ? fb.textContent.replace(/\s+/g, " ").trim() : "";
+            pf.textContent = t.length > 160 ? t.slice(0, 160) + "…" : t;
+            pf.className = "pf" + (box.classList.contains("solved") ? " ok" : t ? " no" : "");
+          };
+          mb.onclick = function () {
+            if (!mi.value.trim() || inp.disabled) return;
+            inp.value = mi.value; btn.click();
+            setTimeout(sync, 200);
+          };
+          mi.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); mb.click(); } });
+          sync();
+          w.appendChild(row); w.appendChild(pf);
+        }
+        q.appendChild(w);
+      });
       $$(".sx-say", q).forEach(function (x) { x.remove(); });
     }
     document.body.appendChild(ov);

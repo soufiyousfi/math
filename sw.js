@@ -2,7 +2,7 @@
    Network first: with internet the newest version published on GitHub is always taken (and saved on the phone);
    without internet the last saved copy opens. The page itself shows «🔄 تتوفر تمارين جديدة من الأستاذ»
    when a newer version is published while the app is open (assets/site.js + version.json). */
-const CACHE = "math-v2";
+const CACHE = "math-v3";
 const CORE = ["./", "index.html", "manifest.webmanifest", "icon-192.png", "icon-512.png"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).catch(() => {}));
@@ -27,6 +27,8 @@ self.addEventListener("fetch", e => {
           c.put(key, copy);
         });
       }
+      if (nav && res && res.status === 404)   /* a lost address: open the saved copy or the index instead of a 404 */
+        return caches.match(key, { ignoreSearch: true }).then(m => m || caches.match("index.html")).then(m => m || res);
       return res;
     }).catch(() => caches.match(key, { ignoreSearch: true }).then(m => m || (nav ? caches.match("index.html") : Response.error())))
   );
