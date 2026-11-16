@@ -104,6 +104,11 @@ def inject_site_js(path):
         return
     depth = path.replace(os.sep, "/").count("/")
     tag = f'<script src="{"../" * depth}assets/site.js?v={VERSION}" data-v="{VERSION}" defer></script>'
+    if path.replace(os.sep, "/") != "index.html":
+        # night mode before the first paint (no white flash)
+        early = '<script>try{if(localStorage.getItem("math-theme")==="dark")document.documentElement.classList.add("sx-dark")}catch(e){}</script>'
+        h = re.search(r"<head[^>]*>", page, re.I)
+        page = page[:h.end()] + early + page[h.end():] if h else early + page
     i = page.lower().rfind("</body>")
     page = page[:i] + tag + "\n" + page[i:] if i >= 0 else page + tag
     with open(path, "w", encoding="utf-8") as f:
