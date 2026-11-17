@@ -288,7 +288,7 @@
       }
     }
     if (!window.__kidRaw) return { button: button, open: open, levelChanged: function () {} , off: true };
-    return { button: button, open: open, levelChanged: levelChanged };
+    return { button: button, open: open, levelChanged: levelChanged, many: function () { return list().length > 1; } };
   })();
   window.__sxKids = KIDS;
   if (!isPage && !KIDS.off) {
@@ -316,6 +316,9 @@
   color:#1e3a8a;background:#fff;border:1.5px solid #c7d2fe;border-radius:10px;padding:5px 11px;line-height:1.4;box-shadow:0 1px 3px rgba(0,0,0,.06)}
 .sx-home:hover,.sx-btn:hover{background:#eef2ff}
 .sx-foot{justify-content:center;padding:14px 12px 72px}
+.sx-top1{flex-wrap:nowrap;padding:6px 12px}
+.sx-top1>.sx-btn{padding:5px 9px}
+.sx-top1>.sx-home{margin-left:auto}
 .sx-crumb{color:#475569;font-weight:700}
 .sx-crumb b{color:#0f766e}
 .sx-pills{display:flex;gap:5px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;width:100%;padding:2px 0 1px;direction:rtl}
@@ -528,16 +531,18 @@ body.sx-exam .sx-calc-fab{bottom:74px}
   /* ---------- 1. bar «🏠 الفهرس» ---------- */
   var bar = el("nav", "sx-bar");
   bar.setAttribute("aria-label", "التنقل");
-  bar.innerHTML = '<a class="sx-home" href="' + home + '">🏠 الصفحة الرئيسية</a><span class="sx-crumb">' + LEVEL[level] +
-    " · " + TERM[term] + " · <b>" + (SECTION[section] || "") + "</b></span>";
+  /* colleague's remark 2026-11-17 «على قد ما تنقصوا معلومات في صفحة يركز في حاجة وحدة»: ONE short row at the top.
+     The level/term crumb repeated the page header, so it is gone; tools are icons only (title = tooltip). */
+  bar.classList.add("sx-top1");
+  bar.innerHTML = '<a class="sx-home" href="' + home + '" title="' + LEVEL[level] + " · " + TERM[term] + " · " + (SECTION[section] || "") + '">🏠 الرئيسية</a>';
   document.body.insertBefore(bar, document.body.firstChild);
   /* his ask 2026-11-17 «اضف زر الصفحة الاساسية في الاعلى والاسفل»: the same home button again at the bottom of every page */
   var foot = el("nav", "sx-bar sx-foot");
   foot.setAttribute("aria-label", "العودة");
   foot.innerHTML = '<a class="sx-home" href="' + home + '">🏠 الصفحة الرئيسية</a><a class="sx-btn" href="#" onclick="window.scrollTo({top:0,behavior:\'smooth\'});return false">⬆️ أعلى الصفحة</a>';
   document.body.appendChild(foot);
-  var padB = el("button", "sx-btn", "📝 مسودة");
-  padB.type = "button"; padB.title = "مسودة الحساب: اكتب بإصبعك";
+  var padB = el("button", "sx-btn", "📝");
+  padB.type = "button"; padB.title = "مسودة الحساب: اكتب بإصبعك"; padB.setAttribute("aria-label", "مسودة");
   padB.onclick = function () { openPad("page", document.title.split(" - ")[0]); };
   bar.appendChild(padB);
   /* 🌙 / ☀️ night or day (his ask 2026-11-16 «اجعل اللون ليلي او نهاري») */
@@ -553,7 +558,8 @@ body.sx-exam .sx-calc-fab{bottom:74px}
   if (store("math-theme") === "dark") document.documentElement.classList.add("sx-dark");
   thPaint();
   bar.appendChild(thB);
-  if (!KIDS.off) { var kidB = KIDS.button(); kidB.classList.add("sx-btn"); bar.appendChild(kidB); }
+  /* the child button only when the phone has 2+ child profiles (one row, less information); profiles stay reachable from the home page */
+  if (!KIDS.off && KIDS.many && KIDS.many()) { var kidB = KIDS.button(); kidB.classList.add("sx-btn"); bar.appendChild(kidB); }
 
   if ("serviceWorker" in navigator) window.addEventListener("load", function () { navigator.serviceWorker.register(ROOT.href + "sw.js").catch(function () {}); });
 
