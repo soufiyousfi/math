@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>خريطة إتقاني — السنة الأولى متوسط</title>
+<meta name="description" content="خريطة إتقان دروس «أُتقِن» للسنة الأولى متوسط ومراجعة اليوم: تُحفظ في هاتف التلميذ فقط.">
+<style>
+:root{--ink:#1d2433;--mut:#5b6474;--edge:#0b4f8a;--bg:#f4f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,"Segoe UI",Arial,sans-serif;font-size:18px;line-height:1.7}
+header{background:linear-gradient(135deg,#0b4f8a,#0f766e);color:#fff;padding:14px 16px 16px;border-bottom:5px solid #facc15;text-align:center}
+header .sc{font-size:.8rem;opacity:.9}
+header h1{margin:4px 0 2px;font-size:1.45rem}
+header p{margin:0;font-size:.9rem;opacity:.95}
+main{max-width:760px;margin:0 auto;padding:14px 16px 30px}
+.card{background:#fff;border-radius:14px;border:1px solid #e3e8f0;border-top:5px solid var(--edge);padding:12px 14px;margin:0 0 14px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.card h2{margin:0 0 8px;font-size:1.15rem;color:var(--edge)}
+.rv{border-top-color:#d97706}.rv h2{color:#92400e}
+.lg{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.85rem;color:var(--mut)}
+.row{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid #eef1f6}
+.row:first-of-type{border-top:0}
+.row a.t{flex:1;color:var(--ink);text-decoration:none;font-weight:700}
+.chip{flex:none;font-size:.8rem;font-weight:800;border-radius:999px;padding:2px 10px;border:1.5px solid #cbd5e1;color:#475569;background:#fff;white-space:nowrap}
+.c1{border-color:#f59e0b;color:#92400e;background:#fffbeb}
+.c2{border-color:#2563eb;color:#1e3a8a;background:#eff6ff}
+.c3{border-color:#16a34a;color:#166534;background:#f0fdf4}
+.sum{font-size:.88rem;color:var(--mut);margin:0 0 4px}
+.bar{height:10px;background:#e8edf4;border-radius:99px;overflow:hidden;margin:0 0 6px;display:flex}
+.bar i{display:block;height:100%}
+.go{display:inline-block;font:inherit;font-weight:800;text-decoration:none;color:#fff;background:#d97706;border-radius:12px;padding:8px 14px;margin:4px 0}
+.go.sm{font-size:.85rem;padding:5px 11px;background:#0b4f8a}
+.note{font-size:.88rem;color:var(--mut);margin:6px 0 0}
+.empty{color:var(--mut)}
+</style>
+</head>
+<body>
+<header>
+  <div class="sc">متوسطة محمد العربي بن مهيدي، وادي فراغة، قالمة — الأستاذ: يوسفي السوفي</div>
+  <h1>🗺️ خريطة إتقاني</h1>
+  <p>السنة الأولى متوسط · دروس «أُتقِن خطوة بخطوة»</p>
+</header>
+<main>
+  <section class="card rv" id="rv"><h2>🔁 مراجعة اليوم</h2><div id="rvl" class="empty">…</div></section>
+  <div id="seqs"></div>
+  <section class="card"><h2>ماذا تعني الألوان؟</h2>
+    <div class="lg"><span><span class="chip">لم يبدأ</span></span><span><span class="chip c1">محاولة</span> أقل من 70%</span><span><span class="chip c2">مألوف</span> 70% أو أكثر</span><span><span class="chip c3">متقن</span> ثم نجحت في المراجعة في يوم آخر</span></div>
+    <p class="note">تُحفظ الخريطة في هذا الهاتف فقط، ولا تُرسل إلى أي مكان.</p>
+  </section>
+</main>
+<script src="../../../assets/mastery.js"></script>
+<script>
+(function(){
+var LV='1m', CAT=[{"url": "1m/t1/dars/itqan-m1-darb10.html", "title": "أُتقِن: الضرب والقسمة على 10، 100، 1000 و 0,1 (الأولى متوسط)", "f": "itqan-m1-darb10.html"}, {"url": "1m/t1/dars/itqan-m1-tartib.html", "title": "أُتقِن: مقارنة وترتيب الأعداد العشرية (الأولى متوسط)", "f": "itqan-m1-tartib.html"}, {"url": "1m/t1/dars/itqan-m2-mustatil.html", "title": "أُتقِن: محيط ومساحة مستطيل (الأولى متوسط)", "f": "itqan-m2-mustatil.html"}, {"url": "1m/t1/dars/itqan-m2-muthallath.html", "title": "أُتقِن: مساحة مثلث قائم (الأولى متوسط)", "f": "itqan-m2-muthallath.html"}];
+var SEQ={m1:'المقطع الأول',m2:'المقطع الثاني',m3:'المقطع الثالث',m4:'المقطع الرابع',m5:'المقطع الخامس',m6:'المقطع السادس',m7:'المقطع السابع'};
+function clean(t){return String(t).replace(/^أُتقِن:\s*/,'').replace(/\s*\((الأولى|الثانية|الثالثة|الرابعة) متوسط\)\s*$/,'');}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function draw(cat){
+  var M=MASTERY,m=M.load(),t=M.today(),bySeq={},due=[],soon=null;
+  cat.forEach(function(it){var s=(it.url.match(/itqan-(m\d)-/)||[])[1]||'m1';(bySeq[s]=bySeq[s]||[]).push(it);
+    var r=m[it.url],d=r?M.dueIn(r,t):null;if(d!==null){if(d<=0)due.push([d,it]);else if(soon===null||d<soon)soon=d;}});
+  due.sort(function(a,b){return a[0]-b[0];});
+  var h='';
+  if(due.length){h='<p class="note" style="margin-top:0">3 أسئلة من كل درس، دون تذكير، لتتأكّد أنك ما زلت تتذكّره:</p>';
+    due.slice(0,3).forEach(function(x){h+='<div class="row"><a class="t" href="'+esc(x[1].f)+'?review=1">'+esc(clean(x[1].title))+'</a><a class="go sm" href="'+esc(x[1].f)+'?review=1">ابدأ</a></div>';});}
+  else if(soon!==null)h='<p class="empty" style="margin:0">لا مراجعة اليوم. موعد مراجعتك القادمة بعد '+soon+(soon===1?' يوم.':(soon===2?' يومين.':' أيام.'))+'</p>';
+  else h='<p class="empty" style="margin:0">أنجز درسا من الدروس أدناه بنسبة 70% أو أكثر، ثم عد بعد 3 أيام لتراجعه. هكذا يثبت ما تعلّمته.</p>';
+  document.getElementById('rvl').innerHTML=h;
+  var out='';Object.keys(bySeq).sort().forEach(function(s){var L=bySeq[s],c=[0,0,0,0];
+    var rows=L.map(function(it){var r=m[it.url],lv=M.level(r);c[lv]++;
+      return '<div class="row"><a class="t" href="'+esc(it.f)+'">'+esc(clean(it.title))+'</a><span class="chip c'+lv+'">'+M.NAMES[lv]+'</span></div>';}).join('');
+    var n=L.length,w=function(k){return (100*c[k]/n)+'%';};
+    out+='<section class="card"><h2>'+(SEQ[s]||s)+'</h2><p class="sum">متقن '+c[3]+' من '+n+' · مألوف '+c[2]+' · محاولة '+c[1]+'</p>'+
+      '<div class="bar"><i style="width:'+w(3)+';background:#16a34a"></i><i style="width:'+w(2)+';background:#2563eb"></i><i style="width:'+w(1)+';background:#f59e0b"></i></div>'+rows+'</section>';});
+  document.getElementById('seqs').innerHTML=out;
+}
+function norm(a){return a.filter(function(x){return x.level===LV&&/\/dars\/itqan-[^\/]+\.html$/.test(x.url);}).map(function(x){return {url:x.url,title:x.title,f:x.url.split('/').pop()};}).sort(function(a,b){return a.url<b.url?-1:1;});}
+draw(CAT);
+/* new lessons published later appear without rebuilding this page */
+try{fetch('../../../files.json').then(function(r){return r.ok?r.json():null;}).then(function(d){if(d&&d.items){var c=norm(d.items);if(c.length)draw(c);}}).catch(function(){});}catch(e){}
+window.addEventListener('pageshow',function(e){if(e.persisted)location.reload();});
+})();
+</script>
+</body>
+</html>
