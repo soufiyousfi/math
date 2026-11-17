@@ -17,7 +17,7 @@
   var LEVEL = { "1m": "الأولى متوسط", "2m": "الثانية متوسط", "3m": "الثالثة متوسط", "4m": "الرابعة متوسط" };
   var TERM = { t1: "الفصل الأول", t2: "الفصل الثاني", t3: "الفصل الثالث" };
   var SECTION = { dars: "درس تفاعلي", al3ab: "ألعاب", series: "سلسلة تمارين", fard: "فرض", wadjib: "واجب منزلي",
-    ikhtibar: "اختبار", chahada: "سلسلة الشهادة", tahaddi: "تحدٍّ", bem: "سلاسل الشهادة" };
+    ikhtibar: "اختبار", chahada: "سلسلة الشهادة", tahaddi: "تحدٍّ", idmaj: "وضعية إدماجية", bem: "سلاسل الشهادة" };
   var path = decodeURIComponent(location.pathname);
   var rootPath = decodeURIComponent(ROOT.pathname);
   var rel = path.indexOf(rootPath) === 0 ? path.slice(rootPath.length) : path.replace(/^\//, "");
@@ -975,7 +975,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
 
     /* ---- C. exam mode (optional) ---- */
     var EXK = "math-exam:" + rel, examOn = false, exTimer = null, exBar = null, warned = false;
-    var EXMIN = { fard: 60, wadjib: 60, series: 60, tahaddi: 45, chahada: 120, bem: 120, ikhtibar: level === "4m" ? 120 : 90 };
+    var EXMIN = { idmaj: 40, fard: 60, wadjib: 60, series: 60, tahaddi: 45, chahada: 120, bem: 120, ikhtibar: level === "4m" ? 120 : 90 };
     function exGet() { try { return JSON.parse(store(EXK) || "null"); } catch (e) { return null; } }
     function exPut(s) { store(EXK, JSON.stringify(s)); }
     function exDel() { try { localStorage.removeItem(EXK); } catch (e) {} }
