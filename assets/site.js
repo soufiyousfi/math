@@ -315,6 +315,7 @@
 .sx-home,.sx-btn{display:inline-flex;align-items:center;gap:5px;font:inherit;font-weight:800;text-decoration:none;cursor:pointer;
   color:#1e3a8a;background:#fff;border:1.5px solid #c7d2fe;border-radius:10px;padding:5px 11px;line-height:1.4;box-shadow:0 1px 3px rgba(0,0,0,.06)}
 .sx-home:hover,.sx-btn:hover{background:#eef2ff}
+.sx-foot{justify-content:center;padding:14px 12px 72px}
 .sx-crumb{color:#475569;font-weight:700}
 .sx-crumb b{color:#0f766e}
 .sx-pills{display:flex;gap:5px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;width:100%;padding:2px 0 1px;direction:rtl}
@@ -520,16 +521,21 @@ body.sx-exam .sx-calc-fab{bottom:74px}
 .sx-vert{font-family:"Courier New",monospace;font-size:1.05rem;line-height:1.35;background:#fff;border:1px dashed #94a3b8;border-radius:8px;padding:6px 12px;display:inline-block;margin:4px 0}
 .sx-gen .fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.05;margin:0 2px;font-size:.92em}
 .sx-gen .fr>span:first-child{border-bottom:1.5px solid currentColor;padding:0 3px}
-@media print{.sx-tools,.sx-gen-btn,.sx-say,.sx-exbar,.sx-pad,.sx-chal,.sx-toast{display:none!important}}
+@media print{.sx-foot,.sx-tools,.sx-gen-btn,.sx-say,.sx-exbar,.sx-pad,.sx-chal,.sx-toast{display:none!important}}
 `;
   document.head.appendChild(el("style", null, css));
 
   /* ---------- 1. bar «🏠 الفهرس» ---------- */
   var bar = el("nav", "sx-bar");
   bar.setAttribute("aria-label", "التنقل");
-  bar.innerHTML = '<a class="sx-home" href="' + home + '">🏠 الفهرس</a><span class="sx-crumb">' + LEVEL[level] +
+  bar.innerHTML = '<a class="sx-home" href="' + home + '">🏠 الصفحة الرئيسية</a><span class="sx-crumb">' + LEVEL[level] +
     " · " + TERM[term] + " · <b>" + (SECTION[section] || "") + "</b></span>";
   document.body.insertBefore(bar, document.body.firstChild);
+  /* his ask 2026-11-17 «اضف زر الصفحة الاساسية في الاعلى والاسفل»: the same home button again at the bottom of every page */
+  var foot = el("nav", "sx-bar sx-foot");
+  foot.setAttribute("aria-label", "العودة");
+  foot.innerHTML = '<a class="sx-home" href="' + home + '">🏠 الصفحة الرئيسية</a><a class="sx-btn" href="#" onclick="window.scrollTo({top:0,behavior:\'smooth\'});return false">⬆️ أعلى الصفحة</a>';
+  document.body.appendChild(foot);
   var padB = el("button", "sx-btn", "📝 مسودة");
   padB.type = "button"; padB.title = "مسودة الحساب: اكتب بإصبعك";
   padB.onclick = function () { openPad("page", document.title.split(" - ")[0]); };
