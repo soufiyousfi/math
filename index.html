@@ -264,56 +264,149 @@ dialog::backdrop{background:rgba(10,20,25,.5)}
 :root[data-theme="dark"] .go{color:#0f172a}
 :root[data-theme="dark"] .card.done .pbox{color:#86efac}
 .theme-btn{position:absolute;top:12px;left:12px;z-index:3;font:inherit;font-size:1.05rem;cursor:pointer;border-radius:999px;padding:4px 10px;background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.45)}
+
+/* ---------- 2026-11-17: calm home (tiles hub + one list at a time) ---------- */
+.app{max-width:1180px}
+.hero{padding:14px 16px 14px;margin-bottom:12px}
+.htop{display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.hbtns{display:flex;gap:5px;align-items:center;flex:none;margin-inline-start:auto}
+.hbtns .theme-btn{position:static;padding:2px 9px;font-size:.95rem}
+.hbtns .sx-kid-btn{margin:0!important;font-size:.78rem!important;padding:3px 9px!important;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.school{display:block;font-size:.74rem;padding:2px 9px;margin:0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hero h1{font-size:clamp(1.4rem,5.4vw,2rem);margin:0 0 2px}
+.hero .slogan{font-size:.95rem;margin:0 0 10px}
+.cta{margin:0 0 10px;flex-wrap:nowrap}
+.cta a{padding:8px 14px;font-size:.95rem}
+.cta .start,.cta .resume{flex:1 1 auto;justify-content:center;min-width:0}
+.cta .resume{background:#fff;color:var(--primary-dark);border:0}
+.cta .resume:not([hidden])~.fbh{flex:none}
+.cta .resume:not([hidden]){order:-1}
+body.has-resume .cta .start{display:none}
+.hero .fbh{flex:none}
+@media (max-width:420px){.hero .fbh span{display:none}}
+.hero .stats{display:block;background:var(--surface);color:var(--text);border:0;border-radius:14px;padding:9px 12px 7px;margin:0;box-shadow:none}
+.stats .srow{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.stats .jt{color:var(--primary);font-size:.95rem;font-weight:900}
+.stats .nums{display:flex;gap:12px;font-weight:900;font-size:.95rem}
+.stats .track{height:6px;margin:6px 0 3px}
+.stats .lbl{font-size:.74rem;color:var(--muted);font-weight:700}
+.prof-bar{margin-top:8px;padding:4px 10px;font-size:.78rem}
+.sx-statbtn{font:inherit;font-size:.85rem;font-weight:800;cursor:pointer;border-radius:999px;padding:3px 10px;background:#0f172a;color:#fff;border:1px solid rgba(255,255,255,.45)}
+:root[data-theme="dark"] .stats .jt{color:#7dd3fc}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .stats .jt{color:#7dd3fc}}
+/* levels: one compact row, coloured like the Facebook card */
+nav.levels{grid-template-columns:repeat(4,1fr)!important;gap:7px;margin-bottom:10px}
+.lv{background:var(--c);border-color:var(--c);color:#fff;opacity:.5;padding:7px 2px 6px;box-shadow:none}
+.lv .n{color:#fff;font-size:1.2rem;line-height:1.2}
+.lv .t{display:none}
+.lv .k{color:rgba(255,255,255,.92);font-size:.7rem}
+.lv[aria-pressed="true"]{opacity:1;box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--c)}
+@media (min-width:641px){.lv .t{display:block;font-size:.82rem}}
+nav.terms{flex-wrap:nowrap;gap:4px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:3px;margin-bottom:10px}
+.tm{flex:1;justify-content:center;border:0;border-radius:9px;padding:5px 4px;font-size:.84rem;background:transparent;white-space:nowrap}
+.tm b{font-size:.68rem}
+.tools{margin-bottom:6px}
+.search input{padding:7px 36px 7px 12px}
+/* tiles hub */
+.hub h2,.recent h2,.listbar .t{font-size:1.05rem;font-weight:900;color:var(--primary);margin:6px 2px 8px}
+:root[data-theme="dark"] .hub h2,:root[data-theme="dark"] .recent h2{color:#7dd3fc}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hub h2,:root:not([data-theme="light"]) .recent h2{color:#7dd3fc}}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+@media (min-width:641px){.tiles{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.tile{position:relative;font:inherit;text-align:start;cursor:pointer;background:var(--surface);color:var(--text);border:1px solid var(--border);border-top:5px solid var(--c);
+  border-radius:14px;padding:9px 11px 8px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:0;min-width:0}
+.tile:hover{transform:translateY(-1px)}
+.tile .ic{font-size:1.45rem;line-height:1.3}
+.tile .nm{font-weight:900;font-size:1rem;line-height:1.35}
+.tile .sub{font-size:.76rem;color:var(--muted);font-weight:700}
+.tile .n{position:absolute;top:8px;left:9px;background:var(--c);color:#fff;font-weight:800;font-size:.75rem;border-radius:9px;padding:0 8px}
+:root[data-theme="dark"] .tile .n{color:#0f172a}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tile .n{color:#0f172a}}
+.tile[disabled]{opacity:.45;cursor:default}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#ef4444;box-shadow:0 0 0 3px #fee2e2;flex:none}
+.tile .dot{position:absolute;bottom:10px;left:11px}
+.showall{display:block;margin:10px auto 0;font:inherit;font-size:.85rem;font-weight:800;cursor:pointer;color:var(--muted);background:transparent;border:0;text-decoration:underline}
+/* one list at a time */
+.listbar{display:flex;align-items:center;gap:8px;margin:2px 0 8px}
+.listbar .back{font:inherit;font-weight:800;font-size:.88rem;cursor:pointer;border-radius:10px;padding:5px 12px;border:1px solid var(--border);background:var(--surface);color:var(--text)}
+.listbar .t{margin:0}
+.filters{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-bottom:10px;padding-bottom:2px}
+.fc{display:inline-flex;align-items:center;gap:5px}
+.fc b{font-size:.7rem;background:var(--soft);color:var(--muted);border-radius:8px;padding:0 6px}
+.fc[aria-pressed="true"]{background:var(--primary);color:#fff;border-color:var(--primary)}
+.fc[aria-pressed="true"] b{background:#fff;color:var(--primary)}
+:root[data-theme="dark"] .fc[aria-pressed="true"]{background:#7dd3fc;color:#0f172a;border-color:#7dd3fc}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .fc[aria-pressed="true"]{background:#7dd3fc;color:#0f172a;border-color:#7dd3fc}}
+/* cards: whole card opens the activity, small button, calm share icon */
+.grid{grid-template-columns:minmax(0,1fr)}
+@media (min-width:641px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1025px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.card{position:relative;gap:6px;padding:11px 13px;cursor:pointer}
+.card:hover{box-shadow:var(--shadow-md)}
+.card h3{font-size:1rem;font-weight:800}
+.card .new{margin-inline-start:auto;background:none;padding:0}
+.meta span{font-size:.74rem}
+.topics{font-size:.8rem;color:var(--muted);opacity:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.acts{align-items:center;justify-content:flex-end;gap:8px}
+.go{flex:none;font-size:.92rem;padding:6px 14px;border-radius:10px}
+.go::after{content:"";position:absolute;inset:0;border-radius:16px}
+.alt,.share,.card .pack{position:relative;z-index:1}
+.alt{padding:5px 10px;font-size:.76rem;border-width:1px;color:var(--muted);border-color:var(--border)}
+.share{order:-1;margin-inline-end:auto;width:34px;height:34px;padding:0;border-radius:50%;background:var(--soft);color:var(--muted);border:1px solid var(--border);font-size:.95rem}
+body.prof .share{display:inline-grid;place-items:center}
+.pack .share{width:auto;height:auto;border-radius:999px;padding:2px 10px;order:0;margin:0;font-size:.78rem}
+.sec>h2{font-size:.98rem}
+/* recent: one line */
+.recent{background:transparent;border:0;box-shadow:none;padding:0;margin:14px 0 6px}
+:root[data-theme="dark"] .recent{background:transparent}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .recent{background:transparent}}
+.recent ul{flex-wrap:nowrap}
+.recent a{border:1px solid var(--border);border-right:4px solid var(--accent);background:var(--surface)}
+.recent a b{background:var(--primary)}
+/* about: closed by default */
+.about{margin-top:14px;padding:10px 14px}
+.about>summary{cursor:pointer;list-style:none}
+.about>summary::-webkit-details-marker{display:none}
+.about>summary h2{display:inline;margin:0}
+.about>summary::after{content:" ◂";color:var(--muted)}
+.about[open]>summary::after{content:" ▾"}
+.about[open]>summary{margin-bottom:8px}
+footer{padding-top:12px}
 </style>
 </head>
 <body>
 <div class="app">
   <header class="hero" id="hero">
-    <button type="button" class="theme-btn" id="themeBtn" aria-label="الوضع الليلي أو النهاري">🌙</button>
-    <div class="school" id="school">🏫 متوسطة محمد العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
+    <div class="htop"><div class="school" id="school">🏫 متوسطة محمد العربي بن مهيدي، وادي فراغة، قالمة</div>
+    <div class="hbtns" id="hbtns"><button type="button" class="theme-btn" id="themeBtn" aria-label="الوضع الليلي أو النهاري">🌙</button></div></div>
     <h1>رياضيات التعليم المتوسط <span class="x">√π ∑</span></h1>
-    <p class="slogan">تعلّم، جرّب، أخطئ، صحّح… وتفوّق! ✨</p>
-    <p>هنا لا نعطيك الجواب فقط، بل نساعدك على اكتشافه بنفسك: تصحيح فوري، تلميحان لكل سؤال، وحل نموذجي مفصّل.</p>
-    <div class="cta"><a class="start" href="#levels-step">🚀 ابدأ التعلّم</a><a class="resume" id="resume" hidden></a><a class="fbh" id="fbHero" href="" target="_blank" rel="noopener" hidden>📘 فيسبوك</a></div>
-    <div class="pills">
-      <span class="pill">⚡ تصحيح فوري</span>
-      <span class="pill">💡 تلميحان لكل سؤال</span>
-      <span class="pill">📊 حل نموذجي وسلّم تنقيط</span>
-      <span class="pill">🖨️ نسخة ورقية للطباعة</span>
-    </div>
-    <div class="prof-bar">👨‍🏫 وضع الأستاذ مفعّل على هذا الجهاز: زر «شارك» يظهر لك وحدك.</div>
+    <p class="slogan">مع الأستاذ يوسفي السوفي · تعلّم، جرّب، صحّح… وتفوّق! ✨</p>
+    <div class="cta"><a class="start" id="start" href="#levels-step">🚀 ابدأ التعلّم</a><a class="resume" id="resume" hidden></a><a class="fbh" id="fbHero" href="" target="_blank" rel="noopener" hidden title="صفحتنا على فيسبوك">📘<span> فيسبوك</span></a></div>
+    <section class="stats" aria-label="سجلّ إنجازك على هذا الجهاز">
+      <div class="srow"><b class="jt">📚 تابع رحلتك</b><span class="nums"><span title="نجومك">⭐ <span id="stStars">0</span></span><span title="أنشطة أكملتها">✅ <span id="stDone">0</span></span></span></div>
+      <div class="track"><div class="fill" id="stFill"></div></div>
+      <div class="srow lbl"><span id="stLbl">تقدّمك في هذا الفصل</span><span id="stPct">0%</span></div>
+    </section>
+    <div class="prof-bar">👨‍🏫 وضع الأستاذ: زر المشاركة ↗ يظهر لك وحدك.</div>
   </header>
 
-  <section class="stats" aria-label="سجلّ إنجازك على هذا الجهاز">
-    <div class="items">
-      <div class="chip"><i>⭐</i><div><small>نجومك</small><span id="stStars">0</span></div></div>
-      <div class="chip"><i class="g">✅</i><div><small>أنشطة أكملتها</small><span id="stDone">0</span></div></div>
-    </div>
-    <div class="prog">
-      <div class="lbl"><span id="stLbl">تقدّمك في هذا الفصل</span><span id="stPct">0%</span></div>
-      <div class="track"><div class="fill" id="stFill"></div></div>
-    </div>
-  </section>
+  <div id="levels-step"></div>
+  <nav class="levels" id="levels" aria-label="المستوى"></nav>
+  <nav class="terms" id="terms" aria-label="الفصل"></nav>
+  <div class="tools">
+    <label class="search"><span>🔍</span><input type="search" id="q" enterkeyhint="search" autocomplete="off" placeholder="ابحث في كل المستويات: فرض، طالس، PGCD، هندسة…" aria-label="ابحث في كل التمارين"></label>
+    <p class="qinfo" id="qinfo" hidden></p>
+  </div>
+
+  <main id="content"><p class="status">جارٍ التحميل…</p></main>
 
   <section class="recent" id="recent" hidden>
     <h2>🔥 آخر ما أُضيف</h2>
     <ul id="recent-list"></ul>
   </section>
 
-  <div class="step" id="levels-step"><span>1. اختر مستواك الدراسي</span><span class="here" id="here"></span></div>
-  <nav class="levels" id="levels" aria-label="المستوى"></nav>
-  <div class="step"><span>2. اختر الفصل</span></div>
-  <nav class="terms" id="terms" aria-label="الفصل"></nav>
-  <div class="tools">
-    <label class="search"><span>🔍</span><input type="search" id="q" enterkeyhint="search" autocomplete="off" placeholder="ابحث في كل المستويات: فرض، طالس، PGCD، هندسة…" aria-label="ابحث في كل التمارين"></label>
-    <div class="filters" id="filters" aria-label="نوع النشاط"></div>
-    <p class="qinfo" id="qinfo" hidden></p>
-  </div>
-
-  <main id="content"><p class="status">جارٍ التحميل…</p></main>
-
-  <section class="about" aria-labelledby="about-h">
-    <h2 id="about-h">📚 ماذا تجد في المنصة؟</h2>
+  <details class="about" id="about">
+    <summary><h2 id="about-h">📚 ماذا تجد في المنصة؟</h2></summary>
     <p>منصة مجانية لتلاميذ التعليم المتوسط في الجزائر وأوليائهم: فروض، واجبات منزلية، سلاسل تمارين، اختبارات، دروس تفاعلية، تحديات وألعاب، مع التصحيح الآلي الفوري والتلميحات والحل النموذجي المفصّل، وفق منهاج الجيل الثاني. هذه مقاطع كل مستوى:</p>
     <div class="lvcols">
       <div class="lvcol"><h3><a href="#1m-t1">السنة الأولى متوسط</a></h3><ol><li>الأعداد الطبيعية والأعداد العشرية (1)</li><li>إنجاز مماثلات أشكال مستوية بسيطة — الأطوال، المحيطات، المساحات</li><li>الأعداد الطبيعية والأعداد العشرية (2): القسمة وقابلية القسمة</li><li>الزوايا والتناظر المحوري</li><li>الكتابات الكسرية، الأعداد النسبية والحساب الحرفي</li><li>التناسبية وتنظيم معطيات</li><li>متوازي المستطيلات والمكعب</li></ol></div>
@@ -322,7 +415,7 @@ dialog::backdrop{background:rgba(10,20,25,.5)}
       <div class="lvcol"><h3><a href="#4m-t1">السنة الرابعة متوسط (شهادة التعليم المتوسط BEM)</a></h3><ol><li>الأعداد الطبيعية (PGCD) والأعداد الناطقة والحساب على الجذور</li><li>خاصية طالس وحساب المثلثات في المثلث القائم</li><li>الحساب الحرفي: النشر، التحليل، المعادلات والمتراجحات</li><li>الأشعة والانسحاب والمعالم</li><li>جملة معادلتين — الدالة الخطية — الدالة التآلفية</li><li>الدوران — المضلعات المنتظمة — الزوايا — الهندسة في الفضاء</li><li>الإحصاء</li></ol></div>
     </div>
     <details class="all" id="all-links"><summary>🗂️ فهرس كل الأنشطة (روابط مباشرة)</summary><div id="all-list"></div></details>
-  </section>
+  </details>
   <footer>
     <div class="who">🏫 متوسطة محمد العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
     <a class="fb" id="fbLink" href="" target="_blank" rel="noopener" hidden>📘 تابعنا على فيسبوك</a>
@@ -382,14 +475,19 @@ const SEC = Object.fromEntries(SECTIONS.map(s => [s[0], s]));
 const SEQ_NAME = ["", "الأول", "الثاني", "الثالث", "الرابع", "الخامس", "السادس", "السابع", "الثامن"];
 
 function currentTerm() { const m = new Date().getMonth() + 1; return m >= 9 ? "t1" : m <= 3 ? "t2" : "t3"; }
-const state = { level: "1m", term: currentTerm(), items: [], filter: "all", q: "" };
+// filter: "home" = the tiles hub, a section id = that list only, "all" = every list one after the other
+const state = { level: "1m", term: currentTerm(), items: [], filter: "home", q: "" };
+// short line under each tile
+const SUB = { dars: "افهم خطوة بخطوة", al3ab: "تعلّم واستمتع", series: "تدرّب مع التصحيح", fard: "حضّر فرضك",
+  wadjib: "أنجز واجبك", ikhtibar: "حضّر اختبارك", chahada: "طريقك إلى الشهادة", tahaddi: "نافس زملاءك" };
 function readHash() {
-  const m = location.hash.match(/^#([1-4]m)(?:-(t[1-3]))?$/);
-  if (m) { state.level = m[1]; if (m[2]) state.term = m[2]; return true; }
+  const m = location.hash.match(/^#([1-4]m)(?:-(t[1-3]))?(?:-([a-z0-9]+))?$/);
+  if (m) { state.level = m[1]; if (m[2]) state.term = m[2]; state.filter = m[3] && (SEC[m[3]] || m[3] === "all") ? m[3] : "home"; return true; }
   return false;
 }
-function savePrefs() {
-  history.replaceState(null, "", "#" + state.level + "-" + state.term);
+function hashNow() { return "#" + state.level + "-" + state.term + (state.filter !== "home" ? "-" + state.filter : ""); }
+function savePrefs(push) {
+  if (push) history.pushState({ hub: 1 }, "", hashNow()); else history.replaceState(history.state, "", hashNow());
   try { localStorage.setItem("math-level", state.level); } catch (e) {}
 }
 function loadPrefs() {
@@ -429,13 +527,8 @@ function renderNav() {
     const c = all.filter(i => i.level === state.level && i.term === id).length;
     return `<button type="button" class="tm" data-term="${id}" aria-pressed="${id === state.term}">${name}<b>${c}</b></button>`;
   }).join("");
-  document.getElementById("here").textContent = "أنت في: " + LEVEL_NAME[state.level] + " — " + TERM_NAME[state.term];
-  const here = all.filter(i => i.level === state.level && i.term === state.term);
-  const present = SECTIONS.filter(([id]) => here.some(i => i.section === id));
-  if (state.filter !== "all" && !present.some(s => s[0] === state.filter)) state.filter = "all";
-  document.getElementById("filters").innerHTML =
-    `<button type="button" class="fc" data-filter="all" aria-pressed="${state.filter === "all"}">الكل</button>` +
-    present.map(([id, , label, icon]) => `<button type="button" class="fc" data-filter="${id}" aria-pressed="${state.filter === id}">${icon} ${SEC[id][1]}</button>`).join("");
+  const here = state.items.filter(i => i.level === state.level && i.term === state.term);
+  if (all.length && SEC[state.filter] && !here.some(i => i.section === state.filter)) state.filter = "home";
 }
 
 function card(it, where) {
@@ -460,12 +553,12 @@ function card(it, where) {
   const sheet = isHtml && it.nEx && ["fard", "wadjib", "series", "tahaddi", "chahada", "ikhtibar"].includes(it.section)
     ? `<a class="alt" href="${esc(it.url)}#sheet" title="قراءة الموضوع كاملا دون حل">📄 الموضوع</a>` : "";
   return `<article class="card s-${it.section}${done ? " done" : ""}">
-    <div class="top">${where === true ? badge(it) : ""}<span class="type">${s[3]} ${s[2]}</span>${ct.seq ? `<span class="seq">${esc(ct.seq)}</span>` : ""}${isNew(it.date) ? `<span class="new">جديد 🔥</span>` : ""}</div>
+    <div class="top">${where === true ? badge(it) : ""}<span class="type">${s[3]} ${s[2]}</span>${ct.seq ? `<span class="seq">${esc(ct.seq)}</span>` : ""}${isNew(it.date) ? `<span class="new" title="جديد"><span class="dot"></span></span>` : ""}</div>
     <h3>${esc(ct.t)}</h3>
     ${meta.length ? `<div class="meta">${meta.map(m => `<span>${m}</span>`).join("")}</div>` : ""}
     ${tps.length ? `<p class="topics">${tps.map(esc).join(" · ")}</p>` : ""}
     ${pbox}
-    <div class="acts"><a class="go" href="${esc(it.url)}"><span>${go}</span><span>⬅</span></a>${sheet}<button type="button" class="share" data-share="${idx}">شارك</button></div>
+    <div class="acts"><a class="go" href="${esc(it.url)}"><span>${go}</span><span>⬅</span></a>${sheet}<button type="button" class="share" data-share="${idx}" title="شارك على فيسبوك" aria-label="شارك">↗</button></div>
   </article>`;
 }
 
@@ -541,7 +634,7 @@ function match(it) {
 function badge(it) { return `<span class="where">${LEVELS.find(l => l[0] === it.level)[1]}م · ${TERM_NAME[it.term]}</span>`; }
 function renderSearch() {
   const info = document.getElementById("qinfo");
-  const found = state.items.filter(i => (state.filter === "all" || i.section === state.filter) && match(i))
+  const found = state.items.filter(i => match(i))
     // the chosen level first, then the others
     .sort((a, b) => (a.level !== state.level) - (b.level !== state.level) || a.level.localeCompare(b.level) || a.term.localeCompare(b.term) || a.url.localeCompare(b.url, "en", { numeric: true }));
   info.innerHTML = `🔎 ${found.length} نتيجة لـ «${esc(state.q.trim())}» في كل المستويات والفصول <button type="button" id="qclear">✕ مسح البحث</button>`;
@@ -555,20 +648,47 @@ function renderSearch() {
     `<p class="empty">📭 لا توجد نتيجة لـ «${esc(state.q.trim())}».<br>جرّب كلمة أخرى، مثل: فرض، الكسور، طالس، الجذور، PGCD.</p>`;
   renderStats();
 }
+function hereItems() { return state.items.filter(i => i.level === state.level && i.term === state.term); }
+function presentSecs(here) { return SECTIONS.filter(([id]) => (!ONLY[id] || ONLY[id].includes(state.level))); }
+function renderHub(here) {
+  const ORDER = ["dars", "series", "fard", "wadjib", "al3ab", "tahaddi", "ikhtibar", "chahada"];
+  const secs = presentSecs().slice().sort((a, b) => (!here.some(i => i.section === a[0])) - (!here.some(i => i.section === b[0])) || ORDER.indexOf(a[0]) - ORDER.indexOf(b[0]));
+  const tiles = secs.map(([id, name, , icon]) => {
+    const list = here.filter(i => i.section === id), fresh = list.some(i => isNew(i.date));
+    return `<button type="button" class="tile s-${id}" data-open="${id}"${list.length ? "" : " disabled"}>
+      ${list.length ? `<span class="n">${list.length}</span>` : ""}<span class="ic">${icon}</span><span class="nm">${name}</span>
+      <span class="sub">${list.length ? SUB[id] : "قريبا"}</span>${fresh ? `<span class="dot" title="جديد"></span>` : ""}</button>`;
+  }).join("");
+  return `<section class="hub"><h2>ماذا تريد اليوم؟</h2><div class="tiles">${tiles}</div>` +
+    (here.length ? `<button type="button" class="showall" data-open="all">📋 اعرض كل الأنشطة في صفحة واحدة</button>` : "") + `</section>`;
+}
 function renderContent() {
-  if (norm(state.q)) return renderSearch();
+  if (norm(state.q)) { document.getElementById("recent").hidden = true; return renderSearch(); }
   document.getElementById("qinfo").hidden = true;
   PACKS.length = 0;
-  const here = state.items.filter(i => i.level === state.level && i.term === state.term);
-  const secs = SECTIONS.filter(([id]) => (!ONLY[id] || ONLY[id].includes(state.level)) && (state.filter === "all" || state.filter === id));
+  const here = hereItems();
+  const box = document.getElementById("content");
+  if (state.filter === "home" || !here.length) {
+    box.innerHTML = here.length ? renderHub(here) :
+      `<p class="empty">📭 لا يوجد محتوى بعد في «${LEVEL_NAME[state.level]} — ${TERM_NAME[state.term]}».<br>جرّب فصلا آخر أو عُد قريبا.</p>`;
+    renderRecent(); renderStats(); return;
+  }
+  document.getElementById("recent").hidden = true;
+  const present = presentSecs().filter(([id]) => here.some(i => i.section === id));
+  const tabs = `<div class="filters" role="tablist" aria-label="نوع النشاط">` + present.map(([id, name, , icon]) =>
+    `<button type="button" class="fc" data-filter="${id}" aria-pressed="${state.filter === id}">${icon} ${name}<b>${here.filter(i => i.section === id).length}</b></button>`).join("") +
+    `<button type="button" class="fc" data-filter="all" aria-pressed="${state.filter === "all"}">الكل<b>${here.length}</b></button></div>`;
+  const secs = present.filter(([id]) => state.filter === "all" || state.filter === id);
   const html = secs.map(([id, name, , icon]) => {
     const list = here.filter(i => i.section === id).sort((a, b) => a.url.localeCompare(b.url, "en", { numeric: true }));
-    if (!list.length) return "";
     const body = id === "chahada" ? chahadaBody(list) : `<div class="grid">${list.map(it => card(it)).join("")}</div>`;
-    return `<section class="sec s-${id}"><h2>${icon} ${name}<span class="cnt">${list.length}</span></h2>${body}</section>`;
+    return `<section class="sec s-${id}">${state.filter === "all" ? `<h2>${icon} ${name}<span class="cnt">${list.length}</span></h2>` : ""}${body}</section>`;
   }).join("");
-  document.getElementById("content").innerHTML = html ||
-    `<p class="empty">📭 لا يوجد محتوى بعد في «${LEVEL_NAME[state.level]} — ${TERM_NAME[state.term]}».<br>جرّب فصلا آخر أو عُد قريبا.</p>`;
+  const lv = LEVELS.find(l => l[0] === state.level)[1] + "م · " + TERM_NAME[state.term];
+  box.innerHTML = `<div class="listbar"><button type="button" class="back" data-back="1">→ رجوع</button><span class="t">${lv}</span></div>` + tabs + html;
+  const on = box.querySelector('.fc[aria-pressed="true"]');
+  if (on) { const r = on.parentNode, x = on.getBoundingClientRect(), y = r.getBoundingClientRect();
+    if (x.left < y.left || x.right > y.right) r.scrollLeft += x.left < y.left ? x.left - y.left - 8 : x.right - y.right + 8; }
   renderStats();
 }
 function renderStats() {
@@ -587,7 +707,7 @@ function renderStats() {
 function renderRecent() {
   const dated = state.items.filter(i => i.date && isNew(i.date)).sort(byDateDesc).slice(0, 6);
   const box = document.getElementById("recent");
-  if (!dated.length) { box.hidden = true; return; }
+  if (!dated.length || state.filter !== "home" || norm(state.q)) { box.hidden = true; return; }
   document.getElementById("recent-list").innerHTML = dated.map(it =>
     `<li><a href="${esc(it.url)}"><b>${LEVELS.find(l => l[0] === it.level)[1]}م</b>${SEC[it.section][3]} ${esc(cleanTitle(it).t)}</a></li>`).join("");
   box.hidden = false;
@@ -596,6 +716,7 @@ function renderResume() {
   const P = progress(), a = document.getElementById("resume");
   let best = null;
   for (const it of state.items) { const p = P[it.url]; if (p && !p.d && (p.a || p.s) && (!best || p.t > P[best.url].t)) best = it; }
+  document.body.classList.toggle("has-resume", !!best);
   if (!best) { a.hidden = true; return; }
   a.href = best.url; a.textContent = "▶ أكمل: " + cleanTitle(best).t; a.hidden = false;
 }
@@ -603,13 +724,25 @@ function render() { renderNav(); renderContent(); renderResume(); }
 
 document.addEventListener("click", e => {
   const lb = e.target.closest("[data-level]"), tb = e.target.closest("[data-term]"), fb = e.target.closest("[data-filter]");
+  const ob = e.target.closest("[data-open]"), bb = e.target.closest("[data-back]");
   if ((lb || tb) && state.q) { state.q = ""; document.getElementById("q").value = ""; }
-  if (lb) state.level = lb.dataset.level;
-  else if (tb) state.term = tb.dataset.term;
-  else if (fb) { state.filter = fb.dataset.filter; renderNav(); renderContent(); return; }
-  else return;
+  if (lb) { state.level = lb.dataset.level; state.filter = "home"; }
+  else if (tb) { state.term = tb.dataset.term; state.filter = "home"; }
+  else if (ob) { state.filter = ob.dataset.open; savePrefs(true); renderContent(); toContent(); return; }
+  else if (fb) { state.filter = fb.dataset.filter; savePrefs(); renderContent(); return; }
+  else if (bb) { if (history.state && history.state.hub) history.back(); else { state.filter = "home"; savePrefs(); renderContent(); } return; }
+  else {
+    // the whole card opens its activity (buttons inside keep their own action)
+    const c = e.target.closest(".card");
+    if (c && !e.target.closest("a,button")) { const g = c.querySelector("a.go"); if (g) g.click(); }
+    return;
+  }
   savePrefs(); render();
 });
+function toContent() {
+  const t = document.getElementById("levels"), y = t.getBoundingClientRect().top + scrollY - 6;
+  if (scrollY > y) scrollTo({ top: y });
+}
 document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; renderContent(); });
 document.getElementById("qinfo").addEventListener("click", e => {
   if (!e.target.closest("#qclear")) return;
@@ -623,6 +756,7 @@ document.getElementById("qinfo").addEventListener("click", e => {
 // Facebook page of the teacher
 if (CONFIG.facebook) for (const id of ["fbLink", "fbHero"]) { const a = document.getElementById(id); a.href = CONFIG.facebook; a.hidden = false; }
 window.addEventListener("hashchange", () => { if (readHash()) render(); });
+window.addEventListener("popstate", () => { if (readHash()) render(); });
 // coming back with the phone «back» button: refresh the marks
 window.addEventListener("pageshow", () => { if (state.items.length) renderContent(); });
 document.addEventListener("visibilitychange", () => { if (!document.hidden && state.items.length) { renderContent(); renderResume(); } });

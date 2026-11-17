@@ -38,26 +38,36 @@
     }
     var itemsEl = document.getElementById("items");
     if (!prof || !itemsEl) return;
-    var hid = false;
-    try { hid = sessionStorage.getItem("math-stats-hide") === "1"; } catch (e) {}
-    if (hid) return;
     var titles = {};
     try { JSON.parse(itemsEl.textContent).forEach(function (it) { titles[it.url] = it.title; }); } catch (e) {}
     var st = document.createElement("style");
-    st.textContent = ".sx-stats{position:fixed;left:12px;bottom:12px;z-index:3500;width:min(330px,calc(100vw - 24px));max-height:70vh;overflow:auto;direction:rtl;" +
+    /* hidden while browsing: a small «👁️ N» button in the header opens it as a centred window */
+    st.textContent = ".sx-wrap{position:fixed;inset:0;z-index:3500;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(15,23,42,.5);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}" +
+      ".sx-wrap.on{display:flex}.sx-stats{position:relative;width:min(420px,100%);max-height:80vh;overflow:auto;direction:rtl;" +
       "background:#0f172a;color:#e2e8f0;border:1.5px solid #38bdf8;border-radius:14px;padding:12px 14px;box-shadow:0 10px 28px rgba(0,0,0,.4);font-family:inherit;font-size:.86rem}" +
       ".sx-stats h4{margin:0 0 8px;font-size:.95rem;color:#38bdf8;display:flex;justify-content:space-between;gap:8px;align-items:center}" +
       ".sx-stats .n{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px;text-align:center}" +
       ".sx-stats .n b{display:block;font-size:1.25rem;color:#fff}.sx-stats .n span{color:#94a3b8;font-size:.72rem}" +
       ".sx-stats ol{margin:0;padding-inline-start:18px;line-height:1.55}.sx-stats ol small{color:#94a3b8}" +
       ".sx-stats button{font:inherit;font-weight:800;cursor:pointer;border-radius:9px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;padding:4px 9px}" +
-      ".sx-stats .row{display:flex;gap:6px;margin-top:8px}@media print{.sx-stats{display:none!important}}";
+      ".sx-stats .row{display:flex;gap:6px;margin-top:8px}@media print{.sx-wrap,.sx-statbtn{display:none!important}}" +
+      ".sx-statbtn{font:inherit;font-size:.85rem;font-weight:800;cursor:pointer;border-radius:999px;padding:3px 10px;background:#0f172a;color:#fff;border:1px solid rgba(255,255,255,.45)}" +
+      ".sx-statbtn.fl{position:fixed;left:12px;bottom:12px;z-index:3400}";
     document.head.appendChild(st);
     var box = document.createElement("div");
     box.className = "sx-stats";
     box.innerHTML = '<h4><span>👁️ زيارات المنصة (لك وحدك)</span><button type="button" data-x="1" aria-label="إخفاء">✕</button></h4><div class="b">…</div>' +
       '<div class="row"><button type="button" data-copy="1">🔗 نسخ رابط الموقع</button><button type="button" data-r="1">🔄 تحديث</button></div>';
-    document.body.appendChild(box);
+    var wrap = document.createElement("div");
+    wrap.className = "sx-wrap"; wrap.appendChild(box);
+    document.body.appendChild(wrap);
+    var pill = document.createElement("button");
+    pill.type = "button"; pill.className = "sx-statbtn"; pill.title = "زيارات المنصة (لك وحدك)"; pill.textContent = "👁️ …";
+    var slot = document.getElementById("hbtns");
+    if (slot) slot.appendChild(pill); else { pill.className += " fl"; document.body.appendChild(pill); }
+    pill.onclick = function () { wrap.classList.add("on"); load(); };
+    wrap.addEventListener("click", function (e) { if (e.target === wrap) wrap.classList.remove("on"); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") wrap.classList.remove("on"); });
     function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
     function load() {
       box.querySelector(".b").textContent = "…";
@@ -65,6 +75,7 @@
         var pages = Object.keys(d.pages || {}).map(function (k) { return [k, d.pages[k][0], d.pages[k][1]]; })
           .filter(function (p) { return p[0] !== "/"; }).sort(function (a, b) { return b[2] - a[2] || b[1] - a[1]; }).slice(0, 10);
         var home = (d.pages || {})["/"];
+        pill.textContent = "👁️ " + d.total;
         box.querySelector(".b").innerHTML =
           '<div class="n"><div><b>' + d.today + '</b><span>اليوم</span></div><div><b>' + d.week + '</b><span>7 أيام</span></div><div><b>' + d.total + '</b><span>المجموع</span></div></div>' +
           (home ? '<div style="margin-bottom:6px">🏠 الصفحة الرئيسية: <b>' + home[1] + '</b> هذا الأسبوع · ' + home[0] + ' في المجموع</div>' : "") +
@@ -74,7 +85,7 @@
       }).catch(function () { box.querySelector(".b").textContent = "تعذّر الاتصال بجدول الإحصاء. تحقّق من الإنترنت."; });
     }
     box.addEventListener("click", function (e) {
-      if (e.target.closest("[data-x]")) { box.remove(); try { sessionStorage.setItem("math-stats-hide", "1"); } catch (x) {} }
+      if (e.target.closest("[data-x]")) wrap.classList.remove("on");
       else if (e.target.closest("[data-r]")) load();
       else if (e.target.closest("[data-copy]")) {
         var u = ROOT.href, b = e.target.closest("[data-copy]");
@@ -282,7 +293,9 @@
   window.__sxKids = KIDS;
   if (!isPage && !KIDS.off) {
     var heroK = document.querySelector("#hero .cta");
-    if (heroK) { var kb = KIDS.button(); kb.style.marginTop = "8px"; heroK.parentNode.insertBefore(kb, heroK.nextSibling); }
+    var slotK = document.getElementById("hbtns");
+    if (slotK) slotK.insertBefore(KIDS.button(), slotK.firstChild);
+    else if (heroK) { var kb = KIDS.button(); kb.style.marginTop = "8px"; heroK.parentNode.insertBefore(kb, heroK.nextSibling); }
     document.addEventListener("click", function (e) { var lb = e.target.closest && e.target.closest("[data-level]"); if (lb) KIDS.levelChanged(lb.getAttribute("data-level")); }, true);
   }
 
