@@ -70,7 +70,7 @@
   --ok:#16a34a; --ok-bg:#dcfce7;
   --dars:#0e7490; --dars-bg:#e0f4f7; --al3ab:#be185d; --al3ab-bg:#fce7f3; --series:#2563a6; --series-bg:#e6eef8;
   --fard:#b4690e; --fard-bg:#fbf0e0; --wadjib:#2f7d4a; --wadjib-bg:#e5f3ea; --ikhtibar:#b23a3a; --ikhtibar-bg:#f8e6e6;
-  --chahada:#6d28d9; --chahada-bg:#efe9fb; --tahaddi:#a16207; --tahaddi-bg:#fdf6d8;
+  --chahada:#6d28d9; --chahada-bg:#efe9fb; --tahaddi:#a16207; --tahaddi-bg:#fdf6d8; --idmaj:#4338ca; --idmaj-bg:#e9e9fc;
   --l1:#0d9488; --l2:#2563eb; --l3:#7c3aed; --l4:#c2410c;
   --shadow-sm:0 2px 8px rgba(15,23,42,.06); --shadow-md:0 8px 24px rgba(15,23,42,.1);
 }
@@ -79,8 +79,8 @@
     --bg:#0f172a; --surface:#1e293b; --text:#e2e8f0; --muted:#94a3b8; --border:#334155; --soft:#172033;
     --accent-light:#3a2e12; --ok-bg:#13301f;
     --dars-bg:#16303a; --al3ab-bg:#381a2b; --series-bg:#1c2a3a; --fard-bg:#33281a; --wadjib-bg:#1b2f23;
-    --ikhtibar-bg:#352022; --chahada-bg:#2a2238; --tahaddi-bg:#332b12;
-    --dars:#5fc4d6; --al3ab:#f472b6; --series:#7fb0e8; --fard:#e3a24f; --wadjib:#74c493; --ikhtibar:#e98282; --chahada:#b79cf2; --tahaddi:#facc15;
+    --ikhtibar-bg:#352022; --chahada-bg:#2a2238; --tahaddi-bg:#332b12; --idmaj-bg:#24253f;
+    --dars:#5fc4d6; --al3ab:#f472b6; --series:#7fb0e8; --fard:#e3a24f; --wadjib:#74c493; --ikhtibar:#e98282; --chahada:#b79cf2; --tahaddi:#facc15; --idmaj:#a5b4fc;
     --shadow-sm:0 1px 2px rgba(0,0,0,.4); --shadow-md:0 6px 18px rgba(0,0,0,.4);
   }
 }
@@ -198,7 +198,7 @@ body.prof .share{display:inline-block}
 .empty,.status{color:var(--muted);text-align:center;padding:26px 10px;background:var(--surface);border:1px dashed var(--border);border-radius:16px}
 .s-dars{--c:var(--dars);--bgc:var(--dars-bg)} .s-al3ab{--c:var(--al3ab);--bgc:var(--al3ab-bg)} .s-series{--c:var(--series);--bgc:var(--series-bg)}
 .s-fard{--c:var(--fard);--bgc:var(--fard-bg)} .s-wadjib{--c:var(--wadjib);--bgc:var(--wadjib-bg)} .s-ikhtibar{--c:var(--ikhtibar);--bgc:var(--ikhtibar-bg)}
-.s-chahada{--c:var(--chahada);--bgc:var(--chahada-bg)} .s-tahaddi{--c:var(--tahaddi);--bgc:var(--tahaddi-bg)}
+.s-chahada{--c:var(--chahada);--bgc:var(--chahada-bg)} .s-tahaddi{--c:var(--tahaddi);--bgc:var(--tahaddi-bg)} .s-idmaj{--c:var(--idmaj);--bgc:var(--idmaj-bg)}
 .qinfo{flex:1 1 100%;margin:0;font-size:.85rem;font-weight:700;color:var(--muted)}
 .qinfo button{font:inherit;font-size:.8rem;font-weight:800;cursor:pointer;border-radius:999px;padding:1px 10px;margin-inline-start:6px;border:1.5px solid var(--border);background:var(--surface);color:var(--text)}
 .where{font-size:.72rem;font-weight:800;color:#fff;background:var(--primary);border-radius:7px;padding:0 7px}
@@ -254,8 +254,8 @@ dialog::backdrop{background:rgba(10,20,25,.5)}
     --bg:#0f172a; --surface:#1e293b; --text:#e2e8f0; --muted:#94a3b8; --border:#334155; --soft:#172033;
     --accent-light:#3a2e12; --ok-bg:#13301f;
     --dars-bg:#16303a; --al3ab-bg:#381a2b; --series-bg:#1c2a3a; --fard-bg:#33281a; --wadjib-bg:#1b2f23;
-    --ikhtibar-bg:#352022; --chahada-bg:#2a2238; --tahaddi-bg:#332b12;
-    --dars:#5fc4d6; --al3ab:#f472b6; --series:#7fb0e8; --fard:#e3a24f; --wadjib:#74c493; --ikhtibar:#e98282; --chahada:#b79cf2; --tahaddi:#facc15;
+    --ikhtibar-bg:#352022; --chahada-bg:#2a2238; --tahaddi-bg:#332b12; --idmaj-bg:#24253f;
+    --dars:#5fc4d6; --al3ab:#f472b6; --series:#7fb0e8; --fard:#e3a24f; --wadjib:#74c493; --ikhtibar:#e98282; --chahada:#b79cf2; --tahaddi:#facc15; --idmaj:#a5b4fc;
     --shadow-sm:0 1px 2px rgba(0,0,0,.4); --shadow-md:0 6px 18px rgba(0,0,0,.4);
   }
 :root[data-theme="dark"] .recent{background:var(--surface);border-color:#5b4a1a}
@@ -472,6 +472,7 @@ const SECTIONS = [
   ["series", "سلاسل التمارين", "سلسلة تفاعلية", "✍️"],
   ["fard", "الفروض", "فرض", "⏱️"],
   ["wadjib", "الواجبات المنزلية", "واجب منزلي", "🏠"],
+  ["idmaj", "الوضعيات الإدماجية", "وضعية إدماجية", "🧩"],
   ["ikhtibar", "الاختبارات", "اختبار", "📋"],
   ["chahada", "سلاسل الشهادة (BEM)", "سلسلة الشهادة", "🎓"],
   ["tahaddi", "التحديات", "تحدٍّ", "🏆"],
@@ -488,7 +489,7 @@ function currentTerm() { const m = new Date().getMonth() + 1; return m >= 9 ? "t
 const state = { level: "1m", term: currentTerm(), items: [], filter: "home", q: "" };
 // short line under each tile
 const SUB = { dars: "افهم خطوة بخطوة", al3ab: "تعلّم واستمتع", series: "تدرّب مع التصحيح", fard: "حضّر فرضك",
-  wadjib: "أنجز واجبك", ikhtibar: "حضّر اختبارك", chahada: "طريقك إلى الشهادة", tahaddi: "نافس زملاءك" };
+  wadjib: "أنجز واجبك", ikhtibar: "حضّر اختبارك", chahada: "طريقك إلى الشهادة", tahaddi: "نافس زملاءك", idmaj: "وظّف ما تعلّمت" };
 function readHash() {
   const m = location.hash.match(/^#([1-4]m)(?:-(t[1-3]))?(?:-([a-z0-9]+))?$/);
   if (m) { state.level = m[1]; if (m[2]) state.term = m[2]; state.filter = m[3] && (SEC[m[3]] || m[3] === "all") ? m[3] : "home"; return true; }
@@ -559,7 +560,7 @@ function card(it, where) {
       `<div class="track"><div class="fill" style="width:${pct}%"></div></div></div>`;
   }
   const go = !isHtml ? "افتح الملف" : done ? "أعد المحاولة" : P ? "أكمل الحل" : it.section === "dars" ? "ابدأ الدرس" : it.section === "al3ab" ? "ابدأ اللعب" : "ابدأ الحل";
-  const sheet = isHtml && it.nEx && ["fard", "wadjib", "series", "tahaddi", "chahada", "ikhtibar"].includes(it.section)
+  const sheet = isHtml && it.nEx && ["fard", "wadjib", "series", "tahaddi", "chahada", "ikhtibar", "idmaj"].includes(it.section)
     ? `<a class="alt" href="${esc(it.url)}#sheet" title="قراءة الموضوع كاملا دون حل">📄 الموضوع</a>` : "";
   const pupil = /mu2allif/.test(it.url || ""), itqan = /itqan-/.test(it.url || "");
   return `<article class="card s-${it.section}${done ? " done" : ""}${pupil ? " pupil" : ""}${itqan ? " itqan" : ""}">
@@ -661,7 +662,7 @@ function renderSearch() {
 function hereItems() { return state.items.filter(i => i.level === state.level && i.term === state.term); }
 function presentSecs(here) { return SECTIONS.filter(([id]) => (!ONLY[id] || ONLY[id].includes(state.level))); }
 function renderHub(here) {
-  const ORDER = ["dars", "series", "fard", "wadjib", "al3ab", "tahaddi", "ikhtibar", "chahada"];
+  const ORDER = ["dars", "series", "fard", "wadjib", "al3ab", "tahaddi", "idmaj", "ikhtibar", "chahada"];
   const secs = presentSecs().slice().sort((a, b) => (!here.some(i => i.section === a[0])) - (!here.some(i => i.section === b[0])) || ORDER.indexOf(a[0]) - ORDER.indexOf(b[0]));
   const tiles = secs.map(([id, name, , icon]) => {
     const list = here.filter(i => i.section === id), fresh = list.some(i => isNew(i.date));
@@ -797,7 +798,7 @@ async function loadItems() {
   if (!r.ok) throw new Error("api " + r.status);
   const tree = (await r.json()).tree || [];
   const items = [];
-  const re = /^([1-4]m)\/(t[1-3])\/(dars|al3ab|series|fard|wadjib|ikhtibar|chahada|tahaddi)\/([^/]+?)(\/index\.html)?$/;
+  const re = /^([1-4]m)\/(t[1-3])\/(dars|al3ab|series|fard|wadjib|ikhtibar|chahada|tahaddi|idmaj)\/([^/]+?)(\/index\.html)?$/;
   for (const n of tree) {
     const m = n.path.match(re);
     if (!m || n.type !== "blob" || m[4].startsWith(".")) continue;
@@ -900,6 +901,10 @@ const MSGS = {
   tahaddi: [
     "🏆 تحدٍّ جديد لتلاميذ {level}!\n\n«{title}»\n\n✍️ حلّوا على الورقة أولًا، ثم تحقّقوا من أجوبتكم على الموقع.\n💡 لكل سؤال تلميحان إن احتجتم.\n⭐ من يصل إلى 20/20 من المحاولة الأولى؟\n\nبالتوفيق للجميع 💪\n{link}",
     "🔥 من يقبل التحدي؟ تلاميذ {level}\n\n«{title}»\n\n🧩 سؤال يحتاج تفكيرًا لا حفظًا.\n⏱️ حاولوا وحدكم قبل التلميح.\n🏅 شاركوني نتائجكم في القسم!\n\nبالتوفيق 💪\n{link}",
+  ],
+  idmaj: [
+    "🧩 أعزائي تلاميذ {level}\n\nوضعية إدماجية جديدة على الموقع:\n«{title}»\n\n📖 اقرأ السند جيدا واستخرج المعطيات.\n🧠 اختر الأداة الرياضية المناسبة، ثم احسب خطوة بخطوة.\n✅ تحقّق من الوحدات ومعقولية النتائج.\n\nهكذا نستعد للمسألة في الاختبار والشهادة 💪\n{link}",
+    "🧩 تلاميذ {level}، الرياضيات في حياتنا!\n\n«{title}»\n\n✍️ حلّ في كراسك أولا، ثم أدخل نتائجك.\n💡 لكل سؤال تلميحان إن احتجت.\n\nبالتوفيق للجميع 🌟\n{link}",
   ],
   ikhtibar: [
     "🎓 أعزائي تلاميذ {level}\n\nللتحضير للاختبار، هذا موضوع للمراجعة:\n«{title}»\n\n📅 نظّموا وقتكم وراجعوا درسًا كل يوم.\n✅ حلّوا الموضوع كاملًا ثم قارنوا مع الحل.\n😌 ثقوا بأنفسكم، فقد عملتم جيدًا طوال الفصل.\n\nبالتوفيق والنجاح للجميع 🌟\n{link}",
