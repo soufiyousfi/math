@@ -672,12 +672,12 @@
  {
   "id": 1,
   "pts": 3,
-  "title": "التمرين 1: سلسلة عمليات والتوزيع",
-  "context": "احسب مع كتابة المراحل:",
+  "title": "التمرين 1: سلسلة عمليات والتوزيع والقسمة",
+  "context": "",
   "questions": [
    {
     "qId": "1-1",
-    "text": "1) <span class=\"math\">(18 + 6) ÷ 4 − 2</span>",
+    "text": "1) احسب مع كتابة المراحل: <span class=\"math\">(18 + 6) ÷ 4 − 2</span>",
     "exact": [
      "4"
     ],
@@ -731,21 +731,23 @@
    },
    {
     "qId": "1-3",
-    "text": "3) <span class=\"math\">7,2 × 4,5 + 7,2 × 5,5</span>",
+    "text": "3) ما حاصل القسمة الإقليدية للعدد <span class=\"math\">500</span> على <span class=\"math\">12</span>؟",
     "exact": [
-     "72"
+     "41"
     ],
     "partial": [
-     "7,2",
-     "720"
+     "42",
+     "40",
+     "8"
     ],
-    "h1": "العامل <span class=\"math\">7,2</span> مشترك.",
-    "h2": "<span class=\"math\">4,5 + 5,5 = 10</span>.",
+    "h1": "<span class=\"math\">12 × 40 = 480</span>.",
+    "h2": "<span class=\"math\">12 × 41 = 492</span>.",
     "steps": [
-     "<b>الطريقة:</b> التوزيع: <span class=\"math\">k × (a + b) = k × a + k × b</span> و<span class=\"math\">k × a − k × b = k × (a − b)</span>.",
-     "<span class=\"math\">7,2 × (4,5 + 5,5) = 7,2 × 10</span>",
-     "النتيجة: <span class=\"math\">72</span>",
-     "<b>الاستنتاج:</b> <span class=\"math\">72</span>."
+     "<b>الطريقة:</b> القسمة الإقليدية: <span class=\"math\">a = b × q + r</span> حيث <span class=\"math\">r &lt; b</span>؛ <span class=\"math\">q</span> الحاصل و<span class=\"math\">r</span> الباقي.",
+     "<span class=\"math\">12 × 41 = 492</span> و<span class=\"math\">12 × 42 = 504 &gt; 500</span>",
+     "<span class=\"math\">500 = 12 × 41 + 8</span>",
+     "النتيجة: الحاصل <span class=\"math\">41</span>",
+     "<b>الاستنتاج:</b> الحاصل <span class=\"math\">41</span>."
     ],
     "rubric": [
      {
@@ -761,46 +763,72 @@
  {
   "id": 2,
   "pts": 3,
-  "title": "التمرين 2: الكسور",
+  "title": "التمرين 2: القيم المقرّبة والحصر وضرب الكسور",
   "context": "",
   "questions": [
    {
     "qId": "2-1",
-    "text": "1) احسب ثم اختزل: <span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span> − <span class=\"fr\"><span>1</span><span>3</span></span></span>",
+    "text": "1) أعط القيمة المقرّبة إلى <span class=\"math\">0,1</span> بالزيادة لحاصل قسمة <span class=\"math\">17</span> على <span class=\"math\">6</span>.",
     "exact": [
-     "1/2",
-     "0,5"
+     "2,9"
     ],
     "partial": [
-     "3/6",
-     "4/3"
+     "2,8",
+     "2,83",
+     "2,84"
     ],
-    "h1": "<span class=\"math\">6</span> مضاعف لـ <span class=\"math\">3</span>.",
-    "h2": "<span class=\"math\"><span class=\"fr\"><span>1</span><span>3</span></span> = <span class=\"fr\"><span>2</span><span>6</span></span></span>.",
+    "h1": "أجر القسمة العشرية: <span class=\"math\">17 ÷ 6 = 2,83…</span>.",
+    "h2": "بالنقصان <span class=\"math\">2,8</span>، وبالزيادة نضيف <span class=\"math\">0,1</span>.",
     "steps": [
-     "<b>الطريقة:</b> لجمع أو طرح كسرين مقام أحدهما مضاعف للآخر: نوحّد المقامين ثم نجمع أو نطرح البسطين، ثم نختزل.",
-     "<span class=\"math\"><span class=\"fr\"><span>1</span><span>3</span></span> = <span class=\"fr\"><span>2</span><span>6</span></span></span>",
-     "<span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span> − <span class=\"fr\"><span>2</span><span>6</span></span> = <span class=\"fr\"><span>3</span><span>6</span></span></span>",
-     "<span class=\"math\"><span class=\"fr\"><span>3</span><span>6</span></span> = <span class=\"fr\"><span>3 ÷ 3</span><span>6 ÷ 3</span></span> = <span class=\"fr\"><span>1</span><span>2</span></span></span>",
-     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>1</span><span>2</span></span></span>",
-     "<b>الاستنتاج:</b> <span class=\"math\"><span class=\"fr\"><span>1</span><span>2</span></span></span>."
+     "<b>الطريقة:</b> القيمة المقرّبة بالزيادة: نأخذ القيمة المقرّبة بالنقصان ونضيف إليها وحدة من آخر مرتبة مطلوبة.",
+     "<span class=\"math\">17 ÷ 6 = 2,83…</span>",
+     "بالنقصان: <span class=\"math\">2,8</span>",
+     "بالزيادة: <span class=\"math\">2,8 + 0,1 = 2,9</span>",
+     "النتيجة: <span class=\"math\">2,9</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">2,9</span>."
     ],
     "rubric": [
      {
-      "step": "الطرح",
-      "mark": "0,5"
-     },
-     {
-      "step": "الاختزال",
-      "mark": "0,5"
+      "step": "النتيجة",
+      "mark": "1"
      }
     ],
     "pts": 1,
-    "partialMsg": "اختزل الكسر: اقسم البسط والمقام على قاسمهما المشترك."
+    "partialMsg": "المطلوب القيمة بالزيادة إلى <span class=\"math\">0,1</span>.",
+    "partialZero": true
    },
    {
     "qId": "2-2",
-    "text": "2) احسب ثم اختزل: <span class=\"math\"><span class=\"fr\"><span>3</span><span>7</span></span> × <span class=\"fr\"><span>14</span><span>9</span></span></span>",
+    "text": "2) أعط حصرا لحاصل قسمة <span class=\"math\">1000</span> على <span class=\"math\">37</span> بعددين بالتقريب إلى <span class=\"math\">0,01</span>، ثم اكتب العدد الأكبر في هذا الحصر.",
+    "exact": [
+     "27,03"
+    ],
+    "partial": [
+     "27,02",
+     "27,1"
+    ],
+    "h1": "أجر القسمة العشرية: <span class=\"math\">1000 ÷ 37 = 27,027…</span>.",
+    "h2": "الحصر: <span class=\"math\">27,02 &lt; 1000 ÷ 37 &lt; 27,03</span>.",
+    "steps": [
+     "<b>الطريقة:</b> حصر حاصل قسمة بعددين بالتقريب إلى <span class=\"math\">0,01</span>: القيمة المقرّبة بالنقصان < الحاصل < القيمة المقرّبة بالزيادة.",
+     "<span class=\"math\">1000 ÷ 37 = 27,027…</span>",
+     "<span class=\"math\">27,02 &lt; 1000 ÷ 37 &lt; 27,03</span>",
+     "النتيجة: العدد الأكبر <span class=\"math\">27,03</span>",
+     "<b>الاستنتاج:</b> الحصر <span class=\"math\">27,02 &lt; 1000 ÷ 37 &lt; 27,03</span>."
+    ],
+    "rubric": [
+     {
+      "step": "الحصر والنتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialMsg": "المطلوب العدد الأكبر في الحصر (القيمة بالزيادة).",
+    "partialZero": true
+   },
+   {
+    "qId": "2-3",
+    "text": "3) احسب ثم اختزل: <span class=\"math\"><span class=\"fr\"><span>3</span><span>7</span></span> × <span class=\"fr\"><span>14</span><span>9</span></span></span>",
     "exact": [
      "2/3"
     ],
@@ -830,9 +858,77 @@
     ],
     "pts": 1,
     "partialMsg": "اختزل الكسر: اقسم البسط والمقام على قاسمهما المشترك."
+   }
+  ]
+ },
+ {
+  "id": 3,
+  "pts": 3,
+  "title": "التمرين 3: الكسور",
+  "context": "",
+  "questions": [
+   {
+    "qId": "3-1",
+    "text": "1) قارن <span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span></span> و<span class=\"math\"><span class=\"fr\"><span>7</span><span>9</span></span></span> مع التعليل.<br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> إذا كان <span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span></span> أكبر، أو <span class=\"math\">2</span> إذا كان أصغر.",
+    "exact": [
+     "1"
+    ],
+    "partial": [
+     "2"
+    ],
+    "h1": "وحّد المقامين على <span class=\"math\">18</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span> = <span class=\"fr\"><span>15</span><span>18</span></span></span> و<span class=\"math\"><span class=\"fr\"><span>7</span><span>9</span></span> = <span class=\"fr\"><span>14</span><span>18</span></span></span>.",
+    "steps": [
+     "<b>الطريقة:</b> لمقارنة كسرين: نوحّد مقاميهما، ثم نقارن البسطين.",
+     "<span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span> = <span class=\"fr\"><span>15</span><span>18</span></span></span> و<span class=\"math\"><span class=\"fr\"><span>7</span><span>9</span></span> = <span class=\"fr\"><span>14</span><span>18</span></span></span>",
+     "<span class=\"math\">15 &gt; 14</span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span> &gt; <span class=\"fr\"><span>7</span><span>9</span></span></span> (<span class=\"math\">1</span>)",
+     "<b>الاستنتاج:</b> <span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span> &gt; <span class=\"fr\"><span>7</span><span>9</span></span></span>."
+    ],
+    "rubric": [
+     {
+      "step": "المقارنة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
    },
    {
-    "qId": "2-3",
+    "qId": "3-2",
+    "text": "2) احسب ثم اختزل: <span class=\"math\"><span class=\"fr\"><span>3</span><span>4</span></span> − <span class=\"fr\"><span>5</span><span>12</span></span></span>",
+    "exact": [
+     "1/3"
+    ],
+    "partial": [
+     "4/12",
+     "2/6"
+    ],
+    "h1": "<span class=\"math\">12</span> مضاعف لـ <span class=\"math\">4</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>3</span><span>4</span></span> = <span class=\"fr\"><span>9</span><span>12</span></span></span>.",
+    "steps": [
+     "<b>الطريقة:</b> لجمع أو طرح كسرين مقام أحدهما مضاعف للآخر: نوحّد المقامين ثم نجمع أو نطرح البسطين، ثم نختزل.",
+     "<span class=\"math\"><span class=\"fr\"><span>3</span><span>4</span></span> = <span class=\"fr\"><span>9</span><span>12</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>9</span><span>12</span></span> − <span class=\"fr\"><span>5</span><span>12</span></span> = <span class=\"fr\"><span>4</span><span>12</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>4</span><span>12</span></span> = <span class=\"fr\"><span>4 ÷ 4</span><span>12 ÷ 4</span></span> = <span class=\"fr\"><span>1</span><span>3</span></span></span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>1</span><span>3</span></span></span>",
+     "<b>الاستنتاج:</b> <span class=\"math\"><span class=\"fr\"><span>1</span><span>3</span></span></span>."
+    ],
+    "rubric": [
+     {
+      "step": "الطرح",
+      "mark": "0,5"
+     },
+     {
+      "step": "الاختزال",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 1,
+    "partialMsg": "اختزل الكسر: اقسم البسط والمقام على قاسمهما المشترك."
+   },
+   {
+    "qId": "3-3",
     "text": "3) في قسم <span class=\"math\">45</span> تلميذا، <span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span></span> منهم يمارسون الرياضة. كم تلميذا يمارسها؟",
     "exact": [
      "30"
@@ -861,129 +957,33 @@
   ]
  },
  {
-  "id": 3,
-  "pts": 3,
-  "title": "التمرين 3: القسمة الإقليدية والحصر",
-  "context": "نعتبر قسمة العدد <span class=\"math\">500</span> على <span class=\"math\">12</span>.",
-  "questions": [
-   {
-    "qId": "3-1",
-    "text": "1) ما حاصل القسمة الإقليدية؟",
-    "exact": [
-     "41"
-    ],
-    "partial": [
-     "42",
-     "40"
-    ],
-    "h1": "<span class=\"math\">12 × 40 = 480</span>.",
-    "h2": "<span class=\"math\">12 × 41 = 492</span>.",
-    "steps": [
-     "<b>الطريقة:</b> القسمة الإقليدية: <span class=\"math\">a = b × q + r</span> حيث <span class=\"math\">r &lt; b</span>؛ <span class=\"math\">q</span> الحاصل و<span class=\"math\">r</span> الباقي.",
-     "<span class=\"math\">12 × 41 = 492</span> و<span class=\"math\">12 × 42 = 504 &gt; 500</span>",
-     "النتيجة: الحاصل <span class=\"math\">41</span>",
-     "<b>الاستنتاج:</b> الحاصل <span class=\"math\">41</span>."
-    ],
-    "rubric": [
-     {
-      "step": "النتيجة",
-      "mark": "1"
-     }
-    ],
-    "pts": 1,
-    "partialZero": true
-   },
-   {
-    "qId": "3-2",
-    "text": "2) ما الباقي؟",
-    "exact": [
-     "8"
-    ],
-    "partial": [
-     "20",
-     "4"
-    ],
-    "h1": "<span class=\"math\">500 − 492</span>.",
-    "h2": "الباقي أصغر من <span class=\"math\">12</span>.",
-    "steps": [
-     "<b>الطريقة:</b> القسمة الإقليدية: <span class=\"math\">a = b × q + r</span> حيث <span class=\"math\">r &lt; b</span>؛ <span class=\"math\">q</span> الحاصل و<span class=\"math\">r</span> الباقي.",
-     "<span class=\"math\">500 = 12 × 41 + 8</span>",
-     "النتيجة: الباقي <span class=\"math\">8</span>",
-     "<b>الاستنتاج:</b> الباقي <span class=\"math\">8</span>."
-    ],
-    "rubric": [
-     {
-      "step": "النتيجة",
-      "mark": "1"
-     }
-    ],
-    "pts": 1,
-    "partialZero": true
-   },
-   {
-    "qId": "3-3",
-    "text": "3) أعط حصرا لحاصل قسمة <span class=\"math\">500</span> على <span class=\"math\">12</span> بعددين بالتقريب إلى <span class=\"math\">0,01</span>، ثم اكتب العدد الأصغر في هذا الحصر.",
-    "exact": [
-     "41,66"
-    ],
-    "partial": [
-     "41,67",
-     "41,6"
-    ],
-    "h1": "أجر القسمة العشرية: <span class=\"math\">500 ÷ 12 = 41,666…</span>.",
-    "h2": "الحصر: <span class=\"math\">41,66 &lt; 500 ÷ 12 &lt; 41,67</span>.",
-    "steps": [
-     "<b>الطريقة:</b> القيمة المقرّبة إلى <span class=\"math\">0,01</span> بالنقصان لحاصل قسمة: نجري القسمة العشرية حتى رقمين بعد الفاصلة ونهمل ما بعدهما. الحصر بعددين بالتقريب إلى <span class=\"math\">0,01</span>: القيمة بالنقصان والقيمة بالزيادة.",
-     "<span class=\"math\">500 ÷ 12 = 41,666…</span>",
-     "<span class=\"math\">41,66 &lt; 500 ÷ 12 &lt; 41,67</span>",
-     "النتيجة: العدد الأصغر <span class=\"math\">41,66</span>",
-     "<b>الاستنتاج:</b> الحصر <span class=\"math\">41,66 &lt; 500 ÷ 12 &lt; 41,67</span>."
-    ],
-    "rubric": [
-     {
-      "step": "الحصر",
-      "mark": "0,5"
-     },
-     {
-      "step": "النتيجة",
-      "mark": "0,5"
-     }
-    ],
-    "pts": 1,
-    "partialMsg": "المطلوب العدد الأصغر في الحصر (القيمة بالنقصان).",
-    "partialZero": true
-   }
-  ]
- },
- {
   "id": 4,
   "pts": 3,
-  "title": "التمرين 4: أشكال وتناظر مركزي",
+  "title": "التمرين 4: إنشاءات وتناظر مركزي",
   "context": "",
   "questions": [
    {
     "qId": "4-1",
-    "text": "1) كم حرفا من الحروف <span class=\"math\">H</span> ؛ <span class=\"math\">K</span> ؛ <span class=\"math\">S</span> ؛ <span class=\"math\">E</span> ؛ <span class=\"math\">O</span> يقبل مركز تناظر؟",
+    "text": "1) <span class=\"math\">[AB]</span> قطعة طولها <span class=\"math\">6 cm</span>. أنشئ محورها <span class=\"math\">(Δ)</span> الذي يقطعها في <span class=\"math\">I</span>. احسب <span class=\"math\">AI</span> (بـ cm).",
     "exact": [
      "3"
     ],
     "partial": [
-     "2",
-     "4",
-     "5"
+     "6",
+     "12"
     ],
-    "h1": "أدر الحرف نصف دورة: هل يبقى كما هو؟",
-    "h2": "<span class=\"math\">K</span> و<span class=\"math\">E</span> لا يقبلان مركز تناظر.",
+    "h1": "محور قطعة يقطعها في منتصفها.",
+    "h2": "<span class=\"math\">AI = 6 ÷ 2</span>.",
     "steps": [
-     "<b>الطريقة:</b> شكل يقبل مركز تناظر <span class=\"math\">O</span> إذا كان نظيره بالنسبة إلى <span class=\"math\">O</span> هو الشكل نفسه. مركز تناظر المستطيل نقطة تقاطع قطريه، وقطراه متقايسان ومتناصفان.",
-     "تقبل مركز تناظر: <span class=\"math\">H</span> ؛ <span class=\"math\">S</span> ؛ <span class=\"math\">O</span>",
-     "لا تقبل: <span class=\"math\">K</span> ؛ <span class=\"math\">E</span>",
-     "النتيجة: <span class=\"math\">3</span> حروف",
-     "<b>الاستنتاج:</b> ثلاثة حروف."
+     "<b>الطريقة:</b> محور قطعة هو المستقيم العمودي عليها في منتصفها.",
+     "<span class=\"math\">(Δ)</span> محور <span class=\"math\">[AB]</span> إذن <span class=\"math\">I</span> منتصف <span class=\"math\">[AB]</span>",
+     "<span class=\"math\">AI = 6 ÷ 2</span>",
+     "النتيجة: <span class=\"math\">AI = 3 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">AI = 3 cm</span>."
     ],
     "rubric": [
      {
-      "step": "النتيجة",
+      "step": "الإنشاء والنتيجة",
       "mark": "1"
      }
     ],
@@ -992,22 +992,22 @@
    },
    {
     "qId": "4-2",
-    "text": "2) <span class=\"math\">[AB]</span> قطعة طولها <span class=\"math\">7 cm</span> ومركز تناظرها <span class=\"math\">I</span>. احسب <span class=\"math\">AI</span> (بـ cm).",
+    "text": "2) <span class=\"math\">EFGH</span> مستطيل مركز تناظره <span class=\"math\">O</span> وطول قطره <span class=\"math\">EG = 10 cm</span>. احسب <span class=\"math\">OE</span> (بـ cm).",
     "exact": [
-     "3,5"
+     "5"
     ],
     "partial": [
-     "14",
-     "7"
+     "10",
+     "20"
     ],
-    "h1": "مركز تناظر قطعة هو منتصفها.",
-    "h2": "<span class=\"math\">AI = 7 ÷ 2</span>.",
+    "h1": "مركز تناظر المستطيل نقطة تقاطع قطريه.",
+    "h2": "القطران متناصفان: <span class=\"math\">OE = EG ÷ 2</span>.",
     "steps": [
-     "<b>الطريقة:</b> تعريف: <span class=\"math\">M′</span> نظيرة <span class=\"math\">M</span> بالنسبة إلى <span class=\"math\">O</span> يعني أن <span class=\"math\">O</span> منتصف القطعة <span class=\"math\">[MM′]</span>.",
-     "مركز تناظر القطعة منتصفها <span class=\"math\">I</span>",
-     "<span class=\"math\">AI = 7 ÷ 2</span>",
-     "النتيجة: <span class=\"math\">AI = 3,5 cm</span>",
-     "<b>الاستنتاج:</b> <span class=\"math\">AI = 3,5 cm</span>."
+     "<b>الطريقة:</b> شكل يقبل مركز تناظر <span class=\"math\">O</span> إذا كان نظيره بالنسبة إلى <span class=\"math\">O</span> هو الشكل نفسه. مركز تناظر المستطيل نقطة تقاطع قطريه، وقطراه متقايسان ومتناصفان.",
+     "<span class=\"math\">O</span> منتصف القطر <span class=\"math\">[EG]</span>",
+     "<span class=\"math\">OE = 10 ÷ 2</span>",
+     "النتيجة: <span class=\"math\">OE = 5 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">OE = 5 cm</span>."
     ],
     "rubric": [
      {
@@ -1020,21 +1020,21 @@
    },
    {
     "qId": "4-3",
-    "text": "3) <span class=\"math\">A′B′C′</span> نظير المثلث <span class=\"math\">ABC</span> بالنسبة إلى <span class=\"math\">O</span> حيث قيس الزاوية <span class=\"math\">ABC</span> هو <span class=\"math\">72°</span>. ما قيس الزاوية <span class=\"math\">A′B′C′</span> (بالدرجات)؟",
+    "text": "3) <span class=\"math\">(C)</span> دائرة مركزها <span class=\"math\">M</span> ونصف قطرها <span class=\"math\">2 cm</span>، و<span class=\"math\">(C′)</span> نظيرتها بالنسبة إلى نقطة <span class=\"math\">O</span>. ما نصف قطر <span class=\"math\">(C′)</span> (بـ cm)؟",
     "exact": [
-     "72"
+     "2"
     ],
     "partial": [
-     "108",
-     "144"
+     "4",
+     "1"
     ],
-    "h1": "هل يغيّر التناظر المركزي أقياس الزوايا؟",
-    "h2": "لا، يحافظ عليها.",
+    "h1": "نظير دائرة بالتناظر المركزي...",
+    "h2": "... دائرة لها نصف القطر نفسه.",
     "steps": [
      "<b>الطريقة:</b> خواص التناظر المركزي: يحافظ على الأطوال، وعلى أقياس الزوايا، وعلى المساحات، وعلى استقامية النقط. نظير مستقيم مستقيم يوازيه، ونظير دائرة دائرة لها نصف القطر نفسه.",
-     "التناظر المركزي يحافظ على أقياس الزوايا",
-     "النتيجة: <span class=\"math\">72°</span>",
-     "<b>الاستنتاج:</b> <span class=\"math\">A′B′C′ = 72°</span>."
+     "نظيرة دائرة دائرة لها نصف القطر نفسه",
+     "النتيجة: <span class=\"math\">2 cm</span>",
+     "<b>الاستنتاج:</b> نصف القطر <span class=\"math\">2 cm</span>."
     ],
     "rubric": [
      {
@@ -1050,136 +1050,90 @@
  {
   "id": 5,
   "pts": 8,
-  "title": "الوضعية الإدماجية: النقل المدرسي في وادي فراغة",
-  "context": "<div class=\"bem-data\"><p>– تنقل البلدية <span class=\"math\">328</span> تلميذا إلى متوسطة محمد العربي بن مهيدي بحافلات، في كل حافلة <span class=\"math\">45</span> مقعدا.</p><p>– <span class=\"math\"><span class=\"fr\"><span>3</span><span>8</span></span></span> من التلاميذ يسكنون بوشقوف.</p><p>– تقطع كل حافلة <span class=\"math\">18,5 km</span> يوميا وتستهلك <span class=\"math\">0,28 L</span> من الوقود في الكيلومتر الواحد.</p></div>",
+  "title": "الوضعية الإدماجية: ملعب وادي فراغة",
+  "context": "<div class=\"bem-data\"><p>– ملعب كرة القدم في وادي فراغة مستطيل الشكل، مركزه <span class=\"math\">O</span> مركز تناظر له.</p><p>– أمام أحد المرميين منطقة مستطيلة بُعداها <span class=\"math\">16 m</span> و<span class=\"math\">10 m</span>، والمنطقة أمام المرمى الآخر نظيرتها بالنسبة إلى <span class=\"math\">O</span>.</p><p>– يريد العامل طلاء حدود المنطقتين كاملة بخط أبيض، وكل علبة طلاء تكفي لـ <span class=\"math\">30 m</span> من الخط.</p></div>",
   "questions": [
    {
     "qId": "5-1",
-    "text": "1) كم حافلة يلزم لنقل جميع التلاميذ؟ (علّل)",
+    "text": "1) احسب المساحة الكلية للمنطقتين (بـ m²). اذكر الخاصية.",
     "exact": [
-     "8"
+     "320"
     ],
     "partial": [
-     "7",
-     "7,28"
+     "160",
+     "52",
+     "104"
     ],
-    "h1": "أجر القسمة الإقليدية لـ <span class=\"math\">328</span> على <span class=\"math\">45</span>.",
-    "h2": "<span class=\"math\">328 = 45 × 7 + 13</span>: هل يبقى تلاميذ دون مقعد؟",
+    "h1": "المنطقتان متناظرتان: ماذا يحفظ التناظر المركزي؟",
+    "h2": "مساحة منطقة <span class=\"math\">16 × 10 = 160 m²</span>، والنظيرة لها المساحة نفسها.",
     "steps": [
-     "<b>الطريقة:</b> القسمة الإقليدية: <span class=\"math\">a = b × q + r</span> حيث <span class=\"math\">r &lt; b</span>؛ <span class=\"math\">q</span> الحاصل و<span class=\"math\">r</span> الباقي.",
-     "<span class=\"math\">328 = 45 × 7 + 13</span>",
-     "<span class=\"math\">7</span> حافلات تنقل <span class=\"math\">315</span> تلميذا ويبقى <span class=\"math\">13</span> تلميذا",
-     "النتيجة: يلزم <span class=\"math\">8</span> حافلات",
-     "<b>الاستنتاج:</b> يلزم <span class=\"math\">8</span> حافلات."
+     "<b>الطريقة:</b> خواص التناظر المركزي: يحافظ على الأطوال، وعلى أقياس الزوايا، وعلى المساحات، وعلى استقامية النقط. نظير مستقيم مستقيم يوازيه، ونظير دائرة دائرة لها نصف القطر نفسه.",
+     "مساحة المنطقة الأولى: <span class=\"math\">16 × 10 = 160 m²</span>",
+     "التناظر المركزي يحافظ على المساحات: المنطقة الثانية <span class=\"math\">160 m²</span>",
+     "<span class=\"math\">160 + 160 = 320</span>",
+     "النتيجة: <span class=\"math\">320 m²</span>",
+     "<b>الاستنتاج:</b> المساحة الكلية <span class=\"math\">320 m²</span>."
     ],
     "rubric": [
      {
-      "step": "م1 التفسير السليم: القسمة",
+      "step": "م1 التفسير السليم: مساحة منطقة",
       "mark": "1"
      },
      {
-      "step": "م2 الاستعمال السليم: الاستنتاج",
-      "mark": "1"
+      "step": "م2 الاستعمال السليم: الخاصية والمجموع",
+      "mark": "2"
      }
     ],
-    "pts": 2,
-    "partialMsg": "يبقى <span class=\"math\">13</span> تلميذا دون مقعد: يحتاجون حافلة أخرى.",
+    "pts": 3,
+    "partialMsg": "المنطقتان متقايستان: لا تنس المنطقة الثانية.",
     "partialZero": true
    },
    {
     "qId": "5-2",
-    "text": "2) كم مقعدا يبقى شاغرا في الحافلة الأخيرة؟",
+    "text": "2) كم علبة طلاء يلزم العامل؟ علّل.",
     "exact": [
-     "32"
+     "4"
     ],
     "partial": [
-     "13",
-     "58"
+     "3",
+     "2",
+     "11"
     ],
-    "h1": "في الحافلة الأخيرة <span class=\"math\">13</span> تلميذا.",
-    "h2": "<span class=\"math\">45 − 13</span>.",
+    "h1": "احسب طول الخط: محيط المنطقتين.",
+    "h2": "محيط منطقة <span class=\"math\">2 × (16 + 10) = 52 m</span>، والطول الكلي <span class=\"math\">104 m</span>. أجر القسمة الإقليدية لـ <span class=\"math\">104</span> على <span class=\"math\">30</span>.",
     "steps": [
-     "<b>الطريقة:</b> القسمة الإقليدية: <span class=\"math\">a = b × q + r</span> حيث <span class=\"math\">r &lt; b</span>؛ <span class=\"math\">q</span> الحاصل و<span class=\"math\">r</span> الباقي.",
-     "<span class=\"math\">45 − 13 = 32</span>",
-     "النتيجة: <span class=\"math\">32</span> مقعدا",
-     "<b>الاستنتاج:</b> يبقى <span class=\"math\">32</span> مقعدا شاغرا."
+     "<b>الطريقة:</b> خواص التناظر المركزي: يحافظ على الأطوال، وعلى أقياس الزوايا، وعلى المساحات، وعلى استقامية النقط. نظير مستقيم مستقيم يوازيه، ونظير دائرة دائرة لها نصف القطر نفسه. القسمة الإقليدية: <span class=\"math\">a = b × q + r</span> حيث <span class=\"math\">r &lt; b</span>؛ <span class=\"math\">q</span> الحاصل و<span class=\"math\">r</span> الباقي.",
+     "محيط منطقة: <span class=\"math\">2 × (16 + 10) = 52 m</span>",
+     "التناظر يحافظ على الأطوال: الطول الكلي <span class=\"math\">52 × 2 = 104 m</span>",
+     "<span class=\"math\">104 = 30 × 3 + 14</span>",
+     "<span class=\"math\">3</span> علب تكفي <span class=\"math\">90 m</span> ويبقى <span class=\"math\">14 m</span>، فتلزم علبة أخرى",
+     "النتيجة: <span class=\"math\">4</span> علب",
+     "<b>الاستنتاج:</b> يلزم العامل <span class=\"math\">4</span> علب."
     ],
     "rubric": [
      {
-      "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
+      "step": "م1 التفسير السليم: طول الخط",
+      "mark": "1,5"
+     },
+     {
+      "step": "م2 الاستعمال السليم: القسمة الإقليدية",
+      "mark": "1"
+     },
+     {
+      "step": "م2 الاستعمال السليم: الاستنتاج",
+      "mark": "1,5"
+     },
+     {
+      "step": "م3 انسجام الإجابة: الوحدة ومعقولية النتيجة",
       "mark": "0,5"
      },
      {
-      "step": "م2 الاستعمال السليم: النتيجة",
-      "mark": "1,5"
+      "step": "م4 الإتقان: تنظيم الحل ووضوحه",
+      "mark": "0,5"
      }
     ],
-    "pts": 2,
-    "partialZero": true
-   },
-   {
-    "qId": "5-3",
-    "text": "3) كم تلميذا يسكن بوشقوف؟",
-    "exact": [
-     "123"
-    ],
-    "partial": [
-     "41",
-     "205"
-    ],
-    "h1": "احسب <span class=\"math\"><span class=\"fr\"><span>3</span><span>8</span></span></span> من <span class=\"math\">328</span>.",
-    "h2": "<span class=\"math\">328 ÷ 8 = 41</span>.",
-    "steps": [
-     "<b>الطريقة:</b> جداء كسرين: <span class=\"math\"><span class=\"fr\"><span>a</span><span>b</span></span> × <span class=\"fr\"><span>c</span><span>d</span></span> = <span class=\"fr\"><span>a × c</span><span>b × d</span></span></span>، ثم نختزل الناتج.",
-     "<span class=\"math\"><span class=\"fr\"><span>3</span><span>8</span></span> × 328 = <span class=\"fr\"><span>3 × 328</span><span>8</span></span></span>",
-     "<span class=\"math\">328 ÷ 8 = 41</span> و<span class=\"math\">41 × 3 = 123</span>",
-     "النتيجة: <span class=\"math\">123</span> تلميذا",
-     "<b>الاستنتاج:</b> <span class=\"math\">123</span> تلميذا يسكنون بوشقوف."
-    ],
-    "rubric": [
-     {
-      "step": "م1 التفسير السليم: الطريقة",
-      "mark": "1"
-     },
-     {
-      "step": "م2 الاستعمال السليم: النتيجة",
-      "mark": "1"
-     }
-    ],
-    "pts": 2,
-    "partialZero": true
-   },
-   {
-    "qId": "5-4",
-    "text": "4) احسب كمية الوقود التي تستهلكها الحافلات كلها في يوم واحد (بـ L).",
-    "exact": [
-     "41,44"
-    ],
-    "partial": [
-     "5,18",
-     "36,26"
-    ],
-    "h1": "احسب استهلاك حافلة واحدة أولا.",
-    "h2": "حافلة واحدة: <span class=\"math\">18,5 × 0,28 = 5,18 L</span>.",
-    "steps": [
-     "<b>الطريقة:</b> نضرب المسافة في الاستهلاك لكل كيلومتر، ثم في عدد الحافلات.",
-     "حافلة واحدة: <div class=\"vop\"><div>   18,5</div><div> × 0,28</div><div class=\"ln\">   1480</div><div>   370 </div><div class=\"ln\">   5,18</div></div>",
-     "ثماني حافلات: <span class=\"math\">5,18 × 8 = 41,44</span>",
-     "النتيجة: <span class=\"math\">41,44 L</span>",
-     "<b>الاستنتاج:</b> تستهلك الحافلات <span class=\"math\">41,44 L</span> يوميا."
-    ],
-    "rubric": [
-     {
-      "step": "م1 التفسير السليم: حافلة واحدة",
-      "mark": "1"
-     },
-     {
-      "step": "م2 الاستعمال السليم: كل الحافلات",
-      "mark": "1"
-     }
-    ],
-    "pts": 2,
-    "partialMsg": "استعمل عدد الحافلات اللازمة (<span class=\"math\">8</span>).",
+    "pts": 5,
+    "partialMsg": "يبقى <span class=\"math\">14 m</span> دون طلاء بعد <span class=\"math\">3</span> علب: تلزم علبة أخرى.",
     "partialZero": true
    }
   ]
@@ -1414,12 +1368,12 @@
   const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
   s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
   document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
-<div id="paper"><div class="copy" data-pages="2"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACOUlEQVR4nMWYQZLUMAxFn8ZT5dm5b2AugnMploGkCDfhIJMwF3HfwLNzV2XyWaSBDexAeJE4pYVV0tOPZBO/X9eHPxjgL1tuZmYAV77x9g7gamaPf/ucP1rog1S1Qo5HmqEwVUlL9fOgEGonLZWSduKRdH66ZeF8ldePgz4TKt9eH//hOb9Zjz8241cDy5A++HpwctAh1Lhpz70QvDkA6CUt9dcDCH4cREnipcHPasySdrcsPNwGM4vPF/LT0Mb89NK4ml0cOdCa5hy3Fmpc00wvaVFUm5w5OJe1Sd1aqHFrfhwgac4UyFGNrIMx98G3FtJMh6C4EgSM4FoLADkdaeZ1ahClqKg2eipSm6o27ZmSltqHFoT5ctDGUwD6IElqY8aXg5JmumnOOs7dTi9JjjE4IEdph0FSPNKiuOKoB1oZ0aalak1L1cqYGTw56KQ9/5DDPUvavTmwNkJJM9qkGtfTK18O7jp0NovSnLXJ0YNuDc4m1TRnbd568BDXtOg1tFDj84Xr7RPjlYKrJmonblJlaGPGXw96YRLWguKalho3fw4KU9XWwhmDPjTonv9G+tDI9zJooIMRyTEGD+gybbdJS73ZZaq3oEfMLl8c+0RJ6kMLVQdBcWtB3TxjcDMzi8955ok0X7vyfOW9++zchzbC0IKitJztqvPsXJIUD0ArgKce3C0v7c1uQdKTNegvzZHEMwbW7k1CJ0mSaxbOO5S0n/p8KpLzvMC9SegmCZJqL46aaP/9Lu072luxfGBta6sAAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الثانية متوسط</span></div><div class="ttl">اختبار الفصل الأول (النموذج 2) في مادة الرياضيات للسنة الثانية متوسط</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="ph"><span>المدة: ساعة ونصف</span><span>يُمنع استعمال الآلة الحاسبة</span></div><div class="cols"><h3 class="part">الجزء الأول (12 نقطة)</h3><div class="ex"><h4>التمرين الأول (3 ن): سلسلة عمليات والتوزيع</h4>احسب مع كتابة المراحل:<p>1) <span class="math">(18 + 6) ÷ 4 − 2</span></p><p>2) احسب بطريقة سهلة: <span class="math">9 × 102</span></p><p>3) <span class="math">7,2 × 4,5 + 7,2 × 5,5</span></p></div><div class="ex"><h4>التمرين الثاني (3 ن): الكسور</h4><p>1) احسب ثم اختزل: <span class="math"><span class="fr"><span>5</span><span>6</span></span> − <span class="fr"><span>1</span><span>3</span></span></span></p><p>2) احسب ثم اختزل: <span class="math"><span class="fr"><span>3</span><span>7</span></span> × <span class="fr"><span>14</span><span>9</span></span></span></p><p>3) في قسم <span class="math">45</span> تلميذا، <span class="math"><span class="fr"><span>2</span><span>3</span></span></span> منهم يمارسون الرياضة. كم تلميذا يمارسها؟</p></div><div class="ex"><h4>التمرين الثالث (3 ن): القسمة الإقليدية والحصر</h4>نعتبر قسمة العدد <span class="math">500</span> على <span class="math">12</span>.<p>1) ما حاصل القسمة الإقليدية؟</p><p>2) ما الباقي؟</p><p>3) أعط حصرا لحاصل قسمة <span class="math">500</span> على <span class="math">12</span> بعددين بالتقريب إلى <span class="math">0,01</span>، ثم اكتب العدد الأصغر في هذا الحصر.</p></div><div class="ex"><h4>التمرين الرابع (3 ن): أشكال وتناظر مركزي</h4><p>1) كم حرفا من الحروف <span class="math">H</span> ؛ <span class="math">K</span> ؛ <span class="math">S</span> ؛ <span class="math">E</span> ؛ <span class="math">O</span> يقبل مركز تناظر؟</p><p>2) <span class="math">[AB]</span> قطعة طولها <span class="math">7 cm</span> ومركز تناظرها <span class="math">I</span>. احسب <span class="math">AI</span> (بـ cm).</p><p>3) <span class="math">A′B′C′</span> نظير المثلث <span class="math">ABC</span> بالنسبة إلى <span class="math">O</span> حيث قيس الزاوية <span class="math">ABC</span> هو <span class="math">72°</span>. ما قيس الزاوية <span class="math">A′B′C′</span> (بالدرجات)؟</p></div><h3 class="part">الجزء الثاني: الوضعية الإدماجية (08 نقاط)</h3><div class="ex"><h4>الوضعية الإدماجية (8 ن): النقل المدرسي في وادي فراغة</h4><div class="bem-data"><p>– تنقل البلدية <span class="math">328</span> تلميذا إلى متوسطة محمد العربي بن مهيدي بحافلات، في كل حافلة <span class="math">45</span> مقعدا.</p><p>– <span class="math"><span class="fr"><span>3</span><span>8</span></span></span> من التلاميذ يسكنون بوشقوف.</p><p>– تقطع كل حافلة <span class="math">18,5 km</span> يوميا وتستهلك <span class="math">0,28 L</span> من الوقود في الكيلومتر الواحد.</p></div><p>1) كم حافلة يلزم لنقل جميع التلاميذ؟ (علّل)</p><p>2) كم مقعدا يبقى شاغرا في الحافلة الأخيرة؟</p><p>3) كم تلميذا يسكن بوشقوف؟</p><p>4) احسب كمية الوقود التي تستهلكها الحافلات كلها في يوم واحد (بـ L).</p></div></div><div class="foot">بالتوفيق</div></div></div><script>(function(){function fit(){var pp=document.getElementById('paper');if(!pp)return;var c=pp.querySelector('.copy');var n=+(c&&c.getAttribute('data-pages'));if(!n)return;
+<div id="paper"><div class="copy" data-pages="2"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACOUlEQVR4nMWYQZLUMAxFn8ZT5dm5b2AugnMploGkCDfhIJMwF3HfwLNzV2XyWaSBDexAeJE4pYVV0tOPZBO/X9eHPxjgL1tuZmYAV77x9g7gamaPf/ucP1rog1S1Qo5HmqEwVUlL9fOgEGonLZWSduKRdH66ZeF8ldePgz4TKt9eH//hOb9Zjz8241cDy5A++HpwctAh1Lhpz70QvDkA6CUt9dcDCH4cREnipcHPasySdrcsPNwGM4vPF/LT0Mb89NK4ml0cOdCa5hy3Fmpc00wvaVFUm5w5OJe1Sd1aqHFrfhwgac4UyFGNrIMx98G3FtJMh6C4EgSM4FoLADkdaeZ1ahClqKg2eipSm6o27ZmSltqHFoT5ctDGUwD6IElqY8aXg5JmumnOOs7dTi9JjjE4IEdph0FSPNKiuOKoB1oZ0aalak1L1cqYGTw56KQ9/5DDPUvavTmwNkJJM9qkGtfTK18O7jp0NovSnLXJ0YNuDc4m1TRnbd568BDXtOg1tFDj84Xr7RPjlYKrJmonblJlaGPGXw96YRLWguKalho3fw4KU9XWwhmDPjTonv9G+tDI9zJooIMRyTEGD+gybbdJS73ZZaq3oEfMLl8c+0RJ6kMLVQdBcWtB3TxjcDMzi8955ok0X7vyfOW9++zchzbC0IKitJztqvPsXJIUD0ArgKce3C0v7c1uQdKTNegvzZHEMwbW7k1CJ0mSaxbOO5S0n/p8KpLzvMC9SegmCZJqL46aaP/9Lu072luxfGBta6sAAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الثانية متوسط</span></div><div class="ttl">اختبار الفصل الأول (النموذج 2) في مادة الرياضيات للسنة الثانية متوسط</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="ph"><span>المدة: ساعة ونصف</span><span>يُمنع استعمال الآلة الحاسبة</span></div><div class="cols"><h3 class="part">الجزء الأول (12 نقطة)</h3><div class="ex"><h4>التمرين الأول (3 ن): سلسلة عمليات والتوزيع والقسمة</h4><p>1) احسب مع كتابة المراحل: <span class="math">(18 + 6) ÷ 4 − 2</span></p><p>2) احسب بطريقة سهلة: <span class="math">9 × 102</span></p><p>3) ما حاصل القسمة الإقليدية للعدد <span class="math">500</span> على <span class="math">12</span>؟</p></div><div class="ex"><h4>التمرين الثاني (3 ن): القيم المقرّبة والحصر وضرب الكسور</h4><p>1) أعط القيمة المقرّبة إلى <span class="math">0,1</span> بالزيادة لحاصل قسمة <span class="math">17</span> على <span class="math">6</span>.</p><p>2) أعط حصرا لحاصل قسمة <span class="math">1000</span> على <span class="math">37</span> بعددين بالتقريب إلى <span class="math">0,01</span>، ثم اكتب العدد الأكبر في هذا الحصر.</p><p>3) احسب ثم اختزل: <span class="math"><span class="fr"><span>3</span><span>7</span></span> × <span class="fr"><span>14</span><span>9</span></span></span></p></div><div class="ex"><h4>التمرين الثالث (3 ن): الكسور</h4><p>1) قارن <span class="math"><span class="fr"><span>5</span><span>6</span></span></span> و<span class="math"><span class="fr"><span>7</span><span>9</span></span></span> مع التعليل.</p><p>2) احسب ثم اختزل: <span class="math"><span class="fr"><span>3</span><span>4</span></span> − <span class="fr"><span>5</span><span>12</span></span></span></p><p>3) في قسم <span class="math">45</span> تلميذا، <span class="math"><span class="fr"><span>2</span><span>3</span></span></span> منهم يمارسون الرياضة. كم تلميذا يمارسها؟</p></div><div class="ex"><h4>التمرين الرابع (3 ن): إنشاءات وتناظر مركزي</h4><p>1) <span class="math">[AB]</span> قطعة طولها <span class="math">6 cm</span>. أنشئ محورها <span class="math">(Δ)</span> الذي يقطعها في <span class="math">I</span>. احسب <span class="math">AI</span> (بـ cm).</p><p>2) <span class="math">EFGH</span> مستطيل مركز تناظره <span class="math">O</span> وطول قطره <span class="math">EG = 10 cm</span>. احسب <span class="math">OE</span> (بـ cm).</p><p>3) <span class="math">(C)</span> دائرة مركزها <span class="math">M</span> ونصف قطرها <span class="math">2 cm</span>، و<span class="math">(C′)</span> نظيرتها بالنسبة إلى نقطة <span class="math">O</span>. ما نصف قطر <span class="math">(C′)</span> (بـ cm)؟</p></div><h3 class="part">الجزء الثاني: الوضعية الإدماجية (08 نقاط)</h3><div class="ex"><h4>الوضعية الإدماجية (8 ن): ملعب وادي فراغة</h4><div class="bem-data"><p>– ملعب كرة القدم في وادي فراغة مستطيل الشكل، مركزه <span class="math">O</span> مركز تناظر له.</p><p>– أمام أحد المرميين منطقة مستطيلة بُعداها <span class="math">16 m</span> و<span class="math">10 m</span>، والمنطقة أمام المرمى الآخر نظيرتها بالنسبة إلى <span class="math">O</span>.</p><p>– يريد العامل طلاء حدود المنطقتين كاملة بخط أبيض، وكل علبة طلاء تكفي لـ <span class="math">30 m</span> من الخط.</p></div><p>1) احسب المساحة الكلية للمنطقتين (بـ m²). اذكر الخاصية.</p><p>2) كم علبة طلاء يلزم العامل؟ علّل.</p></div></div><div class="foot">بالتوفيق</div></div></div><script>(function(){function fit(){var pp=document.getElementById('paper');if(!pp)return;var c=pp.querySelector('.copy');var n=+(c&&c.getAttribute('data-pages'));if(!n)return;
 var st=pp.getAttribute('style');pp.setAttribute('style','display:block;position:absolute;visibility:hidden;top:0;right:0;width:192mm');c.style.zoom=1;
 var mm=document.createElement('div');mm.style.height=(n*279-6)+'mm';pp.appendChild(mm);var lim=mm.getBoundingClientRect().height;pp.removeChild(mm);
 var lo=0.45,hi=1.3,k;c.style.zoom=hi;if(c.getBoundingClientRect().height<=lim)lo=hi;else for(k=0;k<10;k++){var m=(lo+hi)/2;c.style.zoom=m;if(c.getBoundingClientRect().height<=lim)lo=m;else hi=m}
 c.style.zoom=lo;if(st===null)pp.removeAttribute('style');else pp.setAttribute('style',st)}
-window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الثانية متوسط</span></div><div class="ttl">الحل النموذجي وسلم التنقيط — اختبار الفصل الأول (النموذج 2) — السنة الثانية متوسط</div><div class="sxs"><div class="sx"><h4>التمرين الأول (3 ن): سلسلة عمليات والتوزيع</h4><div class="sq"><p><b>1) <span class="math">(18 + 6) ÷ 4 − 2</span></b></p><p><b>الطريقة:</b> أولويات العمليات: نحسب ما بين الأقواس أولا، ثم الضرب والقسمة (من اليسار إلى اليمين)، ثم الجمع والطرح (من اليسار إلى اليمين).</p><p><span class="math">24 ÷ 4 − 2 = 6 − 2</span></p><p>النتيجة: <span class="math">4</span></p><p><b>الاستنتاج:</b> <span class="math">4</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) احسب بطريقة سهلة: <span class="math">9 × 102</span></b></p><p><b>الطريقة:</b> التوزيع: <span class="math">k × (a + b) = k × a + k × b</span> و<span class="math">k × a − k × b = k × (a − b)</span>.</p><p><span class="math">9 × (100 + 2) = 900 + 18</span></p><p>النتيجة: <span class="math">918</span></p><p><b>الاستنتاج:</b> <span class="math">918</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) <span class="math">7,2 × 4,5 + 7,2 × 5,5</span></b></p><p><b>الطريقة:</b> التوزيع: <span class="math">k × (a + b) = k × a + k × b</span> و<span class="math">k × a − k × b = k × (a − b)</span>.</p><p><span class="math">7,2 × (4,5 + 5,5) = 7,2 × 10</span></p><p>النتيجة: <span class="math">72</span></p><p><b>الاستنتاج:</b> <span class="math">72</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الثاني (3 ن): الكسور</h4><div class="sq"><p><b>1) احسب ثم اختزل: <span class="math"><span class="fr"><span>5</span><span>6</span></span> − <span class="fr"><span>1</span><span>3</span></span></span></b></p><p><b>الطريقة:</b> لجمع أو طرح كسرين مقام أحدهما مضاعف للآخر: نوحّد المقامين ثم نجمع أو نطرح البسطين، ثم نختزل.</p><p><span class="math"><span class="fr"><span>1</span><span>3</span></span> = <span class="fr"><span>2</span><span>6</span></span></span></p><p><span class="math"><span class="fr"><span>5</span><span>6</span></span> − <span class="fr"><span>2</span><span>6</span></span> = <span class="fr"><span>3</span><span>6</span></span></span></p><p><span class="math"><span class="fr"><span>3</span><span>6</span></span> = <span class="fr"><span>3 ÷ 3</span><span>6 ÷ 3</span></span> = <span class="fr"><span>1</span><span>2</span></span></span></p><p>النتيجة: <span class="math"><span class="fr"><span>1</span><span>2</span></span></span></p><p><b>الاستنتاج:</b> <span class="math"><span class="fr"><span>1</span><span>2</span></span></span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الطرح</td><td>0,5</td></tr><tr><td>الاختزال</td><td>0,5</td></tr></table></div><div class="sq"><p><b>2) احسب ثم اختزل: <span class="math"><span class="fr"><span>3</span><span>7</span></span> × <span class="fr"><span>14</span><span>9</span></span></span></b></p><p><b>الطريقة:</b> جداء كسرين: <span class="math"><span class="fr"><span>a</span><span>b</span></span> × <span class="fr"><span>c</span><span>d</span></span> = <span class="fr"><span>a × c</span><span>b × d</span></span></span>، ثم نختزل الناتج.</p><p><span class="math"><span class="fr"><span>3</span><span>7</span></span> × <span class="fr"><span>14</span><span>9</span></span> = <span class="fr"><span>3 × 14</span><span>7 × 9</span></span> = <span class="fr"><span>42</span><span>63</span></span></span></p><p><span class="math"><span class="fr"><span>42</span><span>63</span></span> = <span class="fr"><span>42 ÷ 21</span><span>63 ÷ 21</span></span> = <span class="fr"><span>2</span><span>3</span></span></span></p><p>النتيجة: <span class="math"><span class="fr"><span>2</span><span>3</span></span></span></p><p><b>الاستنتاج:</b> <span class="math"><span class="fr"><span>2</span><span>3</span></span></span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الضرب</td><td>0,5</td></tr><tr><td>الاختزال</td><td>0,5</td></tr></table></div><div class="sq"><p><b>3) في قسم <span class="math">45</span> تلميذا، <span class="math"><span class="fr"><span>2</span><span>3</span></span></span> منهم يمارسون الرياضة. كم تلميذا يمارسها؟</b></p><p><b>الطريقة:</b> جداء كسرين: <span class="math"><span class="fr"><span>a</span><span>b</span></span> × <span class="fr"><span>c</span><span>d</span></span> = <span class="fr"><span>a × c</span><span>b × d</span></span></span>، ثم نختزل الناتج.</p><p><span class="math"><span class="fr"><span>2</span><span>3</span></span> × 45 = <span class="fr"><span>2 × 45</span><span>3</span></span> = <span class="fr"><span>90</span><span>3</span></span></span></p><p>النتيجة: <span class="math">30</span> تلميذا</p><p><b>الاستنتاج:</b> <span class="math">30</span> تلميذا.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الثالث (3 ن): القسمة الإقليدية والحصر</h4><div class="sq"><p><b>1) ما حاصل القسمة الإقليدية؟</b></p><p><b>الطريقة:</b> القسمة الإقليدية: <span class="math">a = b × q + r</span> حيث <span class="math">r &lt; b</span>؛ <span class="math">q</span> الحاصل و<span class="math">r</span> الباقي.</p><p><span class="math">12 × 41 = 492</span> و<span class="math">12 × 42 = 504 &gt; 500</span></p><p>النتيجة: الحاصل <span class="math">41</span></p><p><b>الاستنتاج:</b> الحاصل <span class="math">41</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) ما الباقي؟</b></p><p><b>الطريقة:</b> القسمة الإقليدية: <span class="math">a = b × q + r</span> حيث <span class="math">r &lt; b</span>؛ <span class="math">q</span> الحاصل و<span class="math">r</span> الباقي.</p><p><span class="math">500 = 12 × 41 + 8</span></p><p>النتيجة: الباقي <span class="math">8</span></p><p><b>الاستنتاج:</b> الباقي <span class="math">8</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) أعط حصرا لحاصل قسمة <span class="math">500</span> على <span class="math">12</span> بعددين بالتقريب إلى <span class="math">0,01</span>، ثم اكتب العدد الأصغر في هذا الحصر.</b></p><p><b>الطريقة:</b> القيمة المقرّبة إلى <span class="math">0,01</span> بالنقصان لحاصل قسمة: نجري القسمة العشرية حتى رقمين بعد الفاصلة ونهمل ما بعدهما. الحصر بعددين بالتقريب إلى <span class="math">0,01</span>: القيمة بالنقصان والقيمة بالزيادة.</p><p><span class="math">500 ÷ 12 = 41,666…</span></p><p><span class="math">41,66 &lt; 500 ÷ 12 &lt; 41,67</span></p><p>النتيجة: العدد الأصغر <span class="math">41,66</span></p><p><b>الاستنتاج:</b> الحصر <span class="math">41,66 &lt; 500 ÷ 12 &lt; 41,67</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الحصر</td><td>0,5</td></tr><tr><td>النتيجة</td><td>0,5</td></tr></table></div></div><div class="sx"><h4>التمرين الرابع (3 ن): أشكال وتناظر مركزي</h4><div class="sq"><p><b>1) كم حرفا من الحروف <span class="math">H</span> ؛ <span class="math">K</span> ؛ <span class="math">S</span> ؛ <span class="math">E</span> ؛ <span class="math">O</span> يقبل مركز تناظر؟</b></p><p><b>الطريقة:</b> شكل يقبل مركز تناظر <span class="math">O</span> إذا كان نظيره بالنسبة إلى <span class="math">O</span> هو الشكل نفسه. مركز تناظر المستطيل نقطة تقاطع قطريه، وقطراه متقايسان ومتناصفان.</p><p>تقبل مركز تناظر: <span class="math">H</span> ؛ <span class="math">S</span> ؛ <span class="math">O</span></p><p>لا تقبل: <span class="math">K</span> ؛ <span class="math">E</span></p><p>النتيجة: <span class="math">3</span> حروف</p><p><b>الاستنتاج:</b> ثلاثة حروف.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) <span class="math">[AB]</span> قطعة طولها <span class="math">7 cm</span> ومركز تناظرها <span class="math">I</span>. احسب <span class="math">AI</span> (بـ cm).</b></p><p><b>الطريقة:</b> تعريف: <span class="math">M′</span> نظيرة <span class="math">M</span> بالنسبة إلى <span class="math">O</span> يعني أن <span class="math">O</span> منتصف القطعة <span class="math">[MM′]</span>.</p><p>مركز تناظر القطعة منتصفها <span class="math">I</span></p><p><span class="math">AI = 7 ÷ 2</span></p><p>النتيجة: <span class="math">AI = 3,5 cm</span></p><p><b>الاستنتاج:</b> <span class="math">AI = 3,5 cm</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) <span class="math">A′B′C′</span> نظير المثلث <span class="math">ABC</span> بالنسبة إلى <span class="math">O</span> حيث قيس الزاوية <span class="math">ABC</span> هو <span class="math">72°</span>. ما قيس الزاوية <span class="math">A′B′C′</span> (بالدرجات)؟</b></p><p><b>الطريقة:</b> خواص التناظر المركزي: يحافظ على الأطوال، وعلى أقياس الزوايا، وعلى المساحات، وعلى استقامية النقط. نظير مستقيم مستقيم يوازيه، ونظير دائرة دائرة لها نصف القطر نفسه.</p><p>التناظر المركزي يحافظ على أقياس الزوايا</p><p>النتيجة: <span class="math">72°</span></p><p><b>الاستنتاج:</b> <span class="math">A′B′C′ = 72°</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>الوضعية الإدماجية (8 ن): النقل المدرسي في وادي فراغة</h4><div class="sq"><p><b>1) كم حافلة يلزم لنقل جميع التلاميذ؟ (علّل)</b></p><p><b>الطريقة:</b> القسمة الإقليدية: <span class="math">a = b × q + r</span> حيث <span class="math">r &lt; b</span>؛ <span class="math">q</span> الحاصل و<span class="math">r</span> الباقي.</p><p><span class="math">328 = 45 × 7 + 13</span></p><p><span class="math">7</span> حافلات تنقل <span class="math">315</span> تلميذا ويبقى <span class="math">13</span> تلميذا</p><p>النتيجة: يلزم <span class="math">8</span> حافلات</p><p><b>الاستنتاج:</b> يلزم <span class="math">8</span> حافلات.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: القسمة</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: الاستنتاج</td><td>1</td></tr></table></div><div class="sq"><p><b>2) كم مقعدا يبقى شاغرا في الحافلة الأخيرة؟</b></p><p><b>الطريقة:</b> القسمة الإقليدية: <span class="math">a = b × q + r</span> حيث <span class="math">r &lt; b</span>؛ <span class="math">q</span> الحاصل و<span class="math">r</span> الباقي.</p><p><span class="math">45 − 13 = 32</span></p><p>النتيجة: <span class="math">32</span> مقعدا</p><p><b>الاستنتاج:</b> يبقى <span class="math">32</span> مقعدا شاغرا.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: اختيار الأداة الرياضية المناسبة</td><td>0,5</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>1,5</td></tr></table></div><div class="sq"><p><b>3) كم تلميذا يسكن بوشقوف؟</b></p><p><b>الطريقة:</b> جداء كسرين: <span class="math"><span class="fr"><span>a</span><span>b</span></span> × <span class="fr"><span>c</span><span>d</span></span> = <span class="fr"><span>a × c</span><span>b × d</span></span></span>، ثم نختزل الناتج.</p><p><span class="math"><span class="fr"><span>3</span><span>8</span></span> × 328 = <span class="fr"><span>3 × 328</span><span>8</span></span></span></p><p><span class="math">328 ÷ 8 = 41</span> و<span class="math">41 × 3 = 123</span></p><p>النتيجة: <span class="math">123</span> تلميذا</p><p><b>الاستنتاج:</b> <span class="math">123</span> تلميذا يسكنون بوشقوف.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: الطريقة</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>4) احسب كمية الوقود التي تستهلكها الحافلات كلها في يوم واحد (بـ L).</b></p><p><b>الطريقة:</b> نضرب المسافة في الاستهلاك لكل كيلومتر، ثم في عدد الحافلات.</p><p>حافلة واحدة: <div class="vop"><div>   18,5</div><div> × 0,28</div><div class="ln">   1480</div><div>   370 </div><div class="ln">   5,18</div></div></p><p>ثماني حافلات: <span class="math">5,18 × 8 = 41,44</span></p><p>النتيجة: <span class="math">41,44 L</span></p><p><b>الاستنتاج:</b> تستهلك الحافلات <span class="math">41,44 L</span> يوميا.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: حافلة واحدة</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: كل الحافلات</td><td>1</td></tr></table></div><p class="m3"><b>م3 انسجام الإجابة</b> (الوحدات، معقولية النتائج) و<b>م4 الإتقان</b> (تنظيم الورقة): يُراعيان عند منح علامات الأسئلة؛ تُقبل كل طريقة صحيحة أخرى.</p></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
+window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الثانية متوسط</span></div><div class="ttl">الحل النموذجي وسلم التنقيط — اختبار الفصل الأول (النموذج 2) — السنة الثانية متوسط</div><div class="cover"><b>تغطية الموارد: 14 من 14 (100%)</b> — إجراء سلسلة عمليات ؛ استعمال الأقواس ؛ خاصية توزيع الضرب على الجمع والطرح ؛ حاصل وباقي القسمة الإقليدية ؛ قيمة مقرّبة بالزيادة أو بالنقصان لحاصل قسمة ؛ حصر حاصل القسمة ؛ ضرب كسرين ؛ مقارنة كسرين ؛ جمع وطرح كسرين ؛ إنشاءات هندسية (محور قطعة، منصف زاوية، أشكال خاصة) ؛ شكل يقبل مركز تناظر ؛ نظير شكل أولي (نقطة، قطعة، مستقيم، دائرة) ؛ نظير شكل بسيط ؛ خواص التناظر المركزي</div><div class="sxs"><div class="sx"><h4>التمرين الأول (3 ن): سلسلة عمليات والتوزيع والقسمة</h4><div class="sq"><p><b>1) احسب مع كتابة المراحل: <span class="math">(18 + 6) ÷ 4 − 2</span></b></p><p><b>الطريقة:</b> أولويات العمليات: نحسب ما بين الأقواس أولا، ثم الضرب والقسمة (من اليسار إلى اليمين)، ثم الجمع والطرح (من اليسار إلى اليمين).</p><p><span class="math">24 ÷ 4 − 2 = 6 − 2</span></p><p>النتيجة: <span class="math">4</span></p><p><b>الاستنتاج:</b> <span class="math">4</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) احسب بطريقة سهلة: <span class="math">9 × 102</span></b></p><p><b>الطريقة:</b> التوزيع: <span class="math">k × (a + b) = k × a + k × b</span> و<span class="math">k × a − k × b = k × (a − b)</span>.</p><p><span class="math">9 × (100 + 2) = 900 + 18</span></p><p>النتيجة: <span class="math">918</span></p><p><b>الاستنتاج:</b> <span class="math">918</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) ما حاصل القسمة الإقليدية للعدد <span class="math">500</span> على <span class="math">12</span>؟</b></p><p><b>الطريقة:</b> القسمة الإقليدية: <span class="math">a = b × q + r</span> حيث <span class="math">r &lt; b</span>؛ <span class="math">q</span> الحاصل و<span class="math">r</span> الباقي.</p><p><span class="math">12 × 41 = 492</span> و<span class="math">12 × 42 = 504 &gt; 500</span></p><p><span class="math">500 = 12 × 41 + 8</span></p><p>النتيجة: الحاصل <span class="math">41</span></p><p><b>الاستنتاج:</b> الحاصل <span class="math">41</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الثاني (3 ن): القيم المقرّبة والحصر وضرب الكسور</h4><div class="sq"><p><b>1) أعط القيمة المقرّبة إلى <span class="math">0,1</span> بالزيادة لحاصل قسمة <span class="math">17</span> على <span class="math">6</span>.</b></p><p><b>الطريقة:</b> القيمة المقرّبة بالزيادة: نأخذ القيمة المقرّبة بالنقصان ونضيف إليها وحدة من آخر مرتبة مطلوبة.</p><p><span class="math">17 ÷ 6 = 2,83…</span></p><p>بالنقصان: <span class="math">2,8</span></p><p>بالزيادة: <span class="math">2,8 + 0,1 = 2,9</span></p><p>النتيجة: <span class="math">2,9</span></p><p><b>الاستنتاج:</b> <span class="math">2,9</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) أعط حصرا لحاصل قسمة <span class="math">1000</span> على <span class="math">37</span> بعددين بالتقريب إلى <span class="math">0,01</span>، ثم اكتب العدد الأكبر في هذا الحصر.</b></p><p><b>الطريقة:</b> حصر حاصل قسمة بعددين بالتقريب إلى <span class="math">0,01</span>: القيمة المقرّبة بالنقصان < الحاصل < القيمة المقرّبة بالزيادة.</p><p><span class="math">1000 ÷ 37 = 27,027…</span></p><p><span class="math">27,02 &lt; 1000 ÷ 37 &lt; 27,03</span></p><p>النتيجة: العدد الأكبر <span class="math">27,03</span></p><p><b>الاستنتاج:</b> الحصر <span class="math">27,02 &lt; 1000 ÷ 37 &lt; 27,03</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الحصر والنتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) احسب ثم اختزل: <span class="math"><span class="fr"><span>3</span><span>7</span></span> × <span class="fr"><span>14</span><span>9</span></span></span></b></p><p><b>الطريقة:</b> جداء كسرين: <span class="math"><span class="fr"><span>a</span><span>b</span></span> × <span class="fr"><span>c</span><span>d</span></span> = <span class="fr"><span>a × c</span><span>b × d</span></span></span>، ثم نختزل الناتج.</p><p><span class="math"><span class="fr"><span>3</span><span>7</span></span> × <span class="fr"><span>14</span><span>9</span></span> = <span class="fr"><span>3 × 14</span><span>7 × 9</span></span> = <span class="fr"><span>42</span><span>63</span></span></span></p><p><span class="math"><span class="fr"><span>42</span><span>63</span></span> = <span class="fr"><span>42 ÷ 21</span><span>63 ÷ 21</span></span> = <span class="fr"><span>2</span><span>3</span></span></span></p><p>النتيجة: <span class="math"><span class="fr"><span>2</span><span>3</span></span></span></p><p><b>الاستنتاج:</b> <span class="math"><span class="fr"><span>2</span><span>3</span></span></span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الضرب</td><td>0,5</td></tr><tr><td>الاختزال</td><td>0,5</td></tr></table></div></div><div class="sx"><h4>التمرين الثالث (3 ن): الكسور</h4><div class="sq"><p><b>1) قارن <span class="math"><span class="fr"><span>5</span><span>6</span></span></span> و<span class="math"><span class="fr"><span>7</span><span>9</span></span></span> مع التعليل.</b></p><p><b>الطريقة:</b> لمقارنة كسرين: نوحّد مقاميهما، ثم نقارن البسطين.</p><p><span class="math"><span class="fr"><span>5</span><span>6</span></span> = <span class="fr"><span>15</span><span>18</span></span></span> و<span class="math"><span class="fr"><span>7</span><span>9</span></span> = <span class="fr"><span>14</span><span>18</span></span></span></p><p><span class="math">15 &gt; 14</span></p><p>النتيجة: <span class="math"><span class="fr"><span>5</span><span>6</span></span> &gt; <span class="fr"><span>7</span><span>9</span></span></span> (<span class="math">1</span>)</p><p><b>الاستنتاج:</b> <span class="math"><span class="fr"><span>5</span><span>6</span></span> &gt; <span class="fr"><span>7</span><span>9</span></span></span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>المقارنة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) احسب ثم اختزل: <span class="math"><span class="fr"><span>3</span><span>4</span></span> − <span class="fr"><span>5</span><span>12</span></span></span></b></p><p><b>الطريقة:</b> لجمع أو طرح كسرين مقام أحدهما مضاعف للآخر: نوحّد المقامين ثم نجمع أو نطرح البسطين، ثم نختزل.</p><p><span class="math"><span class="fr"><span>3</span><span>4</span></span> = <span class="fr"><span>9</span><span>12</span></span></span></p><p><span class="math"><span class="fr"><span>9</span><span>12</span></span> − <span class="fr"><span>5</span><span>12</span></span> = <span class="fr"><span>4</span><span>12</span></span></span></p><p><span class="math"><span class="fr"><span>4</span><span>12</span></span> = <span class="fr"><span>4 ÷ 4</span><span>12 ÷ 4</span></span> = <span class="fr"><span>1</span><span>3</span></span></span></p><p>النتيجة: <span class="math"><span class="fr"><span>1</span><span>3</span></span></span></p><p><b>الاستنتاج:</b> <span class="math"><span class="fr"><span>1</span><span>3</span></span></span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الطرح</td><td>0,5</td></tr><tr><td>الاختزال</td><td>0,5</td></tr></table></div><div class="sq"><p><b>3) في قسم <span class="math">45</span> تلميذا، <span class="math"><span class="fr"><span>2</span><span>3</span></span></span> منهم يمارسون الرياضة. كم تلميذا يمارسها؟</b></p><p><b>الطريقة:</b> جداء كسرين: <span class="math"><span class="fr"><span>a</span><span>b</span></span> × <span class="fr"><span>c</span><span>d</span></span> = <span class="fr"><span>a × c</span><span>b × d</span></span></span>، ثم نختزل الناتج.</p><p><span class="math"><span class="fr"><span>2</span><span>3</span></span> × 45 = <span class="fr"><span>2 × 45</span><span>3</span></span> = <span class="fr"><span>90</span><span>3</span></span></span></p><p>النتيجة: <span class="math">30</span> تلميذا</p><p><b>الاستنتاج:</b> <span class="math">30</span> تلميذا.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الرابع (3 ن): إنشاءات وتناظر مركزي</h4><div class="sq"><p><b>1) <span class="math">[AB]</span> قطعة طولها <span class="math">6 cm</span>. أنشئ محورها <span class="math">(Δ)</span> الذي يقطعها في <span class="math">I</span>. احسب <span class="math">AI</span> (بـ cm).</b></p><p><b>الطريقة:</b> محور قطعة هو المستقيم العمودي عليها في منتصفها.</p><p><span class="math">(Δ)</span> محور <span class="math">[AB]</span> إذن <span class="math">I</span> منتصف <span class="math">[AB]</span></p><p><span class="math">AI = 6 ÷ 2</span></p><p>النتيجة: <span class="math">AI = 3 cm</span></p><p><b>الاستنتاج:</b> <span class="math">AI = 3 cm</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الإنشاء والنتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) <span class="math">EFGH</span> مستطيل مركز تناظره <span class="math">O</span> وطول قطره <span class="math">EG = 10 cm</span>. احسب <span class="math">OE</span> (بـ cm).</b></p><p><b>الطريقة:</b> شكل يقبل مركز تناظر <span class="math">O</span> إذا كان نظيره بالنسبة إلى <span class="math">O</span> هو الشكل نفسه. مركز تناظر المستطيل نقطة تقاطع قطريه، وقطراه متقايسان ومتناصفان.</p><p><span class="math">O</span> منتصف القطر <span class="math">[EG]</span></p><p><span class="math">OE = 10 ÷ 2</span></p><p>النتيجة: <span class="math">OE = 5 cm</span></p><p><b>الاستنتاج:</b> <span class="math">OE = 5 cm</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) <span class="math">(C)</span> دائرة مركزها <span class="math">M</span> ونصف قطرها <span class="math">2 cm</span>، و<span class="math">(C′)</span> نظيرتها بالنسبة إلى نقطة <span class="math">O</span>. ما نصف قطر <span class="math">(C′)</span> (بـ cm)؟</b></p><p><b>الطريقة:</b> خواص التناظر المركزي: يحافظ على الأطوال، وعلى أقياس الزوايا، وعلى المساحات، وعلى استقامية النقط. نظير مستقيم مستقيم يوازيه، ونظير دائرة دائرة لها نصف القطر نفسه.</p><p>نظيرة دائرة دائرة لها نصف القطر نفسه</p><p>النتيجة: <span class="math">2 cm</span></p><p><b>الاستنتاج:</b> نصف القطر <span class="math">2 cm</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>الوضعية الإدماجية (8 ن): ملعب وادي فراغة</h4><div class="sq"><p><b>1) احسب المساحة الكلية للمنطقتين (بـ m²). اذكر الخاصية.</b></p><p><b>الطريقة:</b> خواص التناظر المركزي: يحافظ على الأطوال، وعلى أقياس الزوايا، وعلى المساحات، وعلى استقامية النقط. نظير مستقيم مستقيم يوازيه، ونظير دائرة دائرة لها نصف القطر نفسه.</p><p>مساحة المنطقة الأولى: <span class="math">16 × 10 = 160 m²</span></p><p>التناظر المركزي يحافظ على المساحات: المنطقة الثانية <span class="math">160 m²</span></p><p><span class="math">160 + 160 = 320</span></p><p>النتيجة: <span class="math">320 m²</span></p><p><b>الاستنتاج:</b> المساحة الكلية <span class="math">320 m²</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: مساحة منطقة</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: الخاصية والمجموع</td><td>2</td></tr></table></div><div class="sq"><p><b>2) كم علبة طلاء يلزم العامل؟ علّل.</b></p><p><b>الطريقة:</b> خواص التناظر المركزي: يحافظ على الأطوال، وعلى أقياس الزوايا، وعلى المساحات، وعلى استقامية النقط. نظير مستقيم مستقيم يوازيه، ونظير دائرة دائرة لها نصف القطر نفسه. القسمة الإقليدية: <span class="math">a = b × q + r</span> حيث <span class="math">r &lt; b</span>؛ <span class="math">q</span> الحاصل و<span class="math">r</span> الباقي.</p><p>محيط منطقة: <span class="math">2 × (16 + 10) = 52 m</span></p><p>التناظر يحافظ على الأطوال: الطول الكلي <span class="math">52 × 2 = 104 m</span></p><p><span class="math">104 = 30 × 3 + 14</span></p><p><span class="math">3</span> علب تكفي <span class="math">90 m</span> ويبقى <span class="math">14 m</span>، فتلزم علبة أخرى</p><p>النتيجة: <span class="math">4</span> علب</p><p><b>الاستنتاج:</b> يلزم العامل <span class="math">4</span> علب.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: طول الخط</td><td>1,5</td></tr><tr><td>م2 الاستعمال السليم: القسمة الإقليدية</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: الاستنتاج</td><td>1,5</td></tr><tr><td>م3 انسجام الإجابة: الوحدة ومعقولية النتيجة</td><td>0,5</td></tr><tr><td>م4 الإتقان: تنظيم الحل ووضوحه</td><td>0,5</td></tr></table></div><p class="m3">تُقبل كل طريقة صحيحة أخرى، وتُمنح علامتها كاملة.</p></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
 function tick(){var b=document.querySelector('.sol-btn'),w=document.querySelector('.sol-wait');if(!b)return;var r=t+D-Date.now();
 if(r<=0){b.style.display='inline-block';if(w)w.style.display='none';return}if(w)w.textContent='📄 النسخة الورقية للحل تظهر بعد '+Math.ceil(r/60000)+' دقيقة';setTimeout(tick,20000)}
 window.printSol=function(){document.body.classList.add('psol');window.print()};window.addEventListener('afterprint',function(){document.body.classList.remove('psol')});
