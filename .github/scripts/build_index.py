@@ -54,7 +54,7 @@ def inject_og(path, item):
     if not re.search(r'<meta[^>]+name=["\']description', page, re.I):
         seo += f'\n<meta name="description" content="{esc(desc)}">'
     tags = (seo + f'\n<meta property="og:type" content="website">'
-            f'\n<meta property="og:locale" content="ar_DZ">\n<meta property="og:url" content="{esc(url)}">'
+            f'\n<meta property="og:locale" content="ar_DZ">'
             f'\n<meta property="og:site_name" content="رياضيات المتوسط — الأستاذ يوسفي السوفي">'
             f'\n<meta property="og:title" content="{esc(item["title"])}">'
             f'\n<meta property="og:description" content="{esc(LEVEL_AR[item["level"]] + " · " + SECTION_AR[item["section"]] + " — رياضيات المتوسط")}">'
