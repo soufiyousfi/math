@@ -702,43 +702,66 @@
     ],
     "rubric": [
      {
-      "step": "المراحل",
-      "mark": "0,75"
-     },
-     {
-      "step": "النتيجة",
-      "mark": "0,75"
+      "step": "المراحل والنتيجة",
+      "mark": "1"
      }
     ],
-    "pts": 1.5,
+    "pts": 1,
     "partialZero": true
    },
    {
     "qId": "1-2",
-    "text": "2) اكتب <span class=\"math\"><span class=\"fr\"><span>1690</span><span>2340</span></span></span> على شكل كسر غير قابل للاختزال.",
+    "text": "2) هل العددان <span class=\"math\">45</span> و<span class=\"math\">28</span> أوليان فيما بينهما مع التعليل؟<br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> نعم أو <span class=\"math\">2</span> لا.",
     "exact": [
-     "13/18"
+     "1"
     ],
     "partial": [
-     "169/234",
-     "65/90",
-     "26/36"
+     "2"
     ],
-    "h1": "اقسم على <span class=\"math\">130</span>.",
-    "h2": "<span class=\"math\">1690 ÷ 130 = 13</span>.",
+    "h1": "احسب قاسمهما المشترك الأكبر.",
+    "h2": "<span class=\"math\">45 = 28 × 1 + 17</span> ثم <span class=\"math\">28 = 17 × 1 + 11</span>...",
+    "steps": [
+     "<b>الطريقة:</b> يكون عددان أوليين فيما بينهما إذا كان قاسمهما المشترك الأكبر يساوي <span class=\"math\">1</span>.",
+     "<span class=\"math\">45 = 28 × 1 + 17</span> ؛ <span class=\"math\">28 = 17 × 1 + 11</span> ؛ <span class=\"math\">17 = 11 × 1 + 6</span> ؛ <span class=\"math\">11 = 6 × 1 + 5</span> ؛ <span class=\"math\">6 = 5 × 1 + 1</span>",
+     "<span class=\"math\">PGCD(45 ; 28) = 1</span>",
+     "النتيجة: أوليان فيما بينهما (<span class=\"math\">1</span>)",
+     "<b>الاستنتاج:</b> أوليان فيما بينهما."
+    ],
+    "rubric": [
+     {
+      "step": "التعليل",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "1-3",
+    "text": "3) اكتب <span class=\"math\"><span class=\"fr\"><span>175</span><span>245</span></span></span> على شكل كسر غير قابل للاختزال.",
+    "exact": [
+     "5/7"
+    ],
+    "partial": [
+     "35/49",
+     "25/35"
+    ],
+    "h1": "احسب <span class=\"math\">PGCD(245 ; 175)</span>.",
+    "h2": "<span class=\"math\">245 = 175 × 1 + 70</span> ؛ <span class=\"math\">175 = 70 × 2 + 35</span> ؛ <span class=\"math\">70 = 35 × 2</span>.",
     "steps": [
      "<b>الطريقة:</b> لكتابة كسر على شكل كسر غير قابل للاختزال: نقسم بسطه ومقامه على قاسمهما المشترك الأكبر.",
-     "<span class=\"math\">1690 ÷ 130 = 13</span> و<span class=\"math\">2340 ÷ 130 = 18</span>",
-     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>13</span><span>18</span></span></span>",
-     "<b>الاستنتاج:</b> <span class=\"math\"><span class=\"fr\"><span>13</span><span>18</span></span></span>."
+     "<span class=\"math\">PGCD(245 ; 175) = 35</span>",
+     "<span class=\"math\">175 ÷ 35 = 5</span> و<span class=\"math\">245 ÷ 35 = 7</span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>5</span><span>7</span></span></span>",
+     "<b>الاستنتاج:</b> <span class=\"math\"><span class=\"fr\"><span>5</span><span>7</span></span></span>."
     ],
     "rubric": [
      {
       "step": "النتيجة",
-      "mark": "1,5"
+      "mark": "1"
      }
     ],
-    "pts": 1.5,
+    "pts": 1,
     "partialMsg": "اكتب الكسر على شكل كسر غير قابل للاختزال."
    }
   ]
@@ -751,7 +774,36 @@
   "questions": [
    {
     "qId": "2-1",
-    "text": "1) اكتب <span class=\"math\">C = √45 + √20 − 2√5</span> على الشكل <span class=\"math\">a√5</span>.",
+    "text": "1) للمعادلة <span class=\"math\">x² = 50</span> حلان. اكتب الحل الموجب على الشكل <span class=\"math\">a√b</span> حيث <span class=\"math\">b</span> أصغر ما يمكن.",
+    "exact": [
+     "5√2"
+    ],
+    "partial": [
+     "√50",
+     "-5√2",
+     "25"
+    ],
+    "h1": "الحلان <span class=\"math\">√50</span> و<span class=\"math\">−√50</span>.",
+    "h2": "<span class=\"math\">50 = 25 × 2</span>.",
+    "steps": [
+     "<b>الطريقة:</b> إذا كان <span class=\"math\">a &gt; 0</span> فإن للمعادلة <span class=\"math\">x² = a</span> حلين: <span class=\"math\">√a</span> و<span class=\"math\">−√a</span>. قواعد الجذور: <span class=\"math\">√(a × b) = √a × √b</span> و<span class=\"math\">√(<span class=\"fr\"><span>a</span><span>b</span></span>) = √a/√b</span> و<span class=\"math\">(√a)² = a</span> (حيث <span class=\"math\">a</span> و<span class=\"math\">b</span> موجبان). لتبسيط <span class=\"math\">√n</span> نكتب <span class=\"math\">n</span> جداء مربع تام في عدد.",
+     "<span class=\"math\">x² = 50</span> تعني <span class=\"math\">x = √50</span> أو <span class=\"math\">x = −√50</span>",
+     "<span class=\"math\">√50 = √(25 × 2) = 5√2</span>",
+     "النتيجة: الحل الموجب <span class=\"math\">5√2</span> (والآخر <span class=\"math\">−5√2</span>)",
+     "<b>الاستنتاج:</b> <span class=\"math\">x = 5√2</span> أو <span class=\"math\">x = −5√2</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialMsg": "اكتب الناتج على الشكل <span class=\"math\">a√b</span> حيث <span class=\"math\">b</span> أصغر ما يمكن."
+   },
+   {
+    "qId": "2-2",
+    "text": "2) اكتب <span class=\"math\">C = √45 + √20 − 2√5</span> على الشكل <span class=\"math\">a√5</span>.",
     "exact": [
      "3√5"
     ],
@@ -771,74 +823,67 @@
     ],
     "rubric": [
      {
-      "step": "التبسيط",
-      "mark": "0,75"
-     },
-     {
       "step": "النتيجة",
-      "mark": "0,75"
+      "mark": "1"
      }
     ],
-    "pts": 1.5,
+    "pts": 1,
     "partialZero": true
    },
    {
-    "qId": "2-2",
-    "text": "2) بيّن أن <span class=\"math\">D = (√7 + 2)(√7 − 2)</span> عدد طبيعي، ثم اكتب قيمته.",
+    "qId": "2-3",
+    "text": "3) اكتب <span class=\"math\">F = <span class=\"fr\"><span>10</span><span>√5</span></span></span> بمقام عدد ناطق ثم بسّطه.",
     "exact": [
-     "3"
+     "2√5"
     ],
     "partial": [
-     "11",
-     "5"
+     "10√5/5",
+     "(10√5)/5"
     ],
-    "h1": "انشر أو استعمل <span class=\"math\">(a + b)(a − b) = a² − b²</span>.",
-    "h2": "<span class=\"math\">(√7)² − 2²</span>.",
+    "h1": "اضرب البسط والمقام في <span class=\"math\">√5</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>10√5</span><span>5</span></span></span>.",
     "steps": [
-     "<b>الطريقة:</b> النشر: <span class=\"math\">(a + b)(a − b) = a² − b²</span> أو بالتوزيع، مع <span class=\"math\">(√7)² = 7</span>.",
-     "<span class=\"math\">D = (√7)² − 2²</span>",
-     "<span class=\"math\">D = 7 − 4</span>",
-     "النتيجة: <span class=\"math\">D = 3</span> عدد طبيعي",
-     "<b>الاستنتاج:</b> <span class=\"math\">D = 3</span>."
+     "<b>الطريقة:</b> لجعل مقام نسبة عددا ناطقا: نضرب البسط والمقام في الجذر الموجود في المقام: <span class=\"math\">a/√b = <span class=\"fr\"><span>a√b</span><span>b</span></span></span>.",
+     "<span class=\"math\">F = <span class=\"fr\"><span>10 × √5</span><span>√5 × √5</span></span> = <span class=\"fr\"><span>10√5</span><span>5</span></span></span>",
+     "النتيجة: <span class=\"math\">F = 2√5</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">F = 2√5</span>."
     ],
     "rubric": [
      {
-      "step": "النشر",
-      "mark": "0,75"
-     },
-     {
       "step": "النتيجة",
-      "mark": "0,75"
+      "mark": "1"
      }
     ],
-    "pts": 1.5,
-    "partialZero": true
+    "pts": 1,
+    "partialMsg": "بسّط: <span class=\"math\">10 ÷ 5 = 2</span>."
    }
   ]
  },
  {
   "id": 3,
   "pts": 3,
-  "title": "التمرين 3: خاصية طالس العكسية",
-  "context": "<span class=\"math\">ABC</span> مثلث حيث <span class=\"math\">AB = 6 cm</span> ؛ <span class=\"math\">AC = 8 cm</span> ؛ <span class=\"math\">BC = 10 cm</span>. <span class=\"math\">M</span> نقطة من <span class=\"math\">[AB]</span> و<span class=\"math\">N</span> نقطة من <span class=\"math\">[AC]</span> حيث <span class=\"math\">AM = 4,5 cm</span> و<span class=\"math\">AN = 6 cm</span>.<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 380 240\" width=\"380\" height=\"240\" style=\"max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff\" font-family=\"Arial\" font-size=\"16\"><rect width=\"380\" height=\"240\" fill=\"#fff\"/><polygon points=\"170,20 40,200 330,200\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\"/><line x1=\"72.5\" y1=\"155.0\" x2=\"290.0\" y2=\"155.0\" stroke=\"#0f766e\" stroke-width=\"2.5\"/><circle cx=\"170\" cy=\"20\" r=\"3\" fill=\"#111\"/><text x=\"164\" y=\"12\" font-weight=\"bold\">A</text><circle cx=\"40\" cy=\"200\" r=\"3\" fill=\"#111\"/><text x=\"22\" y=\"216\" font-weight=\"bold\">B</text><circle cx=\"330\" cy=\"200\" r=\"3\" fill=\"#111\"/><text x=\"336\" y=\"216\" font-weight=\"bold\">C</text><circle cx=\"72.5\" cy=\"155.0\" r=\"3\" fill=\"#111\"/><text x=\"50.5\" y=\"155.0\" font-weight=\"bold\">M</text><circle cx=\"290.0\" cy=\"155.0\" r=\"3\" fill=\"#111\"/><text x=\"298.0\" y=\"155.0\" font-weight=\"bold\">N</text><text x=\"190\" y=\"232\" font-size=\"12\" fill=\"#64748b\" text-anchor=\"middle\">(الشكل غير مرسوم بالأبعاد الحقيقية)</text></svg>",
+  "title": "التمرين 3: خاصية طالس",
+  "context": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 380 240\" width=\"380\" height=\"240\" style=\"max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff\" font-family=\"Arial\" font-size=\"16\"><rect width=\"380\" height=\"240\" fill=\"#fff\"/><polygon points=\"170,20 40,200 330,200\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\"/><line x1=\"118.0\" y1=\"92.0\" x2=\"234.0\" y2=\"92.0\" stroke=\"#0f766e\" stroke-width=\"2.5\"/><circle cx=\"170\" cy=\"20\" r=\"3\" fill=\"#111\"/><text x=\"164\" y=\"12\" font-weight=\"bold\">A</text><circle cx=\"40\" cy=\"200\" r=\"3\" fill=\"#111\"/><text x=\"22\" y=\"216\" font-weight=\"bold\">B</text><circle cx=\"330\" cy=\"200\" r=\"3\" fill=\"#111\"/><text x=\"336\" y=\"216\" font-weight=\"bold\">C</text><circle cx=\"118.0\" cy=\"92.0\" r=\"3\" fill=\"#111\"/><text x=\"96.0\" y=\"92.0\" font-weight=\"bold\">M</text><circle cx=\"234.0\" cy=\"92.0\" r=\"3\" fill=\"#111\"/><text x=\"242.0\" y=\"92.0\" font-weight=\"bold\">N</text><text x=\"190\" y=\"232\" font-size=\"12\" fill=\"#64748b\" text-anchor=\"middle\">(شكل السؤال 1، غير مرسوم بالأبعاد الحقيقية)</text></svg>",
   "questions": [
    {
     "qId": "3-1",
-    "text": "1) احسب النسبة <span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span></span> (عددا عشريا).",
+    "text": "1) <span class=\"math\">ABC</span> مثلث، <span class=\"math\">M</span> من <span class=\"math\">[AB]</span> و<span class=\"math\">N</span> من <span class=\"math\">[AC]</span> حيث <span class=\"math\">(MN) // (BC)</span> و<span class=\"math\">AM = 3 cm</span> ؛ <span class=\"math\">AB = 7,5 cm</span> ؛ <span class=\"math\">AC = 10 cm</span>. احسب <span class=\"math\">AN</span> (بـ cm).",
     "exact": [
-     "0,75",
-     "3/4"
+     "4"
     ],
     "partial": [
-     "1,33"
+     "25",
+     "2,25"
     ],
-    "h1": "اقسم <span class=\"math\">4,5</span> على <span class=\"math\">6</span>.",
-    "h2": "<span class=\"math\"><span class=\"fr\"><span>4,5</span><span>6</span></span> = <span class=\"fr\"><span>45</span><span>60</span></span></span>.",
+    "h1": "طبّق خاصية طالس.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = <span class=\"fr\"><span>AN</span><span>AC</span></span></span>.",
     "steps": [
-     "<b>الطريقة:</b> حساب نسبة طولين: نقسم الطول الأول على الثاني.",
-     "<span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = <span class=\"fr\"><span>4,5</span><span>6</span></span> = 0,75</span>",
-     "النتيجة: <span class=\"math\">0,75</span>",
-     "<b>الاستنتاج:</b> <span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = 0,75</span>."
+     "<b>الطريقة:</b> خاصية طالس: إذا كانت <span class=\"math\">M</span> من <span class=\"math\">(AB)</span> و<span class=\"math\">N</span> من <span class=\"math\">(AC)</span> و<span class=\"math\">(MN) // (BC)</span> فإن <span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = <span class=\"fr\"><span>AN</span><span>AC</span></span> = <span class=\"fr\"><span>MN</span><span>BC</span></span></span>.",
+     "<span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = <span class=\"fr\"><span>AN</span><span>AC</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>3</span><span>7,5</span></span> = <span class=\"fr\"><span>AN</span><span>10</span></span></span>",
+     "<span class=\"math\">AN = <span class=\"fr\"><span>10 × 3</span><span>7,5</span></span> = 4</span>",
+     "النتيجة: <span class=\"math\">AN = 4 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">AN = 4 cm</span>."
     ],
     "rubric": [
      {
@@ -847,57 +892,60 @@
      }
     ],
     "pts": 1,
+    "partialMsg": "راجع ترتيب النسب.",
     "partialZero": true
    },
    {
     "qId": "3-2",
-    "text": "2) هل <span class=\"math\">(MN) // (BC)</span> مع التعليل؟<br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> نعم أو <span class=\"math\">2</span> لا.",
+    "text": "2) قسّم قطعة <span class=\"math\">[EF]</span> طولها <span class=\"math\">7 cm</span> إلى <span class=\"math\">3</span> أجزاء متقايسة باستعمال خاصية طالس. ما طول كل جزء (بـ cm، قيمة مقرّبة إلى <span class=\"math\">0,01</span>)؟",
+    "exact": [
+     "2,33"
+    ],
+    "partial": [
+     "2,3",
+     "2,34",
+     "21"
+    ],
+    "h1": "الإنشاء بالمسطرة والمدور والموازيات.",
+    "h2": "طول كل جزء <span class=\"math\"><span class=\"fr\"><span>7</span><span>3</span></span></span>.",
+    "steps": [
+     "<b>الطريقة:</b> لتقسيم قطعة <span class=\"math\">[AB]</span> إلى <span class=\"math\">n</span> أجزاء متقايسة: نرسم نصف مستقيم <span class=\"math\">[Ax)</span> نعلّم عليه <span class=\"math\">n</span> أطوالا متساوية، ونصل آخر نقطة بـ <span class=\"math\">B</span>، ثم نرسم موازيات لهذه القطعة (خاصية طالس).",
+     "الإنشاء: نصف مستقيم <span class=\"math\">[Ex)</span> عليه <span class=\"math\">3</span> أطوال متساوية، ثم الموازيات",
+     "طول كل جزء <span class=\"math\"><span class=\"fr\"><span>7</span><span>3</span></span> ≈ 2,33</span>",
+     "النتيجة: <span class=\"math\">2,33 cm</span>",
+     "<b>الاستنتاج:</b> طول كل جزء <span class=\"math\"><span class=\"fr\"><span>7</span><span>3</span></span> cm ≈ 2,33 cm</span>."
+    ],
+    "rubric": [
+     {
+      "step": "الإنشاء والنتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialMsg": "اكتب الناتج قيمة مقرّبة إلى <span class=\"math\">0,01</span>."
+   },
+   {
+    "qId": "3-3",
+    "text": "3) <span class=\"math\">RST</span> مثلث حيث <span class=\"math\">RS = 6 cm</span> و<span class=\"math\">RT = 8 cm</span>. <span class=\"math\">U</span> من <span class=\"math\">[RS]</span> و<span class=\"math\">V</span> من <span class=\"math\">[RT]</span> حيث <span class=\"math\">RU = 4,5 cm</span> و<span class=\"math\">RV = 6 cm</span>. هل <span class=\"math\">(UV) // (ST)</span> مع التعليل؟<br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> نعم أو <span class=\"math\">2</span> لا.",
     "exact": [
      "1"
     ],
     "partial": [
      "2"
     ],
-    "h1": "احسب <span class=\"math\"><span class=\"fr\"><span>AN</span><span>AC</span></span></span> وقارن.",
-    "h2": "<span class=\"math\"><span class=\"fr\"><span>AN</span><span>AC</span></span> = <span class=\"fr\"><span>6</span><span>8</span></span> = 0,75</span>، ثم تحقق من ترتيب النقط.",
+    "h1": "احسب <span class=\"math\"><span class=\"fr\"><span>RU</span><span>RS</span></span></span> و<span class=\"math\"><span class=\"fr\"><span>RV</span><span>RT</span></span></span> وقارن.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>4,5</span><span>6</span></span> = 0,75</span> و<span class=\"math\"><span class=\"fr\"><span>6</span><span>8</span></span> = 0,75</span>، ثم تحقق من ترتيب النقط.",
     "steps": [
-     "<b>الطريقة:</b> الخاصية العكسية لطالس: إذا كانت النقط <span class=\"math\">A, M, B</span> و<span class=\"math\">A, N, C</span> في نفس الترتيب و<span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = <span class=\"fr\"><span>AN</span><span>AC</span></span></span> فإن <span class=\"math\">(MN) // (BC)</span>.",
-     "<span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = 0,75</span> و<span class=\"math\"><span class=\"fr\"><span>AN</span><span>AC</span></span> = <span class=\"fr\"><span>6</span><span>8</span></span> = 0,75</span>",
-     "النقط <span class=\"math\">A, M, B</span> و<span class=\"math\">A, N, C</span> في نفس الترتيب",
-     "حسب الخاصية العكسية لطالس: <span class=\"math\">(MN) // (BC)</span>",
+     "<b>الطريقة:</b> الخاصية العكسية لطالس: إذا كانت النقط <span class=\"math\">R, U, S</span> و<span class=\"math\">R, V, T</span> في نفس الترتيب و<span class=\"math\"><span class=\"fr\"><span>RU</span><span>RS</span></span> = <span class=\"fr\"><span>RV</span><span>RT</span></span></span> فإن <span class=\"math\">(UV) // (ST)</span>.",
+     "<span class=\"math\"><span class=\"fr\"><span>RU</span><span>RS</span></span> = <span class=\"fr\"><span>4,5</span><span>6</span></span> = 0,75</span> و<span class=\"math\"><span class=\"fr\"><span>RV</span><span>RT</span></span> = <span class=\"fr\"><span>6</span><span>8</span></span> = 0,75</span>",
+     "النقط <span class=\"math\">R, U, S</span> و<span class=\"math\">R, V, T</span> في نفس الترتيب",
+     "حسب الخاصية العكسية لطالس: <span class=\"math\">(UV) // (ST)</span>",
      "النتيجة: نعم (<span class=\"math\">1</span>)",
-     "<b>الاستنتاج:</b> <span class=\"math\">(MN) // (BC)</span>."
+     "<b>الاستنتاج:</b> <span class=\"math\">(UV) // (ST)</span>."
     ],
     "rubric": [
      {
       "step": "المقارنة والاستنتاج",
-      "mark": "1"
-     }
-    ],
-    "pts": 1,
-    "partialZero": true
-   },
-   {
-    "qId": "3-3",
-    "text": "3) احسب <span class=\"math\">MN</span> (بـ cm).",
-    "exact": [
-     "7,5"
-    ],
-    "partial": [
-     "13,33"
-    ],
-    "h1": "صار <span class=\"math\">(MN) // (BC)</span>: طبّق خاصية طالس.",
-    "h2": "<span class=\"math\">MN = 0,75 × BC</span>.",
-    "steps": [
-     "<b>الطريقة:</b> خاصية طالس: إذا كانت <span class=\"math\">M</span> من <span class=\"math\">(AB)</span> و<span class=\"math\">N</span> من <span class=\"math\">(AC)</span> و<span class=\"math\">(MN) // (BC)</span> فإن <span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = <span class=\"fr\"><span>AN</span><span>AC</span></span> = <span class=\"fr\"><span>MN</span><span>BC</span></span></span>.",
-     "<span class=\"math\"><span class=\"fr\"><span>MN</span><span>BC</span></span> = <span class=\"fr\"><span>AM</span><span>AB</span></span> = 0,75</span>",
-     "<span class=\"math\">MN = 0,75 × 10</span>",
-     "النتيجة: <span class=\"math\">MN = 7,5 cm</span>",
-     "<b>الاستنتاج:</b> <span class=\"math\">MN = 7,5 cm</span>."
-    ],
-    "rubric": [
-     {
-      "step": "النتيجة",
       "mark": "1"
      }
     ],
@@ -909,12 +957,12 @@
  {
   "id": 4,
   "pts": 3,
-  "title": "التمرين 4: العلاقات بين النسب المثلثية",
-  "context": "<span class=\"math\">x</span> زاوية حادة حيث <span class=\"math\">cos x = 0,6</span>.",
+  "title": "التمرين 4: النسب المثلثية",
+  "context": "(تُعطى الأطوال قيما مقرّبة إلى <span class=\"math\">0,01</span> والأقياس قيما مقرّبة إلى الوحدة)",
   "questions": [
    {
     "qId": "4-1",
-    "text": "1) احسب <span class=\"math\">sin x</span>.",
+    "text": "1) <span class=\"math\">x</span> زاوية حادة حيث <span class=\"math\">cos x = 0,6</span>. احسب <span class=\"math\">sin x</span>.",
     "exact": [
      "0,8",
      "4/5"
@@ -934,52 +982,71 @@
     ],
     "rubric": [
      {
-      "step": "العلاقة",
-      "mark": "0,75"
-     },
-     {
       "step": "النتيجة",
-      "mark": "0,75"
+      "mark": "1"
      }
     ],
-    "pts": 1.5,
+    "pts": 1,
     "partialMsg": "<span class=\"math\">sin x</span> هو الجذر التربيعي لـ <span class=\"math\">0,64</span>.",
     "partialZero": true
    },
    {
     "qId": "4-2",
-    "text": "2) احسب <span class=\"math\">tan x</span>.",
+    "text": "2) <span class=\"math\">ABC</span> مثلث قائم في <span class=\"math\">A</span> حيث <span class=\"math\">AB = 5 cm</span> وقيس الزاوية <span class=\"math\">ACB</span> هو <span class=\"math\">35°</span>. احسب <span class=\"math\">AC</span> (بـ cm).",
     "exact": [
-     "4/3",
-     "1,33"
+     "7,14"
     ],
     "partial": [
-     "3/4",
-     "0,75",
-     "8/6",
-     "1,3"
+     "3,5",
+     "7,1",
+     "3,50"
     ],
-    "h1": "<span class=\"math\">tan x = sin x/cos x</span>.",
-    "h2": "<span class=\"math\"><span class=\"fr\"><span>0,8</span><span>0,6</span></span></span>.",
+    "h1": "بالنسبة للزاوية <span class=\"math\">C</span>: <span class=\"math\">AB</span> مقابل و<span class=\"math\">AC</span> مجاور.",
+    "h2": "<span class=\"math\">AC = 5 ÷ tan 35°</span>.",
     "steps": [
-     "<b>الطريقة:</b> لكل زاوية حادة <span class=\"math\">x</span>: <span class=\"math\">cos²x + sin²x = 1</span> و<span class=\"math\">tan x = sin x/cos x</span>.",
-     "<span class=\"math\">tan x = <span class=\"fr\"><span>0,8</span><span>0,6</span></span> = <span class=\"fr\"><span>8</span><span>6</span></span></span>",
-     "النتيجة: <span class=\"math\">tan x = <span class=\"fr\"><span>4</span><span>3</span></span></span>",
-     "<b>الاستنتاج:</b> <span class=\"math\">tan x = <span class=\"fr\"><span>4</span><span>3</span></span></span>."
+     "<b>الطريقة:</b> في المثلث القائم: <span class=\"math\">cos = المجاور/الوتر</span> ؛ <span class=\"math\">sin = المقابل/الوتر</span> ؛ <span class=\"math\">tan = المقابل/المجاور</span>.",
+     "<span class=\"math\">tan 35° = <span class=\"fr\"><span>AB</span><span>AC</span></span></span>",
+     "<span class=\"math\">AC = 5/tan 35° ≈ 7,14</span>",
+     "النتيجة: <span class=\"math\">AC ≈ 7,14 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">AC ≈ 7,14 cm</span>."
     ],
     "rubric": [
      {
-      "step": "العلاقة",
-      "mark": "0,75"
-     },
-     {
       "step": "النتيجة",
-      "mark": "0,75"
+      "mark": "1"
      }
     ],
-    "pts": 1.5,
-    "partialMsg": "<span class=\"math\">tan x = sin x ÷ cos x</span> واكتبه على شكل كسر غير قابل للاختزال.",
-    "partialZero": true
+    "pts": 1,
+    "partialMsg": "اكتب الناتج قيمة مقرّبة إلى <span class=\"math\">0,01</span>."
+   },
+   {
+    "qId": "4-3",
+    "text": "3) <span class=\"math\">KLM</span> مثلث قائم في <span class=\"math\">K</span> حيث <span class=\"math\">KL = 4 cm</span> و<span class=\"math\">KM = 7 cm</span>. احسب قيس الزاوية <span class=\"math\">KLM</span> (بالدرجات).",
+    "exact": [
+     "60"
+    ],
+    "partial": [
+     "30",
+     "60,26",
+     "29,74"
+    ],
+    "h1": "بالنسبة للزاوية <span class=\"math\">L</span>: <span class=\"math\">KM</span> مقابل و<span class=\"math\">KL</span> مجاور.",
+    "h2": "<span class=\"math\">tan KLM = <span class=\"fr\"><span>7</span><span>4</span></span> = 1,75</span> ثم <span class=\"math\">tan⁻¹(1,75)</span>.",
+    "steps": [
+     "<b>الطريقة:</b> في المثلث القائم: <span class=\"math\">cos = المجاور/الوتر</span> ؛ <span class=\"math\">sin = المقابل/الوتر</span> ؛ <span class=\"math\">tan = المقابل/المجاور</span>. بالحاسبة (في وضع الدرجات): <span class=\"math\">x = cos⁻¹(…)</span> أو <span class=\"math\">sin⁻¹(…)</span> أو <span class=\"math\">tan⁻¹(…)</span>، ثم نأخذ القيمة المقرّبة إلى الوحدة.",
+     "<span class=\"math\">tan KLM = <span class=\"fr\"><span>KM</span><span>KL</span></span> = <span class=\"fr\"><span>7</span><span>4</span></span> = 1,75</span>",
+     "<span class=\"math\">KLM = tan⁻¹(1,75) ≈ 60,26°</span>",
+     "النتيجة: <span class=\"math\">KLM ≈ 60°</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">KLM ≈ 60°</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialMsg": "اكتب القيس قيمة مقرّبة إلى الوحدة."
    }
   ]
  },
@@ -987,7 +1054,7 @@
   "id": 5,
   "pts": 8,
   "title": "الوضعية الإدماجية: أرض الفلاح في بوشقوف",
-  "context": "<div class=\"bem-data\"><p>– يملك فلاح في بوشقوف أرضا على شكل مستطيل <span class=\"math\">ABCD</span> حيث <span class=\"math\">AB = 168 m</span> و<span class=\"math\">BC = 120 m</span>.<br>– يريد غرس أشجار على محيط الأرض بحيث تكون المسافة بين كل شجرتين متتاليتين هي نفسها وأكبر ما يمكن، مع شجرة في كل ركن.<br>– يُنجز ممرّا مستقيما <span class=\"math\">[AC]</span>.<br>– يضع حاجزا <span class=\"math\">[EF]</span> حيث <span class=\"math\">E</span> من <span class=\"math\">[AB]</span> و<span class=\"math\">F</span> من <span class=\"math\">[AC]</span> و<span class=\"math\">(EF) // (BC)</span> و<span class=\"math\">AE = 42 m</span>.</p></div>",
+  "context": "<div class=\"bem-data\"><p>– يملك فلاح في بوشقوف أرضا على شكل مستطيل <span class=\"math\">ABCD</span> حيث <span class=\"math\">AB = 168 m</span> و<span class=\"math\">BC = 120 m</span>.<br>– يريد غرس أشجار على محيط الأرض بحيث تكون المسافة بين كل شجرتين متتاليتين هي نفسها وأكبر ما يمكن، مع شجرة في كل ركن.<br>– يضع حاجزا <span class=\"math\">[EF]</span> حيث <span class=\"math\">E</span> من <span class=\"math\">[AB]</span> و<span class=\"math\">F</span> من <span class=\"math\">[AC]</span> و<span class=\"math\">(EF) // (BC)</span> و<span class=\"math\">AE = 42 m</span>.</p></div>",
   "questions": [
    {
     "qId": "5-1",
@@ -1014,96 +1081,32 @@
     "rubric": [
      {
       "step": "م1 التفسير السليم: اختيار PGCD",
-      "mark": "1"
+      "mark": "1,5"
      },
      {
       "step": "م2 الاستعمال السليم: الحساب",
-      "mark": "1"
+      "mark": "1,5"
      }
     ],
-    "pts": 2,
+    "pts": 3,
     "partialZero": true
    },
    {
     "qId": "5-2",
-    "text": "2) كم شجرة يغرس الفلاح؟",
-    "exact": [
-     "24"
-    ],
-    "partial": [
-     "12",
-     "25",
-     "28"
-    ],
-    "h1": "محيط الأرض <span class=\"math\">2 × (168 + 120)</span>.",
-    "h2": "<span class=\"math\">576 ÷ 24</span>.",
-    "steps": [
-     "<b>الطريقة:</b> عدد الأشجار على محيط مغلق = المحيط ÷ المسافة بين شجرتين.",
-     "المحيط <span class=\"math\">= 2 × (168 + 120) = 576 m</span>",
-     "<span class=\"math\">576 ÷ 24 = 24</span>",
-     "النتيجة: <span class=\"math\">24</span> شجرة",
-     "<b>الاستنتاج:</b> يغرس <span class=\"math\">24</span> شجرة."
-    ],
-    "rubric": [
-     {
-      "step": "م1 التفسير السليم: المحيط",
-      "mark": "1"
-     },
-     {
-      "step": "م2 الاستعمال السليم: النتيجة",
-      "mark": "1"
-     }
-    ],
-    "pts": 2,
-    "partialZero": true
-   },
-   {
-    "qId": "5-3",
-    "text": "3) احسب قيس الزاوية <span class=\"math\">BAC</span> بالتدوير إلى الوحدة (بالدرجات).",
-    "exact": [
-     "36"
-    ],
-    "partial": [
-     "54",
-     "35",
-     "35,54"
-    ],
-    "h1": "المثلث <span class=\"math\">ABC</span> قائم في <span class=\"math\">B</span>.",
-    "h2": "<span class=\"math\">tan BAC = <span class=\"fr\"><span>BC</span><span>AB</span></span> = <span class=\"fr\"><span>120</span><span>168</span></span></span>.",
-    "steps": [
-     "<b>الطريقة:</b> في المثلث القائم: <span class=\"math\">cos = المجاور/الوتر</span> ؛ <span class=\"math\">sin = المقابل/الوتر</span> ؛ <span class=\"math\">tan = المقابل/المجاور</span>.",
-     "<span class=\"math\">tan BAC = <span class=\"fr\"><span>BC</span><span>AB</span></span> = <span class=\"fr\"><span>120</span><span>168</span></span> ≈ 0,714</span>",
-     "<span class=\"math\">BAC = tan⁻¹(0,714) ≈ 35,5°</span>",
-     "النتيجة: <span class=\"math\">BAC ≈ 36°</span>",
-     "<b>الاستنتاج:</b> <span class=\"math\">BAC ≈ 36°</span>."
-    ],
-    "rubric": [
-     {
-      "step": "م1 التفسير السليم: اختيار النسبة",
-      "mark": "1"
-     },
-     {
-      "step": "م2 الاستعمال السليم: الحساب",
-      "mark": "1"
-     }
-    ],
-    "pts": 2,
-    "partialMsg": "دوّر إلى الوحدة."
-   },
-   {
-    "qId": "5-4",
-    "text": "4) احسب طول الحاجز <span class=\"math\">EF</span> (بـ m).",
+    "text": "2) احسب طول الحاجز <span class=\"math\">EF</span> (بـ m). علّل.",
     "exact": [
      "30"
     ],
     "partial": [
      "58,8",
-     "480"
+     "480",
+     "24"
     ],
     "h1": "<span class=\"math\">(EF) // (BC)</span>: خاصية طالس في المثلث <span class=\"math\">ABC</span>.",
-    "h2": "<span class=\"math\"><span class=\"fr\"><span>AE</span><span>AB</span></span> = <span class=\"fr\"><span>EF</span><span>BC</span></span></span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>AE</span><span>AB</span></span> = <span class=\"fr\"><span>EF</span><span>BC</span></span></span>، أي <span class=\"math\"><span class=\"fr\"><span>42</span><span>168</span></span> = <span class=\"fr\"><span>EF</span><span>120</span></span></span>.",
     "steps": [
      "<b>الطريقة:</b> خاصية طالس: إذا كانت <span class=\"math\">E</span> من <span class=\"math\">(AB)</span> و<span class=\"math\">F</span> من <span class=\"math\">(AC)</span> و<span class=\"math\">(EF) // (BC)</span> فإن <span class=\"math\"><span class=\"fr\"><span>AE</span><span>AB</span></span> = <span class=\"fr\"><span>AF</span><span>AC</span></span> = <span class=\"fr\"><span>EF</span><span>BC</span></span></span>.",
+     "النقط <span class=\"math\">A, E, B</span> و<span class=\"math\">A, F, C</span> على استقامة و<span class=\"math\">(EF) // (BC)</span>",
      "<span class=\"math\"><span class=\"fr\"><span>AE</span><span>AB</span></span> = <span class=\"fr\"><span>EF</span><span>BC</span></span></span>",
      "<span class=\"math\"><span class=\"fr\"><span>42</span><span>168</span></span> = <span class=\"fr\"><span>EF</span><span>120</span></span></span>",
      "<span class=\"math\">EF = <span class=\"fr\"><span>42 × 120</span><span>168</span></span> = <span class=\"fr\"><span>5040</span><span>168</span></span></span>",
@@ -1112,16 +1115,24 @@
     ],
     "rubric": [
      {
-      "step": "م1 التفسير السليم: تساوي النسب",
-      "mark": "1"
+      "step": "م1 التفسير السليم: وضعية طالس وتساوي النسب",
+      "mark": "2"
      },
      {
       "step": "م2 الاستعمال السليم: الحساب",
-      "mark": "1"
+      "mark": "2"
+     },
+     {
+      "step": "م3 انسجام الإجابة: الوحدة ومعقولية النتيجة",
+      "mark": "0,5"
+     },
+     {
+      "step": "م4 الإتقان: تنظيم الحل ووضوحه",
+      "mark": "0,5"
      }
     ],
-    "pts": 2,
-    "partialMsg": "راجع ترتيب النسب.",
+    "pts": 5,
+    "partialMsg": "راجع ترتيب النسب: <span class=\"math\">AE</span> مع <span class=\"math\">AB</span> و<span class=\"math\">EF</span> مع <span class=\"math\">BC</span>.",
     "partialZero": true
    }
   ]
@@ -1356,12 +1367,12 @@
   const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
   s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
   document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
-<div id="paper"><div class="copy" data-pages="2"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACVklEQVR4nMWYMW7cMBBF31gCqI66AX0RS+sT5DwBlGgR6V5eJRehbsDtKECrn2IduLGRxmGmYDPFDIaff/6nifdjffggAZ+c2czMttP1vMLVrFnaeTWz+rPrfJgh91LMMAQdjBGToqQpFpsBshrwNduJW+9e2pnN2s+v81HUALjjYcf9+FKDJdZ/UOdvma1KrNv3606G+d/VeTdyL0UpEZykSOcL44AMkDs/xbcDqMp1oHukUbowxmypkiQVnEGfgP7exgC99pC7kjPIfSJk/E7GS7lPo4CxJA78TjbtgT5VrxxtZZHoJ+U+VcqWqugOPymXReLhz7gLQOcVc5+qqKXoDHpJOvwkeu3BXaiULZXEgUkxWxrljtfiZW/hAdm33l98DaZv5m7BHv3FnwuysulMtgS6+B3wijpKvkZJe5ASQYt2dDDcN0TJvTDgLhDuYFCqpMOXVCiWCNuJgeapnclL+/WRX6msPqgWt6gm/0oDTQernRgKdvDUziFznWKj9i6PQn5qCyoUSVN0SxrjnZEOCK40J55DhlG585Po/Bnw5d7Cg3tpq8UdgJ/SzTJU0WktyUh4ic5PURcG3AGBvjAfgJY0ykk72dIAlkruhY5RKNRcT9dJ7vA1WWEvyQe+Xu05fbVG7byatdBwLegbJUmZu0YHLZqUu4Kb6e6dsXR7BEY1HayY/oN3hvymkfqiSHz1zoqN2pnccbMGXxSJAJbmoCmxNj/9jl7auXAH7oCVjjFuz4mwPafi3nlJldwiiVdYlHRtf44gpSrmXmdcSfdu//0v7TeyoqN+gddd7AAAAABJRU5ErkJggg==" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الرابعة متوسط</span></div><div class="ttl">اختبار الفصل الأول (النموذج 1) في مادة الرياضيات للسنة الرابعة متوسط</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="ph"><span>المدة: ساعتان</span><span>يُسمح باستعمال الآلة الحاسبة غير المبرمجة</span></div><div class="cols"><h3 class="part">الجزء الأول (12 نقطة)</h3><div class="ex"><h4>التمرين الأول (3 ن): القاسم المشترك الأكبر</h4><p>1) احسب <span class="math">PGCD(2340 ; 1690)</span>.</p><p>2) اكتب <span class="math"><span class="fr"><span>1690</span><span>2340</span></span></span> على شكل كسر غير قابل للاختزال.</p></div><div class="ex"><h4>التمرين الثاني (3 ن): الحساب على الجذور</h4><p>1) اكتب <span class="math">C = √45 + √20 − 2√5</span> على الشكل <span class="math">a√5</span>.</p><p>2) بيّن أن <span class="math">D = (√7 + 2)(√7 − 2)</span> عدد طبيعي، ثم اكتب قيمته.</p></div><div class="ex"><h4>التمرين الثالث (3 ن): خاصية طالس العكسية</h4><div class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 240" width="380" height="240" style="max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff" font-family="Arial" font-size="16"><rect width="380" height="240" fill="#fff"/><polygon points="170,20 40,200 330,200" fill="none" stroke="#111" stroke-width="2"/><line x1="72.5" y1="155.0" x2="290.0" y2="155.0" stroke="#0f766e" stroke-width="2.5"/><circle cx="170" cy="20" r="3" fill="#111"/><text x="164" y="12" font-weight="bold">A</text><circle cx="40" cy="200" r="3" fill="#111"/><text x="22" y="216" font-weight="bold">B</text><circle cx="330" cy="200" r="3" fill="#111"/><text x="336" y="216" font-weight="bold">C</text><circle cx="72.5" cy="155.0" r="3" fill="#111"/><text x="50.5" y="155.0" font-weight="bold">M</text><circle cx="290.0" cy="155.0" r="3" fill="#111"/><text x="298.0" y="155.0" font-weight="bold">N</text><text x="190" y="232" font-size="12" fill="#64748b" text-anchor="middle">(الشكل غير مرسوم بالأبعاد الحقيقية)</text></svg></div><span class="math">ABC</span> مثلث حيث <span class="math">AB = 6 cm</span> ؛ <span class="math">AC = 8 cm</span> ؛ <span class="math">BC = 10 cm</span>. <span class="math">M</span> نقطة من <span class="math">[AB]</span> و<span class="math">N</span> نقطة من <span class="math">[AC]</span> حيث <span class="math">AM = 4,5 cm</span> و<span class="math">AN = 6 cm</span>.<p>1) احسب النسبة <span class="math"><span class="fr"><span>AM</span><span>AB</span></span></span> (عددا عشريا).</p><p>2) هل <span class="math">(MN) // (BC)</span> مع التعليل؟</p><p>3) احسب <span class="math">MN</span> (بـ cm).</p></div><div class="ex"><h4>التمرين الرابع (3 ن): العلاقات بين النسب المثلثية</h4><span class="math">x</span> زاوية حادة حيث <span class="math">cos x = 0,6</span>.<p>1) احسب <span class="math">sin x</span>.</p><p>2) احسب <span class="math">tan x</span>.</p></div><h3 class="part">الجزء الثاني: الوضعية الإدماجية (08 نقاط)</h3><div class="ex"><h4>الوضعية الإدماجية (8 ن): أرض الفلاح في بوشقوف</h4><div class="bem-data"><p>– يملك فلاح في بوشقوف أرضا على شكل مستطيل <span class="math">ABCD</span> حيث <span class="math">AB = 168 m</span> و<span class="math">BC = 120 m</span>.<br>– يريد غرس أشجار على محيط الأرض بحيث تكون المسافة بين كل شجرتين متتاليتين هي نفسها وأكبر ما يمكن، مع شجرة في كل ركن.<br>– يُنجز ممرّا مستقيما <span class="math">[AC]</span>.<br>– يضع حاجزا <span class="math">[EF]</span> حيث <span class="math">E</span> من <span class="math">[AB]</span> و<span class="math">F</span> من <span class="math">[AC]</span> و<span class="math">(EF) // (BC)</span> و<span class="math">AE = 42 m</span>.</p></div><p>1) ما المسافة بين كل شجرتين متتاليتين (بـ m)؟</p><p>2) كم شجرة يغرس الفلاح؟</p><p>3) احسب قيس الزاوية <span class="math">BAC</span> بالتدوير إلى الوحدة (بالدرجات).</p><p>4) احسب طول الحاجز <span class="math">EF</span> (بـ m).</p></div></div><div class="foot">بالتوفيق</div></div></div><script>(function(){function fit(){var pp=document.getElementById('paper');if(!pp)return;var c=pp.querySelector('.copy');var n=+(c&&c.getAttribute('data-pages'));if(!n)return;
+<div id="paper"><div class="copy" data-pages="2"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACVklEQVR4nMWYMW7cMBBF31gCqI66AX0RS+sT5DwBlGgR6V5eJRehbsDtKECrn2IduLGRxmGmYDPFDIaff/6nifdjffggAZ+c2czMttP1vMLVrFnaeTWz+rPrfJgh91LMMAQdjBGToqQpFpsBshrwNduJW+9e2pnN2s+v81HUALjjYcf9+FKDJdZ/UOdvma1KrNv3606G+d/VeTdyL0UpEZykSOcL44AMkDs/xbcDqMp1oHukUbowxmypkiQVnEGfgP7exgC99pC7kjPIfSJk/E7GS7lPo4CxJA78TjbtgT5VrxxtZZHoJ+U+VcqWqugOPymXReLhz7gLQOcVc5+qqKXoDHpJOvwkeu3BXaiULZXEgUkxWxrljtfiZW/hAdm33l98DaZv5m7BHv3FnwuysulMtgS6+B3wijpKvkZJe5ASQYt2dDDcN0TJvTDgLhDuYFCqpMOXVCiWCNuJgeapnclL+/WRX6msPqgWt6gm/0oDTQernRgKdvDUziFznWKj9i6PQn5qCyoUSVN0SxrjnZEOCK40J55DhlG585Po/Bnw5d7Cg3tpq8UdgJ/SzTJU0WktyUh4ic5PURcG3AGBvjAfgJY0ykk72dIAlkruhY5RKNRcT9dJ7vA1WWEvyQe+Xu05fbVG7byatdBwLegbJUmZu0YHLZqUu4Kb6e6dsXR7BEY1HayY/oN3hvymkfqiSHz1zoqN2pnccbMGXxSJAJbmoCmxNj/9jl7auXAH7oCVjjFuz4mwPafi3nlJldwiiVdYlHRtf44gpSrmXmdcSfdu//0v7TeyoqN+gddd7AAAAABJRU5ErkJggg==" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الرابعة متوسط</span></div><div class="ttl">اختبار الفصل الأول (النموذج 1) في مادة الرياضيات للسنة الرابعة متوسط</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="ph"><span>المدة: ساعتان</span><span>يُسمح باستعمال الآلة الحاسبة غير المبرمجة</span></div><div class="cols"><h3 class="part">الجزء الأول (12 نقطة)</h3><div class="ex"><h4>التمرين الأول (3 ن): القاسم المشترك الأكبر</h4><p>1) احسب <span class="math">PGCD(2340 ; 1690)</span>.</p><p>2) هل العددان <span class="math">45</span> و<span class="math">28</span> أوليان فيما بينهما مع التعليل؟</p><p>3) اكتب <span class="math"><span class="fr"><span>175</span><span>245</span></span></span> على شكل كسر غير قابل للاختزال.</p></div><div class="ex"><h4>التمرين الثاني (3 ن): الحساب على الجذور</h4><p>1) للمعادلة <span class="math">x² = 50</span> حلان. اكتب الحل الموجب على الشكل <span class="math">a√b</span> حيث <span class="math">b</span> أصغر ما يمكن.</p><p>2) اكتب <span class="math">C = √45 + √20 − 2√5</span> على الشكل <span class="math">a√5</span>.</p><p>3) اكتب <span class="math">F = <span class="fr"><span>10</span><span>√5</span></span></span> بمقام عدد ناطق ثم بسّطه.</p></div><div class="ex"><h4>التمرين الثالث (3 ن): خاصية طالس</h4><div class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 240" width="380" height="240" style="max-width:100%;height:auto;direction:ltr;display:block;margin:8px auto;background:#fff" font-family="Arial" font-size="16"><rect width="380" height="240" fill="#fff"/><polygon points="170,20 40,200 330,200" fill="none" stroke="#111" stroke-width="2"/><line x1="118.0" y1="92.0" x2="234.0" y2="92.0" stroke="#0f766e" stroke-width="2.5"/><circle cx="170" cy="20" r="3" fill="#111"/><text x="164" y="12" font-weight="bold">A</text><circle cx="40" cy="200" r="3" fill="#111"/><text x="22" y="216" font-weight="bold">B</text><circle cx="330" cy="200" r="3" fill="#111"/><text x="336" y="216" font-weight="bold">C</text><circle cx="118.0" cy="92.0" r="3" fill="#111"/><text x="96.0" y="92.0" font-weight="bold">M</text><circle cx="234.0" cy="92.0" r="3" fill="#111"/><text x="242.0" y="92.0" font-weight="bold">N</text><text x="190" y="232" font-size="12" fill="#64748b" text-anchor="middle">(شكل السؤال 1، غير مرسوم بالأبعاد الحقيقية)</text></svg></div><p>1) <span class="math">ABC</span> مثلث، <span class="math">M</span> من <span class="math">[AB]</span> و<span class="math">N</span> من <span class="math">[AC]</span> حيث <span class="math">(MN) // (BC)</span> و<span class="math">AM = 3 cm</span> ؛ <span class="math">AB = 7,5 cm</span> ؛ <span class="math">AC = 10 cm</span>. احسب <span class="math">AN</span> (بـ cm).</p><p>2) قسّم قطعة <span class="math">[EF]</span> طولها <span class="math">7 cm</span> إلى <span class="math">3</span> أجزاء متقايسة باستعمال خاصية طالس. ما طول كل جزء (بـ cm، قيمة مقرّبة إلى <span class="math">0,01</span>)؟</p><p>3) <span class="math">RST</span> مثلث حيث <span class="math">RS = 6 cm</span> و<span class="math">RT = 8 cm</span>. <span class="math">U</span> من <span class="math">[RS]</span> و<span class="math">V</span> من <span class="math">[RT]</span> حيث <span class="math">RU = 4,5 cm</span> و<span class="math">RV = 6 cm</span>. هل <span class="math">(UV) // (ST)</span> مع التعليل؟</p></div><div class="ex"><h4>التمرين الرابع (3 ن): النسب المثلثية</h4>(تُعطى الأطوال قيما مقرّبة إلى <span class="math">0,01</span> والأقياس قيما مقرّبة إلى الوحدة)<p>1) <span class="math">x</span> زاوية حادة حيث <span class="math">cos x = 0,6</span>. احسب <span class="math">sin x</span>.</p><p>2) <span class="math">ABC</span> مثلث قائم في <span class="math">A</span> حيث <span class="math">AB = 5 cm</span> وقيس الزاوية <span class="math">ACB</span> هو <span class="math">35°</span>. احسب <span class="math">AC</span> (بـ cm).</p><p>3) <span class="math">KLM</span> مثلث قائم في <span class="math">K</span> حيث <span class="math">KL = 4 cm</span> و<span class="math">KM = 7 cm</span>. احسب قيس الزاوية <span class="math">KLM</span> (بالدرجات).</p></div><h3 class="part">الجزء الثاني: الوضعية الإدماجية (08 نقاط)</h3><div class="ex"><h4>الوضعية الإدماجية (8 ن): أرض الفلاح في بوشقوف</h4><div class="bem-data"><p>– يملك فلاح في بوشقوف أرضا على شكل مستطيل <span class="math">ABCD</span> حيث <span class="math">AB = 168 m</span> و<span class="math">BC = 120 m</span>.<br>– يريد غرس أشجار على محيط الأرض بحيث تكون المسافة بين كل شجرتين متتاليتين هي نفسها وأكبر ما يمكن، مع شجرة في كل ركن.<br>– يضع حاجزا <span class="math">[EF]</span> حيث <span class="math">E</span> من <span class="math">[AB]</span> و<span class="math">F</span> من <span class="math">[AC]</span> و<span class="math">(EF) // (BC)</span> و<span class="math">AE = 42 m</span>.</p></div><p>1) ما المسافة بين كل شجرتين متتاليتين (بـ m)؟</p><p>2) احسب طول الحاجز <span class="math">EF</span> (بـ m). علّل.</p></div></div><div class="foot">بالتوفيق</div></div></div><script>(function(){function fit(){var pp=document.getElementById('paper');if(!pp)return;var c=pp.querySelector('.copy');var n=+(c&&c.getAttribute('data-pages'));if(!n)return;
 var st=pp.getAttribute('style');pp.setAttribute('style','display:block;position:absolute;visibility:hidden;top:0;right:0;width:192mm');c.style.zoom=1;
 var mm=document.createElement('div');mm.style.height=(n*279-6)+'mm';pp.appendChild(mm);var lim=mm.getBoundingClientRect().height;pp.removeChild(mm);
 var lo=0.45,hi=1.3,k;c.style.zoom=hi;if(c.getBoundingClientRect().height<=lim)lo=hi;else for(k=0;k<10;k++){var m=(lo+hi)/2;c.style.zoom=m;if(c.getBoundingClientRect().height<=lim)lo=m;else hi=m}
 c.style.zoom=lo;if(st===null)pp.removeAttribute('style');else pp.setAttribute('style',st)}
-window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الرابعة متوسط</span></div><div class="ttl">الحل النموذجي وسلم التنقيط — اختبار الفصل الأول (النموذج 1) — السنة الرابعة متوسط</div><div class="sxs"><div class="sx"><h4>التمرين الأول (3 ن): القاسم المشترك الأكبر</h4><div class="sq"><p><b>1) احسب <span class="math">PGCD(2340 ; 1690)</span>.</b></p><p><b>الطريقة:</b> خوارزمية إقليدس: نقسم العدد الأكبر على الأصغر، ثم المقسوم عليه على الباقي، وهكذا؛ القاسم المشترك الأكبر هو آخر باق غير معدوم. (تُقبل أيضا طريقة الطرح المتتالي أو التحليل إلى جداء عوامل أولية.)</p><p><span class="math">2340 = 1690 × 1 + 650</span></p><p><span class="math">1690 = 650 × 2 + 390</span></p><p><span class="math">650 = 390 × 1 + 260</span></p><p><span class="math">390 = 260 × 1 + 130</span></p><p><span class="math">260 = 130 × 2 + 0</span></p><p>النتيجة: <span class="math">PGCD = 130</span></p><p><b>الاستنتاج:</b> <span class="math">PGCD = 130</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>المراحل</td><td>0,75</td></tr><tr><td>النتيجة</td><td>0,75</td></tr></table></div><div class="sq"><p><b>2) اكتب <span class="math"><span class="fr"><span>1690</span><span>2340</span></span></span> على شكل كسر غير قابل للاختزال.</b></p><p><b>الطريقة:</b> لكتابة كسر على شكل كسر غير قابل للاختزال: نقسم بسطه ومقامه على قاسمهما المشترك الأكبر.</p><p><span class="math">1690 ÷ 130 = 13</span> و<span class="math">2340 ÷ 130 = 18</span></p><p>النتيجة: <span class="math"><span class="fr"><span>13</span><span>18</span></span></span></p><p><b>الاستنتاج:</b> <span class="math"><span class="fr"><span>13</span><span>18</span></span></span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1,5</td></tr></table></div></div><div class="sx"><h4>التمرين الثاني (3 ن): الحساب على الجذور</h4><div class="sq"><p><b>1) اكتب <span class="math">C = √45 + √20 − 2√5</span> على الشكل <span class="math">a√5</span>.</b></p><p><b>الطريقة:</b> قواعد الجذور: <span class="math">√(a × b) = √a × √b</span> و<span class="math">√(<span class="fr"><span>a</span><span>b</span></span>) = √a/√b</span> و<span class="math">(√a)² = a</span> (حيث <span class="math">a</span> و<span class="math">b</span> موجبان). لتبسيط <span class="math">√n</span> نكتب <span class="math">n</span> جداء مربع تام في عدد.</p><p><span class="math">√45 = 3√5</span> و<span class="math">√20 = 2√5</span></p><p><span class="math">C = 3√5 + 2√5 − 2√5</span></p><p>النتيجة: <span class="math">C = 3√5</span></p><p><b>الاستنتاج:</b> <span class="math">C = 3√5</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>التبسيط</td><td>0,75</td></tr><tr><td>النتيجة</td><td>0,75</td></tr></table></div><div class="sq"><p><b>2) بيّن أن <span class="math">D = (√7 + 2)(√7 − 2)</span> عدد طبيعي، ثم اكتب قيمته.</b></p><p><b>الطريقة:</b> النشر: <span class="math">(a + b)(a − b) = a² − b²</span> أو بالتوزيع، مع <span class="math">(√7)² = 7</span>.</p><p><span class="math">D = (√7)² − 2²</span></p><p><span class="math">D = 7 − 4</span></p><p>النتيجة: <span class="math">D = 3</span> عدد طبيعي</p><p><b>الاستنتاج:</b> <span class="math">D = 3</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النشر</td><td>0,75</td></tr><tr><td>النتيجة</td><td>0,75</td></tr></table></div></div><div class="sx"><h4>التمرين الثالث (3 ن): خاصية طالس العكسية</h4><div class="sq"><p><b>1) احسب النسبة <span class="math"><span class="fr"><span>AM</span><span>AB</span></span></span> (عددا عشريا).</b></p><p><b>الطريقة:</b> حساب نسبة طولين: نقسم الطول الأول على الثاني.</p><p><span class="math"><span class="fr"><span>AM</span><span>AB</span></span> = <span class="fr"><span>4,5</span><span>6</span></span> = 0,75</span></p><p>النتيجة: <span class="math">0,75</span></p><p><b>الاستنتاج:</b> <span class="math"><span class="fr"><span>AM</span><span>AB</span></span> = 0,75</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) هل <span class="math">(MN) // (BC)</span> مع التعليل؟</b></p><p><b>الطريقة:</b> الخاصية العكسية لطالس: إذا كانت النقط <span class="math">A, M, B</span> و<span class="math">A, N, C</span> في نفس الترتيب و<span class="math"><span class="fr"><span>AM</span><span>AB</span></span> = <span class="fr"><span>AN</span><span>AC</span></span></span> فإن <span class="math">(MN) // (BC)</span>.</p><p><span class="math"><span class="fr"><span>AM</span><span>AB</span></span> = 0,75</span> و<span class="math"><span class="fr"><span>AN</span><span>AC</span></span> = <span class="fr"><span>6</span><span>8</span></span> = 0,75</span></p><p>النقط <span class="math">A, M, B</span> و<span class="math">A, N, C</span> في نفس الترتيب</p><p>حسب الخاصية العكسية لطالس: <span class="math">(MN) // (BC)</span></p><p>النتيجة: نعم (<span class="math">1</span>)</p><p><b>الاستنتاج:</b> <span class="math">(MN) // (BC)</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>المقارنة والاستنتاج</td><td>1</td></tr></table></div><div class="sq"><p><b>3) احسب <span class="math">MN</span> (بـ cm).</b></p><p><b>الطريقة:</b> خاصية طالس: إذا كانت <span class="math">M</span> من <span class="math">(AB)</span> و<span class="math">N</span> من <span class="math">(AC)</span> و<span class="math">(MN) // (BC)</span> فإن <span class="math"><span class="fr"><span>AM</span><span>AB</span></span> = <span class="fr"><span>AN</span><span>AC</span></span> = <span class="fr"><span>MN</span><span>BC</span></span></span>.</p><p><span class="math"><span class="fr"><span>MN</span><span>BC</span></span> = <span class="fr"><span>AM</span><span>AB</span></span> = 0,75</span></p><p><span class="math">MN = 0,75 × 10</span></p><p>النتيجة: <span class="math">MN = 7,5 cm</span></p><p><b>الاستنتاج:</b> <span class="math">MN = 7,5 cm</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الرابع (3 ن): العلاقات بين النسب المثلثية</h4><div class="sq"><p><b>1) احسب <span class="math">sin x</span>.</b></p><p><b>الطريقة:</b> لكل زاوية حادة <span class="math">x</span>: <span class="math">cos²x + sin²x = 1</span> و<span class="math">tan x = sin x/cos x</span>. (تُقبل أيضا طريقة الحاسبة: حساب <span class="math">x</span> ثم <span class="math">sin x</span>.)</p><p><span class="math">sin²x = 1 − cos²x = 1 − 0,36 = 0,64</span></p><p><span class="math">sin x = √0,64</span> لأن <span class="math">sin x &gt; 0</span></p><p>النتيجة: <span class="math">sin x = 0,8</span></p><p><b>الاستنتاج:</b> <span class="math">sin x = 0,8</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>العلاقة</td><td>0,75</td></tr><tr><td>النتيجة</td><td>0,75</td></tr></table></div><div class="sq"><p><b>2) احسب <span class="math">tan x</span>.</b></p><p><b>الطريقة:</b> لكل زاوية حادة <span class="math">x</span>: <span class="math">cos²x + sin²x = 1</span> و<span class="math">tan x = sin x/cos x</span>.</p><p><span class="math">tan x = <span class="fr"><span>0,8</span><span>0,6</span></span> = <span class="fr"><span>8</span><span>6</span></span></span></p><p>النتيجة: <span class="math">tan x = <span class="fr"><span>4</span><span>3</span></span></span></p><p><b>الاستنتاج:</b> <span class="math">tan x = <span class="fr"><span>4</span><span>3</span></span></span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>العلاقة</td><td>0,75</td></tr><tr><td>النتيجة</td><td>0,75</td></tr></table></div></div><div class="sx"><h4>الوضعية الإدماجية (8 ن): أرض الفلاح في بوشقوف</h4><div class="sq"><p><b>1) ما المسافة بين كل شجرتين متتاليتين (بـ m)؟</b></p><p><b>الطريقة:</b> خوارزمية إقليدس: نقسم العدد الأكبر على الأصغر، ثم المقسوم عليه على الباقي، وهكذا؛ القاسم المشترك الأكبر هو آخر باق غير معدوم. (تُقبل أيضا طريقة الطرح المتتالي أو التحليل إلى جداء عوامل أولية.)</p><p><span class="math">168 = 120 × 1 + 48</span></p><p><span class="math">120 = 48 × 2 + 24</span></p><p><span class="math">48 = 24 × 2 + 0</span></p><p>النتيجة: <span class="math">PGCD = 24</span>، المسافة <span class="math">24 m</span></p><p><b>الاستنتاج:</b> المسافة <span class="math">24 m</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: اختيار PGCD</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: الحساب</td><td>1</td></tr></table></div><div class="sq"><p><b>2) كم شجرة يغرس الفلاح؟</b></p><p><b>الطريقة:</b> عدد الأشجار على محيط مغلق = المحيط ÷ المسافة بين شجرتين.</p><p>المحيط <span class="math">= 2 × (168 + 120) = 576 m</span></p><p><span class="math">576 ÷ 24 = 24</span></p><p>النتيجة: <span class="math">24</span> شجرة</p><p><b>الاستنتاج:</b> يغرس <span class="math">24</span> شجرة.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: المحيط</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) احسب قيس الزاوية <span class="math">BAC</span> بالتدوير إلى الوحدة (بالدرجات).</b></p><p><b>الطريقة:</b> في المثلث القائم: <span class="math">cos = المجاور/الوتر</span> ؛ <span class="math">sin = المقابل/الوتر</span> ؛ <span class="math">tan = المقابل/المجاور</span>.</p><p><span class="math">tan BAC = <span class="fr"><span>BC</span><span>AB</span></span> = <span class="fr"><span>120</span><span>168</span></span> ≈ 0,714</span></p><p><span class="math">BAC = tan⁻¹(0,714) ≈ 35,5°</span></p><p>النتيجة: <span class="math">BAC ≈ 36°</span></p><p><b>الاستنتاج:</b> <span class="math">BAC ≈ 36°</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: اختيار النسبة</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: الحساب</td><td>1</td></tr></table></div><div class="sq"><p><b>4) احسب طول الحاجز <span class="math">EF</span> (بـ m).</b></p><p><b>الطريقة:</b> خاصية طالس: إذا كانت <span class="math">E</span> من <span class="math">(AB)</span> و<span class="math">F</span> من <span class="math">(AC)</span> و<span class="math">(EF) // (BC)</span> فإن <span class="math"><span class="fr"><span>AE</span><span>AB</span></span> = <span class="fr"><span>AF</span><span>AC</span></span> = <span class="fr"><span>EF</span><span>BC</span></span></span>.</p><p><span class="math"><span class="fr"><span>AE</span><span>AB</span></span> = <span class="fr"><span>EF</span><span>BC</span></span></span></p><p><span class="math"><span class="fr"><span>42</span><span>168</span></span> = <span class="fr"><span>EF</span><span>120</span></span></span></p><p><span class="math">EF = <span class="fr"><span>42 × 120</span><span>168</span></span> = <span class="fr"><span>5040</span><span>168</span></span></span></p><p>النتيجة: <span class="math">EF = 30 m</span></p><p><b>الاستنتاج:</b> <span class="math">EF = 30 m</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: تساوي النسب</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: الحساب</td><td>1</td></tr></table></div><p class="m3"><b>م3 انسجام الإجابة</b> (الوحدات، معقولية النتائج) و<b>م4 الإتقان</b> (تنظيم الورقة): يُراعيان عند منح علامات الأسئلة؛ تُقبل كل طريقة صحيحة أخرى.</p></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
+window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الرابعة متوسط</span></div><div class="ttl">الحل النموذجي وسلم التنقيط — اختبار الفصل الأول (النموذج 1) — السنة الرابعة متوسط</div><div class="cover"><b>تغطية الموارد: 13 من 16 (81%)</b> — القاسم المشترك الأكبر لعددين ؛ عددان أوليان فيما بينهما ؛ كسر غير قابل للاختزال ؛ تعريف الجذر التربيعي (حلول x² = a) ؛ قواعد الحساب على الجذور والشكل a√b ؛ نسبة مقامها عدد ناطق ؛ خاصية طالس وحساب أطوال ؛ خاصية طالس وعكسها في البراهين ؛ خاصية طالس في الإنشاءات (تقسيم قطعة، تكبير وتصغير) ؛ تعريف جيب التمام والجيب والظل ؛ الحاسبة: قيمة نسبة مثلثية أو قيس زاوية ؛ حساب أطوال وزوايا بالنسب المثلثية ؛ العلاقتان cos²x + sin²x = 1 و tan x = sin x/cos x</div><div class="sxs"><div class="sx"><h4>التمرين الأول (3 ن): القاسم المشترك الأكبر</h4><div class="sq"><p><b>1) احسب <span class="math">PGCD(2340 ; 1690)</span>.</b></p><p><b>الطريقة:</b> خوارزمية إقليدس: نقسم العدد الأكبر على الأصغر، ثم المقسوم عليه على الباقي، وهكذا؛ القاسم المشترك الأكبر هو آخر باق غير معدوم. (تُقبل أيضا طريقة الطرح المتتالي أو التحليل إلى جداء عوامل أولية.)</p><p><span class="math">2340 = 1690 × 1 + 650</span></p><p><span class="math">1690 = 650 × 2 + 390</span></p><p><span class="math">650 = 390 × 1 + 260</span></p><p><span class="math">390 = 260 × 1 + 130</span></p><p><span class="math">260 = 130 × 2 + 0</span></p><p>النتيجة: <span class="math">PGCD = 130</span></p><p><b>الاستنتاج:</b> <span class="math">PGCD = 130</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>المراحل والنتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) هل العددان <span class="math">45</span> و<span class="math">28</span> أوليان فيما بينهما مع التعليل؟</b></p><p><b>الطريقة:</b> يكون عددان أوليين فيما بينهما إذا كان قاسمهما المشترك الأكبر يساوي <span class="math">1</span>.</p><p><span class="math">45 = 28 × 1 + 17</span> ؛ <span class="math">28 = 17 × 1 + 11</span> ؛ <span class="math">17 = 11 × 1 + 6</span> ؛ <span class="math">11 = 6 × 1 + 5</span> ؛ <span class="math">6 = 5 × 1 + 1</span></p><p><span class="math">PGCD(45 ; 28) = 1</span></p><p>النتيجة: أوليان فيما بينهما (<span class="math">1</span>)</p><p><b>الاستنتاج:</b> أوليان فيما بينهما.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>التعليل</td><td>1</td></tr></table></div><div class="sq"><p><b>3) اكتب <span class="math"><span class="fr"><span>175</span><span>245</span></span></span> على شكل كسر غير قابل للاختزال.</b></p><p><b>الطريقة:</b> لكتابة كسر على شكل كسر غير قابل للاختزال: نقسم بسطه ومقامه على قاسمهما المشترك الأكبر.</p><p><span class="math">PGCD(245 ; 175) = 35</span></p><p><span class="math">175 ÷ 35 = 5</span> و<span class="math">245 ÷ 35 = 7</span></p><p>النتيجة: <span class="math"><span class="fr"><span>5</span><span>7</span></span></span></p><p><b>الاستنتاج:</b> <span class="math"><span class="fr"><span>5</span><span>7</span></span></span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الثاني (3 ن): الحساب على الجذور</h4><div class="sq"><p><b>1) للمعادلة <span class="math">x² = 50</span> حلان. اكتب الحل الموجب على الشكل <span class="math">a√b</span> حيث <span class="math">b</span> أصغر ما يمكن.</b></p><p><b>الطريقة:</b> إذا كان <span class="math">a &gt; 0</span> فإن للمعادلة <span class="math">x² = a</span> حلين: <span class="math">√a</span> و<span class="math">−√a</span>. قواعد الجذور: <span class="math">√(a × b) = √a × √b</span> و<span class="math">√(<span class="fr"><span>a</span><span>b</span></span>) = √a/√b</span> و<span class="math">(√a)² = a</span> (حيث <span class="math">a</span> و<span class="math">b</span> موجبان). لتبسيط <span class="math">√n</span> نكتب <span class="math">n</span> جداء مربع تام في عدد.</p><p><span class="math">x² = 50</span> تعني <span class="math">x = √50</span> أو <span class="math">x = −√50</span></p><p><span class="math">√50 = √(25 × 2) = 5√2</span></p><p>النتيجة: الحل الموجب <span class="math">5√2</span> (والآخر <span class="math">−5√2</span>)</p><p><b>الاستنتاج:</b> <span class="math">x = 5√2</span> أو <span class="math">x = −5√2</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) اكتب <span class="math">C = √45 + √20 − 2√5</span> على الشكل <span class="math">a√5</span>.</b></p><p><b>الطريقة:</b> قواعد الجذور: <span class="math">√(a × b) = √a × √b</span> و<span class="math">√(<span class="fr"><span>a</span><span>b</span></span>) = √a/√b</span> و<span class="math">(√a)² = a</span> (حيث <span class="math">a</span> و<span class="math">b</span> موجبان). لتبسيط <span class="math">√n</span> نكتب <span class="math">n</span> جداء مربع تام في عدد.</p><p><span class="math">√45 = 3√5</span> و<span class="math">√20 = 2√5</span></p><p><span class="math">C = 3√5 + 2√5 − 2√5</span></p><p>النتيجة: <span class="math">C = 3√5</span></p><p><b>الاستنتاج:</b> <span class="math">C = 3√5</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) اكتب <span class="math">F = <span class="fr"><span>10</span><span>√5</span></span></span> بمقام عدد ناطق ثم بسّطه.</b></p><p><b>الطريقة:</b> لجعل مقام نسبة عددا ناطقا: نضرب البسط والمقام في الجذر الموجود في المقام: <span class="math">a/√b = <span class="fr"><span>a√b</span><span>b</span></span></span>.</p><p><span class="math">F = <span class="fr"><span>10 × √5</span><span>√5 × √5</span></span> = <span class="fr"><span>10√5</span><span>5</span></span></span></p><p>النتيجة: <span class="math">F = 2√5</span></p><p><b>الاستنتاج:</b> <span class="math">F = 2√5</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الثالث (3 ن): خاصية طالس</h4><div class="sq"><p><b>1) <span class="math">ABC</span> مثلث، <span class="math">M</span> من <span class="math">[AB]</span> و<span class="math">N</span> من <span class="math">[AC]</span> حيث <span class="math">(MN) // (BC)</span> و<span class="math">AM = 3 cm</span> ؛ <span class="math">AB = 7,5 cm</span> ؛ <span class="math">AC = 10 cm</span>. احسب <span class="math">AN</span> (بـ cm).</b></p><p><b>الطريقة:</b> خاصية طالس: إذا كانت <span class="math">M</span> من <span class="math">(AB)</span> و<span class="math">N</span> من <span class="math">(AC)</span> و<span class="math">(MN) // (BC)</span> فإن <span class="math"><span class="fr"><span>AM</span><span>AB</span></span> = <span class="fr"><span>AN</span><span>AC</span></span> = <span class="fr"><span>MN</span><span>BC</span></span></span>.</p><p><span class="math"><span class="fr"><span>AM</span><span>AB</span></span> = <span class="fr"><span>AN</span><span>AC</span></span></span></p><p><span class="math"><span class="fr"><span>3</span><span>7,5</span></span> = <span class="fr"><span>AN</span><span>10</span></span></span></p><p><span class="math">AN = <span class="fr"><span>10 × 3</span><span>7,5</span></span> = 4</span></p><p>النتيجة: <span class="math">AN = 4 cm</span></p><p><b>الاستنتاج:</b> <span class="math">AN = 4 cm</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) قسّم قطعة <span class="math">[EF]</span> طولها <span class="math">7 cm</span> إلى <span class="math">3</span> أجزاء متقايسة باستعمال خاصية طالس. ما طول كل جزء (بـ cm، قيمة مقرّبة إلى <span class="math">0,01</span>)؟</b></p><p><b>الطريقة:</b> لتقسيم قطعة <span class="math">[AB]</span> إلى <span class="math">n</span> أجزاء متقايسة: نرسم نصف مستقيم <span class="math">[Ax)</span> نعلّم عليه <span class="math">n</span> أطوالا متساوية، ونصل آخر نقطة بـ <span class="math">B</span>، ثم نرسم موازيات لهذه القطعة (خاصية طالس).</p><p>الإنشاء: نصف مستقيم <span class="math">[Ex)</span> عليه <span class="math">3</span> أطوال متساوية، ثم الموازيات</p><p>طول كل جزء <span class="math"><span class="fr"><span>7</span><span>3</span></span> ≈ 2,33</span></p><p>النتيجة: <span class="math">2,33 cm</span></p><p><b>الاستنتاج:</b> طول كل جزء <span class="math"><span class="fr"><span>7</span><span>3</span></span> cm ≈ 2,33 cm</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الإنشاء والنتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) <span class="math">RST</span> مثلث حيث <span class="math">RS = 6 cm</span> و<span class="math">RT = 8 cm</span>. <span class="math">U</span> من <span class="math">[RS]</span> و<span class="math">V</span> من <span class="math">[RT]</span> حيث <span class="math">RU = 4,5 cm</span> و<span class="math">RV = 6 cm</span>. هل <span class="math">(UV) // (ST)</span> مع التعليل؟</b></p><p><b>الطريقة:</b> الخاصية العكسية لطالس: إذا كانت النقط <span class="math">R, U, S</span> و<span class="math">R, V, T</span> في نفس الترتيب و<span class="math"><span class="fr"><span>RU</span><span>RS</span></span> = <span class="fr"><span>RV</span><span>RT</span></span></span> فإن <span class="math">(UV) // (ST)</span>.</p><p><span class="math"><span class="fr"><span>RU</span><span>RS</span></span> = <span class="fr"><span>4,5</span><span>6</span></span> = 0,75</span> و<span class="math"><span class="fr"><span>RV</span><span>RT</span></span> = <span class="fr"><span>6</span><span>8</span></span> = 0,75</span></p><p>النقط <span class="math">R, U, S</span> و<span class="math">R, V, T</span> في نفس الترتيب</p><p>حسب الخاصية العكسية لطالس: <span class="math">(UV) // (ST)</span></p><p>النتيجة: نعم (<span class="math">1</span>)</p><p><b>الاستنتاج:</b> <span class="math">(UV) // (ST)</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>المقارنة والاستنتاج</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الرابع (3 ن): النسب المثلثية</h4><div class="sq"><p><b>1) <span class="math">x</span> زاوية حادة حيث <span class="math">cos x = 0,6</span>. احسب <span class="math">sin x</span>.</b></p><p><b>الطريقة:</b> لكل زاوية حادة <span class="math">x</span>: <span class="math">cos²x + sin²x = 1</span> و<span class="math">tan x = sin x/cos x</span>. (تُقبل أيضا طريقة الحاسبة: حساب <span class="math">x</span> ثم <span class="math">sin x</span>.)</p><p><span class="math">sin²x = 1 − cos²x = 1 − 0,36 = 0,64</span></p><p><span class="math">sin x = √0,64</span> لأن <span class="math">sin x &gt; 0</span></p><p>النتيجة: <span class="math">sin x = 0,8</span></p><p><b>الاستنتاج:</b> <span class="math">sin x = 0,8</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) <span class="math">ABC</span> مثلث قائم في <span class="math">A</span> حيث <span class="math">AB = 5 cm</span> وقيس الزاوية <span class="math">ACB</span> هو <span class="math">35°</span>. احسب <span class="math">AC</span> (بـ cm).</b></p><p><b>الطريقة:</b> في المثلث القائم: <span class="math">cos = المجاور/الوتر</span> ؛ <span class="math">sin = المقابل/الوتر</span> ؛ <span class="math">tan = المقابل/المجاور</span>.</p><p><span class="math">tan 35° = <span class="fr"><span>AB</span><span>AC</span></span></span></p><p><span class="math">AC = 5/tan 35° ≈ 7,14</span></p><p>النتيجة: <span class="math">AC ≈ 7,14 cm</span></p><p><b>الاستنتاج:</b> <span class="math">AC ≈ 7,14 cm</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) <span class="math">KLM</span> مثلث قائم في <span class="math">K</span> حيث <span class="math">KL = 4 cm</span> و<span class="math">KM = 7 cm</span>. احسب قيس الزاوية <span class="math">KLM</span> (بالدرجات).</b></p><p><b>الطريقة:</b> في المثلث القائم: <span class="math">cos = المجاور/الوتر</span> ؛ <span class="math">sin = المقابل/الوتر</span> ؛ <span class="math">tan = المقابل/المجاور</span>. بالحاسبة (في وضع الدرجات): <span class="math">x = cos⁻¹(…)</span> أو <span class="math">sin⁻¹(…)</span> أو <span class="math">tan⁻¹(…)</span>، ثم نأخذ القيمة المقرّبة إلى الوحدة.</p><p><span class="math">tan KLM = <span class="fr"><span>KM</span><span>KL</span></span> = <span class="fr"><span>7</span><span>4</span></span> = 1,75</span></p><p><span class="math">KLM = tan⁻¹(1,75) ≈ 60,26°</span></p><p>النتيجة: <span class="math">KLM ≈ 60°</span></p><p><b>الاستنتاج:</b> <span class="math">KLM ≈ 60°</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>الوضعية الإدماجية (8 ن): أرض الفلاح في بوشقوف</h4><div class="sq"><p><b>1) ما المسافة بين كل شجرتين متتاليتين (بـ m)؟</b></p><p><b>الطريقة:</b> خوارزمية إقليدس: نقسم العدد الأكبر على الأصغر، ثم المقسوم عليه على الباقي، وهكذا؛ القاسم المشترك الأكبر هو آخر باق غير معدوم. (تُقبل أيضا طريقة الطرح المتتالي أو التحليل إلى جداء عوامل أولية.)</p><p><span class="math">168 = 120 × 1 + 48</span></p><p><span class="math">120 = 48 × 2 + 24</span></p><p><span class="math">48 = 24 × 2 + 0</span></p><p>النتيجة: <span class="math">PGCD = 24</span>، المسافة <span class="math">24 m</span></p><p><b>الاستنتاج:</b> المسافة <span class="math">24 m</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: اختيار PGCD</td><td>1,5</td></tr><tr><td>م2 الاستعمال السليم: الحساب</td><td>1,5</td></tr></table></div><div class="sq"><p><b>2) احسب طول الحاجز <span class="math">EF</span> (بـ m). علّل.</b></p><p><b>الطريقة:</b> خاصية طالس: إذا كانت <span class="math">E</span> من <span class="math">(AB)</span> و<span class="math">F</span> من <span class="math">(AC)</span> و<span class="math">(EF) // (BC)</span> فإن <span class="math"><span class="fr"><span>AE</span><span>AB</span></span> = <span class="fr"><span>AF</span><span>AC</span></span> = <span class="fr"><span>EF</span><span>BC</span></span></span>.</p><p>النقط <span class="math">A, E, B</span> و<span class="math">A, F, C</span> على استقامة و<span class="math">(EF) // (BC)</span></p><p><span class="math"><span class="fr"><span>AE</span><span>AB</span></span> = <span class="fr"><span>EF</span><span>BC</span></span></span></p><p><span class="math"><span class="fr"><span>42</span><span>168</span></span> = <span class="fr"><span>EF</span><span>120</span></span></span></p><p><span class="math">EF = <span class="fr"><span>42 × 120</span><span>168</span></span> = <span class="fr"><span>5040</span><span>168</span></span></span></p><p>النتيجة: <span class="math">EF = 30 m</span></p><p><b>الاستنتاج:</b> <span class="math">EF = 30 m</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: وضعية طالس وتساوي النسب</td><td>2</td></tr><tr><td>م2 الاستعمال السليم: الحساب</td><td>2</td></tr><tr><td>م3 انسجام الإجابة: الوحدة ومعقولية النتيجة</td><td>0,5</td></tr><tr><td>م4 الإتقان: تنظيم الحل ووضوحه</td><td>0,5</td></tr></table></div><p class="m3">تُقبل كل طريقة صحيحة أخرى، وتُمنح علامتها كاملة.</p></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
 function tick(){var b=document.querySelector('.sol-btn'),w=document.querySelector('.sol-wait');if(!b)return;var r=t+D-Date.now();
 if(r<=0){b.style.display='inline-block';if(w)w.style.display='none';return}if(w)w.textContent='📄 النسخة الورقية للحل تظهر بعد '+Math.ceil(r/60000)+' دقيقة';setTimeout(tick,20000)}
 window.printSol=function(){document.body.classList.add('psol');window.print()};window.addEventListener('afterprint',function(){document.body.classList.remove('psol')});
