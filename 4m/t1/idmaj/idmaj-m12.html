@@ -673,137 +673,87 @@
   "id": 1,
   "pts": 8,
   "title": "الوضعية الإدماجية: منحدر المخزن",
-  "context": "<div class=\"bem-data\"><p>– يُنجز تاجر في وادي فراغة منحدرا لنقل البضائع إلى مخزنه، مقطعه مثلث <span class=\"math\">ABC</span> قائم في <span class=\"math\">B</span> حيث: الطول الأفقي <span class=\"math\">AB = √180 m</span> والارتفاع <span class=\"math\">BC = √20 m</span>.</p></div>",
+  "context": "<div class=\"bem-data\"><p>– يُنجز تاجر في وادي فراغة منحدرا لنقل البضائع إلى مخزنه، مقطعه مثلث <span class=\"math\">ABC</span> قائم في <span class=\"math\">B</span> حيث: الطول الأفقي <span class=\"math\">AB = √180 m</span> والارتفاع <span class=\"math\">BC = √20 m</span>.</p><p>– تشترط البلدية ألا يتجاوز قيس زاوية المنحدر مع الأرض <span class=\"math\">20°</span>.</p></div>",
   "questions": [
    {
     "qId": "1-1",
-    "text": "1) اكتب <span class=\"math\">AB</span> على الشكل <span class=\"math\">a√5</span> (بـ m).",
+    "text": "1) اكتب <span class=\"math\">AB</span> و<span class=\"math\">BC</span> على الشكل <span class=\"math\">a√5</span>، ثم اكتب <span class=\"math\">AB</span> (بـ m).",
     "exact": [
      "6√5"
     ],
     "partial": [
      "3√20",
-     "2√45"
+     "2√45",
+     "2√5"
     ],
-    "h1": "<span class=\"math\">180 = 36 × 5</span>.",
-    "h2": "<span class=\"math\">√36 = 6</span>.",
+    "h1": "<span class=\"math\">180 = 36 × 5</span> و<span class=\"math\">20 = 4 × 5</span>.",
+    "h2": "<span class=\"math\">√36 = 6</span> و<span class=\"math\">√4 = 2</span>.",
     "steps": [
      "<b>الطريقة:</b> قواعد الجذور: <span class=\"math\">√(a × b) = √a × √b</span> و<span class=\"math\">√(<span class=\"fr\"><span>a</span><span>b</span></span>) = √a/√b</span> و<span class=\"math\">(√a)² = a</span> (حيث <span class=\"math\">a</span> و<span class=\"math\">b</span> موجبان). لتبسيط <span class=\"math\">√n</span> نكتب <span class=\"math\">n</span> جداء مربع تام في عدد.",
      "<span class=\"math\">√180 = √(36 × 5) = 6√5</span>",
+     "<span class=\"math\">√20 = √(4 × 5) = 2√5</span>",
      "النتيجة: <span class=\"math\">AB = 6√5 m</span>",
-     "<b>الاستنتاج:</b> <span class=\"math\">AB = 6√5 m</span>."
+     "<b>الاستنتاج:</b> <span class=\"math\">AB = 6√5 m</span> و<span class=\"math\">BC = 2√5 m</span>."
     ],
     "rubric": [
      {
       "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
-      "mark": "0,5"
+      "mark": "0,75"
      },
      {
-      "step": "م2 الاستعمال السليم: النتيجة",
-      "mark": "1,5"
+      "step": "م2 الاستعمال السليم: تبسيط الجذرين",
+      "mark": "2,25"
      }
     ],
-    "pts": 2,
+    "pts": 3,
     "partialMsg": "اكتب الناتج على الشكل <span class=\"math\">a√b</span> حيث <span class=\"math\">b</span> أصغر ما يمكن."
    },
    {
     "qId": "1-2",
-    "text": "2) احسب طول المنحدر <span class=\"math\">AC</span> (بـ m) على الشكل <span class=\"math\">a√2</span>.",
-    "exact": [
-     "10√2"
-    ],
-    "partial": [
-     "√200",
-     "√160",
-     "4√10",
-     "2√50"
-    ],
-    "h1": "خاصية فيثاغورس: <span class=\"math\">AC² = AB² + BC²</span>.",
-    "h2": "<span class=\"math\">AC² = 180 + 20 = 200</span>.",
-    "steps": [
-     "<b>الطريقة:</b> خاصية فيثاغورس في المثلث القائم، و<span class=\"math\">√200 = √(100 × 2)</span>.",
-     "<span class=\"math\">AC² = (√180)² + (√20)² = 180 + 20 = 200</span>",
-     "<span class=\"math\">AC = √200 = 10√2</span>",
-     "النتيجة: <span class=\"math\">AC = 10√2 m</span>",
-     "<b>الاستنتاج:</b> <span class=\"math\">AC = 10√2 m</span>."
-    ],
-    "rubric": [
-     {
-      "step": "م1 التفسير السليم: فيثاغورس",
-      "mark": "1"
-     },
-     {
-      "step": "م2 الاستعمال السليم: التبسيط",
-      "mark": "1"
-     }
-    ],
-    "pts": 2,
-    "partialMsg": "بسّط <span class=\"math\">√200</span>."
-   },
-   {
-    "qId": "1-3",
-    "text": "3) احسب <span class=\"math\">tan BAC</span> واكتبه على شكل كسر غير قابل للاختزال.",
-    "exact": [
-     "1/3"
-    ],
-    "partial": [
-     "2/6",
-     "3",
-     "1/9"
-    ],
-    "h1": "<span class=\"math\">tan = المقابل/المجاور</span>.",
-    "h2": "<span class=\"math\"><span class=\"fr\"><span>BC</span><span>AB</span></span> = <span class=\"fr\"><span>2√5</span><span>6√5</span></span></span>.",
-    "steps": [
-     "<b>الطريقة:</b> في المثلث القائم: <span class=\"math\">cos = المجاور/الوتر</span> ؛ <span class=\"math\">sin = المقابل/الوتر</span> ؛ <span class=\"math\">tan = المقابل/المجاور</span>.",
-     "<span class=\"math\">√20 = 2√5</span>",
-     "<span class=\"math\">tan BAC = <span class=\"fr\"><span>BC</span><span>AB</span></span> = <span class=\"fr\"><span>2√5</span><span>6√5</span></span> = <span class=\"fr\"><span>2</span><span>6</span></span></span>",
-     "النتيجة: <span class=\"math\">tan BAC = <span class=\"fr\"><span>1</span><span>3</span></span></span>",
-     "<b>الاستنتاج:</b> <span class=\"math\">tan BAC = <span class=\"fr\"><span>1</span><span>3</span></span></span>."
-    ],
-    "rubric": [
-     {
-      "step": "م1 التفسير السليم: النسبة",
-      "mark": "1"
-     },
-     {
-      "step": "م2 الاستعمال السليم: التبسيط",
-      "mark": "1"
-     }
-    ],
-    "pts": 2,
-    "partialMsg": "اكتب الكسر على شكل كسر غير قابل للاختزال."
-   },
-   {
-    "qId": "1-4",
-    "text": "4) احسب قيس الزاوية <span class=\"math\">BAC</span> بالتدوير إلى الوحدة (بالدرجات).",
+    "text": "2) هل يحترم المنحدر شرط البلدية؟ احسب قيس الزاوية <span class=\"math\">BAC</span> (قيمة مقرّبة إلى الوحدة، بالدرجات).",
     "exact": [
      "18"
     ],
     "partial": [
      "72",
      "18,43",
-     "19"
+     "19",
+     "3"
     ],
-    "h1": "استعمل <span class=\"math\">tan⁻¹</span>.",
-    "h2": "<span class=\"math\">tan⁻¹(<span class=\"fr\"><span>1</span><span>3</span></span>) ≈ 18,4°</span>.",
+    "h1": "<span class=\"math\">tan BAC = <span class=\"fr\"><span>BC</span><span>AB</span></span></span>.",
+    "h2": "<span class=\"math\">tan BAC = <span class=\"fr\"><span>2√5</span><span>6√5</span></span> = <span class=\"fr\"><span>1</span><span>3</span></span></span>، ثم <span class=\"math\">tan⁻¹(<span class=\"fr\"><span>1</span><span>3</span></span>)</span>.",
     "steps": [
-     "<b>الطريقة:</b> بالحاسبة (في وضع الدرجات): <span class=\"math\">BAC = tan⁻¹(<span class=\"fr\"><span>1</span><span>3</span></span>)</span>.",
+     "<b>الطريقة:</b> في المثلث القائم: <span class=\"math\">cos = المجاور/الوتر</span> ؛ <span class=\"math\">sin = المقابل/الوتر</span> ؛ <span class=\"math\">tan = المقابل/المجاور</span>. بالحاسبة (في وضع الدرجات): <span class=\"math\">x = cos⁻¹(…)</span> أو <span class=\"math\">sin⁻¹(…)</span> أو <span class=\"math\">tan⁻¹(…)</span>، ثم نأخذ القيمة المقرّبة إلى الوحدة.",
+     "<span class=\"math\">tan BAC = <span class=\"fr\"><span>BC</span><span>AB</span></span> = <span class=\"fr\"><span>2√5</span><span>6√5</span></span> = <span class=\"fr\"><span>2</span><span>6</span></span> = <span class=\"fr\"><span>2 ÷ 2</span><span>6 ÷ 2</span></span> = <span class=\"fr\"><span>1</span><span>3</span></span></span>",
      "<span class=\"math\">BAC = tan⁻¹(<span class=\"fr\"><span>1</span><span>3</span></span>) ≈ 18,43°</span>",
+     "<span class=\"math\">18° &lt; 20°</span>: المنحدر يحترم الشرط",
      "النتيجة: <span class=\"math\">BAC ≈ 18°</span>",
-     "<b>الاستنتاج:</b> <span class=\"math\">BAC ≈ 18°</span>."
+     "<b>الاستنتاج:</b> قيس الزاوية <span class=\"math\">18°</span> تقريبا، فالمنحدر يحترم شرط البلدية."
     ],
     "rubric": [
      {
-      "step": "م1 التفسير السليم: الحاسبة",
+      "step": "م1 التفسير السليم: النسبة المثلثية والتبسيط",
+      "mark": "2"
+     },
+     {
+      "step": "م2 الاستعمال السليم: القيس",
       "mark": "1"
      },
      {
-      "step": "م2 الاستعمال السليم: التدوير",
+      "step": "م2 الاستعمال السليم: المقارنة بالشرط",
       "mark": "1"
+     },
+     {
+      "step": "م3 انسجام الإجابة: الوحدة ومعقولية النتيجة",
+      "mark": "0,5"
+     },
+     {
+      "step": "م4 الإتقان: تنظيم الحل ووضوحه",
+      "mark": "0,5"
      }
     ],
-    "pts": 2,
-    "partialMsg": "دوّر إلى الوحدة."
+    "pts": 5,
+    "partialMsg": "اكتب القيس قيمة مقرّبة إلى الوحدة."
    }
   ]
  }
@@ -1037,12 +987,12 @@
   const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
   s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
   document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
-<div id="paper"><div class="copy" data-pages="1"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK8AAACvAQAAAACj6bPYAAAB5UlEQVR4nL1XMXLcMAxcWJ6BO/gHvJeQfpgcKVaRb0l5Ce8HVAfNyNwUSjqnM46FZoSC0HIXq6UQXyw+fVUFvqUMBwCudiauALQDQI5s+YRCVshdN5k4J4eR/l17f708Y6heuNBLAzzbDA9GCQDgK6Afxvry/Xv/pyz343YUmZOu4S3hhawOAMh2JnYjow92E7kh21Id+LUdb7vISyxKkqRLGypKG69X9lCURxERXfF54weGKkVEornMQHLhmVzaQO0Yg4cE7MYK2AkUki5cqoYeLBwYk65AUjYkJWcEc6ndnu+eMW2+vU51fwNSvGLnRF6GN1BXI2Nt/Z8VGKnkUh0WziXXS7FLRbYTXG2psVyCK0YgA0k3srq0IdjwQLYxsdsJz5iqXl8QbQVTZbczabelkm0In8uMgco2VC88wa0B8fIZcdkcMFUvDSlYPi5cqBuX6tKQtGNMwfLxbDMATNRuM0ie6SFcrgC024xHWIGXBmjHULm1qQJACh6SKxUUziDbUFG41ODsc4iI6MdOvmzpKOArYGt8Wj/e0zM87893SPu8xQeR4QqVutoVL4O5/FvOdqb9xy7FNs73B6Eck5KkdkzBP68nCE8o27Dtb/gp/tvkFo3yethCbmTF5UORLeXxt+g/w69Q3MUOtmcAAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الرابعة متوسط</span></div><div class="ttl">الوضعية الإدماجية المشتركة للمقطعين الأول والثاني في مادة الرياضيات للسنة الرابعة متوسط</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="ph"><span>المدة: 40 دقيقة</span><span>يُسمح باستعمال الآلة الحاسبة غير المبرمجة</span></div><div class="cols"><div class="ex"><h4>الوضعية الإدماجية (8 ن): منحدر المخزن</h4><div class="bem-data"><p>– يُنجز تاجر في وادي فراغة منحدرا لنقل البضائع إلى مخزنه، مقطعه مثلث <span class="math">ABC</span> قائم في <span class="math">B</span> حيث: الطول الأفقي <span class="math">AB = √180 m</span> والارتفاع <span class="math">BC = √20 m</span>.</p></div><p>1) اكتب <span class="math">AB</span> على الشكل <span class="math">a√5</span> (بـ m).</p><p>2) احسب طول المنحدر <span class="math">AC</span> (بـ m) على الشكل <span class="math">a√2</span>.</p><p>3) احسب <span class="math">tan BAC</span> واكتبه على شكل كسر غير قابل للاختزال.</p><p>4) احسب قيس الزاوية <span class="math">BAC</span> بالتدوير إلى الوحدة (بالدرجات).</p></div></div><div class="foot">بالتوفيق</div></div></div><script>(function(){function fit(){var pp=document.getElementById('paper');if(!pp)return;var c=pp.querySelector('.copy');var n=+(c&&c.getAttribute('data-pages'));if(!n)return;
+<div id="paper"><div class="copy" data-pages="1"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK8AAACvAQAAAACj6bPYAAAB5UlEQVR4nL1XMXLcMAxcWJ6BO/gHvJeQfpgcKVaRb0l5Ce8HVAfNyNwUSjqnM46FZoSC0HIXq6UQXyw+fVUFvqUMBwCudiauALQDQI5s+YRCVshdN5k4J4eR/l17f708Y6heuNBLAzzbDA9GCQDgK6Afxvry/Xv/pyz343YUmZOu4S3hhawOAMh2JnYjow92E7kh21Id+LUdb7vISyxKkqRLGypKG69X9lCURxERXfF54weGKkVEornMQHLhmVzaQO0Yg4cE7MYK2AkUki5cqoYeLBwYk65AUjYkJWcEc6ndnu+eMW2+vU51fwNSvGLnRF6GN1BXI2Nt/Z8VGKnkUh0WziXXS7FLRbYTXG2psVyCK0YgA0k3srq0IdjwQLYxsdsJz5iqXl8QbQVTZbczabelkm0In8uMgco2VC88wa0B8fIZcdkcMFUvDSlYPi5cqBuX6tKQtGNMwfLxbDMATNRuM0ie6SFcrgC024xHWIGXBmjHULm1qQJACh6SKxUUziDbUFG41ODsc4iI6MdOvmzpKOArYGt8Wj/e0zM87893SPu8xQeR4QqVutoVL4O5/FvOdqb9xy7FNs73B6Eck5KkdkzBP68nCE8o27Dtb/gp/tvkFo3yethCbmTF5UORLeXxt+g/w69Q3MUOtmcAAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الرابعة متوسط</span></div><div class="ttl">الوضعية الإدماجية المشتركة للمقطعين الأول والثاني في مادة الرياضيات للسنة الرابعة متوسط</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="ph"><span>المدة: 40 دقيقة</span><span>يُسمح باستعمال الآلة الحاسبة غير المبرمجة</span></div><div class="cols"><div class="ex"><h4>الوضعية الإدماجية (8 ن): منحدر المخزن</h4><div class="bem-data"><p>– يُنجز تاجر في وادي فراغة منحدرا لنقل البضائع إلى مخزنه، مقطعه مثلث <span class="math">ABC</span> قائم في <span class="math">B</span> حيث: الطول الأفقي <span class="math">AB = √180 m</span> والارتفاع <span class="math">BC = √20 m</span>.</p><p>– تشترط البلدية ألا يتجاوز قيس زاوية المنحدر مع الأرض <span class="math">20°</span>.</p></div><p>1) اكتب <span class="math">AB</span> و<span class="math">BC</span> على الشكل <span class="math">a√5</span>، ثم اكتب <span class="math">AB</span> (بـ m).</p><p>2) هل يحترم المنحدر شرط البلدية؟ احسب قيس الزاوية <span class="math">BAC</span> (قيمة مقرّبة إلى الوحدة، بالدرجات).</p></div></div><div class="foot">بالتوفيق</div></div></div><script>(function(){function fit(){var pp=document.getElementById('paper');if(!pp)return;var c=pp.querySelector('.copy');var n=+(c&&c.getAttribute('data-pages'));if(!n)return;
 var st=pp.getAttribute('style');pp.setAttribute('style','display:block;position:absolute;visibility:hidden;top:0;right:0;width:192mm');c.style.zoom=1;
 var mm=document.createElement('div');mm.style.height=(n*279-6)+'mm';pp.appendChild(mm);var lim=mm.getBoundingClientRect().height;pp.removeChild(mm);
 var lo=0.45,hi=1.3,k;c.style.zoom=hi;if(c.getBoundingClientRect().height<=lim)lo=hi;else for(k=0;k<10;k++){var m=(lo+hi)/2;c.style.zoom=m;if(c.getBoundingClientRect().height<=lim)lo=m;else hi=m}
 c.style.zoom=lo;if(st===null)pp.removeAttribute('style');else pp.setAttribute('style',st)}
-window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الرابعة متوسط</span></div><div class="ttl">الحل النموذجي وسلم التنقيط — الوضعية الإدماجية المشتركة للمقطعين الأول والثاني — السنة الرابعة متوسط</div><div class="sxs"><div class="sx"><h4>الوضعية الإدماجية (8 ن): منحدر المخزن</h4><div class="sq"><p><b>1) اكتب <span class="math">AB</span> على الشكل <span class="math">a√5</span> (بـ m).</b></p><p><b>الطريقة:</b> قواعد الجذور: <span class="math">√(a × b) = √a × √b</span> و<span class="math">√(<span class="fr"><span>a</span><span>b</span></span>) = √a/√b</span> و<span class="math">(√a)² = a</span> (حيث <span class="math">a</span> و<span class="math">b</span> موجبان). لتبسيط <span class="math">√n</span> نكتب <span class="math">n</span> جداء مربع تام في عدد.</p><p><span class="math">√180 = √(36 × 5) = 6√5</span></p><p>النتيجة: <span class="math">AB = 6√5 m</span></p><p><b>الاستنتاج:</b> <span class="math">AB = 6√5 m</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: اختيار الأداة الرياضية المناسبة</td><td>0,5</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>1,5</td></tr></table></div><div class="sq"><p><b>2) احسب طول المنحدر <span class="math">AC</span> (بـ m) على الشكل <span class="math">a√2</span>.</b></p><p><b>الطريقة:</b> خاصية فيثاغورس في المثلث القائم، و<span class="math">√200 = √(100 × 2)</span>.</p><p><span class="math">AC² = (√180)² + (√20)² = 180 + 20 = 200</span></p><p><span class="math">AC = √200 = 10√2</span></p><p>النتيجة: <span class="math">AC = 10√2 m</span></p><p><b>الاستنتاج:</b> <span class="math">AC = 10√2 m</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: فيثاغورس</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: التبسيط</td><td>1</td></tr></table></div><div class="sq"><p><b>3) احسب <span class="math">tan BAC</span> واكتبه على شكل كسر غير قابل للاختزال.</b></p><p><b>الطريقة:</b> في المثلث القائم: <span class="math">cos = المجاور/الوتر</span> ؛ <span class="math">sin = المقابل/الوتر</span> ؛ <span class="math">tan = المقابل/المجاور</span>.</p><p><span class="math">√20 = 2√5</span></p><p><span class="math">tan BAC = <span class="fr"><span>BC</span><span>AB</span></span> = <span class="fr"><span>2√5</span><span>6√5</span></span> = <span class="fr"><span>2</span><span>6</span></span></span></p><p>النتيجة: <span class="math">tan BAC = <span class="fr"><span>1</span><span>3</span></span></span></p><p><b>الاستنتاج:</b> <span class="math">tan BAC = <span class="fr"><span>1</span><span>3</span></span></span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: النسبة</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: التبسيط</td><td>1</td></tr></table></div><div class="sq"><p><b>4) احسب قيس الزاوية <span class="math">BAC</span> بالتدوير إلى الوحدة (بالدرجات).</b></p><p><b>الطريقة:</b> بالحاسبة (في وضع الدرجات): <span class="math">BAC = tan⁻¹(<span class="fr"><span>1</span><span>3</span></span>)</span>.</p><p><span class="math">BAC = tan⁻¹(<span class="fr"><span>1</span><span>3</span></span>) ≈ 18,43°</span></p><p>النتيجة: <span class="math">BAC ≈ 18°</span></p><p><b>الاستنتاج:</b> <span class="math">BAC ≈ 18°</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: الحاسبة</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: التدوير</td><td>1</td></tr></table></div><p class="m3"><b>م3 انسجام الإجابة</b> (الوحدات، معقولية النتائج) و<b>م4 الإتقان</b> (تنظيم الورقة): يُراعيان عند منح علامات الأسئلة؛ تُقبل كل طريقة صحيحة أخرى.</p></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
+window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الرابعة متوسط</span></div><div class="ttl">الحل النموذجي وسلم التنقيط — الوضعية الإدماجية المشتركة للمقطعين الأول والثاني — السنة الرابعة متوسط</div><div class="sxs"><div class="sx"><h4>الوضعية الإدماجية (8 ن): منحدر المخزن</h4><div class="sq"><p><b>1) اكتب <span class="math">AB</span> و<span class="math">BC</span> على الشكل <span class="math">a√5</span>، ثم اكتب <span class="math">AB</span> (بـ m).</b></p><p><b>الطريقة:</b> قواعد الجذور: <span class="math">√(a × b) = √a × √b</span> و<span class="math">√(<span class="fr"><span>a</span><span>b</span></span>) = √a/√b</span> و<span class="math">(√a)² = a</span> (حيث <span class="math">a</span> و<span class="math">b</span> موجبان). لتبسيط <span class="math">√n</span> نكتب <span class="math">n</span> جداء مربع تام في عدد.</p><p><span class="math">√180 = √(36 × 5) = 6√5</span></p><p><span class="math">√20 = √(4 × 5) = 2√5</span></p><p>النتيجة: <span class="math">AB = 6√5 m</span></p><p><b>الاستنتاج:</b> <span class="math">AB = 6√5 m</span> و<span class="math">BC = 2√5 m</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: اختيار الأداة الرياضية المناسبة</td><td>0,75</td></tr><tr><td>م2 الاستعمال السليم: تبسيط الجذرين</td><td>2,25</td></tr></table></div><div class="sq"><p><b>2) هل يحترم المنحدر شرط البلدية؟ احسب قيس الزاوية <span class="math">BAC</span> (قيمة مقرّبة إلى الوحدة، بالدرجات).</b></p><p><b>الطريقة:</b> في المثلث القائم: <span class="math">cos = المجاور/الوتر</span> ؛ <span class="math">sin = المقابل/الوتر</span> ؛ <span class="math">tan = المقابل/المجاور</span>. بالحاسبة (في وضع الدرجات): <span class="math">x = cos⁻¹(…)</span> أو <span class="math">sin⁻¹(…)</span> أو <span class="math">tan⁻¹(…)</span>، ثم نأخذ القيمة المقرّبة إلى الوحدة.</p><p><span class="math">tan BAC = <span class="fr"><span>BC</span><span>AB</span></span> = <span class="fr"><span>2√5</span><span>6√5</span></span> = <span class="fr"><span>2</span><span>6</span></span> = <span class="fr"><span>2 ÷ 2</span><span>6 ÷ 2</span></span> = <span class="fr"><span>1</span><span>3</span></span></span></p><p><span class="math">BAC = tan⁻¹(<span class="fr"><span>1</span><span>3</span></span>) ≈ 18,43°</span></p><p><span class="math">18° &lt; 20°</span>: المنحدر يحترم الشرط</p><p>النتيجة: <span class="math">BAC ≈ 18°</span></p><p><b>الاستنتاج:</b> قيس الزاوية <span class="math">18°</span> تقريبا، فالمنحدر يحترم شرط البلدية.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: النسبة المثلثية والتبسيط</td><td>2</td></tr><tr><td>م2 الاستعمال السليم: القيس</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: المقارنة بالشرط</td><td>1</td></tr><tr><td>م3 انسجام الإجابة: الوحدة ومعقولية النتيجة</td><td>0,5</td></tr><tr><td>م4 الإتقان: تنظيم الحل ووضوحه</td><td>0,5</td></tr></table></div><p class="m3">تُقبل كل طريقة صحيحة أخرى، وتُمنح علامتها كاملة.</p></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
 function tick(){var b=document.querySelector('.sol-btn'),w=document.querySelector('.sol-wait');if(!b)return;var r=t+D-Date.now();
 if(r<=0){b.style.display='inline-block';if(w)w.style.display='none';return}if(w)w.textContent='📄 النسخة الورقية للحل تظهر بعد '+Math.ceil(r/60000)+' دقيقة';setTimeout(tick,20000)}
 window.printSol=function(){document.body.classList.add('psol');window.print()};window.addEventListener('afterprint',function(){document.body.classList.remove('psol')});
