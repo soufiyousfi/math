@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار الفصل الأول (النموذج 2) - السنة الثانية متوسط - المقطعان الأول والثاني</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #0f766e;
+            --primary-light: #eff6ff;
+            --accent: #fbbf24;
+            --success: #15803d;
+            --success-bg: #dcfce7;
+            --warning: #b45309;
+            --warning-bg: #fef3c7;
+            --danger: #b91c1c;
+            --danger-bg: #fee2e2;
+            --dark: #0f172a;
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --border: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+        }
+
+        html, body {
+            background-color: var(--bg);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            width: 100%;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%);
+            color: #ffffff;
+            padding: 20px 12px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        header .school-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fef08a;
+            margin-bottom: 6px;
+        }
+
+        header h1 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 6px 0;
+            color: #ffffff;
+        }
+
+        header .sub-info {
+            font-size: 0.92rem;
+            opacity: 0.95;
+            background: rgba(255, 255, 255, 0.14);
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-top: 4px;
+        }
+
+        .sticky-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(6px);
+            border-bottom: 2px solid var(--border);
+            padding: 8px 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .sticky-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .stars-badge {
+            background: #fef3c7;
+            color: #b45309;
+            border: 1px solid #f59e0b;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .sound-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .progress-wrap {
+            flex: 1;
+            min-width: 110px;
+            max-width: 240px;
+            background: #e2e8f0;
+            height: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #0f766e, #15803d);
+            width: 0%;
+            height: 100%;
+            transition: width 0.35s ease;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 18px auto 0 auto;
+            padding: 0 10px;
+        }
+
+        .exercise-card {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 16px 14px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-light);
+            padding: 10px 12px;
+            border-radius: 10px;
+            border-right: 4px solid var(--primary);
+            margin-bottom: 12px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .card-header h2 {
+            font-size: 1.08rem;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .pts-badge {
+            background: #ffffff;
+            color: var(--primary);
+            border: 1px solid #bfdbfe;
+            padding: 3px 10px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .context-box {
+            background: #f8fafc;
+            border: 1px dashed #94a3b8;
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin-bottom: 14px;
+            font-size: 0.96rem;
+        }
+
+        .math {
+            direction: ltr;
+            unicode-bidi: isolate;
+            display: inline-block;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 700;
+            background: #e2e8f0;
+            padding: 1px 6px;
+            border-radius: 5px;
+            margin: 0 2px;
+            color: #0f172a;
+        }
+
+        .q-box {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 14px;
+            background: #ffffff;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .q-box.solved {
+            border-color: #86efac;
+            background: #f0fdf4;
+        }
+
+        .q-box.failed {
+            border-color: #fca5a5;
+            background: #fef2f2;
+        }
+
+        .q-title {
+            font-weight: 700;
+            font-size: 0.98rem;
+            margin-bottom: 10px;
+            color: #1e293b;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .q-meta {
+            font-size: 0.78rem;
+            background: #f1f5f9;
+            color: #475569;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .answer-area {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-line {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            min-width: 170px;
+            padding: 9px 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.98rem;
+            font-weight: 700;
+            direction: ltr;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary);
+        }
+
+        .sym-toolbar {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 4px;
+        }
+
+        .sym-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            color: #0f172a;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            direction: ltr;
+            unicode-bidi: isolate;
+            user-select: none;
+        }
+
+        .sym-btn { flex: 1 1 0; min-width: 0; padding: 6px 0; text-align: center; }
+
+        .sym-btn:hover {
+            background: #cbd5e1;
+        }
+
+        .sym-btn:active {
+            transform: scale(0.96);
+        }
+
+        .btn-check {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .btn-check:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-check:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        @keyframes shakeField {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        .shake {
+            animation: shakeField 0.35s ease;
+            border-color: var(--danger) !important;
+        }
+
+        .feedback-box {
+            margin-top: 10px;
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            display: none;
+        }
+
+        .feedback-box.success {
+            display: block;
+            background: var(--success-bg);
+            color: var(--success);
+            border-right: 4px solid var(--success);
+        }
+
+        .feedback-box.hint {
+            display: block;
+            background: var(--warning-bg);
+            color: var(--warning);
+            border-right: 4px solid var(--warning);
+        }
+
+        .feedback-box.fail {
+            display: block;
+            background: var(--danger-bg);
+            color: var(--danger);
+            border-right: 4px solid var(--danger);
+        }
+
+        .model-solution {
+            margin-top: 12px;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-right: 4px solid var(--secondary);
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+            font-size: 0.93rem;
+        }
+
+        .model-solution h4 {
+            color: var(--secondary);
+            margin-bottom: 8px;
+            font-size: 0.98rem;
+        }
+
+        .sol-line {
+            padding: 3px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .sol-result {
+            margin-top: 6px;
+            font-weight: 800;
+            color: var(--primary);
+            background: #eff6ff;
+            padding: 5px 8px;
+            border-radius: 6px;
+        }
+
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.86rem;
+            background: #ffffff;
+        }
+
+        .rubric-table td .math { white-space: nowrap; }
+        .rubric-table th, .rubric-table td {
+            border: 1px solid #cbd5e1;
+            padding: 6px 8px;
+            text-align: right;
+        }
+
+        .rubric-table th {
+            background: #e2e8f0;
+            color: #1e293b;
+            font-weight: 800;
+        }
+
+        .star-burst {
+            display: inline-block;
+            animation: popStars 0.6s ease forwards;
+        }
+
+        @keyframes popStars {
+            0% { transform: scale(0.4); opacity: 0; }
+            60% { transform: scale(1.25); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.65);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 15px;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            max-width: 420px;
+            width: 100%;
+            border-radius: 16px;
+            padding: 24px 18px;
+            text-align: center;
+            border-top: 6px solid var(--accent);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .modal-score {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin: 10px 0;
+        }
+
+        .modal-stars {
+            font-size: 1.4rem;
+            color: #d97706;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .btn-close-modal {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 9px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        @media (max-width: 420px) {
+            header .school-title { font-size: 0.98rem; }
+            header h1 { font-size: 1.12rem; }
+            .input-line { flex-direction: column; }
+            input[type="text"], .btn-check { width: 100%; }
+        }
+    
+        .fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; line-height: 1.05; margin: 0 2px; font-size: .92em; }
+        .fr > span:first-child { border-bottom: 2px solid currentColor; padding: 0 3px 1px; }
+        .fr > span:last-child { padding: 1px 3px 0; }
+        .vop { display: inline-block; direction: ltr; unicode-bidi: isolate; font-family: 'Courier New', Courier, monospace; font-weight: 700;
+               background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
+        .vop div { white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
+        .vop .ln { border-top: 2px solid #0f172a; }
+    
+.bem-intro{margin:0 0 6px;line-height:1.7}
+.bem-data p{margin:3px 0;line-height:1.7}
+.bem-warn{background:#fef9c3;border:1px solid #facc15;border-radius:8px;padding:6px 10px;margin:8px 0 4px;font-size:.92rem}
+.print-btn{margin-top:10px;background:#fff;color:#0f766e;border:2px solid #fde047;border-radius:20px;padding:6px 16px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+#paper .copy{border:1.5px solid #334155;border-radius:8px;padding:5px 9px 5px 80px;margin:0 0 5mm;break-inside:avoid;position:relative}
+#paper .cut{border-top:1.5px dashed #64748b;margin:0 0 4mm;text-align:center;font-size:9pt;color:#64748b;line-height:0}
+#paper .cut span{background:#fff;padding:0 6px}
+#paper .ph{display:flex;justify-content:space-between;align-items:center;font-weight:bold;font-size:9.5pt}
+#paper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #1e3a8a;border-radius:14px;padding:2px 8px;margin:3px auto 4px;width:fit-content;background:#eff6ff}
+#paper .qr{position:absolute;left:8px;top:6px;text-align:center;font-size:7pt;color:#475569;width:66px}
+#paper .qr img{width:58px;height:58px}
+#paper .cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+#paper .ex{break-inside:avoid;margin:2px 0}
+#paper .ex h4{margin:3px 0 1px;font-size:10.5pt;background:#e0f2fe;border-radius:6px;padding:1px 6px}
+#paper .ex p,#paper .ex li{margin:1px 0;line-height:1.4}
+#paper svg{max-height:120px;width:auto!important;margin:2px auto!important}
+#paper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+#paper .bem-warn{padding:3px 6px;margin:2px 0}
+#paper .bem-data p{margin:0}
+#paper .bem-intro{margin:0}
+#paper .w3{font-size:8.6pt;padding:4px 6px 4px 74px;margin-bottom:3mm}
+#paper .w3 .cols{grid-template-columns:1fr 1fr 1fr;gap:2px 8px}
+#paper .w3 svg{max-height:88px}
+#paper .w3 .ex h4{font-size:8.8pt}
+#paper .w3 .ex p{line-height:1.3}
+#paper .w3 .pt{font-size:10pt;margin:1px auto 2px;padding:1px 8px}
+#paper .one .cols{display:block}
+#paper .one svg{max-height:150px}
+#paper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt;width:192mm}
+@media print{
+ @page{size:A4;margin:8mm 9mm}
+ body>*:not(#paper){display:none!important}
+ html,body{background:#fff!important;padding:0!important;margin:0!important}
+
+ #paper{display:block!important;width:auto}
+}
+
+#paper .copy{font-size:11pt;padding:6px 10px 6px 84px;margin:0}
+#paper .copy .cols{grid-template-columns:1fr 1fr;gap:4px 14px}
+#paper .copy.flow{font-size:12pt}
+#paper .copy.flow .cols{display:block}
+#paper .copy.flow .ex{margin:0 0 4mm}
+#paper .copy.flow svg{max-height:170px}
+#paper .ex h4{font-size:11.5pt}
+#solpaper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt}
+#solpaper .sxs{columns:2;column-gap:7mm;column-rule:1px solid #cbd5e1}
+#solpaper .sx{margin:0 0 2mm}
+#solpaper h4{break-after:avoid}
+#solpaper h4{margin:2px 0;font-size:11pt;background:#dcfce7;border-radius:6px;padding:1px 6px}
+#solpaper .ph{display:flex;justify-content:space-between;font-weight:bold;font-size:9.5pt}
+#solpaper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #166534;border-radius:14px;padding:2px 8px;margin:3px auto 6px;width:fit-content;background:#f0fdf4}
+#solpaper .sq{margin:2px 0 4px;break-inside:avoid;text-align:right}
+#solpaper .sq p{margin:1px 0;line-height:1.4;text-align:right}
+#solpaper .sq p *{text-align:right}
+#solpaper table{border-collapse:collapse;margin:2px 0 3px;font-size:9.5pt}
+#solpaper td,#solpaper th{border:1px solid #64748b;padding:1px 6px}
+#solpaper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+/* 2026-11-07 shape of his model «فرض الفصل الأول» papers: title box, red underlined headings, one column, figure on the left */
+#paper .copy{border:none;border-radius:0;padding:0 0 0 0}
+#paper .copy .cols,#paper .copy.flow .cols{display:block}
+#paper .ttl{border:1.5px solid #1e293b;border-radius:6px;text-align:center;font-weight:bold;font-size:13pt;padding:5px 8px;margin:4px 0 6px 82px}
+#paper .copy .ph{padding-left:82px}
+#paper .qr{top:0;left:0}
+#paper .ex{margin:0 0 3mm;overflow:hidden;border:none!important;box-shadow:none!important;background:none!important;padding:0!important;border-radius:0!important}
+#paper .ex h4,#solpaper h4{background:none!important;color:#b91c1c;text-decoration:underline;font-size:12.5pt;padding:0;margin:4px 0 3px}
+#paper .ex .fig{float:left;width:40%;margin:0 0 2px 12px}
+#paper .ex .fig svg{max-width:100%!important;max-height:190px;margin:0 auto!important}
+#paper .ex p{line-height:1.55}
+#paper .bem-warn{background:none;border:none;padding:0;font-size:10pt}
+#paper .foot{text-align:center;font-size:8pt;color:#475569;border-top:1px solid #cbd5e1;margin-top:3mm;padding-top:1mm;clear:both}
+#solpaper .ttl{border:1.5px solid #1e293b;border-radius:6px;text-align:center;font-weight:bold;font-size:13pt;padding:4px 8px;margin:4px 0 6px}
+.sol-btn{display:none}
+.sol-wait{margin-top:6px;font-size:.85rem;color:#64748b}
+@media print{
+ body.psol>*:not(#solpaper){display:none!important}
+ body.psol #solpaper{display:block!important}
+ body.psol #paper{display:none!important}
+}
+</style>
+</head>
+<body>
+
+    <header>
+        <div class="school-title">متوسطة محمد العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
+        <h1>اختبار الفصل الأول (النموذج 2) التفاعلي في الرياضيات</h1>
+        <div class="sub-info">المستوى: السنة الثانية متوسط | المقطع الأول: العمليات على الأعداد الطبيعية والعشرية والكسور + المقطع الثاني: التناظر المركزي<br>حلّ على الورقة كأنك في يوم الاختبار، ثم صحّح هنا</div>
+        <button class="print-btn" onclick="document.body.classList.remove('psol');window.print()">🖨️ النسخة الورقية للطباعة</button> <button class="print-btn sol-btn" onclick="printSol()">🖨️ النسخة الورقية للحل</button><div class="sol-wait"></div>
+    </header>
+
+    <div class="sticky-bar">
+        <div class="sticky-inner">
+            <div class="stat-group">
+                <span class="score-badge">العلامة: <span class="math" id="scoreVal" style="background:transparent;color:#fff;padding:0;">0 / 20</span></span>
+                <span class="stars-badge">⭐ <span class="math" id="starsVal" style="background:transparent;color:#b45309;padding:0;">0</span></span>
+                <button type="button" class="sound-btn" id="soundToggle" onclick="toggleSound()" title="تشغيل/كتم الصوت">🔊</button>
+            </div>
+            <div class="progress-wrap" title="شريط التقدم">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="exercisesRoot"></div>
+
+    <div class="modal-overlay" id="finalModal">
+        <div class="modal-card">
+            <h3 id="finalTitle">🎉 أحسنت! أتممت جميع الأسئلة</h3>
+            <p>لقد أنهيت اختبار الفصل الأول (النموذج 2)</p>
+            <div class="modal-score" id="finalScoreText">0 / 20</div>
+            <div class="modal-stars" id="finalStarsText">⭐ 0 نجمة</div>
+            <button type="button" class="btn-close-modal" onclick="document.getElementById('finalModal').style.display='none'">مراجعة إجاباتي</button>
+        </div>
+    </div>
+
+    <script>
+        let soundEnabled = true;
+        let totalScore = 0;
+        let totalStars = 0;
+        let completedQuestions = 0;
+        let totalQuestionsCount = 0;
+
+        const attemptsLeft = {};
+        const questionEarned = {};
+        const questionLocked = {};
+
+        const symbols1AM = ["+", "−", "×", "÷", ",", "/", "<", ">", ";", "⌫"];
+
+        function playTone(type) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'success') {
+                    osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+                    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.09);
+                    osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.18);
+                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.35);
+                } else {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, ctx.currentTime);
+                    osc.frequency.setValueAtTime(180, ctx.currentTime + 0.1);
+                    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.25);
+                }
+            } catch (e) {}
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            document.getElementById('soundToggle').innerText = soundEnabled ? '🔊' : '🔇';
+        }
+
+        const exercises = [
+ {
+  "id": 1,
+  "pts": 3,
+  "title": "التمرين 1: سلسلة عمليات والتوزيع",
+  "context": "احسب مع كتابة المراحل:",
+  "questions": [
+   {
+    "qId": "1-1",
+    "text": "1) <span class=\"math\">(18 + 6) ÷ 4 − 2</span>",
+    "exact": [
+     "4"
+    ],
+    "partial": [
+     "12",
+     "19,5"
+    ],
+    "h1": "القوسان أولا.",
+    "h2": "<span class=\"math\">24 ÷ 4 − 2</span>.",
+    "steps": [
+     "<b>الطريقة:</b> أولويات العمليات: نحسب ما بين الأقواس أولا، ثم الضرب والقسمة (من اليسار إلى اليمين)، ثم الجمع والطرح (من اليسار إلى اليمين).",
+     "<span class=\"math\">24 ÷ 4 − 2 = 6 − 2</span>",
+     "النتيجة: <span class=\"math\">4</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">4</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "1-2",
+    "text": "2) احسب بطريقة سهلة: <span class=\"math\">9 × 102</span>",
+    "exact": [
+     "918"
+    ],
+    "partial": [
+     "902",
+     "1800"
+    ],
+    "h1": "<span class=\"math\">102 = 100 + 2</span>.",
+    "h2": "<span class=\"math\">900 + 18</span>.",
+    "steps": [
+     "<b>الطريقة:</b> التوزيع: <span class=\"math\">k × (a + b) = k × a + k × b</span> و<span class=\"math\">k × a − k × b = k × (a − b)</span>.",
+     "<span class=\"math\">9 × (100 + 2) = 900 + 18</span>",
+     "النتيجة: <span class=\"math\">918</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">918</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "1-3",
+    "text": "3) <span class=\"math\">7,2 × 4,5 + 7,2 × 5,5</span>",
+    "exact": [
+     "72"
+    ],
+    "partial": [
+     "7,2",
+     "720"
+    ],
+    "h1": "العامل <span class=\"math\">7,2</span> مشترك.",
+    "h2": "<span class=\"math\">4,5 + 5,5 = 10</span>.",
+    "steps": [
+     "<b>الطريقة:</b> التوزيع: <span class=\"math\">k × (a + b) = k × a + k × b</span> و<span class=\"math\">k × a − k × b = k × (a − b)</span>.",
+     "<span class=\"math\">7,2 × (4,5 + 5,5) = 7,2 × 10</span>",
+     "النتيجة: <span class=\"math\">72</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">72</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 2,
+  "pts": 3,
+  "title": "التمرين 2: الكسور",
+  "context": "",
+  "questions": [
+   {
+    "qId": "2-1",
+    "text": "1) احسب ثم اختزل: <span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span> − <span class=\"fr\"><span>1</span><span>3</span></span></span>",
+    "exact": [
+     "1/2",
+     "0,5"
+    ],
+    "partial": [
+     "3/6",
+     "4/3"
+    ],
+    "h1": "<span class=\"math\">6</span> مضاعف لـ <span class=\"math\">3</span>.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>1</span><span>3</span></span> = <span class=\"fr\"><span>2</span><span>6</span></span></span>.",
+    "steps": [
+     "<b>الطريقة:</b> لجمع أو طرح كسرين مقام أحدهما مضاعف للآخر: نوحّد المقامين ثم نجمع أو نطرح البسطين، ثم نختزل.",
+     "<span class=\"math\"><span class=\"fr\"><span>1</span><span>3</span></span> = <span class=\"fr\"><span>2</span><span>6</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>5</span><span>6</span></span> − <span class=\"fr\"><span>2</span><span>6</span></span> = <span class=\"fr\"><span>3</span><span>6</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>3</span><span>6</span></span> = <span class=\"fr\"><span>3 ÷ 3</span><span>6 ÷ 3</span></span> = <span class=\"fr\"><span>1</span><span>2</span></span></span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>1</span><span>2</span></span></span>",
+     "<b>الاستنتاج:</b> <span class=\"math\"><span class=\"fr\"><span>1</span><span>2</span></span></span>."
+    ],
+    "rubric": [
+     {
+      "step": "الطرح",
+      "mark": "0,5"
+     },
+     {
+      "step": "الاختزال",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 1,
+    "partialMsg": "اختزل الكسر: اقسم البسط والمقام على قاسمهما المشترك."
+   },
+   {
+    "qId": "2-2",
+    "text": "2) احسب ثم اختزل: <span class=\"math\"><span class=\"fr\"><span>3</span><span>7</span></span> × <span class=\"fr\"><span>14</span><span>9</span></span></span>",
+    "exact": [
+     "2/3"
+    ],
+    "partial": [
+     "42/63",
+     "14/21",
+     "6/9"
+    ],
+    "h1": "اضرب البسطين والمقامين.",
+    "h2": "<span class=\"math\"><span class=\"fr\"><span>42</span><span>63</span></span></span> ثم اختزل على <span class=\"math\">21</span>.",
+    "steps": [
+     "<b>الطريقة:</b> جداء كسرين: <span class=\"math\"><span class=\"fr\"><span>a</span><span>b</span></span> × <span class=\"fr\"><span>c</span><span>d</span></span> = <span class=\"fr\"><span>a × c</span><span>b × d</span></span></span>، ثم نختزل الناتج.",
+     "<span class=\"math\"><span class=\"fr\"><span>3</span><span>7</span></span> × <span class=\"fr\"><span>14</span><span>9</span></span> = <span class=\"fr\"><span>3 × 14</span><span>7 × 9</span></span> = <span class=\"fr\"><span>42</span><span>63</span></span></span>",
+     "<span class=\"math\"><span class=\"fr\"><span>42</span><span>63</span></span> = <span class=\"fr\"><span>42 ÷ 21</span><span>63 ÷ 21</span></span> = <span class=\"fr\"><span>2</span><span>3</span></span></span>",
+     "النتيجة: <span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span></span>",
+     "<b>الاستنتاج:</b> <span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span></span>."
+    ],
+    "rubric": [
+     {
+      "step": "الضرب",
+      "mark": "0,5"
+     },
+     {
+      "step": "الاختزال",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 1,
+    "partialMsg": "اختزل الكسر: اقسم البسط والمقام على قاسمهما المشترك."
+   },
+   {
+    "qId": "2-3",
+    "text": "3) في قسم <span class=\"math\">45</span> تلميذا، <span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span></span> منهم يمارسون الرياضة. كم تلميذا يمارسها؟",
+    "exact": [
+     "30"
+    ],
+    "partial": [
+     "15",
+     "67,5"
+    ],
+    "h1": "احسب <span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span></span> من <span class=\"math\">45</span>.",
+    "h2": "<span class=\"math\">45 ÷ 3 × 2</span>.",
+    "steps": [
+     "<b>الطريقة:</b> جداء كسرين: <span class=\"math\"><span class=\"fr\"><span>a</span><span>b</span></span> × <span class=\"fr\"><span>c</span><span>d</span></span> = <span class=\"fr\"><span>a × c</span><span>b × d</span></span></span>، ثم نختزل الناتج.",
+     "<span class=\"math\"><span class=\"fr\"><span>2</span><span>3</span></span> × 45 = <span class=\"fr\"><span>2 × 45</span><span>3</span></span> = <span class=\"fr\"><span>90</span><span>3</span></span></span>",
+     "النتيجة: <span class=\"math\">30</span> تلميذا",
+     "<b>الاستنتاج:</b> <span class=\"math\">30</span> تلميذا."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 3,
+  "pts": 3,
+  "title": "التمرين 3: القسمة الإقليدية والحصر",
+  "context": "نعتبر قسمة العدد <span class=\"math\">500</span> على <span class=\"math\">12</span>.",
+  "questions": [
+   {
+    "qId": "3-1",
+    "text": "1) ما حاصل القسمة الإقليدية؟",
+    "exact": [
+     "41"
+    ],
+    "partial": [
+     "42",
+     "40"
+    ],
+    "h1": "<span class=\"math\">12 × 40 = 480</span>.",
+    "h2": "<span class=\"math\">12 × 41 = 492</span>.",
+    "steps": [
+     "<b>الطريقة:</b> القسمة الإقليدية: <span class=\"math\">a = b × q + r</span> حيث <span class=\"math\">r &lt; b</span>؛ <span class=\"math\">q</span> الحاصل و<span class=\"math\">r</span> الباقي.",
+     "<span class=\"math\">12 × 41 = 492</span> و<span class=\"math\">12 × 42 = 504 &gt; 500</span>",
+     "النتيجة: الحاصل <span class=\"math\">41</span>",
+     "<b>الاستنتاج:</b> الحاصل <span class=\"math\">41</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "3-2",
+    "text": "2) ما الباقي؟",
+    "exact": [
+     "8"
+    ],
+    "partial": [
+     "20",
+     "4"
+    ],
+    "h1": "<span class=\"math\">500 − 492</span>.",
+    "h2": "الباقي أصغر من <span class=\"math\">12</span>.",
+    "steps": [
+     "<b>الطريقة:</b> القسمة الإقليدية: <span class=\"math\">a = b × q + r</span> حيث <span class=\"math\">r &lt; b</span>؛ <span class=\"math\">q</span> الحاصل و<span class=\"math\">r</span> الباقي.",
+     "<span class=\"math\">500 = 12 × 41 + 8</span>",
+     "النتيجة: الباقي <span class=\"math\">8</span>",
+     "<b>الاستنتاج:</b> الباقي <span class=\"math\">8</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "3-3",
+    "text": "3) أعط حصرا لحاصل قسمة <span class=\"math\">500</span> على <span class=\"math\">12</span> بعددين بالتقريب إلى <span class=\"math\">0,01</span>، ثم اكتب العدد الأصغر في هذا الحصر.",
+    "exact": [
+     "41,66"
+    ],
+    "partial": [
+     "41,67",
+     "41,6"
+    ],
+    "h1": "أجر القسمة العشرية: <span class=\"math\">500 ÷ 12 = 41,666…</span>.",
+    "h2": "الحصر: <span class=\"math\">41,66 &lt; 500 ÷ 12 &lt; 41,67</span>.",
+    "steps": [
+     "<b>الطريقة:</b> القيمة المقرّبة إلى <span class=\"math\">0,01</span> بالنقصان لحاصل قسمة: نجري القسمة العشرية حتى رقمين بعد الفاصلة ونهمل ما بعدهما. الحصر بعددين بالتقريب إلى <span class=\"math\">0,01</span>: القيمة بالنقصان والقيمة بالزيادة.",
+     "<span class=\"math\">500 ÷ 12 = 41,666…</span>",
+     "<span class=\"math\">41,66 &lt; 500 ÷ 12 &lt; 41,67</span>",
+     "النتيجة: العدد الأصغر <span class=\"math\">41,66</span>",
+     "<b>الاستنتاج:</b> الحصر <span class=\"math\">41,66 &lt; 500 ÷ 12 &lt; 41,67</span>."
+    ],
+    "rubric": [
+     {
+      "step": "الحصر",
+      "mark": "0,5"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 1,
+    "partialMsg": "المطلوب العدد الأصغر في الحصر (القيمة بالنقصان).",
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 4,
+  "pts": 3,
+  "title": "التمرين 4: أشكال وتناظر مركزي",
+  "context": "",
+  "questions": [
+   {
+    "qId": "4-1",
+    "text": "1) كم حرفا من الحروف <span class=\"math\">H</span> ؛ <span class=\"math\">K</span> ؛ <span class=\"math\">S</span> ؛ <span class=\"math\">E</span> ؛ <span class=\"math\">O</span> يقبل مركز تناظر؟",
+    "exact": [
+     "3"
+    ],
+    "partial": [
+     "2",
+     "4",
+     "5"
+    ],
+    "h1": "أدر الحرف نصف دورة: هل يبقى كما هو؟",
+    "h2": "<span class=\"math\">K</span> و<span class=\"math\">E</span> لا يقبلان مركز تناظر.",
+    "steps": [
+     "<b>الطريقة:</b> شكل يقبل مركز تناظر <span class=\"math\">O</span> إذا كان نظيره بالنسبة إلى <span class=\"math\">O</span> هو الشكل نفسه. مركز تناظر المستطيل نقطة تقاطع قطريه، وقطراه متقايسان ومتناصفان.",
+     "تقبل مركز تناظر: <span class=\"math\">H</span> ؛ <span class=\"math\">S</span> ؛ <span class=\"math\">O</span>",
+     "لا تقبل: <span class=\"math\">K</span> ؛ <span class=\"math\">E</span>",
+     "النتيجة: <span class=\"math\">3</span> حروف",
+     "<b>الاستنتاج:</b> ثلاثة حروف."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "4-2",
+    "text": "2) <span class=\"math\">[AB]</span> قطعة طولها <span class=\"math\">7 cm</span> ومركز تناظرها <span class=\"math\">I</span>. احسب <span class=\"math\">AI</span> (بـ cm).",
+    "exact": [
+     "3,5"
+    ],
+    "partial": [
+     "14",
+     "7"
+    ],
+    "h1": "مركز تناظر قطعة هو منتصفها.",
+    "h2": "<span class=\"math\">AI = 7 ÷ 2</span>.",
+    "steps": [
+     "<b>الطريقة:</b> تعريف: <span class=\"math\">M′</span> نظيرة <span class=\"math\">M</span> بالنسبة إلى <span class=\"math\">O</span> يعني أن <span class=\"math\">O</span> منتصف القطعة <span class=\"math\">[MM′]</span>.",
+     "مركز تناظر القطعة منتصفها <span class=\"math\">I</span>",
+     "<span class=\"math\">AI = 7 ÷ 2</span>",
+     "النتيجة: <span class=\"math\">AI = 3,5 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">AI = 3,5 cm</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "4-3",
+    "text": "3) <span class=\"math\">A′B′C′</span> نظير المثلث <span class=\"math\">ABC</span> بالنسبة إلى <span class=\"math\">O</span> حيث قيس الزاوية <span class=\"math\">ABC</span> هو <span class=\"math\">72°</span>. ما قيس الزاوية <span class=\"math\">A′B′C′</span> (بالدرجات)؟",
+    "exact": [
+     "72"
+    ],
+    "partial": [
+     "108",
+     "144"
+    ],
+    "h1": "هل يغيّر التناظر المركزي أقياس الزوايا؟",
+    "h2": "لا، يحافظ عليها.",
+    "steps": [
+     "<b>الطريقة:</b> خواص التناظر المركزي: يحافظ على الأطوال، وعلى أقياس الزوايا، وعلى المساحات، وعلى استقامية النقط. نظير مستقيم مستقيم يوازيه، ونظير دائرة دائرة لها نصف القطر نفسه.",
+     "التناظر المركزي يحافظ على أقياس الزوايا",
+     "النتيجة: <span class=\"math\">72°</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">A′B′C′ = 72°</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 5,
+  "pts": 8,
+  "title": "الوضعية الإدماجية: النقل المدرسي في وادي فراغة",
+  "context": "<div class=\"bem-data\"><p>– تنقل البلدية <span class=\"math\">328</span> تلميذا إلى متوسطة محمد العربي بن مهيدي بحافلات، في كل حافلة <span class=\"math\">45</span> مقعدا.</p><p>– <span class=\"math\"><span class=\"fr\"><span>3</span><span>8</span></span></span> من التلاميذ يسكنون بوشقوف.</p><p>– تقطع كل حافلة <span class=\"math\">18,5 km</span> يوميا وتستهلك <span class=\"math\">0,28 L</span> من الوقود في الكيلومتر الواحد.</p></div>",
+  "questions": [
+   {
+    "qId": "5-1",
+    "text": "1) كم حافلة يلزم لنقل جميع التلاميذ؟ (علّل)",
+    "exact": [
+     "8"
+    ],
+    "partial": [
+     "7",
+     "7,28"
+    ],
+    "h1": "أجر القسمة الإقليدية لـ <span class=\"math\">328</span> على <span class=\"math\">45</span>.",
+    "h2": "<span class=\"math\">328 = 45 × 7 + 13</span>: هل يبقى تلاميذ دون مقعد؟",
+    "steps": [
+     "<b>الطريقة:</b> القسمة الإقليدية: <span class=\"math\">a = b × q + r</span> حيث <span class=\"math\">r &lt; b</span>؛ <span class=\"math\">q</span> الحاصل و<span class=\"math\">r</span> الباقي.",
+     "<span class=\"math\">328 = 45 × 7 + 13</span>",
+     "<span class=\"math\">7</span> حافلات تنقل <span class=\"math\">315</span> تلميذا ويبقى <span class=\"math\">13</span> تلميذا",
+     "النتيجة: يلزم <span class=\"math\">8</span> حافلات",
+     "<b>الاستنتاج:</b> يلزم <span class=\"math\">8</span> حافلات."
+    ],
+    "rubric": [
+     {
+      "step": "م1 التفسير السليم: القسمة",
+      "mark": "1"
+     },
+     {
+      "step": "م2 الاستعمال السليم: الاستنتاج",
+      "mark": "1"
+     }
+    ],
+    "pts": 2,
+    "partialMsg": "يبقى <span class=\"math\">13</span> تلميذا دون مقعد: يحتاجون حافلة أخرى.",
+    "partialZero": true
+   },
+   {
+    "qId": "5-2",
+    "text": "2) كم مقعدا يبقى شاغرا في الحافلة الأخيرة؟",
+    "exact": [
+     "32"
+    ],
+    "partial": [
+     "13",
+     "58"
+    ],
+    "h1": "في الحافلة الأخيرة <span class=\"math\">13</span> تلميذا.",
+    "h2": "<span class=\"math\">45 − 13</span>.",
+    "steps": [
+     "<b>الطريقة:</b> القسمة الإقليدية: <span class=\"math\">a = b × q + r</span> حيث <span class=\"math\">r &lt; b</span>؛ <span class=\"math\">q</span> الحاصل و<span class=\"math\">r</span> الباقي.",
+     "<span class=\"math\">45 − 13 = 32</span>",
+     "النتيجة: <span class=\"math\">32</span> مقعدا",
+     "<b>الاستنتاج:</b> يبقى <span class=\"math\">32</span> مقعدا شاغرا."
+    ],
+    "rubric": [
+     {
+      "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
+      "mark": "0,5"
+     },
+     {
+      "step": "م2 الاستعمال السليم: النتيجة",
+      "mark": "1,5"
+     }
+    ],
+    "pts": 2,
+    "partialZero": true
+   },
+   {
+    "qId": "5-3",
+    "text": "3) كم تلميذا يسكن بوشقوف؟",
+    "exact": [
+     "123"
+    ],
+    "partial": [
+     "41",
+     "205"
+    ],
+    "h1": "احسب <span class=\"math\"><span class=\"fr\"><span>3</span><span>8</span></span></span> من <span class=\"math\">328</span>.",
+    "h2": "<span class=\"math\">328 ÷ 8 = 41</span>.",
+    "steps": [
+     "<b>الطريقة:</b> جداء كسرين: <span class=\"math\"><span class=\"fr\"><span>a</span><span>b</span></span> × <span class=\"fr\"><span>c</span><span>d</span></span> = <span class=\"fr\"><span>a × c</span><span>b × d</span></span></span>، ثم نختزل الناتج.",
+     "<span class=\"math\"><span class=\"fr\"><span>3</span><span>8</span></span> × 328 = <span class=\"fr\"><span>3 × 328</span><span>8</span></span></span>",
+     "<span class=\"math\">328 ÷ 8 = 41</span> و<span class=\"math\">41 × 3 = 123</span>",
+     "النتيجة: <span class=\"math\">123</span> تلميذا",
+     "<b>الاستنتاج:</b> <span class=\"math\">123</span> تلميذا يسكنون بوشقوف."
+    ],
+    "rubric": [
+     {
+      "step": "م1 التفسير السليم: الطريقة",
+      "mark": "1"
+     },
+     {
+      "step": "م2 الاستعمال السليم: النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 2,
+    "partialZero": true
+   },
+   {
+    "qId": "5-4",
+    "text": "4) احسب كمية الوقود التي تستهلكها الحافلات كلها في يوم واحد (بـ L).",
+    "exact": [
+     "41,44"
+    ],
+    "partial": [
+     "5,18",
+     "36,26"
+    ],
+    "h1": "احسب استهلاك حافلة واحدة أولا.",
+    "h2": "حافلة واحدة: <span class=\"math\">18,5 × 0,28 = 5,18 L</span>.",
+    "steps": [
+     "<b>الطريقة:</b> نضرب المسافة في الاستهلاك لكل كيلومتر، ثم في عدد الحافلات.",
+     "حافلة واحدة: <div class=\"vop\"><div>   18,5</div><div> × 0,28</div><div class=\"ln\">   1480</div><div>   370 </div><div class=\"ln\">   5,18</div></div>",
+     "ثماني حافلات: <span class=\"math\">5,18 × 8 = 41,44</span>",
+     "النتيجة: <span class=\"math\">41,44 L</span>",
+     "<b>الاستنتاج:</b> تستهلك الحافلات <span class=\"math\">41,44 L</span> يوميا."
+    ],
+    "rubric": [
+     {
+      "step": "م1 التفسير السليم: حافلة واحدة",
+      "mark": "1"
+     },
+     {
+      "step": "م2 الاستعمال السليم: كل الحافلات",
+      "mark": "1"
+     }
+    ],
+    "pts": 2,
+    "partialMsg": "استعمل عدد الحافلات اللازمة (<span class=\"math\">8</span>).",
+    "partialZero": true
+   }
+  ]
+ }
+];
+
+        function exercisesCount() { return exercises.reduce((a, e) => a + e.questions.length, 0); }
+
+        function renderApp() {
+            totalQuestionsCount = exercisesCount();
+            const root = document.getElementById('exercisesRoot');
+            root.innerHTML = '';
+
+            exercises.forEach(ex => {
+                const card = document.createElement('div');
+                card.className = 'exercise-card';
+
+                let questionsHtml = '';
+                ex.questions.forEach(q => {
+                    attemptsLeft[q.qId] = 3;
+                    questionEarned[q.qId] = 0;
+                    questionLocked[q.qId] = false;
+
+                    let symHtml = '';
+                    symbols1AM.forEach(s => {
+                        symHtml += `<button type="button" class="sym-btn" onclick="pressSym('${q.qId}', '${s}')">${s}</button>`;
+                    });
+
+                    let stepsHtml = '';
+                    q.steps.forEach((st, idx) => {
+                        const isLast = (idx === q.steps.length - 1);
+                        stepsHtml += `<div class="${isLast ? 'sol-result' : 'sol-line'}">${st}</div>`;
+                    });
+
+                    let rubricRows = '';
+                    q.rubric.forEach(r => {
+                        rubricRows += `<tr><td>${r.step}</td><td><span class="math">${r.mark} ن</span></td></tr>`;
+                    });
+
+                    questionsHtml += `
+                        <div class="q-box" id="qbox-${q.qId}">
+                            <div class="q-title">
+                                <span>${q.text}</span>
+                                <span class="q-meta" id="meta-${q.qId}">المحاولات: <span class="math">3</span> | النقاط: <span class="math">${String(q.pts).replace('.', ',')}</span></span>
+                            </div>
+                            <div class="answer-area">
+                                <div class="input-line">
+                                    <input type="text" id="in-${q.qId}" placeholder="اكتب إجابتك هنا" autocomplete="off">
+                                    <button type="button" class="btn-check" id="btn-${q.qId}" onclick="checkAns(${ex.id}, '${q.qId}')">تحقق من الإجابة</button>
+                                </div>
+                                <div class="sym-toolbar">${symHtml}</div>
+                            </div>
+                            <div class="feedback-box" id="fb-${q.qId}"></div>
+                            <div class="model-solution" id="sol-${q.qId}">
+                                <h4>✔ الإجابة النموذجية المفصلة:</h4>
+                                ${stepsHtml}
+                                <table class="rubric-table">
+                                    <thead>
+                                        <tr><th>مراحل الحل (سلم التنقيط)</th><th>النقطة</th></tr>
+                                    </thead>
+                                    <tbody>${rubricRows}</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h2>${ex.title}</h2>
+                        <span class="pts-badge"><span class="math">${String(ex.pts).replace('.', ',')}</span> ${ex.pts === 1 ? 'نقطة' : 'نقاط'}</span>
+                    </div>
+                    <div class="context-box">${ex.context}</div>
+                    ${questionsHtml}
+                `;
+                root.appendChild(card);
+            });
+        }
+
+        function pressSym(qId, sym) {
+            const inp = document.getElementById(`in-${qId}`);
+            if (!inp || inp.disabled) return;
+            if (sym === '⌫') {
+                inp.value = inp.value.slice(0, -1);
+            } else {
+                inp.value += sym;
+            }
+            inp.focus();
+        }
+
+        function normalizeInput(raw) {
+            if (!raw) return '';
+            const arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+            let s = raw.toString().trim();
+            for (let i = 0; i < 10; i++) {
+                s = s.replace(new RegExp(arDigits[i], 'g'), i);
+            }
+            s = s.replace(/\s+/g, '');
+            s = s.replace(/^[a-zA-Z]\s*=/i, '');
+            s = s.replace(/،/g, ',').replace(/\./g, ',');
+            s = s.replace(/\*/g, '×').replace(/(\d)[xX](?=\d)/g, '$1×').replace(/[−–]/g, '-');
+            s = s.replace(/(da|دج|دينار|أوراق|ورقة|عشرة|عشرات|وحدة|متر|درجة|°c|c°|°|cm²|m²|m2|cm|m|kg|لتر|l)$/i, '');
+            s = s.replace(/-\((\d+\/\d+)\)/g, '-$1').replace(/\((-?\d+(?:,\d+)?)\)/g, '$1').replace(/^\((.*)\)$/, '$1').replace(/^\+(?=\d)/, '');
+            s = s.replace(/(\d),(\d*?)0+(?=$|[^\d])/g, (m, a, b) => b ? a + ',' + b : a);
+            return s.toLowerCase();
+        }
+
+        function updateHeaderStats() {
+            const formattedScore = String(Math.round(totalScore * 100) / 100).replace('.', ',');
+            document.getElementById('scoreVal').innerText = `${formattedScore} / 20`;
+            document.getElementById('starsVal').innerText = totalStars;
+            const pct = Math.min(100, Math.round((completedQuestions / totalQuestionsCount) * 100));
+            document.getElementById('progressBar').style.width = pct + '%';
+
+            if (completedQuestions === totalQuestionsCount) {
+                setTimeout(() => {
+                    document.getElementById('finalScoreText').innerText = `${formattedScore} / 20`;
+                    document.getElementById('finalTitle').innerText = totalScore >= 10 ? '🎉 أحسنت! أتممت جميع الأسئلة' : '💪 أتممت الاختبار! راجع الإجابات النموذجية وأعد المحاولة';
+                    document.getElementById('finalStarsText').innerText = `⭐ ${totalStars} نجمة`;
+                    document.getElementById('finalModal').style.display = 'flex';
+                }, 600);
+            }
+        }
+
+        function triggerShake(qId) {
+            const inp = document.getElementById(`in-${qId}`);
+            inp.classList.remove('shake');
+            void inp.offsetWidth;
+            inp.classList.add('shake');
+        }
+
+        const FBMSG = {"ok": ["أحسنت! تركيزك أوصلك إلى الجواب الصحيح.", "ممتاز! أخذت وقتك وفكّرت جيدا، وهذه هي النتيجة.", "برافو! التأنّي في الحساب يصنع النجاح.", "رائع! جهدك يستحق هذه النجوم.", "إجابة صحيحة! واصل بنفس الهدوء والتركيز.", "أحسنت! من يقرأ السؤال جيدا يصل إلى الحل.", "عمل متقن! الدقة أهم من السرعة، وأنت أثبتّ ذلك.", "بارك الله فيك! تقدّم خطوة بخطوة كما فعلت الآن."], "w1": ["لا بأس، الخطأ جزء من التعلّم. أعد قراءة السؤال بهدوء.", "تمهّل قليلا: كلما أسرعت قلّ تركيزك. خذ وقتك.", "محاولة جيدة! راجع حسابك خطوة بخطوة.", "كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.", "لا تستعجل. اقرأ المعطيات من جديد ثم فكّر.", "أنت قريب. أعطِ هذا السؤال الوقت الذي يحتاجه.", "الخطأ ليس فشلا بل خطوة نحو الفهم. حاول مجددا.", "هدّئ السرعة وزِد التركيز، وستجد الطريق."], "w2": ["محاولة أخيرة: اكتب الحساب على ورقة قبل أن تجيب.", "لا تيأس! التركيز يأتي مع الهدوء. اقرأ التلميح جيدا.", "السرعة والتركيز لا يجتمعان: تمهّل في هذه المحاولة الأخيرة.", "ابذل جهدا إضافيا صغيرا، فالحل قريب منك.", "راجع كل خطوة على حدة، ولا تتسرّع.", "كل العلماء أخطؤوا قبل أن ينجحوا. ركّز في هذه المحاولة."], "fail": ["لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. اقرأ الإجابة النموذجية وسلم التنقيط بتمعّن.", "تعلّمنا شيئا جديدا اليوم! تأمّل خطوات الحل، وأعد التمرين غدا بهدوء.", "لا بأس، الفهم يحتاج وقتا وجهدا. راجع الحل خطوة بخطوة.", "المهم أن نفهم لماذا أخطأنا. اقرأ الحل، ثم حاول إعادته وحدك على ورقة.", "الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة."]};
+        function fbPick(kind, qId) { const a = FBMSG[kind]; const p = String(qId).split('-'); const n = (+p[0]) * 3 + (+p[1] || 0) + kind.length; return a[n % a.length]; }
+        function checkAns(exId, qId) {
+            if (questionLocked[qId]) return;
+            const ex = exercises.find(e => e.id === exId);
+            const q = ex.questions.find(item => item.qId === qId);
+            const inp = document.getElementById(`in-${qId}`);
+            const fb = document.getElementById(`fb-${qId}`);
+            const val = normalizeInput(inp.value);
+
+            if (!val) {
+                triggerShake(qId);
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = 'يرجى كتابة إجابتك أولاً في الخانة قبل الضغط على زر التحقق.';
+                return;
+            }
+
+            const isExactMatch = q.exact.some(ans => normalizeInput(ans) === val);
+            if (isExactMatch) {
+                const rem = attemptsLeft[qId];
+                const starsAwarded = (rem === 3) ? 3 : (rem === 2 ? 2 : 1);
+                const starIcons = '⭐'.repeat(starsAwarded);
+
+                const prevPts = questionEarned[qId] || 0;
+                totalScore += (q.pts - prevPts);
+                questionEarned[qId] = q.pts;
+                totalStars += starsAwarded;
+                questionLocked[qId] = true;
+                completedQuestions++;
+
+                playTone('success');
+                document.getElementById(`qbox-${qId}`).classList.add('solved');
+                inp.disabled = true;
+                document.getElementById(`btn-${qId}`).disabled = true;
+
+                fb.className = 'feedback-box success';
+                fb.innerHTML = `<span class="star-burst">${starIcons}</span> ${fbPick('ok', qId)} نلت العلامة الكاملة (<span class="math">${String(q.pts).replace('.', ',')} ن</span>).`;
+                flyStars(fb, 18);
+                document.getElementById(`sol-${qId}`).style.display = 'block';
+                updateHeaderStats();
+                return;
+            }
+
+            const isPartialMatch = q.partial && q.partial.some(ans => normalizeInput(ans) === val);
+            if (isPartialMatch) {
+                if (q.partialZero) { handleWrongAttempt(q, q.partialMsg); return; }
+                const halfPts = Math.round((q.pts / 2) * 100) / 100;
+                const prevPts = questionEarned[qId] || 0;
+                if (halfPts > prevPts) {
+                    totalScore += (halfPts - prevPts);
+                    questionEarned[qId] = halfPts;
+                }
+                handleWrongAttempt(q, `${q.partialMsg} (حصلت على نصف العلامة <span class="math">${String(halfPts).replace('.', ',')} ن</span>، صحّح الشكل لتنال العلامة الكاملة).`);
+                updateHeaderStats();
+                return;
+            }
+
+            handleWrongAttempt(q, null);
+        }
+
+        function handleWrongAttempt(q, customReason) {
+            const qId = q.qId;
+            attemptsLeft[qId]--;
+            const rem = attemptsLeft[qId];
+            const inp = document.getElementById(`in-${qId}`);
+            const fb = document.getElementById(`fb-${qId}`);
+
+            playTone('error');
+            triggerShake(qId);
+            document.getElementById(`meta-${qId}`).innerHTML = `المحاولات: <span class="math">${rem}</span> | النقاط: <span class="math">${String(q.pts).replace('.', ',')}</span>`;
+
+            if (rem === 2) {
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w1', qId) + '<br>'}<strong>💡 التلميح 1:</strong> ${q.h1}`;
+                flyStars(fb, 9, ['⭐','💡','✨']);
+            } else if (rem === 1) {
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w2', qId) + '<br>'}<strong>💡 التلميح 2:</strong> ${q.h2}`;
+                flyStars(fb, 9, ['⭐','💡','✨']);
+            } else {
+                questionLocked[qId] = true;
+                completedQuestions++;
+                inp.disabled = true;
+                document.getElementById(`btn-${qId}`).disabled = true;
+                document.getElementById(`qbox-${qId}`).classList.add('failed');
+
+                fb.className = 'feedback-box fail';
+                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 ' + fbPick('fail', qId);
+                document.getElementById(`sol-${qId}`).style.display = 'block';
+                updateHeaderStats();
+            }
+        }
+
+        window.onload = renderApp;
+    </script>
+<!-- flyStars: نجوم متطايرة -->
+<style>.fly-star{position:fixed;z-index:70;font-size:1.45rem;pointer-events:none;animation:flystar 1s ease-out forwards}
+@keyframes flystar{from{transform:translate(0,0) scale(.4);opacity:1}to{transform:translate(var(--dx),var(--dy)) scale(1.15) rotate(220deg);opacity:0}}</style>
+<script>function flyStars(el, n, icons){ try{ icons = icons || ['⭐','✨','🌟']; const r = el.getBoundingClientRect(), x = r.left + r.width/2, y = Math.max(r.top, 0) + 20;
+ for (let i = 0; i < n; i++){ const s = document.createElement('span'); s.className = 'fly-star'; s.textContent = icons[i % icons.length];
+  const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
+  s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
+  document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
+<div id="paper"><div class="copy" data-pages="2"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACOUlEQVR4nMWYQZLUMAxFn8ZT5dm5b2AugnMploGkCDfhIJMwF3HfwLNzV2XyWaSBDexAeJE4pYVV0tOPZBO/X9eHPxjgL1tuZmYAV77x9g7gamaPf/ucP1rog1S1Qo5HmqEwVUlL9fOgEGonLZWSduKRdH66ZeF8ldePgz4TKt9eH//hOb9Zjz8241cDy5A++HpwctAh1Lhpz70QvDkA6CUt9dcDCH4cREnipcHPasySdrcsPNwGM4vPF/LT0Mb89NK4ml0cOdCa5hy3Fmpc00wvaVFUm5w5OJe1Sd1aqHFrfhwgac4UyFGNrIMx98G3FtJMh6C4EgSM4FoLADkdaeZ1ahClqKg2eipSm6o27ZmSltqHFoT5ctDGUwD6IElqY8aXg5JmumnOOs7dTi9JjjE4IEdph0FSPNKiuOKoB1oZ0aalak1L1cqYGTw56KQ9/5DDPUvavTmwNkJJM9qkGtfTK18O7jp0NovSnLXJ0YNuDc4m1TRnbd568BDXtOg1tFDj84Xr7RPjlYKrJmonblJlaGPGXw96YRLWguKalho3fw4KU9XWwhmDPjTonv9G+tDI9zJooIMRyTEGD+gybbdJS73ZZaq3oEfMLl8c+0RJ6kMLVQdBcWtB3TxjcDMzi8955ok0X7vyfOW9++zchzbC0IKitJztqvPsXJIUD0ArgKce3C0v7c1uQdKTNegvzZHEMwbW7k1CJ0mSaxbOO5S0n/p8KpLzvMC9SegmCZJqL46aaP/9Lu072luxfGBta6sAAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الثانية متوسط</span></div><div class="ttl">اختبار الفصل الأول (النموذج 2) في مادة الرياضيات للسنة الثانية متوسط</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="ph"><span>المدة: ساعة ونصف</span><span>يُمنع استعمال الآلة الحاسبة</span></div><div class="cols"><h3 class="part">الجزء الأول (12 نقطة)</h3><div class="ex"><h4>التمرين الأول (3 ن): سلسلة عمليات والتوزيع</h4>احسب مع كتابة المراحل:<p>1) <span class="math">(18 + 6) ÷ 4 − 2</span></p><p>2) احسب بطريقة سهلة: <span class="math">9 × 102</span></p><p>3) <span class="math">7,2 × 4,5 + 7,2 × 5,5</span></p></div><div class="ex"><h4>التمرين الثاني (3 ن): الكسور</h4><p>1) احسب ثم اختزل: <span class="math"><span class="fr"><span>5</span><span>6</span></span> − <span class="fr"><span>1</span><span>3</span></span></span></p><p>2) احسب ثم اختزل: <span class="math"><span class="fr"><span>3</span><span>7</span></span> × <span class="fr"><span>14</span><span>9</span></span></span></p><p>3) في قسم <span class="math">45</span> تلميذا، <span class="math"><span class="fr"><span>2</span><span>3</span></span></span> منهم يمارسون الرياضة. كم تلميذا يمارسها؟</p></div><div class="ex"><h4>التمرين الثالث (3 ن): القسمة الإقليدية والحصر</h4>نعتبر قسمة العدد <span class="math">500</span> على <span class="math">12</span>.<p>1) ما حاصل القسمة الإقليدية؟</p><p>2) ما الباقي؟</p><p>3) أعط حصرا لحاصل قسمة <span class="math">500</span> على <span class="math">12</span> بعددين بالتقريب إلى <span class="math">0,01</span>، ثم اكتب العدد الأصغر في هذا الحصر.</p></div><div class="ex"><h4>التمرين الرابع (3 ن): أشكال وتناظر مركزي</h4><p>1) كم حرفا من الحروف <span class="math">H</span> ؛ <span class="math">K</span> ؛ <span class="math">S</span> ؛ <span class="math">E</span> ؛ <span class="math">O</span> يقبل مركز تناظر؟</p><p>2) <span class="math">[AB]</span> قطعة طولها <span class="math">7 cm</span> ومركز تناظرها <span class="math">I</span>. احسب <span class="math">AI</span> (بـ cm).</p><p>3) <span class="math">A′B′C′</span> نظير المثلث <span class="math">ABC</span> بالنسبة إلى <span class="math">O</span> حيث قيس الزاوية <span class="math">ABC</span> هو <span class="math">72°</span>. ما قيس الزاوية <span class="math">A′B′C′</span> (بالدرجات)؟</p></div><h3 class="part">الجزء الثاني: الوضعية الإدماجية (08 نقاط)</h3><div class="ex"><h4>الوضعية الإدماجية (8 ن): النقل المدرسي في وادي فراغة</h4><div class="bem-data"><p>– تنقل البلدية <span class="math">328</span> تلميذا إلى متوسطة محمد العربي بن مهيدي بحافلات، في كل حافلة <span class="math">45</span> مقعدا.</p><p>– <span class="math"><span class="fr"><span>3</span><span>8</span></span></span> من التلاميذ يسكنون بوشقوف.</p><p>– تقطع كل حافلة <span class="math">18,5 km</span> يوميا وتستهلك <span class="math">0,28 L</span> من الوقود في الكيلومتر الواحد.</p></div><p>1) كم حافلة يلزم لنقل جميع التلاميذ؟ (علّل)</p><p>2) كم مقعدا يبقى شاغرا في الحافلة الأخيرة؟</p><p>3) كم تلميذا يسكن بوشقوف؟</p><p>4) احسب كمية الوقود التي تستهلكها الحافلات كلها في يوم واحد (بـ L).</p></div></div><div class="foot">بالتوفيق</div></div></div><script>(function(){function fit(){var pp=document.getElementById('paper');if(!pp)return;var c=pp.querySelector('.copy');var n=+(c&&c.getAttribute('data-pages'));if(!n)return;
+var st=pp.getAttribute('style');pp.setAttribute('style','display:block;position:absolute;visibility:hidden;top:0;right:0;width:192mm');c.style.zoom=1;
+var mm=document.createElement('div');mm.style.height=(n*279-6)+'mm';pp.appendChild(mm);var lim=mm.getBoundingClientRect().height;pp.removeChild(mm);
+var lo=0.45,hi=1.3,k;c.style.zoom=hi;if(c.getBoundingClientRect().height<=lim)lo=hi;else for(k=0;k<10;k++){var m=(lo+hi)/2;c.style.zoom=m;if(c.getBoundingClientRect().height<=lim)lo=m;else hi=m}
+c.style.zoom=lo;if(st===null)pp.removeAttribute('style');else pp.setAttribute('style',st)}
+window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الثانية متوسط</span></div><div class="ttl">الحل النموذجي وسلم التنقيط — اختبار الفصل الأول (النموذج 2) — السنة الثانية متوسط</div><div class="sxs"><div class="sx"><h4>التمرين الأول (3 ن): سلسلة عمليات والتوزيع</h4><div class="sq"><p><b>1) <span class="math">(18 + 6) ÷ 4 − 2</span></b></p><p><b>الطريقة:</b> أولويات العمليات: نحسب ما بين الأقواس أولا، ثم الضرب والقسمة (من اليسار إلى اليمين)، ثم الجمع والطرح (من اليسار إلى اليمين).</p><p><span class="math">24 ÷ 4 − 2 = 6 − 2</span></p><p>النتيجة: <span class="math">4</span></p><p><b>الاستنتاج:</b> <span class="math">4</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) احسب بطريقة سهلة: <span class="math">9 × 102</span></b></p><p><b>الطريقة:</b> التوزيع: <span class="math">k × (a + b) = k × a + k × b</span> و<span class="math">k × a − k × b = k × (a − b)</span>.</p><p><span class="math">9 × (100 + 2) = 900 + 18</span></p><p>النتيجة: <span class="math">918</span></p><p><b>الاستنتاج:</b> <span class="math">918</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) <span class="math">7,2 × 4,5 + 7,2 × 5,5</span></b></p><p><b>الطريقة:</b> التوزيع: <span class="math">k × (a + b) = k × a + k × b</span> و<span class="math">k × a − k × b = k × (a − b)</span>.</p><p><span class="math">7,2 × (4,5 + 5,5) = 7,2 × 10</span></p><p>النتيجة: <span class="math">72</span></p><p><b>الاستنتاج:</b> <span class="math">72</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الثاني (3 ن): الكسور</h4><div class="sq"><p><b>1) احسب ثم اختزل: <span class="math"><span class="fr"><span>5</span><span>6</span></span> − <span class="fr"><span>1</span><span>3</span></span></span></b></p><p><b>الطريقة:</b> لجمع أو طرح كسرين مقام أحدهما مضاعف للآخر: نوحّد المقامين ثم نجمع أو نطرح البسطين، ثم نختزل.</p><p><span class="math"><span class="fr"><span>1</span><span>3</span></span> = <span class="fr"><span>2</span><span>6</span></span></span></p><p><span class="math"><span class="fr"><span>5</span><span>6</span></span> − <span class="fr"><span>2</span><span>6</span></span> = <span class="fr"><span>3</span><span>6</span></span></span></p><p><span class="math"><span class="fr"><span>3</span><span>6</span></span> = <span class="fr"><span>3 ÷ 3</span><span>6 ÷ 3</span></span> = <span class="fr"><span>1</span><span>2</span></span></span></p><p>النتيجة: <span class="math"><span class="fr"><span>1</span><span>2</span></span></span></p><p><b>الاستنتاج:</b> <span class="math"><span class="fr"><span>1</span><span>2</span></span></span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الطرح</td><td>0,5</td></tr><tr><td>الاختزال</td><td>0,5</td></tr></table></div><div class="sq"><p><b>2) احسب ثم اختزل: <span class="math"><span class="fr"><span>3</span><span>7</span></span> × <span class="fr"><span>14</span><span>9</span></span></span></b></p><p><b>الطريقة:</b> جداء كسرين: <span class="math"><span class="fr"><span>a</span><span>b</span></span> × <span class="fr"><span>c</span><span>d</span></span> = <span class="fr"><span>a × c</span><span>b × d</span></span></span>، ثم نختزل الناتج.</p><p><span class="math"><span class="fr"><span>3</span><span>7</span></span> × <span class="fr"><span>14</span><span>9</span></span> = <span class="fr"><span>3 × 14</span><span>7 × 9</span></span> = <span class="fr"><span>42</span><span>63</span></span></span></p><p><span class="math"><span class="fr"><span>42</span><span>63</span></span> = <span class="fr"><span>42 ÷ 21</span><span>63 ÷ 21</span></span> = <span class="fr"><span>2</span><span>3</span></span></span></p><p>النتيجة: <span class="math"><span class="fr"><span>2</span><span>3</span></span></span></p><p><b>الاستنتاج:</b> <span class="math"><span class="fr"><span>2</span><span>3</span></span></span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الضرب</td><td>0,5</td></tr><tr><td>الاختزال</td><td>0,5</td></tr></table></div><div class="sq"><p><b>3) في قسم <span class="math">45</span> تلميذا، <span class="math"><span class="fr"><span>2</span><span>3</span></span></span> منهم يمارسون الرياضة. كم تلميذا يمارسها؟</b></p><p><b>الطريقة:</b> جداء كسرين: <span class="math"><span class="fr"><span>a</span><span>b</span></span> × <span class="fr"><span>c</span><span>d</span></span> = <span class="fr"><span>a × c</span><span>b × d</span></span></span>، ثم نختزل الناتج.</p><p><span class="math"><span class="fr"><span>2</span><span>3</span></span> × 45 = <span class="fr"><span>2 × 45</span><span>3</span></span> = <span class="fr"><span>90</span><span>3</span></span></span></p><p>النتيجة: <span class="math">30</span> تلميذا</p><p><b>الاستنتاج:</b> <span class="math">30</span> تلميذا.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الثالث (3 ن): القسمة الإقليدية والحصر</h4><div class="sq"><p><b>1) ما حاصل القسمة الإقليدية؟</b></p><p><b>الطريقة:</b> القسمة الإقليدية: <span class="math">a = b × q + r</span> حيث <span class="math">r &lt; b</span>؛ <span class="math">q</span> الحاصل و<span class="math">r</span> الباقي.</p><p><span class="math">12 × 41 = 492</span> و<span class="math">12 × 42 = 504 &gt; 500</span></p><p>النتيجة: الحاصل <span class="math">41</span></p><p><b>الاستنتاج:</b> الحاصل <span class="math">41</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) ما الباقي؟</b></p><p><b>الطريقة:</b> القسمة الإقليدية: <span class="math">a = b × q + r</span> حيث <span class="math">r &lt; b</span>؛ <span class="math">q</span> الحاصل و<span class="math">r</span> الباقي.</p><p><span class="math">500 = 12 × 41 + 8</span></p><p>النتيجة: الباقي <span class="math">8</span></p><p><b>الاستنتاج:</b> الباقي <span class="math">8</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) أعط حصرا لحاصل قسمة <span class="math">500</span> على <span class="math">12</span> بعددين بالتقريب إلى <span class="math">0,01</span>، ثم اكتب العدد الأصغر في هذا الحصر.</b></p><p><b>الطريقة:</b> القيمة المقرّبة إلى <span class="math">0,01</span> بالنقصان لحاصل قسمة: نجري القسمة العشرية حتى رقمين بعد الفاصلة ونهمل ما بعدهما. الحصر بعددين بالتقريب إلى <span class="math">0,01</span>: القيمة بالنقصان والقيمة بالزيادة.</p><p><span class="math">500 ÷ 12 = 41,666…</span></p><p><span class="math">41,66 &lt; 500 ÷ 12 &lt; 41,67</span></p><p>النتيجة: العدد الأصغر <span class="math">41,66</span></p><p><b>الاستنتاج:</b> الحصر <span class="math">41,66 &lt; 500 ÷ 12 &lt; 41,67</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الحصر</td><td>0,5</td></tr><tr><td>النتيجة</td><td>0,5</td></tr></table></div></div><div class="sx"><h4>التمرين الرابع (3 ن): أشكال وتناظر مركزي</h4><div class="sq"><p><b>1) كم حرفا من الحروف <span class="math">H</span> ؛ <span class="math">K</span> ؛ <span class="math">S</span> ؛ <span class="math">E</span> ؛ <span class="math">O</span> يقبل مركز تناظر؟</b></p><p><b>الطريقة:</b> شكل يقبل مركز تناظر <span class="math">O</span> إذا كان نظيره بالنسبة إلى <span class="math">O</span> هو الشكل نفسه. مركز تناظر المستطيل نقطة تقاطع قطريه، وقطراه متقايسان ومتناصفان.</p><p>تقبل مركز تناظر: <span class="math">H</span> ؛ <span class="math">S</span> ؛ <span class="math">O</span></p><p>لا تقبل: <span class="math">K</span> ؛ <span class="math">E</span></p><p>النتيجة: <span class="math">3</span> حروف</p><p><b>الاستنتاج:</b> ثلاثة حروف.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) <span class="math">[AB]</span> قطعة طولها <span class="math">7 cm</span> ومركز تناظرها <span class="math">I</span>. احسب <span class="math">AI</span> (بـ cm).</b></p><p><b>الطريقة:</b> تعريف: <span class="math">M′</span> نظيرة <span class="math">M</span> بالنسبة إلى <span class="math">O</span> يعني أن <span class="math">O</span> منتصف القطعة <span class="math">[MM′]</span>.</p><p>مركز تناظر القطعة منتصفها <span class="math">I</span></p><p><span class="math">AI = 7 ÷ 2</span></p><p>النتيجة: <span class="math">AI = 3,5 cm</span></p><p><b>الاستنتاج:</b> <span class="math">AI = 3,5 cm</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) <span class="math">A′B′C′</span> نظير المثلث <span class="math">ABC</span> بالنسبة إلى <span class="math">O</span> حيث قيس الزاوية <span class="math">ABC</span> هو <span class="math">72°</span>. ما قيس الزاوية <span class="math">A′B′C′</span> (بالدرجات)؟</b></p><p><b>الطريقة:</b> خواص التناظر المركزي: يحافظ على الأطوال، وعلى أقياس الزوايا، وعلى المساحات، وعلى استقامية النقط. نظير مستقيم مستقيم يوازيه، ونظير دائرة دائرة لها نصف القطر نفسه.</p><p>التناظر المركزي يحافظ على أقياس الزوايا</p><p>النتيجة: <span class="math">72°</span></p><p><b>الاستنتاج:</b> <span class="math">A′B′C′ = 72°</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>الوضعية الإدماجية (8 ن): النقل المدرسي في وادي فراغة</h4><div class="sq"><p><b>1) كم حافلة يلزم لنقل جميع التلاميذ؟ (علّل)</b></p><p><b>الطريقة:</b> القسمة الإقليدية: <span class="math">a = b × q + r</span> حيث <span class="math">r &lt; b</span>؛ <span class="math">q</span> الحاصل و<span class="math">r</span> الباقي.</p><p><span class="math">328 = 45 × 7 + 13</span></p><p><span class="math">7</span> حافلات تنقل <span class="math">315</span> تلميذا ويبقى <span class="math">13</span> تلميذا</p><p>النتيجة: يلزم <span class="math">8</span> حافلات</p><p><b>الاستنتاج:</b> يلزم <span class="math">8</span> حافلات.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: القسمة</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: الاستنتاج</td><td>1</td></tr></table></div><div class="sq"><p><b>2) كم مقعدا يبقى شاغرا في الحافلة الأخيرة؟</b></p><p><b>الطريقة:</b> القسمة الإقليدية: <span class="math">a = b × q + r</span> حيث <span class="math">r &lt; b</span>؛ <span class="math">q</span> الحاصل و<span class="math">r</span> الباقي.</p><p><span class="math">45 − 13 = 32</span></p><p>النتيجة: <span class="math">32</span> مقعدا</p><p><b>الاستنتاج:</b> يبقى <span class="math">32</span> مقعدا شاغرا.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: اختيار الأداة الرياضية المناسبة</td><td>0,5</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>1,5</td></tr></table></div><div class="sq"><p><b>3) كم تلميذا يسكن بوشقوف؟</b></p><p><b>الطريقة:</b> جداء كسرين: <span class="math"><span class="fr"><span>a</span><span>b</span></span> × <span class="fr"><span>c</span><span>d</span></span> = <span class="fr"><span>a × c</span><span>b × d</span></span></span>، ثم نختزل الناتج.</p><p><span class="math"><span class="fr"><span>3</span><span>8</span></span> × 328 = <span class="fr"><span>3 × 328</span><span>8</span></span></span></p><p><span class="math">328 ÷ 8 = 41</span> و<span class="math">41 × 3 = 123</span></p><p>النتيجة: <span class="math">123</span> تلميذا</p><p><b>الاستنتاج:</b> <span class="math">123</span> تلميذا يسكنون بوشقوف.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: الطريقة</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>4) احسب كمية الوقود التي تستهلكها الحافلات كلها في يوم واحد (بـ L).</b></p><p><b>الطريقة:</b> نضرب المسافة في الاستهلاك لكل كيلومتر، ثم في عدد الحافلات.</p><p>حافلة واحدة: <div class="vop"><div>   18,5</div><div> × 0,28</div><div class="ln">   1480</div><div>   370 </div><div class="ln">   5,18</div></div></p><p>ثماني حافلات: <span class="math">5,18 × 8 = 41,44</span></p><p>النتيجة: <span class="math">41,44 L</span></p><p><b>الاستنتاج:</b> تستهلك الحافلات <span class="math">41,44 L</span> يوميا.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: حافلة واحدة</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: كل الحافلات</td><td>1</td></tr></table></div><p class="m3"><b>م3 انسجام الإجابة</b> (الوحدات، معقولية النتائج) و<b>م4 الإتقان</b> (تنظيم الورقة): يُراعيان عند منح علامات الأسئلة؛ تُقبل كل طريقة صحيحة أخرى.</p></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
+function tick(){var b=document.querySelector('.sol-btn'),w=document.querySelector('.sol-wait');if(!b)return;var r=t+D-Date.now();
+if(r<=0){b.style.display='inline-block';if(w)w.style.display='none';return}if(w)w.textContent='📄 النسخة الورقية للحل تظهر بعد '+Math.ceil(r/60000)+' دقيقة';setTimeout(tick,20000)}
+window.printSol=function(){document.body.classList.add('psol');window.print()};window.addEventListener('afterprint',function(){document.body.classList.remove('psol')});
+window.addEventListener('load',tick)})();</script><!--/paper-->
+</body>
+</html>
