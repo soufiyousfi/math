@@ -372,6 +372,15 @@ body.prof .share{display:inline-grid;place-items:center}
 .about[open]>summary::after{content:" ▾"}
 .about[open]>summary{margin-bottom:8px}
 footer{padding-top:12px}
+/* 2026-11-17: pupil-authored activities stand out (gold edge + badge) */
+.card.pupil{border-color:#d4a017;box-shadow:0 0 0 1px #d4a017 inset,0 2px 10px rgba(212,160,23,.18)}
+.pupil-b{background:#fef3c7;color:#92400e;border:1px solid #f5c542;border-radius:999px;padding:1px 9px;font-size:.74rem;font-weight:800}
+:root[data-theme="dark"] .pupil-b{background:#3a2e0b;color:#fcd34d;border-color:#a16207}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .pupil-b{background:#3a2e0b;color:#fcd34d;border-color:#a16207}}
+.card.itqan{border-color:#0d9488;box-shadow:0 0 0 1px #0d9488 inset,0 2px 10px rgba(13,148,136,.16)}
+.itqan-b{background:#ccfbf1;color:#115e59;border:1px solid #5eead4;border-radius:999px;padding:1px 9px;font-size:.74rem;font-weight:800}
+:root[data-theme="dark"] .itqan-b{background:#0f3a36;color:#5eead4;border-color:#0f766e}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .itqan-b{background:#0f3a36;color:#5eead4;border-color:#0f766e}}
 </style>
 </head>
 <body>
@@ -552,8 +561,9 @@ function card(it, where) {
   const go = !isHtml ? "افتح الملف" : done ? "أعد المحاولة" : P ? "أكمل الحل" : it.section === "dars" ? "ابدأ الدرس" : it.section === "al3ab" ? "ابدأ اللعب" : "ابدأ الحل";
   const sheet = isHtml && it.nEx && ["fard", "wadjib", "series", "tahaddi", "chahada", "ikhtibar"].includes(it.section)
     ? `<a class="alt" href="${esc(it.url)}#sheet" title="قراءة الموضوع كاملا دون حل">📄 الموضوع</a>` : "";
-  return `<article class="card s-${it.section}${done ? " done" : ""}">
-    <div class="top">${where === true ? badge(it) : ""}<span class="type">${s[3]} ${s[2]}</span>${ct.seq ? `<span class="seq">${esc(ct.seq)}</span>` : ""}${isNew(it.date) ? `<span class="new" title="جديد"><span class="dot"></span></span>` : ""}</div>
+  const pupil = /mu2allif/.test(it.url || ""), itqan = /itqan-/.test(it.url || "");
+  return `<article class="card s-${it.section}${done ? " done" : ""}${pupil ? " pupil" : ""}${itqan ? " itqan" : ""}">
+    <div class="top">${where === true ? badge(it) : ""}${pupil ? `<span class="pupil-b">🌟 إبداع التلاميذ</span>` : ""}${itqan ? `<span class="itqan-b">🎯 أُتقِن · درس علاجي</span>` : ""}<span class="type">${s[3]} ${s[2]}</span>${ct.seq ? `<span class="seq">${esc(ct.seq)}</span>` : ""}${isNew(it.date) ? `<span class="new" title="جديد"><span class="dot"></span></span>` : ""}</div>
     <h3>${esc(ct.t)}</h3>
     ${meta.length ? `<div class="meta">${meta.map(m => `<span>${m}</span>`).join("")}</div>` : ""}
     ${tps.length ? `<p class="topics">${tps.map(esc).join(" · ")}</p>` : ""}
