@@ -121,7 +121,9 @@ def inject_site_js(path):
     if re.search(r'<script[^>]+assets/site\.js', page):
         return
     depth = path.replace(os.sep, "/").count("/")
-    tag = f'<script src="{"../" * depth}assets/site.js?v={VERSION}" data-v="{VERSION}" defer></script>'
+    # shared answer checker first (deferred scripts run in order), then the shared layer
+    tag = (f'<script src="{"../" * depth}assets/answer-check.js?v={VERSION}" defer></script>'
+           f'<script src="{"../" * depth}assets/site.js?v={VERSION}" data-v="{VERSION}" defer></script>')
     # 👪 several children on one phone: every localStorage key of the active child gets its own prefix,
     # before any script of the page runs (the first child keeps the keys without prefix = data already saved)
     early = KID_SHIM

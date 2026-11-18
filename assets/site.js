@@ -36,6 +36,25 @@
   var rootPath = decodeURIComponent(ROOT.pathname);
   var rel = path.indexOf(rootPath) === 0 ? path.slice(rootPath.length) : path.replace(/^\//, "");
 
+  /* ---------- 0. shared answer checker (assets/answer-check.js, 2026-11-18) ----------
+     The page keeps its own accepted answers; the shared checker only recognises the SAME answer written
+     another way (3√5 = √5×3, 2x = 2×x, ٣,٥ = 3.5…). It wraps the page's normalizeInput, used for the
+     pupil's answer AND for the stored answers, so nothing else in the page changes. */
+  (function () {
+    function hook() {
+      try {
+        if (window.MathAnswer && typeof window.normalizeInput === "function" && !window.normalizeInput.__shared)
+          window.normalizeInput = window.MathAnswer.wrap(window.normalizeInput);
+      } catch (e) {}
+    }
+    if (window.MathAnswer) return hook();
+    if (typeof window.normalizeInput !== "function") return;
+    var sc = document.createElement("script");           /* page published without the injected tag */
+    sc.src = ROOT.href + "assets/answer-check.js" + (me.getAttribute("data-v") ? "?v=" + me.getAttribute("data-v") : "");
+    sc.onload = hook;
+    document.head.appendChild(sc);
+  })();
+
   /* ---------- 0a. visits counter: the teacher's OWN Google Sheet (Apps Script web app) ----------
      Each page sends ONE request per visit (once per page and per browser session): date + page address only,
      no name, no IP kept, no cookie. The teacher's device (?prof=1) is not counted.

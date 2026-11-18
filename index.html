@@ -860,8 +860,7 @@ document.getElementById("offline").onclick = async function () {
     try {
       const r = await fetch(it.url, { cache: "no-cache" });
       if (!r.ok) throw 0;
-      const m = (await r.text()).match(/assets\/site\.js\?v=[\w-]+/);
-      if (m) extra.add(m[0]);
+      for (const m of (await r.text()).match(/assets\/[\w.-]+\.js\?v=[\w-]+/g) || []) extra.add(m);
     } catch (e) { fail++; }
     done++;
     btn.textContent = "📥 جارٍ الحفظ… " + done + " / " + list.length;
