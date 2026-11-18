@@ -78,7 +78,6 @@
         pill.textContent = "👁️ " + d.total;
         box.querySelector(".b").innerHTML =
           '<div class="n"><div><b>' + d.today + '</b><span>اليوم</span></div><div><b>' + d.week + '</b><span>7 أيام</span></div><div><b>' + d.total + '</b><span>المجموع</span></div></div>' +
-          (d.reports != null ? '<div style="margin-bottom:6px">🚩 بلاغات عن أخطاء لم تُعالج بعد: <b>' + d.reports + '</b> <small>(جدول «إحصاء المنصة»، ورقة «بلاغات»)</small></div>' : "") +
           (home ? '<div style="margin-bottom:6px">🏠 الصفحة الرئيسية: <b>' + home[1] + '</b> هذا الأسبوع · ' + home[0] + ' في المجموع</div>' : "") +
           (pages.length ? '<div style="margin-bottom:4px;color:#94a3b8">الأكثر زيارة هذا الأسبوع:</div><ol>' + pages.map(function (p) {
             return "<li>" + esc(titles[p[0]] || p[0]) + " <small>(" + p[2] + " · " + p[1] + ")</small></li>";
@@ -525,15 +524,6 @@ body.sx-exam .sx-calc-fab{bottom:74px}
 .sx-vert{font-family:"Courier New",monospace;font-size:1.05rem;line-height:1.35;background:#fff;border:1px dashed #94a3b8;border-radius:8px;padding:6px 12px;display:inline-block;margin:4px 0}
 .sx-gen .fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.05;margin:0 2px;font-size:.92em}
 .sx-gen .fr>span:first-child{border-bottom:1.5px solid currentColor;padding:0 3px}
-.sx-repw{position:fixed;inset:0;z-index:4500;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(15,23,42,.45)}
-.sx-repf{width:min(440px,100%);max-height:88vh;overflow:auto;direction:rtl;background:#fff;color:#0f172a;border:1.5px solid #cbd5e1;border-right:5px solid #b91c1c;border-radius:14px;padding:14px 16px;box-shadow:0 10px 28px rgba(0,0,0,.25);font-family:inherit;line-height:1.7}
-.sx-repf h4{margin:0 0 8px;font-size:1.05rem}.sx-repf>label{display:block;font-weight:700;margin:6px 0}
-.sx-repf select,.sx-repf input[name=e],.sx-repf textarea{display:block;width:100%;box-sizing:border-box;font:inherit;font-weight:400;margin-top:4px;padding:7px 9px;border:1.5px solid #cbd5e1;border-radius:9px;background:#fff;color:#0f172a}
-.sx-repf .k{display:grid;gap:2px;margin:6px 0}.sx-repf .k label{font-weight:600;cursor:pointer}
-.sx-repf .w{margin:4px 0;color:#92400e;font-size:.9rem}.sx-repf .r{margin:6px 0 0;font-weight:700;color:#b91c1c;min-height:1em}
-.sx-repf .b{display:flex;gap:8px;margin-top:8px}.sx-repf .b button{font:inherit;font-weight:800;cursor:pointer;border-radius:10px;padding:8px 14px;border:0;background:#b91c1c;color:#fff}
-.sx-repf .b button.x{background:#fff;color:#475569;border:1px solid #cbd5e1}.sx-repf .b button:disabled{opacity:.6}
-@media print{.sx-repw,.sx-rep{display:none!important}}
 @media print{.sx-foot,.sx-tools,.sx-gen-btn,.sx-say,.sx-exbar,.sx-pad,.sx-chal,.sx-toast{display:none!important}}
 `;
   document.head.appendChild(el("style", null, css));
@@ -551,51 +541,6 @@ body.sx-exam .sx-calc-fab{bottom:74px}
   foot.setAttribute("aria-label", "العودة");
   foot.innerHTML = '<a class="sx-home" href="' + home + '">🏠 الصفحة الرئيسية</a><a class="sx-btn" href="#" onclick="window.scrollTo({top:0,behavior:\'smooth\'});return false">⬆️ أعلى الصفحة</a>';
   document.body.appendChild(foot);
-  /* ---------- 1b. «🚩 أبلغ عن خطأ» (his ask 2026-11-18) ----------
-     Pupils and colleagues tell the teacher about a mistake. The report goes to the teacher's own Google Sheet
-     (same Apps Script as the counter, sheet «بلاغات»): page, exercise, kind, a short note. No name, no IP. */
-  var repB = el("button", "sx-btn sx-rep", "🚩 أبلغ عن خطأ");
-  repB.type = "button"; repB.title = "وجدت خطأ في هذه الصفحة؟ أخبر الأستاذ";
-  repB.onclick = openReport;
-  foot.appendChild(repB);
-  function openReport() {
-    if ($(".sx-repw")) return;
-    var exs = []; try { if (typeof exercises !== "undefined" && Array.isArray(exercises)) exs = exercises; } catch (e) {}
-    var exField = exs.length
-      ? '<select name="e"><option value="">الصفحة كلها</option>' + exs.map(function (x, i) { return '<option value="' + (i + 1) + '">التمرين ' + (i + 1) + "</option>"; }).join("") + "</select>"
-      : '<input name="e" maxlength="30" placeholder="مثلا: السؤال 3 (اختياري)">';
-    var KINDS = [["sol", "خطأ في الحل أو التصحيح"], ["rej", "جوابي صحيح لكنه رُفض"], ["q", "خطأ في السؤال أو الشكل"], ["btn", "زر أو صفحة لا تعمل"], ["other", "أخرى"]];
-    var w = el("div", "sx-repw");
-    w.innerHTML = '<form class="sx-repf" role="dialog" aria-label="أبلغ عن خطأ"><h4>🚩 أبلغ الأستاذ عن خطأ</h4>' +
-      '<label>أين؟ ' + exField + "</label>" +
-      '<div class="k">' + KINDS.map(function (k, i) { return '<label><input type="radio" name="k" value="' + k[0] + '"' + (i ? "" : " checked") + "> " + k[1] + "</label>"; }).join("") + "</div>" +
-      '<label>ماذا لاحظت؟ (اختياري)<textarea name="m" maxlength="300" rows="3" placeholder="مثلا: كتبت 12 cm والجواب الصحيح 12 cm لكنه رُفض"></textarea></label>' +
-      '<p class="w">⚠️ لا تكتب اسمك ولا أي معلومة شخصية.</p>' +
-      '<div class="b"><button type="submit">📤 أرسل</button><button type="button" class="x">إلغاء</button></div><p class="r" role="status"></p></form>';
-    document.body.appendChild(w);
-    var f = $("form", w), out = $(".r", f);
-    function close() { w.remove(); }
-    $(".x", f).onclick = close;
-    w.addEventListener("click", function (e) { if (e.target === w) close(); });
-    f.onsubmit = function (e) {
-      e.preventDefault();
-      var day = new Date().toISOString().slice(0, 10), lim = {};
-      try { lim = JSON.parse(localStorage.getItem("math-rep") || "{}") || {}; } catch (er) {}
-      if (lim.d !== day) lim = { d: day, n: 0 };
-      if (lim.n >= 5) { out.textContent = "شكرا! أرسلت 5 بلاغات اليوم، وهذا يكفي. أعد المحاولة غدا."; return; }
-      if (navigator.onLine === false) { out.textContent = "لا يوجد اتصال بالإنترنت. أرسل البلاغ عندما تتصل."; return; }
-      var page = rel.replace(/index\.html$/, "") || "/";
-      var q = "?a=report&p=" + encodeURIComponent(page) + "&e=" + encodeURIComponent(f.e.value || "") +
-        "&k=" + encodeURIComponent((f.querySelector("input[name=k]:checked") || {}).value || "other") +
-        "&m=" + encodeURIComponent((f.m.value || "").slice(0, 300));
-      var sb = $("button[type=submit]", f); sb.disabled = true; out.textContent = "جارٍ الإرسال…";
-      fetch(STATS_URL + q, { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (d) {
-        if (!d || !d.saved) throw 0;
-        lim.n++; try { localStorage.setItem("math-rep", JSON.stringify(lim)); } catch (er) {}
-        close(); toast("✓ وصل بلاغك إلى الأستاذ. شكرا لك!");
-      }).catch(function () { sb.disabled = false; out.textContent = "تعذّر الإرسال الآن. أعد المحاولة بعد قليل."; });
-    };
-  }
   var padB = el("button", "sx-btn", "📝");
   padB.type = "button"; padB.title = "مسودة الحساب: اكتب بإصبعك"; padB.setAttribute("aria-label", "مسودة");
   padB.onclick = function () { openPad("page", document.title.split(" - ")[0]); };
