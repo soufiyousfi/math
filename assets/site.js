@@ -2183,7 +2183,9 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       "#daily .end2{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:8px;font-size:.9rem}" +
       "#daily .bdg{font-weight:800;color:#c2410c}#daily .mute{font:inherit;border:0;background:none;cursor:pointer;font-size:1rem}" +
       "#daily .shake{animation:dshake .35s}@keyframes dshake{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}" +
-      "#daily .burst{font-size:1.2rem;letter-spacing:2px}#daily [hidden]{display:none!important}";
+      "#daily .burst{font-size:1.2rem;letter-spacing:2px}#daily [hidden]{display:none!important}" +
+      "#daily.min{padding:8px 12px;border-top-width:3px}#daily .mini{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:.9rem;font-weight:700}" +
+      "#daily .mini .fire{color:#c2410c}#daily .btns{display:inline-flex;gap:6px;flex-wrap:wrap}#daily .sh,#daily .hide,#daily .more{font:inherit;font-size:.82rem;font-weight:800;cursor:pointer;border-radius:9px;padding:4px 10px;border:1.5px solid var(--border,#cbd5e1);background:var(--soft,#f8fafc);color:var(--text,#0f172a)}";
     document.head.appendChild(css);
     var mute = false;
     try { mute = localStorage.getItem("math-daily-mute") === "1"; } catch (e) {}
@@ -2196,12 +2198,26 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       } catch (e) {}
     }
     var cur = null, timer = null;
-    function render(lv) {
+    /* once today's question is finished the card folds into ONE small line until tomorrow (2026-11-18 his remark «عند حلها من المفروض تختفي») */
+    function mini(lv, rec) {
+      var s2 = streakNow(load());
+      host.classList.add("min");
+      host.innerHTML = '<div class="mini"><span>' + (rec.ok ? "✅ أنجزت سؤال اليوم" + (rec.st ? " " + "⭐".repeat(rec.st) : "") : "📘 أنهيت سؤال اليوم") +
+        (s2 ? ' · <b class="fire">🔥 ' + arN(s2, "day") + "</b>" : "") + " · 🌙 سؤال جديد غدًا</span>" +
+        '<span class="btns"><button type="button" class="more">➕ سؤال آخر</button><button type="button" class="sh">📖 الحل</button></span></div>';
+      host.querySelector(".sh").onclick = function () { render(lv, true); };
+      host.querySelector(".more").onclick = function () { render(lv, true, true); };
+    }
+    /* extra = «➕ سؤال آخر»: new random numbers, for practice only (no streak, nothing saved) */
+    function render(lv, full, extra) {
       if (!DAILY[lv]) { host.hidden = true; return; }
-      cur = lv; host.hidden = false; clearInterval(timer);
-      var D = load(), key = today + "|" + lv, rec = (D.done || {})[key], g = question(lv), left = 3, t0 = Date.now(), st = streakNow(D);
+      cur = lv; host.hidden = false; clearInterval(timer); host.classList.remove("min");
+      var D = load(), key = today + "|" + lv, rec = (D.done || {})[key];
+      if (rec && !full) return mini(lv, rec);
+      if (extra) rec = null;
+      var g = extra ? GEN2[DAILY[lv][Math.floor(Math.random() * DAILY[lv].length)]]() : question(lv), left = 3, t0 = Date.now(), st = streakNow(D);
       var numeric = g.ans.every(function (a) { return /^[−-]?\d+(,\d+)?$/.test(a); });
-      host.innerHTML = '<div class="dh"><div><h2>☀️ سؤال اليوم</h2><span class="lvn">' + LV[lv] + " · " + now.toLocaleDateString("ar-DZ", { weekday: "long", day: "numeric", month: "long" }) + "</span></div>" +
+      host.innerHTML = '<div class="dh"><div><h2>' + (extra ? "➕ سؤال إضافي للتدرّب" : "☀️ سؤال اليوم") + '</h2><span class="lvn">' + LV[lv] + " · " + now.toLocaleDateString("ar-DZ", { weekday: "long", day: "numeric", month: "long" }) + "</span></div>" +
         '<div class="pills"><span class="pill fire" title="سلسلة المواظبة: أيام متتالية أجبت فيها عن سؤال اليوم">🔥 ' + st + '</span><span class="pill t">⏱️ 3:00</span>' +
         '<button type="button" class="mute" aria-label="الصوت">' + (mute ? "🔇" : "🔊") + "</button></div></div>" +
         '<div class="dq">' + g.q + "</div>" +
@@ -2211,7 +2227,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         '<div class="fb" role="status"></div>' +
         '<div class="sol" hidden><h4>✔ الإجابة النموذجية المفصلة:</h4>' + g.steps.map(function (s) { return '<div class="' + (/^<b>الطريقة/.test(s) ? "rule" : "") + '">' + s + "</div>"; }).join("") +
         "<div>" + g.res + '</div><div class="end">' + g.concl + "</div></div>" +
-        '<div class="end2" hidden><span class="bdg"></span><span class="nx">🌙 سؤال جديد غدًا إن شاء الله.</span></div>';
+        '<div class="end2" hidden><span class="bdg"></span><span class="nx">🌙 سؤال اليوم الجديد غدًا إن شاء الله.</span><span class="btns"><button type="button" class="more">➕ سؤال آخر</button><button type="button" class="hide">✓ أخفِ السؤال</button></span></div>';
       var inp = host.querySelector("input"), ok = host.querySelector(".ok"), fb = host.querySelector(".fb"), sol = host.querySelector(".sol"),
         tp = host.querySelector(".pill.t"), fire = host.querySelector(".pill.fire"), end2 = host.querySelector(".end2");
       host.querySelector(".mute").onclick = function () { mute = !mute; this.textContent = mute ? "🔇" : "🔊"; try { localStorage.setItem("math-daily-mute", mute ? "1" : "0"); } catch (e) {} };
@@ -2224,6 +2240,8 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         fire.textContent = "🔥 " + s2;
         host.querySelector(".bdg").textContent = badge(s2) || (s2 ? "🔥 سلسلة المواظبة: " + arN(s2, "day") + "." : "");
         if (r && r.a) inp.value = r.a;
+        host.querySelector(".hide").onclick = function () { var x = (load().done || {})[key]; if (x) mini(lv, x); else host.hidden = true; host.scrollIntoView({ block: "nearest" }); };
+        host.querySelector(".more").onclick = function () { render(lv, true, true); host.scrollIntoView({ block: "start" }); };
       }
       if (rec) {
         fb.className = rec.ok ? "fb s" : "fb f";
@@ -2238,6 +2256,13 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       }, 1000);
       function finish(good, raw) {
         clearInterval(timer);
+        if (extra) {
+          tone(good);
+          fb.className = good ? "fb s" : "fb f";
+          fb.innerHTML = good ? '<span class="burst">' + "⭐".repeat(left) + "</span> " + PRAISE[left % PRAISE.length] : "🌟 لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. اقرأ الإجابة النموذجية خطوة خطوة.";
+          if (good) try { if (window.flyStars) window.flyStars(fb, 14); } catch (e) {}
+          return showEnd(null);
+        }
         var D2 = load(), fast = good && Date.now() - t0 <= 180000;
         if (D2.last !== today) { D2.streak = D2.last === yest ? (D2.streak || 0) + 1 : 1; D2.last = today; }
         D2.best = Math.max(D2.best || 0, D2.streak || 0);
