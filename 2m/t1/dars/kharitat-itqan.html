@@ -51,7 +51,7 @@ main{max-width:760px;margin:0 auto;padding:14px 16px 30px}
 <script src="../../../assets/mastery.js"></script>
 <script>
 (function(){
-var LV='2m', CAT=[{"url": "2m/t1/dars/itqan-m1-awlawiya.html", "title": "أُتقِن: أولوية العمليات والأقواس (الثانية متوسط)", "f": "itqan-m1-awlawiya.html"}, {"url": "2m/t1/dars/itqan-m1-kusur.html", "title": "أُتقِن: جمع وطرح كسرين (الثانية متوسط)", "f": "itqan-m1-kusur.html"}, {"url": "2m/t1/dars/itqan-m2-khawas.html", "title": "أُتقِن: خواص التناظر المركزي (الثانية متوسط)", "f": "itqan-m2-khawas.html"}, {"url": "2m/t1/dars/itqan-m2-nadhir.html", "title": "أُتقِن: نظير نقطة بالنسبة إلى نقطة (الثانية متوسط)", "f": "itqan-m2-nadhir.html"}];
+var LV='2m', CAT=[{"url": "2m/t1/dars/itqan-m1-awlawiya.html", "title": "أُتقِن: أولوية العمليات والأقواس (الثانية متوسط)", "f": "itqan-m1-awlawiya.html"}, {"url": "2m/t1/dars/itqan-m1-kusur.html", "title": "أُتقِن: جمع وطرح كسرين (الثانية متوسط)", "f": "itqan-m1-kusur.html"}, {"url": "2m/t1/dars/itqan-m1-muqarana.html", "title": "أُتقِن: مقارنة كسرين (الثانية متوسط)", "f": "itqan-m1-muqarana.html"}, {"url": "2m/t1/dars/itqan-m1-tawzi.html", "title": "أُتقِن: توزيع الضرب على الجمع والطرح (الثانية متوسط)", "f": "itqan-m1-tawzi.html"}, {"url": "2m/t1/dars/itqan-m2-khawas.html", "title": "أُتقِن: خواص التناظر المركزي (الثانية متوسط)", "f": "itqan-m2-khawas.html"}, {"url": "2m/t1/dars/itqan-m2-nadhir.html", "title": "أُتقِن: نظير نقطة بالنسبة إلى نقطة (الثانية متوسط)", "f": "itqan-m2-nadhir.html"}];
 var SEQ={m1:'المقطع الأول',m2:'المقطع الثاني',m3:'المقطع الثالث',m4:'المقطع الرابع',m5:'المقطع الخامس',m6:'المقطع السادس',m7:'المقطع السابع'};
 function clean(t){return String(t).replace(/^أُتقِن:\s*/,'').replace(/\s*\((الأولى|الثانية|الثالثة|الرابعة) متوسط\)\s*$/,'');}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
@@ -74,7 +74,8 @@ function draw(cat){
       '<div class="bar"><i style="width:'+w(3)+';background:#16a34a"></i><i style="width:'+w(2)+';background:#2563eb"></i><i style="width:'+w(1)+';background:#f59e0b"></i></div>'+rows+'</section>';});
   document.getElementById('seqs').innerHTML=out;
 }
-function norm(a){return a.filter(function(x){return x.level===LV&&/\/dars\/itqan-[^\/]+\.html$/.test(x.url);}).map(function(x){return {url:x.url,title:x.title,f:x.url.split('/').pop()};}).sort(function(a,b){return a.url<b.url?-1:1;});}
+function rel(u){var p=u.split('/');return p[1]==='t1'?p.pop():'../../'+p.slice(1).join('/');}
+function norm(a){return a.filter(function(x){return x.level===LV&&/\/dars\/itqan-[^\/]+\.html$/.test(x.url);}).map(function(x){return {url:x.url,title:x.title,f:rel(x.url)};}).sort(function(a,b){return a.url<b.url?-1:1;});}
 draw(CAT);
 /* new lessons published later appear without rebuilding this page */
 try{fetch('../../../files.json').then(function(r){return r.ok?r.json():null;}).then(function(d){if(d&&d.items){var c=norm(d.items);if(c.length)draw(c);}}).catch(function(){});}catch(e){}
