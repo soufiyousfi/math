@@ -603,6 +603,62 @@ body.sx-exam .sx-calc-fab{bottom:74px}
   document.addEventListener("click", function () { setTimeout(save, 400); }, true);
   window.addEventListener("pagehide", save);
 
+  /* ---------- 2b. the level is saved on the phone BY ITSELF (2026-11-18 his ask) ----------
+     Most pupils will never press «📥 حفظ تمارين هذا المستوى». So, once the pupil has worked on 4 pages of the
+     same level, all the pages of that level are fetched quietly in the background (sw.js keeps them), and they open
+     without internet. Afterwards only new or corrected pages are fetched again (the "mod" date in files.json).
+     Not done without a connection, or when the phone is in data-saver mode. Sizes: 1.6 to 3.5 MB per level. */
+  var OFFK = "math-offline", OFF_MIN = 4, offBusy = false;
+  function autoOffline() {
+    if (offBusy) return;
+    try {
+      if (!("serviceWorker" in navigator) || !navigator.serviceWorker.controller || navigator.onLine === false) return;
+      var cn = navigator.connection;
+      if (cn && (cn.saveData || /(^|-)2g$/.test(cn.effectiveType || ""))) return;
+      var all = readAll(), n = 0;
+      Object.keys(all).forEach(function (k) { var r = all[k]; if (k.indexOf(level + "/") === 0 && r && (r.a > 0 || r.s > 0)) n++; });
+      if (n < OFF_MIN) return;
+      var saved = {}; try { saved = JSON.parse(store(OFFK) || "{}") || {}; } catch (e) {}
+      var mine = saved[level] || {};
+      if (mine.v && mine.v === VER) return;            /* already checked for this version of the site */
+      offBusy = true;
+      fetch(ROOT.href + "files.json", { cache: "no-cache" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+        if (!j || !j.items) { offBusy = false; return; }
+        var list = j.items.filter(function (it) { return it.level === level && it.type === "html"; });
+        var todo = list.filter(function (it) { return !mine.p || mine.p[it.url] !== (it.mod || it.date || "1"); });
+        var first = !mine.p, done = {}, fail = 0, extra = {};
+        for (var u in (mine.p || {})) done[u] = mine.p[u];
+        var i = 0;
+        function next() {
+          if (navigator.onLine === false) return finish();
+          var part = todo.slice(i, i + 3); i += 3;
+          if (!part.length) return finish();
+          Promise.all(part.map(function (it) {
+            return fetch(ROOT.href + it.url, { cache: "no-cache" }).then(function (r) {
+              if (!r.ok) throw 0;
+              return r.text().then(function (t) {
+                (t.match(/assets\/[\w.\/-]+\.js(?:\?v=[\w-]+)?/g) || []).forEach(function (a) { extra[a] = 1; });
+                done[it.url] = it.mod || it.date || "1";
+              });
+            }).catch(function () { fail++; });
+          })).then(function () { setTimeout(next, 300); });
+        }
+        function finish() {
+          Object.keys(extra).forEach(function (a) { fetch(ROOT.href + a).catch(function () {}); });
+          saved[level] = { v: fail ? "" : VER, p: done };
+          store(OFFK, JSON.stringify(saved));
+          offBusy = false;
+          if (first && !fail && todo.length) toast("✓ حُفظت تمارين " + LEVEL[level] + " على هاتفك: تفتح الآن حتى دون إنترنت.");
+        }
+        if (!todo.length) { saved[level] = { v: VER, p: done }; store(OFFK, JSON.stringify(saved)); offBusy = false; return; }
+        next();
+      }).catch(function () { offBusy = false; });
+    } catch (e) { offBusy = false; }
+  }
+  /* after the page is calm (the pupil is reading), never while it is loading */
+  setTimeout(autoOffline, 8000);
+  document.addEventListener("click", function () { setTimeout(autoOffline, 2500); }, true);
+
   /* ---------- 3. exercise pages ---------- */
   function onReady(fn) {
     if (document.readyState === "complete") setTimeout(fn, 30);

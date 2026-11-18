@@ -107,7 +107,7 @@ VERSION = site_version()
 
 
 KID_SHIM = ('<script>(function(){try{var L=window.localStorage,S=Storage.prototype,g=S.getItem,s=S.setItem,r=S.removeItem,'
-            'G={"math-theme":1,"math-kids":1,"math-kid":1,"math-kid-tip":1,"math-prof":1,"math-dests":1},'
+            'G={"math-theme":1,"math-kids":1,"math-kid":1,"math-kid-tip":1,"math-prof":1,"math-dests":1,"math-offline":1},'
             'id=g.call(L,"math-kid")||"",k=function(t,x){return t===L&&id&&!G[x]?"kid"+id+"|"+x:x};'
             'window.__kid=id;window.__kidRaw={g:function(x){return g.call(L,x)},s:function(x,v){return s.call(L,x,v)},r:function(x){return r.call(L,x)}};'
             'S.getItem=function(x){return g.call(this,k(this,x))};S.setItem=function(x,v){return s.call(this,k(this,x),v)};'
@@ -220,6 +220,15 @@ def name_title(name):
     return re.sub(r"[-_]+", " ", stem).strip()
 
 
+def last_change_date(path):
+    """Date of the LAST change (also corrections): pages saved on the phone are refreshed when it changes."""
+    try:
+        return subprocess.run(["git", "log", "-1", "--format=%cI", "--", path],
+                              capture_output=True, text=True, check=True).stdout.strip() or None
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return None
+
+
 def last_commit_date(path):
     try:
         # date the page was ADDED (a later correction does not make it «جديد» again)
@@ -263,7 +272,8 @@ def main():
                         title = (html_title(full) if kind == "html" else None) or name_title(name)
                         date = last_commit_date(full)
                     item = {"level": lv, "term": tm, "section": sec,
-                            "title": title, "url": url, "type": kind, "date": date}
+                            "title": title, "url": url, "type": kind, "date": date,
+                            "mod": last_change_date(full)}
                     if kind == "html":
                         item.update(page_meta(url + "index.html" if url.endswith("/") else url))
                     items.append(item)
