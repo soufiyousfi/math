@@ -398,6 +398,7 @@ footer{padding-top:12px}
     </section>
     <div class="prof-bar">👨‍🏫 وضع الأستاذ: زر المشاركة ↗ يظهر لك وحدك.</div>
   </header>
+  <section class="daily" id="daily" hidden aria-label="سؤال اليوم"></section>
 
   <div id="levels-step"></div>
   <nav class="levels" id="levels" aria-label="المستوى"></nav>
@@ -531,7 +532,7 @@ function renderNav() {
   document.getElementById("levels").innerHTML = LEVELS.map(([id, n, name]) => {
     const c = all.filter(i => i.level === id).length;
     return `<button type="button" class="lv" data-level="${id}" aria-pressed="${id === state.level}">
-      <span class="n">${n}م</span><span class="t">${name}</span><span class="k">${c ? c + " نشاطا" : "قريبا"}</span></button>`;
+      <span class="n">${n}م</span><span class="t">${name}</span><span class="k">${c ? arN(c, "act") : "قريبا"}</span></button>`;
   }).join("");
   document.getElementById("terms").innerHTML = TERMS.map(([id, name]) => {
     const c = all.filter(i => i.level === state.level && i.term === id).length;
@@ -541,13 +542,26 @@ function renderNav() {
   if (all.length && SEC[state.filter] && !here.some(i => i.section === state.filter)) state.filter = "home";
 }
 
+// Arabic number + counted noun (العدد والمعدود): 1 → «سؤال واحد», 2 → «سؤالان», 3-10 → «3 أسئلة», 11-99 → «12 سؤالا», 100 → «100 سؤال»
+const AR_W = {
+  q: ["سؤال واحد", "سؤالان", "أسئلة", "سؤالا", "سؤال", "سؤالين"], ex: ["تمرين واحد", "تمرينان", "تمارين", "تمرينا", "تمرين", "تمرينين"],
+  sit: ["وضعية واحدة", "وضعيتان", "وضعيات", "وضعية", "وضعية", "وضعيتين"], act: ["نشاط واحد", "نشاطان", "أنشطة", "نشاطا", "نشاط", "نشاطين"],
+  page: ["صفحة واحدة", "صفحتان", "صفحات", "صفحة", "صفحة", "صفحتين"], res: ["نتيجة واحدة", "نتيجتان", "نتائج", "نتيجة", "نتيجة", "نتيجتين"]
+};
+function arN(n, k, obl) {
+  const w = AR_W[k] || k; n = Math.round(Number(n) || 0);
+  if (n === 1) return w[0];
+  if (n === 2) return obl ? w[5] : w[1];
+  const r = n % 100;
+  return n + " " + (r >= 3 && r <= 10 ? w[2] : r >= 11 ? w[3] : n === 0 ? w[2] : w[4]);
+}
 function card(it, where) {
   const s = SEC[it.section], P = progress()[it.url], ct = cleanTitle(it);
   const idx = state.items.indexOf(it);
   const isHtml = it.type === "html";
   const meta = [];
-  if (it.nEx) meta.push(`📝 ${it.nEx} ${it.nEx === 1 ? "وضعية" : it.nEx === 2 ? "تمرينان" : it.nEx <= 10 ? "تمارين" : "تمرينا"}`);
-  if (it.nQ) meta.push(`❓ ${it.nQ} سؤالا`);
+  if (it.nEx) meta.push("📝 " + arN(it.nEx, it.nEx === 1 && (it.section === "idmaj" || /وضعية/.test(it.title + " " + (it.topics || []).join(" "))) ? "sit" : "ex"));
+  if (it.nQ) meta.push("❓ " + arN(it.nQ, "q"));
   if (it.pts) meta.push(`🎯 على ${fmt(it.pts)}`);
   if (!isHtml) meta.push(KIND[it.type] || "ملف");
   const tps = topicsOf(it);
@@ -648,7 +662,7 @@ function renderSearch() {
   const found = state.items.filter(i => match(i))
     // the chosen level first, then the others
     .sort((a, b) => (a.level !== state.level) - (b.level !== state.level) || a.level.localeCompare(b.level) || a.term.localeCompare(b.term) || a.url.localeCompare(b.url, "en", { numeric: true }));
-  info.innerHTML = `🔎 ${found.length} نتيجة لـ «${esc(state.q.trim())}» في كل المستويات والفصول <button type="button" id="qclear">✕ مسح البحث</button>`;
+  info.innerHTML = `🔎 ${arN(found.length, "res")} لـ «${esc(state.q.trim())}» في كل المستويات والفصول <button type="button" id="qclear">✕ مسح البحث</button>`;
   info.hidden = false;
   const groups = LEVELS.map(([id, n, name]) => {
     const list = found.filter(i => i.level === id);
@@ -856,7 +870,7 @@ document.getElementById("offline").onclick = async function () {
   for (const u of extra) { try { await fetch(u); } catch (e) {} }
   btn.disabled = false;
   btn.textContent = "📥 حفظ تمارين هذا المستوى للعمل دون إنترنت";
-  toast(fail ? "حُفظت " + (list.length - fail) + " صفحة من " + list.length + ". أعد المحاولة لاحقا للبقية."
+  toast(fail ? "حُفظت " + (list.length - fail) + " من " + arN(list.length, "page", 1) + ". أعد المحاولة لاحقا للبقية."
     : "✓ حُفظت كل صفحات " + LEVEL_NAME[state.level] + " (" + list.length + "): تفتح الآن حتى دون إنترنت.");
 };
 

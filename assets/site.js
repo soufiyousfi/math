@@ -18,6 +18,20 @@
   var TERM = { t1: "الفصل الأول", t2: "الفصل الثاني", t3: "الفصل الثالث" };
   var SECTION = { dars: "درس تفاعلي", al3ab: "ألعاب", series: "سلسلة تمارين", fard: "فرض", wadjib: "واجب منزلي",
     ikhtibar: "اختبار", chahada: "سلسلة الشهادة", tahaddi: "تحدٍّ", idmaj: "وضعية إدماجية", bem: "سلاسل الشهادة" };
+  /* Arabic number + counted noun (العدد والمعدود): 1 «سؤال واحد», 2 «سؤالان», 3-10 «3 أسئلة», 11-99 «12 سؤالا», 100 «100 سؤال» */
+  var AR_W = {
+    q: ["سؤال واحد", "سؤالان", "أسئلة", "سؤالا", "سؤال", "سؤالين"], ex: ["تمرين واحد", "تمرينان", "تمارين", "تمرينا", "تمرين", "تمرينين"],
+    star: ["نجمة واحدة", "نجمتان", "نجوم", "نجمة", "نجمة", "نجمتين"], min: ["دقيقة واحدة", "دقيقتان", "دقائق", "دقيقة", "دقيقة", "دقيقتين"],
+    day: ["يوم واحد", "يومان", "أيام", "يوما", "يوم", "يومين"], page: ["صفحة واحدة", "صفحتان", "صفحات", "صفحة", "صفحة", "صفحتين"]
+  };
+  function arN(n, k, obl) {
+    var w = AR_W[k] || k; n = Math.round(Number(n) || 0);
+    if (n === 1) return w[0];
+    if (n === 2) return obl ? w[5] : w[1];
+    var r = n % 100;
+    return n + " " + (r >= 3 && r <= 10 ? w[2] : r >= 11 ? w[3] : n === 0 ? w[2] : w[4]);
+  }
+  window.__arN = arN;
   var path = decodeURIComponent(location.pathname);
   var rootPath = decodeURIComponent(ROOT.pathname);
   var rel = path.indexOf(rootPath) === 0 ? path.slice(rootPath.length) : path.replace(/^\//, "");
@@ -299,8 +313,44 @@
     document.addEventListener("click", function (e) { var lb = e.target.closest && e.target.closest("[data-level]"); if (lb) KIDS.levelChanged(lb.getAttribute("data-level")); }, true);
   }
 
+  /* ---------- 0e. opened inside the Facebook / Messenger / Instagram browser (2026-11-18 his ask) ----------
+     That browser keeps no lasting memory: stars, marks and the streak can be lost when it closes.
+     A small banner invites the pupil to open the same page in Chrome (Android) or Safari (iPhone). */
+  (function () {
+    var ua = navigator.userAgent || "";
+    if (!/FBAN|FBAV|FB_IAB|FBIOS|FB4A|FBMD|Messenger|Instagram/i.test(ua)) return;
+    try { if (sessionStorage.getItem("math-fbb") === "1") return; } catch (e) {}
+    var ios = /iphone|ipad|ipod/i.test(ua), url = location.href.split("#")[0];
+    function show() {
+      var b = document.createElement("div");
+      b.setAttribute("role", "note");
+      b.style.cssText = "position:sticky;top:0;z-index:4000;direction:rtl;background:#fff7ed;color:#7c2d12;border-bottom:2px solid #fb923c;" +
+        "padding:9px 12px;font-family:inherit;font-size:.9rem;line-height:1.6;box-shadow:0 2px 8px rgba(0,0,0,.12)";
+      var btn = "font:inherit;font-weight:800;border-radius:9px;padding:5px 10px;cursor:pointer;text-decoration:none;display:inline-block;";
+      var open = ios ? '<span style="font-weight:700">اضغط ⋯ أو ⬆️ في الأعلى، ثم «فتح في Safari» أو «فتح في المتصفح».</span>'
+        : '<a href="intent://' + url.replace(/^https?:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=" + encodeURIComponent(url) + ';end" style="' + btn + 'background:#c2410c;color:#fff;border:0">🌐 افتح في Chrome</a>';
+      b.innerHTML = '<div style="max-width:880px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px;align-items:center">' +
+        '<span style="flex:1 1 220px">📘 أنت داخل متصفح فيسبوك: قد تضيع نجومك وعلاماتك عند إغلاقه. افتح المنصة في ' + (ios ? "Safari" : "Chrome") + " لتُحفظ على هاتفك.</span>" + open +
+        '<button type="button" data-c="1" style="' + btn + 'background:#fff;color:#7c2d12;border:1.5px solid #fdba74">🔗 انسخ الرابط</button>' +
+        '<button type="button" data-x="1" aria-label="إخفاء" style="' + btn + 'background:none;border:0;color:#7c2d12">✕</button></div>';
+      b.addEventListener("click", function (e) {
+        var t = e.target.closest ? e.target.closest("button") : null;
+        if (!t) return;
+        if (t.getAttribute("data-x")) { b.remove(); try { sessionStorage.setItem("math-fbb", "1"); } catch (er) {} return; }
+        var done = function () { t.textContent = "✓ نُسخ: الصقه في Chrome"; };
+        var old = function () {
+          var ta = document.createElement("textarea"); ta.value = url; ta.setAttribute("readonly", ""); ta.style.cssText = "position:fixed;opacity:0";
+          document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); } catch (er) {} ta.remove(); done();
+        };
+        try { navigator.clipboard.writeText(url).then(done, old); } catch (er) { old(); }
+      });
+      document.body.insertBefore(b, document.body.firstChild);
+    }
+    if (document.body) show(); else document.addEventListener("DOMContentLoaded", show);
+  })();
+
   var pm = rel.match(/^([1-4]m)\/(?:(t[1-3])\/([a-z0-9]+)|(bem))\//);
-  if (!pm) return;
+  if (!pm) { initDaily(); return; }
   var level = pm[1], term = pm[2] || "t1", section = pm[3] || pm[4];
   var home = ROOT.href + "#" + level + "-" + term;
   function $(s, r) { return (r || document).querySelector(s); }
@@ -308,6 +358,33 @@
   function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
   function fmt(n) { return String(Math.round(n * 100) / 100).replace(".", ","); }
   function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+
+  /* ---------- 0d. Arabic number + counted noun in texts the pages write themselves (2026-11-18 his remark «10 سؤالا، 3 سؤالا، 1 وضعية…»)
+     Old pages write «⭐ 5 نجمة» or «بعد 3 دقيقة»: fixed here when they appear, without touching the pages. ---------- */
+  (function () {
+    var RX = [[/(⭐\s*)(\d+) نجمة/g, "star"], [/(بعد |خلال |حوالي )(\d+) دقيقة/g, "min"], [/()(\d+) سؤالا/g, "q"]];
+    function fix(t) {
+      var v = t.nodeValue, w = v;
+      if (!/\d/.test(v)) return;
+      RX.forEach(function (r) { w = w.replace(r[0], function (all, pre, n) { return pre + arN(+n, r[1], r[1] === "min"); }); });
+      if (w !== v) t.nodeValue = w;
+    }
+    function walk(n) {
+      if (n.nodeType === 3) return fix(n);
+      if (n.nodeType !== 1 || /^(SCRIPT|STYLE|TEXTAREA|INPUT)$/.test(n.nodeName)) return;
+      var tw = document.createTreeWalker(n, 4), t;
+      while ((t = tw.nextNode())) fix(t);
+    }
+    function start() {
+      walk(document.body);
+      try {
+        new MutationObserver(function (ms) {
+          ms.forEach(function (m) { if (m.type === "characterData") fix(m.target); else Array.prototype.forEach.call(m.addedNodes, walk); });
+        }).observe(document.body, { childList: true, subtree: true, characterData: true });
+      } catch (e) {}
+    }
+    if (document.body) start(); else document.addEventListener("DOMContentLoaded", start);
+  })();
 
   /* ---------- styles ---------- */
   var css = `
@@ -993,11 +1070,11 @@ body.sx-exam .sx-calc-fab{bottom:74px}
           var ls = JSON.parse(store("math-last") || "null");
           if (ls && ls.u === location.pathname + location.search && ls.y) window.scrollTo(0, ls.y);
         } catch (e) {}
-        toast("▶ أكملتَ من حيث توقفت (" + nSaved + " من " + allQ.length + " سؤالا).");
+        toast("▶ أكملتَ من حيث توقفت (" + nSaved + " من " + arN(allQ.length, "q", 1) + ").");
       }, 60);
     } else if (nSaved) {
       var rb = el("div", "sx-resume");
-      rb.innerHTML = '<span>📌 لديك محاولة محفوظة على هذا الجهاز (' + nSaved + " من " + allQ.length + ' سؤالا).</span>' +
+      rb.innerHTML = '<span>📌 لديك محاولة محفوظة على هذا الجهاز (' + nSaved + " من " + arN(allQ.length, "q", 1) + ').</span>' +
         '<button type="button" class="go">▶ أكمل من حيث توقفت</button><button type="button" class="new">↺ ابدأ من جديد</button>';
       $(".go", rb).onclick = function () { rb.remove(); replay(); };
       $(".new", rb).onclick = function () { clearLog(); rb.remove(); };
@@ -1066,7 +1143,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         '<li>عند «📥 سلّم ورقتك» أو انتهاء الوقت تُصحَّح الورقة كلها مرة واحدة: الجواب الصحيح يأخذ علامته كاملة، ويظهر الحل النموذجي وسلم التنقيط وبطاقة التشخيص.</li>' +
         '<li>لا تنس الوحدة في كل جواب، خاصة في الوضعية الإدماجية.</li></ul>' +
         '<div class="sx-lbl">المدة:</div><div class="sx-durs">' + opts.map(function (m) {
-          return '<button type="button" data-m="' + m + '" class="' + (m === def ? "on" : "") + '">' + (m >= 60 && m % 60 === 0 ? (m === 60 ? "ساعة" : m === 120 ? "ساعتان" : m / 60 + " ساعات") : m === 90 ? "ساعة ونصف" : m + " دقيقة") + "</button>";
+          return '<button type="button" data-m="' + m + '" class="' + (m === def ? "on" : "") + '">' + (m >= 60 && m % 60 === 0 ? (m === 60 ? "ساعة" : m === 120 ? "ساعتان" : m / 60 + " ساعات") : m === 90 ? "ساعة ونصف" : arN(m, "min")) + "</button>";
         }).join("") + "</div>" +
         (started ? '<p class="sx-warn">⚠️ ستبدأ الورقة من جديد (تُمحى محاولتك الحالية على هذا الجهاز).</p>' : "") +
         '<div class="sx-row"><button type="button" class="sx-main go">▶ ابدأ الامتحان</button><button type="button" class="sx-btn x2">إلغاء</button></div>';
@@ -1140,7 +1217,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       var miss = allQ.filter(function (q) { return !(st.ans[q.qId] && String(st.ans[q.qId]).trim()); }).length;
       var ov = el("div", "sx-ov"), box = el("div", "sx-sheet sx-dlg");
       box.innerHTML = '<div class="sx-top"><b>📥 تسليم الورقة</b></div><p>هل تريد تسليم ورقتك الآن؟ بقي من الوقت <bdi dir="ltr">' + mmss(st.end - Date.now()) + "</bdi>." +
-        (miss ? "<br>⚠️ لم تُجب عن " + miss + " سؤالا." : "") + '</p><div class="sx-row"><button type="button" class="sx-main go">نعم، سلّم الورقة</button><button type="button" class="sx-btn no">أكمل الامتحان</button></div>';
+        (miss ? "<br>⚠️ لم تُجب عن " + arN(miss, "q", 1) + "." : "") + '</p><div class="sx-row"><button type="button" class="sx-main go">نعم، سلّم الورقة</button><button type="button" class="sx-btn no">أكمل الامتحان</button></div>';
       ov.appendChild(box); document.body.appendChild(ov);
       $(".no", box).onclick = function () { ov.remove(); };
       $(".go", box).onclick = function () { ov.remove(); finishExam(false); };
@@ -1193,7 +1270,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
     if (chal) {
       var cbn = el("div", "sx-chal");
       cbn.innerHTML = "🏁 <span></span>";
-      $("span", cbn).textContent = "تحدٍّ من " + (chal.n || "زميلك") + ": " + fmt(chal.s) + " / " + chal.m + (chal.t ? " خلال " + chal.t + " دقيقة" : "") + ". هل تتغلّب على هذه النتيجة؟";
+      $("span", cbn).textContent = "تحدٍّ من " + (chal.n || "زميلك") + ": " + fmt(chal.s) + " / " + chal.m + (chal.t ? " خلال " + arN(chal.t, "min", 1) : "") + ". هل تتغلّب على هذه النتيجة؟";
       root.parentElement.insertBefore(cbn, root);
     }
     function timeUsed() {
@@ -1214,7 +1291,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
           (o.st === "ok" ? "" : '<div class="acts" data-k="' + k + '"><button type="button" class="see">📖 راجع الحل</button>' +
             (o.g ? '<button type="button" class="gen">🔄 تمرين مشابه</button>' : "") + '<span class="rem"></span></div>');
       }).join("") +
-        (tu ? '<p class="tip">⏱️ ' + (tu.exam ? "وضع الامتحان: استغرقت " + mins + " دقيقة من " + tu.exam : "المدة: حوالي " + mins + " دقيقة") + ".</p>" : "") +
+        (tu ? '<p class="tip">⏱️ ' + (tu.exam ? "وضع الامتحان: استغرقت " + arN(mins, "min", 1) + " من " + tu.exam : "المدة: حوالي " + arN(mins, "min", 1)) + ".</p>" : "") +
         (rows.some(function (o) { return o.st !== "ok"; }) ? '<p class="tip">🔁 ابدأ بالموارد 🔴 ثم 🟡: اقرأ الحل النموذجي، ثم تدرّب بتمرين مشابه، وأعد الورقة غدا بهدوء.</p>'
           : '<p class="tip">🌟 كل الموارد متحكَّم فيها! جرّب تحديا أو سلسلة أخرى من الفهرس.</p>');
       if (chal) {
@@ -1323,7 +1400,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       var code = btoa(unescape(encodeURIComponent(JSON.stringify({ n: name, s: r.s, m: r.m, t: mins })))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
       var url = location.href.split("#")[0].split("?")[0] + "?c=" + code;
       var t = document.title.split(" - ")[0];
-      var text = "🏁 أحرزتُ " + fmt(r.s) + "/" + r.m + " في «" + t + "»" + (mins ? " خلال " + mins + " دقيقة" : "") + "، هل يمكنك التغلب على نتيجتي؟";
+      var text = "🏁 أحرزتُ " + fmt(r.s) + "/" + r.m + " في «" + t + "»" + (mins ? " خلال " + arN(mins, "min", 1) : "") + "، هل يمكنك التغلب على نتيجتي؟";
       if (navigator.share) { navigator.share({ text: text, url: url }).catch(function () {}); return; }
       copyTxt(text + "\n" + url);
       toast("🔗 نُسخت رسالة التحدي: الصقها لزميلك في واتساب أو ماسنجر.");
@@ -1356,7 +1433,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       x.direction = "ltr"; x.fillStyle = "#1e3a8a"; x.font = "bold 150px " + F; x.fillText(fmt(r.s) + " / " + (r.m || 20), W / 2, 840);
       x.direction = "rtl"; x.fillStyle = "#92400e"; x.font = "bold 40px " + F;
       var mins = tu ? Math.max(1, Math.round(tu.ms / 60000)) : 0;
-      x.fillText((r.st ? "⭐ " + r.st + " نجمة" : "") + (r.st && mins ? "   ·   " : "") + (mins ? "⏱️ " + mins + " دقيقة" : ""), W / 2, 910);
+      x.fillText((r.st ? "⭐ " + arN(r.st, "star") : "") + (r.st && mins ? "   ·   " : "") + (mins ? "⏱️ " + arN(mins, "min") : ""), W / 2, 910);
       /* diagnosis, small */
       var y = 975, shown = rows.slice(0, 5);
       x.font = "bold 30px " + F; x.textAlign = "right";
@@ -1619,8 +1696,10 @@ body.sx-exam .sx-calc-fab{bottom:74px}
     var p = P / g, q = Q / g, n = P < 0 ? "−" : "";
     return [M(name + " = " + n + FR(Math.abs(P) + " ÷ " + g, Q + " ÷ " + g) + " = " + SF(p, q))];
   }
+  var GEN = genBank();
+  function genBank() {
   var SMSG = "إجابتك تساوي النتيجة، لكنها ليست على أبسط شكل: أكمل الاختزال (اقسم البسط والمقام على قاسمهما المشترك الأكبر).";
-  var GEN = {
+  return {
     pgcd: function () {
       var g, n, m, a, b;
       do { g = ri(4, 45); n = ri(2, 14); m = ri(n + 1, 3 * n); a = g * m; b = g * n; } while (gcd(m, n) !== 1 || a > 1500);
@@ -1872,6 +1951,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         res: "النتيجة: " + M(dn(v) + " " + u + "²"), concl: "<b>الاستنتاج:</b> مساحة المثلث القائم " + M(dn(v) + " " + u + "²") + "." };
     }
   };
+  }
   function genFor(ex, q) {
     var p = plain(q.text || ""), t = plain(ex.title || ""), h = q.text || "", c = plain(ex.context || "");
     if (/وضعية/.test(t)) return null;
@@ -2026,5 +2106,164 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       tb.type = "button"; tb.onclick = toggle;
       bar.insertBefore(tb, bar.children[1]);
     }
+  }
+
+  /* ---------- 7. «☀️ سؤال اليوم» on the index (2026-11-18 his ask): ONE question a day for each level, the same for
+     everybody on the same date (numbers drawn from the date), 3 tries with hint 1 / hint 2 / model answer, stars,
+     «⚡ تحدي الـ3 دقائق» and the streak «🔥 سلسلة المواظبة» kept on this device only ("math-daily", per child). ---------- */
+  function initDaily() {
+    var host = document.getElementById("daily");
+    if (!host) return;
+    var DAILY = { "1m": ["x10", "decops", "rect", "circle", "rtri"], "2m": ["eucl", "prio", "frac2"],
+      "3m": ["relmul", "fracop", "midline"], "4m": ["pgcd", "irr", "aroot", "rootsum"] };
+    var LV = { "1m": "الأولى متوسط", "2m": "الثانية متوسط", "3m": "الثالثة متوسط", "4m": "الرابعة متوسط" };
+    var SYM = { "4m": ["√", "²", "−", ";", ",", "/", "×", "⌫"], "3m": ["−", "/", ",", ";", "⌫"], "2m": ["/", ",", ";", "⌫"], "1m": [",", "⌫"] }; /* = GSYM of the pages */
+    var PRAISE = ["أحسنت! تركيزك أوصلك إلى الجواب الصحيح.", "ممتاز! الصبر والدقة سرّ النجاح.", "رائع! واصل هكذا كل يوم."];
+    var GEN2 = genBank();
+    function ymd(d) { return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
+    function dayNo(d) { return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 864e5); }
+    var now = new Date(), today = ymd(now), yest = ymd(new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1));
+    if (now.getMonth() >= 1 && now.getMonth() <= 5) DAILY["4m"] = DAILY["4m"].concat(["thales", "trig"]); /* 2nd/3rd term */
+    function load() { try { return JSON.parse(localStorage.getItem("math-daily") || "{}") || {}; } catch (e) { return {}; } }
+    function save(d) { try { localStorage.setItem("math-daily", JSON.stringify(d)); } catch (e) {} }
+    function streakNow(d) { return d.last === today || d.last === yest ? d.streak || 0 : 0; }
+    function seeded(seed) {
+      return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+    }
+    function question(lv) {
+      var list = DAILY[lv], n = dayNo(now), id = list[(n + lv.charCodeAt(0)) % list.length], h = 0, s = today + "|" + lv, R = Math.random, g;
+      for (var i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 2654435761);
+      Math.random = seeded(h);
+      try { g = GEN2[id](); } finally { Math.random = R; }
+      return g;
+    }
+    function badge(n) {
+      return n >= 30 ? "🏆 شهر كامل من المواظبة!" : n >= 14 ? "🥇 أسبوعان متتاليان، مواظبة رائعة!" : n >= 7 ? "🏅 أسبوع كامل دون انقطاع!" :
+        n >= 5 ? "🔥 واظبت " + arN(n, "day") + " متتالية!" : n >= 3 ? "🔥 بداية مواظبة جميلة: " + arN(n, "day") + " متتالية." : "";
+    }
+    var css = document.createElement("style");
+    css.textContent =
+      "#daily{margin:12px 0 4px;background:var(--surface,#fff);color:var(--text,#0f172a);border:1px solid var(--border,#e2e8f0);border-top:4px solid var(--accent,#f59e0b);border-radius:16px;padding:12px 14px;box-shadow:var(--shadow-sm)}" +
+      "#daily .dh{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}" +
+      "#daily h2{margin:0;font-size:1.05rem}#daily .lvn{color:var(--muted,#475569);font-size:.85rem;font-weight:700}" +
+      "#daily .pills{display:flex;gap:6px;flex-wrap:wrap}#daily .pill{font-size:.8rem;font-weight:800;border-radius:999px;padding:3px 10px;border:1px solid var(--border,#e2e8f0);background:var(--soft,#f8fafc)}" +
+      "#daily .pill.fire{border-color:#fdba74}#daily .pill.t.late{color:var(--muted,#475569)}" +
+      "#daily .dq{margin:10px 0 8px;font-size:1.05rem;line-height:1.9}" +
+      "#daily .math{white-space:nowrap;direction:ltr;unicode-bidi:isolate;font-family:Arial,sans-serif}" +
+      "#daily .fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.05;margin:0 2px;font-size:.92em}" +
+      "#daily .fr>span:first-child{border-bottom:2px solid currentColor;padding:0 3px 1px}#daily .fr>span:last-child{padding:1px 3px 0}" +
+      "#daily .chip{display:inline-block;font-size:.78rem;font-weight:700;border-radius:8px;padding:2px 8px;margin:0 0 6px 6px;background:var(--accent-light,#fef3c7);color:#713f12}" +
+      "#daily .inrow{display:flex;gap:8px}#daily input{flex:1;min-width:0;font:inherit;font-size:1.05rem;padding:8px 10px;border:2px solid var(--border,#cbd5e1);border-radius:10px;background:var(--surface,#fff);color:var(--text,#0f172a);direction:ltr;text-align:center}" +
+      "#daily .ok{font:inherit;font-weight:800;border:0;border-radius:10px;padding:8px 16px;background:var(--primary,#0f4c81);color:#fff;cursor:pointer}" +
+      "#daily .ok:disabled,#daily input:disabled{opacity:.6}" +
+      "#daily .syms{display:flex;gap:6px;margin:8px 0 0;flex-wrap:nowrap;overflow-x:auto}#daily .syms button{direction:ltr;unicode-bidi:isolate;font:inherit;font-weight:800;min-width:34px;flex:0 0 auto;padding:5px 8px;border-radius:9px;border:1.5px solid var(--border,#cbd5e1);background:var(--soft,#f8fafc);color:var(--text,#0f172a);cursor:pointer}" +
+      "#daily .fb{margin-top:8px;border-radius:10px;padding:8px 10px;font-size:.92rem;line-height:1.8}#daily .fb:empty{display:none}" +
+      "#daily .fb.h{background:#fffbeb;border:1px solid #fcd34d;color:#713f12}#daily .fb.s{background:#dcfce7;border:1px solid #86efac;color:#14532d}#daily .fb.f{background:#eff6ff;border:1px solid #93c5fd;color:#1e3a8a}" +
+      "#daily .sol{margin-top:8px;border:1px solid var(--border,#e2e8f0);border-radius:10px;padding:8px 10px;line-height:1.9}#daily .sol h4{margin:0 0 4px;font-size:.92rem}" +
+      "#daily .sol .rule{color:#92400e}#daily .sol .end{font-weight:800}#daily .sol>div{overflow-x:auto}" +
+      "#daily .end2{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:8px;font-size:.9rem}" +
+      "#daily .bdg{font-weight:800;color:#c2410c}#daily .mute{font:inherit;border:0;background:none;cursor:pointer;font-size:1rem}" +
+      "#daily .shake{animation:dshake .35s}@keyframes dshake{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}" +
+      "#daily .burst{font-size:1.2rem;letter-spacing:2px}#daily [hidden]{display:none!important}";
+    document.head.appendChild(css);
+    var mute = false;
+    try { mute = localStorage.getItem("math-daily-mute") === "1"; } catch (e) {}
+    function tone(ok) {
+      if (mute) return;
+      try {
+        var A = window.__dAC || (window.__dAC = new (window.AudioContext || window.webkitAudioContext)()), o = A.createOscillator(), g = A.createGain();
+        o.frequency.value = ok ? 880 : 220; o.type = ok ? "sine" : "triangle"; g.gain.value = .08;
+        o.connect(g); g.connect(A.destination); o.start(); o.stop(A.currentTime + (ok ? .18 : .25));
+      } catch (e) {}
+    }
+    var cur = null, timer = null;
+    function render(lv) {
+      if (!DAILY[lv]) { host.hidden = true; return; }
+      cur = lv; host.hidden = false; clearInterval(timer);
+      var D = load(), key = today + "|" + lv, rec = (D.done || {})[key], g = question(lv), left = 3, t0 = Date.now(), st = streakNow(D);
+      var numeric = g.ans.every(function (a) { return /^[−-]?\d+(,\d+)?$/.test(a); });
+      host.innerHTML = '<div class="dh"><div><h2>☀️ سؤال اليوم</h2><span class="lvn">' + LV[lv] + " · " + now.toLocaleDateString("ar-DZ", { weekday: "long", day: "numeric", month: "long" }) + "</span></div>" +
+        '<div class="pills"><span class="pill fire" title="سلسلة المواظبة: أيام متتالية أجبت فيها عن سؤال اليوم">🔥 ' + st + '</span><span class="pill t">⏱️ 3:00</span>' +
+        '<button type="button" class="mute" aria-label="الصوت">' + (mute ? "🔇" : "🔊") + "</button></div></div>" +
+        '<div class="dq">' + g.q + "</div>" +
+        (g.chip || g.unit ? "<div>" + (g.chip ? '<span class="chip">' + g.chip + "</span>" : "") + (g.unit ? '<span class="chip">📏 اكتب الجواب مع الوحدة: ' + g.unit + "</span>" : "") + "</div>" : "") +
+        '<div class="inrow"><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" placeholder="اكتب إجابتك هنا"' + (numeric ? ' inputmode="decimal"' : "") + ' aria-label="إجابتك"><button type="button" class="ok">تحقّق</button></div>' +
+        '<div class="syms">' + SYM[lv].map(function (s) { return '<button type="button">' + s + "</button>"; }).join("") + "</div>" +
+        '<div class="fb" role="status"></div>' +
+        '<div class="sol" hidden><h4>✔ الإجابة النموذجية المفصلة:</h4>' + g.steps.map(function (s) { return '<div class="' + (/^<b>الطريقة/.test(s) ? "rule" : "") + '">' + s + "</div>"; }).join("") +
+        "<div>" + g.res + '</div><div class="end">' + g.concl + "</div></div>" +
+        '<div class="end2" hidden><span class="bdg"></span><span class="nx">🌙 سؤال جديد غدًا إن شاء الله.</span></div>';
+      var inp = host.querySelector("input"), ok = host.querySelector(".ok"), fb = host.querySelector(".fb"), sol = host.querySelector(".sol"),
+        tp = host.querySelector(".pill.t"), fire = host.querySelector(".pill.fire"), end2 = host.querySelector(".end2");
+      host.querySelector(".mute").onclick = function () { mute = !mute; this.textContent = mute ? "🔇" : "🔊"; try { localStorage.setItem("math-daily-mute", mute ? "1" : "0"); } catch (e) {} };
+      Array.prototype.forEach.call(host.querySelectorAll(".syms button"), function (b) {
+        b.onclick = function () { if (inp.disabled) return; var s = b.textContent; inp.value = s === "⌫" ? inp.value.slice(0, -1) : inp.value + s; inp.focus(); };
+      });
+      function showEnd(r) {
+        inp.disabled = true; ok.disabled = true; sol.hidden = false; end2.hidden = false; tp.hidden = true;
+        var D2 = load(), s2 = streakNow(D2);
+        fire.textContent = "🔥 " + s2;
+        host.querySelector(".bdg").textContent = badge(s2) || (s2 ? "🔥 سلسلة المواظبة: " + arN(s2, "day") + "." : "");
+        if (r && r.a) inp.value = r.a;
+      }
+      if (rec) {
+        fb.className = rec.ok ? "fb s" : "fb f";
+        fb.innerHTML = rec.ok ? "✅ أجبت عن سؤال اليوم إجابة صحيحة" + (rec.st ? ' <span class="burst">' + "⭐".repeat(rec.st) + "</span>" : "") + (rec.fast ? " ⚡ في أقل من 3 دقائق." : ".")
+          : "📘 أنهيت سؤال اليوم. راجع الإجابة النموذجية في كراسك.";
+        return showEnd(rec);
+      }
+      timer = setInterval(function () {
+        var r = 180 - Math.floor((Date.now() - t0) / 1000);
+        if (r <= 0) { clearInterval(timer); tp.textContent = "⏱️ خذ وقتك"; tp.classList.add("late"); return; }
+        tp.textContent = "⏱️ " + Math.floor(r / 60) + ":" + ("0" + r % 60).slice(-2);
+      }, 1000);
+      function finish(good, raw) {
+        clearInterval(timer);
+        var D2 = load(), fast = good && Date.now() - t0 <= 180000;
+        if (D2.last !== today) { D2.streak = D2.last === yest ? (D2.streak || 0) + 1 : 1; D2.last = today; }
+        D2.best = Math.max(D2.best || 0, D2.streak || 0);
+        var done = D2.done || {}, keep = {};
+        Object.keys(done).forEach(function (k) { if (k.slice(0, 10) >= ymd(new Date(now.getFullYear(), now.getMonth(), now.getDate() - 7))) keep[k] = done[k]; });
+        keep[key] = { ok: good, st: good ? left : 0, fast: fast, a: String(raw).slice(0, 40) };
+        D2.done = keep; save(D2);
+        tone(good);
+        if (good) {
+          fb.className = "fb s";
+          fb.innerHTML = '<span class="burst">' + "⭐".repeat(left) + "</span> " + PRAISE[(dayNo(now) + left) % PRAISE.length] + (fast ? " ⚡ نجحت في تحدي الـ3 دقائق!" : "") +
+            (g.unit && !hasUnit(raw, g.unit) ? "<br>⚠️ انتبه: لم تكتب الوحدة (" + g.unit + ")، فلا تنسها في كراسك وفي الامتحان." : "");
+          try { if (window.flyStars) window.flyStars(fb, 14); } catch (e) {}
+        } else {
+          fb.className = "fb f";
+          fb.innerHTML = "🌟 لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. اقرأ الإجابة النموذجية خطوة خطوة، وغدًا سؤال جديد.";
+        }
+        showEnd(null);
+      }
+      function check() {
+        if (inp.disabled) return;
+        var raw = inp.value.trim();
+        if (!raw) { fb.className = "fb h"; fb.textContent = "اكتب إجابتك أولا في الخانة."; return; }
+        var v = nz(raw);
+        if (g.ans.some(function (a) { return nz(a) === v; })) return finish(true, raw);
+        left--;
+        tone(false);
+        inp.classList.remove("shake"); void inp.offsetWidth; inp.classList.add("shake");
+        if (left > 0) {
+          var simp = g.simp && g.simp(v);
+          fb.className = "fb h";
+          fb.innerHTML = (simp ? g.sm : left === 2 ? "لا بأس، أعد قراءة السؤال بهدوء وركّز." : "محاولة أخيرة: اكتب الحساب في كراسك قبل أن تجيب.") +
+            "<br><strong>💡 التلميح " + (3 - left) + ":</strong> " + (left === 2 ? g.h1 : g.h2);
+        } else finish(false, raw);
+      }
+      ok.onclick = check;
+      inp.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); check(); } });
+    }
+    function curLevel() {
+      var b = document.querySelector('.lv[aria-pressed="true"]');
+      return b ? b.getAttribute("data-level") : "1m";
+    }
+    render(curLevel());
+    function again() { setTimeout(function () { var l = curLevel(); if (l !== cur) render(l); }, 30); }
+    document.addEventListener("click", function (e) { if (e.target.closest && e.target.closest("[data-level]")) again(); });
+    window.addEventListener("hashchange", again);
   }
 })();
