@@ -1,0 +1,22 @@
+name: tests
+
+# Shared answer checker (assets/answer-check.js): same answer written another way is accepted,
+# another value is refused, and no page's «partial» answer becomes «exact». Does not block the deploy.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  answer-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node tests/answer-check.test.js
