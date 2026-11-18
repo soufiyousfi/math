@@ -2133,8 +2133,21 @@ body.sx-exam .sx-calc-fab{bottom:74px}
   function initDaily() {
     var host = document.getElementById("daily");
     if (!host) return;
-    var DAILY = { "1m": ["x10", "decops", "rect", "circle", "rtri"], "2m": ["eucl", "prio", "frac2"],
-      "3m": ["relmul", "fracop", "midline"], "4m": ["pgcd", "irr", "aroot", "rootsum"] };
+    /* follows the annual distribution (التوزيع السنوي، المخططات السنوية 2022) a little BEHIND it (his ask «متزامن مع المخطط أو متأخر عنه قليلا»):
+       a type enters the daily questions on the Sunday AFTER the week its resource is taught ("MM-DD" of the 2026/2027 calendar). */
+    var PLAN = {
+      "1m": [["10-25", "x10"], ["11-02", "decops"], ["11-29", "rect"], ["12-06", "rtri"], ["12-06", "circle"]],
+      "2m": [["10-18", "prio"], ["10-25", "eucl"], ["11-02", "frac2"]],
+      "3m": [["10-18", "relmul"], ["11-02", "fracop"], ["11-22", "midline"]],
+      "4m": [["10-11", "pgcd"], ["10-18", "irr"], ["10-25", "aroot"], ["10-25", "rootsum"], ["11-08", "thales"], ["11-22", "trig"]]
+    };
+    function syDay(m, d) { return (m >= 8 ? m - 8 : m + 4) * 31 + d; }   /* order inside a school year that starts in September */
+    function pool(lv) {
+      var t = syDay(now.getMonth(), now.getDate()), L = (PLAN[lv] || []).filter(function (x) { var p = x[0].split("-"); return syDay(+p[0] - 1, +p[1]) <= t; });
+      if (!L.length && PLAN[lv]) L = [PLAN[lv][0]];
+      return L.map(function (x) { return x[1]; });
+    }
+    var DAILY;
     var LV = { "1m": "الأولى متوسط", "2m": "الثانية متوسط", "3m": "الثالثة متوسط", "4m": "الرابعة متوسط" };
     var SYM = { "4m": ["√", "²", "−", ";", ",", "/", "×", "⌫"], "3m": ["−", "/", ",", ";", "⌫"], "2m": ["/", ",", ";", "⌫"], "1m": [",", "⌫"] }; /* = GSYM of the pages */
     var PRAISE = ["أحسنت! تركيزك أوصلك إلى الجواب الصحيح.", "ممتاز! الصبر والدقة سرّ النجاح.", "رائع! واصل هكذا كل يوم."];
@@ -2142,7 +2155,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
     function ymd(d) { return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
     function dayNo(d) { return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 864e5); }
     var now = new Date(), today = ymd(now), yest = ymd(new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1));
-    if (now.getMonth() >= 1 && now.getMonth() <= 5) DAILY["4m"] = DAILY["4m"].concat(["thales", "trig"]); /* 2nd/3rd term */
+    DAILY = { "1m": pool("1m"), "2m": pool("2m"), "3m": pool("3m"), "4m": pool("4m") };
     function load() { try { return JSON.parse(localStorage.getItem("math-daily") || "{}") || {}; } catch (e) { return {}; } }
     function save(d) { try { localStorage.setItem("math-daily", JSON.stringify(d)); } catch (e) {} }
     function streakNow(d) { return d.last === today || d.last === yest ? d.streak || 0 : 0; }
@@ -2150,7 +2163,8 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
     }
     function question(lv) {
-      var list = DAILY[lv], n = dayNo(now), id = list[(n + lv.charCodeAt(0)) % list.length], h = 0, s = today + "|" + lv, R = Math.random, g;
+      /* every other day the newest resource taught, otherwise a review of an earlier one */
+      var list = DAILY[lv], n = dayNo(now), id = n % 2 ? list[list.length - 1] : list[(Math.floor(n / 2) + lv.charCodeAt(0)) % list.length], h = 0, s = today + "|" + lv, R = Math.random, g;
       for (var i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 2654435761);
       Math.random = seeded(h);
       try { g = GEN2[id](); } finally { Math.random = R; }
@@ -2240,7 +2254,11 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         host.querySelector(".inrow").hidden = true; host.querySelector(".syms").hidden = true;
         sol.hidden = !r; var tg = host.querySelector(".tg");
         tg.textContent = r ? "🔼 أخفِ الحل" : "📖 الحل المفصل";
-        tg.onclick = function () { sol.hidden = !sol.hidden; tg.textContent = sol.hidden ? "📖 الحل المفصل" : "🔼 أخفِ الحل"; };
+        tg.onclick = function () {
+          sol.hidden = !sol.hidden; tg.textContent = sol.hidden ? "📖 الحل المفصل" : "🔼 أخفِ الحل";
+          var x = (load().done || {})[key];
+          if (sol.hidden && x && !extra) mini(lv, x);   /* solution read: fold the card */
+        };
         var D2 = load(), s2 = streakNow(D2);
         fire.textContent = "🔥 " + s2;
         host.querySelector(".bdg").textContent = badge(s2) || (s2 ? "🔥 سلسلة المواظبة: " + arN(s2, "day") + "." : "");
@@ -2259,6 +2277,11 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         if (r <= 0) { clearInterval(timer); tp.textContent = "⏱️ خذ وقتك"; tp.classList.add("late"); return; }
         tp.textContent = "⏱️ " + Math.floor(r / 60) + ":" + ("0" + r % 60).slice(-2);
       }, 1000);
+      /* folds BY ITSELF a few seconds after the answer (his «الإخفاء الأفضل يكون آليا»), unless the pupil opens the solution or asks another question */
+      var foldT = null;
+      function autoFold() {
+        foldT = setTimeout(function () { if (!host.contains(fb)) return; var x = (load().done || {})[key]; if (x && sol.hidden) mini(lv, x); }, 6000);
+      }
       function finish(good, raw) {
         clearInterval(timer);
         if (extra) {
@@ -2268,6 +2291,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
           if (good) try { if (window.flyStars) window.flyStars(fb, 14); } catch (e) {}
           return showEnd(null);
         }
+        autoFold();
         var D2 = load(), fast = good && Date.now() - t0 <= 180000;
         if (D2.last !== today) { D2.streak = D2.last === yest ? (D2.streak || 0) + 1 : 1; D2.last = today; }
         D2.best = Math.max(D2.best || 0, D2.streak || 0);
