@@ -576,9 +576,9 @@ function card(it, where) {
   const go = !isHtml ? "افتح الملف" : done ? "أعد المحاولة" : P ? "أكمل الحل" : it.section === "dars" ? "ابدأ الدرس" : it.section === "al3ab" ? "ابدأ اللعب" : "ابدأ الحل";
   const sheet = isHtml && it.nEx && ["fard", "wadjib", "series", "tahaddi", "chahada", "ikhtibar", "idmaj"].includes(it.section)
     ? `<a class="alt" href="${esc(it.url)}#sheet" title="قراءة الموضوع كاملا دون حل">📄 الموضوع</a>` : "";
-  const pupil = /mu2allif/.test(it.url || ""), itqan = /itqan-/.test(it.url || "");
+  const pupil = /mu2allif/.test(it.url || ""), itqan = /itqan-/.test(it.url || ""), lab = /mukhtabar-/.test(it.url || "");
   return `<article class="card s-${it.section}${done ? " done" : ""}${pupil ? " pupil" : ""}${itqan ? " itqan" : ""}">
-    <div class="top">${where === true ? badge(it) : ""}${pupil ? `<span class="pupil-b">🌟 إبداع التلاميذ</span>` : ""}${itqan ? `<span class="itqan-b">🎯 أُتقِن · درس علاجي</span>` : ""}<span class="type">${s[3]} ${s[2]}</span>${ct.seq ? `<span class="seq">${esc(ct.seq)}</span>` : ""}${isNew(it.date) ? `<span class="new" title="جديد"><span class="dot"></span></span>` : ""}</div>
+    <div class="top">${where === true ? badge(it) : ""}${pupil ? `<span class="pupil-b">🌟 إبداع التلاميذ</span>` : ""}${itqan ? `<span class="itqan-b">🎯 أُتقِن · درس علاجي</span>` : ""}${lab ? `<span class="itqan-b">✋ مختبر بالسحب</span>` : ""}<span class="type">${s[3]} ${s[2]}</span>${ct.seq ? `<span class="seq">${esc(ct.seq)}</span>` : ""}${isNew(it.date) ? `<span class="new" title="جديد"><span class="dot"></span></span>` : ""}</div>
     <h3>${esc(ct.t)}</h3>
     ${meta.length ? `<div class="meta">${meta.map(m => `<span>${m}</span>`).join("")}</div>` : ""}
     ${tps.length ? `<p class="topics">${tps.map(esc).join(" · ")}</p>` : ""}
