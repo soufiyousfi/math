@@ -521,7 +521,7 @@ function cleanTitle(it) {
   return { t: t.trim(), seq };
 }
 function topicsOf(it) {
-  return (it.topics || []).map(s => s.replace(/^(تطبيق مباشر|ربط|تميّز|تميز)\s*:\s*/, "").replace(/\s*\(.*?\)\s*/g, " ").trim()).filter(Boolean).slice(0, 4);
+  return (it.topics || []).map(s => s.replace(/^(تطبيق مباشر|ربط|تميّز|تميز)\s*:\s*/, "").replace(/\s*\([^()]*\)\s*/g, " ").replace(/\s*\([^()]*\)\s*/g, " ").replace(/[()]/g, "").replace(/\s+/g, " ").trim()).filter(Boolean).slice(0, 4);
 }
 // What the pupil did on this device (saved by the shared layer site.js)
 function progress() { try { return JSON.parse(localStorage.getItem("math-progress") || "{}") || {}; } catch (e) { return {}; } }
