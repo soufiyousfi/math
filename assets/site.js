@@ -369,6 +369,7 @@
   })();
 
   var pm = rel.match(/^([1-4]m)\/(?:(t[1-3])\/([a-z0-9]+)|(bem))\//);
+  window.__sxGenBank = genBank;
   if (!pm) { initDaily(); return; }
   var level = pm[1], term = pm[2] || "t1", section = pm[3] || pm[4];
   var home = ROOT.href + "#" + level + "-" + term;
