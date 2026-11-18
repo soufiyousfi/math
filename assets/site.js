@@ -2185,7 +2185,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       "#daily .shake{animation:dshake .35s}@keyframes dshake{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}" +
       "#daily .burst{font-size:1.2rem;letter-spacing:2px}#daily [hidden]{display:none!important}" +
       "#daily.min{padding:8px 12px;border-top-width:3px}#daily .mini{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:.9rem;font-weight:700}" +
-      "#daily .mini .fire{color:#c2410c}#daily .btns{display:inline-flex;gap:6px;flex-wrap:wrap}#daily .sh,#daily .hide,#daily .more{font:inherit;font-size:.82rem;font-weight:800;cursor:pointer;border-radius:9px;padding:4px 10px;border:1.5px solid var(--border,#cbd5e1);background:var(--soft,#f8fafc);color:var(--text,#0f172a)}";
+      "#daily .mini .fire{color:#c2410c}#daily .btns{display:inline-flex;gap:6px;flex-wrap:wrap}#daily .sh,#daily .hide,#daily .more,#daily .tg{font:inherit;font-size:.82rem;font-weight:800;cursor:pointer;border-radius:9px;padding:4px 10px;border:1.5px solid var(--border,#cbd5e1);background:var(--soft,#f8fafc);color:var(--text,#0f172a)}";
     document.head.appendChild(css);
     var mute = false;
     try { mute = localStorage.getItem("math-daily-mute") === "1"; } catch (e) {}
@@ -2227,7 +2227,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         '<div class="fb" role="status"></div>' +
         '<div class="sol" hidden><h4>✔ الإجابة النموذجية المفصلة:</h4>' + g.steps.map(function (s) { return '<div class="' + (/^<b>الطريقة/.test(s) ? "rule" : "") + '">' + s + "</div>"; }).join("") +
         "<div>" + g.res + '</div><div class="end">' + g.concl + "</div></div>" +
-        '<div class="end2" hidden><span class="bdg"></span><span class="nx">🌙 سؤال اليوم الجديد غدًا إن شاء الله.</span><span class="btns"><button type="button" class="more">➕ سؤال آخر</button><button type="button" class="hide">✓ أخفِ السؤال</button></span></div>';
+        '<div class="end2" hidden><span class="bdg"></span><span class="nx">🌙 سؤال اليوم الجديد غدًا إن شاء الله.</span><span class="btns"><button type="button" class="tg">📖 الحل المفصل</button><button type="button" class="more">➕ سؤال آخر</button><button type="button" class="hide">✓ أخفِ السؤال</button></span></div>';
       var inp = host.querySelector("input"), ok = host.querySelector(".ok"), fb = host.querySelector(".fb"), sol = host.querySelector(".sol"),
         tp = host.querySelector(".pill.t"), fire = host.querySelector(".pill.fire"), end2 = host.querySelector(".end2");
       host.querySelector(".mute").onclick = function () { mute = !mute; this.textContent = mute ? "🔇" : "🔊"; try { localStorage.setItem("math-daily-mute", mute ? "1" : "0"); } catch (e) {} };
@@ -2235,7 +2235,12 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         b.onclick = function () { if (inp.disabled) return; var s = b.textContent; inp.value = s === "⌫" ? inp.value.slice(0, -1) : inp.value + s; inp.focus(); };
       });
       function showEnd(r) {
-        inp.disabled = true; ok.disabled = true; sol.hidden = false; end2.hidden = false; tp.hidden = true;
+        inp.disabled = true; ok.disabled = true; end2.hidden = false; tp.hidden = true;
+        /* compact end (his remark «يملأ الصفحة كاملة»): no answer box, model answer folded behind a button */
+        host.querySelector(".inrow").hidden = true; host.querySelector(".syms").hidden = true;
+        sol.hidden = !r; var tg = host.querySelector(".tg");
+        tg.textContent = r ? "🔼 أخفِ الحل" : "📖 الحل المفصل";
+        tg.onclick = function () { sol.hidden = !sol.hidden; tg.textContent = sol.hidden ? "📖 الحل المفصل" : "🔼 أخفِ الحل"; };
         var D2 = load(), s2 = streakNow(D2);
         fire.textContent = "🔥 " + s2;
         host.querySelector(".bdg").textContent = badge(s2) || (s2 ? "🔥 سلسلة المواظبة: " + arN(s2, "day") + "." : "");
