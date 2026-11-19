@@ -205,6 +205,7 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
   var titles = {};
   Object.keys(act.d).forEach(function (k) { var p = act.d[k].p || {}; Object.keys(p).forEach(function (u) { if (p[u].t) titles[u] = p[u].t; }); });
   var LIM = J("math-limit", {});
+  var GOAL = +(get("math-goal") || 2) === 3 ? 3 : 2;      /* target: half (2) or a third (3) of the activities of each sequence / term */
   var days = 7;
 
   function yearStart() { var d = new Date(), y = d.getMonth() >= 8 ? d.getFullYear() : d.getFullYear() - 1; return new Date(y, 8, 1).getTime(); }
@@ -343,18 +344,20 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
     body.innerHTML = '<form id="limF">' +
       '<label>⏰ الوقت الأقصى في اليوم' + (name ? " لـ " + esc(name) : "") + '<select name="min">' + opt(["", 20, 30, 45, 60, 90, 120], LIM.min, function (v) { return v ? v + " دقيقة" : "بلا حدّ"; }) + "</select></label>" +
       '<label>🌙 ساعة التوقّف ليلا<select name="bed">' + opt(["", 20, 21, 22, 23], LIM.bed, function (v) { return v ? "بعد الساعة " + v + ":00" : "بلا حدّ"; }) + "</select></label>" +
+      '<label>🎯 هدف الحصيلة في كل مقطع وفصل<select name="goal">' + opt([2, 3], GOAL, function (v) { return v === 2 ? "نصف الأنشطة" : "ثلث الأنشطة"; }) + "</select></label>" +
       '<label>🔑 رمز الولي (اختياري، 4 أرقام) حتى لا يغيّر الابن الحدود<input name="pin" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" placeholder="' + (pin ? "الرمز محفوظ (اكتب رمزا جديدا لتغييره)" : "مثلا 2580") + '" autocomplete="off"></label>' +
       '<button type="submit" style="font:inherit;font-weight:800;border-radius:12px;padding:9px;border:0;background:var(--edge);color:#fff;cursor:pointer">💾 حفظ</button>' +
       (pin ? '<button type="button" id="noPin" style="font:inherit;border-radius:12px;padding:7px;border:1px solid var(--line);background:var(--sheet);color:var(--text);cursor:pointer">إلغاء الرمز</button>' : "") +
       '<p class="msg"></p><p class="priv">عند تجاوز الوقت أو ساعة التوقّف، تظهر للتلميذ رسالة هادئة تدعوه إلى الاستراحة (كل 10 دقائق)، ويظهر ذلك في هذا التقرير.</p></form>';
     $("limF").onsubmit = function (e) {
       e.preventDefault();
+      GOAL = +this.goal.value === 3 ? 3 : 2; put("math-goal", String(GOAL));
       LIM = { min: +this.min.value || 0, bed: +this.bed.value || 0 };
       if (!LIM.min) delete LIM.min; if (!LIM.bed) delete LIM.bed;
       put("math-limit", Object.keys(LIM).length ? JSON.stringify(LIM) : null);
       if (/^\d{4}$/.test(this.pin.value)) { try { raw.s("math-pin", this.pin.value); } catch (er) {} }
       this.querySelector(".msg").textContent = "✓ حُفظ";
-      draw();
+      draw(); if (typeof hDraw === "function" && $("hLv").value) hDraw();
     };
     if ($("noPin")) $("noPin").onclick = function () { try { (window.__kidRaw ? window.__kidRaw.r : function (k) { localStorage.removeItem(k); })("math-pin"); } catch (er) {} setForm(); };
   }
@@ -393,18 +396,24 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
     a.avg = a.marks.length ? a.marks.reduce(function (p, q) { return p + q; }, 0) / a.marks.length : null;
     return a;
   }
+  /* his rule 2026-11-19 «التحكم يكون بالنسبة الموارد التي قام بحلها وتحسب ايضا بالنسبة إلى ثلث او نصف ما هو موجود في المنصة»:
+     the level comes from the activities he SOLVED; the progress is measured against a target = half (or a third) of the activities,
+     not all of them. Below the target the level is only a first estimate. */
   function level3(a) {
     if (a.avg == null) return a.tried ? ["", "🔵 بدأ، لم يُكمل نشاطا بعد"] : ["", "⚪ لم يبدأ"];
-    if (a.avg >= 14) return ["g", "🟢 متحكّم"];
-    if (a.avg >= 10) return ["y", "🟡 متوسط"];
-    return ["r", "🔴 يحتاج دعما"];
+    var pre = a.done < a.goal ? " (حكم أوّلي)" : "";
+    if (a.avg >= 14) return ["g", "🟢 متحكّم" + pre];
+    if (a.avg >= 10) return ["y", "🟡 متوسط" + pre];
+    return ["r", "🔴 يحتاج دعما" + pre];
   }
   function hRow(head, sub, a) {
-    var L = level3(a);
+    a.goal = Math.max(1, Math.ceil(a.n / GOAL));
+    var L = level3(a), pc = Math.min(100, Math.round(a.done / a.goal * 100));
     return '<div class="hrow ' + L[0] + '"><div class="h">' + head + "<span>" + L[1] + "</span></div>" + (sub ? '<p class="n">' + sub + "</p>" : "") +
-      '<p class="d">✅ الأنشطة المكتملة: ' + a.done + " من " + a.n + (a.avg != null ? " · 📝 المعدّل " + num(a.avg) + " / 20" : "") +
-      (a.t >= 60 ? " · ⏱️ " + dur(a.t) : "") + (a.st ? " · ⭐ " + a.st : "") + "</p>" +
-      '<div class="t"><i style="width:' + (a.n ? Math.round(a.done / a.n * 100) : 0) + '%"></i></div></div>';
+      '<p class="d">🎯 التقدّم نحو الهدف: ' + Math.min(a.done, a.goal) + " من " + a.goal + " (" + pc + "%)" + (a.done >= a.goal ? " ✓ بلغ الهدف" : "") +
+      (a.avg != null ? " · 📝 المعدّل " + num(a.avg) + " / 20" : "") + "</p>" +
+      '<p class="n">أكمل ' + a.done + " من " + a.n + " في المنصة" + (a.t >= 60 ? " · ⏱️ " + dur(a.t) : "") + (a.st ? " · ⭐ " + a.st : "") + "</p>" +
+      '<div class="t"><i style="width:' + pc + '%"></i></div></div>';
   }
   function hDraw() {
     var lv = $("hLv").value, rows = hData(lv), h = "";
@@ -428,7 +437,7 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
       h += hRow("السنة الدراسية كاملة", "منذ بداية الدخول المدرسي", A);
       if (best && weak && best[0] !== weak[0]) h += '<p class="note">💪 أقوى مقطع: المقطع ' + ORD[best[0] - 1] + " (" + num(best[1]) + " / 20). 📌 يحتاج مراجعة: المقطع " + ORD[weak[0] - 1] + " (" + num(weak[1]) + " / 20).</p>";
     }
-    $("hBody").innerHTML = h + '<p class="priv">🟢 معدّل 14 فأكثر، 🟡 من 10 إلى أقل من 14، 🔴 أقل من 10. المعدّل محسوب من الأنشطة التي أكملها فقط، وهي تمارين للتدرّب لا نقاط رسمية.</p>';
+    $("hBody").innerHTML = h + '<p class="priv">🎯 الهدف: ' + (GOAL === 3 ? "ثلث" : "نصف") + ' أنشطة كل مقطع أو فصل، لأن التلميذ لا يحتاج إلى حلّ كل المنصة (يغيّره الولي في «حدود الاستعمال»). المستوى يُحسب من الأنشطة التي حلّها فقط، ويبقى «حكما أوّليا» حتى يبلغ الهدف.<br>🟢 معدّل 14 فأكثر، 🟡 من 10 إلى أقل من 14، 🔴 أقل من 10. المعدّل محسوب من الأنشطة التي أكملها فقط، وهي تمارين للتدرّب لا نقاط رسمية.</p>';
   }
   (function () {
     var sel = $("hLv"), lvs = ["1m", "2m", "3m", "4m"], used = {};
