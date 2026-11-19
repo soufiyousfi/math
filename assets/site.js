@@ -337,7 +337,7 @@
      a minute counts only when the page is on the screen AND the pupil touched / scrolled / typed in the last 3 minutes.
      Per day: total seconds, seconds per hour of the day, and per page (seconds, openings, title, first and last time).
      The report page report.html reads it. A parent may set a daily limit and a bedtime (math-limit): the pupil then gets a
-     calm reminder (not a lock), and the report shows the extra time. 90 days are kept. */
+     calm reminder (not a lock), and the report shows the extra time. 400 days are kept (a whole school year). */
   (function () {
     if (/^report\.html$/.test(rel)) return;                 /* the parent reading the report is not the child's time */
     var AK = "math-act", TICK = 10000, IDLE = 180000, pending = 0, pendingH = {}, lastIn = Date.now(), opened = false, lastAlert = 0;
@@ -358,7 +358,7 @@
         Object.keys(pendingH).forEach(function (h) { day.h[h] = (day.h[h] || 0) + pendingH[h]; });
         pending = 0; pendingH = {};
         var keys = Object.keys(a.d).sort();
-        while (keys.length > 90) delete a.d[keys.shift()];
+        while (keys.length > 400) delete a.d[keys.shift()];
         localStorage.setItem(AK, JSON.stringify(a));
       } catch (e) {}
     }

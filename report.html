@@ -67,6 +67,16 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
 .set .msg{font-weight:800;color:var(--ok);margin:0;min-height:1.4em}
 .priv{color:var(--muted);font-size:.84rem;margin:0}
 .priv li{margin:3px 0}
+.hrow{border:1px solid var(--line);border-right:5px solid var(--line);border-radius:12px;padding:8px 10px;margin:8px 0 0}
+.hrow.g{border-right-color:#16a34a}.hrow.y{border-right-color:#d97706}.hrow.r{border-right-color:#dc2626}
+.hrow .h{display:flex;justify-content:space-between;gap:8px;align-items:baseline;font-weight:900}
+.hrow .h span{flex:none;font-size:.85rem}
+.hrow .n{color:var(--muted);font-size:.8rem;margin:0}
+.hrow .d{font-size:.86rem;margin:2px 0 0}
+.hrow .t{height:7px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:6px}
+.hrow .t i{display:block;height:100%;background:var(--bar)}
+#hLv{font:inherit;font-weight:800;border-radius:999px;padding:5px 10px;border:1.5px solid var(--line);background:var(--sheet);color:var(--edge)}
+@media print{#hasila .chips{display:none!important}}
 @media print{.top,.chips,.act,details.set,.noprint{display:none!important}body{background:#fff}.sheet{break-inside:avoid;border-color:#cbd5e1}.wrap{padding:0}}
 </style>
 </head>
@@ -81,6 +91,7 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
       <button type="button" data-d="1">اليوم</button>
       <button type="button" data-d="7" class="on">آخر 7 أيام</button>
       <button type="button" data-d="30">آخر 30 يوما</button>
+      <button type="button" data-d="year">السنة الدراسية</button>
     </div>
   </section>
 
@@ -90,7 +101,7 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
   </section>
 
   <section class="sheet">
-    <h2>⏱️ وقت الاستعمال كل يوم</h2>
+    <h2 id="chartH">⏱️ وقت الاستعمال كل يوم</h2>
     <div class="chart" id="chart"></div>
     <div class="days" id="days"></div>
   </section>
@@ -103,6 +114,17 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
   <section class="sheet">
     <h2>📄 الصفحات التي فتحها ونتائجه</h2>
     <ul class="list" id="list"></ul>
+  </section>
+
+  <section class="sheet" id="hasila">
+    <h2>📋 الحصيلة: المقطع، الفصل، السنة الدراسية</h2>
+    <div class="chips" id="hTabs" role="group" aria-label="نوع الحصيلة">
+      <button type="button" data-h="seq" class="on">حسب المقطع</button>
+      <button type="button" data-h="term">حسب الفصل</button>
+      <button type="button" data-h="year">السنة الدراسية</button>
+      <select id="hLv" aria-label="المستوى"></select>
+    </div>
+    <div id="hBody"></div>
   </section>
 
   <section class="sheet act noprint">
@@ -185,13 +207,15 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
   var LIM = J("math-limit", {});
   var days = 7;
 
+  function yearStart() { var d = new Date(), y = d.getMonth() >= 8 ? d.getFullYear() : d.getFullYear() - 1; return new Date(y, 8, 1).getTime(); }
   function range(n) {
     var out = [], t = new Date(); t.setHours(12, 0, 0, 0);
+    if (n === "year") n = Math.max(1, Math.floor((t.getTime() - yearStart()) / 86400000) + 1);
     for (var i = n - 1; i >= 0; i--) out.push(dk(t.getTime() - i * 86400000));
     return out;
   }
   function draw() {
-    var ks = range(days), since = new Date(ks[0] + "T00:00:00").getTime();
+    var ks = range(days), nd = ks.length, since = new Date(ks[0] + "T00:00:00").getTime();
     var total = 0, active = 0, hours = {}, pages = {}, reminders = 0, over = 0;
     ks.forEach(function (k) {
       var d = act.d[k]; if (!d) return;
@@ -216,8 +240,8 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
     var avg = marks.length ? marks.reduce(function (a, b) { return a + b; }, 0) / marks.length : null;
     var opened = Object.keys(pages).filter(function (u) { return u !== ""; }).length;
     $("tiles").innerHTML =
-      tile(dur(total), "⏱️ وقت الاستعمال") + tile(days === 1 ? (total >= 60 ? "نعم" : "لا") : active + " / " + days, days === 1 ? "📅 نشط اليوم" : "📅 أيام النشاط") +
-      tile(dur(days > 1 ? total / Math.max(1, days) : total), "📈 المعدّل اليومي") + tile(opened, "📄 صفحات فُتحت") +
+      tile(dur(total), "⏱️ وقت الاستعمال") + tile(nd === 1 ? (total >= 60 ? "نعم" : "لا") : active + " / " + nd, nd === 1 ? "📅 نشط اليوم" : "📅 أيام النشاط") +
+      tile(dur(nd > 1 ? total / nd : total), "📈 المعدّل اليومي") + tile(opened, "📄 صفحات فُتحت") +
       tile(done, "✅ أنشطة أكملها") + tile(avg == null ? "—" : num(avg) + " / 20", "📝 معدّل النتائج");
     var al = [], night = 0;
     Object.keys(hours).forEach(function (h) { if (+h >= 22 || +h < 6) night += hours[h]; });
@@ -231,6 +255,19 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
     ks.forEach(function (k) { var d = act.d[k]; if (d && d.s > max) max = d.s; });
     max = Math.max(max, 600);
     var ch = "", dl = "", small = ks.length > 10;
+    if (ks.length > 31) {           /* the school year: one bar per month (minutes per month) */
+      var mo = {}, order = [];
+      ks.forEach(function (k) { var m = k.slice(0, 7); if (!(m in mo)) { mo[m] = 0; order.push(m); } mo[m] += (act.d[k] || {}).s || 0; });
+      var mmax = 600; order.forEach(function (m) { if (mo[m] > mmax) mmax = mo[m]; });
+      order.forEach(function (m) {
+        var s = mo[m], mon = MON[+m.slice(5) - 1];
+        ch += '<div class="c" title="' + mon + ": " + dur(s) + '"><em>' + (s >= 60 ? num(Math.round(s / 3600 * 10) / 10) + " سا" : "") + '</em><i style="height:' + Math.round(s / mmax * 100) + '%"></i></div>';
+        dl += "<span>" + mon + "</span>";
+      });
+      $("chart").innerHTML = ch; $("days").innerHTML = dl;
+      $("chartH").textContent = "⏱️ وقت الاستعمال كل شهر";
+    } else {
+    $("chartH").textContent = "⏱️ وقت الاستعمال كل يوم";
     ks.forEach(function (k, i) {
       var s = (act.d[k] || {}).s || 0, h = Math.round(s / max * 100), dt = new Date(k + "T12:00:00");
       var isOver = LIM.min && s > LIM.min * 60;
@@ -239,6 +276,7 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
     });
     if (LIM.min) ch += '<div class="lim" style="bottom:' + (LIM.min * 60 / max * 100 * (132 / 150)) + '%"><span>الحدّ ' + LIM.min + " د</span></div>";
     $("chart").innerHTML = ch; $("days").innerHTML = dl;
+    }
     $("chart").setAttribute("aria-label", "الدقائق كل يوم");
 
     /* parts of the day */
@@ -272,13 +310,13 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
 
   $("period").onclick = function (e) {
     var b = e.target.closest("button"); if (!b) return;
-    days = +b.getAttribute("data-d");
+    var dv = b.getAttribute("data-d"); days = dv === "year" ? "year" : +dv;
     Array.prototype.forEach.call(this.querySelectorAll("button"), function (x) { x.classList.toggle("on", x === b); });
     draw();
   };
   $("printBtn").onclick = function () { window.print(); };
   $("shareBtn").onclick = function () {
-    var s = window.__repSummary || {}, per = days === 1 ? "اليوم" : "آخر " + days + (days > 10 ? " يوما" : " أيام");
+    var s = window.__repSummary || {}, per = days === "year" ? "السنة الدراسية" : days === 1 ? "اليوم" : "آخر " + days + (days > 10 ? " يوما" : " أيام");
     var txt = "📊 تقرير المتابعة " + (name ? "— " + name : "") + " (" + per + "، " + dateAr(Date.now()) + ")\n" +
       "⏱️ وقت الاستعمال: " + dur(s.total) + "\n📄 صفحات فُتحت: " + s.opened + "\n✅ أنشطة أكملها: " + s.done +
       (s.avg != null ? "\n📝 معدّل النتائج: " + num(s.avg) + " / 20" : "") + (s.night >= 60 ? "\n🌙 استعمال ليلي: " + dur(s.night) : "") +
@@ -321,6 +359,93 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
   }
   setForm();
   draw();
+
+  /* ---------- 📋 الحصيلة (2026-11-19 his ask «وفي نهاية الفصل والمقطع و السنة الدراسية») ----------
+     Grouped by CONTENT, not by dates: each page belongs to its level, term (t1/t2/t3 in its address) and sequence
+     ("seq" in files.json, from «المقطع N» in its title or -mN- in its name). Results and time of the current school year. */
+  var SEQN = {"1m": ["الأعداد الطبيعية والأعداد العشرية (1)", "إنجاز مماثلات أشكال مستوية بسيطة — الأطوال، المحيطات، المساحات", "الأعداد الطبيعية والأعداد العشرية (2): القسمة وقابلية القسمة", "الزوايا والتناظر المحوري", "الكتابات الكسرية، الأعداد النسبية والحساب الحرفي", "التناسبية وتنظيم معطيات", "متوازي المستطيلات والمكعب"], "2m": ["العمليات على الأعداد الطبيعية والعشرية — العمليات على الكسور", "إنشاء أشكال هندسية بسيطة — التناظر المركزي", "الزوايا — المثلثات والدائرة", "الأعداد النسبية", "متوازي الأضلاع", "التناسبية وتنظيم معطيات", "الموشور القائم — أسطوانة الدوران"], "3m": ["الأعداد النسبية — العمليات على الكسور — الأعداد الناطقة", "المثلثات", "القوى ذات أسس نسبية صحيحة", "المثلث القائم والدائرة (خاصية فيثاغورس)", "الحساب الحرفي والمعادلات", "الانسحاب — الهرم ومخروط الدوران", "التناسبية وتنظيم معطيات"], "4m": ["الأعداد الطبيعية (PGCD) والأعداد الناطقة والحساب على الجذور", "خاصية طالس وحساب المثلثات في المثلث القائم", "الحساب الحرفي: النشر، التحليل، المعادلات والمتراجحات", "الأشعة والانسحاب والمعالم", "جملة معادلتين — الدالة الخطية — الدالة التآلفية", "الدوران — المضلعات المنتظمة — الزوايا — الهندسة في الفضاء", "الإحصاء"]};
+  var ORD = ["الأول", "الثاني", "الثالث", "الرابع", "الخامس", "السادس", "السابع"];
+  var items = null, hMode = "seq";
+  function seqOf(u) { var m = u.split("/").pop().match(/(?:^|[-_])m([1-7]{1,3})(?=[-_.]|$)/); return m ? m[1].split("").map(Number) : []; }
+  function hData(lv) {
+    var y0 = yearStart(), time = {}, res = {};
+    Object.keys(act.d).forEach(function (k) {
+      if (new Date(k + "T12:00:00").getTime() < y0) return;
+      var p = act.d[k].p || {}; Object.keys(p).forEach(function (u) { time[u] = (time[u] || 0) + (p[u].s || 0); });
+    });
+    Object.keys(prog).forEach(function (u0) { var r = prog[u0]; if (r && (!r.t || r.t >= y0)) res[norm(u0)] = r; });
+    var list = (items || []).filter(function (it) { return it.level === lv && it.type === "html"; });
+    var known = {}; list.forEach(function (it) { known[norm(it.url)] = 1; });
+    Object.keys(res).concat(Object.keys(time)).forEach(function (u) {          /* a page missing from files.json (offline) */
+      var m = u.match(/^([1-4]m)\/(t[1-3])\//);
+      if (m && m[1] === lv && !known[u]) { known[u] = 1; list.push({ url: u, term: m[2], seq: seqOf(u), title: titles[u] || u }); }
+    });
+    return list.map(function (it) {
+      var u = norm(it.url), r = res[u];
+      return { u: u, term: it.term, seq: it.seq && it.seq.length ? it.seq : seqOf(u), t: time[u] || 0, r: r,
+        done: !!(r && r.d), mark: r && r.d && r.m ? (r.b || r.s) / r.m * 20 : null, st: r ? r.st || 0 : 0, title: it.title };
+    });
+  }
+  function agg(rows) {
+    var a = { n: rows.length, done: 0, t: 0, st: 0, marks: [], tried: 0 };
+    rows.forEach(function (x) { a.t += x.t; a.st += x.st; if (x.done) a.done++; if (x.mark != null) a.marks.push(x.mark); if (x.r || x.t >= 60) a.tried++; });
+    a.avg = a.marks.length ? a.marks.reduce(function (p, q) { return p + q; }, 0) / a.marks.length : null;
+    return a;
+  }
+  function level3(a) {
+    if (a.avg == null) return a.tried ? ["", "🔵 بدأ، لم يُكمل نشاطا بعد"] : ["", "⚪ لم يبدأ"];
+    if (a.avg >= 14) return ["g", "🟢 متحكّم"];
+    if (a.avg >= 10) return ["y", "🟡 متوسط"];
+    return ["r", "🔴 يحتاج دعما"];
+  }
+  function hRow(head, sub, a) {
+    var L = level3(a);
+    return '<div class="hrow ' + L[0] + '"><div class="h">' + head + "<span>" + L[1] + "</span></div>" + (sub ? '<p class="n">' + sub + "</p>" : "") +
+      '<p class="d">✅ الأنشطة المكتملة: ' + a.done + " من " + a.n + (a.avg != null ? " · 📝 المعدّل " + num(a.avg) + " / 20" : "") +
+      (a.t >= 60 ? " · ⏱️ " + dur(a.t) : "") + (a.st ? " · ⭐ " + a.st : "") + "</p>" +
+      '<div class="t"><i style="width:' + (a.n ? Math.round(a.done / a.n * 100) : 0) + '%"></i></div></div>';
+  }
+  function hDraw() {
+    var lv = $("hLv").value, rows = hData(lv), h = "";
+    if (!rows.length) { $("hBody").innerHTML = '<p class="empty">لا توجد أنشطة لهذا المستوى بعد.</p>'; return; }
+    if (hMode === "seq") {
+      var seqs = {}; rows.forEach(function (x) { x.seq.forEach(function (q) { (seqs[q] = seqs[q] || []).push(x); }); });
+      Object.keys(seqs).sort(function (a, b) { return a - b; }).forEach(function (q) {
+        h += hRow("المقطع " + ORD[q - 1], (SEQN[lv] || [])[q - 1] || "", agg(seqs[q]));
+      });
+      var free = rows.filter(function (x) { return !x.seq.length; });
+      if (free.length) h += hRow("أنشطة الفصل العامة", "فروض واختبارات وواجبات وتحديات تشمل عدة مقاطع", agg(free));
+    } else if (hMode === "term") {
+      ["t1", "t2", "t3"].forEach(function (t, i) {
+        var r = rows.filter(function (x) { return x.term === t; });
+        if (r.length) h += hRow("الفصل " + ["الأول", "الثاني", "الثالث"][i], "", agg(r));
+      });
+    } else {
+      var A = agg(rows), best = null, weak = null, seqs2 = {};
+      rows.forEach(function (x) { x.seq.forEach(function (q) { (seqs2[q] = seqs2[q] || []).push(x); }); });
+      Object.keys(seqs2).forEach(function (q) { var g = agg(seqs2[q]); if (g.avg == null) return; if (!best || g.avg > best[1]) best = [q, g.avg]; if (!weak || g.avg < weak[1]) weak = [q, g.avg]; });
+      h += hRow("السنة الدراسية كاملة", "منذ بداية الدخول المدرسي", A);
+      if (best && weak && best[0] !== weak[0]) h += '<p class="note">💪 أقوى مقطع: المقطع ' + ORD[best[0] - 1] + " (" + num(best[1]) + " / 20). 📌 يحتاج مراجعة: المقطع " + ORD[weak[0] - 1] + " (" + num(weak[1]) + " / 20).</p>";
+    }
+    $("hBody").innerHTML = h + '<p class="priv">🟢 معدّل 14 فأكثر، 🟡 من 10 إلى أقل من 14، 🔴 أقل من 10. المعدّل محسوب من الأنشطة التي أكملها فقط، وهي تمارين للتدرّب لا نقاط رسمية.</p>';
+  }
+  (function () {
+    var sel = $("hLv"), lvs = ["1m", "2m", "3m", "4m"], used = {};
+    Object.keys(prog).concat(Object.keys(titles)).forEach(function (u) { var m = u.match(/^([1-4]m)\//); if (m) used[m[1]] = 1; });
+    var def = LV[lvl] ? lvl : (lvs.filter(function (l) { return used[l]; })[0] || "1m");
+    sel.innerHTML = lvs.map(function (l) { return '<option value="' + l + '"' + (l === def ? " selected" : "") + ">السنة " + LV[l] + "</option>"; }).join("");
+    sel.onchange = hDraw;
+    $("hTabs").onclick = function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      hMode = b.getAttribute("data-h");
+      Array.prototype.forEach.call(this.querySelectorAll("button"), function (x) { x.classList.toggle("on", x === b); });
+      hDraw();
+    };
+    hDraw();
+    fetch("files.json").then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+      if (j && j.items) { items = j.items; j.items.forEach(function (it) { if (!titles[norm(it.url)]) titles[norm(it.url)] = it.title; }); hDraw(); draw(); }
+    }).catch(function () {});
+  })();
 })();
 </script>
 </body>
