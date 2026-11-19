@@ -75,6 +75,14 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
 .hrow .d{font-size:.86rem;margin:2px 0 0}
 .hrow .t{height:7px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:6px}
 .hrow .t i{display:block;height:100%;background:var(--bar)}
+.hrow .t.st{display:flex}.hrow .t.st i.g{background:#16a34a}.hrow .t.st i.y{background:#d97706}.hrow .t.st i.r{background:#dc2626}
+.bls{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0}
+.bl{font-size:.74rem;font-weight:800;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--muted)}
+.bl.ok{color:var(--ok);border-color:#86efac}.bl.mid{color:var(--warn);border-color:#fcd34d}.bl.ko{color:#dc2626;border-color:#fca5a5}
+details.seq{margin:10px 0 0}details.seq>summary{cursor:pointer;font-weight:900;padding:4px 0}details.seq>summary small{color:var(--muted);font-weight:700}
+.hrow .d a,.hrow .n a{color:var(--edge);font-weight:800}
+details.guide{margin-top:12px;border-top:1px dashed var(--line);padding-top:8px;font-size:.9rem}details.guide summary{cursor:pointer;font-weight:900}
+details.guide ul{margin:4px 0;padding-inline-start:20px}
 #hLv{font:inherit;font-weight:800;border-radius:999px;padding:5px 10px;border:1.5px solid var(--line);background:var(--sheet);color:var(--edge)}
 @media print{#hasila .chips{display:none!important}}
 @media print{.top,.chips,.act,details.set,.noprint{display:none!important}body{background:#fff}.sheet{break-inside:avoid;border-color:#cbd5e1}.wrap{padding:0}}
@@ -117,14 +125,29 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
   </section>
 
   <section class="sheet" id="hasila">
-    <h2>📋 الحصيلة: المقطع، الفصل، السنة الدراسية</h2>
+    <h2>📋 التحكم في الموارد (حسب مستويات بلوم)</h2>
     <div class="chips" id="hTabs" role="group" aria-label="نوع الحصيلة">
-      <button type="button" data-h="seq" class="on">حسب المقطع</button>
+      <button type="button" data-h="res" class="on">كل مورد</button>
+      <button type="button" data-h="seq">حسب المقطع</button>
       <button type="button" data-h="term">حسب الفصل</button>
       <button type="button" data-h="year">السنة الدراسية</button>
       <select id="hLv" aria-label="المستوى"></select>
     </div>
     <div id="hBody"></div>
+    <details class="guide">
+      <summary>📖 توجيهات للولي: التحكم الكلي والتحكم الجزئي</summary>
+      <p>المرجع هو <b>موارد المنهاج الرسمي</b> لكل مستوى، لا عدد الأنشطة في المنصة: لا يحتاج التلميذ إلى حلّ كل ما في المنصة، بل إلى التحكم في كل مورد. كل سؤال يحلّه يُحسب لمورده ولمستواه في مخطط بلوم:</p>
+      <ul>
+        <li><b>تذكّر·فهم·تطبيق:</b> تمارين التطبيق المباشر ودروس «أُتقِن».</li>
+        <li><b>تحليل:</b> تمارين الربط بين المعارف.</li>
+        <li><b>تقويم·توظيف:</b> الوضعيات الإدماجية وتمارين التميّز والتحديات.</li>
+      </ul>
+      <p>🟢 <b>تحكم كلي:</b> نجح بـ 75% فأكثر في التطبيق المباشر، وفي الربط أو الوضعية، ثم حلّ <b>نشاطا ثانيا مشابها</b> في يوم آخر بـ 75% فأكثر: النشاط الأول يُحسب عاديا، والثاني يُحسب <b>مراجعة</b> تؤكّد التحكم.<br>
+      🟡 <b>تحكم جزئي:</b> نتيجته 50% فأكثر، لكن ينقصه شيء: الأساس (التطبيق المباشر)، أو المستوى الأعلى (الربط والتوظيف)، أو المراجعة.<br>
+      🔴 <b>غير متحكم:</b> أقل من 50%: يعود إلى الدرس ثم إلى التمارين المباشرة بالتلميحات.<br>
+      ⚪ <b>لم يُقيَّم بعد:</b> لم يحلّ أي سؤال على هذا المورد.</p>
+      <p><b>كيف تساعد ابنك؟</b> شجّعه على ما حقّقه، واختر معه موردا واحدا أصفر أو أحمر كل يوم (15 إلى 20 دقيقة)، واتبع التوجيه المكتوب تحت المورد. التمارين للتدرّب وليست نقاطا رسمية. الربط بين الأسئلة والموارد آلي، وقد يخطئ أحيانا.</p>
+    </details>
   </section>
 
   <section class="sheet act noprint">
@@ -205,7 +228,6 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
   var titles = {};
   Object.keys(act.d).forEach(function (k) { var p = act.d[k].p || {}; Object.keys(p).forEach(function (u) { if (p[u].t) titles[u] = p[u].t; }); });
   var LIM = J("math-limit", {});
-  var GOAL = +(get("math-goal") || 2) === 3 ? 3 : 2;      /* target: half (2) or a third (3) of the activities of each sequence / term */
   var days = 7;
 
   function yearStart() { var d = new Date(), y = d.getMonth() >= 8 ? d.getFullYear() : d.getFullYear() - 1; return new Date(y, 8, 1).getTime(); }
@@ -344,14 +366,12 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
     body.innerHTML = '<form id="limF">' +
       '<label>⏰ الوقت الأقصى في اليوم' + (name ? " لـ " + esc(name) : "") + '<select name="min">' + opt(["", 20, 30, 45, 60, 90, 120], LIM.min, function (v) { return v ? v + " دقيقة" : "بلا حدّ"; }) + "</select></label>" +
       '<label>🌙 ساعة التوقّف ليلا<select name="bed">' + opt(["", 20, 21, 22, 23], LIM.bed, function (v) { return v ? "بعد الساعة " + v + ":00" : "بلا حدّ"; }) + "</select></label>" +
-      '<label>🎯 هدف الحصيلة في كل مقطع وفصل<select name="goal">' + opt([2, 3], GOAL, function (v) { return v === 2 ? "نصف الأنشطة" : "ثلث الأنشطة"; }) + "</select></label>" +
       '<label>🔑 رمز الولي (اختياري، 4 أرقام) حتى لا يغيّر الابن الحدود<input name="pin" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" placeholder="' + (pin ? "الرمز محفوظ (اكتب رمزا جديدا لتغييره)" : "مثلا 2580") + '" autocomplete="off"></label>' +
       '<button type="submit" style="font:inherit;font-weight:800;border-radius:12px;padding:9px;border:0;background:var(--edge);color:#fff;cursor:pointer">💾 حفظ</button>' +
       (pin ? '<button type="button" id="noPin" style="font:inherit;border-radius:12px;padding:7px;border:1px solid var(--line);background:var(--sheet);color:var(--text);cursor:pointer">إلغاء الرمز</button>' : "") +
       '<p class="msg"></p><p class="priv">عند تجاوز الوقت أو ساعة التوقّف، تظهر للتلميذ رسالة هادئة تدعوه إلى الاستراحة (كل 10 دقائق)، ويظهر ذلك في هذا التقرير.</p></form>';
     $("limF").onsubmit = function (e) {
       e.preventDefault();
-      GOAL = +this.goal.value === 3 ? 3 : 2; put("math-goal", String(GOAL));
       LIM = { min: +this.min.value || 0, bed: +this.bed.value || 0 };
       if (!LIM.min) delete LIM.min; if (!LIM.bed) delete LIM.bed;
       put("math-limit", Object.keys(LIM).length ? JSON.stringify(LIM) : null);
@@ -364,84 +384,106 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
   setForm();
   draw();
 
-  /* ---------- 📋 الحصيلة (2026-11-19 his ask «وفي نهاية الفصل والمقطع و السنة الدراسية») ----------
-     Grouped by CONTENT, not by dates: each page belongs to its level, term (t1/t2/t3 in its address) and sequence
-     ("seq" in files.json, from «المقطع N» in its title or -mN- in its name). Results and time of the current school year. */
   var SEQN = {"1m": ["الأعداد الطبيعية والأعداد العشرية (1)", "إنجاز مماثلات أشكال مستوية بسيطة — الأطوال، المحيطات، المساحات", "الأعداد الطبيعية والأعداد العشرية (2): القسمة وقابلية القسمة", "الزوايا والتناظر المحوري", "الكتابات الكسرية، الأعداد النسبية والحساب الحرفي", "التناسبية وتنظيم معطيات", "متوازي المستطيلات والمكعب"], "2m": ["العمليات على الأعداد الطبيعية والعشرية — العمليات على الكسور", "إنشاء أشكال هندسية بسيطة — التناظر المركزي", "الزوايا — المثلثات والدائرة", "الأعداد النسبية", "متوازي الأضلاع", "التناسبية وتنظيم معطيات", "الموشور القائم — أسطوانة الدوران"], "3m": ["الأعداد النسبية — العمليات على الكسور — الأعداد الناطقة", "المثلثات", "القوى ذات أسس نسبية صحيحة", "المثلث القائم والدائرة (خاصية فيثاغورس)", "الحساب الحرفي والمعادلات", "الانسحاب — الهرم ومخروط الدوران", "التناسبية وتنظيم معطيات"], "4m": ["الأعداد الطبيعية (PGCD) والأعداد الناطقة والحساب على الجذور", "خاصية طالس وحساب المثلثات في المثلث القائم", "الحساب الحرفي: النشر، التحليل، المعادلات والمتراجحات", "الأشعة والانسحاب والمعالم", "جملة معادلتين — الدالة الخطية — الدالة التآلفية", "الدوران — المضلعات المنتظمة — الزوايا — الهندسة في الفضاء", "الإحصاء"]};
+  /* ---------- 📋 الحصيلة حسب الموارد ومستويات بلوم (2026-11-19 his rule «الهدف هو فهم جميع الموارد والتحكم فيها حسب مخطط بلوم،
+     لو حددناها حسب ما هو موجود في المنصة لن يكون عادلا … اضف توجيهات للتحكم الكلي والجزئي» + «قسم حسب مستويات بلوم وعلى الأقل
+     يحل موردين متشابهين، الأول يحسب عادي والثاني كمراجعة») ----------
+     The reference is the list of OFFICIAL resources of the level (assets/resources.json, from the annual plans), never the number of
+     pages on the platform. Each answered question counts for its resource and its Bloom level (site.js, "math-res"):
+       1 تذكّر·فهم·تطبيق (direct application) · 2 تحليل (ربط) · 3 تقويم·توظيف (وضعية إدماجية، تميّز، تحدٍّ).
+     🟢 تحكم كلي: ≥ 75 % at level 1, ≥ 75 % at level 2 or 3, AND a second similar activity (another page, or the same page on a
+        later day) also ≥ 75 % = the review.   🟡 تحكم جزئي: ≥ 50 % but one of these is missing.   🔴 غير متحكم: < 50 %.
+     ⚪ لم يُقيَّم بعد: no answered question on it yet. */
   var ORD = ["الأول", "الثاني", "الثالث", "الرابع", "الخامس", "السادس", "السابع"];
-  var items = null, hMode = "seq";
-  function seqOf(u) { var m = u.split("/").pop().match(/(?:^|[-_])m([1-7]{1,3})(?=[-_.]|$)/); return m ? m[1].split("").map(Number) : []; }
-  function hData(lv) {
-    var y0 = yearStart(), time = {}, res = {};
-    Object.keys(act.d).forEach(function (k) {
-      if (new Date(k + "T12:00:00").getTime() < y0) return;
-      var p = act.d[k].p || {}; Object.keys(p).forEach(function (u) { time[u] = (time[u] || 0) + (p[u].s || 0); });
+  var BL = ["", "تذكّر·فهم·تطبيق", "تحليل", "تقويم·توظيف"];
+  var RESL = null, RS = J("math-res", {}), hMode = "res";
+  function pct(x) { return Math.round(x * 100) + "%"; }
+  function judge(lv, i) {
+    var pages = RS[lv + "|" + i] || {}, B = { 1: [0, 0], 2: [0, 0], 3: [0, 0] }, occ = [], E = 0, P = 0;
+    Object.keys(pages).forEach(function (u) {
+      var p = pages[u], e = 0, q = 0;
+      [1, 2, 3].forEach(function (b) { var x = (p.b || {})[b]; if (x) { B[b][0] += x[0]; B[b][1] += x[1]; e += x[0]; q += x[1]; } });
+      if (q) { occ.push({ u: u, f: p.f, d: p.d, r: e / q }); E += e; P += q; }
     });
-    Object.keys(prog).forEach(function (u0) { var r = prog[u0]; if (r && (!r.t || r.t >= y0)) res[norm(u0)] = r; });
-    var list = (items || []).filter(function (it) { return it.level === lv && it.type === "html"; });
-    var known = {}; list.forEach(function (it) { known[norm(it.url)] = 1; });
-    Object.keys(res).concat(Object.keys(time)).forEach(function (u) {          /* a page missing from files.json (offline) */
-      var m = u.match(/^([1-4]m)\/(t[1-3])\//);
-      if (m && m[1] === lv && !known[u]) { known[u] = 1; list.push({ url: u, term: m[2], seq: seqOf(u), title: titles[u] || u }); }
-    });
-    return list.map(function (it) {
-      var u = norm(it.url), r = res[u];
-      return { u: u, term: it.term, seq: it.seq && it.seq.length ? it.seq : seqOf(u), t: time[u] || 0, r: r,
-        done: !!(r && r.d), mark: r && r.d && r.m ? (r.b || r.s) / r.m * 20 : null, st: r ? r.st || 0 : 0, title: it.title };
-    });
+    var o = { B: B, P: P, r: P ? E / P : null, n: occ.length, why: [] };
+    if (!P) { o.s = "none"; return o; }
+    occ.sort(function (a, b) { return a.f < b.f ? -1 : a.f > b.f ? 1 : 0; });
+    var reviewed = occ.length >= 2 || (occ.length === 1 && occ[0].d > occ[0].f);
+    o.review = reviewed ? occ[occ.length - 1].r : null;
+    if (occ.length === 1 && occ[0].d > occ[0].f) o.n = 2;
+    var r1 = B[1][1] ? B[1][0] / B[1][1] : null, r2 = B[2][1] ? B[2][0] / B[2][1] : null, r3 = B[3][1] ? B[3][0] / B[3][1] : null;
+    var hi = r2 == null ? r3 : r3 == null ? r2 : Math.max(r2, r3);
+    o.r1 = r1; o.hi = hi;
+    if (o.r < 0.5) { o.s = "red"; return o; }
+    if ((r1 == null ? o.r : r1) < 0.75) o.why.push("base");
+    if (hi == null || hi < 0.75) o.why.push("high");
+    if (!reviewed) o.why.push("rev"); else if (o.review < 0.75) o.why.push("revlow");
+    o.s = o.why.length ? "yellow" : "green";
+    return o;
   }
-  function agg(rows) {
-    var a = { n: rows.length, done: 0, t: 0, st: 0, marks: [], tried: 0 };
-    rows.forEach(function (x) { a.t += x.t; a.st += x.st; if (x.done) a.done++; if (x.mark != null) a.marks.push(x.mark); if (x.r || x.t >= 60) a.tried++; });
-    a.avg = a.marks.length ? a.marks.reduce(function (p, q) { return p + q; }, 0) / a.marks.length : null;
-    return a;
+  var ST = { green: ["g", "🟢 تحكم كلي"], yellow: ["y", "🟡 تحكم جزئي"], red: ["r", "🔴 غير متحكم"], none: ["", "⚪ لم يُقيَّم بعد"] };
+  function link(u, t) { return u ? '<a href="' + esc(u) + '">' + t + "</a>" : ""; }
+  function advice(R, o) {
+    var a = [];
+    if (o.s === "green") a.push("ثبّت المورد بوضعية إدماجية أو تحدٍّ " + (link((R.p3 || [])[0], "🧩 هنا") || "") + "، وراجعه بعد أسبوعين أو ثلاثة.");
+    else if (o.s === "red") a.push("ابدأ من جديد بالدرس " + (link(R.l, "📘 أُتقِن") || "التفاعلي") + "، ثم تمارين التطبيق المباشر " + (link((R.p1 || [])[0], "📝 هنا") || "") + " مستعينا بالتلميحات، ثم أعد المحاولة بعد يومين.");
+    else if (o.s === "yellow") {
+      if (o.why.indexOf("base") >= 0) a.push("الأساس غير ثابت: أعد " + (link(R.l, "📘 درس أُتقِن") || "الدرس") + " وتمارين التطبيق المباشر " + (link((R.p1 || [])[0], "📝 هنا") || "") + ".");
+      if (o.why.indexOf("high") >= 0) a.push("انتقل إلى تمارين الربط ثم الوضعية " + (link((R.p2 || R.p3 || [])[0], "🔗 هنا") || "") + " (مستوى التحليل والتوظيف).");
+      if (o.why.indexOf("rev") >= 0) a.push("حلّ نشاطا ثانيا مشابها في يوم آخر، يُحسب مراجعةً " + (link((R.p1 || R.p2 || [])[1] || (R.p2 || [])[0], "🔁 هنا") || "") + ".");
+      if (o.why.indexOf("revlow") >= 0) a.push("نتيجة المراجعة أقل من 75%: أعد المراجعة بعد يومين.");
+    }
+    return a.join(" ");
   }
-  /* his rule 2026-11-19 «التحكم يكون بالنسبة الموارد التي قام بحلها وتحسب ايضا بالنسبة إلى ثلث او نصف ما هو موجود في المنصة»:
-     the level comes from the activities he SOLVED; the progress is measured against a target = half (or a third) of the activities,
-     not all of them. Below the target the level is only a first estimate. */
-  function level3(a) {
-    if (a.avg == null) return a.tried ? ["", "🔵 بدأ، لم يُكمل نشاطا بعد"] : ["", "⚪ لم يبدأ"];
-    var pre = a.done < a.goal ? " (حكم أوّلي)" : "";
-    if (a.avg >= 14) return ["g", "🟢 متحكّم" + pre];
-    if (a.avg >= 10) return ["y", "🟡 متوسط" + pre];
-    return ["r", "🔴 يحتاج دعما" + pre];
+  function resRow(lv, i, R) {
+    var o = judge(lv, i), L = ST[o.s], chips = "";
+    if (o.s !== "none") {
+      chips = [1, 2, 3].map(function (b) { var x = o.B[b]; return '<span class="bl' + (x[1] ? (x[0] / x[1] >= 0.75 ? " ok" : x[0] / x[1] < 0.5 ? " ko" : " mid") : "") + '">' + BL[b] + " " + (x[1] ? pct(x[0] / x[1]) : "—") + "</span>"; }).join("") +
+        '<span class="bl' + (o.n >= 2 ? (o.review >= 0.75 ? " ok" : " mid") : "") + '">🔁 مراجعة ' + (o.n >= 2 ? pct(o.review) : "—") + "</span>";
+    }
+    return '<div class="hrow ' + L[0] + '"><div class="h">' + esc(R.k) + "<span>" + L[1] + "</span></div>" +
+      '<p class="n">' + esc(R.n) + "</p>" + (chips ? '<div class="bls">' + chips + "</div>" : "") +
+      (o.s !== "none" ? '<p class="d">💡 ' + advice(R, o) + "</p>" : (R.l || R.p1 ? '<p class="n">ابدأ: ' + [link(R.l, "📘 الدرس"), link((R.p1 || [])[0], "📝 تمارين")].filter(Boolean).join(" · ") + "</p>" : "")) + "</div>";
   }
-  function hRow(head, sub, a) {
-    a.goal = Math.max(1, Math.ceil(a.n / GOAL));
-    var L = level3(a), pc = Math.min(100, Math.round(a.done / a.goal * 100));
-    return '<div class="hrow ' + L[0] + '"><div class="h">' + head + "<span>" + L[1] + "</span></div>" + (sub ? '<p class="n">' + sub + "</p>" : "") +
-      '<p class="d">🎯 التقدّم نحو الهدف: ' + Math.min(a.done, a.goal) + " من " + a.goal + " (" + pc + "%)" + (a.done >= a.goal ? " ✓ بلغ الهدف" : "") +
-      (a.avg != null ? " · 📝 المعدّل " + num(a.avg) + " / 20" : "") + "</p>" +
-      '<p class="n">أكمل ' + a.done + " من " + a.n + " في المنصة" + (a.t >= 60 ? " · ⏱️ " + dur(a.t) : "") + (a.st ? " · ⭐ " + a.st : "") + "</p>" +
-      '<div class="t"><i style="width:' + pc + '%"></i></div></div>';
+  function countRow(head, sub, lv, idx) {
+    var c = { green: 0, yellow: 0, red: 0, none: 0 };
+    idx.forEach(function (i) { c[judge(lv, i).s]++; });
+    var n = idx.length, w = function (k) { return Math.round(c[k] / n * 100); };
+    return '<div class="hrow ' + (c.green === n ? "g" : c.red ? "r" : c.yellow ? "y" : "") + '"><div class="h">' + head + "<span>" + n + (n === 1 ? " مورد" : n === 2 ? " موردان" : n % 100 >= 3 && n % 100 <= 10 ? " موارد" : " موردا") + "</span></div>" + (sub ? '<p class="n">' + sub + "</p>" : "") +
+      '<p class="d">🟢 كلي ' + c.green + " · 🟡 جزئي " + c.yellow + " · 🔴 غير متحكم " + c.red + " · ⚪ لم يُقيَّم " + c.none + "</p>" +
+      '<div class="t st"><i class="g" style="width:' + w("green") + '%"></i><i class="y" style="width:' + w("yellow") + '%"></i><i class="r" style="width:' + w("red") + '%"></i></div></div>';
   }
   function hDraw() {
-    var lv = $("hLv").value, rows = hData(lv), h = "";
-    if (!rows.length) { $("hBody").innerHTML = '<p class="empty">لا توجد أنشطة لهذا المستوى بعد.</p>'; return; }
-    if (hMode === "seq") {
-      var seqs = {}; rows.forEach(function (x) { x.seq.forEach(function (q) { (seqs[q] = seqs[q] || []).push(x); }); });
-      Object.keys(seqs).sort(function (a, b) { return a - b; }).forEach(function (q) {
-        h += hRow("المقطع " + ORD[q - 1], (SEQN[lv] || [])[q - 1] || "", agg(seqs[q]));
+    var lv = $("hLv").value, L = RESL && RESL[lv], h = "";
+    if (!L) { $("hBody").innerHTML = '<p class="empty">' + (RESL === null ? "جارٍ تحميل قائمة الموارد…" : "تعذّر تحميل قائمة الموارد (افتح التقرير مع الإنترنت مرة واحدة).") + "</p>"; return; }
+    var bySeq = {}; L.forEach(function (R, i) { (bySeq[R.s] = bySeq[R.s] || []).push(i); });
+    if (hMode === "res") {
+      Object.keys(bySeq).sort(function (a, b) { return a - b; }).forEach(function (s) {
+        var idx = bySeq[s], seen = idx.some(function (i) { return judge(lv, i).s !== "none"; });
+        h += "<details class=\"seq\"" + (seen ? " open" : "") + "><summary>المقطع " + ORD[s - 1] + " <small>" + esc((SEQN[lv] || [])[s - 1] || "") + "</small></summary>" +
+          idx.map(function (i) { return resRow(lv, i, L[i]); }).join("") + "</details>";
       });
-      var free = rows.filter(function (x) { return !x.seq.length; });
-      if (free.length) h += hRow("أنشطة الفصل العامة", "فروض واختبارات وواجبات وتحديات تشمل عدة مقاطع", agg(free));
+    } else if (hMode === "seq") {
+      Object.keys(bySeq).sort(function (a, b) { return a - b; }).forEach(function (s) { h += countRow("المقطع " + ORD[s - 1], (SEQN[lv] || [])[s - 1] || "", lv, bySeq[s]); });
     } else if (hMode === "term") {
-      ["t1", "t2", "t3"].forEach(function (t, i) {
-        var r = rows.filter(function (x) { return x.term === t; });
-        if (r.length) h += hRow("الفصل " + ["الأول", "الثاني", "الثالث"][i], "", agg(r));
+      [1, 2, 3].forEach(function (t) {
+        var idx = []; L.forEach(function (R, i) { if (R.t === t) idx.push(i); });
+        if (idx.length) h += countRow("الفصل " + ["الأول", "الثاني", "الثالث"][t - 1], "", lv, idx);
       });
     } else {
-      var A = agg(rows), best = null, weak = null, seqs2 = {};
-      rows.forEach(function (x) { x.seq.forEach(function (q) { (seqs2[q] = seqs2[q] || []).push(x); }); });
-      Object.keys(seqs2).forEach(function (q) { var g = agg(seqs2[q]); if (g.avg == null) return; if (!best || g.avg > best[1]) best = [q, g.avg]; if (!weak || g.avg < weak[1]) weak = [q, g.avg]; });
-      h += hRow("السنة الدراسية كاملة", "منذ بداية الدخول المدرسي", A);
-      if (best && weak && best[0] !== weak[0]) h += '<p class="note">💪 أقوى مقطع: المقطع ' + ORD[best[0] - 1] + " (" + num(best[1]) + " / 20). 📌 يحتاج مراجعة: المقطع " + ORD[weak[0] - 1] + " (" + num(weak[1]) + " / 20).</p>";
+      h += countRow("السنة الدراسية كاملة", "كل موارد المنهاج لهذا المستوى", lv, L.map(function (R, i) { return i; }));
+      var B = { 1: [0, 0], 2: [0, 0], 3: [0, 0] };
+      L.forEach(function (R, i) { var o = judge(lv, i); [1, 2, 3].forEach(function (b) { B[b][0] += o.B[b][0]; B[b][1] += o.B[b][1]; }); });
+      h += '<div class="hrow"><div class="h">📊 النجاح حسب مستويات بلوم</div>' + [1, 2, 3].map(function (b) {
+        var r = B[b][1] ? B[b][0] / B[b][1] : null;
+        return '<div class="parts"><div class="r"><b>' + BL[b] + '</b><div class="t"><i style="width:' + (r == null ? 0 : Math.round(r * 100)) + '%"></i></div><span>' + (r == null ? "—" : pct(r)) + "</span></div></div>";
+      }).join("") + "</div>";
     }
-    $("hBody").innerHTML = h + '<p class="priv">🎯 الهدف: ' + (GOAL === 3 ? "ثلث" : "نصف") + ' أنشطة كل مقطع أو فصل، لأن التلميذ لا يحتاج إلى حلّ كل المنصة (يغيّره الولي في «حدود الاستعمال»). المستوى يُحسب من الأنشطة التي حلّها فقط، ويبقى «حكما أوّليا» حتى يبلغ الهدف.<br>🟢 معدّل 14 فأكثر، 🟡 من 10 إلى أقل من 14، 🔴 أقل من 10. المعدّل محسوب من الأنشطة التي أكملها فقط، وهي تمارين للتدرّب لا نقاط رسمية.</p>';
+    $("hBody").innerHTML = h;
   }
   (function () {
     var sel = $("hLv"), lvs = ["1m", "2m", "3m", "4m"], used = {};
-    Object.keys(prog).concat(Object.keys(titles)).forEach(function (u) { var m = u.match(/^([1-4]m)\//); if (m) used[m[1]] = 1; });
+    Object.keys(RS).concat(Object.keys(prog), Object.keys(titles)).forEach(function (u) { var m = u.match(/^([1-4]m)[\/|]/); if (m) used[m[1]] = 1; });
     var def = LV[lvl] ? lvl : (lvs.filter(function (l) { return used[l]; })[0] || "1m");
     sel.innerHTML = lvs.map(function (l) { return '<option value="' + l + '"' + (l === def ? " selected" : "") + ">السنة " + LV[l] + "</option>"; }).join("");
     sel.onchange = hDraw;
@@ -452,8 +494,9 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
       hDraw();
     };
     hDraw();
+    fetch("assets/resources.json").then(function (r) { return r.ok ? r.json() : false; }).then(function (j) { RESL = j || false; hDraw(); }).catch(function () { RESL = false; hDraw(); });
     fetch("files.json").then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
-      if (j && j.items) { items = j.items; j.items.forEach(function (it) { if (!titles[norm(it.url)]) titles[norm(it.url)] = it.title; }); hDraw(); draw(); }
+      if (j && j.items) { j.items.forEach(function (it) { if (!titles[norm(it.url)]) titles[norm(it.url)] = it.title; }); draw(); }
     }).catch(function () {});
   })();
 })();

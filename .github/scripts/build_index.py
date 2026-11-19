@@ -133,6 +133,123 @@ KID_SHIM = ('<script>(function(){try{var L=window.localStorage,S=Storage.prototy
             'S.removeItem=function(x){return r.call(this,k(this,x))}}catch(e){}})();</script>')
 
 
+# ---------- 📋 resources and Bloom levels for the parents' report «تقريري» (2026-11-19 his ask
+# «الهدف هو فهم جميع الموارد والتحكم فيها حسب مخطط بلوم … اضف توجيهات للتحكم الكلي والجزئي») ----------
+# Each question of an exercise page is linked (automatically, by keywords) to one official resource of its level,
+# and gets a Bloom level from the kind of exercise: 1 = تذكّر، فهم، تطبيق (direct application), 2 = تحليل (ربط),
+# 3 = تقويم وتوظيف (وضعية إدماجية، تميّز، تحدٍّ). The map is written into the deployed page (window.__resmap).
+import sys as _sys
+_sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from resources_src import RES  # noqa: E402
+
+RES_RX = {lv: [re.compile(r[4]) for r in rows] for lv, rows in RES.items()}
+RES_STOP = set("على في من إلى مع عدد عددين أعداد معرفة استعمال وضعية وضعيات بسيطة معطاة حساب تعيين نحسب ثم الذي التي هذه هذا كل لكل حيث".split())
+
+
+def _plain(s):
+    return html.unescape(TAG_RE.sub(" ", s or "")).replace("‪", "").replace("‬", "")
+
+
+def _words(s):
+    return {w[2:] if w.startswith("ال") else w for w in re.findall(r"[؀-ۿ]{4,}", s)} - RES_STOP
+
+
+def bloom_of(extitle, section):
+    t = _plain(extitle)
+    if re.search(r"وضعية|إدماج|تميّ?ز|تحدّ?ي", t) or section in ("idmaj", "tahaddi"):
+        return 3
+    if re.search(r"ربط", t):
+        return 2
+    return 1
+
+
+def res_map(path, lv, term, section, seq):
+    """{qId: [resource index or -1, bloom level]} for an exercise page, or None."""
+    try:
+        with open(path, encoding="utf-8", errors="ignore") as f:
+            m = EX_RE.search(f.read())
+        if not m or lv not in RES:
+            return None
+        ex = json.loads(m.group(1))
+    except (OSError, ValueError):
+        return None
+    tn = int(term[1])
+    rows = RES[lv]
+    cand = [i for i, r in enumerate(rows) if (r[1] in seq if seq else r[0] == tn)] or [i for i, r in enumerate(rows) if r[0] <= tn]
+    out = {}
+    for ei, e in enumerate(ex):
+        et, ctx = _plain(e.get("title", "")), _plain(e.get("context", ""))
+        b = bloom_of(e.get("title", ""), section)
+        hint = re.search(r"\(المورد\s*\d*\s*:\s*([^—)]+)", et)
+        hint = hint.group(1) if hint else ""
+        for qi, q in enumerate(e.get("questions", [])):
+            meth = _plain((q.get("steps") or [""])[0])
+            qt = _plain(q.get("text", ""))
+            mw = _words(meth + " " + hint)
+            best, bs = -1, 0
+            for i in cand:
+                rx = RES_RX[lv][i]
+                sc = (3 * len(rx.findall(meth)) + 2 * len(rx.findall(qt)) + 2 * len(rx.findall(et)) + 0.5 * min(2, len(rx.findall(ctx)))
+                      + 4 * len(rx.findall(hint)) + 1.5 * len(mw & _words(rows[i][2] + " " + rows[i][3])))
+                if sc > bs:
+                    bs, best = sc, i
+            out[str(q.get("qId") or f"{ei + 1}-{qi + 1}")] = [best if bs >= 2 else -1, b]
+    return out
+
+
+def inject_resmap(path, rmap):
+    with open(path, encoding="utf-8", errors="ignore") as f:
+        page = f.read()
+    tag = "<script>window.__resmap=" + json.dumps(rmap, separators=(",", ":")) + ";</script>"
+    h = re.search(r"<head[^>]*>", page, re.I)
+    page = page[:h.end()] + tag + page[h.end():] if h else tag + page
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(page)
+
+
+def write_resources(items, maps):
+    """assets/resources.json: the official resources of each level + where to practise them (links for the guidance)."""
+    out = {}
+    for lv, rows in RES.items():
+        lst = []
+        for i, r in enumerate(rows):
+            ent = {"t": r[0], "s": r[1], "n": r[2], "k": r[3]}
+            where = {1: [], 2: [], 3: []}
+            for it in items:
+                mp = maps.get(it["url"])
+                if it["level"] != lv or not mp:
+                    continue
+                for ri, b in mp.values():
+                    if ri == i and it["url"] not in where[b]:
+                        where[b].append(it["url"])
+            lessons = [u for u in where[1] if "/dars/" in u]
+            if not lessons:     # «أُتقِن» lessons have their own engine: linked by the words of their title
+                best, bs = None, 0
+                for it in items:
+                    if it["level"] != lv or "/dars/" not in it["url"] or "kharitat" in it["url"]:
+                        continue
+                    tt = re.sub(r"\(.*?\)|أُتقِن:|درس تفاعلي:", " ", it["title"])
+                    ov = len(_words(tt) & _words(r[2] + " " + r[3]))
+                    sc = 2 * len(RES_RX[lv][i].findall(tt)) + ov if ov >= 2 else 0
+                    if sc > bs:
+                        bs, best = sc, it["url"]
+                if best and bs >= 3:
+                    lessons = [best]
+            if lessons:
+                ent["l"] = lessons[0]
+            if where[1]:
+                ent["p1"] = [u for u in where[1] if u not in lessons][:2] or where[1][:1]
+            if where[2]:
+                ent["p2"] = where[2][:2]
+            if where[3]:
+                ent["p3"] = where[3][:2]
+            lst.append(ent)
+        out[lv] = lst
+    os.makedirs("assets", exist_ok=True)
+    with open(os.path.join("assets", "resources.json"), "w", encoding="utf-8") as f:
+        json.dump(out, f, ensure_ascii=False, separators=(",", ":"))
+
+
 def inject_site_js(path):
     """Add the shared layer assets/site.js to the DEPLOYED copy of a page (CI only)."""
     with open(path, encoding="utf-8", errors="ignore") as f:
@@ -303,11 +420,21 @@ def main():
                         item.update(page_meta(url + "index.html" if url.endswith("/") else url))
                     items.append(item)
     deploy = os.environ.get("GITHUB_ACTIONS") == "true" or os.environ.get("SITE_BUILD") == "1"
+    maps = {}
+    for it in items:
+        if it["type"] == "html":
+            page = it["url"] + "index.html" if it["url"].endswith("/") else it["url"]
+            mp = res_map(page, it["level"], it["term"], it["section"], it.get("seq") or [])
+            if mp:
+                maps[it["url"]] = mp
     if deploy:
+        write_resources(items, maps)
         for it in items:
             if it["type"] == "html":
                 page = it["url"] + "index.html" if it["url"].endswith("/") else it["url"]
                 inject_og(page, it)
+                if it["url"] in maps:
+                    inject_resmap(page, maps[it["url"]])
                 inject_site_js(page)
         packs = []
         for lv in LEVELS:
