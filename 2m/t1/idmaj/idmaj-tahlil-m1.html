@@ -1055,7 +1055,6 @@ function render(){
   const s = AN.steps[st.i], n = AN.steps.length;
   const prog = AN.steps.map((_, j) => `<span class="${j < st.i ? 'on' : ''}"></span>`).join('');
   box.innerHTML = `<h3>🔍 حلّل الوضعية قبل الحل</h3><div class="an-intro">اقرأ الوضعية جيدا، ثم أجب عن أسئلة التحليل (الخطوة ${M(st.i + 1)} من ${M(n)}). التحليل لا يُحسب في العلامة.</div>
-  <div class="an-qs"><b>📌 سؤالا الوضعية:</b>${[...document.querySelectorAll('#exercisesRoot .q-title > span:first-child')].map(e => '<div>' + e.innerHTML + '</div>').join('')}<div class="an-qn">تظهر خانات الإجابة بعد التحليل.</div></div>
   <div class="an-prog">${prog}</div><span class="an-k">${s.k}</span> <span class="an-t">${TYPE[s.t] || TYPE.mcq}</span>${s.show ? `<div class="an-show">${s.show}</div>` : ''}<div class="an-q">${s.q}</div>${body(s)}<div class="an-fb"></div>
   <button class="an-skip" onclick="window.__anSkip()">تخطّ التحليل وانتقل إلى الحل</button>`;
   box.querySelectorAll('.an-mc').forEach(b => b.onclick = () => judge(+b.dataset.j === s.a, b));
@@ -1094,6 +1093,8 @@ window.__anSkip = () => { st.done = true; save(); render(); };
 window.__anRestart = () => { st = {i:0, tries:0, done:false}; save(); render(); };
 function mount(){
   const ctx = document.querySelector('#exercisesRoot .context-box'); if (!ctx || document.getElementById('anBox')) return;
+  if (!ctx.querySelector('.an-qs')) { const q = [...document.querySelectorAll('#exercisesRoot .q-title > span:first-child')].map(e => '<div>' + e.innerHTML + '</div>').join('');
+    ctx.insertAdjacentHTML('beforeend', '<div class="an-qs">' + q + '</div>'); }
   const box = document.createElement('div'); box.id = 'anBox'; box.className = 'an-box'; ctx.after(box); render();
 }
 if (typeof renderApp === 'function') { const _r = renderApp; renderApp = function(){ const v = _r.apply(this, arguments); mount(); return v; }; }
