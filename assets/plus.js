@@ -38,6 +38,7 @@
     ".px .syms{display:flex;gap:6px;margin:8px 0 0;overflow-x:auto}.px .syms button{direction:ltr;font:inherit;font-weight:800;min-width:40px;min-height:40px;flex:0 0 auto;border-radius:9px;border:1.5px solid var(--border,#cbd5e1);background:var(--soft,#f8fafc);color:var(--text,#0f172a);cursor:pointer}" +
     ".px .fb{display:block;font-weight:400;text-decoration:none;margin-top:8px;border-radius:10px;padding:8px 10px;font-size:.92rem;line-height:1.8}.px .fb:empty{display:none}" +
     ".px .fb.h{background:#fffbeb;border:1px solid #fcd34d;color:#713f12}.px .fb.s{background:#dcfce7;border:1px solid #86efac;color:#14532d}.px .fb.f{background:#eff6ff;border:1px solid #93c5fd;color:#1e3a8a}" +
+    ".px [hidden]{display:none!important}.px .pxmini{font-weight:700;font-size:.92rem}" +
     ".px .sol{margin-top:8px;border:1px solid var(--border,#e2e8f0);border-radius:10px;padding:8px 10px;line-height:1.9}.px .sol>div{overflow-x:auto}.px .sol .end{font-weight:800}" +
     ".px .pills{display:flex;gap:6px}.px .pill{font-size:.8rem;font-weight:800;border-radius:999px;padding:3px 10px;border:1px solid var(--border,#e2e8f0);background:var(--soft,#f8fafc)}" +
     ".px .shake{animation:pxs .35s}@keyframes pxs{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}" +
@@ -227,8 +228,23 @@
       $$(".chips button", host).forEach(function (b) { b.onclick = function () { sel = b.getAttribute("data-t") || null; draw(); }; });
       $$(".syms button", host).forEach(function (b) { b.onclick = function () { if (inp.disabled) return; var s = b.textContent; inp.value = s === "⌫" ? inp.value.slice(0, -1) : inp.value + s; inp.focus(); }; });
       $(".nx", host).onclick = draw;
+      /* after the answer (his «تحدي الشهادة نفس المشكل، إخفاؤه آليا»): no answer box, solution folded behind a button,
+         and the panel folds BY ITSELF into one line after 6 s unless the solution is open */
+      var foldT = null;
+      function fold(good) {
+        if (!host.contains(fb) || !sol.hidden) return;
+        host.innerHTML = '<div class="row pxmini"><span>' + (good ? "✅ أحسنت!" : "📘 انتهى التمرين.") + (streak ? " · 🔥 " + streak : "") + '</span><span class="px-btns">' +
+          '<button type="button" class="b s nx2">🔄 تمرين آخر</button><button type="button" class="b s hd">✕ أخفِ</button></span></div>';
+        $(".nx2", host).onclick = draw;
+        $(".hd", host).onclick = function () { if (opt.lazy) intro(); else host.hidden = true; };
+      }
       function end(good, raw) {
-        inp.disabled = go.disabled = true; sol.hidden = false; stat(lv, id, good);
+        inp.disabled = go.disabled = true; stat(lv, id, good);
+        inp.parentNode.hidden = true; $(".syms", host).hidden = true;
+        var nx = $(".nx", host), tg = el("button", "b s", "📖 الحل");
+        tg.type = "button"; nx.parentNode.insertBefore(tg, nx);
+        tg.onclick = function () { sol.hidden = !sol.hidden; tg.textContent = sol.hidden ? "📖 الحل" : "🔼 أخفِ الحل"; if (sol.hidden) fold(good); };
+        foldT = setTimeout(function () { fold(good); }, 6000);
         if (good) { streak++; if (streak > best) { best = streak; put("math-practice-best", best); } fb.className = "fb s"; fb.innerHTML = "⭐".repeat(left) + " أحسنت! " + (streak >= 3 ? "🔥 " + streak + " إجابات صحيحة متتالية." : "واصل.") + (g.unit && norm(raw) === String(raw).replace(/\s+/g, "").toLowerCase() ? "<br>⚠️ لا تنس الوحدة (" + g.unit + ") في كراسك." : ""); try { if (window.flyStars) window.flyStars(fb, 10); } catch (e) {} }
         else { streak = 0; fb.className = "fb f"; fb.innerHTML = "🌟 لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. اقرأ الإجابة النموذجية، ثم اضغط «🔄 تمرين آخر»."; }
         $(".pill", host).textContent = "🔥 " + streak; $$(".pill", host)[1].textContent = "🏅 " + best;
@@ -251,11 +267,12 @@
       go.onclick = check;
       inp.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); check(); } });
     }
-    if (opt.lazy) {
+    function intro() {
       host.innerHTML = '<div class="row"><div><h2>' + (opt.title || "🎲 تمارين لا نهائية بأرقام متغيرة") + '</h2><span class="sub">' + LV[lv] + " · " + list.length + " مهارات · أرقام جديدة في كل مرة</span></div><span class=\"sp\"></span>" +
         '<button type="button" class="b go0">▶ ابدأ التدرّب</button></div>';
       $(".go0", host).onclick = draw;
-    } else draw();
+    }
+    if (opt.lazy) intro(); else draw();
   }
   window.__px = { NEW: NEW, poly: poly, right: right, bank: bank, TYPES: TYPES };
 
@@ -424,8 +441,8 @@
         bem.innerHTML = '<div class="row"><div><h2>🎓 ركن شهادة التعليم المتوسط</h2><span class="sub">' + (cd != null && cd > 0 ? "⏳ بقي " + cd + " يوما على الامتحان" : "📅 تاريخ الامتحان: يُضاف هنا فور إعلانه رسميا") + "</span></div></div>" +
           '<div class="px-btns"><button type="button" class="b go1">⚡ تحدي الشهادة: تمرين بأرقام جديدة</button><button type="button" class="b s go2">📊 تقريري</button></div>' +
           (all.length ? '<details class="sub"><summary>📚 سلاسل ومواضيع الشهادة (' + all.length + ")</summary><ul>" + all.map(function (i) { return '<li><a href="' + esc(i.url) + '">' + esc(i.title) + "</a></li>"; }).join("") + "</ul></details>" : "") +
-          '<div class="bemp" hidden></div>';
-        $(".go1", bem).onclick = function () { var p = $(".bemp", bem); p.hidden = false; practice(p, "4m", TYPES["4m"], { title: "⚡ تحدي الشهادة" }); p.className = "px"; p.scrollIntoView({ block: "start", behavior: "smooth" }); };
+          '<div class="bemp" id="bemp" hidden></div>';
+        $(".go1", bem).onclick = function () { var p = $("#bemp"); p.hidden = false; practice(p, "4m", TYPES["4m"], { title: "⚡ تحدي الشهادة" }); p.scrollIntoView({ block: "start", behavior: "smooth" }); };
         $(".go2", bem).onclick = function () { openReport("4m"); };
       } else bem.hidden = true;
     }
