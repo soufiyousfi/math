@@ -240,8 +240,9 @@ details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
     var avg = marks.length ? marks.reduce(function (a, b) { return a + b; }, 0) / marks.length : null;
     var opened = Object.keys(pages).filter(function (u) { return u !== ""; }).length;
     $("tiles").innerHTML =
-      tile(dur(total), "⏱️ وقت الاستعمال") + tile(nd === 1 ? (total >= 60 ? "نعم" : "لا") : active + " / " + nd, nd === 1 ? "📅 نشط اليوم" : "📅 أيام النشاط") +
-      tile(dur(nd > 1 ? total / nd : total), "📈 المعدّل اليومي") + tile(opened, "📄 صفحات فُتحت") +
+      tile(dur(total), "⏱️ وقت الاستعمال") + tile(nd === 1 ? (total >= 60 ? "نعم" : "لا") : days === "year" ? active : active + " / " + nd, nd === 1 ? "📅 نشط اليوم" : "📅 أيام النشاط") +
+      (days === "year" ? tile(dur(total / Math.max(1, active)), "📈 معدّل يوم النشاط")   /* the school year has holidays: no division by calendar days */
+        : tile(dur(nd > 1 ? total / nd : total), "📈 المعدّل اليومي")) + tile(opened, "📄 صفحات فُتحت") +
       tile(done, "✅ أنشطة أكملها") + tile(avg == null ? "—" : num(avg) + " / 20", "📝 معدّل النتائج");
     var al = [], night = 0;
     Object.keys(hours).forEach(function (h) { if (+h >= 22 || +h < 6) night += hours[h]; });
