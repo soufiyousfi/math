@@ -1179,6 +1179,39 @@ body.sx-exam .sx-calc-fab{bottom:74px}
     function lockedOf(q) { try { return !!questionLocked[q.qId]; } catch (e) { return false; } }
     function leftOf(q) { try { return +attemptsLeft[q.qId]; } catch (e) { return 3; } }
 
+    /* ---- 📋 results by resource and Bloom level, for the parents' report «تقريري» (2026-11-19) ----
+       window.__resmap (written into the page at deploy) links each question to an official resource of the level and a
+       Bloom level (1 تذكّر·فهم·تطبيق, 2 تحليل, 3 تقويم·توظيف). Only answered questions count (correct, or 3 tries used).
+       localStorage "math-res" = { "<level>|<resource>": { "<page>": { f: first day, d: day of the last change, b: {1:[earned, points], …} } } }.
+       A second page (or the same page on a later day) on the same resource is the review. */
+    (function () {
+      var RM = window.__resmap; if (!RM) return;
+      var RK = "math-res", lastSig = "";
+      function day() { var d = new Date(); return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
+      function rec() {
+        var cur = {};
+        data.forEach(function (ex) {
+          (ex.questions || []).forEach(function (q) {
+            var m = RM[q.qId]; if (!m || m[0] < 0 || !lockedOf(q)) return;
+            var k = level + "|" + m[0], c = cur[k] || (cur[k] = {}), b = c[m[1]] || (c[m[1]] = [0, 0]);
+            b[0] += earnedOf(q); b[1] += +q.pts || 1;
+          });
+        });
+        var sig = JSON.stringify(cur); if (sig === lastSig || sig === "{}") return; lastSig = sig;
+        try {
+          var all = JSON.parse(localStorage.getItem(RK) || "{}") || {}, t = day();
+          Object.keys(cur).forEach(function (k) {
+            var r = all[k] || (all[k] = {}), old = r[rel];
+            r[rel] = { f: old ? old.f : t, d: old && JSON.stringify(old.b) === JSON.stringify(cur[k]) ? old.d : t, b: cur[k] };
+          });
+          localStorage.setItem(RK, JSON.stringify(all));
+        } catch (e) {}
+      }
+      setInterval(rec, 2000);
+      document.addEventListener("click", function () { setTimeout(rec, 600); }, true);
+      window.addEventListener("pagehide", rec);
+    })();
+
     /* ---- A. reading aloud ---- */
     cards.forEach(function (c, i) {
       var cb = $(".context-box", c);
