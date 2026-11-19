@@ -1007,6 +1007,7 @@
 .an-card table{width:100%;border-collapse:collapse;margin-top:6px;background:#fff}.an-card td{border:1px solid #c4b5fd;padding:7px;vertical-align:top}.an-card td:first-child{font-weight:bold;color:#5b21b6;width:30%;white-space:nowrap}
 .an-locked .q-box{display:none}
 .an-t{font-size:.8em;color:#6d28d9}
+.an-qs{background:#fff;border-right:4px solid #1e3a8a;border-radius:8px;padding:8px 10px;margin:6px 0 4px}.an-qs div{margin-top:4px}.an-qn{font-size:.85em;color:#64748b}
 .an-show{background:#fff;border:1px dashed #a78bfa;border-radius:8px;padding:8px;margin:6px 0}
 .an-chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
 .an-chip{background:#fff;border:2px solid #c4b5fd;border-radius:20px;padding:7px 12px;font-size:1em;cursor:pointer;font-family:inherit}
@@ -1056,6 +1057,7 @@ function render(){
   const s = AN.steps[st.i], n = AN.steps.length;
   const prog = AN.steps.map((_, j) => `<span class="${j < st.i ? 'on' : ''}"></span>`).join('');
   box.innerHTML = `<h3>🔍 حلّل الوضعية قبل الحل</h3><div class="an-intro">اقرأ الوضعية جيدا، ثم أجب عن أسئلة التحليل (الخطوة ${M(st.i + 1)} من ${M(n)}). التحليل لا يُحسب في العلامة.</div>
+  <div class="an-qs"><b>📌 سؤالا الوضعية:</b>${[...document.querySelectorAll('#exercisesRoot .q-title > span:first-child')].map(e => '<div>' + e.innerHTML + '</div>').join('')}<div class="an-qn">تظهر خانات الإجابة بعد التحليل.</div></div>
   <div class="an-prog">${prog}</div><span class="an-k">${s.k}</span> <span class="an-t">${TYPE[s.t] || TYPE.mcq}</span>${s.show ? `<div class="an-show">${s.show}</div>` : ''}<div class="an-q">${s.q}</div>${body(s)}<div class="an-fb"></div>
   <button class="an-skip" onclick="window.__anSkip()">تخطّ التحليل وانتقل إلى الحل</button>`;
   box.querySelectorAll('.an-mc').forEach(b => b.onclick = () => judge(+b.dataset.j === s.a, b));
