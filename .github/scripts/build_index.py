@@ -94,6 +94,25 @@ def page_meta(path):
         return {}
 
 
+AR_ORD = {"الأول": 1, "الثاني": 2, "الثالث": 3, "الرابع": 4, "الخامس": 5, "السادس": 6, "السابع": 7}
+
+
+def sequences(url, title):
+    """Sequence numbers (المقطع) of a page, for the parents' report «تقريري» (2026-11-19):
+    from the file name (…-m2-…, idmaj-m12 = 1 and 2) or the title («المقطع 2», «المقطعان 1 و2», «المقطعين الأول والثاني»)."""
+    name = url.rstrip("/").split("/")[-1]
+    m = re.search(r"(?:^|[-_])m([1-7]{1,3})(?=[-_.]|$)", name)
+    if m:
+        return sorted({int(c) for c in m.group(1)})
+    m = re.search(r"المقطع(?:ان|ين)?\s+([^)\-–—|،]+)", title or "")
+    if not m:
+        return []
+    part = m.group(1)
+    out = {int(d) for d in re.findall(r"(?<!\d)([1-7])(?!\d)", part)}
+    out |= {v for k, v in AR_ORD.items() if k in part}
+    return sorted(out)
+
+
 def site_version():
     """Version of this deployment: pages compare it with version.json to show «تتوفر تمارين جديدة»."""
     sha = os.environ.get("GITHUB_SHA", "")
@@ -277,6 +296,9 @@ def main():
                     item = {"level": lv, "term": tm, "section": sec,
                             "title": title, "url": url, "type": kind, "date": date,
                             "mod": last_change_date(full)}
+                    seq = sequences(url, title)
+                    if seq:
+                        item["seq"] = seq
                     if kind == "html":
                         item.update(page_meta(url + "index.html" if url.endswith("/") else url))
                     items.append(item)
