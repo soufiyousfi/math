@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>تقريري - متابعة الأولياء</title>
+<meta name="description" content="تقرير المتابعة للأولياء: وقت استعمال المنصة، الصفحات المفتوحة، النتائج والتواريخ. المعطيات تبقى في هذا الهاتف فقط.">
+<meta name="robots" content="noindex">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<style>
+:root{--bg:#f1f5f9;--sheet:#fff;--text:#0f172a;--muted:#64748b;--line:#e2e8f0;--edge:#1e3a8a;--bar:#3b82f6;--warn:#b45309;--warnbg:#fffbeb;--ok:#15803d}
+html.sx-dark{--bg:#0b1220;--sheet:#111a2e;--text:#e2e8f0;--muted:#94a3b8;--line:#22304a;--edge:#60a5fa;--bar:#60a5fa;--warn:#fbbf24;--warnbg:#2a2210;--ok:#4ade80}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Segoe UI",Tahoma,"Noto Sans Arabic",Arial,sans-serif;line-height:1.6}
+.wrap{max-width:760px;margin:0 auto;padding:12px 16px 40px}
+.top{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.top a,.top button,.chips button,.act button{font:inherit;font-weight:800;cursor:pointer;border-radius:999px;padding:6px 12px;background:var(--sheet);color:var(--edge);border:1.5px solid var(--line);text-decoration:none;font-size:.9rem}
+.top .sp{flex:1}
+.sheet{background:var(--sheet);border:1px solid var(--line);border-right:5px solid var(--edge);border-radius:14px;padding:14px;margin:0 0 12px}
+h1{margin:0 0 2px;font-size:1.35rem}
+h2{margin:0 0 8px;font-size:1.05rem}
+.sub{color:var(--muted);margin:0;font-size:.9rem}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0}
+.chips button.on{background:var(--edge);color:#fff;border-color:var(--edge)}
+html.sx-dark .chips button.on{color:#0b1220}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tile{border:1px solid var(--line);border-top:4px solid var(--edge);border-radius:12px;padding:8px 6px;text-align:center}
+.tile b{display:block;font-size:1.25rem;line-height:1.3}
+.tile span{color:var(--muted);font-size:.78rem}
+@media (max-width:420px){.tiles{grid-template-columns:repeat(2,1fr)}}
+.chart{display:flex;align-items:flex-end;gap:3px;height:150px;border-bottom:1.5px solid var(--line);position:relative;padding-top:18px}
+.chart .c{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;min-width:0}
+.chart .c i{display:block;width:100%;max-width:34px;background:var(--bar);border-radius:5px 5px 0 0;min-height:2px}
+.chart .c i.over{background:var(--warn)}
+.chart .c em{font-style:normal;font-size:.68rem;color:var(--muted);white-space:nowrap}
+.chart .lim{position:absolute;left:0;right:0;border-top:2px dashed var(--warn)}
+.chart .lim span{position:absolute;right:0;top:2px;background:var(--sheet);padding:0 3px;font-size:.7rem;color:var(--warn);font-weight:800}
+.days{display:flex;gap:3px;margin-top:3px}
+.days span{flex:1;text-align:center;font-size:.68rem;color:var(--muted);min-width:0;overflow:hidden;white-space:nowrap}
+.parts .r{display:flex;align-items:center;gap:8px;margin:5px 0}
+.parts .r b{width:112px;flex:none;font-size:.9rem}
+.parts .r .t{flex:1;height:12px;background:var(--line);border-radius:99px;overflow:hidden}
+.parts .r .t i{display:block;height:100%;background:var(--bar)}
+.parts .r.night .t i{background:var(--warn)}
+.parts .r span{width:78px;flex:none;text-align:left;font-size:.82rem;color:var(--muted)}
+.note{background:var(--warnbg);border:1px solid #fde68a;border-right:4px solid var(--warn);border-radius:10px;padding:8px 10px;margin:8px 0 0;font-size:.9rem}
+html.sx-dark .note{border-color:#4a3b12}
+.list{list-style:none;margin:0;padding:0}
+.list li{border-bottom:1px solid var(--line);padding:8px 0;display:flex;gap:8px;align-items:flex-start}
+.list li:last-child{border-bottom:0}
+.list .m{flex:1;min-width:0}
+.list a{color:var(--text);font-weight:800;text-decoration:none;overflow-wrap:anywhere}
+.list small{display:block;color:var(--muted);font-size:.78rem}
+.list .res{flex:none;text-align:left;font-weight:900;font-size:.95rem;white-space:nowrap}
+.list .res small{text-align:left}
+.ok{color:var(--ok)}
+.empty{color:var(--muted);text-align:center;padding:14px 0;margin:0}
+.act{display:flex;gap:8px;flex-wrap:wrap}
+.act button{border-radius:12px;padding:9px 14px}
+.act button.p{background:var(--edge);color:#fff;border-color:var(--edge)}
+html.sx-dark .act button.p{color:#0b1220}
+details.set summary{cursor:pointer;font-weight:900;font-size:1.05rem}
+.set form{display:grid;gap:10px;margin-top:10px}
+.set label{display:flex;flex-direction:column;gap:4px;font-weight:700;font-size:.92rem}
+.set select,.set input{font:inherit;font-size:1rem;padding:8px;border:1.5px solid var(--line);border-radius:10px;background:var(--sheet);color:var(--text)}
+.set .msg{font-weight:800;color:var(--ok);margin:0;min-height:1.4em}
+.priv{color:var(--muted);font-size:.84rem;margin:0}
+.priv li{margin:3px 0}
+@media print{.top,.chips,.act,details.set,.noprint{display:none!important}body{background:#fff}.sheet{break-inside:avoid;border-color:#cbd5e1}.wrap{padding:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a href="./">🏠 الرئيسية</a><span class="sp"></span><button type="button" id="kidBtn" hidden></button></div>
+
+  <section class="sheet">
+    <h1>📊 تقريري</h1>
+    <p class="sub" id="who">متابعة الأولياء على هذا الهاتف</p>
+    <div class="chips" id="period" role="group" aria-label="المدة">
+      <button type="button" data-d="1">اليوم</button>
+      <button type="button" data-d="7" class="on">آخر 7 أيام</button>
+      <button type="button" data-d="30">آخر 30 يوما</button>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="tiles" id="tiles"></div>
+    <div id="alerts"></div>
+  </section>
+
+  <section class="sheet">
+    <h2>⏱️ وقت الاستعمال كل يوم</h2>
+    <div class="chart" id="chart"></div>
+    <div class="days" id="days"></div>
+  </section>
+
+  <section class="sheet">
+    <h2>🕐 متى يستعمل الهاتف؟</h2>
+    <div class="parts" id="parts"></div>
+  </section>
+
+  <section class="sheet">
+    <h2>📄 الصفحات التي فتحها ونتائجه</h2>
+    <ul class="list" id="list"></ul>
+  </section>
+
+  <section class="sheet act noprint">
+    <button type="button" class="p" id="shareBtn">📤 إرسال التقرير</button>
+    <button type="button" id="printBtn">🖨️ طباعة أو حفظ PDF</button>
+  </section>
+
+  <section class="sheet">
+    <details class="set" id="set">
+      <summary>⚙️ حدود الاستعمال (للولي)</summary>
+      <div id="setBody"></div>
+    </details>
+  </section>
+
+  <section class="sheet">
+    <h2>🔒 معلومات مهمة</h2>
+    <ul class="priv">
+      <li>كل هذه المعطيات محفوظة في هذا الهاتف فقط، ولا تُرسل إلى أي جهة، ولا تحتاج إلى حساب.</li>
+      <li>يُحسب الوقت داخل المنصة فقط، حين تكون الصفحة ظاهرة على الشاشة ويلمسها التلميذ. لا يُحسب وقت التطبيقات الأخرى.</li>
+      <li>إذا مُسحت معطيات المتصفح أو استُعمل هاتف آخر أو متصفح آخر، يبدأ التقرير من جديد.</li>
+      <li>التنبيه عند تجاوز الوقت تذكير هادئ، لا يقفل الهاتف. لمراقبة الهاتف كله استعمل أداة الرقابة الأبوية في الهاتف نفسه.</li>
+      <li>التمارين في المنصة للتدرّب، وليست نقاطا رسمية في المدرسة.</li>
+    </ul>
+  </section>
+</div>
+<script>
+(function () {
+  "use strict";
+  var SEC = { dars: "درس تفاعلي", al3ab: "ألعاب", series: "سلسلة تمارين", fard: "فرض", wadjib: "واجب منزلي", ikhtibar: "اختبار",
+    chahada: "سلسلة الشهادة", tahaddi: "تحدٍّ", idmaj: "وضعية إدماجية", bem: "سلاسل الشهادة", itqan: "أُتقِن", ilaj: "تمارين دعم" };
+  var LV = { "1m": "1م", "2m": "2م", "3m": "3م", "4m": "4م" };
+  var MON = ["جانفي", "فيفري", "مارس", "أفريل", "ماي", "جوان", "جويلية", "أوت", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+  var WD = ["أحد", "إثنين", "ثلاثاء", "أربعاء", "خميس", "جمعة", "سبت"];
+  var raw = window.__kidRaw || { g: function (k) { return localStorage.getItem(k); }, s: function (k, v) { localStorage.setItem(k, v); } };
+  var $ = function (id) { return document.getElementById(id); };
+  function get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function put(k, v) { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} }
+  function J(k, d) { try { var v = JSON.parse(get(k) || "null"); return v == null ? d : v; } catch (e) { return d; } }
+  function esc(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function dk(t) { var d = new Date(t); return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
+  function dateAr(t, withTime) {
+    var d = new Date(t), s = WD[d.getDay()] + " " + d.getDate() + " " + MON[d.getMonth()];
+    if (withTime) s += "، " + d.getHours() + ":" + ("0" + d.getMinutes()).slice(-2);
+    return s;
+  }
+  function dur(sec) {
+    var m = Math.round((sec || 0) / 60);
+    if (m < 1) return sec > 0 ? "أقل من دقيقة" : "0 د";
+    if (m < 60) return m + " د";
+    return Math.floor(m / 60) + " سا " + (m % 60 ? (m % 60) + " د" : "");
+  }
+  function num(n) { return String(Math.round(n * 100) / 100).replace(".", ","); }
+  function norm(u) { return String(u || "").replace(/index\.html$/, ""); }
+  function info(u) {
+    var m = u.match(/^([1-4]m)\/(?:(t[1-3])\/([a-z0-9]+)|(bem))\//);
+    if (!m) return { lv: "", sec: u === "" ? "الصفحة الرئيسية" : "" };
+    return { lv: m[1], sec: SEC[m[3] || m[4]] || "" };
+  }
+
+  /* who: child profile */
+  var kids = []; try { kids = JSON.parse(raw.g("math-kids") || "null") || []; } catch (e) {}
+  var curId = window.__kid || "", cur = null;
+  kids.forEach(function (k) { if (k.id === curId) cur = k; });
+  var name = (cur && cur.n) || get("math-name") || "", lvl = (cur && cur.l) || get("math-level") || "";
+  $("who").textContent = (name ? "👤 " + name : "👤 التلميذ") + (LV[lvl] ? " · السنة " + LV[lvl] : "") + " · على هذا الهاتف";
+  if (kids.length > 1) {
+    var kb = $("kidBtn"); kb.hidden = false; kb.textContent = "👪 ابن آخر";
+    kb.onclick = function () {
+      var i = 0; kids.forEach(function (k, j) { if (k.id === curId) i = j; });
+      var nx = kids[(i + 1) % kids.length];
+      try { raw.s("math-kid", nx.id); } catch (e) {}
+      location.reload();
+    };
+  }
+
+  var act = J("math-act", { d: {} }); if (!act.d) act.d = {};
+  var prog = J("math-progress", {});
+  var titles = {};
+  Object.keys(act.d).forEach(function (k) { var p = act.d[k].p || {}; Object.keys(p).forEach(function (u) { if (p[u].t) titles[u] = p[u].t; }); });
+  var LIM = J("math-limit", {});
+  var days = 7;
+
+  function range(n) {
+    var out = [], t = new Date(); t.setHours(12, 0, 0, 0);
+    for (var i = n - 1; i >= 0; i--) out.push(dk(t.getTime() - i * 86400000));
+    return out;
+  }
+  function draw() {
+    var ks = range(days), since = new Date(ks[0] + "T00:00:00").getTime();
+    var total = 0, active = 0, hours = {}, pages = {}, reminders = 0, over = 0;
+    ks.forEach(function (k) {
+      var d = act.d[k]; if (!d) return;
+      total += d.s || 0; if ((d.s || 0) >= 60) active++;
+      reminders += d.r || 0;
+      if (LIM.min && d.s > LIM.min * 60) over += d.s - LIM.min * 60;
+      Object.keys(d.h || {}).forEach(function (h) { hours[h] = (hours[h] || 0) + d.h[h]; });
+      Object.keys(d.p || {}).forEach(function (u) {
+        var p = d.p[u], q = pages[u] || (pages[u] = { s: 0, o: 0, l: 0 });
+        q.s += p.s || 0; q.o += p.o || 0; q.l = Math.max(q.l, p.l || 0);
+      });
+    });
+    /* results saved by the pages (also before this report existed) */
+    var done = 0, marks = [], stars = 0;
+    Object.keys(prog).forEach(function (u0) {
+      var r = prog[u0], u = norm(u0); if (!r || !r.t || r.t < since) return;
+      var q = pages[u] || (pages[u] = { s: 0, o: 0, l: 0 });
+      q.l = Math.max(q.l, r.t); q.r = r;
+      if (r.d) { done++; if (r.m) marks.push((r.b || r.s) / r.m * 20); }
+      stars += r.st || 0;
+    });
+    var avg = marks.length ? marks.reduce(function (a, b) { return a + b; }, 0) / marks.length : null;
+    var opened = Object.keys(pages).filter(function (u) { return u !== ""; }).length;
+    $("tiles").innerHTML =
+      tile(dur(total), "⏱️ وقت الاستعمال") + tile(days === 1 ? (total >= 60 ? "نعم" : "لا") : active + " / " + days, days === 1 ? "📅 نشط اليوم" : "📅 أيام النشاط") +
+      tile(dur(days > 1 ? total / Math.max(1, days) : total), "📈 المعدّل اليومي") + tile(opened, "📄 صفحات فُتحت") +
+      tile(done, "✅ أنشطة أكملها") + tile(avg == null ? "—" : num(avg) + " / 20", "📝 معدّل النتائج");
+    var al = [], night = 0;
+    Object.keys(hours).forEach(function (h) { if (+h >= 22 || +h < 6) night += hours[h]; });
+    if (night >= 60) al.push("🌙 استعمل المنصة ليلا (بعد العاشرة) مدة " + dur(night) + ".");
+    if (over >= 60) al.push("⏰ تجاوز الحدّ اليومي الذي حدّدته بمجموع " + dur(over) + (reminders ? "، وظهر له التذكير " + reminders + " مرة" : "") + ".");
+    if (!total && !opened) al.push("لا يوجد نشاط في هذه المدة على هذا الهاتف" + (name ? " لـ " + esc(name) : "") + ".");
+    $("alerts").innerHTML = al.map(function (t) { return '<p class="note">' + t + "</p>"; }).join("");
+
+    /* chart */
+    var max = LIM.min ? LIM.min * 60 : 0;
+    ks.forEach(function (k) { var d = act.d[k]; if (d && d.s > max) max = d.s; });
+    max = Math.max(max, 600);
+    var ch = "", dl = "", small = ks.length > 10;
+    ks.forEach(function (k, i) {
+      var s = (act.d[k] || {}).s || 0, h = Math.round(s / max * 100), dt = new Date(k + "T12:00:00");
+      var isOver = LIM.min && s > LIM.min * 60;
+      ch += '<div class="c" title="' + dateAr(dt) + ": " + dur(s) + '"><em>' + (small || !s ? "" : Math.round(s / 60)) + '</em><i class="' + (isOver ? "over" : "") + '" style="height:' + h + '%"></i></div>';
+      dl += "<span>" + (small ? (i % 5 === 0 || i === ks.length - 1 ? dt.getDate() : "") : (ks.length === 1 ? "اليوم" : WD[dt.getDay()])) + "</span>";
+    });
+    if (LIM.min) ch += '<div class="lim" style="bottom:' + (LIM.min * 60 / max * 100 * (132 / 150)) + '%"><span>الحدّ ' + LIM.min + " د</span></div>";
+    $("chart").innerHTML = ch; $("days").innerHTML = dl;
+    $("chart").setAttribute("aria-label", "الدقائق كل يوم");
+
+    /* parts of the day */
+    var P = [["🌅 صباحا", 6, 12], ["☀️ بعد الظهر", 12, 18], ["🌆 مساء", 18, 22], ["🌙 ليلا", 22, 30]], ps = [], pmax = 1;
+    P.forEach(function (p) {
+      var s = 0; for (var h = p[1]; h < p[2]; h++) s += hours[h % 24] || 0;
+      ps.push(s); if (s > pmax) pmax = s;
+    });
+    $("parts").innerHTML = P.map(function (p, i) {
+      return '<div class="r' + (i === 3 ? " night" : "") + '"><b>' + p[0] + '</b><div class="t"><i style="width:' + Math.round(ps[i] / pmax * 100) + '%"></i></div><span>' + dur(ps[i]) + "</span></div>";
+    }).join("") + '<p class="priv">صباحا 6–12، بعد الظهر 12–18، مساء 18–22، ليلا 22–6.</p>';
+
+    /* pages */
+    var us = Object.keys(pages).filter(function (u) { return u !== "" && (pages[u].s >= 10 || pages[u].r || pages[u].o); })
+      .sort(function (a, b) { return pages[b].l - pages[a].l; });
+    $("list").innerHTML = us.length ? us.slice(0, 80).map(function (u) {
+      var q = pages[u], r = q.r, inf = info(u), t = titles[u] || u.split("/").filter(Boolean).pop() || u;
+      var res = "";
+      if (r && r.m) {
+        res = '<span class="' + (r.d ? "ok" : "") + '">' + num(r.d ? (r.b || r.s) : r.s) + " / " + r.m + "</span>" +
+          "<small>" + (r.d ? "✅ أكمله" : (r.n ? "أجاب عن " + (r.a || 0) + " من " + r.n : "لم يكمله")) + (r.st ? " · ⭐ " + r.st : "") + "</small>";
+      }
+      return '<li><div class="m"><a href="' + esc(u) + '">' + esc(t) + "</a><small>" +
+        [inf.sec, LV[inf.lv] ? "السنة " + LV[inf.lv] : "", q.l ? dateAr(q.l, true) : "", q.s >= 10 ? "⏱️ " + dur(q.s) : "", q.o > 1 ? "فُتح " + q.o + " مرات" : ""]
+          .filter(Boolean).join(" · ") + '</small></div><div class="res">' + res + "</div></li>";
+    }).join("") : '<li><p class="empty">لم تُفتح أي صفحة تمارين في هذه المدة.</p></li>';
+
+    window.__repSummary = { total: total, active: active, opened: opened, done: done, avg: avg, night: night, over: over };
+  }
+  function tile(v, l) { return '<div class="tile"><b>' + v + "</b><span>" + l + "</span></div>"; }
+
+  $("period").onclick = function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    days = +b.getAttribute("data-d");
+    Array.prototype.forEach.call(this.querySelectorAll("button"), function (x) { x.classList.toggle("on", x === b); });
+    draw();
+  };
+  $("printBtn").onclick = function () { window.print(); };
+  $("shareBtn").onclick = function () {
+    var s = window.__repSummary || {}, per = days === 1 ? "اليوم" : "آخر " + days + (days > 10 ? " يوما" : " أيام");
+    var txt = "📊 تقرير المتابعة " + (name ? "— " + name : "") + " (" + per + "، " + dateAr(Date.now()) + ")\n" +
+      "⏱️ وقت الاستعمال: " + dur(s.total) + "\n📄 صفحات فُتحت: " + s.opened + "\n✅ أنشطة أكملها: " + s.done +
+      (s.avg != null ? "\n📝 معدّل النتائج: " + num(s.avg) + " / 20" : "") + (s.night >= 60 ? "\n🌙 استعمال ليلي: " + dur(s.night) : "") +
+      "\n— منصة رياضيات التعليم المتوسط";
+    var btn = this, ok = function () { btn.textContent = "✓ نُسخ: الصقه في الرسالة"; };
+    if (navigator.share) { navigator.share({ title: "تقرير المتابعة", text: txt }).catch(function () {}); return; }
+    try { navigator.clipboard.writeText(txt).then(ok, function () { prompt("انسخ النص:", txt); }); } catch (e) { prompt("انسخ النص:", txt); }
+  };
+
+  /* parent settings: daily limit + bedtime, optional 4-digit code (global for all children of the phone) */
+  function setForm() {
+    var pin = raw.g("math-pin") || "", body = $("setBody");
+    if (pin && !setForm.unlocked) {
+      body.innerHTML = '<form id="pinF"><label>أدخل رمز الولي (4 أرقام)<input name="p" inputmode="numeric" maxlength="4" autocomplete="off" required></label><button type="submit" class="p" style="font:inherit;font-weight:800;border-radius:12px;padding:9px;border:0;background:var(--edge);color:#fff">🔓 فتح</button><p class="msg"></p></form>';
+      $("pinF").onsubmit = function (e) {
+        e.preventDefault();
+        if (this.p.value === pin) { setForm.unlocked = true; setForm(); }
+        else this.querySelector(".msg").textContent = "✗ الرمز غير صحيح";
+      };
+      return;
+    }
+    var opt = function (vals, sel, lab) { return vals.map(function (v) { return '<option value="' + v + '"' + (String(sel || "") === String(v) ? " selected" : "") + ">" + lab(v) + "</option>"; }).join(""); };
+    body.innerHTML = '<form id="limF">' +
+      '<label>⏰ الوقت الأقصى في اليوم' + (name ? " لـ " + esc(name) : "") + '<select name="min">' + opt(["", 20, 30, 45, 60, 90, 120], LIM.min, function (v) { return v ? v + " دقيقة" : "بلا حدّ"; }) + "</select></label>" +
+      '<label>🌙 ساعة التوقّف ليلا<select name="bed">' + opt(["", 20, 21, 22, 23], LIM.bed, function (v) { return v ? "بعد الساعة " + v + ":00" : "بلا حدّ"; }) + "</select></label>" +
+      '<label>🔑 رمز الولي (اختياري، 4 أرقام) حتى لا يغيّر الابن الحدود<input name="pin" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" placeholder="' + (pin ? "الرمز محفوظ (اكتب رمزا جديدا لتغييره)" : "مثلا 2580") + '" autocomplete="off"></label>' +
+      '<button type="submit" style="font:inherit;font-weight:800;border-radius:12px;padding:9px;border:0;background:var(--edge);color:#fff;cursor:pointer">💾 حفظ</button>' +
+      (pin ? '<button type="button" id="noPin" style="font:inherit;border-radius:12px;padding:7px;border:1px solid var(--line);background:var(--sheet);color:var(--text);cursor:pointer">إلغاء الرمز</button>' : "") +
+      '<p class="msg"></p><p class="priv">عند تجاوز الوقت أو ساعة التوقّف، تظهر للتلميذ رسالة هادئة تدعوه إلى الاستراحة (كل 10 دقائق)، ويظهر ذلك في هذا التقرير.</p></form>';
+    $("limF").onsubmit = function (e) {
+      e.preventDefault();
+      LIM = { min: +this.min.value || 0, bed: +this.bed.value || 0 };
+      if (!LIM.min) delete LIM.min; if (!LIM.bed) delete LIM.bed;
+      put("math-limit", Object.keys(LIM).length ? JSON.stringify(LIM) : null);
+      if (/^\d{4}$/.test(this.pin.value)) { try { raw.s("math-pin", this.pin.value); } catch (er) {} }
+      this.querySelector(".msg").textContent = "✓ حُفظ";
+      draw();
+    };
+    if ($("noPin")) $("noPin").onclick = function () { try { (window.__kidRaw ? window.__kidRaw.r : function (k) { localStorage.removeItem(k); })("math-pin"); } catch (er) {} setForm(); };
+  }
+  setForm();
+  draw();
+})();
+</script>
+</body>
+</html>

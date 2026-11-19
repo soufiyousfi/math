@@ -107,7 +107,7 @@ VERSION = site_version()
 
 
 KID_SHIM = ('<script>(function(){try{var L=window.localStorage,S=Storage.prototype,g=S.getItem,s=S.setItem,r=S.removeItem,'
-            'G={"math-theme":1,"math-kids":1,"math-kid":1,"math-kid-tip":1,"math-prof":1,"math-dests":1,"math-offline":1},'
+            'G={"math-theme":1,"math-kids":1,"math-kid":1,"math-kid-tip":1,"math-prof":1,"math-dests":1,"math-offline":1,"math-pin":1},'
             'id=g.call(L,"math-kid")||"",k=function(t,x){return t===L&&id&&!G[x]?"kid"+id+"|"+x:x};'
             'window.__kid=id;window.__kidRaw={g:function(x){return g.call(L,x)},s:function(x,v){return s.call(L,x,v)},r:function(x){return r.call(L,x)}};'
             'S.getItem=function(x){return g.call(this,k(this,x))};S.setItem=function(x,v){return s.call(this,k(this,x),v)};'
@@ -299,6 +299,7 @@ def main():
         inline_links(items)
         print(f"sitemap.xml: {write_sitemap(items, packs)} pages")
         inject_site_js("index.html")
+        inject_site_js("report.html")
         with open("version.json", "w", encoding="utf-8") as f:
             json.dump({"v": VERSION}, f)
     with open("files.json", "w", encoding="utf-8") as f:

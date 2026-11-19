@@ -265,6 +265,9 @@ dialog::backdrop{background:rgba(10,20,25,.5)}
 :root[data-theme="dark"] .card.done .pbox{color:#86efac}
 .theme-btn{position:absolute;top:12px;left:12px;z-index:3;font:inherit;font-size:1.05rem;cursor:pointer;border-radius:999px;padding:4px 10px;background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.45)}
 
+.repbtn{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:8px 0 0;padding:7px 12px;border-radius:12px;background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.55);font-weight:900;text-decoration:none;font-size:.95rem}
+.repbtn small{font-weight:700;opacity:.9;font-size:.78rem}
+@media print{.repbtn{display:none}}
 /* ---------- 2026-11-17: calm home (tiles hub + one list at a time) ---------- */
 .app{max-width:1180px}
 .hero{padding:14px 16px 14px;margin-bottom:12px}
@@ -396,6 +399,7 @@ footer{padding-top:12px}
       <div class="track"><div class="fill" id="stFill"></div></div>
       <div class="srow lbl"><span id="stLbl">تقدّمك في هذا الفصل</span><span id="stPct">0%</span></div>
     </section>
+    <a class="repbtn" id="repBtn" href="report.html">📊 تقريري <small>متابعة الأولياء: الوقت، الصفحات، النتائج</small></a>
     <div class="prof-bar">👨‍🏫 وضع الأستاذ: زر المشاركة ↗ يظهر لك وحدك.</div>
   </header>
   <section class="daily" id="daily" hidden aria-label="سؤال اليوم"></section>

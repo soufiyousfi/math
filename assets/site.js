@@ -332,6 +332,72 @@
     document.addEventListener("click", function (e) { var lb = e.target.closest && e.target.closest("[data-level]"); if (lb) KIDS.levelChanged(lb.getAttribute("data-level")); }, true);
   }
 
+  /* ---------- 0d. 📊 «تقريري» for the parents (2026-11-19 his ask «اضف زر تقريري لجميع المستويات لمتابعة الاولياء لابنائهم للتحكم في إستعمال الهاتف») ----------
+     Time spent on the platform is counted ON THIS PHONE ONLY (localStorage "math-act", per child profile, nothing is sent anywhere):
+     a minute counts only when the page is on the screen AND the pupil touched / scrolled / typed in the last 3 minutes.
+     Per day: total seconds, seconds per hour of the day, and per page (seconds, openings, title, first and last time).
+     The report page report.html reads it. A parent may set a daily limit and a bedtime (math-limit): the pupil then gets a
+     calm reminder (not a lock), and the report shows the extra time. 90 days are kept. */
+  (function () {
+    if (/^report\.html$/.test(rel)) return;                 /* the parent reading the report is not the child's time */
+    var AK = "math-act", TICK = 10000, IDLE = 180000, pending = 0, pendingH = {}, lastIn = Date.now(), opened = false, lastAlert = 0;
+    function dayKey(t) { var d = new Date(t); return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
+    function rd() { try { var a = JSON.parse(localStorage.getItem(AK) || "null"); if (a && a.d) return a; } catch (e) {} return { v: 1, d: {} }; }
+    function title() { return (document.title || "").split(" - ")[0].split(" | ")[0].trim().slice(0, 90); }
+    var page = rel.replace(/index\.html$/, "") || "";
+    ["pointerdown", "keydown", "scroll", "touchstart", "input", "wheel"].forEach(function (ev) {
+      window.addEventListener(ev, function () { lastIn = Date.now(); }, { passive: true, capture: true });
+    });
+    function flush() {
+      if (!pending && opened) return;
+      try {
+        var now = Date.now(), a = rd(), k = dayKey(now), day = a.d[k] || (a.d[k] = { s: 0, h: {}, p: {} });
+        var p = day.p[page] || (day.p[page] = { s: 0, o: 0, t: "", f: now, l: now });
+        if (!opened) { p.o++; opened = true; }
+        p.s += pending; day.s += pending; p.l = now; p.t = title() || p.t;
+        Object.keys(pendingH).forEach(function (h) { day.h[h] = (day.h[h] || 0) + pendingH[h]; });
+        pending = 0; pendingH = {};
+        var keys = Object.keys(a.d).sort();
+        while (keys.length > 90) delete a.d[keys.shift()];
+        localStorage.setItem(AK, JSON.stringify(a));
+      } catch (e) {}
+    }
+    function lim() { try { return JSON.parse(localStorage.getItem("math-limit") || "null") || {}; } catch (e) { return {}; } }
+    function remind() {
+      var L = lim(), now = Date.now(), d = new Date(now), msg = "";
+      if (!L.min && !L.bed) return;
+      try { lastAlert = Math.max(lastAlert, +sessionStorage.getItem("math-limit-t") || 0); } catch (e) {}
+      if (now - lastAlert < 10 * 60000 || document.querySelector(".sx-limit")) return;
+      var today = 0; try { var a = rd(), x = a.d[dayKey(now)]; today = (x ? x.s : 0) + pending; } catch (e) {}
+      var hr = d.getHours(), late = L.bed && (hr >= +L.bed || hr < 5);
+      if (late) msg = "🌙 تجاوزت الساعة " + L.bed + ":00 التي حدّدها وليّك للتوقّف. النوم الكافي يساعدك على الفهم غدا.";
+      else if (L.min && today >= L.min * 60) msg = "⏰ أكملت اليوم " + arN(Math.round(today / 60), "min") + "، وهو الوقت الذي حدّده وليّك (" + arN(L.min, "min") + "). أحسنت! خذ استراحة الآن.";
+      if (!msg) return;
+      lastAlert = now; try { sessionStorage.setItem("math-limit-t", String(now)); } catch (e) {}
+      try { var a2 = rd(), k2 = dayKey(now), dd = a2.d[k2] || (a2.d[k2] = { s: 0, h: {}, p: {} }); dd.r = (dd.r || 0) + 1; localStorage.setItem(AK, JSON.stringify(a2)); } catch (e) {}
+      var ov = document.createElement("div");
+      ov.className = "sx-limit"; ov.setAttribute("role", "alertdialog");
+      ov.style.cssText = "position:fixed;inset:0;z-index:5000;background:rgba(15,23,42,.55);display:flex;align-items:center;justify-content:center;padding:16px;direction:rtl;font-family:inherit";
+      ov.innerHTML = '<div style="background:#fff;color:#0f172a;max-width:420px;width:100%;border-radius:16px;border-top:6px solid #1e3a8a;padding:16px 16px 14px;box-shadow:0 12px 30px rgba(0,0,0,.3);line-height:1.8;font-size:1.02rem">' +
+        '<p style="margin:0 0 12px;font-weight:800"></p><button type="button" style="font:inherit;font-weight:800;cursor:pointer;border:0;border-radius:12px;padding:9px 14px;background:#1e3a8a;color:#fff;width:100%">حسنا 👍</button></div>';
+      ov.querySelector("p").textContent = msg;
+      ov.querySelector("button").onclick = function () { ov.remove(); };
+      (document.body || document.documentElement).appendChild(ov);
+    }
+    function tick() {
+      if (document.visibilityState === "visible" && Date.now() - lastIn < IDLE) {
+        var s = TICK / 1000, h = new Date().getHours();
+        pending += s; pendingH[h] = (pendingH[h] || 0) + s;
+      }
+    }
+    setInterval(tick, TICK);
+    setInterval(function () { flush(); remind(); }, 30000);
+    document.addEventListener("visibilitychange", function () { if (document.visibilityState === "hidden") flush(); else { lastIn = Date.now(); remind(); } });
+    window.addEventListener("pagehide", flush);
+    setTimeout(function () { flush(); remind(); }, 1500);
+    window.__sxAct = { flush: flush, tick: tick, remind: remind };
+  })();
+
   /* ---------- 0e. opened inside the Facebook / Messenger / Instagram browser (2026-11-18 his ask) ----------
      That browser keeps no lasting memory: stars, marks and the streak can be lost when it closes.
      A small banner invites the pupil to open the same page in Chrome (Android) or Safari (iPhone). */
@@ -636,7 +702,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
   /* his ask 2026-11-17 «اضف زر الصفحة الاساسية في الاعلى والاسفل»: the same home button again at the bottom of every page */
   var foot = el("nav", "sx-bar sx-foot");
   foot.setAttribute("aria-label", "العودة");
-  foot.innerHTML = '<a class="sx-home" href="' + home + '">🏠 الصفحة الرئيسية</a><a class="sx-btn" href="#" onclick="window.scrollTo({top:0,behavior:\'smooth\'});return false">⬆️ أعلى الصفحة</a>';
+  foot.innerHTML = '<a class="sx-home" href="' + home + '">🏠 الصفحة الرئيسية</a><a class="sx-btn" href="#" onclick="window.scrollTo({top:0,behavior:\'smooth\'});return false">⬆️ أعلى الصفحة</a><a class="sx-btn" href="' + ROOT.href + 'report.html" title="تقرير المتابعة للأولياء">📊 تقريري</a>';
   document.body.appendChild(foot);
   var padB = el("button", "sx-btn", "📝");
   padB.type = "button"; padB.title = "مسودة الحساب: اكتب بإصبعك"; padB.setAttribute("aria-label", "مسودة");
