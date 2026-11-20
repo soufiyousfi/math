@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلسلة المقطع الثاني وبداية المقطع الثالث - السنة الأولى متوسط - المقطع 2 وبداية المقطع 3</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #0f766e;
+            --primary-light: #eff6ff;
+            --accent: #fbbf24;
+            --success: #15803d;
+            --success-bg: #dcfce7;
+            --warning: #b45309;
+            --warning-bg: #fef3c7;
+            --danger: #b91c1c;
+            --danger-bg: #fee2e2;
+            --dark: #0f172a;
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --border: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+        }
+
+        html, body {
+            background-color: var(--bg);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            width: 100%;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%);
+            color: #ffffff;
+            padding: 20px 12px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        header .school-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fef08a;
+            margin-bottom: 6px;
+        }
+
+        header h1 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 6px 0;
+            color: #ffffff;
+        }
+
+        header .sub-info {
+            font-size: 0.92rem;
+            opacity: 0.95;
+            background: rgba(255, 255, 255, 0.14);
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-top: 4px;
+        }
+
+        .sticky-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(6px);
+            border-bottom: 2px solid var(--border);
+            padding: 8px 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .sticky-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .stars-badge {
+            background: #fef3c7;
+            color: #b45309;
+            border: 1px solid #f59e0b;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .sound-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .progress-wrap {
+            flex: 1;
+            min-width: 110px;
+            max-width: 240px;
+            background: #e2e8f0;
+            height: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #0f766e, #15803d);
+            width: 0%;
+            height: 100%;
+            transition: width 0.35s ease;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 18px auto 0 auto;
+            padding: 0 10px;
+        }
+
+        .exercise-card {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 16px 14px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-light);
+            padding: 10px 12px;
+            border-radius: 10px;
+            border-right: 4px solid var(--primary);
+            margin-bottom: 12px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .card-header h2 {
+            font-size: 1.08rem;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .pts-badge {
+            background: #ffffff;
+            color: var(--primary);
+            border: 1px solid #bfdbfe;
+            padding: 3px 10px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .context-box {
+            background: #f8fafc;
+            border: 1px dashed #94a3b8;
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin-bottom: 14px;
+            font-size: 0.96rem;
+        }
+
+        .math {
+            direction: ltr;
+            unicode-bidi: isolate;
+            display: inline-block;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 700;
+            background: #e2e8f0;
+            padding: 1px 6px;
+            border-radius: 5px;
+            margin: 0 2px;
+            color: #0f172a;
+        }
+
+        .q-box {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 14px;
+            background: #ffffff;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .q-box.solved {
+            border-color: #86efac;
+            background: #f0fdf4;
+        }
+
+        .q-box.failed {
+            border-color: #fca5a5;
+            background: #fef2f2;
+        }
+
+        .q-title {
+            font-weight: 700;
+            font-size: 0.98rem;
+            margin-bottom: 10px;
+            color: #1e293b;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .q-meta {
+            font-size: 0.78rem;
+            background: #f1f5f9;
+            color: #475569;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .answer-area {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-line {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            min-width: 170px;
+            padding: 9px 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.98rem;
+            font-weight: 700;
+            direction: ltr;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary);
+        }
+
+        .sym-toolbar {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 4px;
+        }
+
+        .sym-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            color: #0f172a;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            direction: ltr;
+            unicode-bidi: isolate;
+            user-select: none;
+        }
+
+        .sym-btn { flex: 1 1 0; min-width: 0; padding: 6px 0; text-align: center; }
+
+        .sym-btn:hover {
+            background: #cbd5e1;
+        }
+
+        .sym-btn:active {
+            transform: scale(0.96);
+        }
+
+        .btn-check {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .btn-check:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-check:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        @keyframes shakeField {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        .shake {
+            animation: shakeField 0.35s ease;
+            border-color: var(--danger) !important;
+        }
+
+        .feedback-box {
+            margin-top: 10px;
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            display: none;
+        }
+
+        .feedback-box.success {
+            display: block;
+            background: var(--success-bg);
+            color: var(--success);
+            border-right: 4px solid var(--success);
+        }
+
+        .feedback-box.hint {
+            display: block;
+            background: var(--warning-bg);
+            color: var(--warning);
+            border-right: 4px solid var(--warning);
+        }
+
+        .feedback-box.fail {
+            display: block;
+            background: var(--danger-bg);
+            color: var(--danger);
+            border-right: 4px solid var(--danger);
+        }
+
+        .model-solution {
+            margin-top: 12px;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-right: 4px solid var(--secondary);
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+            font-size: 0.93rem;
+        }
+
+        .model-solution h4 {
+            color: var(--secondary);
+            margin-bottom: 8px;
+            font-size: 0.98rem;
+        }
+
+        .sol-line {
+            padding: 3px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .sol-result {
+            margin-top: 6px;
+            font-weight: 800;
+            color: var(--primary);
+            background: #eff6ff;
+            padding: 5px 8px;
+            border-radius: 6px;
+        }
+
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.86rem;
+            background: #ffffff;
+        }
+
+        .rubric-table td .math { white-space: nowrap; }
+        .rubric-table th, .rubric-table td {
+            border: 1px solid #cbd5e1;
+            padding: 6px 8px;
+            text-align: right;
+        }
+
+        .rubric-table th {
+            background: #e2e8f0;
+            color: #1e293b;
+            font-weight: 800;
+        }
+
+        .star-burst {
+            display: inline-block;
+            animation: popStars 0.6s ease forwards;
+        }
+
+        @keyframes popStars {
+            0% { transform: scale(0.4); opacity: 0; }
+            60% { transform: scale(1.25); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.65);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 15px;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            max-width: 420px;
+            width: 100%;
+            border-radius: 16px;
+            padding: 24px 18px;
+            text-align: center;
+            border-top: 6px solid var(--accent);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .modal-score {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin: 10px 0;
+        }
+
+        .modal-stars {
+            font-size: 1.4rem;
+            color: #d97706;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .btn-close-modal {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 9px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        @media (max-width: 420px) {
+            header .school-title { font-size: 0.98rem; }
+            header h1 { font-size: 1.12rem; }
+            .input-line { flex-direction: column; }
+            input[type="text"], .btn-check { width: 100%; }
+        }
+    
+        .fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; line-height: 1.05; margin: 0 2px; font-size: .92em; }
+        .fr > span:first-child { border-bottom: 2px solid currentColor; padding: 0 3px 1px; }
+        .fr > span:last-child { padding: 1px 3px 0; }
+        .vop { display: inline-block; direction: ltr; unicode-bidi: isolate; font-family: 'Courier New', Courier, monospace; font-weight: 700;
+               background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
+        .vop div { font-family: inherit; white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
+        .vop .ln { border-top: 2px solid #0f172a; }
+    
+.bem-intro{margin:0 0 6px;line-height:1.7}
+.bem-data p{margin:3px 0;line-height:1.7}
+.bem-warn{background:#fef9c3;border:1px solid #facc15;border-radius:8px;padding:6px 10px;margin:8px 0 4px;font-size:.92rem}
+.print-btn{margin-top:10px;background:#fff;color:#0f766e;border:2px solid #fde047;border-radius:20px;padding:6px 16px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+#paper .copy{border:1.5px solid #334155;border-radius:8px;padding:5px 9px 5px 80px;margin:0 0 5mm;break-inside:avoid;position:relative}
+#paper .cut{border-top:1.5px dashed #64748b;margin:0 0 4mm;text-align:center;font-size:9pt;color:#64748b;line-height:0}
+#paper .cut span{background:#fff;padding:0 6px}
+#paper .ph{display:flex;justify-content:space-between;align-items:center;font-weight:bold;font-size:9.5pt}
+#paper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #1e3a8a;border-radius:14px;padding:2px 8px;margin:3px auto 4px;width:fit-content;background:#eff6ff}
+#paper .qr{position:absolute;left:8px;top:6px;text-align:center;font-size:7pt;color:#475569;width:66px}
+#paper .qr img{width:58px;height:58px}
+#paper .cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+#paper .ex{break-inside:avoid;margin:2px 0}
+#paper .ex h4{margin:3px 0 1px;font-size:10.5pt;background:#e0f2fe;border-radius:6px;padding:1px 6px}
+#paper .ex p,#paper .ex li{margin:1px 0;line-height:1.4}
+#paper svg{max-height:120px;width:auto!important;margin:2px auto!important}
+#paper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+#paper .bem-warn{padding:3px 6px;margin:2px 0}
+#paper .bem-data p{margin:0}
+#paper .bem-intro{margin:0}
+#paper .w3{font-size:8.6pt;padding:4px 6px 4px 74px;margin-bottom:3mm}
+#paper .w3 .cols{grid-template-columns:1fr 1fr 1fr;gap:2px 8px}
+#paper .w3 svg{max-height:88px}
+#paper .w3 .ex h4{font-size:8.8pt}
+#paper .w3 .ex p{line-height:1.3}
+#paper .w3 .pt{font-size:10pt;margin:1px auto 2px;padding:1px 8px}
+#paper .one .cols{display:block}
+#paper .one svg{max-height:150px}
+#paper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt;width:192mm}
+@media print{
+ @page{size:A4;margin:8mm 9mm}
+ body>*:not(#paper){display:none!important}
+ html,body{background:#fff!important;padding:0!important;margin:0!important}
+
+ #paper{display:block!important;width:auto}
+}
+
+#paper .copy{font-size:11pt;padding:6px 10px 6px 84px;margin:0}
+#paper .copy .cols{grid-template-columns:1fr 1fr;gap:4px 14px}
+#paper .copy.flow{font-size:12pt}
+#paper .copy.flow .cols{display:block}
+#paper .copy.flow .ex{margin:0 0 4mm}
+#paper .copy.flow svg{max-height:170px}
+#paper .ex h4{font-size:11.5pt}
+#solpaper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt}
+#solpaper .sxs{columns:2;column-gap:7mm;column-rule:1px solid #cbd5e1}
+#solpaper .sx{margin:0 0 2mm}
+#solpaper h4{break-after:avoid}
+#solpaper h4{margin:2px 0;font-size:11pt;background:#dcfce7;border-radius:6px;padding:1px 6px}
+#solpaper .ph{display:flex;justify-content:space-between;font-weight:bold;font-size:9.5pt}
+#solpaper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #166534;border-radius:14px;padding:2px 8px;margin:3px auto 6px;width:fit-content;background:#f0fdf4}
+#solpaper .sq{margin:2px 0 4px;break-inside:avoid;text-align:right}
+#solpaper .sq p{margin:1px 0;line-height:1.4;text-align:right}
+#solpaper .sq p *{text-align:right}
+#solpaper table{border-collapse:collapse;margin:2px 0 3px;font-size:9.5pt}
+#solpaper td,#solpaper th{border:1px solid #64748b;padding:1px 6px}
+#solpaper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+/* 2026-11-07 shape of his model «فرض الفصل الأول» papers: title box, red underlined headings, one column, figure on the left */
+#paper .copy{border:none;border-radius:0;padding:0 0 0 0}
+#paper .copy .cols,#paper .copy.flow .cols{display:block}
+#paper .ttl{border:1.5px solid #1e293b;border-radius:6px;text-align:center;font-weight:bold;font-size:13pt;padding:5px 8px;margin:4px 0 6px 82px}
+#paper .copy .ph{padding-left:82px}
+#paper .qr{top:0;left:0}
+#paper .ex{margin:0 0 3mm;overflow:hidden;border:none!important;box-shadow:none!important;background:none!important;padding:0!important;border-radius:0!important}
+#paper .ex h4,#solpaper h4{background:none!important;color:#b91c1c;text-decoration:underline;font-size:12.5pt;padding:0;margin:4px 0 3px}
+#paper .ex .fig{float:left;width:40%;margin:0 0 2px 12px}
+#paper .ex .fig svg{max-width:100%!important;max-height:190px;margin:0 auto!important}
+#paper .ex p{line-height:1.55}
+#paper .bem-warn{background:none;border:none;padding:0;font-size:10pt}
+#paper .foot{text-align:center;font-size:8pt;color:#475569;border-top:1px solid #cbd5e1;margin-top:3mm;padding-top:1mm;clear:both}
+#solpaper .ttl{border:1.5px solid #1e293b;border-radius:6px;text-align:center;font-weight:bold;font-size:13pt;padding:4px 8px;margin:4px 0 6px}
+.sol-btn{display:none}
+.sol-wait{margin-top:6px;font-size:.85rem;color:#64748b}
+@media print{
+ body.psol>*:not(#solpaper){display:none!important}
+ body.psol #solpaper{display:block!important}
+ body.psol #paper{display:none!important}
+}
+</style>
+</head>
+<body>
+
+    <header>
+        <div class="school-title">متوسطة محمد العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
+        <h1>سلسلة المقطع الثاني وبداية المقطع الثالث التفاعلي في الرياضيات</h1>
+        <div class="sub-info">المستوى: السنة الأولى متوسط | المقطع الثاني: الدائرة، المحيطات والمساحات + بداية المقطع الثالث: القسمة الإقليدية وقابلية القسمة | 5 تمارين على 20<br>حلّ في الكراس ثم تحقق هنا</div>
+        <button class="print-btn" onclick="document.body.classList.remove('psol');window.print()">🖨️ النسخة الورقية للطباعة</button> <button class="print-btn sol-btn" onclick="printSol()">🖨️ النسخة الورقية للحل</button><div class="sol-wait"></div>
+    </header>
+
+    <div class="sticky-bar">
+        <div class="sticky-inner">
+            <div class="stat-group">
+                <span class="score-badge">العلامة: <span class="math" id="scoreVal" style="background:transparent;color:#fff;padding:0;">0 / 20</span></span>
+                <span class="stars-badge">⭐ <span class="math" id="starsVal" style="background:transparent;color:#b45309;padding:0;">0</span></span>
+                <button type="button" class="sound-btn" id="soundToggle" onclick="toggleSound()" title="تشغيل/كتم الصوت">🔊</button>
+            </div>
+            <div class="progress-wrap" title="شريط التقدم">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="exercisesRoot"></div>
+
+    <div class="modal-overlay" id="finalModal">
+        <div class="modal-card">
+            <h3 id="finalTitle">🎉 أحسنت! أتممت جميع الأسئلة</h3>
+            <p>لقد أنهيت سلسلة المقطع الثاني وبداية المقطع الثالث</p>
+            <div class="modal-score" id="finalScoreText">0 / 20</div>
+            <div class="modal-stars" id="finalStarsText">⭐ 0 نجمة</div>
+            <button type="button" class="btn-close-modal" onclick="document.getElementById('finalModal').style.display='none'">مراجعة إجاباتي</button>
+        </div>
+    </div>
+
+    <script>
+        let soundEnabled = true;
+        let totalScore = 0;
+        let totalStars = 0;
+        let completedQuestions = 0;
+        let totalQuestionsCount = 0;
+
+        const attemptsLeft = {};
+        const questionEarned = {};
+        const questionLocked = {};
+
+        const symbols1AM = ["+", "−", "×", "÷", ",", "/", "<", ">", ";", "⌫"];
+
+        function playTone(type) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'success') {
+                    osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+                    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.09);
+                    osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.18);
+                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.35);
+                } else {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, ctx.currentTime);
+                    osc.frequency.setValueAtTime(180, ctx.currentTime + 0.1);
+                    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.25);
+                }
+            } catch (e) {}
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            document.getElementById('soundToggle').innerText = soundEnabled ? '🔊' : '🔇';
+        }
+
+        const exercises = [
+ {
+  "id": 1,
+  "pts": 3,
+  "title": "التمرين 1: تطبيق مباشر: الدائرة",
+  "context": "<span class=\"math\">(C)</span> دائرة مركزها <span class=\"math\">O</span> ونصف قطرها <span class=\"math\">3,5 cm</span>. (نأخذ <span class=\"math\">π ≈ 3,14</span>)",
+  "questions": [
+   {
+    "qId": "1-1",
+    "text": "1) ما طول قطر الدائرة <span class=\"math\">(C)</span> (بـ cm)؟",
+    "exact": [
+     "7"
+    ],
+    "partial": [
+     "1,75",
+     "3,5"
+    ],
+    "h1": "القطر ضعف نصف القطر.",
+    "h2": "<span class=\"math\">2 × 3,5</span>.",
+    "steps": [
+     "<b>الطريقة:</b> القطر وتر يشمل المركز وطوله ضعف نصف القطر. نقطة بعدها عن المركز أصغر من نصف القطر تقع داخل الدائرة، ويساويه على الدائرة، وأكبر منه خارجها.",
+     "<span class=\"math\">2 × 3,5 = 7</span>",
+     "النتيجة: <span class=\"math\">7 cm</span>",
+     "<b>الاستنتاج:</b> القطر <span class=\"math\">7 cm</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "1-2",
+    "text": "2) احسب محيط الدائرة <span class=\"math\">(C)</span> (بـ cm).",
+    "exact": [
+     "21,98"
+    ],
+    "partial": [
+     "10,99",
+     "43,96",
+     "38,465"
+    ],
+    "h1": "المحيط <span class=\"math\">= القطر × π</span>.",
+    "h2": "<span class=\"math\">7 × 3,14</span>.",
+    "steps": [
+     "<b>الطريقة:</b> محيط الدائرة <span class=\"math\">= القطر × π</span> أو <span class=\"math\">2 × نصف القطر × π</span>، ونأخذ <span class=\"math\">π ≈ 3,14</span>.",
+     "<span class=\"math\">7 × 3,14 = 21,98</span>",
+     "النتيجة: <span class=\"math\">21,98 cm</span>",
+     "<b>الاستنتاج:</b> المحيط <span class=\"math\">21,98 cm</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "1-3",
+    "text": "3) <span class=\"math\">N</span> نقطة حيث <span class=\"math\">ON = 3,5 cm</span>. أين تقع بالنسبة إلى <span class=\"math\">(C)</span> مع التعليل؟<br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> داخلها، أو <span class=\"math\">2</span> خارجها، أو <span class=\"math\">3</span> عليها.",
+    "exact": [
+     "3"
+    ],
+    "partial": [
+     "1",
+     "2"
+    ],
+    "h1": "قارن <span class=\"math\">ON</span> بنصف القطر.",
+    "h2": "<span class=\"math\">ON</span> يساوي نصف القطر.",
+    "steps": [
+     "<b>الطريقة:</b> القطر وتر يشمل المركز وطوله ضعف نصف القطر. نقطة بعدها عن المركز أصغر من نصف القطر تقع داخل الدائرة، ويساويه على الدائرة، وأكبر منه خارجها.",
+     "<span class=\"math\">ON = 3,5 cm</span> ونصف القطر <span class=\"math\">3,5 cm</span>",
+     "النتيجة: <span class=\"math\">N</span> على الدائرة (<span class=\"math\">3</span>)",
+     "<b>الاستنتاج:</b> <span class=\"math\">N</span> تنتمي إلى الدائرة."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 2,
+  "pts": 3,
+  "title": "التمرين 2: تطبيق مباشر: القسمة الإقليدية وقابلية القسمة",
+  "context": "ليكن العدد الطبيعي <span class=\"math\">2026</span>.",
+  "questions": [
+   {
+    "qId": "2-1",
+    "text": "1) أنجز القسمة الإقليدية للعدد <span class=\"math\">2026</span> على <span class=\"math\">9</span>، ثم اكتب الباقي.",
+    "exact": [
+     "1"
+    ],
+    "partial": [
+     "225",
+     "225,1",
+     "0"
+    ],
+    "h1": "ابحث عن أكبر مضاعف لـ <span class=\"math\">9</span> لا يتجاوز <span class=\"math\">2026</span>.",
+    "h2": "<span class=\"math\">9 × 225 = 2025</span>.",
+    "steps": [
+     "<b>الطريقة:</b> القسمة الإقليدية: <span class=\"math\">المقسوم = المقسوم عليه × الحاصل + الباقي</span> حيث الباقي أصغر من المقسوم عليه.",
+     "<span class=\"math\">9 × 225 = 2025</span> و<span class=\"math\">2026 − 2025 = 1</span>",
+     "<span class=\"math\">2026 = 9 × 225 + 1</span> و<span class=\"math\">1 &lt; 9</span>",
+     "النتيجة: الباقي <span class=\"math\">1</span>",
+     "<b>الاستنتاج:</b> الباقي <span class=\"math\">1</span> (والحاصل <span class=\"math\">225</span>)."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "2-2",
+    "text": "2) هل العدد <span class=\"math\">2026</span> يقبل القسمة على <span class=\"math\">2</span> مع التعليل؟<br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> نعم أو <span class=\"math\">2</span> لا.",
+    "exact": [
+     "1"
+    ],
+    "partial": [
+     "2"
+    ],
+    "h1": "انظر إلى رقم الآحاد.",
+    "h2": "رقم الآحاد <span class=\"math\">6</span> زوجي.",
+    "steps": [
+     "<b>الطريقة:</b> يقبل عدد القسمة على <span class=\"math\">5</span> إذا كان رقم آحاده <span class=\"math\">0</span> أو <span class=\"math\">5</span>، وعلى <span class=\"math\">2</span> إذا كان رقم آحاده زوجيا.",
+     "رقم الآحاد <span class=\"math\">6</span> زوجي",
+     "النتيجة: نعم (<span class=\"math\">1</span>)",
+     "<b>الاستنتاج:</b> يقبل القسمة على <span class=\"math\">2</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "2-3",
+    "text": "3) هل العدد <span class=\"math\">2026</span> يقبل القسمة على <span class=\"math\">3</span> مع التعليل؟<br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> نعم أو <span class=\"math\">2</span> لا.",
+    "exact": [
+     "2"
+    ],
+    "partial": [
+     "1"
+    ],
+    "h1": "احسب مجموع أرقامه.",
+    "h2": "<span class=\"math\">2 + 0 + 2 + 6 = 10</span>.",
+    "steps": [
+     "<b>الطريقة:</b> يقبل عدد القسمة على <span class=\"math\">9</span> إذا كان مجموع أرقامه يقبل القسمة على <span class=\"math\">9</span> (وعلى <span class=\"math\">3</span> إذا كان مجموع أرقامه يقبل القسمة على <span class=\"math\">3</span>).",
+     "مجموع الأرقام: <span class=\"math\">2 + 0 + 2 + 6 = 10</span>",
+     "<span class=\"math\">10</span> لا يقبل القسمة على <span class=\"math\">3</span>",
+     "النتيجة: لا (<span class=\"math\">2</span>)",
+     "<b>الاستنتاج:</b> لا يقبل القسمة على <span class=\"math\">3</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 3,
+  "pts": 4,
+  "title": "التمرين 3: ربط: المحيط والمساحة",
+  "context": "حديقة المتوسطة مستطيلة الشكل طولها <span class=\"math\">18 m</span> وعرضها <span class=\"math\">12 m</span>.",
+  "questions": [
+   {
+    "qId": "3-1",
+    "text": "1) احسب محيط الحديقة (بـ m).",
+    "exact": [
+     "60"
+    ],
+    "partial": [
+     "30",
+     "216"
+    ],
+    "h1": "المحيط <span class=\"math\">= 2 × (الطول + العرض)</span>.",
+    "h2": "<span class=\"math\">2 × (18 + 12)</span>.",
+    "steps": [
+     "<b>الطريقة:</b> محيط المستطيل <span class=\"math\">= 2 × (الطول + العرض)</span> ومساحته <span class=\"math\">= الطول × العرض</span>. محيط المربع <span class=\"math\">= 4 ×</span> الضلع ومساحته <span class=\"math\">= الضلع × الضلع</span>.",
+     "<span class=\"math\">2 × (18 + 12) = 2 × 30</span>",
+     "النتيجة: <span class=\"math\">60 m</span>",
+     "<b>الاستنتاج:</b> المحيط <span class=\"math\">60 m</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "3-2",
+    "text": "2) احسب مساحة الحديقة (بـ m²).",
+    "exact": [
+     "216"
+    ],
+    "partial": [
+     "60",
+     "30"
+    ],
+    "h1": "المساحة <span class=\"math\">= الطول × العرض</span>.",
+    "h2": "<span class=\"math\">18 × 12</span>.",
+    "steps": [
+     "<b>الطريقة:</b> محيط المستطيل <span class=\"math\">= 2 × (الطول + العرض)</span> ومساحته <span class=\"math\">= الطول × العرض</span>. محيط المربع <span class=\"math\">= 4 ×</span> الضلع ومساحته <span class=\"math\">= الضلع × الضلع</span>.",
+     "<span class=\"math\">18 × 12 = 216</span>",
+     "النتيجة: <span class=\"math\">216 m²</span>",
+     "<b>الاستنتاج:</b> المساحة <span class=\"math\">216 m²</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "3-3",
+    "text": "3) تحتاج كل شجيرة إلى <span class=\"math\">4 m²</span>. كم شجيرة يمكن غرسها في الحديقة؟",
+    "exact": [
+     "54"
+    ],
+    "partial": [
+     "15",
+     "864"
+    ],
+    "h1": "استعمل مساحة الحديقة.",
+    "h2": "<span class=\"math\">216 ÷ 4</span>.",
+    "steps": [
+     "<b>الطريقة:</b> محيط المستطيل <span class=\"math\">= 2 × (الطول + العرض)</span> ومساحته <span class=\"math\">= الطول × العرض</span>. محيط المربع <span class=\"math\">= 4 ×</span> الضلع ومساحته <span class=\"math\">= الضلع × الضلع</span>. ثم نقسم المساحة على <span class=\"math\">4</span>.",
+     "المساحة <span class=\"math\">216 m²</span>",
+     "<span class=\"math\">216 ÷ 4 = 54</span>",
+     "النتيجة: <span class=\"math\">54</span> شجيرة",
+     "<b>الاستنتاج:</b> يمكن غرس <span class=\"math\">54</span> شجيرة."
+    ],
+    "rubric": [
+     {
+      "step": "الطريقة",
+      "mark": "1"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 2,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 4,
+  "pts": 4,
+  "title": "التمرين 4: ربط: توزيع الكتب",
+  "context": "تريد مكتبة المتوسطة وضع <span class=\"math\">158</span> كتابا في علب، تتسع كل علبة لـ <span class=\"math\">12</span> كتابا.",
+  "questions": [
+   {
+    "qId": "4-1",
+    "text": "1) كم علبة تُملأ كاملة؟",
+    "exact": [
+     "13"
+    ],
+    "partial": [
+     "14",
+     "12"
+    ],
+    "h1": "أنجز القسمة الإقليدية لـ <span class=\"math\">158</span> على <span class=\"math\">12</span>.",
+    "h2": "<span class=\"math\">12 × 13 = 156</span>.",
+    "steps": [
+     "<b>الطريقة:</b> القسمة الإقليدية: <span class=\"math\">المقسوم = المقسوم عليه × الحاصل + الباقي</span> حيث الباقي أصغر من المقسوم عليه.",
+     "<span class=\"math\">12 × 13 = 156</span> و<span class=\"math\">12 × 14 = 168</span>",
+     "<span class=\"math\">158 = 12 × 13 + 2</span>",
+     "النتيجة: <span class=\"math\">13</span> علبة",
+     "<b>الاستنتاج:</b> تُملأ <span class=\"math\">13</span> علبة كاملة."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "4-2",
+    "text": "2) كم كتابا يبقى خارج العلب الممتلئة؟",
+    "exact": [
+     "2"
+    ],
+    "partial": [
+     "10",
+     "0"
+    ],
+    "h1": "الباقي في القسمة الإقليدية.",
+    "h2": "<span class=\"math\">158 − 156</span>.",
+    "steps": [
+     "<b>الطريقة:</b> القسمة الإقليدية: <span class=\"math\">المقسوم = المقسوم عليه × الحاصل + الباقي</span> حيث الباقي أصغر من المقسوم عليه.",
+     "<span class=\"math\">158 = 12 × 13 + 2</span>",
+     "النتيجة: يبقى <span class=\"math\">2</span> كتابان",
+     "<b>الاستنتاج:</b> يبقى كتابان."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "4-3",
+    "text": "3) ما أصغر عدد من الكتب يجب إضافته لتمتلئ علبة أخرى كاملة؟",
+    "exact": [
+     "10"
+    ],
+    "partial": [
+     "2",
+     "12",
+     "14"
+    ],
+    "h1": "العلبة الأخيرة فيها كتابان.",
+    "h2": "<span class=\"math\">12 − 2</span>.",
+    "steps": [
+     "<b>الطريقة:</b> القسمة الإقليدية: <span class=\"math\">المقسوم = المقسوم عليه × الحاصل + الباقي</span> حيث الباقي أصغر من المقسوم عليه.",
+     "في العلبة الأخيرة <span class=\"math\">2</span> كتابان",
+     "<span class=\"math\">12 − 2 = 10</span>",
+     "النتيجة: <span class=\"math\">10</span> كتب",
+     "<b>الاستنتاج:</b> نضيف <span class=\"math\">10</span> كتب."
+    ],
+    "rubric": [
+     {
+      "step": "التعليل",
+      "mark": "1"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 2,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 5,
+  "pts": 6,
+  "title": "الوضعية الإدماجية: عشب ساحة المتوسطة",
+  "context": "<div class=\"bem-data\"><p>– ساحة مستطيلة طولها <span class=\"math\">15 m</span> وعرضها <span class=\"math\">8 m</span>، في ركنها حوض أزهار على شكل مثلث قائم ضلعاه القائمان <span class=\"math\">6 m</span> و<span class=\"math\">4 m</span>.</p><p>– تريد الإدارة تغطية بقية الساحة بعشب اصطناعي، وعندها <span class=\"math\">4</span> لفّات، تغطي كل لفّة <span class=\"math\">26 m²</span>.</p></div><svg viewBox=\"0 0 400 240\" width=\"400\" style=\"max-width:100%;height:auto;display:block;margin:6px auto\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"Tahoma,Arial\"><rect x=\"0\" y=\"0\" width=\"400\" height=\"30\" fill=\"#e0f2fe\"/><rect x=\"0\" y=\"30\" width=\"400\" height=\"210\" fill=\"#dcfce7\"/><rect x=\"40\" y=\"40\" width=\"320\" height=\"170\" fill=\"#bbf7d0\" stroke=\"#334155\" stroke-width=\"2.5\"/><polygon points=\"40,210 168,210 40,125\" fill=\"#f9a8d4\" stroke=\"#9d174d\" stroke-width=\"2\"/><polyline points=\"50.0,210.0 50.0,200.0 40.0,200.0\" fill=\"none\" stroke=\"#b91c1c\" stroke-width=\"1.5\"/><text x=\"200\" y=\"34\" font-size=\"13\" fill=\"#111\" font-weight=\"bold\" text-anchor=\"middle\" direction=\"ltr\" unicode-bidi=\"embed\">15 m</text><text x=\"378\" y=\"128\" font-size=\"13\" fill=\"#111\" font-weight=\"bold\" text-anchor=\"middle\" direction=\"ltr\" unicode-bidi=\"embed\">8 m</text><text x=\"104\" y=\"226\" font-size=\"11\" fill=\"#9d174d\" font-weight=\"bold\" text-anchor=\"middle\" direction=\"ltr\" unicode-bidi=\"embed\">6 m</text><text x=\"24\" y=\"172\" font-size=\"11\" fill=\"#9d174d\" font-weight=\"bold\" text-anchor=\"middle\" direction=\"ltr\" unicode-bidi=\"embed\">4 m</text><text x=\"76\" y=\"196\" font-size=\"11\" fill=\"#9d174d\" font-weight=\"bold\" text-anchor=\"middle\">أزهار</text><text x=\"250\" y=\"120\" font-size=\"14\" fill=\"#166534\" font-weight=\"bold\" text-anchor=\"middle\">عشب اصطناعي</text><text x=\"200\" y=\"14\" font-size=\"11\" fill=\"#64748b\" font-weight=\"normal\" text-anchor=\"middle\">(الرسم غير معطى بأبعاده الحقيقية)</text></svg><div class=\"bem-warn\"><b>ملاحظة:</b> الرسم غير معطى بأبعاده الحقيقية، ولا يطلب إعادة الرسم.</div>",
+  "questions": [
+   {
+    "qId": "5-1",
+    "text": "1) احسب مساحة حوض الأزهار (بـ m²).",
+    "exact": [
+     "12"
+    ],
+    "partial": [
+     "24",
+     "10"
+    ],
+    "h1": "مساحة المثلث القائم.",
+    "h2": "<span class=\"math\">(6 × 4) ÷ 2</span>.",
+    "steps": [
+     "<b>الطريقة:</b> مساحة المثلث القائم <span class=\"math\">= (الضلع القائم الأول × الضلع القائم الثاني) ÷ 2</span>، وهي نصف مساحة المستطيل الذي بُعداه الضلعان القائمان.",
+     "<span class=\"math\">(6 × 4) ÷ 2 = 24 ÷ 2</span>",
+     "النتيجة: <span class=\"math\">12 m²</span>",
+     "<b>الاستنتاج:</b> مساحة الحوض <span class=\"math\">12 m²</span>."
+    ],
+    "rubric": [
+     {
+      "step": "م1 التفسير السليم: الطريقة",
+      "mark": "1"
+     },
+     {
+      "step": "م2 الاستعمال السليم: النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 2,
+    "partialZero": true
+   },
+   {
+    "qId": "5-2",
+    "text": "2) هل تكفي اللفّات الأربع لتغطية بقية الساحة؟ مع التبرير.<br>✍️ برّر في كراسك، ثم اكتب <span class=\"math\">1</span> نعم أو <span class=\"math\">2</span> لا.",
+    "exact": [
+     "2"
+    ],
+    "partial": [
+     "1"
+    ],
+    "h1": "احسب مساحة الساحة ثم اطرح مساحة الحوض.",
+    "h2": "قارن المساحة الباقية بما تغطيه <span class=\"math\">4</span> لفّات.",
+    "steps": [
+     "<b>الطريقة:</b> محيط المستطيل <span class=\"math\">= 2 × (الطول + العرض)</span> ومساحته <span class=\"math\">= الطول × العرض</span>. محيط المربع <span class=\"math\">= 4 ×</span> الضلع ومساحته <span class=\"math\">= الضلع × الضلع</span>. مساحة المثلث القائم <span class=\"math\">= (الضلع القائم الأول × الضلع القائم الثاني) ÷ 2</span>، وهي نصف مساحة المستطيل الذي بُعداه الضلعان القائمان.",
+     "مساحة الساحة: <span class=\"math\">15 × 8 = 120 m²</span>",
+     "المساحة الباقية: <span class=\"math\">120 − 12 = 108 m²</span>",
+     "ما تغطيه اللفّات: <span class=\"math\">4 × 26 = 104 m²</span>",
+     "<span class=\"math\">104 &lt; 108</span>",
+     "النتيجة: لا تكفي (<span class=\"math\">2</span>)",
+     "<b>الاستنتاج:</b> تغطي اللفّات <span class=\"math\">104 m²</span> فقط، وهي أقل من <span class=\"math\">108 m²</span>، إذن لا تكفي."
+    ],
+    "rubric": [
+     {
+      "step": "م1 التفسير السليم: مساحة الساحة والمساحة الباقية",
+      "mark": "1,5"
+     },
+     {
+      "step": "م2 الاستعمال السليم: المقارنة والقرار",
+      "mark": "1,5"
+     },
+     {
+      "step": "م3 انسجام الإجابة: الوحدة ومعقولية النتيجة",
+      "mark": "0,5"
+     },
+     {
+      "step": "م4 الإتقان: تنظيم الحل ووضوحه",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 4,
+    "partialMsg": "لا تنس طرح مساحة الحوض، ثم قارن بدقة: الفرق صغير.",
+    "partialZero": true
+   }
+  ]
+ }
+];
+
+        function exercisesCount() { return exercises.reduce((a, e) => a + e.questions.length, 0); }
+
+        function renderApp() {
+            totalQuestionsCount = exercisesCount();
+            const root = document.getElementById('exercisesRoot');
+            root.innerHTML = '';
+
+            exercises.forEach(ex => {
+                const card = document.createElement('div');
+                card.className = 'exercise-card';
+
+                let questionsHtml = '';
+                ex.questions.forEach(q => {
+                    attemptsLeft[q.qId] = 3;
+                    questionEarned[q.qId] = 0;
+                    questionLocked[q.qId] = false;
+
+                    let symHtml = '';
+                    symbols1AM.forEach(s => {
+                        symHtml += `<button type="button" class="sym-btn" onclick="pressSym('${q.qId}', '${s}')">${s}</button>`;
+                    });
+
+                    let stepsHtml = '';
+                    q.steps.forEach((st, idx) => {
+                        const isLast = (idx === q.steps.length - 1);
+                        stepsHtml += `<div class="${isLast ? 'sol-result' : 'sol-line'}">${st}</div>`;
+                    });
+
+                    let rubricRows = '';
+                    q.rubric.forEach(r => {
+                        rubricRows += `<tr><td>${r.step}</td><td><span class="math">${r.mark} ن</span></td></tr>`;
+                    });
+
+                    questionsHtml += `
+                        <div class="q-box" id="qbox-${q.qId}">
+                            <div class="q-title">
+                                <span>${q.text}</span>
+                                <span class="q-meta" id="meta-${q.qId}">المحاولات: <span class="math">3</span> | النقاط: <span class="math">${String(q.pts).replace('.', ',')}</span></span>
+                            </div>
+                            <div class="answer-area">
+                                <div class="input-line">
+                                    <input type="text" id="in-${q.qId}" placeholder="اكتب إجابتك هنا" autocomplete="off">
+                                    <button type="button" class="btn-check" id="btn-${q.qId}" onclick="checkAns(${ex.id}, '${q.qId}')">تحقق من الإجابة</button>
+                                </div>
+                                <div class="sym-toolbar">${symHtml}</div>
+                            </div>
+                            <div class="feedback-box" id="fb-${q.qId}"></div>
+                            <div class="model-solution" id="sol-${q.qId}">
+                                <h4>✔ الإجابة النموذجية المفصلة:</h4>
+                                ${stepsHtml}
+                                <table class="rubric-table">
+                                    <thead>
+                                        <tr><th>مراحل الحل (سلم التنقيط)</th><th>النقطة</th></tr>
+                                    </thead>
+                                    <tbody>${rubricRows}</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h2>${ex.title}</h2>
+                        <span class="pts-badge"><span class="math">${String(ex.pts).replace('.', ',')}</span> ${ex.pts === 1 ? 'نقطة' : 'نقاط'}</span>
+                    </div>
+                    <div class="context-box">${ex.context}</div>
+                    ${questionsHtml}
+                `;
+                root.appendChild(card);
+            });
+        }
+
+        function pressSym(qId, sym) {
+            const inp = document.getElementById(`in-${qId}`);
+            if (!inp || inp.disabled) return;
+            if (sym === '⌫') {
+                inp.value = inp.value.slice(0, -1);
+            } else {
+                inp.value += sym;
+            }
+            inp.focus();
+        }
+
+        function normalizeInput(raw) {
+            if (!raw) return '';
+            const arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+            let s = raw.toString().trim();
+            for (let i = 0; i < 10; i++) {
+                s = s.replace(new RegExp(arDigits[i], 'g'), i);
+            }
+            s = s.replace(/\s+/g, '');
+            s = s.replace(/^[a-zA-Z]\s*=/i, '');
+            s = s.replace(/،/g, ',').replace(/\./g, ',');
+            s = s.replace(/\*/g, '×').replace(/(\d)[xX](?=\d)/g, '$1×').replace(/[−–]/g, '-');
+            s = s.replace(/(da|دج|دينار|أوراق|ورقة|عشرة|عشرات|وحدة|متر|درجة|°c|c°|°|cm²|m²|m2|cm|m|kg|لتر|l)$/i, '');
+            s = s.replace(/-\((\d+\/\d+)\)/g, '-$1').replace(/\((-?\d+(?:,\d+)?)\)/g, '$1').replace(/^\((.*)\)$/, '$1').replace(/^\+(?=\d)/, '');
+            s = s.replace(/(\d),(\d*?)0+(?=$|[^\d])/g, (m, a, b) => b ? a + ',' + b : a);
+            return s.toLowerCase();
+        }
+
+        function updateHeaderStats() {
+            const formattedScore = String(Math.round(totalScore * 100) / 100).replace('.', ',');
+            document.getElementById('scoreVal').innerText = `${formattedScore} / 20`;
+            document.getElementById('starsVal').innerText = totalStars;
+            const pct = Math.min(100, Math.round((completedQuestions / totalQuestionsCount) * 100));
+            document.getElementById('progressBar').style.width = pct + '%';
+
+            if (completedQuestions === totalQuestionsCount) {
+                setTimeout(() => {
+                    document.getElementById('finalScoreText').innerText = `${formattedScore} / 20`;
+                    document.getElementById('finalTitle').innerText = totalScore >= 10 ? '🎉 أحسنت! أتممت جميع الأسئلة' : '💪 أتممت السلسلة! راجع الإجابات النموذجية وأعد المحاولة';
+                    document.getElementById('finalStarsText').innerText = `⭐ ${totalStars} نجمة`;
+                    document.getElementById('finalModal').style.display = 'flex';
+                }, 600);
+            }
+        }
+
+        function triggerShake(qId) {
+            const inp = document.getElementById(`in-${qId}`);
+            inp.classList.remove('shake');
+            void inp.offsetWidth;
+            inp.classList.add('shake');
+        }
+
+        const FBMSG = {"ok": ["أحسنت! تركيزك أوصلك إلى الجواب الصحيح.", "ممتاز! أخذت وقتك وفكّرت جيدا، وهذه هي النتيجة.", "برافو! التأنّي في الحساب يصنع النجاح.", "رائع! جهدك يستحق هذه النجوم.", "إجابة صحيحة! واصل بنفس الهدوء والتركيز.", "أحسنت! من يقرأ السؤال جيدا يصل إلى الحل.", "عمل متقن! الدقة أهم من السرعة، وأنت أثبتّ ذلك.", "بارك الله فيك! تقدّم خطوة بخطوة كما فعلت الآن."], "w1": ["لا بأس، الخطأ جزء من التعلّم. أعد قراءة السؤال بهدوء.", "تمهّل قليلا: كلما أسرعت قلّ تركيزك. خذ وقتك.", "محاولة جيدة! راجع حسابك خطوة بخطوة.", "كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.", "لا تستعجل. اقرأ المعطيات من جديد ثم فكّر.", "أنت قريب. أعطِ هذا السؤال الوقت الذي يحتاجه.", "الخطأ ليس فشلا بل خطوة نحو الفهم. حاول مجددا.", "هدّئ السرعة وزِد التركيز، وستجد الطريق."], "w2": ["محاولة أخيرة: اكتب الحساب على ورقة قبل أن تجيب.", "لا تيأس! التركيز يأتي مع الهدوء. اقرأ التلميح جيدا.", "السرعة والتركيز لا يجتمعان: تمهّل في هذه المحاولة الأخيرة.", "ابذل جهدا إضافيا صغيرا، فالحل قريب منك.", "راجع كل خطوة على حدة، ولا تتسرّع.", "كل العلماء أخطؤوا قبل أن ينجحوا. ركّز في هذه المحاولة."], "fail": ["لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. اقرأ الإجابة النموذجية وسلم التنقيط بتمعّن.", "تعلّمنا شيئا جديدا اليوم! تأمّل خطوات الحل، وأعد التمرين غدا بهدوء.", "لا بأس، الفهم يحتاج وقتا وجهدا. راجع الحل خطوة بخطوة.", "المهم أن نفهم لماذا أخطأنا. اقرأ الحل، ثم حاول إعادته وحدك على ورقة.", "الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة."]};
+        function fbPick(kind, qId) { const a = FBMSG[kind]; const p = String(qId).split('-'); const n = (+p[0]) * 3 + (+p[1] || 0) + kind.length; return a[n % a.length]; }
+        function checkAns(exId, qId) {
+            if (questionLocked[qId]) return;
+            const ex = exercises.find(e => e.id === exId);
+            const q = ex.questions.find(item => item.qId === qId);
+            const inp = document.getElementById(`in-${qId}`);
+            const fb = document.getElementById(`fb-${qId}`);
+            const val = normalizeInput(inp.value);
+
+            if (!val) {
+                triggerShake(qId);
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = 'يرجى كتابة إجابتك أولاً في الخانة قبل الضغط على زر التحقق.';
+                return;
+            }
+
+            const isExactMatch = q.exact.some(ans => normalizeInput(ans) === val);
+            if (isExactMatch) {
+                const rem = attemptsLeft[qId];
+                const starsAwarded = (rem === 3) ? 3 : (rem === 2 ? 2 : 1);
+                const starIcons = '⭐'.repeat(starsAwarded);
+
+                const prevPts = questionEarned[qId] || 0;
+                totalScore += (q.pts - prevPts);
+                questionEarned[qId] = q.pts;
+                totalStars += starsAwarded;
+                questionLocked[qId] = true;
+                completedQuestions++;
+
+                playTone('success');
+                document.getElementById(`qbox-${qId}`).classList.add('solved');
+                inp.disabled = true;
+                document.getElementById(`btn-${qId}`).disabled = true;
+
+                fb.className = 'feedback-box success';
+                fb.innerHTML = `<span class="star-burst">${starIcons}</span> ${fbPick('ok', qId)} نلت العلامة الكاملة (<span class="math">${String(q.pts).replace('.', ',')} ن</span>).`;
+                flyStars(fb, 18);
+                document.getElementById(`sol-${qId}`).style.display = 'block';
+                updateHeaderStats();
+                return;
+            }
+
+            const isPartialMatch = q.partial && q.partial.some(ans => normalizeInput(ans) === val);
+            if (isPartialMatch) {
+                if (q.partialZero) { handleWrongAttempt(q, q.partialMsg); return; }
+                const halfPts = Math.round((q.pts / 2) * 100) / 100;
+                const prevPts = questionEarned[qId] || 0;
+                if (halfPts > prevPts) {
+                    totalScore += (halfPts - prevPts);
+                    questionEarned[qId] = halfPts;
+                }
+                handleWrongAttempt(q, `${q.partialMsg} (حصلت على نصف العلامة <span class="math">${String(halfPts).replace('.', ',')} ن</span>، صحّح الشكل لتنال العلامة الكاملة).`);
+                updateHeaderStats();
+                return;
+            }
+
+            handleWrongAttempt(q, null);
+        }
+
+        function handleWrongAttempt(q, customReason) {
+            const qId = q.qId;
+            attemptsLeft[qId]--;
+            const rem = attemptsLeft[qId];
+            const inp = document.getElementById(`in-${qId}`);
+            const fb = document.getElementById(`fb-${qId}`);
+
+            playTone('error');
+            triggerShake(qId);
+            document.getElementById(`meta-${qId}`).innerHTML = `المحاولات: <span class="math">${rem}</span> | النقاط: <span class="math">${String(q.pts).replace('.', ',')}</span>`;
+
+            if (rem === 2) {
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w1', qId) + '<br>'}<strong>💡 التلميح 1:</strong> ${q.h1}`;
+                flyStars(fb, 9, ['⭐','💡','✨']);
+            } else if (rem === 1) {
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w2', qId) + '<br>'}<strong>💡 التلميح 2:</strong> ${q.h2}`;
+                flyStars(fb, 9, ['⭐','💡','✨']);
+            } else {
+                questionLocked[qId] = true;
+                completedQuestions++;
+                inp.disabled = true;
+                document.getElementById(`btn-${qId}`).disabled = true;
+                document.getElementById(`qbox-${qId}`).classList.add('failed');
+
+                fb.className = 'feedback-box fail';
+                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 ' + fbPick('fail', qId);
+                document.getElementById(`sol-${qId}`).style.display = 'block';
+                updateHeaderStats();
+            }
+        }
+
+        window.onload = renderApp;
+    </script>
+<!-- flyStars: نجوم متطايرة -->
+<style>.fly-star{position:fixed;z-index:70;font-size:1.45rem;pointer-events:none;animation:flystar 1s ease-out forwards}
+@keyframes flystar{from{transform:translate(0,0) scale(.4);opacity:1}to{transform:translate(var(--dx),var(--dy)) scale(1.15) rotate(220deg);opacity:0}}</style>
+<script>function flyStars(el, n, icons){ try{ icons = icons || ['⭐','✨','🌟']; const r = el.getBoundingClientRect(), x = r.left + r.width/2, y = Math.max(r.top, 0) + 20;
+ for (let i = 0; i < n; i++){ const s = document.createElement('span'); s.className = 'fly-star'; s.textContent = icons[i % icons.length];
+  const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
+  s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
+  document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
+<div id="paper"><div class="copy flow" data-pages="0"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACdklEQVR4nMWYQW7cOhBEX48G4Owo4B+AcxFL9lFyjADjSBP5Xl+6CXWAANSOAjSqv5Czi7Oy+bkhhFp0odlVZMnEn9d8+gCAT0ZWM7PVajCzfl7N+tnMzp9d5y9IK0W3L6/X3PgzbtIZSX1BBrIz4F10w/zaXp5qWK3+/Dp/R9YqPWz9QRfX07J9XZ0/rfOxNcsQUfh1dXn551tRBidMG+A3/Lic5+Xke5xSSQaT2RXVbyzPfog81YcqijFAkpThFjJ+iG73kiTFcn7wzNt8aeWi25eN9XkxsxNvBXsweim3UsyWKmlKnXJDV64HWLrbheW15Sn0M/C4gi85B6Mf5KZE0Og3ckMXtRfsAdq5kRu/AdwCbbqhnaocg2zqQ8b3AZPkRiplK6kFZNtMQzW5R3032vTdLqrLORKaEiGbeiRtgYZKNAVP4cRT2GZYNux5cTHDd9PPolpQugWN/J5JqJQtFdRChipKUnRT6uRGquh2X24SOUzQ0u/vVkN0Rf0g43toqKIm9Tipx41FezD6QVi64Xa/BbdDoC05B9r9EDVJcpMGAZ2gZA8OT3x/KA3RKVWiKcsgVVGj74N2r0ibqujGovcCdHJKhGyJ4Ha647lQzBOd1M9ANaHQz+tLgssX1PkQQTuV3KQtaPRboKGTiqoxW6oibereI2wD0PihoBolKbepkhu95HY/FJ6D1cyMqX5c1x/cbX1JzF9R50OE3EpR43tSCrnVoEzBUziy89rNWzgyEzysqBYOxP0bhsndbTU/Am4szgCWM5eGSkw15DbdSmdn02u7nrhf125WXNuCyfXIzqvVxx1FhsfV/yyYG+1//5f2H0+hj1yBI3VtAAAAAElFTkSuQmCC" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="ttl">سلسلة المقطع الثاني وبداية المقطع الثالث في مادة الرياضيات للسنة الأولى متوسط</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>التمرين الأول (3 ن): تطبيق مباشر: الدائرة</h4><span class="math">(C)</span> دائرة مركزها <span class="math">O</span> ونصف قطرها <span class="math">3,5 cm</span>. (نأخذ <span class="math">π ≈ 3,14</span>)<p>1) ما طول قطر الدائرة <span class="math">(C)</span> (بـ cm)؟</p><p>2) احسب محيط الدائرة <span class="math">(C)</span> (بـ cm).</p><p>3) <span class="math">N</span> نقطة حيث <span class="math">ON = 3,5 cm</span>. أين تقع بالنسبة إلى <span class="math">(C)</span> مع التعليل؟</p></div><div class="ex"><h4>التمرين الثاني (3 ن): تطبيق مباشر: القسمة الإقليدية وقابلية القسمة</h4>ليكن العدد الطبيعي <span class="math">2026</span>.<p>1) أنجز القسمة الإقليدية للعدد <span class="math">2026</span> على <span class="math">9</span>، ثم اكتب الباقي.</p><p>2) هل العدد <span class="math">2026</span> يقبل القسمة على <span class="math">2</span> مع التعليل؟</p><p>3) هل العدد <span class="math">2026</span> يقبل القسمة على <span class="math">3</span> مع التعليل؟</p></div><div class="ex"><h4>التمرين الثالث (4 ن): ربط: المحيط والمساحة</h4>حديقة المتوسطة مستطيلة الشكل طولها <span class="math">18 m</span> وعرضها <span class="math">12 m</span>.<p>1) احسب محيط الحديقة (بـ m).</p><p>2) احسب مساحة الحديقة (بـ m²).</p><p>3) تحتاج كل شجيرة إلى <span class="math">4 m²</span>. كم شجيرة يمكن غرسها في الحديقة؟</p></div><div class="ex"><h4>التمرين الرابع (4 ن): ربط: توزيع الكتب</h4>تريد مكتبة المتوسطة وضع <span class="math">158</span> كتابا في علب، تتسع كل علبة لـ <span class="math">12</span> كتابا.<p>1) كم علبة تُملأ كاملة؟</p><p>2) كم كتابا يبقى خارج العلب الممتلئة؟</p><p>3) ما أصغر عدد من الكتب يجب إضافته لتمتلئ علبة أخرى كاملة؟</p></div><div class="ex"><h4>الوضعية الإدماجية (6 ن): عشب ساحة المتوسطة</h4><div class="fig"><svg viewBox="0 0 400 240" width="400" style="max-width:100%;height:auto;display:block;margin:6px auto" xmlns="http://www.w3.org/2000/svg" font-family="Tahoma,Arial"><rect x="0" y="0" width="400" height="30" fill="#e0f2fe"/><rect x="0" y="30" width="400" height="210" fill="#dcfce7"/><rect x="40" y="40" width="320" height="170" fill="#bbf7d0" stroke="#334155" stroke-width="2.5"/><polygon points="40,210 168,210 40,125" fill="#f9a8d4" stroke="#9d174d" stroke-width="2"/><polyline points="50.0,210.0 50.0,200.0 40.0,200.0" fill="none" stroke="#b91c1c" stroke-width="1.5"/><text x="200" y="34" font-size="13" fill="#111" font-weight="bold" text-anchor="middle" direction="ltr" unicode-bidi="embed">15 m</text><text x="378" y="128" font-size="13" fill="#111" font-weight="bold" text-anchor="middle" direction="ltr" unicode-bidi="embed">8 m</text><text x="104" y="226" font-size="11" fill="#9d174d" font-weight="bold" text-anchor="middle" direction="ltr" unicode-bidi="embed">6 m</text><text x="24" y="172" font-size="11" fill="#9d174d" font-weight="bold" text-anchor="middle" direction="ltr" unicode-bidi="embed">4 m</text><text x="76" y="196" font-size="11" fill="#9d174d" font-weight="bold" text-anchor="middle">أزهار</text><text x="250" y="120" font-size="14" fill="#166534" font-weight="bold" text-anchor="middle">عشب اصطناعي</text><text x="200" y="14" font-size="11" fill="#64748b" font-weight="normal" text-anchor="middle">(الرسم غير معطى بأبعاده الحقيقية)</text></svg></div><div class="bem-data"><p>– ساحة مستطيلة طولها <span class="math">15 m</span> وعرضها <span class="math">8 m</span>، في ركنها حوض أزهار على شكل مثلث قائم ضلعاه القائمان <span class="math">6 m</span> و<span class="math">4 m</span>.</p><p>– تريد الإدارة تغطية بقية الساحة بعشب اصطناعي، وعندها <span class="math">4</span> لفّات، تغطي كل لفّة <span class="math">26 m²</span>.</p></div><div class="bem-warn"><b>ملاحظة:</b> الرسم غير معطى بأبعاده الحقيقية، ولا يطلب إعادة الرسم.</div><p>1) احسب مساحة حوض الأزهار (بـ m²).</p><p>2) هل تكفي اللفّات الأربع لتغطية بقية الساحة؟ مع التبرير.</p></div></div><div class="foot">بالتوفيق</div></div></div><script>(function(){function fit(){var pp=document.getElementById('paper');if(!pp)return;var c=pp.querySelector('.copy');var n=+(c&&c.getAttribute('data-pages'));if(!n)return;
+var st=pp.getAttribute('style');pp.setAttribute('style','display:block;position:absolute;visibility:hidden;top:0;right:0;width:192mm');c.style.zoom=1;
+var mm=document.createElement('div');mm.style.height=(n*279-6)+'mm';pp.appendChild(mm);var lim=mm.getBoundingClientRect().height;pp.removeChild(mm);
+var lo=0.45,hi=1.3,k;c.style.zoom=hi;if(c.getBoundingClientRect().height<=lim)lo=hi;else for(k=0;k<10;k++){var m=(lo+hi)/2;c.style.zoom=m;if(c.getBoundingClientRect().height<=lim)lo=m;else hi=m}
+c.style.zoom=lo;if(st===null)pp.removeAttribute('style');else pp.setAttribute('style',st)}
+window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="ttl">الحل النموذجي وسلم التنقيط — سلسلة المقطع الثاني وبداية المقطع الثالث — السنة الأولى متوسط</div><div class="sxs"><div class="sx"><h4>التمرين الأول (3 ن): تطبيق مباشر: الدائرة</h4><div class="sq"><p><b>1) ما طول قطر الدائرة <span class="math">(C)</span> (بـ cm)؟</b></p><p><b>الطريقة:</b> القطر وتر يشمل المركز وطوله ضعف نصف القطر. نقطة بعدها عن المركز أصغر من نصف القطر تقع داخل الدائرة، ويساويه على الدائرة، وأكبر منه خارجها.</p><p><span class="math">2 × 3,5 = 7</span></p><p>النتيجة: <span class="math">7 cm</span></p><p><b>الاستنتاج:</b> القطر <span class="math">7 cm</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) احسب محيط الدائرة <span class="math">(C)</span> (بـ cm).</b></p><p><b>الطريقة:</b> محيط الدائرة <span class="math">= القطر × π</span> أو <span class="math">2 × نصف القطر × π</span>، ونأخذ <span class="math">π ≈ 3,14</span>.</p><p><span class="math">7 × 3,14 = 21,98</span></p><p>النتيجة: <span class="math">21,98 cm</span></p><p><b>الاستنتاج:</b> المحيط <span class="math">21,98 cm</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) <span class="math">N</span> نقطة حيث <span class="math">ON = 3,5 cm</span>. أين تقع بالنسبة إلى <span class="math">(C)</span> مع التعليل؟</b></p><p><b>الطريقة:</b> القطر وتر يشمل المركز وطوله ضعف نصف القطر. نقطة بعدها عن المركز أصغر من نصف القطر تقع داخل الدائرة، ويساويه على الدائرة، وأكبر منه خارجها.</p><p><span class="math">ON = 3,5 cm</span> ونصف القطر <span class="math">3,5 cm</span></p><p>النتيجة: <span class="math">N</span> على الدائرة (<span class="math">3</span>)</p><p><b>الاستنتاج:</b> <span class="math">N</span> تنتمي إلى الدائرة.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الثاني (3 ن): تطبيق مباشر: القسمة الإقليدية وقابلية القسمة</h4><div class="sq"><p><b>1) أنجز القسمة الإقليدية للعدد <span class="math">2026</span> على <span class="math">9</span>، ثم اكتب الباقي.</b></p><p><b>الطريقة:</b> القسمة الإقليدية: <span class="math">المقسوم = المقسوم عليه × الحاصل + الباقي</span> حيث الباقي أصغر من المقسوم عليه.</p><p><span class="math">9 × 225 = 2025</span> و<span class="math">2026 − 2025 = 1</span></p><p><span class="math">2026 = 9 × 225 + 1</span> و<span class="math">1 &lt; 9</span></p><p>النتيجة: الباقي <span class="math">1</span></p><p><b>الاستنتاج:</b> الباقي <span class="math">1</span> (والحاصل <span class="math">225</span>).</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) هل العدد <span class="math">2026</span> يقبل القسمة على <span class="math">2</span> مع التعليل؟</b></p><p><b>الطريقة:</b> يقبل عدد القسمة على <span class="math">5</span> إذا كان رقم آحاده <span class="math">0</span> أو <span class="math">5</span>، وعلى <span class="math">2</span> إذا كان رقم آحاده زوجيا.</p><p>رقم الآحاد <span class="math">6</span> زوجي</p><p>النتيجة: نعم (<span class="math">1</span>)</p><p><b>الاستنتاج:</b> يقبل القسمة على <span class="math">2</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) هل العدد <span class="math">2026</span> يقبل القسمة على <span class="math">3</span> مع التعليل؟</b></p><p><b>الطريقة:</b> يقبل عدد القسمة على <span class="math">9</span> إذا كان مجموع أرقامه يقبل القسمة على <span class="math">9</span> (وعلى <span class="math">3</span> إذا كان مجموع أرقامه يقبل القسمة على <span class="math">3</span>).</p><p>مجموع الأرقام: <span class="math">2 + 0 + 2 + 6 = 10</span></p><p><span class="math">10</span> لا يقبل القسمة على <span class="math">3</span></p><p>النتيجة: لا (<span class="math">2</span>)</p><p><b>الاستنتاج:</b> لا يقبل القسمة على <span class="math">3</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الثالث (4 ن): ربط: المحيط والمساحة</h4><div class="sq"><p><b>1) احسب محيط الحديقة (بـ m).</b></p><p><b>الطريقة:</b> محيط المستطيل <span class="math">= 2 × (الطول + العرض)</span> ومساحته <span class="math">= الطول × العرض</span>. محيط المربع <span class="math">= 4 ×</span> الضلع ومساحته <span class="math">= الضلع × الضلع</span>.</p><p><span class="math">2 × (18 + 12) = 2 × 30</span></p><p>النتيجة: <span class="math">60 m</span></p><p><b>الاستنتاج:</b> المحيط <span class="math">60 m</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) احسب مساحة الحديقة (بـ m²).</b></p><p><b>الطريقة:</b> محيط المستطيل <span class="math">= 2 × (الطول + العرض)</span> ومساحته <span class="math">= الطول × العرض</span>. محيط المربع <span class="math">= 4 ×</span> الضلع ومساحته <span class="math">= الضلع × الضلع</span>.</p><p><span class="math">18 × 12 = 216</span></p><p>النتيجة: <span class="math">216 m²</span></p><p><b>الاستنتاج:</b> المساحة <span class="math">216 m²</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) تحتاج كل شجيرة إلى <span class="math">4 m²</span>. كم شجيرة يمكن غرسها في الحديقة؟</b></p><p><b>الطريقة:</b> محيط المستطيل <span class="math">= 2 × (الطول + العرض)</span> ومساحته <span class="math">= الطول × العرض</span>. محيط المربع <span class="math">= 4 ×</span> الضلع ومساحته <span class="math">= الضلع × الضلع</span>. ثم نقسم المساحة على <span class="math">4</span>.</p><p>المساحة <span class="math">216 m²</span></p><p><span class="math">216 ÷ 4 = 54</span></p><p>النتيجة: <span class="math">54</span> شجيرة</p><p><b>الاستنتاج:</b> يمكن غرس <span class="math">54</span> شجيرة.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الطريقة</td><td>1</td></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الرابع (4 ن): ربط: توزيع الكتب</h4><div class="sq"><p><b>1) كم علبة تُملأ كاملة؟</b></p><p><b>الطريقة:</b> القسمة الإقليدية: <span class="math">المقسوم = المقسوم عليه × الحاصل + الباقي</span> حيث الباقي أصغر من المقسوم عليه.</p><p><span class="math">12 × 13 = 156</span> و<span class="math">12 × 14 = 168</span></p><p><span class="math">158 = 12 × 13 + 2</span></p><p>النتيجة: <span class="math">13</span> علبة</p><p><b>الاستنتاج:</b> تُملأ <span class="math">13</span> علبة كاملة.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) كم كتابا يبقى خارج العلب الممتلئة؟</b></p><p><b>الطريقة:</b> القسمة الإقليدية: <span class="math">المقسوم = المقسوم عليه × الحاصل + الباقي</span> حيث الباقي أصغر من المقسوم عليه.</p><p><span class="math">158 = 12 × 13 + 2</span></p><p>النتيجة: يبقى <span class="math">2</span> كتابان</p><p><b>الاستنتاج:</b> يبقى كتابان.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) ما أصغر عدد من الكتب يجب إضافته لتمتلئ علبة أخرى كاملة؟</b></p><p><b>الطريقة:</b> القسمة الإقليدية: <span class="math">المقسوم = المقسوم عليه × الحاصل + الباقي</span> حيث الباقي أصغر من المقسوم عليه.</p><p>في العلبة الأخيرة <span class="math">2</span> كتابان</p><p><span class="math">12 − 2 = 10</span></p><p>النتيجة: <span class="math">10</span> كتب</p><p><b>الاستنتاج:</b> نضيف <span class="math">10</span> كتب.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>التعليل</td><td>1</td></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>الوضعية الإدماجية (6 ن): عشب ساحة المتوسطة</h4><div class="sq"><p><b>1) احسب مساحة حوض الأزهار (بـ m²).</b></p><p><b>الطريقة:</b> مساحة المثلث القائم <span class="math">= (الضلع القائم الأول × الضلع القائم الثاني) ÷ 2</span>، وهي نصف مساحة المستطيل الذي بُعداه الضلعان القائمان.</p><p><span class="math">(6 × 4) ÷ 2 = 24 ÷ 2</span></p><p>النتيجة: <span class="math">12 m²</span></p><p><b>الاستنتاج:</b> مساحة الحوض <span class="math">12 m²</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: الطريقة</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) هل تكفي اللفّات الأربع لتغطية بقية الساحة؟ مع التبرير.</b></p><p><b>الطريقة:</b> محيط المستطيل <span class="math">= 2 × (الطول + العرض)</span> ومساحته <span class="math">= الطول × العرض</span>. محيط المربع <span class="math">= 4 ×</span> الضلع ومساحته <span class="math">= الضلع × الضلع</span>. مساحة المثلث القائم <span class="math">= (الضلع القائم الأول × الضلع القائم الثاني) ÷ 2</span>، وهي نصف مساحة المستطيل الذي بُعداه الضلعان القائمان.</p><p>مساحة الساحة: <span class="math">15 × 8 = 120 m²</span></p><p>المساحة الباقية: <span class="math">120 − 12 = 108 m²</span></p><p>ما تغطيه اللفّات: <span class="math">4 × 26 = 104 m²</span></p><p><span class="math">104 &lt; 108</span></p><p>النتيجة: لا تكفي (<span class="math">2</span>)</p><p><b>الاستنتاج:</b> تغطي اللفّات <span class="math">104 m²</span> فقط، وهي أقل من <span class="math">108 m²</span>، إذن لا تكفي.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: مساحة الساحة والمساحة الباقية</td><td>1,5</td></tr><tr><td>م2 الاستعمال السليم: المقارنة والقرار</td><td>1,5</td></tr><tr><td>م3 انسجام الإجابة: الوحدة ومعقولية النتيجة</td><td>0,5</td></tr><tr><td>م4 الإتقان: تنظيم الحل ووضوحه</td><td>0,5</td></tr></table></div><p class="m3">تُقبل كل طريقة صحيحة أخرى، وتُمنح علامتها كاملة.</p></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
+function tick(){var b=document.querySelector('.sol-btn'),w=document.querySelector('.sol-wait');if(!b)return;var r=t+D-Date.now();
+if(r<=0){b.style.display='inline-block';if(w)w.style.display='none';return}if(w)w.textContent='📄 النسخة الورقية للحل تظهر بعد '+Math.ceil(r/60000)+' دقيقة';setTimeout(tick,20000)}
+window.printSol=function(){document.body.classList.add('psol');window.print()};window.addEventListener('afterprint',function(){document.body.classList.remove('psol')});
+window.addEventListener('load',tick)})();</script><!--/paper-->
+</body>
+</html>
