@@ -174,6 +174,133 @@
         res: "النتيجة: " + M("x = " + sg(x)), concl: "<b>الاستنتاج:</b> للمعادلة حل وحيد هو " + M(sg(x)) + "." };
     }
   };
+  /* ========== 1b. 4AM generators for the rest of the programme (2026-11-20, «تحدي الشهادة اللانهائي») ========== */
+  function gcd(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) { var t = a % b; a = b; b = t; } return a; }
+  function nz(a, b) { var v; do { v = ri(a, b); } while (!v); return v; }
+  function clean(raw) { return String(raw).replace(/[٠-٩]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩".indexOf(d); }).replace(/\s+/g, "").replace(/[−–]/g, "-").replace(/,/g, ".").replace(/[×*·]/g, "").replace(/X/g, "x"); }
+  /* "a ; b" answers (order kept or free) */
+  function pairOk(a, b, any) { return function (raw) { var p = clean(raw).replace(/[()]/g, "").split(/[;؛]/); if (p.length !== 2) return false; var u = +p[0], v = +p[1]; if (p[0] === "" || p[1] === "" || isNaN(u) || isNaN(v)) return false; return (u === a && v === b) || (!!any && u === b && v === a); }; }
+  function lin1(k, c) { return pstr([c, k, 0]); }           /* kx + c */
+  function px(s) { return M(s); }
+  var NEW4 = {
+    fac: function () {
+      if (Math.random() < .5) {
+        var k = pick([2, 3, 4, 5, 6, 7]), a = pick([1, 2, 3, 5]), b = nz(-9, 9); while (gcd(a, b) !== 1) b = nz(-9, 9);
+        var want = [k * b, k * a, 0], e = pstr(want), inner = lin1(a, b);
+        return { q: "حلّل إلى جداء: " + M(e), ans: [k + "(" + inner + ")"], chip: "استعمل الأزرار ( ) و x و + و −",
+          ok: function (raw) { var s = clean(raw), m = /^(\d+)\((.+)\)$/.exec(s) || /^\((.+)\)(\d+)$/.exec(s); if (!m) return false; var kk = +(/^\d+$/.test(m[1]) ? m[1] : m[2]), p = poly(/^\d+$/.test(m[1]) ? m[2] : m[1]); return kk === k && p && p !== "dup" && p[2] === 0 && p[1] === a && p[0] === b; },
+          diag: function (raw) { var s = clean(raw), m = /^(\d+)\((.+)\)$/.exec(s); if (!m) return ""; var p = poly(m[2]); return p && p !== "dup" && +m[1] * p[1] === k * a && +m[1] * p[0] === k * b && +m[1] < k ? "التحليل صحيح لكنه غير كامل: أخرج العامل المشترك الأكبر " + M(k) + "." : ""; },
+          h1: "ابحث عن العامل المشترك بين " + M(pstr([0, k * a, 0])) + " و " + M(sg(k * b)) + ".", h2: "العامل المشترك الأكبر هو " + M(k) + ": " + M(e + " = " + k + " × " + (a === 1 ? "" : a) + "x " + (b < 0 ? "− " : "+ ") + k + " × " + Math.abs(b)) + ".",
+          steps: ["<b>الطريقة:</b> نُخرج العامل المشترك: " + M("ka + kb = k(a + b)") + ".", M(e + " = " + k + " × " + (a === 1 ? "" : a) + "x " + (b < 0 ? "− " : "+ ") + k + " × " + Math.abs(b))],
+          res: "النتيجة: " + M(k + "(" + inner + ")"), concl: "<b>الاستنتاج:</b> " + M(e + " = " + k + "(" + inner + ")") + "." };
+      }
+      var c = ri(2, 12), e2 = "x² − " + c * c;
+      return { q: "حلّل إلى جداء: " + M(e2), ans: ["(x−" + c + ")(x+" + c + ")", "(x+" + c + ")(x−" + c + ")"], chip: "استعمل الأزرار ( ) و x و + و −",
+        ok: function (raw) { var m = /^\(x([+-])(\d+)\)\(x([+-])(\d+)\)$/.exec(clean(raw)); return !!m && +m[2] === c && +m[4] === c && m[1] !== m[3]; },
+        diag: function (raw) { var s = clean(raw); return s === "(x-" + c + ")^2" || s === "(x-" + c + ")²" ? "هذا مربع فرق، بينما العبارة فرق مربعين: " + M("a² − b² = (a − b)(a + b)") + "." : /\(x[+-]\d+\)\(x[+-]\d+\)/.test(s) && s.indexOf(String(c * c)) >= 0 ? "خذ جذر العدد " + M(c * c) + " داخل القوسين." : ""; },
+        h1: "العبارة فرق مربعين: " + M("a² − b² = (a − b)(a + b)") + ".", h2: M(c * c + " = " + c + "²") + ".",
+        steps: ["<b>الطريقة:</b> نستعمل المتطابقة " + M("a² − b² = (a − b)(a + b)") + ".", M(e2 + " = x² − " + c + "²")],
+        res: "النتيجة: " + M("(x − " + c + ")(x + " + c + ")"), concl: "<b>الاستنتاج:</b> " + M(e2 + " = (x − " + c + ")(x + " + c + ")") + "." };
+    },
+    pnul: function () {
+      var a = nz(-9, 9), b = pick([1, 1, 2, 3]), r = nz(-6, 6), c = -b * r; /* (x − a)(bx + c) = 0, second root r */
+      var f1 = "(x " + (a < 0 ? "+ " + (-a) : "− " + a) + ")", f2 = "(" + lin1(b, c) + ")", e = f1 + f2 + " = 0";
+      return { q: "حلّ المعادلة: " + M(e), ans: [a + ";" + r, r + ";" + a], ok: pairOk(a, r, true), chip: "اكتب الحلّين: حل ; حل",
+        diag: function (raw) { return pairOk(-a, -r, true)(raw) || pairOk(-a, r, true)(raw) || pairOk(a, -r, true)(raw) ? "راجع إشارة الحلّ: " + M("x − a = 0") + " يعطي " + M("x = a") + "." : ""; },
+        h1: "جداء معدوم: يكون الجداء معدوما إذا كان أحد عامليه معدوما.", h2: M(f1.slice(1, -1) + " = 0") + " أو " + M(f2.slice(1, -1) + " = 0") + ".",
+        steps: ["<b>الطريقة:</b> " + M("A × B = 0") + " يعني " + M("A = 0") + " أو " + M("B = 0") + ".", M(f1.slice(1, -1) + " = 0") + " يعطي " + M("x = " + sg(a)), M(f2.slice(1, -1) + " = 0") + " يعطي " + M(b === 1 ? "x = " + sg(r) : b + "x = " + sg(-c) + " ، x = " + sg(r))],
+        res: "النتيجة: " + M(sg(a) + " ; " + sg(r)), concl: "<b>الاستنتاج:</b> للمعادلة حلّان هما " + M(sg(a)) + " و " + M(sg(r)) + "." };
+    },
+    ineq: function () {
+      var a = pick([2, 3, 4, 5, -2, -3, -4]), x = ri(-6, 6), b = nz(-12, 12), c = a * x + b, op = pick(["<", ">", "≤", "≥"]);
+      var flip = { "<": ">", ">": "<", "≤": "≥", "≥": "≤" }, rop = a < 0 ? flip[op] : op, e = lin1(a, b) + " " + op + " " + sg(c);
+      var want = "x" + rop + x;
+      return { q: "حلّ المتراجحة: " + M(e), ans: ["x " + rop + " " + sg(x)], chip: "اكتب الحلول على الشكل x < 3 (استعمل الأزرار < > ≤ ≥)",
+        ok: function (raw) { return clean(raw).replace("<=", "≤").replace(">=", "≥") === want; },
+        diag: function (raw) { var s = clean(raw).replace("<=", "≤").replace(">=", "≥"); return a < 0 && s === "x" + op + x ? "عند القسمة على عدد سالب " + M(sg(a)) + " يتغيّر اتجاه المتراجحة." : s.replace(/[<>≤≥]/, "") === "x" + x && s !== want ? "راجع اتجاه المتراجحة." : ""; },
+        h1: "انقل " + M(sg(b)) + " إلى الطرف الثاني، ثم اقسم على " + M(sg(a)) + (a < 0 ? " (عدد سالب!)" : "") + ".", h2: M(sg(a) + "x " + op + " " + sg(c - b)) + (a < 0 ? "، والقسمة على عدد سالب تقلب اتجاه المتراجحة." : "."),
+        steps: ["<b>الطريقة:</b> نعزل " + M("x") + " كما في المعادلة؛ " + (a < 0 ? "نقسم على عدد سالب فيتغيّر اتجاه المتراجحة." : "نقسم على عدد موجب فلا يتغيّر الاتجاه."), M(sg(a) + "x " + op + " " + sg(c - b)), M("x " + rop + " " + FR(sg(c - b), sg(a)) + " = " + sg(x))],
+        res: "النتيجة: " + M("x " + rop + " " + sg(x)), concl: "<b>الاستنتاج:</b> حلول المتراجحة هي كل الأعداد " + M("x") + " حيث " + M("x " + rop + " " + sg(x)) + "." };
+    },
+    sys: function () {
+      var x = ri(1, 12), y = ri(1, 12), a = pick([2, 3, 4, 5]), b = pick([1, 2, 3]); if (a === b) a++;
+      var S = x + y, T = a * x + b * y, it = pick([["تذكرة كبير", "تذكرة صغير", "DA"], ["كراس", "قلم", "DA"]]);
+      var pa = a * 50, pb = b * 50, TT = T * 50;
+      return { q: "اشترى أب " + M(S) + " تذاكر لحديقة التسلية بقالمة: تذاكر للكبار بـ " + M(pa + " DA") + " للواحدة وتذاكر للصغار بـ " + M(pb + " DA") + " للواحدة، فدفع " + M(TT + " DA") + ". كم تذكرة للكبار وكم تذكرة للصغار؟",
+        ans: [x + ";" + y], ok: pairOk(x, y, false), chip: "اكتب: عدد تذاكر الكبار ; عدد تذاكر الصغار",
+        diag: function (raw) { return pairOk(y, x, false)(raw) ? "بدّلت بين العددين: اكتب عدد تذاكر الكبار أولا." : ""; },
+        h1: "سمّ " + M("x") + " عدد تذاكر الكبار و " + M("y") + " عدد تذاكر الصغار، واكتب جملة معادلتين.", h2: M("x + y = " + S) + " و " + M(pa + "x + " + pb + "y = " + TT) + ".",
+        steps: ["<b>الطريقة:</b> نضع المسألة في جملة معادلتين من الدرجة الأولى بمجهولين ونحلّها بالتعويض.", M("x + y = " + S) + " ؛ " + M(pa + "x + " + pb + "y = " + TT), M("y = " + S + " − x") + " ، إذن " + M(pa + "x + " + pb + "(" + S + " − x) = " + TT), M((pa - pb) + "x = " + (TT - pb * S)) + " ، " + M("x = " + x) + " و " + M("y = " + y)],
+        res: "النتيجة: " + M(x + " ; " + y), concl: "<b>الاستنتاج:</b> اشترى " + M(x) + " تذاكر للكبار و " + M(y) + " تذاكر للصغار (تحقق: " + M(pa + " × " + x + " + " + pb + " × " + y + " = " + TT) + ")." };
+    },
+    lin: function () {
+      var a = pick([2, 3, 4, 5, 6, -2, -3, -4, 1.5, 2.5, -0.5]), k = nz(-8, 8), v = Math.round(a * k * 100) / 100;
+      if (Math.random() < .5) return { q: M("f") + " دالة خطية حيث " + M("f(x) = " + dn(a) + "x") + ". احسب صورة العدد " + M(sg(k)) + "، أي " + M("f(" + sg(k) + ")") + ".", ans: [dn(v)],
+        diag: function (raw) { return num(raw) === -v && v ? "راجع الإشارة: " + M(dn(a) + " × " + par(k)) + "." : num(raw) === a + k ? "الصورة جداء وليست مجموعا." : ""; },
+        h1: "عوّض " + M("x") + " بـ " + M(sg(k)) + ".", h2: M("f(" + sg(k) + ") = " + dn(a) + " × " + par(k)) + ".",
+        steps: ["<b>الطريقة:</b> صورة عدد بالدالة الخطية " + M("f(x) = ax") + " هي جداء العدد في " + M("a") + ".", M("f(" + sg(k) + ") = " + dn(a) + " × " + par(k) + " = " + dn(v))],
+        res: "النتيجة: " + M("f(" + sg(k) + ") = " + dn(v)), concl: "<b>الاستنتاج:</b> صورة " + M(sg(k)) + " هي " + M(dn(v)) + "." };
+      return { q: M("f") + " دالة خطية حيث " + M("f(" + sg(k) + ") = " + dn(v)) + ". عيّن معامل الدالة " + M("a") + ".", ans: [dn(a)],
+        diag: function (raw) { return num(raw) === Math.round(v * k * 100) / 100 ? "المعامل حاصل قسمة وليس جداء: " + M("a = f(x) ÷ x") + "." : num(raw) === -a ? "راجع الإشارة." : ""; },
+        h1: M("f(x) = ax") + " إذن " + M("a = " + FR("f(x)", "x")) + ".", h2: M("a = " + dn(v) + " ÷ " + par(k)) + ".",
+        steps: ["<b>الطريقة:</b> للدالة الخطية " + M("f(x) = ax") + " لدينا " + M("a = " + FR("f(x)", "x")) + " (حيث " + M("x ≠ 0") + ").", M("a = " + FR(dn(v), sg(k)) + " = " + dn(a))],
+        res: "النتيجة: " + M("a = " + dn(a)), concl: "<b>الاستنتاج:</b> " + M("f(x) = " + dn(a) + "x") + "." };
+    },
+    aff: function () {
+      var a = nz(-5, 5), b = nz(-9, 9), x1 = ri(-4, 2), x2 = x1 + ri(1, 5), y1 = a * x1 + b, y2 = a * x2 + b;
+      return { q: M("g") + " دالة تآلفية حيث " + M("g(" + sg(x1) + ") = " + sg(y1)) + " و " + M("g(" + sg(x2) + ") = " + sg(y2)) + ". عيّن العددين " + M("a") + " و " + M("b") + " حيث " + M("g(x) = ax + b") + ".",
+        ans: [a + ";" + b], ok: pairOk(a, b, false), chip: "اكتب: a ; b",
+        diag: function (raw) { return pairOk(-a, b, false)(raw) || pairOk(-a, -b, false)(raw) ? "راجع الإشارة في " + M("a = " + FR("g(x₂) − g(x₁)", "x₂ − x₁")) + "." : pairOk(b, a, false)(raw) ? "اكتب " + M("a") + " أولا ثم " + M("b") + "." : ""; },
+        h1: M("a = " + FR("g(x₂) − g(x₁)", "x₂ − x₁")) + "، ثم " + M("b = g(x₁) − a x₁") + ".", h2: M("a = " + FR(sg(y2) + " − " + par(y1), sg(x2) + " − " + par(x1))) + ".",
+        steps: ["<b>الطريقة:</b> معامل الدالة التآلفية " + M("a = " + FR("g(x₂) − g(x₁)", "x₂ − x₁")) + "، ثم نعوّض لإيجاد " + M("b") + ".", M("a = " + FR(String(y2 - y1).replace("-", "−"), String(x2 - x1)) + " = " + sg(a)), M("b = " + sg(y1) + " − " + par(a) + " × " + par(x1) + " = " + sg(b))],
+        res: "النتيجة: " + M("a = " + sg(a) + " ; b = " + sg(b)), concl: "<b>الاستنتاج:</b> " + M("g(x) = " + lin1(a, b)) + "." };
+    },
+    vec: function () {
+      var xa = ri(-6, 6), ya = ri(-6, 6), xb = ri(-6, 6), yb = ri(-6, 6); if (xa === xb && ya === yb) xb++;
+      var u = xb - xa, v = yb - ya;
+      return { q: "في معلم، " + M("A(" + sg(xa) + " ; " + sg(ya) + ")") + " و " + M("B(" + sg(xb) + " ; " + sg(yb) + ")") + ". احسب مركّبتي الشعاع " + M("AB") + ".", ans: [u + ";" + v], ok: pairOk(u, v, false), chip: "اكتب: x ; y",
+        diag: function (raw) { return pairOk(-u, -v, false)(raw) ? "حسبت مركّبتي " + M("BA") + ": نطرح إحداثيات المبدأ " + M("A") + " من إحداثيات النهاية " + M("B") + "." : ""; },
+        h1: "مركّبتا " + M("AB") + ": " + M("(x_B − x_A ; y_B − y_A)") + ".", h2: M(sg(xb) + " − " + par(xa)) + " و " + M(sg(yb) + " − " + par(ya)) + ".",
+        steps: ["<b>الطريقة:</b> " + M("AB(x_B − x_A ; y_B − y_A)") + ".", M(sg(xb) + " − " + par(xa) + " = " + sg(u)), M(sg(yb) + " − " + par(ya) + " = " + sg(v))],
+        res: "النتيجة: " + M("AB(" + sg(u) + " ; " + sg(v) + ")"), concl: "<b>الاستنتاج:</b> مركّبتا الشعاع " + M("AB") + " هما " + M(sg(u)) + " و " + M(sg(v)) + "." };
+    },
+    dist: function () {
+      var T = pick([[3, 4, 5], [6, 8, 10], [5, 12, 13], [8, 6, 10], [4, 3, 5], [12, 5, 13]]), xa = ri(-5, 5), ya = ri(-5, 5), sx = pick([1, -1]), sy = pick([1, -1]);
+      var xb = xa + sx * T[0], yb = ya + sy * T[1];
+      return { q: "في معلم متعامد ومتجانس، " + M("A(" + sg(xa) + " ; " + sg(ya) + ")") + " و " + M("B(" + sg(xb) + " ; " + sg(yb) + ")") + ". احسب المسافة " + M("AB") + ".", ans: [String(T[2])],
+        diag: function (raw) { return num(raw) === T[2] * T[2] ? "هذا هو " + M("AB²") + "، بقي حساب الجذر." : num(raw) === T[0] + T[1] ? "المسافة ليست مجموع الفرقين: استعمل المربعات." : ""; },
+        h1: M("AB = √((x_B − x_A)² + (y_B − y_A)²)") + ".", h2: M("(" + sg(sx * T[0]) + ")² + (" + sg(sy * T[1]) + ")² = " + T[2] * T[2]) + ".",
+        steps: ["<b>الطريقة:</b> في معلم متعامد ومتجانس " + M("AB = √((x_B − x_A)² + (y_B − y_A)²)") + ".", M("x_B − x_A = " + sg(sx * T[0]) + " ; y_B − y_A = " + sg(sy * T[1])), M("AB² = " + T[0] * T[0] + " + " + T[1] * T[1] + " = " + T[2] * T[2]), M("AB = √" + T[2] * T[2] + " = " + T[2])],
+        res: "النتيجة: " + M("AB = " + T[2]), concl: "<b>الاستنتاج:</b> المسافة " + M("AB") + " تساوي " + M(T[2]) + " (وحدة الطول)." };
+    },
+    rpoly: function () {
+      var n = pick([3, 4, 5, 6, 8, 9, 10, 12]), c = 360 / n, nm = { 3: "مثلث متقايس الأضلاع", 4: "مربع", 5: "خماسي منتظم", 6: "سداسي منتظم", 8: "ثماني منتظم", 9: "تساعي منتظم", 10: "عشاري منتظم", 12: "مضلع منتظم بـ 12 ضلعا" }[n];
+      return { q: M("O") + " مركز " + nm + " " + M("ABC…") + " (" + M(n) + " أضلاع). ما قيس الزاوية المركزية " + M("AOB") + " بالدرجات؟", ans: [String(c)],
+        diag: function (raw) { return num(raw) === 180 / n ? "الزوايا المركزية تملأ دورة كاملة " + M("360°") + " لا " + M("180°") + "." : num(raw) === 180 - c ? "هذه زاوية أخرى: الزاوية المركزية رأسها المركز " + M("O") + "." : ""; },
+        h1: "الزوايا المركزية للمضلع المنتظم متقايسة ومجموعها " + M("360°") + ".", h2: M("360 ÷ " + n) + ".",
+        steps: ["<b>الطريقة:</b> في مضلع منتظم عدد أضلاعه " + M("n") + "، الزاوية المركزية " + M("360° ÷ n") + ".", M("360 ÷ " + n + " = " + dn(c))],
+        res: "النتيجة: " + M(dn(c) + "°"), concl: "<b>الاستنتاج:</b> " + M("AOB = " + dn(c) + "°") + "." };
+    },
+    mean: function () {
+      var n = pick([4, 5, 6]), m = ri(9, 15), v = [], s = 0, i; for (i = 0; i < n - 1; i++) { v.push(ri(m - 5, m + 5)); s += v[i]; }
+      var last = n * m - s; if (last < 0 || last > 20) return NEW4.mean(); v.push(last); v.sort(function () { return Math.random() - .5; });
+      return { q: "علامات تلميذ في " + M(n) + " فروض: " + M(v.join(" ; ")) + ". احسب معدّل هذه العلامات.", ans: [String(m)],
+        diag: function (raw) { return num(raw) === n * m ? "هذا مجموع العلامات: اقسمه على عددها " + M(n) + "." : ""; },
+        h1: "المعدّل = مجموع القيم ÷ عددها.", h2: "المجموع " + M(n * m) + ".",
+        steps: ["<b>الطريقة:</b> المتوسط الحسابي = مجموع القيم ÷ عددها.", M(v.join(" + ") + " = " + n * m), M(n * m + " ÷ " + n + " = " + m)],
+        res: "النتيجة: " + M(m), concl: "<b>الاستنتاج:</b> معدّل العلامات " + M(m) + " من 20." };
+    },
+    median: function () {
+      var v = [], i; for (i = 0; i < 7; i++) v.push(ri(4, 19));
+      var s = v.slice().sort(function (a, b) { return a - b; }), me = s[3];
+      return { q: "أطوال قفزات " + M(7) + " تلاميذ (بالدسيمتر): " + M(v.join(" ; ")) + ". عيّن الوسيط (الموسّط) لهذه السلسلة.", ans: [String(me)],
+        diag: function (raw) { return num(raw) === v[3] && v[3] !== me ? "رتّب القيم أولا ثم خذ القيمة التي في الوسط." : ""; },
+        h1: "رتّب القيم ترتيبا تصاعديا.", h2: "القيم السبع مرتبة: الوسيط هو القيمة الرابعة.",
+        steps: ["<b>الطريقة:</b> نرتّب القيم ترتيبا تصاعديا؛ عددها فردي " + M("7") + " فالوسيط هو القيمة الرابعة.", M(s.join(" ; "))],
+        res: "النتيجة: " + M(me), concl: "<b>الاستنتاج:</b> الوسيط " + M(me) + ": نصف التلاميذ قفزوا " + M(me + " dm") + " أو أقل، والنصف الآخر " + M(me + " dm") + " أو أكثر." };
+    }
+  };
+  for (var k4 in NEW4) NEW[k4] = NEW4[k4];
   var NAMES = { x10: "الضرب والقسمة على 10، 100…", decops: "جمع وطرح الأعداد العشرية", rect: "محيط ومساحة المستطيل", circle: "محيط الدائرة", rtri: "مساحة المثلث القائم",
     div: "القسمة الإقليدية", arr: "التدوير إلى الوحدة", eucl: "القسمة الإقليدية", prio: "سلسلة عمليات", frac2: "العمليات على الكسور", rel: "جمع الأعداد النسبية", prop: "التناسبية",
     relmul: "ضرب الأعداد النسبية وقسمتها", fracop: "العمليات على الأعداد الناطقة", midline: "مستقيم المنتصفين", pyth: "خاصية فيتاغورس", pow: "القوى", dev: "النشر (التوزيع)",
@@ -220,7 +347,7 @@
         '<span class="tag">' + esc(NAMES[id] || id) + '</span><div class="q">' + g.q + "</div>" +
         (g.chip || g.unit ? '<div class="sub">' + (g.chip ? "✍️ " + g.chip + " " : "") + (g.unit ? "📏 الوحدة: " + g.unit : "") + "</div>" : "") +
         '<div class="row"><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" aria-label="إجابتك" placeholder="اكتب إجابتك"><button type="button" class="b go">تحقّق</button></div>' +
-        '<div class="syms">' + (SYM[lv] || []).map(function (s) { return '<button type="button" aria-label="' + (s === "⌫" ? "حذف" : "أضف " + s) + '">' + s + "</button>"; }).join("") + "</div>" +
+        '<div class="syms">' + (opt.syms || SYM[lv] || []).map(function (s) { return '<button type="button" aria-label="' + (s === "⌫" ? "حذف" : "أضف " + s) + '">' + s + "</button>"; }).join("") + "</div>" +
         '<div class="fb" role="status" aria-live="polite"></div>' +
         '<div class="sol" hidden><b>✔ الإجابة النموذجية:</b>' + g.steps.map(function (s) { return "<div>" + s + "</div>"; }).join("") + "<div>" + g.res + '</div><div class="end">' + g.concl + "</div></div>" +
         '<div class="row" style="margin-top:8px"><span class="sp"></span><button type="button" class="b s nx">🔄 تمرين آخر</button></div>';
@@ -274,6 +401,57 @@
     }
     if (opt.lazy) intro(); else draw();
   }
+  /* ========== 1c. «تحدي الشهادة» لا نهائي على كامل برنامج الرابعة (2026-11-20, his ask):
+     the pupil chooses sequences (or single skills); with no choice, skills follow the annual plan 2026/2027 (only what is taught by today). ========== */
+  var BEMSEQ = [
+    ["م1", "الأعداد الطبيعية والناطقة، الجذور", [["pgcd", "2026-10-04"], ["irr", "2026-10-11"], ["aroot", "2026-10-18"], ["rootsum", "2026-10-18"]]],
+    ["م2", "طالس وحساب المثلثات", [["thales", "2026-11-02"], ["trig", "2026-11-08"]]],
+    ["م3", "الحساب الحرفي", [["idt", "2026-11-29"], ["fac", "2026-11-29"], ["pnul", "2026-12-13"], ["eq", "2027-01-03"], ["ineq", "2027-01-03"]]],
+    ["م4", "الأشعة والمعالم", [["vec", "2027-01-17"], ["dist", "2027-02-07"]]],
+    ["م5", "الجمل والدوال", [["sys", "2027-02-14"], ["lin", "2027-02-21"], ["aff", "2027-02-28"]]],
+    ["م6", "الدوران والمضلعات المنتظمة", [["rpoly", "2027-04-11"]]],
+    ["م7", "الإحصاء", [["mean", "2027-04-25"], ["median", "2027-04-25"]]]];
+  var NAMES4 = { fac: "التحليل إلى جداء", pnul: "معادلة جداء معدوم", ineq: "المتراجحات", sys: "جملة معادلتين", lin: "الدالة الخطية", aff: "الدالة التآلفية",
+    vec: "مركّبتا شعاع", dist: "المسافة بين نقطتين", rpoly: "المضلعات المنتظمة", mean: "المتوسط الحسابي", median: "الوسيط" };
+  for (var n4 in NAMES4) NAMES[n4] = NAMES4[n4];
+  function planSkills(today) {
+    var d = today || new Date(), out = [];
+    var iso = d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2);
+    BEMSEQ.forEach(function (s) { s[2].forEach(function (k) { if (k[1] <= iso || iso > "2027-05-27") out.push(k[0]); }); });
+    return out.length ? out : BEMSEQ[0][2].map(function (k) { return k[0]; });
+  }
+  function bemChallenge(host) {
+    var st = get("math-bem-choice", { mode: "plan", seq: [] }), inner;
+    function list() {
+      if (st.mode === "plan" || !st.seq.length) return planSkills();
+      var out = []; BEMSEQ.forEach(function (s, i) { if (st.seq.indexOf(i) >= 0) s[2].forEach(function (k) { out.push(k[0]); }); });
+      return out;
+    }
+    function head() {
+      var plan = st.mode === "plan" || !st.seq.length;
+      return '<div class="row"><div><h2>⚡ تحدي الشهادة: تمارين لا نهائية</h2><span class="sub">كل برنامج الرابعة متوسط · أرقام جديدة في كل مرة · للتدرّب فقط</span></div></div>' +
+        '<div class="chips" role="group" aria-label="اختيار المقاطع">' +
+        '<button type="button" data-p="1" class="' + (plan ? "on" : "") + '" title="المقاطع التي دُرست حتى اليوم حسب التوزيع السنوي">📅 حسب المخطط السنوي</button>' +
+        BEMSEQ.map(function (s, i) { return '<button type="button" data-s="' + i + '" class="' + (!plan && st.seq.indexOf(i) >= 0 ? "on" : "") + '" title="' + esc(s[1]) + '">' + s[0] + " " + esc(s[1]) + "</button>"; }).join("") + "</div>" +
+        '<div class="sub">' + (plan ? "📅 الأسئلة من الموارد المدروسة حتى اليوم حسب التوزيع السنوي. اختر مقطعا أو أكثر لتغيير ذلك." : "🗂️ اخترت: " + st.seq.map(function (i) { return BEMSEQ[i][0]; }).join("، ") + ". اضغط «حسب المخطط السنوي» للرجوع.") + "</div>";
+    }
+    function draw() {
+      host.className = "px"; host.hidden = false; host.style.borderTopColor = "#b45309";
+      host.innerHTML = head() + '<div class="bemq"></div>';
+      $$(".chips button", host).forEach(function (b) {
+        b.onclick = function () {
+          if (b.getAttribute("data-p")) st = { mode: "plan", seq: [] };
+          else { var i = +b.getAttribute("data-s"), k = st.seq.indexOf(i); if (st.mode === "plan") st = { mode: "pick", seq: [] }; if (k >= 0) st.seq.splice(k, 1); else st.seq.push(i); st.seq.sort(); if (!st.seq.length) st.mode = "plan"; }
+          put("math-bem-choice", st); draw();
+        };
+      });
+      inner = $(".bemq", host);
+      practice(inner, "4m", list(), { title: "🎯 تمرين", syms: ["√", "²", "x", "(", ")", "−", "+", ";", ",", "/", "<", ">", "≤", "≥", "⌫"] });
+      inner.style.cssText = "border:0;box-shadow:none;padding:0;margin:4px 0 0";
+    }
+    draw();
+  }
+  window.__bem = { planSkills: planSkills, BEMSEQ: BEMSEQ, bemChallenge: bemChallenge };
   window.__px = { NEW: NEW, poly: poly, right: right, bank: bank, TYPES: TYPES };
 
   /* ========== 2. progress transfer (no server): code + link ========== */
@@ -442,7 +620,7 @@
           '<div class="px-btns"><button type="button" class="b go1">⚡ تحدي الشهادة: تمرين بأرقام جديدة</button><button type="button" class="b s go2">📊 تقريري</button></div>' +
           (all.length ? '<details class="sub"><summary>📚 سلاسل ومواضيع الشهادة (' + all.length + ")</summary><ul>" + all.map(function (i) { return '<li><a href="' + esc(i.url) + '">' + esc(i.title) + "</a></li>"; }).join("") + "</ul></details>" : "") +
           '<div class="bemp" id="bemp" hidden></div>';
-        $(".go1", bem).onclick = function () { var p = $("#bemp"); p.hidden = false; practice(p, "4m", TYPES["4m"], { title: "⚡ تحدي الشهادة" }); p.scrollIntoView({ block: "start", behavior: "smooth" }); };
+        $(".go1", bem).onclick = function () { var p = $("#bemp"); p.hidden = false; bemChallenge(p); p.scrollIntoView({ block: "start", behavior: "smooth" }); };
         $(".go2", bem).onclick = function () { openReport("4m"); };
       } else bem.hidden = true;
     }
