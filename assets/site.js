@@ -1109,12 +1109,14 @@ body.sx-exam .sx-calc-fab{bottom:74px}
 
     /* ---- 🔘 ONE check button that follows the pupil + «📘 راجع الدرس» (2026-11-21 his idea, TRIAL) ----
        His words: «زر التحقق واحد يسير معك ويتحول إلى زر السؤال الموالي بعد الإجابة الصحيحة وعرض الحل أو بعد المحاولة الأخيرة،
-       والربط بدروس أُتقِن، والحفاظ على كل شيء كما هو». TRIAL: on only after «?new=1» (saved on the phone); «?new=0» = the old pages.
+       والربط بدروس أُتقِن، والحفاظ على كل شيء كما هو». ON FOR ALL since 2026-11-21 (his «ادمجها»); «?new=0» = the old pages on that phone, «?new=1» = back on.
        Nothing else changes: the cards' own «تحقق» buttons stay (hidden on phones while the trial is on). */
     (function () {
       var qp = /[?&]new=([01])\b/.exec(location.search);
       if (qp) store("sx-onebtn", qp[1]);
-      if (store("sx-onebtn") !== "1") return;
+      var ONEBTN_FOR_ALL = true;   /* 2026-11-21 his «ادمجها»: on for everyone. false = back to the old pages for all; «?new=0» = old on one phone */
+      var me1 = store("sx-onebtn");
+      if (me1 === "0" || (!ONEBTN_FOR_ALL && me1 !== "1")) return;
       var Q = [];
       data.forEach(function (ex, i) {
         (ex.questions || []).forEach(function (q) {
