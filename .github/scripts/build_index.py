@@ -245,6 +245,17 @@ def write_resources(items, maps):
                 ent["p3"] = where[3][:2]
             lst.append(ent)
         out[lv] = lst
+    # "_pg": per page, its resources and Bloom levels with the number of questions, so that the report can also count the
+    # results saved BEFORE the per-question record existed (2026-11-21 his ask: bottom «السنة الدراسية» ≠ top one)
+    pg = {}
+    for u, mp in maps.items():
+        cnt = {}
+        for ri, b in mp.values():
+            if ri >= 0:
+                cnt[(ri, b)] = cnt.get((ri, b), 0) + 1
+        if cnt:
+            pg[u] = [[ri, b, n] for (ri, b), n in sorted(cnt.items())]
+    out["_pg"] = pg
     os.makedirs("assets", exist_ok=True)
     with open(os.path.join("assets", "resources.json"), "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, separators=(",", ":"))
