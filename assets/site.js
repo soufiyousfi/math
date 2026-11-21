@@ -883,6 +883,98 @@ body.sx-exam .sx-calc-fab{bottom:74px}
     if (level === "4m" && /\b(cos|sin|tan)\b/.test(document.body.textContent)) addCalc(!!(data && root));
   });
 
+  /* ---------- 3b. ONE check button on the «أُتقِن» lessons too (2026-11-21 his «لماذا لم تضع الزر العائم في دروس أتقن؟») ----------
+     Those lessons have their own engine (#app .q, button «تحقّق» per question, twin questions added after a miss).
+     Same bar as the exercise pages: ✔ تحقق → السؤال الموالي ⬅ → 🏁 الشهادة; the questions' own «تحقّق» buttons are hidden. */
+  onReady(function () {
+    try { if (typeof exercises !== "undefined") return; } catch (e) {}
+    var app = document.getElementById("app");
+    if (!app || !app.querySelector(".q")) return;
+    var me1 = store("sx-onebtn"); if (me1 === "0") return;
+    function chk(box) {
+      var bs = box.querySelectorAll("button.btn");
+      for (var i = 0; i < bs.length; i++) if (/تحق/.test(bs[i].textContent) && !bs[i].classList.contains("sec")) return bs[i];
+      return null;
+    }
+    function list() {
+      return Array.prototype.filter.call(app.querySelectorAll(".q"), function (b) { return chk(b) && b.offsetParent !== null; });
+    }
+    if (!list().length) return;
+    document.body.classList.add("sx-1b");
+    var css = el("style");
+    css.textContent = ".sx-1bar{position:fixed;left:0;right:0;bottom:0;z-index:2500;display:flex;gap:8px;align-items:center;justify-content:center;" +
+      "padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid #cbd5e1;box-shadow:0 -4px 14px rgba(15,23,42,.12);direction:rtl}" +
+      ".sx-1bar .n{font-size:.85rem;font-weight:800;color:#475569;white-space:nowrap;direction:ltr}" +
+      ".sx-1bar button{flex:1;max-width:560px;font:inherit;font-weight:800;font-size:1.3rem;border:none;border-radius:14px;padding:15px 18px;min-height:58px;cursor:pointer;color:#fff;background:#1e3a8a;box-shadow:0 3px 0 rgba(15,23,42,.35)}" +
+      ".sx-1bar button.next{background:#15803d}.sx-1bar button.end{background:#b45309}.sx-1bar{transition:bottom .12s}" +
+      "body.sx-1b{padding-bottom:96px!important}body.sx-1b #app .q .sx-own{display:none!important}" +
+      "body.sx-1b #app .q.sx-cur{outline:2.5px solid #38bdf8;outline-offset:3px;border-radius:10px}" +
+      "body.sx-1b #app .q.sx-cur input.ans:not(:disabled){border:3px solid #1e3a8a!important;background:#fffbeb!important}" +
+      "body.sx-kb .sx-pad-fab{display:none!important}html.dark .sx-1bar{background:rgba(15,23,42,.96);border-color:#334155}" +
+      "@media print{.sx-1bar{display:none!important}}";
+    document.head.appendChild(css);
+    var bar = el("div", "sx-1bar"), num = el("span", "n"), B = el("button");
+    B.type = "button"; bar.appendChild(num); bar.appendChild(B); document.body.appendChild(bar);
+    B.addEventListener("mousedown", function (e) { e.preventDefault(); });
+    var curBox = null;
+    function locked(b) { var c = chk(b); return !c || c.disabled; }
+    function mark() { list().forEach(function (b) { var c = chk(b); if (c) c.classList.add("sx-own"); }); }
+    function show() {
+      mark();
+      var Q = list();
+      if (!curBox || Q.indexOf(curBox) < 0) { curBox = Q.filter(function (b) { return !locked(b); })[0] || Q[Q.length - 1]; }
+      var k = Q.indexOf(curBox);
+      Q.forEach(function (b) { b.classList.toggle("sx-cur", b === curBox); });
+      num.textContent = (k + 1) + " / " + Q.length;
+      if (!locked(curBox)) { B.className = ""; B.textContent = "✔ تحقق"; return; }
+      var n = nextOpen(Q, k);
+      if (n < 0) { B.className = "end"; B.textContent = "🏁 الشهادة"; }
+      else { B.className = "next"; B.textContent = "السؤال الموالي ⬅"; }
+    }
+    function nextOpen(Q, k) {
+      for (var i = k + 1; i < Q.length; i++) if (!locked(Q[i])) return i;
+      for (i = 0; i < k; i++) if (!locked(Q[i])) return i;
+      return -1;
+    }
+    function goBox(b) {
+      curBox = b;
+      var sb = document.querySelector(".top") , h = 0;
+      if (sb && getComputedStyle(sb).position.indexOf("sticky") >= 0 || sb && getComputedStyle(sb).position === "fixed") h = sb.getBoundingClientRect().height;
+      var t = b.querySelector(".qt") || b;
+      window.scrollTo({ top: Math.max(0, t.getBoundingClientRect().top + window.scrollY - h - 10), behavior: "smooth" });
+      var inp = b.querySelector("input.ans:not(:disabled)");
+      if (inp) { try { inp.focus({ preventScroll: true }); } catch (e) {} }
+      setTimeout(show, 80);
+    }
+    B.onclick = function () {
+      var Q = list(); if (!curBox) show();
+      if (!locked(curBox)) { chk(curBox).click(); setTimeout(show, 120); return; }
+      var n = nextOpen(Q, Q.indexOf(curBox));
+      if (n >= 0) { goBox(Q[n]); return; }
+      var c = document.getElementById("cert"); if (c) c.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    app.addEventListener("focusin", function (e) { var b = e.target.closest && e.target.closest(".q"); if (b && chk(b)) { curBox = b; show(); } });
+    app.addEventListener("click", function (e) { var b = e.target.closest && e.target.closest(".q"); if (b && chk(b)) curBox = b; setTimeout(show, 150); });
+    document.addEventListener("keyup", function () { setTimeout(show, 80); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Enter" || e.defaultPrevented || e.isComposing) return;
+      var t = e.target;
+      if (t && t.closest && (t.closest(".sx-pad") || t.closest(".sx-ov") || t.closest(".sx-wrap") || t.closest("#cert"))) return;
+      if (t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName) && !t.disabled) return;   /* the lesson's own Enter = check */
+      if (t && /^(BUTTON|A)$/.test(t.tagName) && t !== B) return;
+      e.preventDefault(); B.click();
+    });
+    function lift() {
+      var vv = window.visualViewport; if (!vv) return;
+      var hidden = window.innerHeight - (vv.height + vv.offsetTop);
+      bar.style.bottom = (hidden > 40 ? hidden : 0) + "px";
+      document.body.classList.toggle("sx-kb", hidden > 40);
+    }
+    if (window.visualViewport) { window.visualViewport.addEventListener("resize", lift); window.visualViewport.addEventListener("scroll", lift); }
+    new MutationObserver(function () { clearTimeout(show.t); show.t = setTimeout(show, 100); }).observe(app, { childList: true, subtree: true });
+    setTimeout(show, 500);
+  });
+
   function plain(html) { var d = document.createElement("div"); d.innerHTML = html; return d.textContent.replace(/\s+/g, " ").trim(); }
   function norm(v) {
     var s = String(v).trim();
