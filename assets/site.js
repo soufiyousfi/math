@@ -567,6 +567,8 @@ body.sx-ex .context-box,body.sx-ex .context-box *:not(.math):not(svg *){color:#0
 body.sx-ex .context-box{font-size:1.06rem;line-height:1.85;font-weight:600}
 body.sx-ex .math{font-size:1.02em;font-weight:700;color:#000}
 #app .q .qt,#app .q .qt *:not(.qp):not(svg *){color:#000!important}#app .q .qt{font-weight:700!important}#app .intro{color:#111827!important}
+/* 2026-11-21 his «والتمارين»: the games (al3ab) and station lessons (dars) write all their text with var(--ink) → deep black there too */
+body.sx-ink0{--ink:#000!important}
 body.sx-ex .card-header h2{font-size:1.18rem}
 body.sx-ex .feedback-box{font-size:1rem;line-height:1.75}
 body.sx-ex .model-solution{font-size:1rem;line-height:1.85}
@@ -874,6 +876,10 @@ body.sx-exam .sx-calc-fab{bottom:74px}
   })();
 
   /* ---------- 3. exercise pages ---------- */
+  (function () {
+    function ink() { if (document.body && /\/(dars|al3ab)\//.test(location.pathname)) document.body.classList.add("sx-ink0"); }
+    if (document.body) ink(); else document.addEventListener("DOMContentLoaded", ink);
+  })();
   function onReady(fn) {
     if (document.readyState === "complete") setTimeout(fn, 30);
     else window.addEventListener("load", function () { setTimeout(fn, 30); });
