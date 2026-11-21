@@ -48,6 +48,20 @@
     ".px .bar{height:8px;border-radius:6px;background:#e2e8f0;overflow:hidden;min-width:60px}.px .bar i{display:block;height:100%;background:#0e8f8a}" +
     ".px .code{font-family:monospace;font-size:1.3rem;font-weight:800;letter-spacing:2px;direction:ltr;text-align:center;background:var(--soft,#f8fafc);border:1.5px dashed #0e8f8a;border-radius:10px;padding:6px}" +
     ".px-btns{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:10px 0}" +
+    /* 2026-11-21 his «مازال تحدي الشهادة لونه اشهب… إطار مميز يضيئ… يفتح التمرين ويحاط بلون مميز» + «سؤال المراجعة اليومية»:
+       black text, a glowing frame around «ركن الشهادة» and «سؤال اليوم», the opened challenge exercise framed in blue */
+    "#bemhub.px{border:3px solid #f59e0b!important;border-top-width:6px!important;animation:pxglowA 2.4s ease-in-out infinite}" +
+    "#daily{border:3px solid #3b82f6!important;border-top-width:6px!important;animation:pxglowB 2.4s ease-in-out infinite}" +
+    "#practice.px{border:3px solid #0d9488!important;border-top-width:6px!important;animation:pxglowC 2.4s ease-in-out infinite}" +
+    "@keyframes pxglowC{0%,100%{box-shadow:0 0 6px rgba(13,148,136,.3)}50%{box-shadow:0 0 0 4px rgba(13,148,136,.2),0 0 22px rgba(13,148,136,.5)}}" +
+    "#bemhub h2,#daily h2,#practice h2{font-size:1.15rem;font-weight:800}" +
+    "#bemp.px{border:3px solid #2563eb!important;border-radius:14px;margin:12px 0 2px;box-shadow:0 0 0 4px rgba(37,99,235,.2),0 0 18px rgba(37,99,235,.35)!important;animation:pxin .5s ease-out}" +
+    "@keyframes pxglowA{0%,100%{box-shadow:0 0 6px rgba(245,158,11,.35)}50%{box-shadow:0 0 0 4px rgba(245,158,11,.22),0 0 22px rgba(245,158,11,.6)}}" +
+    "@keyframes pxglowB{0%,100%{box-shadow:0 0 6px rgba(59,130,246,.3)}50%{box-shadow:0 0 0 4px rgba(59,130,246,.2),0 0 22px rgba(59,130,246,.55)}}" +
+    "@keyframes pxin{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}" +
+    "@media (prefers-reduced-motion:reduce){#bemhub.px,#daily,#bemp.px,#practice.px{animation:none!important}}" +
+    "html[data-theme=\"light\"] #bemhub,html[data-theme=\"light\"] #bemp,html[data-theme=\"light\"] #practice,html[data-theme=\"light\"] #daily{--text:#000;--muted:#1f2937}html[data-theme=\"light\"] #bemhub.px{background:linear-gradient(180deg,#fffbeb,#fff 60%)!important}html[data-theme=\"light\"] #daily{background:linear-gradient(180deg,#eff6ff,#fff 60%)!important}html[data-theme=\"light\"] #bemp.px{background:#fff!important}" +
+    "@media (prefers-color-scheme:light){html:not([data-theme=\"dark\"]) #bemhub,html:not([data-theme=\"dark\"]) #bemp,html:not([data-theme=\"dark\"]) #practice,html:not([data-theme=\"dark\"]) #daily{--text:#000;--muted:#1f2937}html:not([data-theme=\"dark\"]) #bemhub.px{background:linear-gradient(180deg,#fffbeb,#fff 60%)!important}html:not([data-theme=\"dark\"]) #daily{background:linear-gradient(180deg,#eff6ff,#fff 60%)!important}html:not([data-theme=\"dark\"]) #bemp.px{background:#fff!important}}" +
     "@media print{body>*:not(.px-ov){display:none!important}.px-ov{position:static;background:none}.px-ov>.px{max-height:none;box-shadow:none;border:0}.px .noprint{display:none!important}}";
   document.head.appendChild(css);
 
@@ -629,6 +643,90 @@
     window.addEventListener("hashchange", function () { setTimeout(render, 40); });
     var m = location.hash.match(/nql=([A-Za-z0-9_-]+)/);
     if (m) { var c = m[1]; history.replaceState(null, "", location.pathname); setTimeout(function () { openTransfer(c); }, 300); }
+    indexBar();
+  }
+
+  /* ========== index: ONE floating check button for «سؤال اليوم», the infinite exercises and «تحدي الشهادة»
+     (2026-11-21 his «وزر التحقق عائم والتمارين اللانهاية ايضا»). Same bar as the exercise pages: ✔ تحقق → 🔄 تمرين آخر.
+     It works on the box the pupil last touched (or the one on screen); the boxes' own «تحقّق» buttons are hidden. ========== */
+  function indexBar() {
+    var off = null; try { off = localStorage.getItem("sx-onebtn"); } catch (e) {}
+    if (off === "0") return;
+    var IDS = ["daily", "practice", "bemp"];
+    var st = el("style");
+    st.textContent = ".px-1bar{position:fixed;left:0;right:0;bottom:0;z-index:2500;display:flex;justify-content:center;padding:8px 12px calc(8px + env(safe-area-inset-bottom));" +
+      "background:rgba(255,255,255,.96);border-top:1px solid #cbd5e1;box-shadow:0 -4px 14px rgba(15,23,42,.12);direction:rtl;transition:bottom .12s}" +
+      ".px-1bar[hidden]{display:none}" +
+      ".px-1bar button{flex:1;max-width:560px;font:inherit;font-weight:800;font-size:1.3rem;border:none;border-radius:14px;padding:15px 18px;min-height:58px;cursor:pointer;color:#fff;background:#1e3a8a;box-shadow:0 3px 0 rgba(15,23,42,.35)}" +
+      ".px-1bar button.next{background:#15803d}" +
+      "body.px-1b #daily .inrow .ok,body.px-1b #practice .row>.b.go,body.px-1b #bemp .row>.b.go{display:none!important}" +
+      "body.px-1b.px-on{padding-bottom:90px}" +
+      "body.px-on .sx-upd{bottom:96px!important}" +
+      ".px-cur input:not(:disabled){border:3px solid #1e3a8a!important;background:#fffbeb!important;color:#000!important}" +
+      "@media (prefers-color-scheme:dark){html:not([data-theme=\"light\"]) .px-1bar{background:rgba(15,23,42,.96);border-color:#334155}}" +
+      "html[data-theme=\"dark\"] .px-1bar{background:rgba(15,23,42,.96);border-color:#334155}" +
+      "@media print{.px-1bar{display:none!important}}";
+    document.head.appendChild(st);
+    var bar = el("div", "px-1bar"), B = el("button");
+    B.type = "button"; bar.appendChild(B); bar.hidden = true; document.body.appendChild(bar);
+    document.body.classList.add("px-1b");
+    B.addEventListener("mousedown", function (e) { e.preventDefault(); });   /* keep the keyboard open */
+    var cur = null;
+    function vis(e) { return e && !e.hidden && e.offsetParent !== null; }
+    function boxes() { return IDS.map(function (i) { return document.getElementById(i); }).filter(vis); }
+    function act(w) {
+      var c = w.querySelector(".inrow .ok") || w.querySelector(".row>.b.go");
+      var inp = c && c.parentNode.querySelector("input");
+      if (c && !c.disabled && inp && !inp.disabled && c.parentNode.offsetParent !== null && !c.parentNode.hidden) return { b: c, t: "✔ تحقق", k: "" };
+      var n = w.querySelector(".end2:not([hidden]) .more") || w.querySelector(".nx2") || w.querySelector(".nx");
+      if (vis(n)) return { b: n, t: w.id === "daily" ? "➕ سؤال آخر" : "🔄 تمرين آخر", k: "next" };
+      return null;
+    }
+    function onScreen(w) { var r = w.getBoundingClientRect(), h = window.innerHeight; return r.bottom > 60 && r.top < h - 80; }
+    function pick() {
+      if (cur && vis(cur) && onScreen(cur) && act(cur)) return cur;
+      var best = null, bs = 0, h = window.innerHeight;
+      boxes().forEach(function (w) {
+        if (!act(w)) return;
+        var r = w.getBoundingClientRect(), s = Math.min(r.bottom, h) - Math.max(r.top, 0);
+        if (s > bs) { bs = s; best = w; }
+      });
+      return bs > 80 ? best : null;
+    }
+    var shown = null;
+    function show() {
+      var w = pick(), a = w && act(w);
+      boxes().forEach(function (x) { x.classList.toggle("px-cur", x === w && !!a && a.k === ""); });
+      if (!a) { if (!bar.hidden) bar.hidden = true; document.body.classList.remove("px-on"); shown = null; return; }
+      shown = { w: w, a: a };
+      if (bar.hidden) bar.hidden = false;
+      document.body.classList.add("px-on");
+      if (B.textContent !== a.t) B.textContent = a.t;
+      if (B.className !== a.k) B.className = a.k;
+    }
+    B.onclick = function () {
+      if (!shown) return;
+      var w = shown.w; cur = w;
+      shown.a.b.click();
+      setTimeout(function () {
+        var i = w.querySelector("input:not(:disabled)");
+        if (shown && shown.a.k === "next" && i) { try { i.focus({ preventScroll: true }); } catch (e) {} w.scrollIntoView({ block: "start", behavior: "smooth" }); }
+        show();
+      }, 150);
+    };
+    function owner(t) { for (var i = 0; i < IDS.length; i++) { var w = document.getElementById(IDS[i]); if (w && w.contains(t)) return w; } return null; }
+    document.addEventListener("focusin", function (e) { var w = owner(e.target); if (w) { cur = w; show(); } });
+    document.addEventListener("click", function (e) { var w = owner(e.target); if (w) cur = w; setTimeout(show, 160); }, true);
+    document.addEventListener("keyup", function () { setTimeout(show, 80); });
+    window.addEventListener("scroll", function () { clearTimeout(show.s); show.s = setTimeout(show, 120); }, { passive: true });
+    function lift() {
+      var vv = window.visualViewport; if (!vv) return;
+      var hid = window.innerHeight - (vv.height + vv.offsetTop);
+      bar.style.bottom = (hid > 40 ? hid : 0) + "px";
+    }
+    if (window.visualViewport) { window.visualViewport.addEventListener("resize", lift); window.visualViewport.addEventListener("scroll", lift); }
+    new MutationObserver(function () { clearTimeout(show.t); show.t = setTimeout(show, 120); }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["hidden", "disabled"] });
+    setTimeout(show, 600);
   }
 
   /* ========== 6. accessibility: names for icon-only buttons, live feedback ========== */

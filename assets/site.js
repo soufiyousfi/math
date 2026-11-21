@@ -916,7 +916,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       ".sx-1bar .n{font-size:.85rem;font-weight:800;color:#475569;white-space:nowrap;direction:ltr}" +
       ".sx-1bar button{flex:1;max-width:560px;font:inherit;font-weight:800;font-size:1.3rem;border:none;border-radius:14px;padding:15px 18px;min-height:58px;cursor:pointer;color:#fff;background:#1e3a8a;box-shadow:0 3px 0 rgba(15,23,42,.35)}" +
       ".sx-1bar button.next{background:#15803d}.sx-1bar button.end{background:#b45309}.sx-1bar{transition:bottom .12s}" +
-      "body.sx-1b{padding-bottom:96px!important}body.sx-1b #app .q .sx-own{display:none!important}" +
+      "body.sx-1b{padding-bottom:96px!important}body.sx-1b .sx-upd{bottom:96px!important}body.sx-1b #app .q .sx-own{display:none!important}" +
       "body.sx-1b #app .q.sx-cur{outline:2.5px solid #38bdf8;outline-offset:3px;border-radius:10px}" +
       "body.sx-1b #app .q.sx-cur input.ans:not(:disabled){border:3px solid #1e3a8a!important;background:#fffbeb!important}" +
       "body.sx-kb .sx-pad-fab{display:none!important}html.sx-dark .sx-1bar{background:rgba(15,23,42,.96);border-color:#334155}" +
@@ -1286,7 +1286,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         "body.sx-1b .q-box.sx-cur input[type=text]:not(:disabled){border:3px solid #1e3a8a!important;background:#fffbeb!important;box-shadow:0 0 0 4px rgba(56,189,248,.35)!important}" +
         "body.sx-1b .q-box.sx-cur input[type=text]:not(:disabled)::placeholder{color:#92400e;opacity:1;font-weight:700}" +
         "body.sx-kb .sx-pad-fab,body.sx-kb .sx-calc-fab{display:none!important}" +
-        "body.sx-1b .q-box .btn-check{display:none!important}body.sx-1b{padding-bottom:96px!important}" +
+        "body.sx-1b .q-box .btn-check{display:none!important}body.sx-1b{padding-bottom:96px!important}body.sx-1b .sx-upd{bottom:96px!important}" +
         "body.sx-1b .sx-pad-fab,body.sx-1b .sx-calc-fab{bottom:80px!important}body.sx-exam .sx-1bar{bottom:58px}body.sx-exam.sx-1b{padding-bottom:140px!important}body.sx-exam.sx-1b .sx-pad-fab,body.sx-exam.sx-1b .sx-calc-fab{bottom:136px!important}" +
         ".sx-lesson{display:block;margin:10px 0 2px;padding:8px 12px;border:1.5px dashed #0f766e;border-radius:10px;color:#0f766e;font-weight:800;text-decoration:none;background:#f0fdfa}" +
         "html.sx-dark .sx-1bar{background:rgba(15,23,42,.96);border-color:#334155}html.sx-dark .sx-1bar .n{color:#cbd5e1}" +
