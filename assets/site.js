@@ -846,6 +846,30 @@ body.sx-exam .sx-calc-fab{bottom:74px}
     window.__noZoom = lock;
   })();
 
+  /* ---------- 2d. phone opened in «عرض الحاسوب» (Chrome «Desktop site») (2026-11-21 his «نعم») ----------
+     Chrome then shows a 980 px page and zooms in by itself on every answer box; no page can stop it → a small hint, closable,
+     only for a touch phone whose page is much wider than its screen. Closed = hidden 7 days. */
+  (function () {
+    try {
+      var touch = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+      var sw = Math.min(screen.width || 9999, screen.height || 9999);
+      if (!touch || sw > 600 || window.innerWidth < 900) return;
+      var k = "sx-desk-hint", t = +store(k) || 0;
+      if (Date.now() - t < 7 * 864e5) return;
+      var st = document.createElement("style");
+      st.textContent = ".sx-desk{position:fixed;top:0;left:0;right:0;z-index:5000;direction:rtl;display:flex;gap:14px;align-items:center;justify-content:center;" +
+        "background:#fef3c7;color:#78350f;border-bottom:3px solid #d97706;padding:18px 20px;font:inherit;font-weight:800;font-size:34px;line-height:1.5;box-shadow:0 6px 18px rgba(0,0,0,.2)}" +
+        ".sx-desk button{font:inherit;font-size:30px;font-weight:800;border:0;border-radius:14px;padding:10px 22px;background:#78350f;color:#fff;cursor:pointer;white-space:nowrap}" +
+        "@media print{.sx-desk{display:none!important}}";
+      document.head.appendChild(st);
+      var d = document.createElement("div");
+      d.className = "sx-desk";
+      d.innerHTML = '<span>📱 لعرض أفضل وبدون تكبير تلقائي: من قائمة ⋮ في المتصفح ألغِ «عرض الحاسوب» (Desktop site).</span><button type="button">حسنا</button>';
+      d.querySelector("button").onclick = function () { store(k, String(Date.now())); d.remove(); };
+      (document.body || document.documentElement).appendChild(d);
+    } catch (e) {}
+  })();
+
   /* ---------- 3. exercise pages ---------- */
   function onReady(fn) {
     if (document.readyState === "complete") setTimeout(fn, 30);
