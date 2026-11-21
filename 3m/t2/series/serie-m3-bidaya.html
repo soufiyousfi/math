@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فرض الفصل الأول (النموذج 7) - السنة الأولى متوسط - الفصل الأول</title>
+    <title>سلسلة بداية المقطع الثالث - السنة الثالثة متوسط - بداية المقطع الثالث</title>
     <style>
         :root {
             --primary: #1e3a8a;
@@ -591,8 +591,8 @@
 
     <header>
         <div class="school-title">متوسطة محمد العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
-        <h1>فرض الفصل الأول (النموذج 7) التفاعلي في الرياضيات</h1>
-        <div class="sub-info">المستوى: السنة الأولى متوسط | المقطع الأول: الأعداد الطبيعية والأعداد العشرية + المقطع الثاني: مماثلات الأشكال المستوية والمساحات + بداية المقطع الثالث: القسمة الإقليدية وقابلية القسمة<br>للتصحيح الذاتي بعد إنجاز الفرض على الورقة</div>
+        <h1>سلسلة بداية المقطع الثالث التفاعلي في الرياضيات</h1>
+        <div class="sub-info">المستوى: السنة الثالثة متوسط | بداية المقطع الثالث: قوى العدد 10 | 5 تمارين على 20<br>حلّ في الكراس ثم تحقق هنا</div>
         <button class="print-btn" onclick="document.body.classList.remove('psol');window.print()">🖨️ النسخة الورقية للطباعة</button> <button class="print-btn sol-btn" onclick="printSol()">🖨️ النسخة الورقية للحل</button><div class="sol-wait"></div>
     </header>
 
@@ -614,7 +614,7 @@
     <div class="modal-overlay" id="finalModal">
         <div class="modal-card">
             <h3 id="finalTitle">🎉 أحسنت! أتممت جميع الأسئلة</h3>
-            <p>لقد أنهيت فرض الفصل الأول (النموذج 7)</p>
+            <p>لقد أنهيت سلسلة بداية المقطع الثالث</p>
             <div class="modal-score" id="finalScoreText">0 / 20</div>
             <div class="modal-stars" id="finalStarsText">⭐ 0 نجمة</div>
             <button type="button" class="btn-close-modal" onclick="document.getElementById('finalModal').style.display='none'">مراجعة إجاباتي</button>
@@ -632,7 +632,7 @@
         const questionEarned = {};
         const questionLocked = {};
 
-        const symbols1AM = ["+", "−", "×", "÷", ",", "/", "<", ">", ";", "⌫"];
+        const symbols1AM = ["−", "+", "×", "÷", ",", "/", "<", ">", ";", "⌫"];
 
         function playTone(type) {
             if (!soundEnabled) return;
@@ -671,29 +671,415 @@
         const exercises = [
  {
   "id": 1,
-  "pts": 5,
-  "title": "التمرين 1: القسمة الإقليدية وقابلية القسمة",
-  "context": "ليكن العدد الطبيعي <span class=\"math\">1530</span>.",
+  "pts": 3,
+  "title": "التمرين 1: تطبيق مباشر: قوى العدد 10",
+  "context": "تُعطى الأعداد: <span class=\"math\">F = 10³ × 10⁻⁵</span> ؛ <span class=\"math\">G = (10²)³</span>.",
   "questions": [
    {
     "qId": "1-1",
-    "text": "1) أنجز القسمة الإقليدية للعدد <span class=\"math\">1530</span> على <span class=\"math\">7</span>، ثم اكتب الباقي.",
+    "text": "1) اكتب العدد <span class=\"math\">10⁻³</span> كتابة عشرية.",
     "exact": [
-     "4"
+     "0,001"
     ],
     "partial": [
-     "218",
-     "218,57",
-     "3"
+     "0,0001",
+     "-1000",
+     "0,01",
+     "1000"
     ],
-    "h1": "ابحث عن أكبر مضاعف لـ <span class=\"math\">7</span> لا يتجاوز <span class=\"math\">1530</span>.",
-    "h2": "<span class=\"math\">7 × 218 = 1526</span>.",
+    "h1": "<span class=\"math\">10⁻ⁿ</span>: الرقم <span class=\"math\">1</span> في المرتبة <span class=\"math\">n</span> بعد الفاصلة.",
+    "h2": "<span class=\"math\">10⁻³ = <span class=\"fr\"><span>1</span><span>1000</span></span></span>.",
     "steps": [
-     "<b>الطريقة:</b> القسمة الإقليدية: <span class=\"math\">المقسوم = المقسوم عليه × الحاصل + الباقي</span> حيث الباقي أصغر من المقسوم عليه.",
-     "<span class=\"math\">7 × 218 = 1526</span> و<span class=\"math\">1530 − 1526 = 4</span>",
-     "<span class=\"math\">1530 = 7 × 218 + 4</span> و<span class=\"math\">4 &lt; 7</span>",
-     "النتيجة: الباقي <span class=\"math\">4</span>",
-     "<b>الاستنتاج:</b> الباقي <span class=\"math\">4</span> (والحاصل <span class=\"math\">218</span>)."
+     "<b>الطريقة:</b> قوى العدد <span class=\"math\">10</span>: <span class=\"math\">10ⁿ = 1 0…0</span> (<span class=\"math\">n</span> صفرا) و<span class=\"math\">10⁻ⁿ = 0,0…01</span> (الرقم <span class=\"math\">1</span> في المرتبة <span class=\"math\">n</span> بعد الفاصلة).",
+     "<span class=\"math\">10⁻³ = 1/10³ = <span class=\"fr\"><span>1</span><span>1000</span></span></span>",
+     "النتيجة: <span class=\"math\">0,001</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">10⁻³ = 0,001</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "1-2",
+    "text": "2) اكتب العدد <span class=\"math\">F</span> على شكل قوة للعدد <span class=\"math\">10</span>.",
+    "exact": [
+     "10⁻²",
+     "10^-2",
+     "10^(-2)",
+     "0,01"
+    ],
+    "partial": [
+     "10⁻¹⁵",
+     "10^-15",
+     "10^(-15)",
+     "10⁸",
+     "10^8",
+     "10^(8)",
+     "10²",
+     "10^2",
+     "10^(2)"
+    ],
+    "h1": "اجمع الأسين: <span class=\"math\">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span>.",
+    "h2": "<span class=\"math\">3 + (−5) = −2</span>.",
+    "steps": [
+     "<b>الطريقة:</b> قواعد الحساب: <span class=\"math\">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class=\"math\">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class=\"math\">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.",
+     "<span class=\"math\">F = 10³⁺⁽⁻⁵⁾</span>",
+     "النتيجة: <span class=\"math\">F = 10⁻²</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">F = 10⁻²</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "1-3",
+    "text": "3) اكتب العدد <span class=\"math\">G</span> على شكل قوة للعدد <span class=\"math\">10</span>.",
+    "exact": [
+     "10⁶",
+     "10^6",
+     "10^(6)",
+     "1000000"
+    ],
+    "partial": [
+     "10⁵",
+     "10^5",
+     "10^(5)",
+     "10⁸",
+     "10^8",
+     "10^(8)"
+    ],
+    "h1": "اضرب الأسين: <span class=\"math\">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.",
+    "h2": "<span class=\"math\">2 × 3 = 6</span>.",
+    "steps": [
+     "<b>الطريقة:</b> قواعد الحساب: <span class=\"math\">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class=\"math\">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class=\"math\">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.",
+     "<span class=\"math\">G = 10²ˣ³</span>",
+     "النتيجة: <span class=\"math\">G = 10⁶</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">G = 10⁶</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 2,
+  "pts": 3,
+  "title": "التمرين 2: تطبيق مباشر: قوى العدد 10",
+  "context": "تُعطى الأعداد: <span class=\"math\">H = 10⁴ × 10⁻⁷</span> ؛ <span class=\"math\">L = 10⁵ ÷ 10⁻²</span> ؛ <span class=\"math\">M = 0,00001</span>.",
+  "questions": [
+   {
+    "qId": "2-1",
+    "text": "1) اكتب العدد <span class=\"math\">H</span> على شكل قوة للعدد <span class=\"math\">10</span>.",
+    "exact": [
+     "10⁻³",
+     "10^-3",
+     "10^(-3)",
+     "0,001"
+    ],
+    "partial": [
+     "10⁻²⁸",
+     "10^-28",
+     "10^(-28)",
+     "10¹¹",
+     "10^11",
+     "10^(11)",
+     "10³",
+     "10^3",
+     "10^(3)"
+    ],
+    "h1": "<span class=\"math\">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span>.",
+    "h2": "<span class=\"math\">4 + (−7) = −3</span>.",
+    "steps": [
+     "<b>الطريقة:</b> قواعد الحساب: <span class=\"math\">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class=\"math\">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class=\"math\">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.",
+     "<span class=\"math\">H = 10⁴⁺⁽⁻⁷⁾</span>",
+     "النتيجة: <span class=\"math\">H = 10⁻³</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">H = 10⁻³</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "2-2",
+    "text": "2) اكتب العدد <span class=\"math\">M</span> على شكل قوة للعدد <span class=\"math\">10</span>.",
+    "exact": [
+     "10⁻⁵",
+     "10^-5",
+     "10^(-5)"
+    ],
+    "partial": [
+     "10⁻⁴",
+     "10^-4",
+     "10^(-4)",
+     "10⁵",
+     "10^5",
+     "10^(5)",
+     "10⁻⁶",
+     "10^-6",
+     "10^(-6)"
+    ],
+    "h1": "عدّ مرتبة الرقم <span class=\"math\">1</span> بعد الفاصلة.",
+    "h2": "الرقم <span class=\"math\">1</span> في المرتبة الخامسة بعد الفاصلة.",
+    "steps": [
+     "<b>الطريقة:</b> قوى العدد <span class=\"math\">10</span>: <span class=\"math\">10ⁿ = 1 0…0</span> (<span class=\"math\">n</span> صفرا) و<span class=\"math\">10⁻ⁿ = 0,0…01</span> (الرقم <span class=\"math\">1</span> في المرتبة <span class=\"math\">n</span> بعد الفاصلة).",
+     "<span class=\"math\">0,00001 = <span class=\"fr\"><span>1</span><span>100000</span></span> = 1/10⁵</span>",
+     "النتيجة: <span class=\"math\">M = 10⁻⁵</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">M = 10⁻⁵</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "2-3",
+    "text": "3) اكتب العدد <span class=\"math\">L</span> على شكل قوة للعدد <span class=\"math\">10</span>.",
+    "exact": [
+     "10⁷",
+     "10^7",
+     "10^(7)",
+     "10000000"
+    ],
+    "partial": [
+     "10³",
+     "10^3",
+     "10^(3)",
+     "10⁻¹⁰",
+     "10^-10",
+     "10^(-10)",
+     "10⁻³",
+     "10^-3",
+     "10^(-3)"
+    ],
+    "h1": "<span class=\"math\">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span>.",
+    "h2": "<span class=\"math\">5 − (−2) = 7</span>.",
+    "steps": [
+     "<b>الطريقة:</b> قواعد الحساب: <span class=\"math\">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class=\"math\">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class=\"math\">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.",
+     "<span class=\"math\">L = 10⁵⁻⁽⁻²⁾</span>",
+     "النتيجة: <span class=\"math\">L = 10⁷</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">L = 10⁷</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialMsg": "<span class=\"math\">5 − (−2) = 5 + 2</span>.",
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 3,
+  "pts": 4.0,
+  "title": "التمرين 3: ربط: قوى العدد 10",
+  "context": "تُعطى الأعداد: <span class=\"math\">A = 10⁻² × 10⁵</span> ؛ <span class=\"math\">B = 10³ ÷ 10⁸</span> ؛ <span class=\"math\">C = 1000000</span>.",
+  "questions": [
+   {
+    "qId": "3-1",
+    "text": "1) اكتب <span class=\"math\">A</span> على شكل قوة للعدد <span class=\"math\">10</span>.",
+    "exact": [
+     "10³",
+     "10^3",
+     "10^(3)",
+     "1000"
+    ],
+    "partial": [
+     "10⁻¹⁰",
+     "10^-10",
+     "10^(-10)",
+     "10⁻⁷",
+     "10^-7",
+     "10^(-7)",
+     "10⁷",
+     "10^7",
+     "10^(7)"
+    ],
+    "h1": "<span class=\"math\">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span>.",
+    "h2": "<span class=\"math\">−2 + 5 = 3</span>.",
+    "steps": [
+     "<b>الطريقة:</b> قواعد الحساب: <span class=\"math\">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class=\"math\">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class=\"math\">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.",
+     "<span class=\"math\">A = 10⁻²⁺⁵</span>",
+     "النتيجة: <span class=\"math\">A = 10³</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">A = 10³</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1,5"
+     }
+    ],
+    "pts": 1.5,
+    "partialZero": true
+   },
+   {
+    "qId": "3-2",
+    "text": "2) اكتب <span class=\"math\">B</span> على شكل قوة للعدد <span class=\"math\">10</span>.",
+    "exact": [
+     "10⁻⁵",
+     "10^-5",
+     "10^(-5)",
+     "0,00001"
+    ],
+    "partial": [
+     "10⁵",
+     "10^5",
+     "10^(5)",
+     "10¹¹",
+     "10^11",
+     "10^(11)"
+    ],
+    "h1": "<span class=\"math\">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span>.",
+    "h2": "<span class=\"math\">3 − 8 = −5</span>.",
+    "steps": [
+     "<b>الطريقة:</b> قواعد الحساب: <span class=\"math\">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class=\"math\">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class=\"math\">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.",
+     "<span class=\"math\">B = 10³⁻⁸</span>",
+     "النتيجة: <span class=\"math\">B = 10⁻⁵</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">B = 10⁻⁵</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1,5"
+     }
+    ],
+    "pts": 1.5,
+    "partialZero": true
+   },
+   {
+    "qId": "3-3",
+    "text": "3) اكتب <span class=\"math\">C</span> على شكل قوة للعدد <span class=\"math\">10</span>.",
+    "exact": [
+     "10⁶",
+     "10^6",
+     "10^(6)"
+    ],
+    "partial": [
+     "10⁷",
+     "10^7",
+     "10^(7)",
+     "10⁵",
+     "10^5",
+     "10^(5)"
+    ],
+    "h1": "عدّ الأصفار.",
+    "h2": "<span class=\"math\">6</span> أصفار.",
+    "steps": [
+     "<b>الطريقة:</b> قوى العدد <span class=\"math\">10</span>: <span class=\"math\">10ⁿ = 1 0…0</span> (<span class=\"math\">n</span> صفرا) و<span class=\"math\">10⁻ⁿ = 0,0…01</span> (الرقم <span class=\"math\">1</span> في المرتبة <span class=\"math\">n</span> بعد الفاصلة).",
+     "<span class=\"math\">1000000</span> فيه <span class=\"math\">6</span> أصفار",
+     "النتيجة: <span class=\"math\">C = 10⁶</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">C = 10⁶</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 4,
+  "pts": 4,
+  "title": "التمرين 4: ربط: الحساب بقوى العدد 10",
+  "context": "تُعطى الأعداد: <span class=\"math\">A = (10³ × 10⁻⁵) ÷ 10⁴</span> ؛ <span class=\"math\">B = (10⁻²)³ × 10⁸</span>.",
+  "questions": [
+   {
+    "qId": "4-1",
+    "text": "1) اكتب العدد <span class=\"math\">A</span> على شكل قوة للعدد <span class=\"math\">10</span>.",
+    "exact": [
+     "10⁻⁶",
+     "10^-6",
+     "10^(-6)",
+     "0,000001"
+    ],
+    "partial": [
+     "10²",
+     "10^2",
+     "10^(2)",
+     "10⁻²",
+     "10^-2",
+     "10^(-2)",
+     "10⁶",
+     "10^6",
+     "10^(6)"
+    ],
+    "h1": "احسب <span class=\"math\">10³ × 10⁻⁵</span> أولا.",
+    "h2": "<span class=\"math\">10³ × 10⁻⁵ = 10⁻²</span> ثم <span class=\"math\">10⁻² ÷ 10⁴</span>.",
+    "steps": [
+     "<b>الطريقة:</b> قواعد الحساب: <span class=\"math\">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class=\"math\">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class=\"math\">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.",
+     "<span class=\"math\">10³ × 10⁻⁵ = 10³⁺⁽⁻⁵⁾ = 10⁻²</span>",
+     "<span class=\"math\">A = 10⁻² ÷ 10⁴ = 10⁻²⁻⁴</span>",
+     "النتيجة: <span class=\"math\">A = 10⁻⁶</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">A = 10⁻⁶</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "4-2",
+    "text": "2) اكتب العدد <span class=\"math\">B</span> على شكل قوة للعدد <span class=\"math\">10</span>.",
+    "exact": [
+     "10²",
+     "10^2",
+     "10^(2)",
+     "100"
+    ],
+    "partial": [
+     "10⁹",
+     "10^9",
+     "10^(9)",
+     "10⁷",
+     "10^7",
+     "10^(7)",
+     "10⁻¹⁴",
+     "10^-14",
+     "10^(-14)"
+    ],
+    "h1": "<span class=\"math\">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.",
+    "h2": "<span class=\"math\">(10⁻²)³ = 10⁻⁶</span> ثم <span class=\"math\">10⁻⁶ × 10⁸</span>.",
+    "steps": [
+     "<b>الطريقة:</b> قواعد الحساب: <span class=\"math\">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class=\"math\">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class=\"math\">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.",
+     "<span class=\"math\">(10⁻²)³ = 10⁽⁻²⁾ˣ³ = 10⁻⁶</span>",
+     "<span class=\"math\">B = 10⁻⁶ × 10⁸ = 10⁻⁶⁺⁸</span>",
+     "النتيجة: <span class=\"math\">B = 10²</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">B = 10²</span>."
     ],
     "rubric": [
      {
@@ -709,279 +1095,77 @@
     "partialZero": true
    },
    {
-    "qId": "1-2",
-    "text": "2) هل العدد <span class=\"math\">1530</span> يقبل القسمة على <span class=\"math\">9</span> مع التعليل؟<br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> نعم أو <span class=\"math\">2</span> لا.",
+    "qId": "4-3",
+    "text": "3) اكتب العدد <span class=\"math\">A × B</span> كتابة عشرية.",
     "exact": [
-     "1"
+     "0,0001"
     ],
     "partial": [
-     "2"
+     "0,001",
+     "0,00001",
+     "10000"
     ],
-    "h1": "احسب مجموع أرقامه.",
-    "h2": "<span class=\"math\">1 + 5 + 3 + 0 = 9</span>.",
+    "h1": "استعمل نتيجتي السؤالين السابقين.",
+    "h2": "<span class=\"math\">10⁻⁶ × 10² = 10⁻⁴</span>.",
     "steps": [
-     "<b>الطريقة:</b> يقبل عدد القسمة على <span class=\"math\">9</span> إذا كان مجموع أرقامه يقبل القسمة على <span class=\"math\">9</span> (وعلى <span class=\"math\">3</span> إذا كان مجموع أرقامه يقبل القسمة على <span class=\"math\">3</span>).",
-     "مجموع الأرقام: <span class=\"math\">1 + 5 + 3 + 0 = 9</span>",
-     "<span class=\"math\">9</span> يقبل القسمة على <span class=\"math\">9</span>",
-     "النتيجة: نعم (<span class=\"math\">1</span>)",
-     "<b>الاستنتاج:</b> يقبل القسمة على <span class=\"math\">9</span>."
+     "<b>الطريقة:</b> قواعد الحساب: <span class=\"math\">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class=\"math\">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class=\"math\">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>. قوى العدد <span class=\"math\">10</span>: <span class=\"math\">10ⁿ = 1 0…0</span> (<span class=\"math\">n</span> صفرا) و<span class=\"math\">10⁻ⁿ = 0,0…01</span> (الرقم <span class=\"math\">1</span> في المرتبة <span class=\"math\">n</span> بعد الفاصلة).",
+     "<span class=\"math\">A × B = 10⁻⁶ × 10² = 10⁻⁴</span>",
+     "<span class=\"math\">10⁻⁴ = <span class=\"fr\"><span>1</span><span>10000</span></span></span>",
+     "النتيجة: <span class=\"math\">0,0001</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">A × B = 0,0001</span>."
     ],
     "rubric": [
      {
-      "step": "النتيجة",
-      "mark": "1,5"
-     }
-    ],
-    "pts": 1.5,
-    "partialZero": true
-   },
-   {
-    "qId": "1-3",
-    "text": "3) هل العدد <span class=\"math\">1530</span> يقبل القسمة على <span class=\"math\">4</span> مع التعليل؟<br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> نعم أو <span class=\"math\">2</span> لا.",
-    "exact": [
-     "2"
-    ],
-    "partial": [
-     "1"
-    ],
-    "h1": "انظر إلى العدد المكوّن من رقمي العشرات والآحاد.",
-    "h2": "هل <span class=\"math\">30</span> يقبل القسمة على <span class=\"math\">4</span>؟",
-    "steps": [
-     "<b>الطريقة:</b> يقبل عدد القسمة على <span class=\"math\">4</span> إذا كان العدد المكوّن من رقمي آحاده وعشراته يقبل القسمة على <span class=\"math\">4</span>.",
-     "العدد المكوّن من رقمي العشرات والآحاد: <span class=\"math\">30</span>",
-     "<span class=\"math\">30 = 4 × 7 + 2</span>",
-     "النتيجة: لا (<span class=\"math\">2</span>)",
-     "<b>الاستنتاج:</b> لا يقبل القسمة على <span class=\"math\">4</span>."
-    ],
-    "rubric": [
-     {
-      "step": "التعليل",
-      "mark": "1"
+      "step": "الطريقة",
+      "mark": "0,5"
      },
      {
       "step": "النتيجة",
       "mark": "1"
      }
     ],
-    "pts": 2,
-    "partialMsg": "العدد زوجي، لكن هذا لا يكفي للقسمة على <span class=\"math\">4</span>.",
+    "pts": 1.5,
     "partialZero": true
    }
   ]
  },
  {
-  "id": 2,
-  "pts": 5,
-  "title": "التمرين 2: الدائرة",
-  "context": "<span class=\"math\">(C)</span> دائرة مركزها <span class=\"math\">O</span> و<span class=\"math\">[AB]</span> قطر لها حيث <span class=\"math\">AB = 10 cm</span>. (نأخذ <span class=\"math\">π ≈ 3,14</span>)",
+  "id": 5,
+  "pts": 6,
+  "title": "الوضعية الإدماجية: الحنفية المعطّلة",
+  "context": "<div class=\"bem-data\"><p>– حنفية معطّلة في المتوسطة تُسقط <span class=\"math\">10⁵</span> قطرة ماء في اليوم، وحجم كل قطرة <span class=\"math\">10⁻⁴ L</span>.</p><p>– تقول المديرة: «في <span class=\"math\">100</span> يوم نُضيّع أكثر من <span class=\"math\">10³ L</span> من الماء».</p></div>",
   "questions": [
    {
-    "qId": "2-1",
-    "text": "1) ما نصف قطر الدائرة <span class=\"math\">(C)</span> (بـ cm)؟",
+    "qId": "5-1",
+    "text": "1) احسب حجم الماء الضائع في يوم واحد (بـ L)، واكتبه على شكل قوة للعدد <span class=\"math\">10</span>.",
     "exact": [
-     "5"
+     "10¹",
+     "10^1",
+     "10^(1)",
+     "10"
     ],
     "partial": [
-     "10",
-     "20"
+     "10⁹",
+     "10^9",
+     "10^(9)",
+     "10⁻⁹",
+     "10^-9",
+     "10^(-9)",
+     "10⁻¹",
+     "10^-1",
+     "10^(-1)"
     ],
-    "h1": "نصف القطر نصف طول القطر.",
-    "h2": "<span class=\"math\">10 ÷ 2</span>.",
+    "h1": "الحجم = عدد القطرات × حجم القطرة.",
+    "h2": "<span class=\"math\">10⁵ × 10⁻⁴</span>.",
     "steps": [
-     "<b>الطريقة:</b> القطر وتر يشمل المركز وطوله ضعف نصف القطر. نقطة بعدها عن المركز أصغر من نصف القطر تقع داخل الدائرة، ويساويه على الدائرة، وأكبر منه خارجها.",
-     "<span class=\"math\">r = AB ÷ 2 = 10 ÷ 2</span>",
-     "النتيجة: <span class=\"math\">5 cm</span>",
-     "<b>الاستنتاج:</b> نصف القطر <span class=\"math\">5 cm</span>."
+     "<b>الطريقة:</b> قواعد الحساب: <span class=\"math\">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class=\"math\">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class=\"math\">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.",
+     "<span class=\"math\">10⁵ × 10⁻⁴ = 10⁵⁺⁽⁻⁴⁾</span>",
+     "النتيجة: <span class=\"math\">10¹ L = 10 L</span>",
+     "<b>الاستنتاج:</b> يضيع <span class=\"math\">10 L</span> في اليوم."
     ],
     "rubric": [
      {
-      "step": "النتيجة",
-      "mark": "1,5"
-     }
-    ],
-    "pts": 1.5,
-    "partialZero": true
-   },
-   {
-    "qId": "2-2",
-    "text": "2) احسب محيط الدائرة <span class=\"math\">(C)</span> (بـ cm).",
-    "exact": [
-     "31,4"
-    ],
-    "partial": [
-     "15,7",
-     "62,8",
-     "78,5"
-    ],
-    "h1": "المحيط <span class=\"math\">= القطر × π</span>.",
-    "h2": "<span class=\"math\">10 × 3,14</span>.",
-    "steps": [
-     "<b>الطريقة:</b> محيط الدائرة <span class=\"math\">= القطر × π</span> أو <span class=\"math\">2 × نصف القطر × π</span>، ونأخذ <span class=\"math\">π ≈ 3,14</span>.",
-     "<span class=\"math\">10 × 3,14 = 31,4</span>",
-     "النتيجة: <span class=\"math\">31,4 cm</span>",
-     "<b>الاستنتاج:</b> المحيط <span class=\"math\">31,4 cm</span>."
-    ],
-    "rubric": [
-     {
-      "step": "النتيجة",
-      "mark": "1,5"
-     }
-    ],
-    "pts": 1.5,
-    "partialZero": true
-   },
-   {
-    "qId": "2-3",
-    "text": "3) <span class=\"math\">M</span> نقطة حيث <span class=\"math\">OM = 4,5 cm</span>. أين تقع بالنسبة إلى <span class=\"math\">(C)</span> مع التعليل؟<br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> داخلها، أو <span class=\"math\">2</span> خارجها، أو <span class=\"math\">3</span> عليها.",
-    "exact": [
-     "1"
-    ],
-    "partial": [
-     "2",
-     "3"
-    ],
-    "h1": "قارن <span class=\"math\">OM</span> بنصف القطر.",
-    "h2": "<span class=\"math\">4,5 &lt; 5</span>.",
-    "steps": [
-     "<b>الطريقة:</b> القطر وتر يشمل المركز وطوله ضعف نصف القطر. نقطة بعدها عن المركز أصغر من نصف القطر تقع داخل الدائرة، ويساويه على الدائرة، وأكبر منه خارجها.",
-     "<span class=\"math\">OM = 4,5 cm</span> ونصف القطر <span class=\"math\">5 cm</span>",
-     "<span class=\"math\">4,5 &lt; 5</span>",
-     "النتيجة: داخل الدائرة (<span class=\"math\">1</span>)",
-     "<b>الاستنتاج:</b> <span class=\"math\">M</span> داخل الدائرة."
-    ],
-    "rubric": [
-     {
-      "step": "التعليل",
-      "mark": "1"
-     },
-     {
-      "step": "النتيجة",
-      "mark": "1"
-     }
-    ],
-    "pts": 2,
-    "partialZero": true
-   }
-  ]
- },
- {
-  "id": 3,
-  "pts": 5,
-  "title": "التمرين 3: المحيطات والمساحات",
-  "context": "<span class=\"math\">ABCD</span> مستطيل حيث <span class=\"math\">AB = 6 cm</span> و<span class=\"math\">BC = 4 cm</span>. <span class=\"math\">EFG</span> مثلث قائم في <span class=\"math\">E</span> حيث <span class=\"math\">EF = 6 cm</span> و<span class=\"math\">EG = 5 cm</span>.",
-  "questions": [
-   {
-    "qId": "3-1",
-    "text": "1) احسب مساحة المستطيل <span class=\"math\">ABCD</span> (بـ cm²).",
-    "exact": [
-     "24"
-    ],
-    "partial": [
-     "20",
-     "10",
-     "12"
-    ],
-    "h1": "المساحة = الطول × العرض.",
-    "h2": "<span class=\"math\">6 × 4</span>.",
-    "steps": [
-     "<b>الطريقة:</b> محيط المستطيل <span class=\"math\">= 2 × (الطول + العرض)</span> ومساحته <span class=\"math\">= الطول × العرض</span>. محيط المربع <span class=\"math\">= 4 ×</span> الضلع ومساحته <span class=\"math\">= الضلع × الضلع</span>.",
-     "<span class=\"math\">6 × 4 = 24</span>",
-     "النتيجة: <span class=\"math\">24 cm²</span>",
-     "<b>الاستنتاج:</b> مساحة المستطيل <span class=\"math\">24 cm²</span>."
-    ],
-    "rubric": [
-     {
-      "step": "النتيجة",
-      "mark": "1,5"
-     }
-    ],
-    "pts": 1.5,
-    "partialZero": true
-   },
-   {
-    "qId": "3-2",
-    "text": "2) احسب مساحة المثلث <span class=\"math\">EFG</span> (بـ cm²).",
-    "exact": [
-     "15"
-    ],
-    "partial": [
-     "30",
-     "11",
-     "22"
-    ],
-    "h1": "نصف جداء الضلعين القائمين.",
-    "h2": "<span class=\"math\">(6 × 5) ÷ 2</span>.",
-    "steps": [
-     "<b>الطريقة:</b> مساحة المثلث القائم <span class=\"math\">= (الضلع القائم الأول × الضلع القائم الثاني) ÷ 2</span>، وهي نصف مساحة المستطيل الذي بُعداه الضلعان القائمان.",
-     "<span class=\"math\">(6 × 5) ÷ 2 = 30 ÷ 2</span>",
-     "النتيجة: <span class=\"math\">15 cm²</span>",
-     "<b>الاستنتاج:</b> مساحة المثلث <span class=\"math\">15 cm²</span>."
-    ],
-    "rubric": [
-     {
-      "step": "النتيجة",
-      "mark": "1,5"
-     }
-    ],
-    "pts": 1.5,
-    "partialZero": true
-   },
-   {
-    "qId": "3-3",
-    "text": "3) أيهما أكبر مساحة مع التعليل؟<br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> المستطيل أو <span class=\"math\">2</span> المثلث.",
-    "exact": [
-     "1"
-    ],
-    "partial": [
-     "2"
-    ],
-    "h1": "قارن <span class=\"math\">24</span> و<span class=\"math\">15</span>.",
-    "h2": "المساحتان بنفس الوحدة.",
-    "steps": [
-     "<b>الطريقة:</b> لمقارنة مساحتين: نحسبهما بنفس الوحدة ثم نقارن العددين.",
-     "<span class=\"math\">24 cm² &gt; 15 cm²</span>",
-     "النتيجة: المستطيل (<span class=\"math\">1</span>)",
-     "<b>الاستنتاج:</b> مساحة المستطيل أكبر."
-    ],
-    "rubric": [
-     {
-      "step": "المقارنة",
-      "mark": "2"
-     }
-    ],
-    "pts": 2,
-    "partialZero": true
-   }
-  ]
- },
- {
-  "id": 4,
-  "pts": 5,
-  "title": "الوضعية الإدماجية: سياج البستان",
-  "context": "<div class=\"bem-data\"><p>– بستان مربع الشكل طول ضلعه <span class=\"math\">12 m</span>.</p><p>– يريد صاحبه إحاطته بسياج من <span class=\"math\">3</span> صفوف من الأسلاك، وعنده لفّة سلك طولها <span class=\"math\">150 m</span>.</p></div>",
-  "questions": [
-   {
-    "qId": "4-1",
-    "text": "1) احسب محيط البستان (بـ m).",
-    "exact": [
-     "48"
-    ],
-    "partial": [
-     "144",
-     "24",
-     "36"
-    ],
-    "h1": "محيط المربع <span class=\"math\">= 4 ×</span> الضلع.",
-    "h2": "<span class=\"math\">4 × 12</span>.",
-    "steps": [
-     "<b>الطريقة:</b> محيط المستطيل <span class=\"math\">= 2 × (الطول + العرض)</span> ومساحته <span class=\"math\">= الطول × العرض</span>. محيط المربع <span class=\"math\">= 4 ×</span> الضلع ومساحته <span class=\"math\">= الضلع × الضلع</span>.",
-     "<span class=\"math\">4 × 12 = 48</span>",
-     "النتيجة: <span class=\"math\">48 m</span>",
-     "<b>الاستنتاج:</b> محيط البستان <span class=\"math\">48 m</span>."
-    ],
-    "rubric": [
-     {
-      "step": "م1 التفسير السليم: اختيار العلاقة",
+      "step": "م1 التفسير السليم: الطريقة",
       "mark": "1"
      },
      {
@@ -993,31 +1177,36 @@
     "partialZero": true
    },
    {
-    "qId": "4-2",
-    "text": "2) هل تكفي لفّة السلك؟ مع التبرير.<br>✍️ برّر في كراسك، ثم اكتب <span class=\"math\">1</span> نعم أو <span class=\"math\">2</span> لا.",
+    "qId": "5-2",
+    "text": "2) هل كلام المديرة صحيح؟ مع التبرير.<br>✍️ برّر في كراسك، ثم اكتب <span class=\"math\">1</span> نعم أو <span class=\"math\">2</span> لا.",
     "exact": [
-     "1"
-    ],
-    "partial": [
      "2"
     ],
-    "h1": "كم مترا من السلك يلزم لـ <span class=\"math\">3</span> صفوف؟",
-    "h2": "<span class=\"math\">3 × 48</span> ثم قارن بـ <span class=\"math\">150</span>.",
+    "partial": [
+     "1"
+    ],
+    "h1": "احسب الحجم الضائع في <span class=\"math\">100</span> يوم واكتبه قوة للعدد <span class=\"math\">10</span>.",
+    "h2": "<span class=\"math\">100 = 10²</span>: <span class=\"math\">10¹ × 10²</span>، ثم قارن بـ <span class=\"math\">10³</span>.",
     "steps": [
-     "<b>الطريقة:</b> طول السلك اللازم = عدد الصفوف × المحيط، ثم نقارن بطول اللفّة.",
-     "<span class=\"math\">3 × 48 = 144 m</span>",
-     "<span class=\"math\">144 &lt; 150</span>",
-     "النتيجة: تكفي (<span class=\"math\">1</span>)، ويبقى <span class=\"math\">6 m</span>",
-     "<b>الاستنتاج:</b> يلزم <span class=\"math\">144 m</span> فقط، إذن تكفي اللفّة."
+     "<b>الطريقة:</b> قواعد الحساب: <span class=\"math\">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class=\"math\">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class=\"math\">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.",
+     "<span class=\"math\">100 = 10²</span>",
+     "في <span class=\"math\">100</span> يوم: <span class=\"math\">10¹ × 10² = 10³ L</span>",
+     "الحجم الضائع يساوي <span class=\"math\">10³ L</span> تماما، وليس أكثر منه",
+     "النتيجة: كلامها غير صحيح (<span class=\"math\">2</span>)",
+     "<b>الاستنتاج:</b> يضيع <span class=\"math\">10³ L</span> بالضبط، وهذا ليس أكثر من <span class=\"math\">10³ L</span>، إذن كلامها غير صحيح."
     ],
     "rubric": [
      {
-      "step": "م1 التفسير السليم: الحساب",
+      "step": "م1 التفسير السليم: اختيار قاعدة الضرب",
+      "mark": "1,5"
+     },
+     {
+      "step": "م2 الاستعمال السليم: الحساب",
       "mark": "1"
      },
      {
-      "step": "م2 الاستعمال السليم: القرار",
-      "mark": "1"
+      "step": "م2 الاستعمال السليم: المقارنة والقرار",
+      "mark": "0,5"
      },
      {
       "step": "م3 انسجام الإجابة: الوحدة ومعقولية النتيجة",
@@ -1028,7 +1217,8 @@
       "mark": "0,5"
      }
     ],
-    "pts": 3,
+    "pts": 4,
+    "partialMsg": "احسب بدقة: هل الحجم أكبر من <span class=\"math\">10³ L</span> أم يساويه؟",
     "partialZero": true
    }
   ]
@@ -1146,7 +1336,7 @@
             if (completedQuestions === totalQuestionsCount) {
                 setTimeout(() => {
                     document.getElementById('finalScoreText').innerText = `${formattedScore} / 20`;
-                    document.getElementById('finalTitle').innerText = totalScore >= 10 ? '🎉 أحسنت! أتممت جميع الأسئلة' : '💪 أتممت الفرض! راجع الإجابات النموذجية وأعد المحاولة';
+                    document.getElementById('finalTitle').innerText = totalScore >= 10 ? '🎉 أحسنت! أتممت جميع الأسئلة' : '💪 أتممت السلسلة! راجع الإجابات النموذجية وأعد المحاولة';
                     document.getElementById('finalStarsText').innerText = `⭐ ${totalStars} نجمة`;
                     document.getElementById('finalModal').style.display = 'flex';
                 }, 600);
@@ -1263,12 +1453,12 @@
   const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
   s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
   document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
-<div id="paper"><div class="copy" data-pages="1"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK8AAACvAQAAAACj6bPYAAACC0lEQVR4nL2XPY7bMBCFv7EE0B1dpqMvEsm5U5oFvLEWMpAzJU3M3YtQN6A7CpD1UjhItZvKzFTkK2Ywf29mTLwj2ryHwkNgCoCilqAVcCtAV9Pkhl5KwHmyRgMFL5VH6f4AlrXMzztC6a5DmA+82MN0/wt+y00khjFtH6/7Q/ip95frgrtUN0nppVTwA3R+CaXzUqlcPtFsT0eTCnyPcDXbVvWydQJmy2d84dbSi+p92XHvS1yU0v27VjWpmBuVPp9ULDdyK0cq53L+5oeJV2CLX6ZrI5f8pa6X0hK0eiW3Ak4aKgd2M284T7xCKG+5SQUIdSuW0msUnV+g4yR38VJlWne/bJkUp1GKaqcC58lVzeVm/pIJs+3O09zvbvv5ANSdJBT8gFMmKOZTKpabyoSHlAlupVGBI+7CsfKIRjE3CbySW/2YpNwkV5d9SudHFfwQSuf/biO1vTwlTMv9VfpMqMyxpaORWznJxXwMbuUYKpdP6WiS7tb8Qum1hLqBbTHB9idNsgNn/I/d1/jpUJvwFug1BEXpzrHV+1JS6SVJGeg1ptrz0szMvVg7bfFLQDuoOy/v2/p84GlfZO2E5du+9h4ra8HUhu2blEq0IcxVy+cPLFu4PpvtfdQY/8u2bhrYmiQ+27xX5VyaFtzNWuD6bOXVt4/T/b4UgGK5keL97DupLvvY/7+ifwOUH0CaVc0snwAAAABJRU5ErkJggg==" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="ttl">فرض الفصل الأول (النموذج 7) في مادة الرياضيات للسنة الأولى متوسط</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="ph"><span>المدة: ساعة واحدة</span><span>يُمنع استعمال الآلة الحاسبة</span></div><div class="cols"><div class="ex"><h4>التمرين الأول (5 ن): القسمة الإقليدية وقابلية القسمة</h4>ليكن العدد الطبيعي <span class="math">1530</span>.<p>1) أنجز القسمة الإقليدية للعدد <span class="math">1530</span> على <span class="math">7</span>، ثم اكتب الباقي.</p><p>2) هل العدد <span class="math">1530</span> يقبل القسمة على <span class="math">9</span> مع التعليل؟</p><p>3) هل العدد <span class="math">1530</span> يقبل القسمة على <span class="math">4</span> مع التعليل؟</p></div><div class="ex"><h4>التمرين الثاني (5 ن): الدائرة</h4><span class="math">(C)</span> دائرة مركزها <span class="math">O</span> و<span class="math">[AB]</span> قطر لها حيث <span class="math">AB = 10 cm</span>. (نأخذ <span class="math">π ≈ 3,14</span>)<p>1) ما نصف قطر الدائرة <span class="math">(C)</span> (بـ cm)؟</p><p>2) احسب محيط الدائرة <span class="math">(C)</span> (بـ cm).</p><p>3) <span class="math">M</span> نقطة حيث <span class="math">OM = 4,5 cm</span>. أين تقع بالنسبة إلى <span class="math">(C)</span> مع التعليل؟</p></div><div class="ex"><h4>التمرين الثالث (5 ن): المحيطات والمساحات</h4><span class="math">ABCD</span> مستطيل حيث <span class="math">AB = 6 cm</span> و<span class="math">BC = 4 cm</span>. <span class="math">EFG</span> مثلث قائم في <span class="math">E</span> حيث <span class="math">EF = 6 cm</span> و<span class="math">EG = 5 cm</span>.<p>1) احسب مساحة المستطيل <span class="math">ABCD</span> (بـ cm²).</p><p>2) احسب مساحة المثلث <span class="math">EFG</span> (بـ cm²).</p><p>3) أيهما أكبر مساحة مع التعليل؟</p></div><div class="ex"><h4>الوضعية الإدماجية (5 ن): سياج البستان</h4><div class="bem-data"><p>– بستان مربع الشكل طول ضلعه <span class="math">12 m</span>.</p><p>– يريد صاحبه إحاطته بسياج من <span class="math">3</span> صفوف من الأسلاك، وعنده لفّة سلك طولها <span class="math">150 m</span>.</p></div><p>1) احسب محيط البستان (بـ m).</p><p>2) هل تكفي لفّة السلك؟ مع التبرير.</p></div></div><div class="foot">بالتوفيق</div></div></div><script>(function(){function fit(){var pp=document.getElementById('paper');if(!pp)return;var c=pp.querySelector('.copy');var n=+(c&&c.getAttribute('data-pages'));if(!n)return;
+<div id="paper"><div class="copy flow" data-pages="0"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACWUlEQVR4nMWYPY7bMBSEP1oG6I66ARfIOSLmYNpYgQzkWJGcU6Sjb0B1z4CsSaH8NNlNs2FUqJniPVEz897QiT8/t8MLALwxcnfOOeCCO/B4OsHl5pw7vnWdV5AkZeb28WTv28vN5FYkDRU7kDty/0iT/UQPhIG7a9++zl+QK9xOV5p8ui7Hf1jnZaRbnp+M5RghDHU7wJKUjSDhtGKpNFnSmOt1AGBdGPPvF9BU6+DoBdy/bo93367hkb4BUVT0A6wDNIUBktYIQRmCqp3BAVfOch+WNfpP7QWvcol+Wur5AZbKOWuWMq6cZa402VKpxwOsC0O0JMmrELVBrKsFzRrwW1gj0MgIK9TUwoFuWaNdFz9bKhBUPstLa8250HKDMMST4nBbkhu4H5Z6sxFJv+xQklR6SKqnxp9+wDlrCwOawgpdqMlEaRSpALsgdlWcK55BKqCNJmsKYzYgetX0A20QSaXHktZoSWv0df1goslG0G6MfgKsqzgX0BbW6Cf6qAmil4aouS4PtLJ//qwhSgVwFXlwQG6IyA3R1HK7p7aH7h/UeQUJfsYVcOfbGk/X4LOprbonlkY4jfJTGLOfguTn6p64r0ep9NFSAbqKsxFLGuUnerwK+A3QXHVX7sKKn8s5A+eM0wA194N9NloHURuN/FwamavKAwBt9NFvYdzDitXmgbKl0kMqjfwWRpmr6Il7dkZtk/2X9uGWw/LsTu9jzfsDAL6WC/dG0smVH3+mph802Tr6qFlj1hQkbdV5IJVGlvbsTLRUPzsnSeakPS9U1YL773dp3wFe37WxyHkKcQAAAABJRU5ErkJggg==" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الثالثة متوسط</span></div><div class="ttl">سلسلة بداية المقطع الثالث في مادة الرياضيات للسنة الثالثة متوسط</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="cols"><div class="ex"><h4>التمرين الأول (3 ن): تطبيق مباشر: قوى العدد 10</h4>تُعطى الأعداد: <span class="math">F = 10³ × 10⁻⁵</span> ؛ <span class="math">G = (10²)³</span>.<p>1) اكتب العدد <span class="math">10⁻³</span> كتابة عشرية.</p><p>2) اكتب العدد <span class="math">F</span> على شكل قوة للعدد <span class="math">10</span>.</p><p>3) اكتب العدد <span class="math">G</span> على شكل قوة للعدد <span class="math">10</span>.</p></div><div class="ex"><h4>التمرين الثاني (3 ن): تطبيق مباشر: قوى العدد 10</h4>تُعطى الأعداد: <span class="math">H = 10⁴ × 10⁻⁷</span> ؛ <span class="math">L = 10⁵ ÷ 10⁻²</span> ؛ <span class="math">M = 0,00001</span>.<p>1) اكتب العدد <span class="math">H</span> على شكل قوة للعدد <span class="math">10</span>.</p><p>2) اكتب العدد <span class="math">M</span> على شكل قوة للعدد <span class="math">10</span>.</p><p>3) اكتب العدد <span class="math">L</span> على شكل قوة للعدد <span class="math">10</span>.</p></div><div class="ex"><h4>التمرين الثالث (4 ن): ربط: قوى العدد 10</h4>تُعطى الأعداد: <span class="math">A = 10⁻² × 10⁵</span> ؛ <span class="math">B = 10³ ÷ 10⁸</span> ؛ <span class="math">C = 1000000</span>.<p>1) اكتب <span class="math">A</span> على شكل قوة للعدد <span class="math">10</span>.</p><p>2) اكتب <span class="math">B</span> على شكل قوة للعدد <span class="math">10</span>.</p><p>3) اكتب <span class="math">C</span> على شكل قوة للعدد <span class="math">10</span>.</p></div><div class="ex"><h4>التمرين الرابع (4 ن): ربط: الحساب بقوى العدد 10</h4>تُعطى الأعداد: <span class="math">A = (10³ × 10⁻⁵) ÷ 10⁴</span> ؛ <span class="math">B = (10⁻²)³ × 10⁸</span>.<p>1) اكتب العدد <span class="math">A</span> على شكل قوة للعدد <span class="math">10</span>.</p><p>2) اكتب العدد <span class="math">B</span> على شكل قوة للعدد <span class="math">10</span>.</p><p>3) اكتب العدد <span class="math">A × B</span> كتابة عشرية.</p></div><div class="ex"><h4>الوضعية الإدماجية (6 ن): الحنفية المعطّلة</h4><div class="bem-data"><p>– حنفية معطّلة في المتوسطة تُسقط <span class="math">10⁵</span> قطرة ماء في اليوم، وحجم كل قطرة <span class="math">10⁻⁴ L</span>.</p><p>– تقول المديرة: «في <span class="math">100</span> يوم نُضيّع أكثر من <span class="math">10³ L</span> من الماء».</p></div><p>1) احسب حجم الماء الضائع في يوم واحد (بـ L)، واكتبه على شكل قوة للعدد <span class="math">10</span>.</p><p>2) هل كلام المديرة صحيح؟ مع التبرير.</p></div></div><div class="foot">بالتوفيق</div></div></div><script>(function(){function fit(){var pp=document.getElementById('paper');if(!pp)return;var c=pp.querySelector('.copy');var n=+(c&&c.getAttribute('data-pages'));if(!n)return;
 var st=pp.getAttribute('style');pp.setAttribute('style','display:block;position:absolute;visibility:hidden;top:0;right:0;width:192mm');c.style.zoom=1;
 var mm=document.createElement('div');mm.style.height=(n*279-6)+'mm';pp.appendChild(mm);var lim=mm.getBoundingClientRect().height;pp.removeChild(mm);
 var lo=0.45,hi=1.3,k;c.style.zoom=hi;if(c.getBoundingClientRect().height<=lim)lo=hi;else for(k=0;k<10;k++){var m=(lo+hi)/2;c.style.zoom=m;if(c.getBoundingClientRect().height<=lim)lo=m;else hi=m}
 c.style.zoom=lo;if(st===null)pp.removeAttribute('style');else pp.setAttribute('style',st)}
-window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="ttl">الحل النموذجي وسلم التنقيط — فرض الفصل الأول (النموذج 7) — السنة الأولى متوسط</div><div class="sxs"><div class="sx"><h4>التمرين الأول (5 ن): القسمة الإقليدية وقابلية القسمة</h4><div class="sq"><p><b>1) أنجز القسمة الإقليدية للعدد <span class="math">1530</span> على <span class="math">7</span>، ثم اكتب الباقي.</b></p><p><b>الطريقة:</b> القسمة الإقليدية: <span class="math">المقسوم = المقسوم عليه × الحاصل + الباقي</span> حيث الباقي أصغر من المقسوم عليه.</p><p><span class="math">7 × 218 = 1526</span> و<span class="math">1530 − 1526 = 4</span></p><p><span class="math">1530 = 7 × 218 + 4</span> و<span class="math">4 &lt; 7</span></p><p>النتيجة: الباقي <span class="math">4</span></p><p><b>الاستنتاج:</b> الباقي <span class="math">4</span> (والحاصل <span class="math">218</span>).</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الطريقة</td><td>0,5</td></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) هل العدد <span class="math">1530</span> يقبل القسمة على <span class="math">9</span> مع التعليل؟</b></p><p><b>الطريقة:</b> يقبل عدد القسمة على <span class="math">9</span> إذا كان مجموع أرقامه يقبل القسمة على <span class="math">9</span> (وعلى <span class="math">3</span> إذا كان مجموع أرقامه يقبل القسمة على <span class="math">3</span>).</p><p>مجموع الأرقام: <span class="math">1 + 5 + 3 + 0 = 9</span></p><p><span class="math">9</span> يقبل القسمة على <span class="math">9</span></p><p>النتيجة: نعم (<span class="math">1</span>)</p><p><b>الاستنتاج:</b> يقبل القسمة على <span class="math">9</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1,5</td></tr></table></div><div class="sq"><p><b>3) هل العدد <span class="math">1530</span> يقبل القسمة على <span class="math">4</span> مع التعليل؟</b></p><p><b>الطريقة:</b> يقبل عدد القسمة على <span class="math">4</span> إذا كان العدد المكوّن من رقمي آحاده وعشراته يقبل القسمة على <span class="math">4</span>.</p><p>العدد المكوّن من رقمي العشرات والآحاد: <span class="math">30</span></p><p><span class="math">30 = 4 × 7 + 2</span></p><p>النتيجة: لا (<span class="math">2</span>)</p><p><b>الاستنتاج:</b> لا يقبل القسمة على <span class="math">4</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>التعليل</td><td>1</td></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الثاني (5 ن): الدائرة</h4><div class="sq"><p><b>1) ما نصف قطر الدائرة <span class="math">(C)</span> (بـ cm)؟</b></p><p><b>الطريقة:</b> القطر وتر يشمل المركز وطوله ضعف نصف القطر. نقطة بعدها عن المركز أصغر من نصف القطر تقع داخل الدائرة، ويساويه على الدائرة، وأكبر منه خارجها.</p><p><span class="math">r = AB ÷ 2 = 10 ÷ 2</span></p><p>النتيجة: <span class="math">5 cm</span></p><p><b>الاستنتاج:</b> نصف القطر <span class="math">5 cm</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1,5</td></tr></table></div><div class="sq"><p><b>2) احسب محيط الدائرة <span class="math">(C)</span> (بـ cm).</b></p><p><b>الطريقة:</b> محيط الدائرة <span class="math">= القطر × π</span> أو <span class="math">2 × نصف القطر × π</span>، ونأخذ <span class="math">π ≈ 3,14</span>.</p><p><span class="math">10 × 3,14 = 31,4</span></p><p>النتيجة: <span class="math">31,4 cm</span></p><p><b>الاستنتاج:</b> المحيط <span class="math">31,4 cm</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1,5</td></tr></table></div><div class="sq"><p><b>3) <span class="math">M</span> نقطة حيث <span class="math">OM = 4,5 cm</span>. أين تقع بالنسبة إلى <span class="math">(C)</span> مع التعليل؟</b></p><p><b>الطريقة:</b> القطر وتر يشمل المركز وطوله ضعف نصف القطر. نقطة بعدها عن المركز أصغر من نصف القطر تقع داخل الدائرة، ويساويه على الدائرة، وأكبر منه خارجها.</p><p><span class="math">OM = 4,5 cm</span> ونصف القطر <span class="math">5 cm</span></p><p><span class="math">4,5 &lt; 5</span></p><p>النتيجة: داخل الدائرة (<span class="math">1</span>)</p><p><b>الاستنتاج:</b> <span class="math">M</span> داخل الدائرة.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>التعليل</td><td>1</td></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الثالث (5 ن): المحيطات والمساحات</h4><div class="sq"><p><b>1) احسب مساحة المستطيل <span class="math">ABCD</span> (بـ cm²).</b></p><p><b>الطريقة:</b> محيط المستطيل <span class="math">= 2 × (الطول + العرض)</span> ومساحته <span class="math">= الطول × العرض</span>. محيط المربع <span class="math">= 4 ×</span> الضلع ومساحته <span class="math">= الضلع × الضلع</span>.</p><p><span class="math">6 × 4 = 24</span></p><p>النتيجة: <span class="math">24 cm²</span></p><p><b>الاستنتاج:</b> مساحة المستطيل <span class="math">24 cm²</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1,5</td></tr></table></div><div class="sq"><p><b>2) احسب مساحة المثلث <span class="math">EFG</span> (بـ cm²).</b></p><p><b>الطريقة:</b> مساحة المثلث القائم <span class="math">= (الضلع القائم الأول × الضلع القائم الثاني) ÷ 2</span>، وهي نصف مساحة المستطيل الذي بُعداه الضلعان القائمان.</p><p><span class="math">(6 × 5) ÷ 2 = 30 ÷ 2</span></p><p>النتيجة: <span class="math">15 cm²</span></p><p><b>الاستنتاج:</b> مساحة المثلث <span class="math">15 cm²</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1,5</td></tr></table></div><div class="sq"><p><b>3) أيهما أكبر مساحة مع التعليل؟</b></p><p><b>الطريقة:</b> لمقارنة مساحتين: نحسبهما بنفس الوحدة ثم نقارن العددين.</p><p><span class="math">24 cm² &gt; 15 cm²</span></p><p>النتيجة: المستطيل (<span class="math">1</span>)</p><p><b>الاستنتاج:</b> مساحة المستطيل أكبر.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>المقارنة</td><td>2</td></tr></table></div></div><div class="sx"><h4>الوضعية الإدماجية (5 ن): سياج البستان</h4><div class="sq"><p><b>1) احسب محيط البستان (بـ m).</b></p><p><b>الطريقة:</b> محيط المستطيل <span class="math">= 2 × (الطول + العرض)</span> ومساحته <span class="math">= الطول × العرض</span>. محيط المربع <span class="math">= 4 ×</span> الضلع ومساحته <span class="math">= الضلع × الضلع</span>.</p><p><span class="math">4 × 12 = 48</span></p><p>النتيجة: <span class="math">48 m</span></p><p><b>الاستنتاج:</b> محيط البستان <span class="math">48 m</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: اختيار العلاقة</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) هل تكفي لفّة السلك؟ مع التبرير.</b></p><p><b>الطريقة:</b> طول السلك اللازم = عدد الصفوف × المحيط، ثم نقارن بطول اللفّة.</p><p><span class="math">3 × 48 = 144 m</span></p><p><span class="math">144 &lt; 150</span></p><p>النتيجة: تكفي (<span class="math">1</span>)، ويبقى <span class="math">6 m</span></p><p><b>الاستنتاج:</b> يلزم <span class="math">144 m</span> فقط، إذن تكفي اللفّة.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: الحساب</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: القرار</td><td>1</td></tr><tr><td>م3 انسجام الإجابة: الوحدة ومعقولية النتيجة</td><td>0,5</td></tr><tr><td>م4 الإتقان: تنظيم الحل ووضوحه</td><td>0,5</td></tr></table></div><p class="m3">تُقبل كل طريقة صحيحة أخرى، وتُمنح علامتها كاملة.</p></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
+window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الثالثة متوسط</span></div><div class="ttl">الحل النموذجي وسلم التنقيط — سلسلة بداية المقطع الثالث — السنة الثالثة متوسط</div><div class="sxs"><div class="sx"><h4>التمرين الأول (3 ن): تطبيق مباشر: قوى العدد 10</h4><div class="sq"><p><b>1) اكتب العدد <span class="math">10⁻³</span> كتابة عشرية.</b></p><p><b>الطريقة:</b> قوى العدد <span class="math">10</span>: <span class="math">10ⁿ = 1 0…0</span> (<span class="math">n</span> صفرا) و<span class="math">10⁻ⁿ = 0,0…01</span> (الرقم <span class="math">1</span> في المرتبة <span class="math">n</span> بعد الفاصلة).</p><p><span class="math">10⁻³ = 1/10³ = <span class="fr"><span>1</span><span>1000</span></span></span></p><p>النتيجة: <span class="math">0,001</span></p><p><b>الاستنتاج:</b> <span class="math">10⁻³ = 0,001</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) اكتب العدد <span class="math">F</span> على شكل قوة للعدد <span class="math">10</span>.</b></p><p><b>الطريقة:</b> قواعد الحساب: <span class="math">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class="math">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class="math">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.</p><p><span class="math">F = 10³⁺⁽⁻⁵⁾</span></p><p>النتيجة: <span class="math">F = 10⁻²</span></p><p><b>الاستنتاج:</b> <span class="math">F = 10⁻²</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) اكتب العدد <span class="math">G</span> على شكل قوة للعدد <span class="math">10</span>.</b></p><p><b>الطريقة:</b> قواعد الحساب: <span class="math">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class="math">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class="math">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.</p><p><span class="math">G = 10²ˣ³</span></p><p>النتيجة: <span class="math">G = 10⁶</span></p><p><b>الاستنتاج:</b> <span class="math">G = 10⁶</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الثاني (3 ن): تطبيق مباشر: قوى العدد 10</h4><div class="sq"><p><b>1) اكتب العدد <span class="math">H</span> على شكل قوة للعدد <span class="math">10</span>.</b></p><p><b>الطريقة:</b> قواعد الحساب: <span class="math">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class="math">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class="math">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.</p><p><span class="math">H = 10⁴⁺⁽⁻⁷⁾</span></p><p>النتيجة: <span class="math">H = 10⁻³</span></p><p><b>الاستنتاج:</b> <span class="math">H = 10⁻³</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) اكتب العدد <span class="math">M</span> على شكل قوة للعدد <span class="math">10</span>.</b></p><p><b>الطريقة:</b> قوى العدد <span class="math">10</span>: <span class="math">10ⁿ = 1 0…0</span> (<span class="math">n</span> صفرا) و<span class="math">10⁻ⁿ = 0,0…01</span> (الرقم <span class="math">1</span> في المرتبة <span class="math">n</span> بعد الفاصلة).</p><p><span class="math">0,00001 = <span class="fr"><span>1</span><span>100000</span></span> = 1/10⁵</span></p><p>النتيجة: <span class="math">M = 10⁻⁵</span></p><p><b>الاستنتاج:</b> <span class="math">M = 10⁻⁵</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) اكتب العدد <span class="math">L</span> على شكل قوة للعدد <span class="math">10</span>.</b></p><p><b>الطريقة:</b> قواعد الحساب: <span class="math">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class="math">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class="math">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.</p><p><span class="math">L = 10⁵⁻⁽⁻²⁾</span></p><p>النتيجة: <span class="math">L = 10⁷</span></p><p><b>الاستنتاج:</b> <span class="math">L = 10⁷</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الثالث (4 ن): ربط: قوى العدد 10</h4><div class="sq"><p><b>1) اكتب <span class="math">A</span> على شكل قوة للعدد <span class="math">10</span>.</b></p><p><b>الطريقة:</b> قواعد الحساب: <span class="math">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class="math">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class="math">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.</p><p><span class="math">A = 10⁻²⁺⁵</span></p><p>النتيجة: <span class="math">A = 10³</span></p><p><b>الاستنتاج:</b> <span class="math">A = 10³</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1,5</td></tr></table></div><div class="sq"><p><b>2) اكتب <span class="math">B</span> على شكل قوة للعدد <span class="math">10</span>.</b></p><p><b>الطريقة:</b> قواعد الحساب: <span class="math">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class="math">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class="math">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.</p><p><span class="math">B = 10³⁻⁸</span></p><p>النتيجة: <span class="math">B = 10⁻⁵</span></p><p><b>الاستنتاج:</b> <span class="math">B = 10⁻⁵</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1,5</td></tr></table></div><div class="sq"><p><b>3) اكتب <span class="math">C</span> على شكل قوة للعدد <span class="math">10</span>.</b></p><p><b>الطريقة:</b> قوى العدد <span class="math">10</span>: <span class="math">10ⁿ = 1 0…0</span> (<span class="math">n</span> صفرا) و<span class="math">10⁻ⁿ = 0,0…01</span> (الرقم <span class="math">1</span> في المرتبة <span class="math">n</span> بعد الفاصلة).</p><p><span class="math">1000000</span> فيه <span class="math">6</span> أصفار</p><p>النتيجة: <span class="math">C = 10⁶</span></p><p><b>الاستنتاج:</b> <span class="math">C = 10⁶</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الرابع (4 ن): ربط: الحساب بقوى العدد 10</h4><div class="sq"><p><b>1) اكتب العدد <span class="math">A</span> على شكل قوة للعدد <span class="math">10</span>.</b></p><p><b>الطريقة:</b> قواعد الحساب: <span class="math">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class="math">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class="math">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.</p><p><span class="math">10³ × 10⁻⁵ = 10³⁺⁽⁻⁵⁾ = 10⁻²</span></p><p><span class="math">A = 10⁻² ÷ 10⁴ = 10⁻²⁻⁴</span></p><p>النتيجة: <span class="math">A = 10⁻⁶</span></p><p><b>الاستنتاج:</b> <span class="math">A = 10⁻⁶</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) اكتب العدد <span class="math">B</span> على شكل قوة للعدد <span class="math">10</span>.</b></p><p><b>الطريقة:</b> قواعد الحساب: <span class="math">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class="math">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class="math">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.</p><p><span class="math">(10⁻²)³ = 10⁽⁻²⁾ˣ³ = 10⁻⁶</span></p><p><span class="math">B = 10⁻⁶ × 10⁸ = 10⁻⁶⁺⁸</span></p><p>النتيجة: <span class="math">B = 10²</span></p><p><b>الاستنتاج:</b> <span class="math">B = 10²</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الطريقة</td><td>0,5</td></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) اكتب العدد <span class="math">A × B</span> كتابة عشرية.</b></p><p><b>الطريقة:</b> قواعد الحساب: <span class="math">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class="math">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class="math">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>. قوى العدد <span class="math">10</span>: <span class="math">10ⁿ = 1 0…0</span> (<span class="math">n</span> صفرا) و<span class="math">10⁻ⁿ = 0,0…01</span> (الرقم <span class="math">1</span> في المرتبة <span class="math">n</span> بعد الفاصلة).</p><p><span class="math">A × B = 10⁻⁶ × 10² = 10⁻⁴</span></p><p><span class="math">10⁻⁴ = <span class="fr"><span>1</span><span>10000</span></span></span></p><p>النتيجة: <span class="math">0,0001</span></p><p><b>الاستنتاج:</b> <span class="math">A × B = 0,0001</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الطريقة</td><td>0,5</td></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>الوضعية الإدماجية (6 ن): الحنفية المعطّلة</h4><div class="sq"><p><b>1) احسب حجم الماء الضائع في يوم واحد (بـ L)، واكتبه على شكل قوة للعدد <span class="math">10</span>.</b></p><p><b>الطريقة:</b> قواعد الحساب: <span class="math">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class="math">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class="math">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.</p><p><span class="math">10⁵ × 10⁻⁴ = 10⁵⁺⁽⁻⁴⁾</span></p><p>النتيجة: <span class="math">10¹ L = 10 L</span></p><p><b>الاستنتاج:</b> يضيع <span class="math">10 L</span> في اليوم.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: الطريقة</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) هل كلام المديرة صحيح؟ مع التبرير.</b></p><p><b>الطريقة:</b> قواعد الحساب: <span class="math">10ᵐ × 10ⁿ = 10ᵐ⁺ⁿ</span> ؛ <span class="math">10ᵐ ÷ 10ⁿ = 10ᵐ⁻ⁿ</span> ؛ <span class="math">(10ᵐ)ⁿ = 10ᵐˣⁿ</span>.</p><p><span class="math">100 = 10²</span></p><p>في <span class="math">100</span> يوم: <span class="math">10¹ × 10² = 10³ L</span></p><p>الحجم الضائع يساوي <span class="math">10³ L</span> تماما، وليس أكثر منه</p><p>النتيجة: كلامها غير صحيح (<span class="math">2</span>)</p><p><b>الاستنتاج:</b> يضيع <span class="math">10³ L</span> بالضبط، وهذا ليس أكثر من <span class="math">10³ L</span>، إذن كلامها غير صحيح.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: اختيار قاعدة الضرب</td><td>1,5</td></tr><tr><td>م2 الاستعمال السليم: الحساب</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: المقارنة والقرار</td><td>0,5</td></tr><tr><td>م3 انسجام الإجابة: الوحدة ومعقولية النتيجة</td><td>0,5</td></tr><tr><td>م4 الإتقان: تنظيم الحل ووضوحه</td><td>0,5</td></tr></table></div><p class="m3">تُقبل كل طريقة صحيحة أخرى، وتُمنح علامتها كاملة.</p></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
 function tick(){var b=document.querySelector('.sol-btn'),w=document.querySelector('.sol-wait');if(!b)return;var r=t+D-Date.now();
 if(r<=0){b.style.display='inline-block';if(w)w.style.display='none';return}if(w)w.textContent='📄 النسخة الورقية للحل تظهر بعد '+Math.ceil(r/60000)+' دقيقة';setTimeout(tick,20000)}
 window.printSol=function(){document.body.classList.add('psol');window.print()};window.addEventListener('afterprint',function(){document.body.classList.remove('psol')});
