@@ -1216,6 +1216,17 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       }
       var p = pillEls[i]; if (p && p.scrollIntoView) p.scrollIntoView({ block: "nearest", inline: "center" });
     }
+    /* 2026-11-21: «#ex-N» in the address opens exercise N (the BEM card of «تحدي الشهادة» on the home page links here) */
+    (function () {
+      var hm = location.hash.match(/^#ex-(\d+)$/);
+      if (!hm || !cards[+hm[1] - 1]) return;
+      setTimeout(function () {
+        var c = cards[+hm[1] - 1];
+        go(+hm[1] - 1, true);
+        c.style.outline = "4px solid #2563eb"; c.style.outlineOffset = "4px"; c.style.borderRadius = "12px";
+        setTimeout(function () { c.style.outline = ""; }, 5000);
+      }, 450);
+    })();
     function paint() {
       data.forEach(function (ex, i) {
         var qs = ex.questions || [], locked = 0, full = 0, some = 0, earned = 0;
