@@ -1107,6 +1107,114 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       mc.appendChild(mb);
     }
 
+    /* ---- 🔘 ONE check button that follows the pupil + «📘 راجع الدرس» (2026-11-21 his idea, TRIAL) ----
+       His words: «زر التحقق واحد يسير معك ويتحول إلى زر السؤال الموالي بعد الإجابة الصحيحة وعرض الحل أو بعد المحاولة الأخيرة،
+       والربط بدروس أُتقِن، والحفاظ على كل شيء كما هو». TRIAL: on only after «?new=1» (saved on the phone); «?new=0» = the old pages.
+       Nothing else changes: the cards' own «تحقق» buttons stay (hidden on phones while the trial is on). */
+    (function () {
+      var qp = /[?&]new=([01])\b/.exec(location.search);
+      if (qp) store("sx-onebtn", qp[1]);
+      if (store("sx-onebtn") !== "1") return;
+      var Q = [];
+      data.forEach(function (ex, i) {
+        (ex.questions || []).forEach(function (q) {
+          var box = document.getElementById("qbox-" + q.qId), inp = document.getElementById("in-" + q.qId), btn = document.getElementById("btn-" + q.qId);
+          if (box && inp && btn) Q.push({ q: q, box: box, inp: inp, btn: btn, ex: i });
+        });
+      });
+      if (!Q.length) return;
+      document.body.classList.add("sx-1b");
+      var css = el("style");
+      css.textContent = ".sx-1bar{position:fixed;left:0;right:0;bottom:0;z-index:2500;display:flex;gap:8px;align-items:center;justify-content:center;" +
+        "padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid #cbd5e1;box-shadow:0 -4px 14px rgba(15,23,42,.12);direction:rtl}" +
+        ".sx-1bar .n{font-size:.8rem;color:#475569;white-space:nowrap}" +
+        ".sx-1bar button{font:inherit;font-weight:800;font-size:1.05rem;border:none;border-radius:12px;padding:11px 18px;min-width:58%;cursor:pointer;color:#fff;background:#1e3a8a}" +
+        ".sx-1bar button.next{background:#15803d}.sx-1bar button.end{background:#b45309}" +
+        "body.sx-1b{padding-bottom:84px!important}body.sx-1b .q-box.sx-cur{outline:2.5px solid #38bdf8;outline-offset:3px;border-radius:10px}" +
+        "@media (max-width:700px){body.sx-1b .input-line .btn-check{display:none!important}}" +
+        "body.sx-1b .sx-pad-fab,body.sx-1b .sx-calc-fab{bottom:80px!important}body.sx-exam .sx-1bar{bottom:58px}body.sx-exam.sx-1b{padding-bottom:140px!important}body.sx-exam.sx-1b .sx-pad-fab,body.sx-exam.sx-1b .sx-calc-fab{bottom:136px!important}" +
+        ".sx-lesson{display:block;margin:10px 0 2px;padding:8px 12px;border:1.5px dashed #0f766e;border-radius:10px;color:#0f766e;font-weight:800;text-decoration:none;background:#f0fdfa}" +
+        "html.dark .sx-1bar{background:rgba(15,23,42,.96);border-color:#334155}html.dark .sx-1bar .n{color:#cbd5e1}" +
+        "@media print{.sx-1bar,.sx-lesson{display:none!important}}";
+      document.head.appendChild(css);
+      var bar = el("div", "sx-1bar"), num = el("span", "n"), B = el("button");
+      B.type = "button"; bar.appendChild(num); bar.appendChild(B); document.body.appendChild(bar);
+      var cur = 0;
+      function locked(k) { try { return !!questionLocked[Q[k].q.qId]; } catch (e) { return Q[k].inp.disabled; } }
+      function nextOpen(from) {
+        for (var k = from + 1; k < Q.length; k++) if (!locked(k)) return k;
+        for (k = 0; k < from; k++) if (!locked(k)) return k;
+        return -1;
+      }
+      function firstOpen() { for (var k = 0; k < Q.length; k++) if (!locked(k)) return k; return -1; }
+      function show() {
+        Q.forEach(function (x, k) { x.box.classList.toggle("sx-cur", k === cur); });
+        num.textContent = "السؤال " + (cur + 1) + " من " + Q.length;
+        if (!locked(cur)) { B.className = ""; B.textContent = "✔ تحقق"; return; }
+        var n = nextOpen(cur);
+        if (n < 0) { B.className = "end"; B.textContent = "🏁 النتيجة النهائية"; }
+        else { B.className = "next"; B.textContent = "السؤال الموالي ⬅"; }
+      }
+      function goQ(k) {
+        cur = k;
+        var x = Q[k];
+        if (!x.box.offsetParent) { var pill = $$(".sx-pill:not(.tool)")[x.ex]; if (pill) pill.click(); }
+        setTimeout(function () {
+          var sb = $(".sticky-bar"), h = sb ? sb.getBoundingClientRect().height : 0;
+          var t = $(".q-title", x.box) || x.box;
+          window.scrollTo({ top: Math.max(0, t.getBoundingClientRect().top + window.scrollY - h - 10), behavior: "smooth" });
+          var area = $(".answer-area", x.box);
+          if (area && !area.classList.contains("sx-hide")) { try { x.inp.focus({ preventScroll: true }); } catch (e) {} }
+          show();
+        }, 60);
+      }
+      B.onclick = function () {
+        if (!locked(cur)) {
+          var x = Q[cur], area = $(".answer-area", x.box);
+          if (area && area.classList.contains("sx-hide")) { goQ(cur); toast("👆 اختر الجواب الصحيح من الأزرار."); return; }
+          if (!x.inp.value.trim()) { goQ(cur); }
+          x.btn.click();
+          setTimeout(show, 80);
+          return;
+        }
+        var n = nextOpen(cur);
+        if (n >= 0) { goQ(n); return; }
+        var fm2 = $("#finalModal"); if (fm2) fm2.style.display = "flex";
+      };
+      /* the pupil may still answer any question: the button follows the box being worked in */
+      root.addEventListener("focusin", function (e) {
+        for (var k = 0; k < Q.length; k++) if (Q[k].box.contains(e.target)) { if (k !== cur) { cur = k; show(); } return; }
+      });
+      root.addEventListener("click", function (e) {
+        for (var k = 0; k < Q.length; k++) if (Q[k].box.contains(e.target)) { cur = k; break; }
+        setTimeout(show, 120);
+      });
+      document.addEventListener("keyup", function () { setTimeout(show, 60); });
+      setTimeout(function () { var f = firstOpen(); cur = f < 0 ? 0 : f; show(); }, 400);
+
+      /* «📘 راجع الدرس»: at the end of each exercise, the lesson («أُتقِن» first) of the resources of its questions
+         (window.__resmap = question → resource, assets/resources.json = resource → lesson; both written at deploy) */
+      var RM = window.__resmap; if (!RM) return;
+      fetch(ROOT.href + "assets/resources.json", { cache: "force-cache" }).then(function (r) { return r.json(); }).then(function (R) {
+        var rows = R[level]; if (!rows) return;
+        data.forEach(function (ex, i) {
+          var seen = {}, links = [];
+          (ex.questions || []).forEach(function (q) {
+            var m = RM[q.qId]; if (!m || m[0] < 0 || seen[m[0]]) return; seen[m[0]] = 1;
+            var r = rows[m[0]]; if (r && r.l && r.l !== rel) links.push([r.l, r.n]);
+          });
+          links.sort(function (a, b) { return (/itqan/.test(b[0]) ? 1 : 0) - (/itqan/.test(a[0]) ? 1 : 0); });
+          var card = cards[i]; if (!card || !links.length) return;
+          links.slice(0, 2).forEach(function (L) {
+            var t = String(L[1]).split(" (")[0]; if (t.length > 70) t = t.slice(0, 68).replace(/\s+\S*$/, "") + "…";
+            var a = el("a", "sx-lesson", "📘 راجع الدرس: " + t);
+            a.href = ROOT.href + L[0];
+            card.appendChild(a);
+          });
+        });
+      }).catch(function () {});
+    })();
+
     /* ---- answers saved on this device, «▶ أكمل من حيث توقفت» ---- */
     var LOGK = "math-answers:" + rel, replaying = false;
     function getLog() { try { return JSON.parse(store(LOGK) || "{}") || {}; } catch (e) { return {}; } }
