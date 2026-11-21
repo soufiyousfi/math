@@ -135,6 +135,7 @@ details.guide ul{margin:4px 0;padding-inline-start:20px}
       <button type="button" data-h="year">السنة الدراسية</button>
       <select id="hLv" aria-label="المستوى"></select>
     </div>
+    <p class="sub">هذا الجزء يحسب كل ما حلّه منذ بداية السنة، ولا يتغيّر بالمدة المختارة في الأعلى (اليوم، 7 أيام…). النتائج القديمة (قبل 19 نوفمبر) محسوبة بنتيجة الصفحة كاملة، فهي تقريبية.</p>
     <div id="hBody"></div>
     <details class="guide">
       <summary>📖 توجيهات للولي: التحكم الكلي والتحكم الجزئي</summary>
@@ -445,6 +446,25 @@ details.guide ul{margin:4px 0;padding-inline-start:20px}
   var BL = ["", "تذكّر·فهم·تطبيق", "تحليل", "تقويم·توظيف"];
   var RESL = null, RS = J("math-res", {}), hMode = "res";
   function pct(x) { return Math.round(x * 100) + "%"; }
+  /* results saved before 2026-11-19 (page mark only, in "math-progress"): shared out over the page's resources and Bloom
+     levels in proportion to their questions, so that the bottom «السنة الدراسية» counts the same activities as the top one.
+     Only for pages that have no per-question record yet; nothing is written back. */
+  function backfill(PG) {
+    var has = {};
+    Object.keys(RS).forEach(function (k) { Object.keys(RS[k] || {}).forEach(function (u) { has[u] = 1; }); });
+    Object.keys(prog).forEach(function (u0) {
+      var r = prog[u0], u = norm(u0), lv = (u.match(/^([1-4]m)\//) || [])[1], ent = PG[u];
+      if (!r || !r.m || !lv || !ent || has[u]) return;
+      var share = r.d ? 1 : (r.n ? (r.a || 0) / r.n : 0); if (!share) return;
+      var rat = Math.max(0, Math.min(1, (r.d ? (r.b || r.s) : r.s) / (r.m * share)));
+      var day = r.t ? dk(r.t) : "";
+      ent.forEach(function (e) {
+        var k = lv + "|" + e[0], c = RS[k] || (RS[k] = {}), p = c[u] || (c[u] = { f: day, d: day, b: {}, old: 1 });
+        var w = e[2] * share, b = p.b[e[1]] || (p.b[e[1]] = [0, 0]);
+        b[0] += rat * w; b[1] += w;
+      });
+    });
+  }
   function judge(lv, i) {
     var pages = RS[lv + "|" + i] || {}, B = { 1: [0, 0], 2: [0, 0], 3: [0, 0] }, occ = [], E = 0, P = 0;
     Object.keys(pages).forEach(function (u) {
@@ -541,7 +561,7 @@ details.guide ul{margin:4px 0;padding-inline-start:20px}
       hDraw();
     };
     hDraw();
-    fetch("assets/resources.json").then(function (r) { return r.ok ? r.json() : false; }).then(function (j) { RESL = j || false; hDraw(); }).catch(function () { RESL = false; hDraw(); });
+    fetch("assets/resources.json").then(function (r) { return r.ok ? r.json() : false; }).then(function (j) { RESL = j || false; if (j && j._pg) backfill(j._pg); hDraw(); }).catch(function () { RESL = false; hDraw(); });
     fetch("files.json").then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
       if (j && j.items) { j.items.forEach(function (it) { if (!titles[norm(it.url)]) titles[norm(it.url)] = it.title; }); draw(); }
     }).catch(function () {});
