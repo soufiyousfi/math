@@ -352,6 +352,7 @@
     var sel = null, streak = 0, best = get("math-practice-best", 0);
     host.className = "px"; host.hidden = false;
     function draw() {
+      if (opt.alt && !sel && opt.alt(host, draw)) return;   /* «تحدي الشهادة»: sometimes a real BEM exercise */
       var id = sel || pick(list), g, left = 3;
       try { g = B[id](); } catch (e) { return; }
       host.innerHTML = '<div class="row"><div><h2>' + (opt.title || "🎲 تمارين لا نهائية بأرقام متغيرة") + '</h2><span class="sub">' + LV[lv] + " · للتدرّب فقط، لا تُحسب في علامتك</span></div><span class=\"sp\"></span>" +
@@ -434,6 +435,93 @@
     BEMSEQ.forEach(function (s) { s[2].forEach(function (k) { if (k[1] <= iso || iso > "2027-05-27") out.push(k[0]); }); });
     return out.length ? out : BEMSEQ[0][2].map(function (k) { return k[0]; });
   }
+  /* ========== 1d. real BEM exercises inside «تحدي الشهادة» about 1 time in 4 (2026-11-21 his «تأخذ أحيانا تمارين من الشهادة بنسبة 25 %»).
+     Source: the site's own BEM pages (4m/tN/chahada/bem-mK-*.html, exercises taken from past BEM papers, answers and model
+     solutions already written there). Only sequences the pupil chose, or the ones taught by today per the annual plan. ========== */
+  var BEMREAL = { pages: null, cache: {} };
+  function bemPages(seqs) {
+    if (!BEMREAL.pages) {
+      var seen = {};
+      BEMREAL.pages = items().filter(function (i) { return i.level === "4m" && /\/chahada\/bem-m\d+-[a-z0-9]+\.html$/.test(i.url || ""); })
+        .filter(function (i) { var f = i.url.split("/").pop(); if (seen[f]) return false; seen[f] = 1; return true; })
+        .map(function (i) { return { url: i.url, seq: +i.url.match(/bem-m(\d+)-/)[1] - 1 }; });
+    }
+    return BEMREAL.pages.filter(function (p) { return seqs.indexOf(p.seq) >= 0; });
+  }
+  function exData(html) {
+    var i = html.indexOf("const exercises = ["); if (i < 0) return null;
+    i = html.indexOf("[", i);
+    var d = 0, q = false, e = false;
+    for (var j = i; j < html.length; j++) {
+      var c = html[j];
+      if (q) { if (e) e = false; else if (c === "\\") e = true; else if (c === '"') q = false; continue; }
+      if (c === '"') q = true; else if (c === "[") d++; else if (c === "]") { d--; if (!d) { try { return JSON.parse(html.slice(i, j + 1)); } catch (x) { return null; } } }
+    }
+    return null;
+  }
+  function bemReal(host, seqs, back) {
+    var pages = bemPages(seqs);
+    if (!pages.length) return false;
+    var p = pages[Math.floor(Math.random() * pages.length)];
+    host.innerHTML = '<div class="sub">⏳ تحميل تمرين من الشهادة…</div>';
+    function go(list) {
+      if (!list || !list.length) return back(true);
+      var ex = list[Math.floor(Math.random() * list.length)];
+      drawEx(host, ex, p.url, back);
+    }
+    if (BEMREAL.cache[p.url]) { go(BEMREAL.cache[p.url]); return true; }
+    fetch(new URL(p.url, ROOT).href).then(function (r) { return r.text(); })
+      .then(function (t) { var d = exData(t); BEMREAL.cache[p.url] = d; go(d); })
+      .catch(function () { back(true); });
+    return true;
+  }
+  function drawEx(host, ex, url, back) {
+    var src = (ex.context.match(/^<span[^>]*>\(([^)]*(?:\([^)]*\))?[^)]*)\)<\/span><br>/) || [])[1] || "";
+    var ctx = ex.context.replace(/^<span[^>]*>\([^<]*\)<\/span><br>/, "");
+    var title = String(ex.title || "").replace(/^التمرين\s*\d+\s*:\s*/, "");
+    host.innerHTML = '<div class="bemreal"><div class="row"><span class="tag" style="background:#fef3c7;color:#78350f;border-color:#f59e0b">📜 تمرين من الشهادة' + (src ? " · " + esc(src) : "") + "</span></div>" +
+      "<h3>" + esc(title) + "</h3>" + (ctx ? '<div class="q">' + ctx + "</div>" : "") +
+      ex.questions.map(function (q, k) {
+        return '<div class="bq" data-k="' + k + '"' + (k ? " hidden" : "") + '><div class="q">' + q.text + "</div>" +
+          '<div class="row"><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" aria-label="إجابتك" placeholder="اكتب إجابتك"><button type="button" class="b go">تحقّق</button></div>' +
+          '<div class="fb" role="status" aria-live="polite"></div><div class="sol" hidden><b>✔ الإجابة النموذجية:</b>' + (q.steps || []).map(function (s) { return "<div>" + s + "</div>"; }).join("") + "</div></div>";
+      }).join("") +
+      '<div class="syms">' + ["√", "²", "x", "(", ")", "−", "+", ";", ",", "/", "⌫"].map(function (s) { return '<button type="button" aria-label="' + (s === "⌫" ? "حذف" : "أضف " + s) + '">' + s + "</button>"; }).join("") + "</div>" +
+      '<div class="row" style="margin-top:8px"><a class="sub" href="' + esc(url) + '">📄 الموضوع كاملا</a><span class="sp"></span><button type="button" class="b s nx">🔄 تمرين آخر</button></div></div>';
+    var cur = 0, score = 0;
+    function box() { return $('.bq[data-k="' + cur + '"]', host); }
+    $$(".syms button", host).forEach(function (b) {
+      b.onclick = function () { var i = $("input:not(:disabled)", box() || host); if (!i) return; var s = b.textContent; i.value = s === "⌫" ? i.value.slice(0, -1) : i.value + s; i.focus(); };
+    });
+    $(".nx", host).onclick = function () { back(false); };
+    ex.questions.forEach(function (q, k) {
+      var bx = $('.bq[data-k="' + k + '"]', host), inp = $("input", bx), go = $(".go", bx), fb = $(".fb", bx), left = 3;
+      function same(a, b) { return norm(a) === norm(b); }
+      function end(good) {
+        inp.disabled = go.disabled = true; inp.parentNode.hidden = true; $(".sol", bx).hidden = false;
+        if (good) { score++; fb.className = "fb s"; fb.innerHTML = "⭐".repeat(left) + " أحسنت!"; try { if (window.flyStars) window.flyStars(fb, 8); } catch (e) {} }
+        else { fb.className = "fb f"; fb.innerHTML = "📘 الجواب الصحيح: <b>" + esc(q.exact[0]) + "</b>. اقرأ الإجابة النموذجية."; }
+        cur = k + 1;
+        var nb = box();
+        if (nb) { nb.hidden = false; setTimeout(function () { try { $("input", nb).focus({ preventScroll: true }); } catch (e) {} nb.scrollIntoView({ block: "nearest", behavior: "smooth" }); }, 250); }
+        else { $(".syms", host).hidden = true; var f = el("div", "fb s", "🏁 أنهيت التمرين: " + score + " / " + ex.questions.length + " أجوبة صحيحة. اضغط «🔄 تمرين آخر»."); $(".nx", host).parentNode.parentNode.insertBefore(f, $(".nx", host).parentNode); }
+      }
+      function check() {
+        if (inp.disabled) return;
+        var raw = inp.value.trim();
+        if (!raw) { fb.className = "fb h"; fb.textContent = "اكتب إجابتك أولا."; return; }
+        if ((q.exact || []).some(function (a) { return same(a, raw); })) return end(true);
+        left--;
+        inp.classList.remove("shake"); void inp.offsetWidth; inp.classList.add("shake");
+        var part = (q.partial || []).some(function (a) { return same(a, raw); });
+        if (left > 0) { fb.className = "fb h"; fb.innerHTML = (part && q.partialMsg ? "🔎 " + q.partialMsg + "<br>" : "") + "<strong>💡 التلميح " + (3 - left) + ":</strong> " + (left === 2 ? q.h1 : q.h2); }
+        else end(false);
+      }
+      go.onclick = check;
+      inp.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); check(); } });
+    });
+  }
+
   function bemChallenge(host) {
     var st = get("math-bem-choice", { mode: "plan", seq: [] }), inner;
     function list() {
@@ -460,7 +548,18 @@
         };
       });
       inner = $(".bemq", host);
-      practice(inner, "4m", list(), { title: "🎯 تمرين", syms: ["√", "²", "x", "(", ")", "−", "+", ";", ",", "/", "<", ">", "≤", "≥", "⌫"] });
+      var skip = false;
+      function seqs() {
+        if (st.mode !== "plan" && st.seq.length) return st.seq.slice();
+        var ps = planSkills(), out = [];
+        BEMSEQ.forEach(function (s, i) { if (s[2].some(function (k) { return ps.indexOf(k[0]) >= 0; })) out.push(i); });
+        return out;
+      }
+      practice(inner, "4m", list(), { alt: function (h, d) {
+        if (skip) { skip = false; return false; }
+        if (Math.random() >= 0.25) return false;
+        return bemReal(h, seqs(), function () { skip = true; d(); });
+      }, title: "🎯 تمرين", syms: ["√", "²", "x", "(", ")", "−", "+", ";", ",", "/", "<", ">", "≤", "≥", "⌫"] });
       inner.style.cssText = "border:0;box-shadow:none;padding:0;margin:4px 0 0";
     }
     draw();
@@ -675,9 +774,11 @@
     function vis(e) { return e && !e.hidden && e.offsetParent !== null; }
     function boxes() { return IDS.map(function (i) { return document.getElementById(i); }).filter(vis); }
     function act(w) {
-      var c = w.querySelector(".inrow .ok") || w.querySelector(".row>.b.go");
-      var inp = c && c.parentNode.querySelector("input");
-      if (c && !c.disabled && inp && !inp.disabled && c.parentNode.offsetParent !== null && !c.parentNode.hidden) return { b: c, t: "✔ تحقق", k: "" };
+      var cs = $$(".inrow .ok, .row>.b.go", w);
+      for (var i = 0; i < cs.length; i++) {
+        var c = cs[i], inp = c.parentNode.querySelector("input");
+        if (!c.disabled && inp && !inp.disabled && c.parentNode.offsetParent !== null) return { b: c, t: "✔ تحقق", k: "" };
+      }
       var n = w.querySelector(".end2:not([hidden]) .more") || w.querySelector(".nx2") || w.querySelector(".nx");
       if (vis(n)) return { b: n, t: w.id === "daily" ? "➕ سؤال آخر" : "🔄 تمرين آخر", k: "next" };
       return null;
