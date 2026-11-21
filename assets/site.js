@@ -829,7 +829,14 @@ body.sx-exam .sx-calc-fab{bottom:74px}
     var vp = document.querySelector('meta[name="viewport"]');
     if (!vp) return;
     var orig = vp.getAttribute("content") || "width=device-width, initial-scale=1.0";
-    var locked = orig.replace(/,?\s*maximum-scale=[^,]*/g, "") + ", maximum-scale=1";
+    var locked = orig.replace(/,?\s*(maximum|minimum)-scale=[^,]*/g, "") + ", minimum-scale=1, maximum-scale=1";
+    /* 2026-11-21 his second report «مازال التكبير التلقائي»: switching at the tap came too late on his phone → pages with answer
+       boxes keep «maximum-scale=1» all the time (the site's own text sizes are made for phones) */
+    if (document.getElementById("exercisesRoot") || document.querySelector('input[type="text"],textarea')) {
+      vp.setAttribute("content", locked);
+      window.__noZoom = function () {};
+      return;
+    }
     function isBox(t) { return t && t.tagName && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName); }
     function lock() { vp.setAttribute("content", locked); }
     function unlock() { setTimeout(function () { if (!isBox(document.activeElement)) vp.setAttribute("content", orig); }, 400); }
@@ -1240,6 +1247,17 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         setTimeout(show, 120);
       });
       document.addEventListener("keyup", function () { setTimeout(show, 60); });
+      /* 2026-11-21 his report: on a computer «Enter» checked but did not move to the next question → Enter = the bar button
+         whenever the pupil is not typing in an open answer box (that box's own Enter = check stays) */
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" || e.defaultPrevented || e.isComposing) return;
+        var t = e.target, fm3 = $("#finalModal");
+        if (fm3 && fm3.style.display === "flex") return;
+        if (t && t.closest && (t.closest(".sx-pad") || t.closest(".sx-ov") || t.closest(".sx-wrap") || t.closest(".sx-kids"))) return;
+        if (t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName) && !t.disabled) return;
+        if (t && /^(BUTTON|A)$/.test(t.tagName) && t !== B) return;
+        e.preventDefault(); B.click();
+      });
       setTimeout(function () { var f = firstOpen(); cur = f < 0 ? 0 : f; show(); }, 400);
 
       /* «📘 راجع الدرس»: at the end of each exercise, the lesson («أُتقِن» first) of the resources of its questions
