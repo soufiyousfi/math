@@ -822,6 +822,23 @@ body.sx-exam .sx-calc-fab{bottom:74px}
   setTimeout(autoOffline, 8000);
   document.addEventListener("click", function () { setTimeout(autoOffline, 2500); }, true);
 
+  /* ---------- 2c. no automatic zoom when the pupil taps an answer box (2026-11-21 his report «كي نحط الحل يدير الزوم وحدو») ----------
+     The phone zooms in on a text box it judges small. While a box is being used, the page says «maximum-scale=1» (no automatic
+     zoom); when the box is left, the old viewport comes back, so the pupil can still zoom with two fingers when reading. */
+  (function () {
+    var vp = document.querySelector('meta[name="viewport"]');
+    if (!vp) return;
+    var orig = vp.getAttribute("content") || "width=device-width, initial-scale=1.0";
+    var locked = orig.replace(/,?\s*maximum-scale=[^,]*/g, "") + ", maximum-scale=1";
+    function isBox(t) { return t && t.tagName && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName); }
+    function lock() { vp.setAttribute("content", locked); }
+    function unlock() { setTimeout(function () { if (!isBox(document.activeElement)) vp.setAttribute("content", orig); }, 400); }
+    document.addEventListener("touchstart", function (e) { if (isBox(e.target)) lock(); }, { passive: true, capture: true });
+    document.addEventListener("focusin", function (e) { if (isBox(e.target)) lock(); }, true);
+    document.addEventListener("focusout", function (e) { if (isBox(e.target)) unlock(); }, true);
+    window.__noZoom = lock;
+  })();
+
   /* ---------- 3. exercise pages ---------- */
   function onReady(fn) {
     if (document.readyState === "complete") setTimeout(fn, 30);
@@ -1178,7 +1195,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
           var t = $(".q-title", x.box) || x.box;
           window.scrollTo({ top: Math.max(0, t.getBoundingClientRect().top + window.scrollY - h - 10), behavior: "smooth" });
           var area = $(".answer-area", x.box);
-          if (area && !area.classList.contains("sx-hide")) { try { x.inp.focus({ preventScroll: true }); } catch (e) {} }
+          if (area && !area.classList.contains("sx-hide")) { try { if (window.__noZoom) window.__noZoom(); x.inp.focus({ preventScroll: true }); } catch (e) {} }
           show();
         }, 60);
       }
