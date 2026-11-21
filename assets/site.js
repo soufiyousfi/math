@@ -1151,6 +1151,9 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         ".sx-1bar button:active{transform:translateY(2px);box-shadow:none}.sx-1bar{transition:bottom .12s}" +
         ".sx-1bar button.next{background:#15803d}.sx-1bar button.end{background:#b45309}" +
         "body.sx-1b{padding-bottom:84px!important}body.sx-1b .q-box.sx-cur{outline:2.5px solid #38bdf8;outline-offset:3px;border-radius:10px}" +
+        "body.sx-1b .q-box.sx-cur input[type=text]:not(:disabled){border:3px solid #1e3a8a!important;background:#fffbeb!important;box-shadow:0 0 0 4px rgba(56,189,248,.35)!important}" +
+        "body.sx-1b .q-box.sx-cur input[type=text]:not(:disabled)::placeholder{color:#92400e;opacity:1;font-weight:700}" +
+        "body.sx-kb .sx-pad-fab,body.sx-kb .sx-calc-fab{display:none!important}" +
         "body.sx-1b .q-box .btn-check{display:none!important}body.sx-1b{padding-bottom:96px!important}" +
         "body.sx-1b .sx-pad-fab,body.sx-1b .sx-calc-fab{bottom:80px!important}body.sx-exam .sx-1bar{bottom:58px}body.sx-exam.sx-1b{padding-bottom:140px!important}body.sx-exam.sx-1b .sx-pad-fab,body.sx-exam.sx-1b .sx-calc-fab{bottom:136px!important}" +
         ".sx-lesson{display:block;margin:10px 0 2px;padding:8px 12px;border:1.5px dashed #0f766e;border-radius:10px;color:#0f766e;font-weight:800;text-decoration:none;background:#f0fdfa}" +
@@ -1166,6 +1169,22 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         var vv = window.visualViewport; if (!vv) return;
         var hidden = window.innerHeight - (vv.height + vv.offsetTop);
         bar.style.bottom = (hidden > 40 ? hidden : 0) + "px";
+        document.body.classList.toggle("sx-kb", hidden > 40);
+        clearTimeout(lift.t); lift.t = setTimeout(fitBox, 120);
+      }
+      /* 2026-11-21 his report «مكان الإجابة غير ظاهر جيدا»: while typing, the question and its answer box stay in the visible part
+         (under the top bar, above the button bar and the keyboard); the answer box comes first if both do not fit */
+      function fitBox() {
+        var a = document.activeElement, x = Q[cur];
+        if (!x || !a || a.tagName !== "INPUT" || !x.box.contains(a)) return;
+        var vv = window.visualViewport, vt = vv ? vv.offsetTop : 0, vh = vv ? vv.height : window.innerHeight;
+        var sb = $(".sticky-bar"), top = vt + (sb ? sb.getBoundingClientRect().height : 0) + 6;
+        var bottom = vt + vh - bar.getBoundingClientRect().height - 8;
+        var t = ($(".q-title", x.box) || x.box).getBoundingClientRect(), r = a.getBoundingClientRect();
+        var dy = 0;
+        if (t.top < top || r.bottom > bottom) dy = t.top - top;
+        if (r.bottom - dy > bottom) dy = r.bottom - bottom;
+        if (Math.abs(dy) > 4) window.scrollBy({ top: dy, behavior: "smooth" });
       }
       if (window.visualViewport) { window.visualViewport.addEventListener("resize", lift); window.visualViewport.addEventListener("scroll", lift); }
       window.addEventListener("focusin", function () { setTimeout(lift, 350); });
