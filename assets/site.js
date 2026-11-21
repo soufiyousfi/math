@@ -561,9 +561,12 @@
 .sx-calc .n{font-size:.74rem;color:#94a3b8;margin-top:6px}
 /* clearer text, calm colours (his asks 2026-11-15: «الكتابة واضحة», then «نقص شوي من الألوان») */
 body.sx-ex{font-size:17px}
-body.sx-ex .q-title{font-size:1.1rem;color:#0f172a;line-height:1.75}
-body.sx-ex .context-box{font-size:1.06rem;line-height:1.85;color:#0f172a}
-body.sx-ex .math{font-size:1.02em;font-weight:700;color:#0f172a}
+/* 2026-11-21 his ask «لون الأسئلة أسود داكن»: questions and statements in deep black, a little bolder */
+body.sx-ex .q-title,body.sx-ex .q-title > span{font-size:1.1rem;color:#000!important;font-weight:700;line-height:1.75}
+body.sx-ex .context-box,body.sx-ex .context-box *:not(.math):not(svg *){color:#000!important}
+body.sx-ex .context-box{font-size:1.06rem;line-height:1.85;font-weight:600}
+body.sx-ex .math{font-size:1.02em;font-weight:700;color:#000}
+#app .q .qt,#app .q .qt *:not(.qp):not(svg *){color:#000!important}#app .q .qt{font-weight:700!important}#app .intro{color:#111827!important}
 body.sx-ex .card-header h2{font-size:1.18rem}
 body.sx-ex .feedback-box{font-size:1rem;line-height:1.75}
 body.sx-ex .model-solution{font-size:1rem;line-height:1.85}
@@ -910,7 +913,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       "body.sx-1b{padding-bottom:96px!important}body.sx-1b #app .q .sx-own{display:none!important}" +
       "body.sx-1b #app .q.sx-cur{outline:2.5px solid #38bdf8;outline-offset:3px;border-radius:10px}" +
       "body.sx-1b #app .q.sx-cur input.ans:not(:disabled){border:3px solid #1e3a8a!important;background:#fffbeb!important}" +
-      "body.sx-kb .sx-pad-fab{display:none!important}html.dark .sx-1bar{background:rgba(15,23,42,.96);border-color:#334155}" +
+      "body.sx-kb .sx-pad-fab{display:none!important}html.sx-dark .sx-1bar{background:rgba(15,23,42,.96);border-color:#334155}" +
       "@media print{.sx-1bar{display:none!important}}";
     document.head.appendChild(css);
     var bar = el("div", "sx-1bar"), num = el("span", "n"), B = el("button");
@@ -1280,7 +1283,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         "body.sx-1b .q-box .btn-check{display:none!important}body.sx-1b{padding-bottom:96px!important}" +
         "body.sx-1b .sx-pad-fab,body.sx-1b .sx-calc-fab{bottom:80px!important}body.sx-exam .sx-1bar{bottom:58px}body.sx-exam.sx-1b{padding-bottom:140px!important}body.sx-exam.sx-1b .sx-pad-fab,body.sx-exam.sx-1b .sx-calc-fab{bottom:136px!important}" +
         ".sx-lesson{display:block;margin:10px 0 2px;padding:8px 12px;border:1.5px dashed #0f766e;border-radius:10px;color:#0f766e;font-weight:800;text-decoration:none;background:#f0fdfa}" +
-        "html.dark .sx-1bar{background:rgba(15,23,42,.96);border-color:#334155}html.dark .sx-1bar .n{color:#cbd5e1}" +
+        "html.sx-dark .sx-1bar{background:rgba(15,23,42,.96);border-color:#334155}html.sx-dark .sx-1bar .n{color:#cbd5e1}" +
         "@media print{.sx-1bar,.sx-lesson{display:none!important}}";
       document.head.appendChild(css);
       var bar = el("div", "sx-1bar"), num = el("span", "n"), B = el("button");
