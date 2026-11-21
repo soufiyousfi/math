@@ -466,8 +466,8 @@
     host.innerHTML = '<div class="sub">⏳ تحميل تمرين من الشهادة…</div>';
     function go(list) {
       if (!list || !list.length) return back(true);
-      var ex = list[Math.floor(Math.random() * list.length)];
-      drawEx(host, ex, p.url, back);
+      var k = Math.floor(Math.random() * list.length);
+      drawEx(host, list[k], p.url, back, k + 1);
     }
     if (BEMREAL.cache[p.url]) { go(BEMREAL.cache[p.url]); return true; }
     fetch(new URL(p.url, ROOT).href).then(function (r) { return r.text(); })
@@ -475,51 +475,17 @@
       .catch(function () { back(true); });
     return true;
   }
-  function drawEx(host, ex, url, back) {
-    var src = (ex.context.match(/^<span[^>]*>\(([^)]*(?:\([^)]*\))?[^)]*)\)<\/span><br>/) || [])[1] || "";
+  function drawEx(host, ex, url, back, num) {
+    /* his choice 2026-11-21 «بطاقة تفتح صفحته»: a card with the statement; the button opens the BEM page at this exercise */
+    var src = (ex.context.match(/^<span[^>]*>\(([^<]*)\)<\/span><br>/) || [])[1] || "";
     var ctx = ex.context.replace(/^<span[^>]*>\([^<]*\)<\/span><br>/, "");
     var title = String(ex.title || "").replace(/^التمرين\s*\d+\s*:\s*/, "");
-    host.innerHTML = '<div class="bemreal"><div class="row"><span class="tag" style="background:#fef3c7;color:#78350f;border-color:#f59e0b">📜 تمرين من الشهادة' + (src ? " · " + esc(src) : "") + "</span></div>" +
+    host.innerHTML = '<div class="bemreal"><div class="row"><span class="tag" style="background:#fef3c7;color:#78350f">📜 تمرين من الشهادة' + (src ? " · " + esc(src) : "") + "</span></div>" +
       "<h3>" + esc(title) + "</h3>" + (ctx ? '<div class="q">' + ctx + "</div>" : "") +
-      ex.questions.map(function (q, k) {
-        return '<div class="bq" data-k="' + k + '"' + (k ? " hidden" : "") + '><div class="q">' + q.text + "</div>" +
-          '<div class="row"><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" aria-label="إجابتك" placeholder="اكتب إجابتك"><button type="button" class="b go">تحقّق</button></div>' +
-          '<div class="fb" role="status" aria-live="polite"></div><div class="sol" hidden><b>✔ الإجابة النموذجية:</b>' + (q.steps || []).map(function (s) { return "<div>" + s + "</div>"; }).join("") + "</div></div>";
-      }).join("") +
-      '<div class="syms">' + ["√", "²", "x", "(", ")", "−", "+", ";", ",", "/", "⌫"].map(function (s) { return '<button type="button" aria-label="' + (s === "⌫" ? "حذف" : "أضف " + s) + '">' + s + "</button>"; }).join("") + "</div>" +
-      '<div class="row" style="margin-top:8px"><a class="sub" href="' + esc(url) + '">📄 الموضوع كاملا</a><span class="sp"></span><button type="button" class="b s nx">🔄 تمرين آخر</button></div></div>';
-    var cur = 0, score = 0;
-    function box() { return $('.bq[data-k="' + cur + '"]', host); }
-    $$(".syms button", host).forEach(function (b) {
-      b.onclick = function () { var i = $("input:not(:disabled)", box() || host); if (!i) return; var s = b.textContent; i.value = s === "⌫" ? i.value.slice(0, -1) : i.value + s; i.focus(); };
-    });
+      ex.questions.map(function (q) { return '<div class="q">' + q.text + "</div>"; }).join("") +
+      '<div class="px-btns"><a class="b" style="text-decoration:none;display:inline-block" href="' + esc(url) + "#ex-" + num + '">📝 حُلّ هذا التمرين في صفحته</a></div>' +
+      '<div class="row" style="margin-top:4px"><span class="sp"></span><button type="button" class="b s nx">🔄 تمرين آخر</button></div></div>';
     $(".nx", host).onclick = function () { back(false); };
-    ex.questions.forEach(function (q, k) {
-      var bx = $('.bq[data-k="' + k + '"]', host), inp = $("input", bx), go = $(".go", bx), fb = $(".fb", bx), left = 3;
-      function same(a, b) { return norm(a) === norm(b); }
-      function end(good) {
-        inp.disabled = go.disabled = true; inp.parentNode.hidden = true; $(".sol", bx).hidden = false;
-        if (good) { score++; fb.className = "fb s"; fb.innerHTML = "⭐".repeat(left) + " أحسنت!"; try { if (window.flyStars) window.flyStars(fb, 8); } catch (e) {} }
-        else { fb.className = "fb f"; fb.innerHTML = "📘 الجواب الصحيح: <b>" + esc(q.exact[0]) + "</b>. اقرأ الإجابة النموذجية."; }
-        cur = k + 1;
-        var nb = box();
-        if (nb) { nb.hidden = false; setTimeout(function () { try { $("input", nb).focus({ preventScroll: true }); } catch (e) {} nb.scrollIntoView({ block: "nearest", behavior: "smooth" }); }, 250); }
-        else { $(".syms", host).hidden = true; var f = el("div", "fb s", "🏁 أنهيت التمرين: " + score + " / " + ex.questions.length + " أجوبة صحيحة. اضغط «🔄 تمرين آخر»."); $(".nx", host).parentNode.parentNode.insertBefore(f, $(".nx", host).parentNode); }
-      }
-      function check() {
-        if (inp.disabled) return;
-        var raw = inp.value.trim();
-        if (!raw) { fb.className = "fb h"; fb.textContent = "اكتب إجابتك أولا."; return; }
-        if ((q.exact || []).some(function (a) { return same(a, raw); })) return end(true);
-        left--;
-        inp.classList.remove("shake"); void inp.offsetWidth; inp.classList.add("shake");
-        var part = (q.partial || []).some(function (a) { return same(a, raw); });
-        if (left > 0) { fb.className = "fb h"; fb.innerHTML = (part && q.partialMsg ? "🔎 " + q.partialMsg + "<br>" : "") + "<strong>💡 التلميح " + (3 - left) + ":</strong> " + (left === 2 ? q.h1 : q.h2); }
-        else end(false);
-      }
-      go.onclick = check;
-      inp.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); check(); } });
-    });
   }
 
   function bemChallenge(host) {
