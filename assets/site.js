@@ -1129,11 +1129,12 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       var css = el("style");
       css.textContent = ".sx-1bar{position:fixed;left:0;right:0;bottom:0;z-index:2500;display:flex;gap:8px;align-items:center;justify-content:center;" +
         "padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid #cbd5e1;box-shadow:0 -4px 14px rgba(15,23,42,.12);direction:rtl}" +
-        ".sx-1bar .n{font-size:.8rem;color:#475569;white-space:nowrap}" +
-        ".sx-1bar button{font:inherit;font-weight:800;font-size:1.05rem;border:none;border-radius:12px;padding:11px 18px;min-width:58%;cursor:pointer;color:#fff;background:#1e3a8a}" +
+        ".sx-1bar .n{font-size:.85rem;font-weight:800;color:#475569;white-space:nowrap;direction:ltr}" +
+        ".sx-1bar button{flex:1;max-width:560px;font:inherit;font-weight:800;font-size:1.3rem;border:none;border-radius:14px;padding:15px 18px;min-height:58px;cursor:pointer;color:#fff;background:#1e3a8a;box-shadow:0 3px 0 rgba(15,23,42,.35)}" +
+        ".sx-1bar button:active{transform:translateY(2px);box-shadow:none}.sx-1bar{transition:bottom .12s}" +
         ".sx-1bar button.next{background:#15803d}.sx-1bar button.end{background:#b45309}" +
         "body.sx-1b{padding-bottom:84px!important}body.sx-1b .q-box.sx-cur{outline:2.5px solid #38bdf8;outline-offset:3px;border-radius:10px}" +
-        "@media (max-width:700px){body.sx-1b .input-line .btn-check{display:none!important}}" +
+        "body.sx-1b .q-box .btn-check{display:none!important}body.sx-1b{padding-bottom:96px!important}" +
         "body.sx-1b .sx-pad-fab,body.sx-1b .sx-calc-fab{bottom:80px!important}body.sx-exam .sx-1bar{bottom:58px}body.sx-exam.sx-1b{padding-bottom:140px!important}body.sx-exam.sx-1b .sx-pad-fab,body.sx-exam.sx-1b .sx-calc-fab{bottom:136px!important}" +
         ".sx-lesson{display:block;margin:10px 0 2px;padding:8px 12px;border:1.5px dashed #0f766e;border-radius:10px;color:#0f766e;font-weight:800;text-decoration:none;background:#f0fdfa}" +
         "html.dark .sx-1bar{background:rgba(15,23,42,.96);border-color:#334155}html.dark .sx-1bar .n{color:#cbd5e1}" +
@@ -1141,6 +1142,17 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       document.head.appendChild(css);
       var bar = el("div", "sx-1bar"), num = el("span", "n"), B = el("button");
       B.type = "button"; bar.appendChild(num); bar.appendChild(B); document.body.appendChild(bar);
+      /* 2026-11-21 his report: with the phone keyboard open the bar was hidden under it → keep the bar just above the keyboard */
+      B.addEventListener("mousedown", function (e) { e.preventDefault(); });   /* tapping the button does not close the keyboard */
+      B.addEventListener("touchstart", function () {}, { passive: true });
+      function lift() {
+        var vv = window.visualViewport; if (!vv) return;
+        var hidden = window.innerHeight - (vv.height + vv.offsetTop);
+        bar.style.bottom = (hidden > 40 ? hidden : 0) + "px";
+      }
+      if (window.visualViewport) { window.visualViewport.addEventListener("resize", lift); window.visualViewport.addEventListener("scroll", lift); }
+      window.addEventListener("focusin", function () { setTimeout(lift, 350); });
+      window.addEventListener("focusout", function () { setTimeout(lift, 350); });
       var cur = 0;
       function locked(k) { try { return !!questionLocked[Q[k].q.qId]; } catch (e) { return Q[k].inp.disabled; } }
       function nextOpen(from) {
@@ -1151,7 +1163,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       function firstOpen() { for (var k = 0; k < Q.length; k++) if (!locked(k)) return k; return -1; }
       function show() {
         Q.forEach(function (x, k) { x.box.classList.toggle("sx-cur", k === cur); });
-        num.textContent = "السؤال " + (cur + 1) + " من " + Q.length;
+        num.textContent = (cur + 1) + " / " + Q.length; num.title = "السؤال " + (cur + 1) + " من " + Q.length;
         if (!locked(cur)) { B.className = ""; B.textContent = "✔ تحقق"; return; }
         var n = nextOpen(cur);
         if (n < 0) { B.className = "end"; B.textContent = "🏁 النتيجة النهائية"; }
