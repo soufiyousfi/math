@@ -120,6 +120,20 @@ body{font-family:"Tajawal",system-ui,-apple-system,sans-serif;font-size:17px;bac
 .lvpick .g button[data-pick="2m"]{--c:var(--l2)} .lvpick .g button[data-pick="3m"]{--c:var(--l3)} .lvpick .g button[data-pick="4m"]{--c:var(--l4)}
 .lvpick .how{font-size:.86rem;text-align:start;background:var(--soft);border:1px solid var(--border);border-radius:10px;padding:8px 10px;margin:0 0 10px}
 .lvpick .skip{font:inherit;cursor:pointer;background:none;border:0;color:var(--muted);text-decoration:underline;font-size:.88rem;padding:4px}
+/* «🎯 ما درس اليوم؟» (2026-11-22): the pupil picks the lesson of the day */
+.daypick{align-items:flex-start;padding-top:6vh}
+.daypick .box{position:relative;text-align:start;max-height:86vh;display:flex;flex-direction:column}
+.daypick h2{font-size:1.15rem;padding-inline-end:30px}
+.daypick .x{position:absolute;top:10px;left:10px;font:inherit;cursor:pointer;background:var(--soft);color:var(--text);border:1px solid var(--border);border-radius:50%;width:32px;height:32px}
+.daypick .dsearch{display:flex;align-items:center;gap:6px;border:1.5px solid var(--border);border-radius:12px;padding:6px 10px;margin-bottom:8px;background:var(--surface)}
+.daypick .dsearch input{flex:1;min-width:0;font:inherit;border:0;outline:0;background:none;color:var(--text)}
+.daypick .list{overflow:auto;flex:1;min-height:0}
+.daypick .list h3{margin:10px 0 4px;font-size:.88rem;color:var(--muted)}
+.daypick .row{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--text);font-weight:700;border:1px solid var(--border);border-right:4px solid var(--dars);border-radius:10px;padding:9px 10px;margin-bottom:6px;background:var(--surface)}
+.daypick .row .t{flex:1}
+.daypick .row .ok{color:var(--ok);font-weight:900}
+.daypick .again{display:block;text-decoration:none;font-weight:800;color:#0a355c;background:#fbbf24;border-radius:10px;padding:8px 10px;margin-bottom:8px}
+.daypick .none{color:var(--muted)}
 .cta .resume{background:rgba(255,255,255,.16);color:#fff;border:1.5px solid rgba(255,255,255,.5);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pill{background:rgba(15,23,42,.28);border:1px solid rgba(255,255,255,.18);padding:3px 10px;border-radius:8px;font-size:.78rem;font-weight:700}
 .prof-bar{display:none;margin-top:12px;background:var(--accent-light);color:#92400e;border:2px solid var(--accent);border-radius:12px;padding:8px 12px;font-size:.85rem;font-weight:700}
@@ -405,7 +419,7 @@ footer{padding-top:12px}
     <div class="hbtns" id="hbtns"><button type="button" class="theme-btn" id="themeBtn" aria-label="الوضع الليلي أو النهاري">🌙</button></div></div>
     <h1>رياضيات التعليم المتوسط <span class="x">√π ∑</span></h1>
     <p class="slogan">مع الأستاذ يوسفي السوفي · تعلّم، جرّب، صحّح… وتفوّق! ✨</p>
-    <div class="cta"><a class="start" id="start" href="#levels-step">🚀 ابدأ التعلّم</a><a class="resume" id="resume" hidden></a><a class="fbh" id="fbHero" href="" target="_blank" rel="noopener" hidden title="صفحتنا على فيسبوك">📘<span> فيسبوك</span></a></div>
+    <div class="cta"><a class="start" id="start" href="#levels-step">🎯 ما درس اليوم؟</a><a class="resume" id="resume" hidden></a><a class="fbh" id="fbHero" href="" target="_blank" rel="noopener" hidden title="صفحتنا على فيسبوك">📘<span> فيسبوك</span></a></div>
     <section class="stats" aria-label="سجلّ إنجازك على هذا الجهاز">
       <div class="srow"><b class="jt">📚 تابع رحلتك</b><span class="nums"><span title="نجومك">⭐ <span id="stStars">0</span></span><span title="أنشطة أكملتها">✅ <span id="stDone">0</span></span></span></div>
       <div class="track"><div class="fill" id="stFill"></div></div>
@@ -771,37 +785,62 @@ const isFull = it => /(^|\/)dars-/.test(it.url);          // the whole-sequence 
 const roOf = it => it.ro == null ? 999 : it.ro;
 function byOrder(a, b) { return seqNum(a) - seqNum(b) || isFull(b) - isFull(a) || roOf(a) - roOf(b) || a.url.localeCompare(b.url, "en", { numeric: true }); }
 
-// ---------- «🎯 مهمتك الآن»: the next activity of the sequence taught THIS week ----------
-// first week of each sequence in the annual plans 2026/2027 (مذكرات/التوزيع_السنوي: 1AM_v4, 2AM_v3, 3AM_v3, 4AM_v4)
-const SEQ_START = {
-  "1m": ["11/10", "08/11", "06/12", "31/01", "21/02", "11/04", "25/04"],
-  "2m": ["11/10", "08/11", "06/12", "31/01", "21/02", "11/04", "02/05"],
-  "3m": ["11/10", "02/11", "06/12", "07/02", "21/02", "11/04", "02/05"],
-  "4m": ["04/10", "25/10", "22/11", "10/01", "14/02", "04/04", "25/04"],
-};
-function seqNow(lv) {
-  const d = new Date(), y = d.getMonth() >= 7 ? d.getFullYear() : d.getFullYear() - 1;   // school year starts in September
-  let s = 1;
-  (SEQ_START[lv] || []).forEach((t, i) => { const [dd, mm] = t.split("/").map(Number); if (d >= new Date(mm >= 8 ? y : y + 1, mm - 1, dd)) s = i + 1; });
-  return s;
-}
-const TASK_ORDER = ["dars", "series", "wadjib", "al3ab", "fard", "idmaj", "tahaddi", "ikhtibar", "chahada"];
-function nextTask() {
-  const P = progress(), s = seqNow(state.level);
-  const open = state.items.filter(i => i.level === state.level && i.type === "html" && !/kharitat-/.test(i.url) && !(P[i.url] && P[i.url].d));
-  for (const k of [s, s - 1]) {   // this week's sequence, else the one before (its content may still be coming)
-    const c = open.filter(i => seqNum(i) === k).sort((a, b) => TASK_ORDER.indexOf(a.section) - TASK_ORDER.indexOf(b.section) || byOrder(a, b));
-    if (c.length) return { it: c[0], s: k };
-  }
+// ---------- «🎯 درس اليوم»: the PUPIL chooses the lesson done today in class (his ask 2026-11-22: a guess from the
+// annual plan is not reliable, every class moves at its own pace), from the list in sequence order or by search ----------
+function today() { const d = new Date(); return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate(); }
+function todayPick() {
+  try { const t = JSON.parse(localStorage.getItem("math-today") || "null"); if (t && t.d === today()) return state.items.find(i => i.url === t.u) || null; } catch (e) {}
   return null;
 }
+const shortT = it => cleanTitle(it).t.replace(/^(أُتقِن|درس تفاعلي)\s*:\s*/, "").replace(/\s*\(المقطع[^)]*\)\s*$/, "");
 function renderTask() {
-  const a = document.getElementById("start"), t = state.items.length ? nextTask() : null;
-  if (!t) { a.href = "#levels-step"; a.innerHTML = "🚀 ابدأ التعلّم"; a.removeAttribute("title"); return; }
-  a.href = t.it.url;
-  a.innerHTML = `<span>🎯</span><span class="tx">مهمتك الآن: ${esc(cleanTitle(t.it).t.replace(/^(أُتقِن|درس تفاعلي)\s*:\s*/, "").replace(/\s*\(المقطع[^)]*\)\s*$/, ""))}</span>`;
-  a.title = `المقطع ${SEQ_NAME[t.s] || t.s}: ما يُدرَس في القسم هذا الأسبوع حسب التوزيع السنوي`;
+  const a = document.getElementById("start"), t = state.items.length ? todayPick() : null;
+  a.href = "#levels-step";
+  a.innerHTML = t ? `<span>🎯</span><span class="tx">درس اليوم: ${esc(shortT(t))}</span>` : "🎯 ما درس اليوم؟";
+  a.title = "اختر الدرس الذي درسته اليوم في القسم";
 }
+function dayRows(list, withSec) {
+  const P = progress();
+  return list.map(it => `<a class="row" href="${esc(it.url)}" data-day="${esc(it.url)}">${withSec ? `<span class="ic">${SEC[it.section][3]}</span>` : ""}` +
+    `<span class="t">${esc(shortT(it))}</span>${P[it.url] && P[it.url].d ? `<span class="ok">✓</span>` : ""}</a>`).join("");
+}
+function dayList(box, q) {
+  const all = state.items.filter(i => i.level === state.level && i.type === "html" && !/kharitat-/.test(i.url));
+  if (norm(q)) {
+    const save = state.q; state.q = q; const found = all.filter(match).sort((a, b) => (a.section !== "dars") - (b.section !== "dars") || byOrder(a, b));   // lessons first state.q = save;
+    box.innerHTML = found.length ? dayRows(found.slice(0, 40), true) : `<p class="none">📭 لا توجد نتيجة. جرّب كلمة أخرى، مثل: الكسور، طالس، الجذور.</p>`;
+    return;
+  }
+  const lessons = all.filter(i => i.section === "dars").sort(byOrder), groups = {};
+  for (const it of lessons) (groups[seqNum(it)] = groups[seqNum(it)] || []).push(it);
+  box.innerHTML = Object.keys(groups).map(Number).sort((a, b) => a - b).map(k =>
+    `<h3>${k >= 98 ? "دروس أخرى" : "المقطع " + (SEQ_NAME[k] || k)}</h3>` + dayRows(groups[k])).join("") ||
+    `<p class="none">لا توجد دروس تفاعلية بعد في هذا المستوى. ابحث عن تمرين بالأعلى.</p>`;
+}
+function openDay() {
+  const ov = document.createElement("div");
+  ov.className = "lvpick daypick"; ov.setAttribute("role", "dialog"); ov.setAttribute("aria-modal", "true"); ov.setAttribute("aria-labelledby", "dpH");
+  const t = todayPick();
+  ov.innerHTML = `<div class="box"><button type="button" class="x" data-x="1" aria-label="إغلاق">✕</button>
+    <h2 id="dpH">🎯 ما الدرس الذي درسته اليوم؟</h2>
+    <p>${LEVEL_NAME[state.level]}: اختر الدرس من القائمة أو ابحث عنه.</p>
+    ${t ? `<a class="again" href="${esc(t.url)}">▶ افتح درس اليوم: ${esc(shortT(t))}</a>` : ""}
+    <label class="dsearch"><span>🔍</span><input type="search" enterkeyhint="search" autocomplete="off" placeholder="ابحث: الكسور، طالس، المعادلات…" aria-label="ابحث عن درس"></label>
+    <div class="list"></div></div>`;
+  const box = ov.querySelector(".list"), inp = ov.querySelector("input");
+  dayList(box, "");
+  inp.addEventListener("input", () => dayList(box, inp.value));
+  ov.addEventListener("click", e => {
+    if (e.target === ov || e.target.closest("[data-x]")) { ov.remove(); return; }
+    const r = e.target.closest("[data-day]");
+    // only a lesson becomes «درس اليوم»; a فرض or a series found by the search just opens
+    if (r && (state.items.find(i => i.url === r.dataset.day) || {}).section === "dars") try { localStorage.setItem("math-today", JSON.stringify({ u: r.dataset.day, d: today() })); } catch (x) {}
+  });
+  document.addEventListener("keydown", function k(e) { if (e.key === "Escape") { ov.remove(); document.removeEventListener("keydown", k); } });
+  document.body.appendChild(ov);
+  const bx = ov.querySelector(".box"); bx.tabIndex = -1; bx.focus({ preventScroll: true });
+}
+document.getElementById("start").addEventListener("click", e => { if (!state.items.length) return; e.preventDefault(); openDay(); });
 
 // ---------- First visit: «في أي سنة أنت؟» once, then the choice is remembered ----------
 function firstVisit() {
@@ -818,7 +857,7 @@ function firstVisit() {
   ov.innerHTML = `<div class="box"><h2 id="lvpH">👋 مرحبا! في أي سنة أنت؟</h2>
     <p>اختر سنتك مرة واحدة، فتظهر لك دروسها وتمارينها مباشرة.</p>
     <div class="g">${LEVELS.map(([id, n, name]) => `<button type="button" data-pick="${id}"><b>${n}م</b>${name}</button>`).join("")}</div>
-    <p class="how">بعدها اضغط الزر الأصفر <b>«🎯 مهمتك الآن»</b>، أو اختر الدرس الذي درسته في القسم.<br>لكل سؤال 3 محاولات: تلميح، ثم تلميح أوضح، ثم الحل المفصّل.</p>
+    <p class="how">بعدها اضغط الزر الأصفر <b>«🎯 ما درس اليوم؟»</b> واختر الدرس الذي درسته في القسم.<br>لكل سؤال 3 محاولات: تلميح، ثم تلميح أوضح، ثم الحل المفصّل.</p>
     <button type="button" class="skip" data-pick="">أنا أستاذ أو وليّ: أتصفّح فقط</button></div>`;
   ov.addEventListener("click", e => {
     const b = e.target.closest("[data-pick]");
