@@ -596,7 +596,7 @@ body.sx-exam .sx-pad-fab{bottom:74px}
 .sx-calc .k button.d{background:#334155}.sx-calc .k button.op{background:#475569;font-size:1.1rem}
 .sx-calc .k button.eq{background:#f59e0b;color:#111827;font-size:1.1rem}.sx-calc .k button.w3{grid-column:span 3}
 .sx-calc .k button.cl{background:#7f1d1d}.sx-calc .k button{padding:7px 2px;font-size:1rem}.sx-calc .k{gap:5px}
-.sx-calc .r.er{color:#fca5a5}
+.sx-calc .r.er{color:#fca5a5}.sx-calc [hidden]{display:none!important}
 .sx-calc .r{margin-top:8px;padding:8px 10px;border-radius:10px;background:#1e293b;color:#7dd3fc;font-weight:800;direction:ltr;text-align:left;min-height:1.6em}
 .sx-calc .n{font-size:.74rem;color:#94a3b8;margin-top:6px}
 /* clearer text, calm colours (his asks 2026-11-15: «الكتابة واضحة», then «نقص شوي من الألوان») */
@@ -2609,7 +2609,10 @@ body.sx-exam .sx-calc-fab{bottom:74px}
   window.__sxCalcEval = calcEval;
   function calcMode(lv, sec) {
     if (lv === "4m") return "bem";
-    if (lv === "2m" || lv === "3m") return /^(idmaj)$/.test(sec) ? "basic" : "";   /* his limits for 2AM-3AM (decision 2026-11-22) */
+    /* 2AM-3AM, his choice 2026-11-22 «كل شيء ما عدا الحساب»: everywhere EXCEPT the calculation exercises (operations, fractions,
+       relative and rational numbers, powers, literal calculus, equations). Decided per EXERCISE from the resources of its questions
+       (window.__resmap + assets/resources.json); pages without that map: only the situations (idmaj) */
+    if (lv === "2m" || lv === "3m") return window.__resmap || sec === "idmaj" ? "basic" : "";
     return "";
   }
   function addCalc(inBar, mode) {
@@ -2648,7 +2651,42 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       };
     });
     x.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); e.stopPropagation(); run(); } });
-    function toggle() { panel.hidden = !panel.hidden; }
+    var CALCRES = /سلسلة عمليات|الأقواس|توزيع الضرب|قسمة|كسرين|عدد(?:ين)? نسبي|أعداد نسبية|مجموع جبري|المسافة بين نقطتين|مقلوب|ناطق|قوة|قوى|الكتابة العلمية|عبارة|نشر عبارات|المعادلات/;
+    var resRows = null, lastCard = null;
+    if (mode === "basic" && window.__resmap) {
+      fetch(ROOT.href + "assets/resources.json", { cache: "force-cache" }).then(function (r) { return r.json(); }).then(function (R) { resRows = R[level] || []; }).catch(function () {});
+      document.addEventListener("focusin", function (e) { var c = e.target.closest && e.target.closest(".exercise-card,.card"); if (c && !panel.contains(e.target)) lastCard = c; });
+      document.addEventListener("click", function (e) { var c = e.target.closest && e.target.closest(".exercise-card,.card"); if (c) lastCard = c; }, true);
+    }
+    function cardNow() {
+      var cs = $$(".exercise-card,.card").filter(function (c) { return c.offsetParent !== null && $(".q-box", c); });
+      if (lastCard && cs.indexOf(lastCard) >= 0) { var r0 = lastCard.getBoundingClientRect(); if (r0.bottom > 0 && r0.top < window.innerHeight) return lastCard; }
+      var best = null, bs = 0, h = window.innerHeight;
+      cs.forEach(function (c) { var r = c.getBoundingClientRect(), v = Math.min(r.bottom, h) - Math.max(r.top, 0); if (v > bs) { bs = v; best = c; } });
+      return best;
+    }
+    /* true = calculation exercise: every mapped question of the exercise on screen is a calculation resource */
+    function calcOnly() {
+      if (mode !== "basic" || section === "idmaj" || !window.__resmap) return false;
+      if (!resRows) return true;   /* map not loaded yet: be strict */
+      var c = cardNow(); if (!c) return false;
+      var hd = $(".card-header", c); if (hd && /الوضعية/.test(hd.textContent)) return false;   /* the situation part of an exam */
+      var n = 0, calc = 0;
+      $$(".q-box[id^='qbox-']", c).forEach(function (b) {
+        var m = window.__resmap[b.id.slice(5)]; if (!m || m[0] < 0) return;
+        n++; var row = resRows[m[0]]; if (row && CALCRES.test(row.n || "")) calc++;
+      });
+      return n > 0 && calc === n;
+    }
+    var stop = el("div", "r er sx-calc-no");
+    stop.innerHTML = "🚫 هذا تمرين حساب: الحاسبة غير مسموحة فيه. احسب في كراسك، فالهدف هو أن تتقن الحساب بنفسك.";
+    function toggle() {
+      if (!panel.hidden) { panel.hidden = true; return; }
+      var no = calcOnly();
+      if (no && !stop.parentNode) panel.insertBefore(stop, $(".k", panel));
+      stop.hidden = !no; $(".k", panel).hidden = no; x.hidden = no; out.hidden = no;
+      panel.hidden = false;
+    }
     var pills = $(".sx-pills");
     if (inBar && pills) {
       var b = el("button", "sx-pill tool", "🧮 الحاسبة");
