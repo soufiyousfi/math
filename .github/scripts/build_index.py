@@ -455,6 +455,15 @@ def main():
                     if name.endswith(".html"):
                         inject_site_js(os.path.join(pack, name))
                         packs.append(f"{lv}/bem/{name}")
+        # 🥇 olympiad section (2026-11-22): olymp/index.html + olymp/<g12|g34>/*.html, outside the level folders
+        # because one paper serves two levels (1AM+2AM, 3AM+4AM)
+        if os.path.isdir("olymp"):
+            for root, _, names in sorted(os.walk("olymp")):
+                for name in sorted(names):
+                    if name.endswith(".html"):
+                        path = os.path.join(root, name)
+                        inject_site_js(path)
+                        packs.append(path.replace(os.sep, "/"))
         inline_index(items)
         inline_links(items)
         print(f"sitemap.xml: {write_sitemap(items, packs)} pages")
