@@ -434,6 +434,42 @@
     if (document.body) show(); else document.addEventListener("DOMContentLoaded", show);
   })();
 
+  /* 📝 scratchpad styles: on the exercise pages (inside css below) and on the home page (2026-11-22 his report
+     «في تمارين لا نهائية وتمرين اليوم وتحدي الشهادة لا تظهر المسودة»: plus.js opens the pad there through window.__sxPad) */
+  var PADCSS = `
+html.sx-noscroll,html.sx-noscroll body{overflow:hidden}
+.sx-pad{position:fixed;inset:0;z-index:3500;background:#fff;display:flex;flex-direction:column;direction:rtl;font-family:inherit}
+.sx-pad-top{display:flex;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid #e2e8f0}
+.sx-pad-top b{color:#1e3a8a;white-space:nowrap}
+.sx-pad-top .t{flex:1;min-width:0;color:#475569;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sx-pad-top button,.sx-pad-tools button{font:inherit;font-weight:800;cursor:pointer;border-radius:10px;padding:6px 10px;background:#fff;color:#1e293b;border:1.5px solid #cbd5e1;font-size:.86rem}
+.sx-pad-tools{display:flex;gap:6px;flex-wrap:wrap;padding:6px 10px;border-bottom:1px solid #e2e8f0}
+.sx-pad-tools .col{padding:4px 8px}
+.sx-pad-tools .col i{display:block;width:18px;height:18px;border-radius:50%}
+.sx-pad-tools .on{border-color:#1e3a8a;box-shadow:0 0 0 2px #c7d2fe}
+.sx-pad-q{padding:4px 12px;border-bottom:1px solid #e2e8f0;font-size:.92rem}
+.sx-pad-q summary{cursor:pointer;font-weight:800;color:#1e3a8a}
+.sx-pad-q>div{max-height:34vh;overflow:auto;line-height:1.75}
+.sx-pad-q p{margin:4px 0}
+.sx-pad-q .pq{border-top:1px dashed #e2e8f0;padding:4px 0}
+.sx-pad-q .pa{display:flex;gap:6px;margin:2px 0 4px}
+.sx-pad-q .pa input{flex:1;min-width:0;font:inherit;font-size:1rem;padding:5px 8px;border:1.5px solid #cbd5e1;border-radius:8px;direction:ltr;text-align:center}
+.sx-pad-q .pa button{font:inherit;font-weight:800;font-size:.82rem;cursor:pointer;border-radius:8px;padding:4px 9px;border:0;background:#1e3a8a;color:#fff;white-space:nowrap}
+.sx-pad-q .pf{font-size:.82rem;color:#334155}
+.sx-pad-q .pf.ok{color:#166534}.sx-pad-q .pf.no{color:#92400e}
+.sx-pad-fab{position:fixed;right:12px;bottom:14px;z-index:2500;font:inherit;font-weight:800;cursor:pointer;border-radius:999px;padding:10px 14px;
+  background:#fff;color:#1e3a8a;border:2px solid #1e3a8a;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+body.sx-exam .sx-pad-fab{bottom:74px}
+@media print{.sx-pad-fab{display:none!important}}
+.sx-pad-area{flex:1;position:relative;touch-action:none;background-color:#fff;
+  background-image:linear-gradient(#e0e7ff 1px,transparent 1px),linear-gradient(90deg,#e0e7ff 1px,transparent 1px);background-size:22px 22px}
+.sx-pad-area canvas{position:absolute;inset:0;touch-action:none;cursor:crosshair}
+.sx-pad-note{font-size:.78rem;color:#64748b;padding:5px 10px;border-top:1px solid #e2e8f0}
+`;
+  window.__sxPad = function (key, title, html) {
+    if (!document.getElementById("sx-padcss")) { var ps = el("style", null, PADCSS); ps.id = "sx-padcss"; document.head.appendChild(ps); }
+    openPad(key, title, null, html);
+  };
   var pm = rel.match(/^([1-4]m)\/(?:(t[1-3])\/([a-z0-9]+)|(bem))\//);
   window.__sxGenBank = genBank;
   if (!pm) { initDaily(); return; }
@@ -613,34 +649,7 @@ html.sx-dark body>header,html.sx-dark .hero{filter:invert(1) hue-rotate(180deg)}
 .sx-gen-btn{display:block;margin:8px 0 2px;border-color:#99f6e4;color:#115e59}
 .sx-say{font:inherit;font-size:.82rem;line-height:1.5;cursor:pointer;border-radius:8px;padding:0 6px;margin-inline-end:6px;background:#fff;border:1px solid #cbd5e1;vertical-align:middle}
 .sx-say.on{border-color:#0f766e;box-shadow:0 0 0 2px #ccfbf1}
-html.sx-noscroll,html.sx-noscroll body{overflow:hidden}
-.sx-pad{position:fixed;inset:0;z-index:3500;background:#fff;display:flex;flex-direction:column;direction:rtl;font-family:inherit}
-.sx-pad-top{display:flex;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid #e2e8f0}
-.sx-pad-top b{color:#1e3a8a;white-space:nowrap}
-.sx-pad-top .t{flex:1;min-width:0;color:#475569;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sx-pad-top button,.sx-pad-tools button{font:inherit;font-weight:800;cursor:pointer;border-radius:10px;padding:6px 10px;background:#fff;color:#1e293b;border:1.5px solid #cbd5e1;font-size:.86rem}
-.sx-pad-tools{display:flex;gap:6px;flex-wrap:wrap;padding:6px 10px;border-bottom:1px solid #e2e8f0}
-.sx-pad-tools .col{padding:4px 8px}
-.sx-pad-tools .col i{display:block;width:18px;height:18px;border-radius:50%}
-.sx-pad-tools .on{border-color:#1e3a8a;box-shadow:0 0 0 2px #c7d2fe}
-.sx-pad-q{padding:4px 12px;border-bottom:1px solid #e2e8f0;font-size:.92rem}
-.sx-pad-q summary{cursor:pointer;font-weight:800;color:#1e3a8a}
-.sx-pad-q>div{max-height:34vh;overflow:auto;line-height:1.75}
-.sx-pad-q p{margin:4px 0}
-.sx-pad-q .pq{border-top:1px dashed #e2e8f0;padding:4px 0}
-.sx-pad-q .pa{display:flex;gap:6px;margin:2px 0 4px}
-.sx-pad-q .pa input{flex:1;min-width:0;font:inherit;font-size:1rem;padding:5px 8px;border:1.5px solid #cbd5e1;border-radius:8px;direction:ltr;text-align:center}
-.sx-pad-q .pa button{font:inherit;font-weight:800;font-size:.82rem;cursor:pointer;border-radius:8px;padding:4px 9px;border:0;background:#1e3a8a;color:#fff;white-space:nowrap}
-.sx-pad-q .pf{font-size:.82rem;color:#334155}
-.sx-pad-q .pf.ok{color:#166534}.sx-pad-q .pf.no{color:#92400e}
-.sx-pad-fab{position:fixed;right:12px;bottom:14px;z-index:2500;font:inherit;font-weight:800;cursor:pointer;border-radius:999px;padding:10px 14px;
-  background:#fff;color:#1e3a8a;border:2px solid #1e3a8a;box-shadow:0 6px 18px rgba(0,0,0,.2)}
-body.sx-exam .sx-pad-fab{bottom:74px}
-@media print{.sx-pad-fab{display:none!important}}
-.sx-pad-area{flex:1;position:relative;touch-action:none;background-color:#fff;
-  background-image:linear-gradient(#e0e7ff 1px,transparent 1px),linear-gradient(90deg,#e0e7ff 1px,transparent 1px);background-size:22px 22px}
-.sx-pad-area canvas{position:absolute;inset:0;touch-action:none;cursor:crosshair}
-.sx-pad-note{font-size:.78rem;color:#64748b;padding:5px 10px;border-top:1px solid #e2e8f0}
+${PADCSS}
 .sx-dlg{max-width:520px!important;margin-top:8vh}
 .sx-dlg p{margin:8px 0;line-height:1.7}
 .sx-list{margin:6px 0 10px;padding-inline-start:20px;line-height:1.75}
@@ -2026,16 +2035,18 @@ body.sx-exam .sx-calc-fab{bottom:74px}
 
   /* ---- 📝 scratchpad: finger drawing on squared paper, colours, eraser, undo ---- */
   var pads = {};
-  function openPad(key, title, src) {
+  function openPad(key, title, src, html) {
+    if (!pads) pads = {};   /* home page: the line above is never reached (the page part returns early) */
     var strokes = pads[key] = pads[key] || [];
     var ov = el("div", "sx-pad");
     var COLS = [["#111827", "أسود"], ["#1d4ed8", "أزرق"], ["#dc2626", "أحمر"], ["#15803d", "أخضر"]];
     ov.innerHTML = '<div class="sx-pad-top"><b>📝 مسودة الحساب</b><span class="t"></span><button type="button" class="x">✕ إغلاق</button></div>' +
       '<div class="sx-pad-tools">' + COLS.map(function (c, i) { return '<button type="button" class="col' + (i === 0 ? " on" : "") + '" data-c="' + c[0] + '" aria-label="' + c[1] + '"><i style="background:' + c[0] + '"></i></button>'; }).join("") +
       '<button type="button" class="w" data-w="2.6">✏️ رفيع</button><button type="button" class="er">🧽 ممحاة</button><button type="button" class="un">↶ تراجع</button><button type="button" class="cl">🗑️ مسح</button></div>' +
-      (src ? '<details class="sx-pad-q" open><summary>📄 نص التمرين (اضغط للتصغير)</summary><div></div></details>' : "") +
+      (src || html ? '<details class="sx-pad-q" open><summary>📄 نص التمرين (اضغط للتصغير)</summary><div></div></details>' : "") +
       '<div class="sx-pad-area"><canvas></canvas></div><div class="sx-pad-note">المسودة لا تُصحَّح ولا تُرسل: اكتب بإصبعك، ثم انقل النتيجة مع الوحدة إلى خانة الجواب.</div>';
     $(".t", ov).textContent = title || "";
+    if (html && !src) { var hq = $(".sx-pad-q div", ov); hq.appendChild(el("div", "", html)); $$("button,input,.sx-say", hq).forEach(function (x) { x.remove(); }); }
     if (src) {
       var q = $(".sx-pad-q div", ov), cb = $(".context-box", src);
       if (cb) q.appendChild(el("p", "", cb.innerHTML));
