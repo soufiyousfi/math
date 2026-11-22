@@ -725,6 +725,7 @@
       ".px-1bar[hidden]{display:none}" +
       ".px-1bar button{flex:1;max-width:560px;font:inherit;font-weight:800;font-size:1.3rem;border:none;border-radius:14px;padding:15px 18px;min-height:58px;cursor:pointer;color:#fff;background:#1e3a8a;box-shadow:0 3px 0 rgba(15,23,42,.35)}" +
       ".px-1bar button.next{background:#15803d}" +
+      ".px-1bar button.pad{flex:0 0 auto;font-size:1rem;min-height:50px;padding:8px 14px;margin-inline-start:8px;background:#fff;color:#1e3a8a;border:2px solid #1e3a8a;box-shadow:none}" +
       "body.px-1b #daily .inrow .ok,body.px-1b #practice .row>.b.go,body.px-1b #bemp .row>.b.go{display:none!important}" +
       "body.px-1b.px-on{padding-bottom:90px}" +
       "body.px-on .sx-upd{bottom:96px!important}" +
@@ -735,6 +736,16 @@
     document.head.appendChild(st);
     var bar = el("div", "px-1bar"), B = el("button");
     B.type = "button"; bar.appendChild(B); bar.hidden = true; document.body.appendChild(bar);
+    /* 📝 draft for the exercise of the box in use (2026-11-22 his «لا تظهر المسودة» on these three boxes); a new exercise = a clean sheet */
+    var P = el("button", "pad", "📝 مسودة"); P.type = "button"; P.title = "مسودة الحساب للتمرين المعروض";
+    if (window.__sxPad) bar.insertBefore(P, B);
+    P.addEventListener("mousedown", function (e) { e.preventDefault(); });
+    P.onclick = function () {
+      var w = (shown && shown.w) || cur || boxes()[0]; if (!w || !window.__sxPad) return;
+      var parts = $$(".dq, .bemreal h3, .q", w).map(function (x) { return x.innerHTML; }), html = parts.join("<br>");
+      var tg = $(".tag, .chip", w), key = w.id + ":" + html.replace(/<[^>]+>/g, "").slice(0, 200);
+      window.__sxPad(key, (tg ? tg.textContent : ""), html);
+    };
     document.body.classList.add("px-1b");
     B.addEventListener("mousedown", function (e) { e.preventDefault(); });   /* keep the keyboard open */
     var cur = null;
