@@ -1292,6 +1292,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         ".sx-1bar .n{font-size:.85rem;font-weight:800;color:#475569;white-space:nowrap;direction:ltr}" +
         ".sx-1bar button{flex:1;max-width:560px;font:inherit;font-weight:800;font-size:1.3rem;border:none;border-radius:14px;padding:15px 18px;min-height:58px;cursor:pointer;color:#fff;background:#1e3a8a;box-shadow:0 3px 0 rgba(15,23,42,.35)}" +
         ".sx-1bar button:active{transform:translateY(2px);box-shadow:none}.sx-1bar{transition:bottom .12s}" +
+        ".sx-1bar button.skip{flex:0 0 auto;font-size:.95rem;min-height:44px;padding:8px 12px;background:#fff;color:#6d28d9;border:2px solid #c4b5fd;box-shadow:none}" +
         ".sx-1bar button.next{background:#15803d}.sx-1bar button.end{background:#b45309}" +
         "body.sx-1b{padding-bottom:84px!important}body.sx-1b .q-box.sx-cur{outline:2.5px solid #38bdf8;outline-offset:3px;border-radius:10px}" +
         "body.sx-1b .q-box.sx-cur input[type=text]:not(:disabled){border:3px solid #1e3a8a!important;background:#fffbeb!important;box-shadow:0 0 0 4px rgba(56,189,248,.35)!important}" +
@@ -1340,7 +1341,50 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         return -1;
       }
       function firstOpen() { for (var k = 0; k < Q.length; k++) if (!locked(k)) return k; return -1; }
+      /* 2026-11-22 his report «الزر العائم في وضعيات التحليل لا يعمل جيدا … يعمل مع التحقق فقط»: on the pupil-analysis pages
+         (idmaj-tahlil / idmaj-dhakira, block #anBox) the questions are hidden while the analysis runs, so the bar drives
+         the ANALYSIS: ✔ تحقق (the step's own check) → التالي ⬅ (next step) → 📋 بطاقة تحليلي; a small «⏭ تخطّ» skips it;
+         once the analysis card is shown the bar takes the pupil to the questions (✍️ انتقل إلى الحل), then the usual flow */
+      var skipB = el("button", "skip"); skipB.type = "button"; skipB.textContent = "⏭ تخطّ"; skipB.title = "تخطّ التحليل وانتقل إلى الحل";
+      skipB.style.display = "none"; bar.insertBefore(skipB, B);
+      skipB.addEventListener("mousedown", function (e) { e.preventDefault(); });
+      var anToQ = false;   /* true once the pupil has been taken to the questions after the analysis */
+      function anBox() { var a = document.getElementById("anBox"); return a && a.parentElement ? a : null; }
+      function anOn() { var a = anBox(); return !!(a && a.parentElement.classList.contains("an-locked")); }
+      function vis(e) { return !!(e && !e.disabled && e.offsetParent !== null); }
+      function anShow() {
+        var a = anBox(), n = $$(".an-prog span", a).length || 1, on = $$(".an-prog span.on", a).length;
+        Q.forEach(function (x) { x.box.classList.toggle("sx-cur", false); });
+        num.textContent = "🔍 " + Math.min(on + 1, n) + " / " + n; num.title = "خطوة التحليل " + (on + 1) + " من " + n;
+        skipB.style.display = "";
+        if (vis($(".an-next", a))) { B.className = "next"; B.textContent = on + 1 >= n ? "📋 بطاقة تحليلي" : "التالي ⬅"; return; }
+        B.className = ""; B.textContent = "✔ تحقق";
+      }
+      function anView() {
+        var a = anBox(); if (!a) return;
+        var tg = anOn() ? (vis($(".an-next", a)) ? $(".an-fb", a) : a) : a;
+        var r = tg.getBoundingClientRect(), bt = bar.getBoundingClientRect().top;
+        if (r.top < 60 || r.bottom > bt - 8) tg.scrollIntoView({ behavior: "smooth", block: r.height > bt - 80 ? "start" : "center" });
+      }
+      function anClick() {
+        var a = anBox(), nx = $(".an-next", a), ck = $(".an-check", a);
+        if (vis(nx)) nx.click();
+        else if (vis(ck)) ck.click();
+        else {
+          var fb = $(".an-fb", a);
+          if (fb) { fb.className = "an-fb w"; fb.innerHTML = "👆 اختر جوابا من الاقتراحات أعلاه."; }
+          toast("👆 اختر جوابا من الاقتراحات.");
+        }
+        setTimeout(function () { show(); anView(); }, 120);
+      }
+      skipB.onclick = function () { if (window.__anSkip) window.__anSkip(); setTimeout(function () { show(); anView(); }, 80); };
       function show() {
+        if (anOn()) { anShow(); return; }
+        skipB.style.display = "none";
+        if (anBox() && !anToQ && firstOpen() === 0 && !Q[0].inp.value.trim()) {
+          Q.forEach(function (x) { x.box.classList.toggle("sx-cur", false); });
+          num.textContent = "1 / " + Q.length; B.className = "next"; B.textContent = "✍️ انتقل إلى الحل"; return;
+        }
         Q.forEach(function (x, k) { x.box.classList.toggle("sx-cur", k === cur); });
         num.textContent = (cur + 1) + " / " + Q.length; num.title = "السؤال " + (cur + 1) + " من " + Q.length;
         if (!locked(cur)) { B.className = ""; B.textContent = "✔ تحقق"; return; }
@@ -1362,6 +1406,8 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         }, 60);
       }
       B.onclick = function () {
+        if (anOn()) { anClick(); return; }
+        if (B.textContent === "✍️ انتقل إلى الحل") { anToQ = true; var f0 = firstOpen(); goQ(f0 < 0 ? 0 : f0); return; }
         if (!locked(cur)) {
           var x = Q[cur], area = $(".answer-area", x.box);
           if (area && area.classList.contains("sx-hide")) { goQ(cur); toast("👆 اختر الجواب الصحيح من الأزرار."); return; }
@@ -1376,6 +1422,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       };
       /* the pupil may still answer any question: the button follows the box being worked in */
       root.addEventListener("focusin", function (e) {
+        if (!anOn()) for (var k0 = 0; k0 < Q.length; k0++) if (Q[k0].box.contains(e.target)) anToQ = true;
         for (var k = 0; k < Q.length; k++) if (Q[k].box.contains(e.target)) { if (k !== cur) { cur = k; show(); } return; }
       });
       root.addEventListener("click", function (e) {
@@ -1390,11 +1437,18 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         var t = e.target, fm3 = $("#finalModal");
         if (fm3 && fm3.style.display === "flex") return;
         if (t && t.closest && (t.closest(".sx-pad") || t.closest(".sx-ov") || t.closest(".sx-wrap") || t.closest(".sx-kids"))) return;
+        if (t && t.closest && t.closest("#anBox") && t.tagName === "INPUT" && !t.disabled) { e.preventDefault(); B.click(); return; }
         if (t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName) && !t.disabled) return;
         if (t && /^(BUTTON|A)$/.test(t.tagName) && t !== B) return;
         e.preventDefault(); B.click();
       });
       setTimeout(function () { var f = firstOpen(); cur = f < 0 ? 0 : f; show(); }, 400);
+      /* the analysis box redraws itself (its own buttons, «أعد التحليل», skip): read the bar again each time */
+      if (window.MutationObserver) {
+        var anT = 0;
+        new MutationObserver(function () { if (!anBox()) return; clearTimeout(anT); anT = setTimeout(show, 50); })
+          .observe(root, { childList: true, subtree: true });
+      }
 
       /* «📘 راجع الدرس»: at the end of each exercise, the lesson («أُتقِن» first) of the resources of its questions
          (window.__resmap = question → resource, assets/resources.json = resource → lesson; both written at deploy) */
