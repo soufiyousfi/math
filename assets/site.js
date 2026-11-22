@@ -512,49 +512,60 @@ body:has(#finalModal[style*="flex"]) .sx-pad-fab,body:has(#finalModal[style*="fl
   /* ---------- 0e. Arabic text inside a left-to-right box (2026-11-22 his remark «الكتابة بالغتين مختلطة لا يفهمها التلميذ»)
      Many pages give buttons, chips and answer lines «direction:ltr» so that maths reads well. When such a box holds an
      Arabic sentence («نرسم [E′F′] طولها EF») the words come out in the wrong order. Here: a ltr box whose own text has
-     Arabic letters becomes rtl, its Latin/maths runs are isolated ltr, and a ltr row of such boxes (the chosen steps)
-     becomes rtl too. Boxes with only numbers or maths (1 < 2 < 3, AB = 3 cm) stay exactly as they are. ---------- */
+     Arabic letters becomes rtl and its names/calculations are isolated ltr; a ltr row made only of such boxes (the
+     chosen steps «… ثم …») becomes rtl too. Boxes with only numbers or maths (1 < 2 < 3, AB = 3 cm), keypads and rows
+     of number cards stay exactly as they are. ---------- */
   (function () {
-    var AR = /[؀-ۿݐ-ݿﭐ-﷿ﹰ-﻿]/;
+    var AR = /[؀-ۿݐ-ݿﭐ-﷿ﹰ-ﻼ]/;
     var SKIP = "script,style,textarea,input,select,svg,math,.m,.mb,.math,.sx-m,.key,.vop,.eq,.v,.screen";
-    var RUN = /[A-Za-z0-9\[(′″'’][A-Za-z0-9\[\]()′″'’=+\-−×÷<>≤≥≠\/.,²³°√ ]*[A-Za-z0-9\])′″'’²³°]|[A-Za-z]/g;
-    var CSS = ".sx-ar{direction:rtl!important;unicode-bidi:isolate}.sx-m{direction:ltr;unicode-bidi:isolate;white-space:nowrap}";
-    var st = document.createElement("style"); st.textContent = CSS; (document.head || document.documentElement).appendChild(st);
+    var RUN = /[A-Za-z0-9\[(√−][A-Za-z0-9\[\]()′″'’=+\-−×÷<>≤≥≠\/.,²³°√ ]*[A-Za-z0-9\])′″'’²³°]|[A-Za-z]/g;
+    var NEED = /[A-Za-z\[\]()=+−×÷<>≤≥≠√]/; /* plain numbers read well in rtl; names and calculations do not */
+    var st = document.createElement("style");
+    st.textContent = ".sx-ar{direction:rtl!important;unicode-bidi:isolate}.sx-m{direction:ltr;unicode-bidi:isolate;white-space:nowrap}";
+    (document.head || document.documentElement).appendChild(st);
     function ltr(e) { try { return getComputedStyle(e).direction === "ltr"; } catch (x) { return false; } }
     function isolate(t) {
       var s = t.nodeValue, m, last = 0, hit = false, out = document.createDocumentFragment();
       RUN.lastIndex = 0;
       while ((m = RUN.exec(s))) {
-        if (!/[A-Za-z\[\]()]/.test(m[0])) continue; /* numbers alone read well in rtl */
+        if (!NEED.test(m[0])) continue;
         hit = true;
         out.appendChild(document.createTextNode(s.slice(last, m.index)));
         var sp = document.createElement("span"); sp.className = "sx-m"; sp.textContent = m[0]; out.appendChild(sp);
         last = m.index + m[0].length;
       }
-      if (!hit) return;
+      if (!hit || !t.parentNode) return;
       out.appendChild(document.createTextNode(s.slice(last)));
       t.parentNode.replaceChild(out, t);
+    }
+    /* a row turns only when it holds at least two pieces and every piece is Arabic */
+    function allAr(p) {
+      try { if (/grid/.test(getComputedStyle(p).display)) return false; } catch (x) { return false; }
+      var k = Array.prototype.filter.call(p.children, function (c) { return c.textContent.trim(); });
+      return k.length >= 2 && k.every(function (c) { return AR.test(c.textContent); });
     }
     function flip(e) {
       if (e.classList.contains("sx-ar")) return;
       e.classList.add("sx-ar");
-      var tw = document.createTreeWalker(e, 4, { acceptNode: function (n) { return /[A-Za-z]/.test(n.nodeValue) && !n.parentElement.closest(SKIP) ? 1 : 3; } }), t, l = [];
+      var tw = document.createTreeWalker(e, 4, { acceptNode: function (n) { return NEED.test(n.nodeValue) && !n.parentElement.closest(SKIP) ? 1 : 3; } }), t, l = [];
       while ((t = tw.nextNode())) l.push(t);
       l.forEach(isolate);
-      /* the row that holds such boxes (e.g. the chosen steps «… ثم …») reads right to left as well;
-         a placeholder («اضغط على الأعداد بالترتيب…», class lt) never turns a row of numbers around */
       var p = e.parentElement;
       if (p && p !== document.body && !e.classList.contains("lt") && !p.classList.contains("sx-ar") && ltr(p) &&
-          !p.querySelector("input,textarea,select,svg,canvas,table,.key")) flip(p);
+          !p.querySelector("input,textarea,select,svg,canvas,table,.key") && allAr(p)) flip(p);
     }
     function scan(root) {
-      if (!root || root.nodeType !== 1 || (root.closest && root.closest(SKIP))) return;
+      if (!root || root.nodeType !== 1 || !root.isConnected || root.closest(SKIP)) return;
       var tw = document.createTreeWalker(root, 4, {
         acceptNode: function (n) { var p = n.parentElement; return p && !p.closest(SKIP) && AR.test(n.nodeValue) ? 1 : 3; }
       }), t, seen = [];
       while ((t = tw.nextNode())) { var p = t.parentElement; if (seen.indexOf(p) < 0) seen.push(p); }
-      seen.forEach(function (p) {
-        if (p.closest(".sx-ar") ? false : ltr(p)) { var b = p; while (b.parentElement && b.parentElement !== document.body && /^(SPAN|B|STRONG|I|EM|BDI|SMALL)$/.test(b.nodeName) && !b.classList.contains("lt") && ltr(b.parentElement)) b = b.parentElement; flip(b); }
+      seen.forEach(function (p) { if (!p.closest(".sx-ar") && ltr(p)) flip(p); });
+      /* a row whose pieces were already turned one by one (the chosen steps redrawn) */
+      Array.prototype.forEach.call(root.querySelectorAll(".sx-ar"), function (e) {
+        var p = e.parentElement;
+        if (p && p !== document.body && !p.classList.contains("sx-ar") && !e.classList.contains("lt") && ltr(p) &&
+            !p.querySelector("input,textarea,select,svg,canvas,table,.key") && allAr(p)) flip(p);
       });
     }
     var queue = [], busy = false;
