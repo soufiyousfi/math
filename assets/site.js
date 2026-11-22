@@ -707,7 +707,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
   /* his ask 2026-11-17 «اضف زر الصفحة الاساسية في الاعلى والاسفل»: the same home button again at the bottom of every page */
   var foot = el("nav", "sx-bar sx-foot");
   foot.setAttribute("aria-label", "العودة");
-  foot.innerHTML = '<a class="sx-home" href="' + home + '">🏠 الصفحة الرئيسية</a><a class="sx-btn" href="#" onclick="window.scrollTo({top:0,behavior:\'smooth\'});return false">⬆️ أعلى الصفحة</a><a class="sx-btn" href="' + ROOT.href + 'report.html" title="تقرير المتابعة للأولياء">📊 تقريري</a>';
+  foot.innerHTML = '<a class="sx-home" href="' + home + '">🏠 الصفحة الرئيسية</a><a class="sx-btn" href="#" onclick="window.scrollTo({top:0,behavior:\'smooth\'});return false">⬆️ أعلى الصفحة</a><a class="sx-btn" href="' + ROOT.href + 'report.html" title="تقرير المتابعة للأولياء">📊 تقريري</a><a class="sx-btn" href="' + ROOT.href + 'awards.html" title="شهادات التقدير">🏅 شهاداتي</a>';
   document.body.appendChild(foot);
   var padB = el("button", "sx-btn", "📝");
   padB.type = "button"; padB.title = "مسودة الحساب: اكتب بإصبعك"; padB.setAttribute("aria-label", "مسودة");
@@ -764,7 +764,9 @@ body.sx-exam .sx-calc-fab{bottom:74px}
     last = sig;
     var all = readAll(), old = all[rel] || {};
     var best = Math.max(old.b || 0, r.d ? r.s : 0);
+    var first = old.f != null ? old.f : old.d ? old.b || 0 : r.d ? r.s : null;   /* first finished mark (🏅 «شهادة القفزة النوعية», cert.js) */
     all[rel] = { s: r.s, m: r.m, st: r.st, a: r.a, n: r.n, d: !!(r.d || old.d), b: best, t: Date.now() };
+    if (first != null) all[rel].f = first;
     store(KEY, JSON.stringify(all));
   }
   setInterval(save, 1500);
@@ -1781,6 +1783,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
           : '<p class="tip">🌟 كل الموارد متحكَّم فيها! جرّب تحديا أو سلسلة أخرى من الفهرس.</p>');
       if (chal) {
         var win = r0.s > chal.s || (r0.s === chal.s && chal.t && mins && mins < chal.t);
+        if (win) try { var CN = JSON.parse(store("math-cnt") || "{}") || {}; CN.chal = CN.chal || {}; if (!CN.chal[rel]) { CN.chal[rel] = 1; store("math-cnt", JSON.stringify(CN)); } } catch (e) {}   /* 🏅 «شهادة سيّد التحديات» */
         html += '<p class="tip sx-chal-res">' + (win ? "🏆 تغلّبت على التحدي!" : r0.s === chal.s ? "🤝 تعادلت مع صاحب التحدي." : "💪 لم تتغلّب على التحدي هذه المرة. راجع مواردك وأعد غدا.") + "</p>";
       }
       if (box.__h === html) return;
@@ -1895,52 +1898,25 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       try { navigator.clipboard.writeText(t).catch(old); } catch (e) { old(); }
     }
 
+    /* 🎓 certificate of this page (2026-11-22 his «شكل مميز… ميّز بين كل شهادة وأخرى»): drawn by assets/cert.js,
+       colour, emblem and border of the ACTIVITY of the page (فرض، اختبار، سلسلة، تحدٍّ…), tier from the mark. */
     function certificate(name, cls, rows, tu) {
-      var r = readScore() || { s: 0, m: 20, st: 0 }, ratio = r.s / (r.m || 20);
-      var W = 1080, H = 1350, c = document.createElement("canvas"); c.width = W; c.height = H;
-      var x = c.getContext("2d"), F = '"Tajawal", "Segoe UI", Tahoma, Arial, sans-serif';
-      x.fillStyle = "#fff"; x.fillRect(0, 0, W, H);
-      x.strokeStyle = "#1e3a8a"; x.lineWidth = 14; x.strokeRect(30, 30, W - 60, H - 60);
-      x.strokeStyle = "#d97706"; x.lineWidth = 3; x.strokeRect(56, 56, W - 112, H - 112);
-      x.textAlign = "center"; x.direction = "rtl"; x.fillStyle = "#334155";
-      x.font = "bold 30px " + F;
-      x.fillText("الجمهورية الجزائرية الديمقراطية الشعبية — وزارة التربية", W / 2, 120);
-      x.fillText("متوسطة محمد العربي بن مهيدي، وادي فراغة، قالمة", W / 2, 165);
-      var title = ratio >= 0.8 ? "شهادة تفوّق" : ratio >= 0.5 ? "شهادة نجاح" : "شهادة مثابرة";
-      x.font = "120px " + F; x.fillText(ratio >= 0.8 ? "🏆" : ratio >= 0.5 ? "🎓" : "💪", W / 2, 310);
-      x.fillStyle = "#1e3a8a"; x.font = "bold 82px " + F; x.fillText(title, W / 2, 420);
-      x.fillStyle = "#475569"; x.font = "bold 34px " + F; x.fillText("تُمنح هذه الشهادة إلى التلميذ(ة):", W / 2, 490);
-      x.fillStyle = "#0f172a"; x.font = "bold 64px " + F; x.fillText(name || "....................", W / 2, 575);
-      x.fillStyle = "#475569"; x.font = "bold 34px " + F;
-      x.fillText((cls ? "القسم: " + cls + " — " : "") + (LEVEL[level] ? "السنة " + LEVEL[level] : ""), W / 2, 630);
-      var t = document.title.split(" - ")[0].slice(0, 44);
-      x.fillText("في «" + t + "»", W / 2, 680);
-      x.direction = "ltr"; x.fillStyle = "#1e3a8a"; x.font = "bold 150px " + F; x.fillText(fmt(r.s) + " / " + (r.m || 20), W / 2, 840);
-      x.direction = "rtl"; x.fillStyle = "#92400e"; x.font = "bold 40px " + F;
-      var mins = tu ? Math.max(1, Math.round(tu.ms / 60000)) : 0;
-      x.fillText((r.st ? "⭐ " + arN(r.st, "star") : "") + (r.st && mins ? "   ·   " : "") + (mins ? "⏱️ " + arN(mins, "min") : ""), W / 2, 910);
-      /* diagnosis, small */
-      var y = 975, shown = rows.slice(0, 5);
-      x.font = "bold 30px " + F; x.textAlign = "right";
-      shown.forEach(function (o) {
-        x.fillStyle = o.st === "ok" ? "#15803d" : o.st === "mid" ? "#b45309" : "#b91c1c";
-        x.beginPath(); x.arc(W - 150, y - 10, 11, 0, 7); x.fill();
-        x.fillStyle = "#334155"; x.fillText(o.n.slice(0, 40), W - 175, y);
-        x.textAlign = "left"; x.direction = "ltr"; x.fillText(fmt(o.e) + " / " + fmt(o.p), 150, y); x.textAlign = "right"; x.direction = "rtl";
-        y += 46;
-      });
-      x.textAlign = "center"; x.fillStyle = "#475569"; x.font = "bold 32px " + F;
-      var d = new Date(), ds = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
-      x.fillText("الأستاذ: يوسفي السوفي", W / 2, H - 140);
-      x.font = "28px " + F; x.direction = "ltr"; x.fillStyle = "#64748b";
-      x.fillText(ds + "  ·  " + ROOT.host + ROOT.pathname, W / 2, H - 92);
-      c.toBlob(function (blob) {
-        if (!blob) return;
-        var file = new File([blob], "shahada.png", { type: "image/png" });
-        if (navigator.canShare && navigator.canShare({ files: [file] })) navigator.share({ files: [file], text: title + " — " + t }).catch(function () { dl(blob); });
-        else dl(blob);
-      }, "image/png");
-      function dl(blob) { var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "shahada.png"; document.body.appendChild(a); a.click(); a.remove(); toast("🎓 حُفظت الشهادة في هاتفك (التنزيلات)."); }
+      function go() {
+        var MC = window.MathCert, r = readScore() || { s: 0, m: 20 }, q = r.s / (r.m || 20), mk = MC.fmt(Math.round(q * 20 * 4) / 4);
+        var a = MC.byId(MC.PAGEMAP[section] || "series") || MC.CATALOG[2], t = document.title.split(" - ")[0].slice(0, 60);
+        var tier = q >= 0.9 ? 2 : q >= 0.8 ? 1 : q >= 0.7 ? 0 : -1;
+        var sp = { t: a.t, emb: a.emb, main: a.main, pat: a.pat, tier: tier, name: name, cls: cls, lv: level, why: "تقديرًا لعلامة " + mk + " من 20 في «" + t + "»" };
+        if (tier < 0 && q >= 0.5) { sp.t = "شهادة النجاح"; sp.emb = "🎓"; sp.main = "#1d4ed8"; sp.pat = 2; }
+        if (q < 0.5) { sp.t = "شهادة المثابرة"; sp.emb = "💪"; sp.main = "#475569"; sp.pat = 4; sp.why = "تقديرًا للمحاولة والمثابرة في «" + t + "»"; }
+        MC.needFonts();
+        MC.fontsReady().then(function () { MC.share(MC.draw(document.createElement("canvas"), sp), sp.t + " — " + t, toast); });
+      }
+      if (window.MathCert) return go();
+      var sc = document.createElement("script");
+      sc.src = ROOT.href + "assets/cert.js";
+      sc.onload = go;
+      sc.onerror = function () { toast("⚠️ تعذّر تحميل الشهادة، تحقّق من الاتصال."); };
+      document.head.appendChild(sc);
     }
 
     /* exam mode from a link (?exam=60) or an exam in progress */
@@ -2765,6 +2741,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         Object.keys(done).forEach(function (k) { if (k.slice(0, 10) >= ymd(new Date(now.getFullYear(), now.getMonth(), now.getDate() - 7))) keep[k] = done[k]; });
         keep[key] = { ok: good, st: good ? left : 0, fast: fast, a: String(raw).slice(0, 40) };
         D2.done = keep; save(D2);
+        if (fast) try { var CN = JSON.parse(localStorage.getItem("math-cnt") || "{}") || {}; CN.fast = (CN.fast || 0) + 1; localStorage.setItem("math-cnt", JSON.stringify(CN)); } catch (e) {}   /* 🏅 «شهادة سرعة البديهة» */
         tone(good);
         if (good) {
           fb.className = "fb s";

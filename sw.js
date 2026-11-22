@@ -3,7 +3,7 @@
    without internet the last saved copy opens. The page itself shows «🔄 تتوفر تمارين جديدة من الأستاذ»
    when a newer version is published while the app is open (assets/site.js + version.json). */
 const CACHE = "math-v3";
-const CORE = ["./", "index.html", "report.html", "manifest.webmanifest", "icon-192.png", "icon-512.png"];
+const CORE = ["./", "index.html", "report.html", "awards.html", "assets/cert.js", "manifest.webmanifest", "icon-192.png", "icon-512.png"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).catch(() => {}));
   self.skipWaiting();

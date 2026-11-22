@@ -460,6 +460,7 @@ def main():
         print(f"sitemap.xml: {write_sitemap(items, packs)} pages")
         inject_site_js("index.html")
         inject_site_js("report.html")
+        inject_site_js("awards.html")
         with open("version.json", "w", encoding="utf-8") as f:
             json.dump({"v": VERSION}, f)
     with open("files.json", "w", encoding="utf-8") as f:
