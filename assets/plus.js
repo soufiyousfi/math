@@ -382,6 +382,7 @@
       }
       function end(good, raw) {
         inp.disabled = go.disabled = true; stat(lv, id, good);
+        if (good && opt.alt) { var CN = get("math-cnt", {}); CN.bem = (CN.bem || 0) + 1; put("math-cnt", CN); }   /* 🏅 «شهادة بطل تحدي الشهادة» (cert.js) */
         inp.parentNode.hidden = true; $(".syms", host).hidden = true;
         var nx = $(".nx", host), tg = el("button", "b s", "📖 الحل");
         tg.type = "button"; nx.parentNode.insertBefore(tg, nx);
