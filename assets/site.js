@@ -593,6 +593,10 @@ body.sx-exam .sx-pad-fab{bottom:74px}
 .sx-calc .k{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px;direction:ltr}
 .sx-calc .k button{font:inherit;font-weight:800;cursor:pointer;border:0;border-radius:9px;padding:9px 2px;background:#0d9488;color:#fff;font-size:.95rem}
 .sx-calc .k button.inv{background:#2563eb}
+.sx-calc .k button.d{background:#334155}.sx-calc .k button.op{background:#475569;font-size:1.1rem}
+.sx-calc .k button.eq{background:#f59e0b;color:#111827;font-size:1.1rem}.sx-calc .k button.w3{grid-column:span 3}
+.sx-calc .k button.cl{background:#7f1d1d}.sx-calc .k button{padding:7px 2px;font-size:1rem}.sx-calc .k{gap:5px}
+.sx-calc .r.er{color:#fca5a5}.sx-calc [hidden]{display:none!important}
 .sx-calc .r{margin-top:8px;padding:8px 10px;border-radius:10px;background:#1e293b;color:#7dd3fc;font-weight:800;direction:ltr;text-align:left;min-height:1.6em}
 .sx-calc .n{font-size:.74rem;color:#94a3b8;margin-top:6px}
 /* clearer text, calm colours (his asks 2026-11-15: «الكتابة واضحة», then «نقص شوي من الألوان») */
@@ -900,7 +904,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
     try { if (typeof exercises !== "undefined" && Array.isArray(exercises)) data = exercises; } catch (e) {}
     var root = $("#exercisesRoot");
     if (data && root) enhanceExercises(data, root);
-    if (level === "4m" && /\b(cos|sin|tan)\b/.test(document.body.textContent)) addCalc(!!(data && root));
+    var cMode = calcMode(level, section); if (cMode) addCalc(!!(data && root), cMode);
   });
 
   /* ---------- 3b. ONE check button on the «أُتقِن» lessons too (2026-11-21 his «لماذا لم تضع الزر العائم في دروس أتقن؟») ----------
@@ -2536,38 +2540,153 @@ body.sx-exam .sx-calc-fab{bottom:74px}
 
   window.__sx = { GEN: GEN, genFor: genFor, openGen: openGen, openPad: openPad };
 
-  /* ---------- 4. angle calculator (DEG) ---------- */
-  function addCalc(inBar) {
+  /* ---------- 4. 🧮 simple calculator (2026-11-22 his «ما رأيك بإضافة آلة حاسبة بسيطة» + «الثانية والثالثة مسموحة في حدود فقط»)
+     mode "bem" (4AM, every page, allowed in exam mode as in the BEM): + − × ÷ ( ) , √ x² and sin cos tan + inverses in DEGREES;
+     mode "basic" (2AM-3AM, only where calcMode() allows it): + − × ÷ ( ) , (+ √ x² in 3AM). 1AM: never.
+     The expression is read by a small parser (no eval); the result keeps up to 6 digits after the comma: the pupil writes the
+     rounding the question asks for. ---------- */
+  function calcEval(src) {
+    var s = String(src).replace(/[٠-٩]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩".indexOf(d); })
+      .replace(/\s+/g, "").replace(/,/g, ".").replace(/[−–]/g, "-").replace(/[×x*]/g, "*").replace(/[÷:/]/g, "/")
+      .replace(/sin⁻¹/g, "A").replace(/cos⁻¹/g, "B").replace(/tan⁻¹/g, "C").replace(/sin/g, "S").replace(/cos/g, "O").replace(/tan/g, "T").replace(/√/g, "R");
+    var i = 0, D = Math.PI / 180;
+    function peek() { return s.charAt(i); }
+    function fail(m) { throw new Error(m || "اكتب عملية صحيحة"); }
+    function num() {
+      var m = /^\d+(\.\d+)?|^\.\d+/.exec(s.slice(i)); if (!m) fail();
+      i += m[0].length; return parseFloat(m[0]);
+    }
+    function prim() {
+      var c = peek();
+      if (c === "(") { i++; var v = expr(); if (peek() === ")") i++; return v; }
+      if (c === "-") { i++; return -pow(); }
+      if (c === "+") { i++; return pow(); }
+      if (c && "ABCSOTR".indexOf(c) >= 0) {
+        i++; var a = pow();
+        if (c === "R") { if (a < 0) fail("لا يوجد جذر لعدد سالب"); return Math.sqrt(a); }
+        if (c === "S") return Math.sin(a * D);
+        if (c === "O") return Math.cos(a * D);
+        if (c === "T") { if (Math.abs(Math.cos(a * D)) < 1e-12) fail("tan غير معرّف"); return Math.tan(a * D); }
+        if (c === "C") return Math.atan(a) / D;
+        if (a < -1 || a > 1) fail("النسبة يجب أن تكون بين 1- و 1");
+        return (c === "A" ? Math.asin(a) : Math.acos(a)) / D;
+      }
+      return num();
+    }
+    function pow() {
+      var v = prim();
+      while (peek() === "²" || peek() === "^") {
+        if (peek() === "²") { i++; v = v * v; } else { i++; v = Math.pow(v, prim()); }
+      }
+      /* implicit product: 2(3+1), 2√9, (1+2)(3) */
+      if (peek() === "(" || (peek() && "ABCSOTR".indexOf(peek()) >= 0)) v *= pow();
+      return v;
+    }
+    function term() {
+      var v = pow();
+      while (peek() === "*" || peek() === "/") {
+        var o = s.charAt(i++), b = pow();
+        if (o === "/") { if (b === 0) fail("لا يمكن القسمة على 0"); v /= b; } else v *= b;
+      }
+      return v;
+    }
+    function expr() {
+      var v = term();
+      while (peek() === "+" || peek() === "-") { var o = s.charAt(i++), b = term(); v = o === "+" ? v + b : v - b; }
+      return v;
+    }
+    if (!s) fail("اكتب عملية أولا");
+    var r = expr();
+    if (i < s.length || !isFinite(r)) fail();
+    return r;
+  }
+  function calcShow(n) {
+    var r = Math.round(n * 1e6) / 1e6;
+    if (Math.abs(r) >= 1e15) return String(n);
+    var t = String(r); if (/e/.test(t)) t = r.toFixed(6).replace(/0+$/, "").replace(/\.$/, "");
+    return t.replace("-", "−").replace(".", ",");
+  }
+  window.__sxCalcEval = calcEval;
+  function calcMode(lv, sec) {
+    if (lv === "4m") return "bem";
+    /* 2AM-3AM, his choice 2026-11-22 «كل شيء ما عدا الحساب»: everywhere EXCEPT the calculation exercises (operations, fractions,
+       relative and rational numbers, powers, literal calculus, equations). Decided per EXERCISE from the resources of its questions
+       (window.__resmap + assets/resources.json); pages without that map: only the situations (idmaj) */
+    if (lv === "2m" || lv === "3m") return window.__resmap || sec === "idmaj" ? "basic" : "";
+    return "";
+  }
+  function addCalc(inBar, mode) {
+    var trig = mode === "bem", roots = mode === "bem" || level === "3m";
     var panel = el("div", "sx-calc");
     panel.hidden = true;
-    panel.innerHTML = '<div class="t"><span>🧮 حاسبة الزوايا (بالدرجات DEG)</span><button type="button" aria-label="إغلاق">✕</button></div>' +
-      '<input type="text" inputmode="decimal" placeholder="اكتب عددا: زاوية أو نسبة" aria-label="العدد">' +
-      '<div class="k">' +
-      '<button type="button" data-f="sin">sin</button><button type="button" data-f="cos">cos</button><button type="button" data-f="tan">tan</button><button type="button" data-f="sqrt">√</button>' +
-      '<button type="button" class="inv" data-f="asin">sin⁻¹</button><button type="button" class="inv" data-f="acos">cos⁻¹</button><button type="button" class="inv" data-f="atan">tan⁻¹</button><button type="button" class="inv" data-f="sq">x²</button>' +
-      '</div><div class="r" aria-live="polite"></div><div class="n">الحاسبة تعطي الناتج بأربعة أرقام بعد الفاصلة؛ أنت من يكتب القيمة المقرّبة المطلوبة في خانة الجواب.</div>';
+    var K = mode === "bem" ? ["sin", "cos", "tan", "²", "sin⁻¹", "cos⁻¹", "tan⁻¹", "√", "(", ")", "C", "⌫"]
+      : roots ? ["√", "²", "(", ")"] : ["C", "⌫", "(", ")"];
+    K = K.concat(["7", "8", "9", "÷", "4", "5", "6", "×", "1", "2", "3", "−"]);
+    K = K.concat(mode === "bem" || !roots ? ["0", ",", "=", "+"] : ["0", ",", "⌫", "+", "C", "="]);
+    var keys = K;
+    panel.innerHTML = '<div class="t"><span>🧮 الآلة الحاسبة' + (trig ? " (الزوايا بالدرجات DEG)" : "") + '</span><button type="button" aria-label="إغلاق">✕</button></div>' +
+      '<input type="text" inputmode="none" autocomplete="off" spellcheck="false" placeholder="مثال: (12,5 + 7) × 3" aria-label="العملية">' +
+      '<div class="k">' + keys.map(function (k) {
+        var c = /^[0-9,]$/.test(k) ? "d" : k === "=" ? (K.length % 4 === 2 ? "eq w3" : "eq") : k === "C" || k === "⌫" ? "cl" : /sin|cos|tan/.test(k) ? "inv" : "op";
+        return '<button type="button" class="' + c + '" data-k="' + k + '">' + k + "</button>";
+      }).join("") + '</div><div class="r" aria-live="polite"></div>' +
+      '<div class="n">الحاسبة للتحقق من الحساب فقط: اكتب خطوات الحل في كراسك، ثم اكتب القيمة المطلوبة (المقرّبة إن طُلب) مع الوحدة في خانة الجواب.</div>';
     document.body.appendChild(panel);
     var x = $("input", panel), out = $(".r", panel);
     $(".t button", panel).onclick = function () { panel.hidden = true; };
+    function run() {
+      try { var v = calcEval(x.value); out.textContent = "= " + calcShow(v); out.classList.remove("er"); }
+      catch (e) { out.textContent = e.message; out.classList.add("er"); }
+    }
     $$(".k button", panel).forEach(function (b) {
+      b.addEventListener("mousedown", function (e) { e.preventDefault(); });
       b.onclick = function () {
-        var raw = x.value.trim().replace(/[٠-٩]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩".indexOf(d); }).replace(",", ".").replace(/[−–]/g, "-");
-        var v = parseFloat(raw), f = b.dataset.f, R = Math.PI / 180, s;
-        if (isNaN(v)) { out.textContent = "اكتب عددا أولا"; return; }
-        var shown = String(v).replace(".", ",");
-        function r4(n) { return String(Math.round(n * 10000) / 10000).replace(".", ","); }
-        if (f === "sin") s = "sin " + shown + "° ≈ " + r4(Math.sin(v * R));
-        else if (f === "cos") s = "cos " + shown + "° ≈ " + r4(Math.cos(v * R));
-        else if (f === "tan") s = Math.abs(Math.cos(v * R)) < 1e-12 ? "tan " + shown + "° غير معرّف" : "tan " + shown + "° ≈ " + r4(Math.tan(v * R));
-        else if (f === "sqrt") s = v < 0 ? "لا يوجد جذر لعدد سالب" : "√" + shown + " ≈ " + r4(Math.sqrt(v));
-        else if (f === "sq") s = shown + "² = " + r4(v * v);
-        else if (f === "atan") s = "tan⁻¹(" + shown + ") ≈ " + r4(Math.atan(v) / R) + "°";
-        else if (v < -1 || v > 1) s = "النسبة يجب أن تكون بين 0 و 1";
-        else s = (f === "asin" ? "sin⁻¹(" : "cos⁻¹(") + shown + ") ≈ " + r4((f === "asin" ? Math.asin(v) : Math.acos(v)) / R) + "°";
-        out.textContent = s;
+        var k = b.dataset.k;
+        if (k === "=") return run();
+        if (k === "C") { x.value = ""; out.textContent = ""; return; }
+        if (k === "⌫") { x.value = x.value.replace(/(sin⁻¹|cos⁻¹|tan⁻¹|sin|cos|tan)$|.$/, ""); return; }
+        if (/^(sin|cos|tan)/.test(k) || k === "√") { x.value += k + "("; return; }
+        if (/^= /.test(out.textContent) && /^[−+×÷²]$/.test(k) && !x.value.trim()) x.value = out.textContent.slice(2);
+        x.value += k;
       };
     });
-    function toggle() { panel.hidden = !panel.hidden; if (!panel.hidden) x.focus(); }
+    x.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); e.stopPropagation(); run(); } });
+    var CALCRES = /سلسلة عمليات|الأقواس|توزيع الضرب|قسمة|كسرين|عدد(?:ين)? نسبي|أعداد نسبية|مجموع جبري|المسافة بين نقطتين|مقلوب|ناطق|قوة|قوى|الكتابة العلمية|عبارة|نشر عبارات|المعادلات/;
+    var resRows = null, lastCard = null;
+    if (mode === "basic" && window.__resmap) {
+      fetch(ROOT.href + "assets/resources.json", { cache: "force-cache" }).then(function (r) { return r.json(); }).then(function (R) { resRows = R[level] || []; }).catch(function () {});
+      document.addEventListener("focusin", function (e) { var c = e.target.closest && e.target.closest(".exercise-card,.card"); if (c && !panel.contains(e.target)) lastCard = c; });
+      document.addEventListener("click", function (e) { var c = e.target.closest && e.target.closest(".exercise-card,.card"); if (c) lastCard = c; }, true);
+    }
+    function cardNow() {
+      var cs = $$(".exercise-card,.card").filter(function (c) { return c.offsetParent !== null && $(".q-box", c); });
+      if (lastCard && cs.indexOf(lastCard) >= 0) { var r0 = lastCard.getBoundingClientRect(); if (r0.bottom > 0 && r0.top < window.innerHeight) return lastCard; }
+      var best = null, bs = 0, h = window.innerHeight;
+      cs.forEach(function (c) { var r = c.getBoundingClientRect(), v = Math.min(r.bottom, h) - Math.max(r.top, 0); if (v > bs) { bs = v; best = c; } });
+      return best;
+    }
+    /* true = calculation exercise: every mapped question of the exercise on screen is a calculation resource */
+    function calcOnly() {
+      if (mode !== "basic" || section === "idmaj" || !window.__resmap) return false;
+      if (!resRows) return true;   /* map not loaded yet: be strict */
+      var c = cardNow(); if (!c) return false;
+      var hd = $(".card-header", c); if (hd && /الوضعية/.test(hd.textContent)) return false;   /* the situation part of an exam */
+      var n = 0, calc = 0;
+      $$(".q-box[id^='qbox-']", c).forEach(function (b) {
+        var m = window.__resmap[b.id.slice(5)]; if (!m || m[0] < 0) return;
+        n++; var row = resRows[m[0]]; if (row && CALCRES.test(row.n || "")) calc++;
+      });
+      return n > 0 && calc === n;
+    }
+    var stop = el("div", "r er sx-calc-no");
+    stop.innerHTML = "🚫 هذا تمرين حساب: الحاسبة غير مسموحة فيه. احسب في كراسك، فالهدف هو أن تتقن الحساب بنفسك.";
+    function toggle() {
+      if (!panel.hidden) { panel.hidden = true; return; }
+      var no = calcOnly();
+      if (no && !stop.parentNode) panel.insertBefore(stop, $(".k", panel));
+      stop.hidden = !no; $(".k", panel).hidden = no; x.hidden = no; out.hidden = no;
+      panel.hidden = false;
+    }
     var pills = $(".sx-pills");
     if (inBar && pills) {
       var b = el("button", "sx-pill tool", "🧮 الحاسبة");
