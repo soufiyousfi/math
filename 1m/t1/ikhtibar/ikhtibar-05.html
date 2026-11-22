@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار الفصل الأول (من اختبارات المتوسطات 1) - السنة الأولى متوسط - الفصل الأول</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #0f766e;
+            --primary-light: #eff6ff;
+            --accent: #fbbf24;
+            --success: #15803d;
+            --success-bg: #dcfce7;
+            --warning: #b45309;
+            --warning-bg: #fef3c7;
+            --danger: #b91c1c;
+            --danger-bg: #fee2e2;
+            --dark: #0f172a;
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --border: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+        }
+
+        html, body {
+            background-color: var(--bg);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            width: 100%;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%);
+            color: #ffffff;
+            padding: 20px 12px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        header .school-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fef08a;
+            margin-bottom: 6px;
+        }
+
+        header h1 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 6px 0;
+            color: #ffffff;
+        }
+
+        header .sub-info {
+            font-size: 0.92rem;
+            opacity: 0.95;
+            background: rgba(255, 255, 255, 0.14);
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-top: 4px;
+        }
+
+        .sticky-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(6px);
+            border-bottom: 2px solid var(--border);
+            padding: 8px 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .sticky-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .stars-badge {
+            background: #fef3c7;
+            color: #b45309;
+            border: 1px solid #f59e0b;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .sound-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .progress-wrap {
+            flex: 1;
+            min-width: 110px;
+            max-width: 240px;
+            background: #e2e8f0;
+            height: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #0f766e, #15803d);
+            width: 0%;
+            height: 100%;
+            transition: width 0.35s ease;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 18px auto 0 auto;
+            padding: 0 10px;
+        }
+
+        .exercise-card {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 16px 14px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-light);
+            padding: 10px 12px;
+            border-radius: 10px;
+            border-right: 4px solid var(--primary);
+            margin-bottom: 12px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .card-header h2 {
+            font-size: 1.08rem;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .pts-badge {
+            background: #ffffff;
+            color: var(--primary);
+            border: 1px solid #bfdbfe;
+            padding: 3px 10px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .context-box {
+            background: #f8fafc;
+            border: 1px dashed #94a3b8;
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin-bottom: 14px;
+            font-size: 0.96rem;
+        }
+
+        .math {
+            direction: ltr;
+            unicode-bidi: isolate;
+            display: inline-block;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 700;
+            background: #e2e8f0;
+            padding: 1px 6px;
+            border-radius: 5px;
+            margin: 0 2px;
+            color: #0f172a;
+        }
+
+        .q-box {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 14px;
+            background: #ffffff;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .q-box.solved {
+            border-color: #86efac;
+            background: #f0fdf4;
+        }
+
+        .q-box.failed {
+            border-color: #fca5a5;
+            background: #fef2f2;
+        }
+
+        .q-title {
+            font-weight: 700;
+            font-size: 0.98rem;
+            margin-bottom: 10px;
+            color: #1e293b;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .q-meta {
+            font-size: 0.78rem;
+            background: #f1f5f9;
+            color: #475569;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .answer-area {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-line {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            min-width: 170px;
+            padding: 9px 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.98rem;
+            font-weight: 700;
+            direction: ltr;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary);
+        }
+
+        .sym-toolbar {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 4px;
+        }
+
+        .sym-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            color: #0f172a;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            direction: ltr;
+            unicode-bidi: isolate;
+            user-select: none;
+        }
+
+        .sym-btn { flex: 1 1 0; min-width: 0; padding: 6px 0; text-align: center; }
+
+        .sym-btn:hover {
+            background: #cbd5e1;
+        }
+
+        .sym-btn:active {
+            transform: scale(0.96);
+        }
+
+        .btn-check {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .btn-check:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-check:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        @keyframes shakeField {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        .shake {
+            animation: shakeField 0.35s ease;
+            border-color: var(--danger) !important;
+        }
+
+        .feedback-box {
+            margin-top: 10px;
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            display: none;
+        }
+
+        .feedback-box.success {
+            display: block;
+            background: var(--success-bg);
+            color: var(--success);
+            border-right: 4px solid var(--success);
+        }
+
+        .feedback-box.hint {
+            display: block;
+            background: var(--warning-bg);
+            color: var(--warning);
+            border-right: 4px solid var(--warning);
+        }
+
+        .feedback-box.fail {
+            display: block;
+            background: var(--danger-bg);
+            color: var(--danger);
+            border-right: 4px solid var(--danger);
+        }
+
+        .model-solution {
+            margin-top: 12px;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-right: 4px solid var(--secondary);
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+            font-size: 0.93rem;
+        }
+
+        .model-solution h4 {
+            color: var(--secondary);
+            margin-bottom: 8px;
+            font-size: 0.98rem;
+        }
+
+        .sol-line {
+            padding: 3px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .sol-result {
+            margin-top: 6px;
+            font-weight: 800;
+            color: var(--primary);
+            background: #eff6ff;
+            padding: 5px 8px;
+            border-radius: 6px;
+        }
+
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.86rem;
+            background: #ffffff;
+        }
+
+        .rubric-table td .math { white-space: nowrap; }
+        .rubric-table th, .rubric-table td {
+            border: 1px solid #cbd5e1;
+            padding: 6px 8px;
+            text-align: right;
+        }
+
+        .rubric-table th {
+            background: #e2e8f0;
+            color: #1e293b;
+            font-weight: 800;
+        }
+
+        .star-burst {
+            display: inline-block;
+            animation: popStars 0.6s ease forwards;
+        }
+
+        @keyframes popStars {
+            0% { transform: scale(0.4); opacity: 0; }
+            60% { transform: scale(1.25); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.65);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 15px;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            max-width: 420px;
+            width: 100%;
+            border-radius: 16px;
+            padding: 24px 18px;
+            text-align: center;
+            border-top: 6px solid var(--accent);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .modal-score {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin: 10px 0;
+        }
+
+        .modal-stars {
+            font-size: 1.4rem;
+            color: #d97706;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .btn-close-modal {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 9px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        @media (max-width: 420px) {
+            header .school-title { font-size: 0.98rem; }
+            header h1 { font-size: 1.12rem; }
+            .input-line { flex-direction: column; }
+            input[type="text"], .btn-check { width: 100%; }
+        }
+    
+        .fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; line-height: 1.05; margin: 0 2px; font-size: .92em; }
+        .fr > span:first-child { border-bottom: 2px solid currentColor; padding: 0 3px 1px; }
+        .fr > span:last-child { padding: 1px 3px 0; }
+        .vop { display: inline-block; direction: ltr; unicode-bidi: isolate; font-family: 'Courier New', Courier, monospace; font-weight: 700;
+               background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
+        .vop div { font-family: inherit; white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
+        .vop .ln { border-top: 2px solid #0f172a; }
+    
+.bem-intro{margin:0 0 6px;line-height:1.7}
+.bem-data p{margin:3px 0;line-height:1.7}
+.bem-warn{background:#fef9c3;border:1px solid #facc15;border-radius:8px;padding:6px 10px;margin:8px 0 4px;font-size:.92rem}
+.print-btn{margin-top:10px;background:#fff;color:#0f766e;border:2px solid #fde047;border-radius:20px;padding:6px 16px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+#paper .copy{border:1.5px solid #334155;border-radius:8px;padding:5px 9px 5px 80px;margin:0 0 5mm;break-inside:avoid;position:relative}
+#paper .cut{border-top:1.5px dashed #64748b;margin:0 0 4mm;text-align:center;font-size:9pt;color:#64748b;line-height:0}
+#paper .cut span{background:#fff;padding:0 6px}
+#paper .ph{display:flex;justify-content:space-between;align-items:center;font-weight:bold;font-size:9.5pt}
+#paper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #1e3a8a;border-radius:14px;padding:2px 8px;margin:3px auto 4px;width:fit-content;background:#eff6ff}
+#paper .qr{position:absolute;left:8px;top:6px;text-align:center;font-size:7pt;color:#475569;width:66px}
+#paper .qr img{width:58px;height:58px}
+#paper .cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+#paper .ex{break-inside:avoid;margin:2px 0}
+#paper .ex h4{margin:3px 0 1px;font-size:10.5pt;background:#e0f2fe;border-radius:6px;padding:1px 6px}
+#paper .ex p,#paper .ex li{margin:1px 0;line-height:1.4}
+#paper svg{max-height:120px;width:auto!important;margin:2px auto!important}
+#paper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+#paper .bem-warn{padding:3px 6px;margin:2px 0}
+#paper .bem-data p{margin:0}
+#paper .bem-intro{margin:0}
+#paper .w3{font-size:8.6pt;padding:4px 6px 4px 74px;margin-bottom:3mm}
+#paper .w3 .cols{grid-template-columns:1fr 1fr 1fr;gap:2px 8px}
+#paper .w3 svg{max-height:88px}
+#paper .w3 .ex h4{font-size:8.8pt}
+#paper .w3 .ex p{line-height:1.3}
+#paper .w3 .pt{font-size:10pt;margin:1px auto 2px;padding:1px 8px}
+#paper .one .cols{display:block}
+#paper .one svg{max-height:150px}
+#paper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt;width:192mm}
+@media print{
+ @page{size:A4;margin:8mm 9mm}
+ body>*:not(#paper){display:none!important}
+ html,body{background:#fff!important;padding:0!important;margin:0!important}
+
+ #paper{display:block!important;width:auto}
+}
+
+#paper .copy{font-size:11pt;padding:6px 10px 6px 84px;margin:0}
+#paper .copy .cols{grid-template-columns:1fr 1fr;gap:4px 14px}
+#paper .copy.flow{font-size:12pt}
+#paper .copy.flow .cols{display:block}
+#paper .copy.flow .ex{margin:0 0 4mm}
+#paper .copy.flow svg{max-height:170px}
+#paper .ex h4{font-size:11.5pt}
+#solpaper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt}
+#solpaper .sxs{columns:2;column-gap:7mm;column-rule:1px solid #cbd5e1}
+#solpaper .sx{margin:0 0 2mm}
+#solpaper h4{break-after:avoid}
+#solpaper h4{margin:2px 0;font-size:11pt;background:#dcfce7;border-radius:6px;padding:1px 6px}
+#solpaper .ph{display:flex;justify-content:space-between;font-weight:bold;font-size:9.5pt}
+#solpaper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #166534;border-radius:14px;padding:2px 8px;margin:3px auto 6px;width:fit-content;background:#f0fdf4}
+#solpaper .sq{margin:2px 0 4px;break-inside:avoid;text-align:right}
+#solpaper .sq p{margin:1px 0;line-height:1.4;text-align:right}
+#solpaper .sq p *{text-align:right}
+#solpaper table{border-collapse:collapse;margin:2px 0 3px;font-size:9.5pt}
+#solpaper td,#solpaper th{border:1px solid #64748b;padding:1px 6px}
+#solpaper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+/* 2026-11-07 shape of his model «فرض الفصل الأول» papers: title box, red underlined headings, one column, figure on the left */
+#paper .copy{border:none;border-radius:0;padding:0 0 0 0}
+#paper .copy .cols,#paper .copy.flow .cols{display:block}
+#paper .ttl{border:1.5px solid #1e293b;border-radius:6px;text-align:center;font-weight:bold;font-size:13pt;padding:5px 8px;margin:4px 0 6px 82px}
+#paper .copy .ph{padding-left:82px}
+#paper .qr{top:0;left:0}
+#paper .ex{margin:0 0 3mm;overflow:hidden;border:none!important;box-shadow:none!important;background:none!important;padding:0!important;border-radius:0!important}
+#paper .ex h4,#solpaper h4{background:none!important;color:#b91c1c;text-decoration:underline;font-size:12.5pt;padding:0;margin:4px 0 3px}
+#paper .ex .fig{float:left;width:40%;margin:0 0 2px 12px}
+#paper .ex .fig svg{max-width:100%!important;max-height:190px;margin:0 auto!important}
+#paper .ex p{line-height:1.55}
+#paper .bem-warn{background:none;border:none;padding:0;font-size:10pt}
+#paper .foot{text-align:center;font-size:8pt;color:#475569;border-top:1px solid #cbd5e1;margin-top:3mm;padding-top:1mm;clear:both}
+#solpaper .ttl{border:1.5px solid #1e293b;border-radius:6px;text-align:center;font-weight:bold;font-size:13pt;padding:4px 8px;margin:4px 0 6px}
+.sol-btn{display:none}
+.sol-wait{margin-top:6px;font-size:.85rem;color:#64748b}
+@media print{
+ body.psol>*:not(#solpaper){display:none!important}
+ body.psol #solpaper{display:block!important}
+ body.psol #paper{display:none!important}
+}
+
+.qimg{max-width:100%;height:auto;display:block;margin:8px auto;background:#fff;border-radius:6px}
+.xt{border-collapse:collapse;margin:6px auto;font-size:.95rem}.xt td,.xt th{border:1px solid #64748b;padding:3px 9px;text-align:center}
+.src-note{font-size:.85rem;color:#475569;margin-top:4px}
+#paper .ex .fig img{max-width:100%;max-height:200px;display:block;margin:0 auto}
+#paper .xt{font-size:10pt}
+.xt td{min-width:44px;height:1.5em}
+#paper .ex p img{max-height:115px;width:auto}
+#paper .math,#solpaper .math{direction:ltr;unicode-bidi:isolate;display:inline-block}
+</style>
+</head>
+<body>
+
+    <header>
+        <div class="school-title">متوسطة محمد العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
+        <h1>اختبار الفصل الأول (من اختبارات المتوسطات 1) التفاعلي في الرياضيات</h1>
+        <div class="sub-info">المستوى: السنة الأولى متوسط | اختبار حقيقي (فيفري 2021) منقول كما هو<br>حلّ على الورقة كأنك في يوم الاختبار، ثم صحّح هنا</div>
+        <button class="print-btn" onclick="document.body.classList.remove('psol');window.print()">🖨️ النسخة الورقية للطباعة</button> <button class="print-btn sol-btn" onclick="printSol()">🖨️ النسخة الورقية للحل</button><div class="sol-wait"></div>
+    </header>
+
+    <div class="sticky-bar">
+        <div class="sticky-inner">
+            <div class="stat-group">
+                <span class="score-badge">العلامة: <span class="math" id="scoreVal" style="background:transparent;color:#fff;padding:0;">0 / 20</span></span>
+                <span class="stars-badge">⭐ <span class="math" id="starsVal" style="background:transparent;color:#b45309;padding:0;">0</span></span>
+                <button type="button" class="sound-btn" id="soundToggle" onclick="toggleSound()" title="تشغيل/كتم الصوت">🔊</button>
+            </div>
+            <div class="progress-wrap" title="شريط التقدم">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="exercisesRoot"></div>
+
+    <div class="modal-overlay" id="finalModal">
+        <div class="modal-card">
+            <h3 id="finalTitle">🎉 أحسنت! أتممت جميع الأسئلة</h3>
+            <p>لقد أنهيت اختبار الفصل الأول (من اختبارات المتوسطات 1)</p>
+            <div class="modal-score" id="finalScoreText">0 / 20</div>
+            <div class="modal-stars" id="finalStarsText">⭐ 0 نجمة</div>
+            <button type="button" class="btn-close-modal" onclick="document.getElementById('finalModal').style.display='none'">مراجعة إجاباتي</button>
+        </div>
+    </div>
+
+    <script>
+        let soundEnabled = true;
+        let totalScore = 0;
+        let totalStars = 0;
+        let completedQuestions = 0;
+        let totalQuestionsCount = 0;
+
+        const attemptsLeft = {};
+        const questionEarned = {};
+        const questionLocked = {};
+
+        const symbols1AM = ["+", "−", "×", "÷", ",", "/", "<", ">", ";", "⌫"];
+
+        function playTone(type) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'success') {
+                    osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+                    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.09);
+                    osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.18);
+                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.35);
+                } else {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, ctx.currentTime);
+                    osc.frequency.setValueAtTime(180, ctx.currentTime + 0.1);
+                    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.25);
+                }
+            } catch (e) {}
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            document.getElementById('soundToggle').innerText = soundEnabled ? '🔊' : '🔇';
+        }
+
+        const exercises = [
+ {
+  "id": 1,
+  "pts": 3,
+  "title": "التمرين الأول",
+  "asis": true,
+  "context": "أكمل الفراغات التالية:",
+  "questions": [
+   {
+    "qId": "1-1",
+    "text": "<span class=\"math\">94 = 6 × ⋯ + ⋯</span><br>✍️ أكمل في كراسك، ثم اكتب العدد الذي يوضع في الفراغ الأول (الحاصل).",
+    "exact": [
+     "15"
+    ],
+    "partial": [
+     "4",
+     "14",
+     "16"
+    ],
+    "h1": "هي قسمة إقليدية لـ <span class=\"math\">94</span> على <span class=\"math\">6</span>.",
+    "h2": "<span class=\"math\">6 × 15 = 90</span> والباقي <span class=\"math\">4</span> أصغر من <span class=\"math\">6</span>.",
+    "steps": [
+     "<b>الطريقة:</b> في القسمة الإقليدية لعدد <span class=\"math\">a</span> على <span class=\"math\">b</span>: <span class=\"math\">a = b × q + r</span> حيث الباقي <span class=\"math\">r</span> أصغر من <span class=\"math\">b</span>.",
+     "<span class=\"math\">6 × 15 = 90</span>",
+     "<span class=\"math\">94 − 90 = 4</span> و <span class=\"math\">4 &lt; 6</span>",
+     "النتيجة: <span class=\"math\">94 = 6 × 15 + 4</span>",
+     "<b>الاستنتاج:</b> العددان هما <span class=\"math\">15</span> و <span class=\"math\">4</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 0.75,
+    "partialZero": true
+   },
+   {
+    "qId": "1-2",
+    "text": "<span class=\"math\">907,84 × ⋯ = 90784</span><br>✍️ اكتب العدد الناقص.",
+    "exact": [
+     "100"
+    ],
+    "partial": [
+     "10",
+     "1000"
+    ],
+    "h1": "الفاصلة انتقلت نحو اليمين.",
+    "h2": "انتقلت مرتبتين.",
+    "steps": [
+     "<b>الطريقة:</b> الضرب في <span class=\"math\">10</span> أو <span class=\"math\">100</span> أو <span class=\"math\">1000</span> ينقل الفاصلة نحو اليمين بمرتبة أو مرتبتين أو ثلاث.",
+     "<span class=\"math\">907,84</span> ← <span class=\"math\">90784</span>: الفاصلة انتقلت مرتبتين نحو اليمين",
+     "النتيجة: <span class=\"math\">907,84 × 100 = 90784</span>",
+     "<b>الاستنتاج:</b> العدد الناقص هو <span class=\"math\">100</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 0.75,
+    "partialZero": true
+   },
+   {
+    "qId": "1-3",
+    "text": "<span class=\"math\">7,53 hm = ⋯ cm</span><br>✍️ اكتب العدد الناقص (بالسنتيمتر).",
+    "exact": [
+     "75300"
+    ],
+    "partial": [
+     "7530",
+     "753000",
+     "753"
+    ],
+    "h1": "من hm إلى cm نمرّ بـ dam ثم m ثم dm ثم cm.",
+    "h2": "نضرب في <span class=\"math\">10000</span>.",
+    "steps": [
+     "<b>الطريقة:</b> <span class=\"math\">1 hm = 100 m = 10000 cm</span>.",
+     "<span class=\"math\">7,53 hm = 753 m</span>",
+     "<span class=\"math\">753 m = 75300 cm</span>",
+     "النتيجة: <span class=\"math\">7,53 hm = 75300 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">75300 cm</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 0.75,
+    "partialZero": true
+   },
+   {
+    "qId": "1-4",
+    "text": "<span class=\"math\">154 + ⋯ = 279</span><br>✍️ اكتب العدد الناقص.",
+    "exact": [
+     "125"
+    ],
+    "partial": [
+     "135",
+     "433"
+    ],
+    "h1": "العدد الناقص هو فرق.",
+    "h2": "<span class=\"math\">279 − 154</span>.",
+    "steps": [
+     "<b>الطريقة:</b> في الجمع: الحد الناقص = المجموع − الحد المعلوم.",
+     "<span class=\"math\">279 − 154 = 125</span>",
+     "النتيجة: <span class=\"math\">154 + 125 = 279</span>",
+     "<b>الاستنتاج:</b> العدد الناقص هو <span class=\"math\">125</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 0.75,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 2,
+  "pts": 3,
+  "title": "التمرين الثاني",
+  "asis": true,
+  "context": "",
+  "questions": [
+   {
+    "qId": "2-1",
+    "text": "1- تحقق من صحة المساواة: <span class=\"math\">492 = 9 × 48 + 60</span><br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> صحيحة، أو <span class=\"math\">2</span> خاطئة.",
+    "exact": [
+     "1"
+    ],
+    "partial": [
+     "2"
+    ],
+    "h1": "احسب الطرف الأيسر.",
+    "h2": "<span class=\"math\">9 × 48 = 432</span>.",
+    "steps": [
+     "<b>الطريقة:</b> نحسب الطرف الثاني ونقارنه بـ <span class=\"math\">492</span>.",
+     "<span class=\"math\">9 × 48 = 432</span>",
+     "<span class=\"math\">432 + 60 = 492</span>",
+     "النتيجة: المساواة صحيحة (<span class=\"math\">1</span>)",
+     "<b>الاستنتاج:</b> المساواة صحيحة."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 0.75,
+    "partialZero": true
+   },
+   {
+    "qId": "2-2",
+    "text": "2- هل هذه المساواة تعبر عن قسمة إقليدية؟ علل؟<br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> نعم، أو <span class=\"math\">2</span> لا.",
+    "exact": [
+     "2"
+    ],
+    "partial": [
+     "1"
+    ],
+    "h1": "قارن الباقي <span class=\"math\">60</span> بالقاسم.",
+    "h2": "الباقي يجب أن يكون أصغر من القاسم.",
+    "steps": [
+     "<b>الطريقة:</b> في القسمة الإقليدية لعدد <span class=\"math\">a</span> على <span class=\"math\">b</span>: <span class=\"math\">a = b × q + r</span> حيث الباقي <span class=\"math\">r</span> أصغر من <span class=\"math\">b</span>.",
+     "الباقي <span class=\"math\">60</span> أكبر من <span class=\"math\">48</span> وأكبر من <span class=\"math\">9</span>",
+     "النتيجة: لا تعبر عن قسمة إقليدية (<span class=\"math\">2</span>)",
+     "<b>الاستنتاج:</b> لا، لأن الباقي <span class=\"math\">60</span> أكبر من القاسم."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 0.75,
+    "partialZero": true
+   },
+   {
+    "qId": "2-3",
+    "text": "3- أوجد حاصل القسمة الإقليدية لـ <span class=\"math\">492</span> على <span class=\"math\">9</span>.<br>✍️ اكتب الحاصل.",
+    "exact": [
+     "54"
+    ],
+    "partial": [
+     "48",
+     "6",
+     "55"
+    ],
+    "h1": "أنجز القسمة العمودية.",
+    "h2": "<span class=\"math\">9 × 54 = 486</span>.",
+    "steps": [
+     "<b>الطريقة:</b> في القسمة الإقليدية لعدد <span class=\"math\">a</span> على <span class=\"math\">b</span>: <span class=\"math\">a = b × q + r</span> حيث الباقي <span class=\"math\">r</span> أصغر من <span class=\"math\">b</span>.",
+     "<span class=\"math\">9 × 54 = 486</span>",
+     "<span class=\"math\">492 − 486 = 6</span> و <span class=\"math\">6 &lt; 9</span>",
+     "<span class=\"math\">492 = 9 × 54 + 6</span>",
+     "النتيجة: الحاصل <span class=\"math\">54</span> والباقي <span class=\"math\">6</span>",
+     "<b>الاستنتاج:</b> الحاصل هو <span class=\"math\">54</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 0.75,
+    "partialZero": true
+   },
+   {
+    "qId": "2-4",
+    "text": "4- أنجز القسمة العشرية للعدد <span class=\"math\">492</span> على <span class=\"math\">9</span> (نأخذ عددين بعد الفاصلة).<br>✍️ اكتب حاصل القسمة برقمين بعد الفاصلة.",
+    "exact": [
+     "54,66"
+    ],
+    "partial": [
+     "54,67",
+     "54,6",
+     "54,7"
+    ],
+    "h1": "تابع القسمة بعد الباقي <span class=\"math\">6</span> بإضافة أصفار.",
+    "h2": "<span class=\"math\">60 ÷ 9</span> يعطي <span class=\"math\">6</span> والباقي <span class=\"math\">6</span> مرة أخرى.",
+    "steps": [
+     "<b>الطريقة:</b> نواصل القسمة بعد الفاصلة: نضيف <span class=\"math\">0</span> إلى كل باقٍ.",
+     "<span class=\"math\">492 = 9 × 54 + 6</span>",
+     "<span class=\"math\">60 = 9 × 6 + 6</span>",
+     "<span class=\"math\">60 = 9 × 6 + 6</span>",
+     "النتيجة: <span class=\"math\">492 ÷ 9 ≈ 54,66</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">54,66</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 0.75,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 3,
+  "pts": 3,
+  "title": "التمرين الثالث",
+  "asis": true,
+  "context": "أجب بنعم في الخانة المناسبة للجدول<table class=\"xt\"><tr><th></th><th>10516</th><th>93</th><th>2015</th></tr><tr><td>يقبل القسمة على 3</td><td></td><td></td><td></td></tr><tr><td>يقبل القسمة على 4</td><td></td><td></td><td></td></tr><tr><td>يقبل القسمة على 5</td><td></td><td></td><td></td></tr></table>",
+  "questions": [
+   {
+    "qId": "3-1",
+    "text": "العدد <span class=\"math\">10516</span><br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> يقبل القسمة على 3، أو <span class=\"math\">2</span> يقبل القسمة على 4، أو <span class=\"math\">3</span> يقبل القسمة على 5.",
+    "exact": [
+     "2"
+    ],
+    "partial": [
+     "1",
+     "3"
+    ],
+    "h1": "طبّق قواعد قابلية القسمة.",
+    "h2": "مجموع أرقامه <span class=\"math\">13</span>، ورقما آحاده وعشراته <span class=\"math\">16</span>.",
+    "steps": [
+     "<b>الطريقة:</b> يقبل عدد القسمة على <span class=\"math\">3</span> إذا كان مجموع أرقامه يقبل القسمة على <span class=\"math\">3</span>؛ وعلى <span class=\"math\">4</span> إذا كان العدد المكوّن من رقمي آحاده وعشراته يقبل القسمة على <span class=\"math\">4</span>؛ وعلى <span class=\"math\">5</span> إذا كان رقم آحاده <span class=\"math\">0</span> أو <span class=\"math\">5</span>.",
+     "<span class=\"math\">1 + 0 + 5 + 1 + 6 = 13</span>: لا يقبل القسمة على <span class=\"math\">3</span>",
+     "<span class=\"math\">16 = 4 × 4</span>: يقبل القسمة على <span class=\"math\">4</span>",
+     "رقم آحاده <span class=\"math\">6</span>: لا يقبل القسمة على <span class=\"math\">5</span>",
+     "النتيجة: <span class=\"math\">10516</span> يقبل القسمة على <span class=\"math\">4</span> (<span class=\"math\">2</span>)",
+     "<b>الاستنتاج:</b> <span class=\"math\">10516</span> يقبل القسمة على <span class=\"math\">4</span> فقط."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true,
+    "noprint": true
+   },
+   {
+    "qId": "3-2",
+    "text": "العدد <span class=\"math\">93</span><br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> يقبل القسمة على 3، أو <span class=\"math\">2</span> يقبل القسمة على 4، أو <span class=\"math\">3</span> يقبل القسمة على 5.",
+    "exact": [
+     "1"
+    ],
+    "partial": [
+     "2",
+     "3"
+    ],
+    "h1": "احسب مجموع أرقامه.",
+    "h2": "<span class=\"math\">9 + 3 = 12</span>.",
+    "steps": [
+     "<b>الطريقة:</b> يقبل عدد القسمة على <span class=\"math\">3</span> إذا كان مجموع أرقامه يقبل القسمة على <span class=\"math\">3</span>؛ وعلى <span class=\"math\">4</span> إذا كان العدد المكوّن من رقمي آحاده وعشراته يقبل القسمة على <span class=\"math\">4</span>؛ وعلى <span class=\"math\">5</span> إذا كان رقم آحاده <span class=\"math\">0</span> أو <span class=\"math\">5</span>.",
+     "<span class=\"math\">9 + 3 = 12</span> يقبل القسمة على <span class=\"math\">3</span>",
+     "<span class=\"math\">93</span> فردي فلا يقبل القسمة على <span class=\"math\">4</span>، ورقم آحاده <span class=\"math\">3</span> فلا يقبل القسمة على <span class=\"math\">5</span>",
+     "النتيجة: <span class=\"math\">93</span> يقبل القسمة على <span class=\"math\">3</span> (<span class=\"math\">1</span>)",
+     "<b>الاستنتاج:</b> <span class=\"math\">93</span> يقبل القسمة على <span class=\"math\">3</span> فقط."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true,
+    "noprint": true
+   },
+   {
+    "qId": "3-3",
+    "text": "العدد <span class=\"math\">2015</span><br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> يقبل القسمة على 3، أو <span class=\"math\">2</span> يقبل القسمة على 4، أو <span class=\"math\">3</span> يقبل القسمة على 5.",
+    "exact": [
+     "3"
+    ],
+    "partial": [
+     "1",
+     "2"
+    ],
+    "h1": "انظر إلى رقم الآحاد.",
+    "h2": "رقم آحاده <span class=\"math\">5</span>.",
+    "steps": [
+     "<b>الطريقة:</b> يقبل عدد القسمة على <span class=\"math\">3</span> إذا كان مجموع أرقامه يقبل القسمة على <span class=\"math\">3</span>؛ وعلى <span class=\"math\">4</span> إذا كان العدد المكوّن من رقمي آحاده وعشراته يقبل القسمة على <span class=\"math\">4</span>؛ وعلى <span class=\"math\">5</span> إذا كان رقم آحاده <span class=\"math\">0</span> أو <span class=\"math\">5</span>.",
+     "<span class=\"math\">2 + 0 + 1 + 5 = 8</span>: لا يقبل القسمة على <span class=\"math\">3</span>",
+     "<span class=\"math\">15</span> لا يقبل القسمة على <span class=\"math\">4</span>",
+     "رقم آحاده <span class=\"math\">5</span>: يقبل القسمة على <span class=\"math\">5</span>",
+     "النتيجة: <span class=\"math\">2015</span> يقبل القسمة على <span class=\"math\">5</span> (<span class=\"math\">3</span>)",
+     "<b>الاستنتاج:</b> <span class=\"math\">2015</span> يقبل القسمة على <span class=\"math\">5</span> فقط."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true,
+    "noprint": true
+   }
+  ]
+ },
+ {
+  "id": 4,
+  "pts": 4,
+  "title": "التمرين الرابع",
+  "asis": true,
+  "context": "- ارسم قطعة مستقيمة <span class=\"math\">[AB]</span> بحيث: <span class=\"math\">AB = 6cm</span>.<br>- عين <span class=\"math\">M</span> منتصف <span class=\"math\">[AB]</span>.<br>- أنشئ المستقيم <span class=\"math\">(Δ)</span> الذي يشمل <span class=\"math\">M</span> و يعامد <span class=\"math\">[AB]</span>.",
+  "questions": [
+   {
+    "qId": "4-1",
+    "text": "1) ماذا يمثل <span class=\"math\">(Δ)</span> بالنسبة إلى القطعة المستقيمة <span class=\"math\">[AB]</span>؟ علل؟<br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> محور القطعة <span class=\"math\">[AB]</span>، أو <span class=\"math\">2</span> موازٍ لـ <span class=\"math\">(AB)</span>.",
+    "exact": [
+     "1"
+    ],
+    "partial": [
+     "2"
+    ],
+    "h1": "<span class=\"math\">(Δ)</span> يعامد <span class=\"math\">[AB]</span> في منتصفها.",
+    "h2": "ما اسم المستقيم العمودي على قطعة في منتصفها؟",
+    "steps": [
+     "<b>الطريقة:</b> محور قطعة مستقيمة هو المستقيم العمودي عليها في منتصفها.",
+     "<span class=\"math\">(Δ)</span> يشمل <span class=\"math\">M</span> منتصف <span class=\"math\">[AB]</span>",
+     "<span class=\"math\">(Δ)</span> يعامد <span class=\"math\">[AB]</span>",
+     "النتيجة: <span class=\"math\">(Δ)</span> محور القطعة <span class=\"math\">[AB]</span> (<span class=\"math\">1</span>)",
+     "<b>الاستنتاج:</b> <span class=\"math\">(Δ)</span> محور <span class=\"math\">[AB]</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "4-2",
+    "text": "- عين النقطتين <span class=\"math\">C</span> و <span class=\"math\">D</span> من المستقيم <span class=\"math\">(Δ)</span> بحيث: <span class=\"math\">MC = MD = 2cm</span>.<br>- أنشئ الرباعي <span class=\"math\">ACBD</span>.<br>✍️ أنجز الشكل كاملا في كراسك بدقة (2 ن للرسم)، ثم اكتب طول القطعة <span class=\"math\">[CD]</span> بالسنتيمتر.",
+    "exact": [
+     "4"
+    ],
+    "partial": [
+     "2",
+     "6"
+    ],
+    "h1": "<span class=\"math\">C</span> و <span class=\"math\">D</span> على جانبي <span class=\"math\">M</span>.",
+    "h2": "<span class=\"math\">CD = MC + MD</span>.",
+    "steps": [
+     "<b>الطريقة:</b> رسم دقيق: <span class=\"math\">AB = 6 cm</span>، <span class=\"math\">M</span> منتصفها، <span class=\"math\">(Δ) ⊥ (AB)</span> في <span class=\"math\">M</span>، ثم <span class=\"math\">C</span> و <span class=\"math\">D</span> على <span class=\"math\">(Δ)</span> من جهتين مختلفتين.",
+     "<span class=\"math\">MC = 2 cm</span> و <span class=\"math\">MD = 2 cm</span>",
+     "<span class=\"math\">CD = 2 + 2 = 4</span>",
+     "النتيجة: <span class=\"math\">CD = 4 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">CD = 4 cm</span>."
+    ],
+    "rubric": [
+     {
+      "step": "رسم <span class=\"math\">[AB]</span> و <span class=\"math\">M</span> و <span class=\"math\">(Δ)</span>",
+      "mark": "1"
+     },
+     {
+      "step": "تعيين <span class=\"math\">C</span> و <span class=\"math\">D</span> ورسم الرباعي",
+      "mark": "1"
+     }
+    ],
+    "pts": 2,
+    "partialZero": true
+   },
+   {
+    "qId": "4-3",
+    "text": "2) ما نوع الرباعي <span class=\"math\">ACBD</span>؟ علل؟<br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> مستطيل، أو <span class=\"math\">2</span> معين، أو <span class=\"math\">3</span> مربع.",
+    "exact": [
+     "2"
+    ],
+    "partial": [
+     "1",
+     "3"
+    ],
+    "h1": "قطراه <span class=\"math\">[AB]</span> و <span class=\"math\">[CD]</span>.",
+    "h2": "قطران متعامدان ومتناصفان وغير متقايسين.",
+    "steps": [
+     "<b>الطريقة:</b> الرباعي الذي قطراه متعامدان ومتناصفان معين؛ وإذا كانا متقايسين أيضا فهو مربع.",
+     "قطراه <span class=\"math\">[AB]</span> و <span class=\"math\">[CD]</span> متناصفان في <span class=\"math\">M</span>",
+     "وهما متعامدان",
+     "<span class=\"math\">AB = 6 cm</span> و <span class=\"math\">CD = 4 cm</span> غير متقايسين",
+     "النتيجة: <span class=\"math\">ACBD</span> معين (<span class=\"math\">2</span>)",
+     "<b>الاستنتاج:</b> <span class=\"math\">ACBD</span> معين."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 5,
+  "pts": 7,
+  "title": "الوضعية الإدماجية",
+  "asis": true,
+  "context": "لفلاح قطعة أرض مستطيلة الشكل طولها <span class=\"math\">48,5m</span> و عرضها <span class=\"math\">30m</span>.<img class=\"qimg\" src=\"img/1m-05-ard.png\" alt=\"قطعة الأرض\">",
+  "questions": [
+   {
+    "qId": "5-1",
+    "text": "1) أحسب محيطها <span class=\"math\">P</span>، أحسب مساحتها <span class=\"math\">A</span>.<br>✍️ اكتب المحيط <span class=\"math\">P</span> (بالمتر).",
+    "exact": [
+     "157"
+    ],
+    "partial": [
+     "78,5",
+     "1455"
+    ],
+    "h1": "محيط المستطيل = <span class=\"math\">2 × (الطول + العرض)</span>.",
+    "h2": "<span class=\"math\">2 × 30 + 2 × 48,5</span>.",
+    "steps": [
+     "<b>الطريقة:</b> محيط المستطيل: <span class=\"math\">P = 2 × الطول + 2 × العرض</span>.",
+     "<span class=\"math\">P = 2 × 30 + 2 × 48,5</span>",
+     "<span class=\"math\">P = 60 + 97</span>",
+     "النتيجة: <span class=\"math\">P = 157 m</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">P = 157 m</span>."
+    ],
+    "rubric": [
+     {
+      "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
+      "mark": "0,25"
+     },
+     {
+      "step": "م2 الاستعمال السليم: النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "5-2",
+    "text": "(تابع 1) المساحة <span class=\"math\">A</span>.<br>✍️ اكتب المساحة <span class=\"math\">A</span> (بالمتر المربع).",
+    "exact": [
+     "1455"
+    ],
+    "partial": [
+     "157",
+     "145,5"
+    ],
+    "h1": "مساحة المستطيل = الطول × العرض.",
+    "h2": "<span class=\"math\">48,5 × 30</span>.",
+    "steps": [
+     "<b>الطريقة:</b> مساحة المستطيل: <span class=\"math\">A = الطول × العرض</span>.",
+     "<span class=\"math\">A = 48,5 × 30</span>",
+     "النتيجة: <span class=\"math\">A = 1455 m²</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">A = 1455 m²</span>."
+    ],
+    "rubric": [
+     {
+      "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
+      "mark": "0,25"
+     },
+     {
+      "step": "م2 الاستعمال السليم: النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true,
+    "noprint": true
+   },
+   {
+    "qId": "5-3",
+    "text": "2) قام هذا الفلاح بتسييج هذه القطعة و ترك مدخل طوله <span class=\"math\">5m</span>.<br>- ما هو طول السياج الذي يلزمه لإحاطة هذه القطعة؟<br>✍️ اكتب طول السياج (بالمتر).",
+    "exact": [
+     "152"
+    ],
+    "partial": [
+     "162",
+     "157"
+    ],
+    "h1": "السياج يغطي المحيط إلا المدخل.",
+    "h2": "<span class=\"math\">157 − 5</span>.",
+    "steps": [
+     "<b>الطريقة:</b> طول السياج = المحيط − طول المدخل.",
+     "<span class=\"math\">157 − 5 = 152</span>",
+     "النتيجة: طول السياج <span class=\"math\">152 m</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">152 m</span>."
+    ],
+    "rubric": [
+     {
+      "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
+      "mark": "0,25"
+     },
+     {
+      "step": "م2 الاستعمال السليم: النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "5-4",
+    "text": "3) إذا كان ثمن المتر الواحد من السياج هو <span class=\"math\">120DA</span>.<br>- فما هي تكلفة هذا السياج؟<br>✍️ اكتب التكلفة (بالدينار).",
+    "exact": [
+     "18240"
+    ],
+    "partial": [
+     "18840",
+     "19440"
+    ],
+    "h1": "التكلفة = طول السياج × ثمن المتر.",
+    "h2": "<span class=\"math\">152 × 120</span>.",
+    "steps": [
+     "<b>الطريقة:</b> ثمن عدة أمتار = عدد الأمتار × ثمن المتر الواحد.",
+     "<div class=\"vop\"><div>   152</div><div> × 120</div><div class=\"ln\">  3040</div><div> 15200</div><div class=\"ln\"> 18240</div></div>",
+     "النتيجة: تكلفة السياج <span class=\"math\">18240 DA</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">18240 DA</span>."
+    ],
+    "rubric": [
+     {
+      "step": "م1 التفسير السليم: اختيار الأداة الرياضية المناسبة",
+      "mark": "0,25"
+     },
+     {
+      "step": "م2 الاستعمال السليم: النتيجة",
+      "mark": "0,75"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "5-5",
+    "text": "4) زرع الفلاح مساحة من الأرض تقدر بـ: <span class=\"math\">936m²</span> بطاطا و الباقي طماطم.<br>- أحسب المساحة المزروعة طماطم؟<br>✍️ اكتب المساحة (بالمتر المربع).",
+    "exact": [
+     "519"
+    ],
+    "partial": [
+     "521",
+     "2391"
+    ],
+    "h1": "مساحة الطماطم = مساحة الأرض − مساحة البطاطا.",
+    "h2": "<span class=\"math\">1455 − 936</span>.",
+    "steps": [
+     "<b>الطريقة:</b> المساحة الباقية = المساحة الكلية − المساحة المزروعة بطاطا.",
+     "<div class=\"vop\"><div>  1455</div><div>−  936</div><div class=\"ln\">   519</div></div>",
+     "النتيجة: مساحة الطماطم <span class=\"math\">519 m²</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">519 m²</span>."
+    ],
+    "rubric": [
+     {
+      "step": "م1 التفسير السليم: الطريقة",
+      "mark": "0,5"
+     },
+     {
+      "step": "م2 الاستعمال السليم: النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1.5,
+    "partialZero": true
+   },
+   {
+    "qId": "5-6",
+    "text": "5) إذا علمت أن مردود المساحة المغروسة طماطم هو <span class=\"math\">2076kg</span>.<br>- أحسب مردود للمتر مربع الواحد <span class=\"math\">(1m²)</span>؟<br>✍️ اكتب المردود (بالكيلوغرام).",
+    "exact": [
+     "4"
+    ],
+    "partial": [
+     "0,25"
+    ],
+    "h1": "نقسم المردود الكلي على المساحة.",
+    "h2": "<span class=\"math\">2076 ÷ 519</span>.",
+    "steps": [
+     "<b>الطريقة:</b> مردود المتر المربع = المردود الكلي ÷ المساحة.",
+     "<span class=\"math\">519 × 4 = 2076</span>",
+     "<span class=\"math\">2076 ÷ 519 = 4</span>",
+     "النتيجة: مردود المتر المربع <span class=\"math\">4 kg</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">4 kg</span>."
+    ],
+    "rubric": [
+     {
+      "step": "م1 التفسير السليم: الطريقة",
+      "mark": "0,5"
+     },
+     {
+      "step": "م2 الاستعمال السليم: النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1.5,
+    "partialZero": true
+   }
+  ]
+ }
+];
+
+        function exercisesCount() { return exercises.reduce((a, e) => a + e.questions.length, 0); }
+
+        function renderApp() {
+            totalQuestionsCount = exercisesCount();
+            const root = document.getElementById('exercisesRoot');
+            root.innerHTML = '';
+
+            exercises.forEach(ex => {
+                const card = document.createElement('div');
+                card.className = 'exercise-card';
+
+                let questionsHtml = '';
+                ex.questions.forEach(q => {
+                    attemptsLeft[q.qId] = 3;
+                    questionEarned[q.qId] = 0;
+                    questionLocked[q.qId] = false;
+
+                    let symHtml = '';
+                    symbols1AM.forEach(s => {
+                        symHtml += `<button type="button" class="sym-btn" onclick="pressSym('${q.qId}', '${s}')">${s}</button>`;
+                    });
+
+                    let stepsHtml = '';
+                    q.steps.forEach((st, idx) => {
+                        const isLast = (idx === q.steps.length - 1);
+                        stepsHtml += `<div class="${isLast ? 'sol-result' : 'sol-line'}">${st}</div>`;
+                    });
+
+                    let rubricRows = '';
+                    q.rubric.forEach(r => {
+                        rubricRows += `<tr><td>${r.step}</td><td><span class="math">${r.mark} ن</span></td></tr>`;
+                    });
+
+                    questionsHtml += `
+                        <div class="q-box" id="qbox-${q.qId}">
+                            <div class="q-title">
+                                <span>${q.text}</span>
+                                <span class="q-meta" id="meta-${q.qId}">المحاولات: <span class="math">3</span> | النقاط: <span class="math">${String(q.pts).replace('.', ',')}</span></span>
+                            </div>
+                            <div class="answer-area">
+                                <div class="input-line">
+                                    <input type="text" id="in-${q.qId}" placeholder="اكتب إجابتك هنا" autocomplete="off">
+                                    <button type="button" class="btn-check" id="btn-${q.qId}" onclick="checkAns(${ex.id}, '${q.qId}')">تحقق من الإجابة</button>
+                                </div>
+                                <div class="sym-toolbar">${symHtml}</div>
+                            </div>
+                            <div class="feedback-box" id="fb-${q.qId}"></div>
+                            <div class="model-solution" id="sol-${q.qId}">
+                                <h4>✔ الإجابة النموذجية المفصلة:</h4>
+                                ${stepsHtml}
+                                <table class="rubric-table">
+                                    <thead>
+                                        <tr><th>مراحل الحل (سلم التنقيط)</th><th>النقطة</th></tr>
+                                    </thead>
+                                    <tbody>${rubricRows}</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h2>${ex.title}</h2>
+                        <span class="pts-badge"><span class="math">${String(ex.pts).replace('.', ',')}</span> ${ex.pts === 1 ? 'نقطة' : 'نقاط'}</span>
+                    </div>
+                    <div class="context-box">${ex.context}</div>
+                    ${questionsHtml}
+                `;
+                root.appendChild(card);
+            });
+        }
+
+        function pressSym(qId, sym) {
+            const inp = document.getElementById(`in-${qId}`);
+            if (!inp || inp.disabled) return;
+            if (sym === '⌫') {
+                inp.value = inp.value.slice(0, -1);
+            } else {
+                inp.value += sym;
+            }
+            inp.focus();
+        }
+
+        function normalizeInput(raw) {
+            if (!raw) return '';
+            const arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+            let s = raw.toString().trim();
+            for (let i = 0; i < 10; i++) {
+                s = s.replace(new RegExp(arDigits[i], 'g'), i);
+            }
+            s = s.replace(/\s+/g, '');
+            s = s.replace(/^[a-zA-Z]\s*=/i, '');
+            s = s.replace(/،/g, ',').replace(/\./g, ',');
+            s = s.replace(/\*/g, '×').replace(/(\d)[xX](?=\d)/g, '$1×').replace(/[−–]/g, '-');
+            s = s.replace(/(da|دج|دينار|أوراق|ورقة|عشرة|عشرات|وحدة|متر|درجة|°c|c°|°|cm²|m²|m2|cm|m|kg|لتر|l)$/i, '');
+            s = s.replace(/-\((\d+\/\d+)\)/g, '-$1').replace(/\((-?\d+(?:,\d+)?)\)/g, '$1').replace(/^\((.*)\)$/, '$1').replace(/^\+(?=\d)/, '');
+            s = s.replace(/(\d),(\d*?)0+(?=$|[^\d])/g, (m, a, b) => b ? a + ',' + b : a);
+            return s.toLowerCase();
+        }
+
+        function updateHeaderStats() {
+            const formattedScore = String(Math.round(totalScore * 100) / 100).replace('.', ',');
+            document.getElementById('scoreVal').innerText = `${formattedScore} / 20`;
+            document.getElementById('starsVal').innerText = totalStars;
+            const pct = Math.min(100, Math.round((completedQuestions / totalQuestionsCount) * 100));
+            document.getElementById('progressBar').style.width = pct + '%';
+
+            if (completedQuestions === totalQuestionsCount) {
+                setTimeout(() => {
+                    document.getElementById('finalScoreText').innerText = `${formattedScore} / 20`;
+                    document.getElementById('finalTitle').innerText = totalScore >= 10 ? '🎉 أحسنت! أتممت جميع الأسئلة' : '💪 أتممت الاختبار! راجع الإجابات النموذجية وأعد المحاولة';
+                    document.getElementById('finalStarsText').innerText = `⭐ ${totalStars} نجمة`;
+                    document.getElementById('finalModal').style.display = 'flex';
+                }, 600);
+            }
+        }
+
+        function triggerShake(qId) {
+            const inp = document.getElementById(`in-${qId}`);
+            inp.classList.remove('shake');
+            void inp.offsetWidth;
+            inp.classList.add('shake');
+        }
+
+        const FBMSG = {"ok": ["أحسنت! تركيزك أوصلك إلى الجواب الصحيح.", "ممتاز! أخذت وقتك وفكّرت جيدا، وهذه هي النتيجة.", "برافو! التأنّي في الحساب يصنع النجاح.", "رائع! جهدك يستحق هذه النجوم.", "إجابة صحيحة! واصل بنفس الهدوء والتركيز.", "أحسنت! من يقرأ السؤال جيدا يصل إلى الحل.", "عمل متقن! الدقة أهم من السرعة، وأنت أثبتّ ذلك.", "بارك الله فيك! تقدّم خطوة بخطوة كما فعلت الآن."], "w1": ["لا بأس، الخطأ جزء من التعلّم. أعد قراءة السؤال بهدوء.", "تمهّل قليلا: كلما أسرعت قلّ تركيزك. خذ وقتك.", "محاولة جيدة! راجع حسابك خطوة بخطوة.", "كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.", "لا تستعجل. اقرأ المعطيات من جديد ثم فكّر.", "أنت قريب. أعطِ هذا السؤال الوقت الذي يحتاجه.", "الخطأ ليس فشلا بل خطوة نحو الفهم. حاول مجددا.", "هدّئ السرعة وزِد التركيز، وستجد الطريق."], "w2": ["محاولة أخيرة: اكتب الحساب على ورقة قبل أن تجيب.", "لا تيأس! التركيز يأتي مع الهدوء. اقرأ التلميح جيدا.", "السرعة والتركيز لا يجتمعان: تمهّل في هذه المحاولة الأخيرة.", "ابذل جهدا إضافيا صغيرا، فالحل قريب منك.", "راجع كل خطوة على حدة، ولا تتسرّع.", "كل العلماء أخطؤوا قبل أن ينجحوا. ركّز في هذه المحاولة."], "fail": ["لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. اقرأ الإجابة النموذجية وسلم التنقيط بتمعّن.", "تعلّمنا شيئا جديدا اليوم! تأمّل خطوات الحل، وأعد التمرين غدا بهدوء.", "لا بأس، الفهم يحتاج وقتا وجهدا. راجع الحل خطوة بخطوة.", "المهم أن نفهم لماذا أخطأنا. اقرأ الحل، ثم حاول إعادته وحدك على ورقة.", "الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة."]};
+        function fbPick(kind, qId) { const a = FBMSG[kind]; const p = String(qId).split('-'); const n = (+p[0]) * 3 + (+p[1] || 0) + kind.length; return a[n % a.length]; }
+        function checkAns(exId, qId) {
+            if (questionLocked[qId]) return;
+            const ex = exercises.find(e => e.id === exId);
+            const q = ex.questions.find(item => item.qId === qId);
+            const inp = document.getElementById(`in-${qId}`);
+            const fb = document.getElementById(`fb-${qId}`);
+            const val = normalizeInput(inp.value);
+
+            if (!val) {
+                triggerShake(qId);
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = 'يرجى كتابة إجابتك أولاً في الخانة قبل الضغط على زر التحقق.';
+                return;
+            }
+
+            const isExactMatch = q.exact.some(ans => normalizeInput(ans) === val);
+            if (isExactMatch) {
+                const rem = attemptsLeft[qId];
+                const starsAwarded = (rem === 3) ? 3 : (rem === 2 ? 2 : 1);
+                const starIcons = '⭐'.repeat(starsAwarded);
+
+                const prevPts = questionEarned[qId] || 0;
+                totalScore += (q.pts - prevPts);
+                questionEarned[qId] = q.pts;
+                totalStars += starsAwarded;
+                questionLocked[qId] = true;
+                completedQuestions++;
+
+                playTone('success');
+                document.getElementById(`qbox-${qId}`).classList.add('solved');
+                inp.disabled = true;
+                document.getElementById(`btn-${qId}`).disabled = true;
+
+                fb.className = 'feedback-box success';
+                fb.innerHTML = `<span class="star-burst">${starIcons}</span> ${fbPick('ok', qId)} نلت العلامة الكاملة (<span class="math">${String(q.pts).replace('.', ',')} ن</span>).`;
+                flyStars(fb, 18);
+                document.getElementById(`sol-${qId}`).style.display = 'block';
+                updateHeaderStats();
+                return;
+            }
+
+            const isPartialMatch = q.partial && q.partial.some(ans => normalizeInput(ans) === val);
+            if (isPartialMatch) {
+                if (q.partialZero) { handleWrongAttempt(q, q.partialMsg); return; }
+                const halfPts = Math.round((q.pts / 2) * 100) / 100;
+                const prevPts = questionEarned[qId] || 0;
+                if (halfPts > prevPts) {
+                    totalScore += (halfPts - prevPts);
+                    questionEarned[qId] = halfPts;
+                }
+                handleWrongAttempt(q, `${q.partialMsg} (حصلت على نصف العلامة <span class="math">${String(halfPts).replace('.', ',')} ن</span>، صحّح الشكل لتنال العلامة الكاملة).`);
+                updateHeaderStats();
+                return;
+            }
+
+            handleWrongAttempt(q, null);
+        }
+
+        function handleWrongAttempt(q, customReason) {
+            const qId = q.qId;
+            attemptsLeft[qId]--;
+            const rem = attemptsLeft[qId];
+            const inp = document.getElementById(`in-${qId}`);
+            const fb = document.getElementById(`fb-${qId}`);
+
+            playTone('error');
+            triggerShake(qId);
+            document.getElementById(`meta-${qId}`).innerHTML = `المحاولات: <span class="math">${rem}</span> | النقاط: <span class="math">${String(q.pts).replace('.', ',')}</span>`;
+
+            if (rem === 2) {
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w1', qId) + '<br>'}<strong>💡 التلميح 1:</strong> ${q.h1}`;
+                flyStars(fb, 9, ['⭐','💡','✨']);
+            } else if (rem === 1) {
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w2', qId) + '<br>'}<strong>💡 التلميح 2:</strong> ${q.h2}`;
+                flyStars(fb, 9, ['⭐','💡','✨']);
+            } else {
+                questionLocked[qId] = true;
+                completedQuestions++;
+                inp.disabled = true;
+                document.getElementById(`btn-${qId}`).disabled = true;
+                document.getElementById(`qbox-${qId}`).classList.add('failed');
+
+                fb.className = 'feedback-box fail';
+                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 ' + fbPick('fail', qId);
+                document.getElementById(`sol-${qId}`).style.display = 'block';
+                updateHeaderStats();
+            }
+        }
+
+        window.onload = renderApp;
+    </script>
+<!-- flyStars: نجوم متطايرة -->
+<style>.fly-star{position:fixed;z-index:70;font-size:1.45rem;pointer-events:none;animation:flystar 1s ease-out forwards}
+@keyframes flystar{from{transform:translate(0,0) scale(.4);opacity:1}to{transform:translate(var(--dx),var(--dy)) scale(1.15) rotate(220deg);opacity:0}}</style>
+<script>function flyStars(el, n, icons){ try{ icons = icons || ['⭐','✨','🌟']; const r = el.getBoundingClientRect(), x = r.left + r.width/2, y = Math.max(r.top, 0) + 20;
+ for (let i = 0; i < n; i++){ const s = document.createElement('span'); s.className = 'fly-star'; s.textContent = icons[i % icons.length];
+  const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
+  s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
+  document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
+<div id="paper"><div class="copy" data-pages="2"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACZklEQVR4nMWYPW7kOBSEPzYboCdiAz4AfRGLc5U5xgK9IxkyMMcatn0RKnPIjoYC1KwJ2otNtncTm6tASQX1UKr3UzLin59ldwOAD0ZWY4xZ4+HJrLvzHk5mWowx+4/muYlQo5TV/BQYGDNGypLm3E0DZPbwwpH6qj9jfTw8s5rDx/PcevYArN/5kWnYvL6wfQbPf1XAa2N5wBe8zvffulaww2gDuMRqlj3nnZ9wKv0qoALUwc/57xdguzkRSVLFKxM1Bde8JEn9KqhRc8YUArFYMQCYjt24d+m8Rh6D4HQYl/ql3G/rl/PWsxf8foGzCW+/AJ/44+HtZyjdpjJqfgqS9L4gBmyuA2NHHwC4U7FZyW+BqA21rr2QGOXatRe24BJW1ZSOGihhM7EQ3EmznMoR8D27cYDgpAklr0wsNtPVB1IZM1EbrjHmOnDEpZ4aqPlZ1RSb6/VTFKu+vaDklXXSnKvRLMBmhr4+8FOophxR8htEzb190ACMJtypgJMmXOvqgwQBI2WXvOQSBGLP3agGOGkLrvkJBrrPA7xUjbbwfh9AYPD9tjOV640+UaNm0X8e1Otxog0ljlw16OmDnWscF/08PIc7AEwZc335eJ6bCGqMqlHKAIEBq67bebfacjHu6fAUK35aKlyM+eqnjhpIUh38hGt+C675+SpJ3+yMKcew2vIjrztYPoPnJvKenRNWLmFzjZqv8aFvdl6/cnmog99wiYu5+wyef0fcSduy2sXEOx3AqTx3rgDOs3gMc+YFqDoce/ug+S0o+S04lbHzjXTNzkZT+Cs8jtmljhPJ/O//0n4DcUGa4jMA8fsAAAAASUVORK5CYII=" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="ttl">اختبار الفصل الأول (من اختبارات المتوسطات 1) في مادة الرياضيات للسنة الأولى متوسط</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="ph"><span>المدة: ساعتان</span><span>يُمنع استعمال الآلة الحاسبة</span></div><div class="cols"><div class="ex"><h4>التمرين الأول (3 ن)</h4>أكمل الفراغات التالية:<p><span class="math">94 = 6 × ⋯ + ⋯</span></p><p><span class="math">907,84 × ⋯ = 90784</span></p><p><span class="math">7,53 hm = ⋯ cm</span></p><p><span class="math">154 + ⋯ = 279</span></p></div><div class="ex"><h4>التمرين الثاني (3 ن)</h4><p>1- تحقق من صحة المساواة: <span class="math">492 = 9 × 48 + 60</span></p><p>2- هل هذه المساواة تعبر عن قسمة إقليدية؟ علل؟</p><p>3- أوجد حاصل القسمة الإقليدية لـ <span class="math">492</span> على <span class="math">9</span>.</p><p>4- أنجز القسمة العشرية للعدد <span class="math">492</span> على <span class="math">9</span> (نأخذ عددين بعد الفاصلة).</p></div><div class="ex"><h4>التمرين الثالث (3 ن)</h4>أجب بنعم في الخانة المناسبة للجدول<table class="xt"><tr><th></th><th>10516</th><th>93</th><th>2015</th></tr><tr><td>يقبل القسمة على 3</td><td></td><td></td><td></td></tr><tr><td>يقبل القسمة على 4</td><td></td><td></td><td></td></tr><tr><td>يقبل القسمة على 5</td><td></td><td></td><td></td></tr></table></div><div class="ex"><h4>التمرين الرابع (4 ن)</h4>- ارسم قطعة مستقيمة <span class="math">[AB]</span> بحيث: <span class="math">AB = 6cm</span>.<br>- عين <span class="math">M</span> منتصف <span class="math">[AB]</span>.<br>- أنشئ المستقيم <span class="math">(Δ)</span> الذي يشمل <span class="math">M</span> و يعامد <span class="math">[AB]</span>.<p>1) ماذا يمثل <span class="math">(Δ)</span> بالنسبة إلى القطعة المستقيمة <span class="math">[AB]</span>؟ علل؟</p><p>- عين النقطتين <span class="math">C</span> و <span class="math">D</span> من المستقيم <span class="math">(Δ)</span> بحيث: <span class="math">MC = MD = 2cm</span>.<br>- أنشئ الرباعي <span class="math">ACBD</span>.</p><p>2) ما نوع الرباعي <span class="math">ACBD</span>؟ علل؟</p></div><div class="ex"><h4>الوضعية الإدماجية (7 ن)</h4><div class="fig"><img class="qimg" src="img/1m-05-ard.png" alt="قطعة الأرض"></div>لفلاح قطعة أرض مستطيلة الشكل طولها <span class="math">48,5m</span> و عرضها <span class="math">30m</span>.<p>1) أحسب محيطها <span class="math">P</span>، أحسب مساحتها <span class="math">A</span>.</p><p>2) قام هذا الفلاح بتسييج هذه القطعة و ترك مدخل طوله <span class="math">5m</span>.<br>- ما هو طول السياج الذي يلزمه لإحاطة هذه القطعة؟</p><p>3) إذا كان ثمن المتر الواحد من السياج هو <span class="math">120DA</span>.<br>- فما هي تكلفة هذا السياج؟</p><p>4) زرع الفلاح مساحة من الأرض تقدر بـ: <span class="math">936m²</span> بطاطا و الباقي طماطم.<br>- أحسب المساحة المزروعة طماطم؟</p><p>5) إذا علمت أن مردود المساحة المغروسة طماطم هو <span class="math">2076kg</span>.<br>- أحسب مردود للمتر مربع الواحد <span class="math">(1m²)</span>؟</p></div></div><div class="foot">بالتوفيق</div></div></div><script>(function(){function fit(){var pp=document.getElementById('paper');if(!pp)return;var c=pp.querySelector('.copy');var n=+(c&&c.getAttribute('data-pages'));if(!n)return;
+var st=pp.getAttribute('style');pp.setAttribute('style','display:block;position:absolute;visibility:hidden;top:0;right:0;width:192mm');c.style.zoom=1;
+var mm=document.createElement('div');mm.style.height=(n*279-6)+'mm';pp.appendChild(mm);var lim=mm.getBoundingClientRect().height;pp.removeChild(mm);
+var lo=0.45,hi=1.3,k;c.style.zoom=hi;if(c.getBoundingClientRect().height<=lim)lo=hi;else for(k=0;k<10;k++){var m=(lo+hi)/2;c.style.zoom=m;if(c.getBoundingClientRect().height<=lim)lo=m;else hi=m}
+c.style.zoom=lo;if(st===null)pp.removeAttribute('style');else pp.setAttribute('style',st)}
+window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="ttl">الحل النموذجي وسلم التنقيط — اختبار الفصل الأول (من اختبارات المتوسطات 1) — السنة الأولى متوسط</div><div class="sxs"><div class="sx"><h4>التمرين الأول (3 ن)</h4><div class="sq"><p><b><span class="math">94 = 6 × ⋯ + ⋯</span></b></p><p><b>الطريقة:</b> في القسمة الإقليدية لعدد <span class="math">a</span> على <span class="math">b</span>: <span class="math">a = b × q + r</span> حيث الباقي <span class="math">r</span> أصغر من <span class="math">b</span>.</p><p><span class="math">6 × 15 = 90</span></p><p><span class="math">94 − 90 = 4</span> و <span class="math">4 &lt; 6</span></p><p>النتيجة: <span class="math">94 = 6 × 15 + 4</span></p><p><b>الاستنتاج:</b> العددان هما <span class="math">15</span> و <span class="math">4</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>0,75</td></tr></table></div><div class="sq"><p><b><span class="math">907,84 × ⋯ = 90784</span></b></p><p><b>الطريقة:</b> الضرب في <span class="math">10</span> أو <span class="math">100</span> أو <span class="math">1000</span> ينقل الفاصلة نحو اليمين بمرتبة أو مرتبتين أو ثلاث.</p><p><span class="math">907,84</span> ← <span class="math">90784</span>: الفاصلة انتقلت مرتبتين نحو اليمين</p><p>النتيجة: <span class="math">907,84 × 100 = 90784</span></p><p><b>الاستنتاج:</b> العدد الناقص هو <span class="math">100</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>0,75</td></tr></table></div><div class="sq"><p><b><span class="math">7,53 hm = ⋯ cm</span></b></p><p><b>الطريقة:</b> <span class="math">1 hm = 100 m = 10000 cm</span>.</p><p><span class="math">7,53 hm = 753 m</span></p><p><span class="math">753 m = 75300 cm</span></p><p>النتيجة: <span class="math">7,53 hm = 75300 cm</span></p><p><b>الاستنتاج:</b> <span class="math">75300 cm</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>0,75</td></tr></table></div><div class="sq"><p><b><span class="math">154 + ⋯ = 279</span></b></p><p><b>الطريقة:</b> في الجمع: الحد الناقص = المجموع − الحد المعلوم.</p><p><span class="math">279 − 154 = 125</span></p><p>النتيجة: <span class="math">154 + 125 = 279</span></p><p><b>الاستنتاج:</b> العدد الناقص هو <span class="math">125</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>0,75</td></tr></table></div></div><div class="sx"><h4>التمرين الثاني (3 ن)</h4><div class="sq"><p><b>1- تحقق من صحة المساواة: <span class="math">492 = 9 × 48 + 60</span></b></p><p><b>الطريقة:</b> نحسب الطرف الثاني ونقارنه بـ <span class="math">492</span>.</p><p><span class="math">9 × 48 = 432</span></p><p><span class="math">432 + 60 = 492</span></p><p>النتيجة: المساواة صحيحة (<span class="math">1</span>)</p><p><b>الاستنتاج:</b> المساواة صحيحة.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>0,75</td></tr></table></div><div class="sq"><p><b>2- هل هذه المساواة تعبر عن قسمة إقليدية؟ علل؟</b></p><p><b>الطريقة:</b> في القسمة الإقليدية لعدد <span class="math">a</span> على <span class="math">b</span>: <span class="math">a = b × q + r</span> حيث الباقي <span class="math">r</span> أصغر من <span class="math">b</span>.</p><p>الباقي <span class="math">60</span> أكبر من <span class="math">48</span> وأكبر من <span class="math">9</span></p><p>النتيجة: لا تعبر عن قسمة إقليدية (<span class="math">2</span>)</p><p><b>الاستنتاج:</b> لا، لأن الباقي <span class="math">60</span> أكبر من القاسم.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>0,75</td></tr></table></div><div class="sq"><p><b>3- أوجد حاصل القسمة الإقليدية لـ <span class="math">492</span> على <span class="math">9</span>.</b></p><p><b>الطريقة:</b> في القسمة الإقليدية لعدد <span class="math">a</span> على <span class="math">b</span>: <span class="math">a = b × q + r</span> حيث الباقي <span class="math">r</span> أصغر من <span class="math">b</span>.</p><p><span class="math">9 × 54 = 486</span></p><p><span class="math">492 − 486 = 6</span> و <span class="math">6 &lt; 9</span></p><p><span class="math">492 = 9 × 54 + 6</span></p><p>النتيجة: الحاصل <span class="math">54</span> والباقي <span class="math">6</span></p><p><b>الاستنتاج:</b> الحاصل هو <span class="math">54</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>0,75</td></tr></table></div><div class="sq"><p><b>4- أنجز القسمة العشرية للعدد <span class="math">492</span> على <span class="math">9</span> (نأخذ عددين بعد الفاصلة).</b></p><p><b>الطريقة:</b> نواصل القسمة بعد الفاصلة: نضيف <span class="math">0</span> إلى كل باقٍ.</p><p><span class="math">492 = 9 × 54 + 6</span></p><p><span class="math">60 = 9 × 6 + 6</span></p><p><span class="math">60 = 9 × 6 + 6</span></p><p>النتيجة: <span class="math">492 ÷ 9 ≈ 54,66</span></p><p><b>الاستنتاج:</b> <span class="math">54,66</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>0,75</td></tr></table></div></div><div class="sx"><h4>التمرين الثالث (3 ن)</h4><div class="sq"><p><b>العدد <span class="math">10516</span></b></p><p><b>الطريقة:</b> يقبل عدد القسمة على <span class="math">3</span> إذا كان مجموع أرقامه يقبل القسمة على <span class="math">3</span>؛ وعلى <span class="math">4</span> إذا كان العدد المكوّن من رقمي آحاده وعشراته يقبل القسمة على <span class="math">4</span>؛ وعلى <span class="math">5</span> إذا كان رقم آحاده <span class="math">0</span> أو <span class="math">5</span>.</p><p><span class="math">1 + 0 + 5 + 1 + 6 = 13</span>: لا يقبل القسمة على <span class="math">3</span></p><p><span class="math">16 = 4 × 4</span>: يقبل القسمة على <span class="math">4</span></p><p>رقم آحاده <span class="math">6</span>: لا يقبل القسمة على <span class="math">5</span></p><p>النتيجة: <span class="math">10516</span> يقبل القسمة على <span class="math">4</span> (<span class="math">2</span>)</p><p><b>الاستنتاج:</b> <span class="math">10516</span> يقبل القسمة على <span class="math">4</span> فقط.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>العدد <span class="math">93</span></b></p><p><b>الطريقة:</b> يقبل عدد القسمة على <span class="math">3</span> إذا كان مجموع أرقامه يقبل القسمة على <span class="math">3</span>؛ وعلى <span class="math">4</span> إذا كان العدد المكوّن من رقمي آحاده وعشراته يقبل القسمة على <span class="math">4</span>؛ وعلى <span class="math">5</span> إذا كان رقم آحاده <span class="math">0</span> أو <span class="math">5</span>.</p><p><span class="math">9 + 3 = 12</span> يقبل القسمة على <span class="math">3</span></p><p><span class="math">93</span> فردي فلا يقبل القسمة على <span class="math">4</span>، ورقم آحاده <span class="math">3</span> فلا يقبل القسمة على <span class="math">5</span></p><p>النتيجة: <span class="math">93</span> يقبل القسمة على <span class="math">3</span> (<span class="math">1</span>)</p><p><b>الاستنتاج:</b> <span class="math">93</span> يقبل القسمة على <span class="math">3</span> فقط.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>العدد <span class="math">2015</span></b></p><p><b>الطريقة:</b> يقبل عدد القسمة على <span class="math">3</span> إذا كان مجموع أرقامه يقبل القسمة على <span class="math">3</span>؛ وعلى <span class="math">4</span> إذا كان العدد المكوّن من رقمي آحاده وعشراته يقبل القسمة على <span class="math">4</span>؛ وعلى <span class="math">5</span> إذا كان رقم آحاده <span class="math">0</span> أو <span class="math">5</span>.</p><p><span class="math">2 + 0 + 1 + 5 = 8</span>: لا يقبل القسمة على <span class="math">3</span></p><p><span class="math">15</span> لا يقبل القسمة على <span class="math">4</span></p><p>رقم آحاده <span class="math">5</span>: يقبل القسمة على <span class="math">5</span></p><p>النتيجة: <span class="math">2015</span> يقبل القسمة على <span class="math">5</span> (<span class="math">3</span>)</p><p><b>الاستنتاج:</b> <span class="math">2015</span> يقبل القسمة على <span class="math">5</span> فقط.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الرابع (4 ن)</h4><div class="sq"><p><b>1) ماذا يمثل <span class="math">(Δ)</span> بالنسبة إلى القطعة المستقيمة <span class="math">[AB]</span>؟ علل؟</b></p><p><b>الطريقة:</b> محور قطعة مستقيمة هو المستقيم العمودي عليها في منتصفها.</p><p><span class="math">(Δ)</span> يشمل <span class="math">M</span> منتصف <span class="math">[AB]</span></p><p><span class="math">(Δ)</span> يعامد <span class="math">[AB]</span></p><p>النتيجة: <span class="math">(Δ)</span> محور القطعة <span class="math">[AB]</span> (<span class="math">1</span>)</p><p><b>الاستنتاج:</b> <span class="math">(Δ)</span> محور <span class="math">[AB]</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>- عين النقطتين <span class="math">C</span> و <span class="math">D</span> من المستقيم <span class="math">(Δ)</span> بحيث: <span class="math">MC = MD = 2cm</span>.</b></p><p><b>الطريقة:</b> رسم دقيق: <span class="math">AB = 6 cm</span>، <span class="math">M</span> منتصفها، <span class="math">(Δ) ⊥ (AB)</span> في <span class="math">M</span>، ثم <span class="math">C</span> و <span class="math">D</span> على <span class="math">(Δ)</span> من جهتين مختلفتين.</p><p><span class="math">MC = 2 cm</span> و <span class="math">MD = 2 cm</span></p><p><span class="math">CD = 2 + 2 = 4</span></p><p>النتيجة: <span class="math">CD = 4 cm</span></p><p><b>الاستنتاج:</b> <span class="math">CD = 4 cm</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>رسم <span class="math">[AB]</span> و <span class="math">M</span> و <span class="math">(Δ)</span></td><td>1</td></tr><tr><td>تعيين <span class="math">C</span> و <span class="math">D</span> ورسم الرباعي</td><td>1</td></tr></table></div><div class="sq"><p><b>2) ما نوع الرباعي <span class="math">ACBD</span>؟ علل؟</b></p><p><b>الطريقة:</b> الرباعي الذي قطراه متعامدان ومتناصفان معين؛ وإذا كانا متقايسين أيضا فهو مربع.</p><p>قطراه <span class="math">[AB]</span> و <span class="math">[CD]</span> متناصفان في <span class="math">M</span></p><p>وهما متعامدان</p><p><span class="math">AB = 6 cm</span> و <span class="math">CD = 4 cm</span> غير متقايسين</p><p>النتيجة: <span class="math">ACBD</span> معين (<span class="math">2</span>)</p><p><b>الاستنتاج:</b> <span class="math">ACBD</span> معين.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>الوضعية الإدماجية (7 ن)</h4><div class="sq"><p><b>1) أحسب محيطها <span class="math">P</span>، أحسب مساحتها <span class="math">A</span>.</b></p><p><b>الطريقة:</b> محيط المستطيل: <span class="math">P = 2 × الطول + 2 × العرض</span>.</p><p><span class="math">P = 2 × 30 + 2 × 48,5</span></p><p><span class="math">P = 60 + 97</span></p><p>النتيجة: <span class="math">P = 157 m</span></p><p><b>الاستنتاج:</b> <span class="math">P = 157 m</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: اختيار الأداة الرياضية المناسبة</td><td>0,25</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>0,75</td></tr></table></div><div class="sq"><p><b>(تابع 1) المساحة <span class="math">A</span>.</b></p><p><b>الطريقة:</b> مساحة المستطيل: <span class="math">A = الطول × العرض</span>.</p><p><span class="math">A = 48,5 × 30</span></p><p>النتيجة: <span class="math">A = 1455 m²</span></p><p><b>الاستنتاج:</b> <span class="math">A = 1455 m²</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: اختيار الأداة الرياضية المناسبة</td><td>0,25</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>0,75</td></tr></table></div><div class="sq"><p><b>2) قام هذا الفلاح بتسييج هذه القطعة و ترك مدخل طوله <span class="math">5m</span>.</b></p><p><b>الطريقة:</b> طول السياج = المحيط − طول المدخل.</p><p><span class="math">157 − 5 = 152</span></p><p>النتيجة: طول السياج <span class="math">152 m</span></p><p><b>الاستنتاج:</b> <span class="math">152 m</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: اختيار الأداة الرياضية المناسبة</td><td>0,25</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>0,75</td></tr></table></div><div class="sq"><p><b>3) إذا كان ثمن المتر الواحد من السياج هو <span class="math">120DA</span>.</b></p><p><b>الطريقة:</b> ثمن عدة أمتار = عدد الأمتار × ثمن المتر الواحد.</p><p><div class="vop"><div>   152</div><div> × 120</div><div class="ln">  3040</div><div> 15200</div><div class="ln"> 18240</div></div></p><p>النتيجة: تكلفة السياج <span class="math">18240 DA</span></p><p><b>الاستنتاج:</b> <span class="math">18240 DA</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: اختيار الأداة الرياضية المناسبة</td><td>0,25</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>0,75</td></tr></table></div><div class="sq"><p><b>4) زرع الفلاح مساحة من الأرض تقدر بـ: <span class="math">936m²</span> بطاطا و الباقي طماطم.</b></p><p><b>الطريقة:</b> المساحة الباقية = المساحة الكلية − المساحة المزروعة بطاطا.</p><p><div class="vop"><div>  1455</div><div>−  936</div><div class="ln">   519</div></div></p><p>النتيجة: مساحة الطماطم <span class="math">519 m²</span></p><p><b>الاستنتاج:</b> <span class="math">519 m²</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: الطريقة</td><td>0,5</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>5) إذا علمت أن مردود المساحة المغروسة طماطم هو <span class="math">2076kg</span>.</b></p><p><b>الطريقة:</b> مردود المتر المربع = المردود الكلي ÷ المساحة.</p><p><span class="math">519 × 4 = 2076</span></p><p><span class="math">2076 ÷ 519 = 4</span></p><p>النتيجة: مردود المتر المربع <span class="math">4 kg</span></p><p><b>الاستنتاج:</b> <span class="math">4 kg</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: الطريقة</td><td>0,5</td></tr><tr><td>م2 الاستعمال السليم: النتيجة</td><td>1</td></tr></table></div><p class="m3">تُقبل كل طريقة صحيحة أخرى، وتُمنح علامتها كاملة.</p></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
+function tick(){var b=document.querySelector('.sol-btn'),w=document.querySelector('.sol-wait');if(!b)return;var r=t+D-Date.now();
+if(r<=0){b.style.display='inline-block';if(w)w.style.display='none';return}if(w)w.textContent='📄 النسخة الورقية للحل تظهر بعد '+Math.ceil(r/60000)+' دقيقة';setTimeout(tick,20000)}
+window.printSol=function(){document.body.classList.add('psol');window.print()};window.addEventListener('afterprint',function(){document.body.classList.remove('psol')});
+window.addEventListener('load',tick)})();</script><!--/paper-->
+</body>
+</html>
