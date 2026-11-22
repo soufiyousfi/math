@@ -107,7 +107,19 @@ body{font-family:"Tajawal",system-ui,-apple-system,sans-serif;font-size:17px;bac
 .cta{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
 .cta a{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:900;border-radius:12px;padding:9px 16px;font-size:1rem}
 .cta a[hidden]{display:none}
-.cta .start{background:#fbbf24;color:#0a355c;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.cta .start{background:#fbbf24;color:#0a355c;box-shadow:0 4px 12px rgba(0,0,0,.2);max-width:100%;min-width:0}
+.cta .start .tx{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+/* first visit: «في أي سنة أنت؟» (2026-11-22) */
+.lvpick{position:fixed;inset:0;z-index:3000;background:rgba(15,23,42,.55);display:flex;align-items:center;justify-content:center;padding:16px}
+.lvpick .box{outline:none;background:var(--surface);color:var(--text);border-radius:18px;border-top:6px solid var(--accent);max-width:420px;width:100%;padding:18px 16px 14px;box-shadow:var(--shadow-md);text-align:center}
+.lvpick h2{margin:0 0 4px;font-size:1.3rem;color:var(--text)}
+.lvpick p{margin:0 0 12px;color:var(--muted);font-size:.95rem;line-height:1.6}
+.lvpick .g{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.lvpick .g button{--c:var(--l1);font:inherit;cursor:pointer;background:var(--surface);color:var(--text);border:2px solid var(--c);border-radius:14px;padding:10px 6px;font-weight:800}
+.lvpick .g button b{display:block;font-size:1.5rem;color:var(--c);line-height:1.2}
+.lvpick .g button[data-pick="2m"]{--c:var(--l2)} .lvpick .g button[data-pick="3m"]{--c:var(--l3)} .lvpick .g button[data-pick="4m"]{--c:var(--l4)}
+.lvpick .how{font-size:.86rem;text-align:start;background:var(--soft);border:1px solid var(--border);border-radius:10px;padding:8px 10px;margin:0 0 10px}
+.lvpick .skip{font:inherit;cursor:pointer;background:none;border:0;color:var(--muted);text-decoration:underline;font-size:.88rem;padding:4px}
 .cta .resume{background:rgba(255,255,255,.16);color:#fff;border:1.5px solid rgba(255,255,255,.5);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pill{background:rgba(15,23,42,.28);border:1px solid rgba(255,255,255,.18);padding:3px 10px;border-radius:8px;font-size:.78rem;font-weight:700}
 .prof-bar{display:none;margin-top:12px;background:var(--accent-light);color:#92400e;border:2px solid var(--accent);border-radius:12px;padding:8px 12px;font-size:.85rem;font-weight:700}
@@ -710,7 +722,7 @@ function renderContent() {
     `<button type="button" class="fc" data-filter="all" aria-pressed="${state.filter === "all"}">الكل<b>${here.length}</b></button></div>`;
   const secs = present.filter(([id]) => state.filter === "all" || state.filter === id);
   const html = secs.map(([id, name, , icon]) => {
-    const list = here.filter(i => i.section === id).sort((a, b) => a.url.localeCompare(b.url, "en", { numeric: true }));
+    const list = here.filter(i => i.section === id).sort(byOrder);
     const body = id === "chahada" ? chahadaBody(list) : `<div class="grid">${list.map(it => card(it)).join("")}</div>`;
     return `<section class="sec s-${id}">${state.filter === "all" ? `<h2>${icon} ${name}<span class="cnt">${list.length}</span></h2>` : ""}${body}</section>`;
   }).join("");
@@ -742,6 +754,82 @@ function renderRecent() {
     `<li><a href="${esc(it.url)}"><b>${LEVELS.find(l => l[0] === it.level)[1]}م</b>${SEC[it.section][3]} ${esc(cleanTitle(it).t)}</a></li>`).join("");
   box.hidden = false;
 }
+// ---------- Order of the activities = order of the sequences (المقطع 1، 2…) ----------
+const SEQ_AR = { "الأول": 1, "الثاني": 2, "الثالث": 3, "الرابع": 4, "الخامس": 5, "السادس": 6, "السابع": 7 };
+function seqNum(it) {
+  if (/kharitat-/.test(it.url)) return 0;                 // the mastery map opens the lessons list
+  if (it.seq && it.seq.length) return it.seq[0];
+  const n = it.url.split("/").pop(), m = n.match(/(?:^|[-_])m([1-7])/);
+  if (m) return +m[1];
+  const t = (it.title || "").match(/المقطع\s+(\d|\S+)/);
+  if (t) return /^\d$/.test(t[1]) ? +t[1] : SEQ_AR[t[1]] || 98;
+  return 98;
+}
+const isFull = it => /(^|\/)dars-/.test(it.url);          // the whole-sequence lesson before its «أُتقِن» lessons
+// inside a sequence: the order of its resources in the annual plan («ro», put by build_index.py), then the file name
+const roOf = it => it.ro == null ? 999 : it.ro;
+function byOrder(a, b) { return seqNum(a) - seqNum(b) || isFull(b) - isFull(a) || roOf(a) - roOf(b) || a.url.localeCompare(b.url, "en", { numeric: true }); }
+
+// ---------- «🎯 مهمتك الآن»: the next activity of the sequence taught THIS week ----------
+// first week of each sequence in the annual plans 2026/2027 (مذكرات/التوزيع_السنوي: 1AM_v4, 2AM_v3, 3AM_v3, 4AM_v4)
+const SEQ_START = {
+  "1m": ["11/10", "08/11", "06/12", "31/01", "21/02", "11/04", "25/04"],
+  "2m": ["11/10", "08/11", "06/12", "31/01", "21/02", "11/04", "02/05"],
+  "3m": ["11/10", "02/11", "06/12", "07/02", "21/02", "11/04", "02/05"],
+  "4m": ["04/10", "25/10", "22/11", "10/01", "14/02", "04/04", "25/04"],
+};
+function seqNow(lv) {
+  const d = new Date(), y = d.getMonth() >= 7 ? d.getFullYear() : d.getFullYear() - 1;   // school year starts in September
+  let s = 1;
+  (SEQ_START[lv] || []).forEach((t, i) => { const [dd, mm] = t.split("/").map(Number); if (d >= new Date(mm >= 8 ? y : y + 1, mm - 1, dd)) s = i + 1; });
+  return s;
+}
+const TASK_ORDER = ["dars", "series", "wadjib", "al3ab", "fard", "idmaj", "tahaddi", "ikhtibar", "chahada"];
+function nextTask() {
+  const P = progress(), s = seqNow(state.level);
+  const open = state.items.filter(i => i.level === state.level && i.type === "html" && !/kharitat-/.test(i.url) && !(P[i.url] && P[i.url].d));
+  for (const k of [s, s - 1]) {   // this week's sequence, else the one before (its content may still be coming)
+    const c = open.filter(i => seqNum(i) === k).sort((a, b) => TASK_ORDER.indexOf(a.section) - TASK_ORDER.indexOf(b.section) || byOrder(a, b));
+    if (c.length) return { it: c[0], s: k };
+  }
+  return null;
+}
+function renderTask() {
+  const a = document.getElementById("start"), t = state.items.length ? nextTask() : null;
+  if (!t) { a.href = "#levels-step"; a.innerHTML = "🚀 ابدأ التعلّم"; a.removeAttribute("title"); return; }
+  a.href = t.it.url;
+  a.innerHTML = `<span>🎯</span><span class="tx">مهمتك الآن: ${esc(cleanTitle(t.it).t.replace(/^(أُتقِن|درس تفاعلي)\s*:\s*/, "").replace(/\s*\(المقطع[^)]*\)\s*$/, ""))}</span>`;
+  a.title = `المقطع ${SEQ_NAME[t.s] || t.s}: ما يُدرَس في القسم هذا الأسبوع حسب التوزيع السنوي`;
+}
+
+// ---------- First visit: «في أي سنة أنت؟» once, then the choice is remembered ----------
+function firstVisit() {
+  let known = true;
+  try { known = !!localStorage.getItem("math-level"); } catch (e) { return; }
+  if (known || /^#[1-4]m/.test(location.hash) || state.q) return;
+  // a pupil who already worked here (came by a QR code): his level is the level of most of his pages
+  const cnt = {};
+  for (const u of Object.keys(progress())) { const m = u.match(/^([1-4]m)\//); if (m) cnt[m[1]] = (cnt[m[1]] || 0) + 1; }
+  const seen = Object.keys(cnt).sort((a, b) => cnt[b] - cnt[a])[0];
+  if (seen) { state.level = seen; savePrefs(); render(); return; }
+  const ov = document.createElement("div");
+  ov.className = "lvpick"; ov.setAttribute("role", "dialog"); ov.setAttribute("aria-modal", "true"); ov.setAttribute("aria-labelledby", "lvpH");
+  ov.innerHTML = `<div class="box"><h2 id="lvpH">👋 مرحبا! في أي سنة أنت؟</h2>
+    <p>اختر سنتك مرة واحدة، فتظهر لك دروسها وتمارينها مباشرة.</p>
+    <div class="g">${LEVELS.map(([id, n, name]) => `<button type="button" data-pick="${id}"><b>${n}م</b>${name}</button>`).join("")}</div>
+    <p class="how">بعدها اضغط الزر الأصفر <b>«🎯 مهمتك الآن»</b>، أو اختر الدرس الذي درسته في القسم.<br>لكل سؤال 3 محاولات: تلميح، ثم تلميح أوضح، ثم الحل المفصّل.</p>
+    <button type="button" class="skip" data-pick="">أنا أستاذ أو وليّ: أتصفّح فقط</button></div>`;
+  ov.addEventListener("click", e => {
+    const b = e.target.closest("[data-pick]");
+    if (!b) return;
+    ov.remove();
+    // the same as a tap on the level button, so every part of the page (سؤال اليوم…) follows the choice
+    const lv = b.dataset.pick && document.querySelector(`.lv[data-level="${b.dataset.pick}"]`);
+    if (lv) lv.click(); else savePrefs();
+  });
+  document.body.appendChild(ov);
+  const bx = ov.querySelector(".box"); bx.tabIndex = -1; bx.focus({ preventScroll: true });
+}
 function renderResume() {
   const P = progress(), a = document.getElementById("resume");
   let best = null;
@@ -750,7 +838,7 @@ function renderResume() {
   if (!best) { a.hidden = true; return; }
   a.href = best.url; a.textContent = "▶ أكمل: " + cleanTitle(best).t; a.hidden = false;
 }
-function render() { renderNav(); renderContent(); renderResume(); }
+function render() { renderNav(); renderContent(); renderResume(); renderTask(); }
 
 document.addEventListener("click", e => {
   const lb = e.target.closest("[data-level]"), tb = e.target.closest("[data-term]"), fb = e.target.closest("[data-filter]");
@@ -789,7 +877,7 @@ window.addEventListener("hashchange", () => { if (readHash()) render(); });
 window.addEventListener("popstate", () => { if (readHash()) render(); });
 // coming back with the phone «back» button: refresh the marks
 window.addEventListener("pageshow", () => { if (state.items.length) renderContent(); });
-document.addEventListener("visibilitychange", () => { if (!document.hidden && state.items.length) { renderContent(); renderResume(); } });
+document.addEventListener("visibilitychange", () => { if (!document.hidden && state.items.length) { renderContent(); renderResume(); renderTask(); } });
 
 // Math symbols floating in the header
 (function () {
@@ -1006,7 +1094,7 @@ document.getElementById("dadd").onclick = () => {
 if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
 loadPrefs(); renderNav();
 loadItems()
-  .then(items => { state.items = items; render(); renderRecent(); })
+  .then(items => { state.items = items; render(); renderRecent(); firstVisit(); })
   .catch(() => { document.getElementById("content").innerHTML = `<p class="status">تعذّر تحميل القائمة. تحقّق من الاتصال ثم أعد فتح الصفحة.</p>`; });
 </script>
 </body>

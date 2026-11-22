@@ -163,6 +163,16 @@ def bloom_of(extitle, section):
     return 1
 
 
+def res_order(lv, seq, title):
+    """Place of a page in the annual plan: index of the first resource of ITS sequence named by its title
+    (2026-11-22, home page lists and «🎯 مهمتك الآن» follow the order of the lessons, not the alphabet)."""
+    t = re.sub(r"\(.*?\)|أُتقِن:|درس تفاعلي:", " ", title or "")
+    for i, (row, rx) in enumerate(zip(RES.get(lv, []), RES_RX.get(lv, []))):
+        if row[1] in seq and rx.search(t):
+            return i
+    return None
+
+
 def res_map(path, lv, term, section, seq):
     """{qId: [resource index or -1, bloom level]} for an exercise page, or None."""
     try:
@@ -427,6 +437,9 @@ def main():
                     seq = sequences(url, title)
                     if seq:
                         item["seq"] = seq
+                        ro = res_order(lv, seq, title)
+                        if ro is not None:
+                            item["ro"] = ro
                     if kind == "html":
                         item.update(page_meta(url + "index.html" if url.endswith("/") else url))
                     items.append(item)
