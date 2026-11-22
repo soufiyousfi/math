@@ -509,6 +509,71 @@ body:has(#finalModal[style*="flex"]) .sx-pad-fab,body:has(#finalModal[style*="fl
     if (document.body) start(); else document.addEventListener("DOMContentLoaded", start);
   })();
 
+  /* ---------- 0e. Arabic text inside a left-to-right box (2026-11-22 his remark «الكتابة بالغتين مختلطة لا يفهمها التلميذ»)
+     Many pages give buttons, chips and answer lines «direction:ltr» so that maths reads well. When such a box holds an
+     Arabic sentence («نرسم [E′F′] طولها EF») the words come out in the wrong order. Here: a ltr box whose own text has
+     Arabic letters becomes rtl, its Latin/maths runs are isolated ltr, and a ltr row of such boxes (the chosen steps)
+     becomes rtl too. Boxes with only numbers or maths (1 < 2 < 3, AB = 3 cm) stay exactly as they are. ---------- */
+  (function () {
+    var AR = /[؀-ۿݐ-ݿﭐ-﷿ﹰ-﻿]/;
+    var SKIP = "script,style,textarea,input,select,svg,math,.m,.mb,.math,.sx-m,.key,.vop,.eq,.v,.screen";
+    var RUN = /[A-Za-z0-9\[(′″'’][A-Za-z0-9\[\]()′″'’=+\-−×÷<>≤≥≠\/.,²³°√ ]*[A-Za-z0-9\])′″'’²³°]|[A-Za-z]/g;
+    var CSS = ".sx-ar{direction:rtl!important;unicode-bidi:isolate}.sx-m{direction:ltr;unicode-bidi:isolate;white-space:nowrap}";
+    var st = document.createElement("style"); st.textContent = CSS; (document.head || document.documentElement).appendChild(st);
+    function ltr(e) { try { return getComputedStyle(e).direction === "ltr"; } catch (x) { return false; } }
+    function isolate(t) {
+      var s = t.nodeValue, m, last = 0, hit = false, out = document.createDocumentFragment();
+      RUN.lastIndex = 0;
+      while ((m = RUN.exec(s))) {
+        if (!/[A-Za-z\[\]()]/.test(m[0])) continue; /* numbers alone read well in rtl */
+        hit = true;
+        out.appendChild(document.createTextNode(s.slice(last, m.index)));
+        var sp = document.createElement("span"); sp.className = "sx-m"; sp.textContent = m[0]; out.appendChild(sp);
+        last = m.index + m[0].length;
+      }
+      if (!hit) return;
+      out.appendChild(document.createTextNode(s.slice(last)));
+      t.parentNode.replaceChild(out, t);
+    }
+    function flip(e) {
+      if (e.classList.contains("sx-ar")) return;
+      e.classList.add("sx-ar");
+      var tw = document.createTreeWalker(e, 4, { acceptNode: function (n) { return /[A-Za-z]/.test(n.nodeValue) && !n.parentElement.closest(SKIP) ? 1 : 3; } }), t, l = [];
+      while ((t = tw.nextNode())) l.push(t);
+      l.forEach(isolate);
+      /* the row that holds such boxes (e.g. the chosen steps «… ثم …») reads right to left as well;
+         a placeholder («اضغط على الأعداد بالترتيب…», class lt) never turns a row of numbers around */
+      var p = e.parentElement;
+      if (p && p !== document.body && !e.classList.contains("lt") && !p.classList.contains("sx-ar") && ltr(p) &&
+          !p.querySelector("input,textarea,select,svg,canvas,table,.key")) flip(p);
+    }
+    function scan(root) {
+      if (!root || root.nodeType !== 1 || (root.closest && root.closest(SKIP))) return;
+      var tw = document.createTreeWalker(root, 4, {
+        acceptNode: function (n) { var p = n.parentElement; return p && !p.closest(SKIP) && AR.test(n.nodeValue) ? 1 : 3; }
+      }), t, seen = [];
+      while ((t = tw.nextNode())) { var p = t.parentElement; if (seen.indexOf(p) < 0) seen.push(p); }
+      seen.forEach(function (p) {
+        if (p.closest(".sx-ar") ? false : ltr(p)) { var b = p; while (b.parentElement && b.parentElement !== document.body && /^(SPAN|B|STRONG|I|EM|BDI|SMALL)$/.test(b.nodeName) && !b.classList.contains("lt") && ltr(b.parentElement)) b = b.parentElement; flip(b); }
+      });
+    }
+    var queue = [], busy = false;
+    function later(n) {
+      queue.push(n);
+      if (busy) return; busy = true;
+      (window.requestAnimationFrame || setTimeout)(function () { busy = false; var q = queue; queue = []; q.forEach(scan); });
+    }
+    function start() {
+      scan(document.body);
+      try {
+        new MutationObserver(function (ms) {
+          ms.forEach(function (m) { Array.prototype.forEach.call(m.addedNodes, function (n) { later(n.nodeType === 3 ? n.parentElement : n); }); });
+        }).observe(document.body, { childList: true, subtree: true });
+      } catch (e) {}
+    }
+    if (document.body) start(); else document.addEventListener("DOMContentLoaded", start);
+  })();
+
   /* ---------- styles ---------- */
   var css = `
 .sx-bar{direction:rtl;display:flex;align-items:center;gap:8px;flex-wrap:wrap;max-width:880px;margin:0 auto;padding:8px 12px;font-family:inherit;font-size:.86rem}
