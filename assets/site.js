@@ -461,6 +461,7 @@ html.sx-noscroll,html.sx-noscroll body{overflow:hidden}
   background:#fff;color:#1e3a8a;border:2px solid #1e3a8a;box-shadow:0 6px 18px rgba(0,0,0,.2)}
 body.sx-exam .sx-pad-fab{bottom:74px}
 @media print{.sx-pad-fab{display:none!important}}
+body:has(#finalModal[style*="flex"]) .sx-pad-fab,body:has(#finalModal[style*="flex"]) .sx-calc-fab{display:none!important}
 .sx-pad-area{flex:1;position:relative;touch-action:none;background-color:#fff;
   background-image:linear-gradient(#e0e7ff 1px,transparent 1px),linear-gradient(90deg,#e0e7ff 1px,transparent 1px);background-size:22px 22px}
 .sx-pad-area canvas{position:absolute;inset:0;touch-action:none;cursor:crosshair}
@@ -1523,6 +1524,16 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       try { soundEnabled = snd; } catch (e) {}
       $$(".shake").forEach(function (x) { x.classList.remove("shake"); });
       replaying = false;
+      /* 2026-11-22 his report (screenshot): back from the home page to a finished sheet → the replay finished every question and
+         the page's own code opened the final window by itself. A replay never opens it: the bar keeps «🏁 النتيجة النهائية». */
+      var fmR = $("#finalModal"), stopAt = Date.now() + 1500;
+      if (fmR && fmR.style.display !== "flex") {
+        var mo = window.MutationObserver ? new MutationObserver(function () {
+          if (Date.now() > stopAt) { mo.disconnect(); return; }
+          if (fmR.style.display === "flex") { fmR.style.display = "none"; mo.disconnect(); toast("✅ أنهيتَ هذه الورقة من قبل. اضغط «🏁 النتيجة النهائية» لرؤية علامتك."); }
+        }) : null;
+        if (mo) { mo.observe(fmR, { attributes: true, attributeFilter: ["style"] }); setTimeout(function () { mo.disconnect(); }, 1600); }
+      }
       paint(); save();
       var first = 0;
       data.some(function (ex, i) { first = i; return (ex.questions || []).some(function (q) { try { return !questionLocked[q.qId]; } catch (e) { return false; } }); });
