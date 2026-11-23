@@ -471,6 +471,203 @@ body:has(#finalModal[style*="flex"]) .sx-pad-fab,body:has(#finalModal[style*="fl
     if (!document.getElementById("sx-padcss")) { var ps = el("style", null, PADCSS); ps.id = "sx-padcss"; document.head.appendChild(ps); }
     openPad(key, title, null, html);
   };
+  /* ---------- 🔘 floating check bar: shared helpers + the GENERIC bar (2026-11-23 his report «الزر العائم لا يظهر في جميع
+     الأنشطة وفي الأنشطة التي يظهر فيها يغطي السؤال» + «اصلح جميع الانشطة تعمل بالزر العائم للتحقق»).
+     barKit(): keeps the pupil's question and answer box in the visible part (under the top bar, above the floating bar and the
+     phone keyboard), makes the bar compact while the keyboard is open and gives the page enough room at the bottom. ---------- */
+  var BARKIT_CSS = "body.sx-kb .sx-1bar{padding:4px 10px!important;gap:6px}body.sx-kb .sx-1bar button{min-height:42px!important;padding:6px 12px!important;font-size:1.05rem!important}" +
+    "body.sx-kb .sx-1bar button.skip{min-height:36px!important;font-size:.85rem!important}body.sx-kb .sx-1bar .n{font-size:.75rem}";
+  function barKit(bar, getBox, titleSel) {
+    if (!document.getElementById("sx-barkit")) { var s = el("style", null, BARKIT_CSS); s.id = "sx-barkit"; document.head.appendChild(s); }
+    function hdr() {
+      var h = 0;
+      $$(".sticky-bar,.top,.sx-bar,header").forEach(function (e) {
+        var p = getComputedStyle(e).position;
+        if (p !== "sticky" && p !== "fixed") return;
+        var r = e.getBoundingClientRect();
+        if (r.top <= 2 && r.bottom > h && r.height < window.innerHeight / 3) h = r.bottom;
+      });
+      return h;
+    }
+    function typingIn() {
+      var a = document.activeElement;
+      if (!a || !/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName) || a.disabled || a.type === "range" || a.type === "checkbox" || a.type === "radio") return null;
+      if (a.closest && a.closest(".sx-1bar,.sx-pad,.sx-calc,.sx-wrap,.sx-ov,.px-1bar")) return null;
+      return a;
+    }
+    /* force = scroll the current box into view even when nothing is focused (after «السؤال الموالي») */
+    function fit(force) {
+      var a = typingIn(), box = getBox ? getBox() : null;
+      if (!a && !force) return;
+      if (a && (!box || !box.contains(a))) box = a.closest(".q,.q-box,.question,[data-id],.card,section,fieldset") || a.parentElement;
+      if (!box) return;
+      var vv = window.visualViewport, vt = vv ? vv.offsetTop : 0;
+      var top = vt + hdr() + 6, bottom = bar.getBoundingClientRect().top - 8;
+      var t = ((titleSel && box.querySelector(titleSel)) || box).getBoundingClientRect();
+      var r = (a || box).getBoundingClientRect();
+      if (!a && r.height > bottom - top) r = { bottom: t.top + Math.min(r.height, 140) };   /* tall box: its start is enough */
+      var dy = 0;
+      if (t.top < top || r.bottom > bottom) dy = t.top - top;
+      if (r.bottom - dy > bottom) dy = r.bottom - bottom;
+      if (Math.abs(dy) > 4) window.scrollBy({ top: dy, behavior: "smooth" });
+    }
+    function lift() {
+      var vv = window.visualViewport, hidden = vv ? window.innerHeight - (vv.height + vv.offsetTop) : 0, kb = hidden > 40;
+      bar.style.bottom = kb ? hidden + "px" : "";      /* "" keeps the page's own bottom (exam mode bar sits higher) */
+      document.body.classList.toggle("sx-kb", kb);
+      /* room under the last question = bar (+ keyboard): the last answer box can always scroll above the bar */
+      var need = bar.offsetHeight + (kb ? hidden : 0) + 18;
+      if (bar.style.display !== "none" && need > 96) document.body.style.setProperty("padding-bottom", need + "px", "important");
+      else document.body.style.removeProperty("padding-bottom");
+      clearTimeout(lift.t); lift.t = setTimeout(function () { fit(false); }, 140);
+    }
+    if (window.visualViewport) { window.visualViewport.addEventListener("resize", lift); window.visualViewport.addEventListener("scroll", function () { clearTimeout(lift.s); lift.s = setTimeout(lift, 60); }); }
+    window.addEventListener("resize", lift);
+    window.addEventListener("focusin", function () { setTimeout(lift, 320); setTimeout(function () { fit(false); }, 650); });
+    window.addEventListener("focusout", function () { setTimeout(lift, 320); });
+    setTimeout(lift, 200);
+    return { fit: fit, lift: lift };
+  }
+
+  /* the GENERIC bar: pages with their own engine and no bar yet (games «ألعاب», labs «مختبر», game lessons, old series/homework
+     pages, olympiad training). It never changes the page's own logic: it presses the page's own buttons.
+       ✔ تحقق       → the «تحقق» button of the question being worked on (nearest one on the screen if none is chosen)
+       التالي ⬅     → the page's own «… التالي ←» button when it appears after a check (games)
+       السؤال الموالي ⬅ → next question that is still open (pages with many questions)
+       🏁 النتيجة    → when every question is done
+     The page's own «تحقق» buttons stay where they are (these engines differ too much to hide them safely). */
+  function genericBar() {
+    if (document.querySelector(".sx-1bar")) return;
+    if (store("sx-onebtn") === "0") return;
+    if (/mu2allif|kharitat/.test(rel)) return;     /* the author tool and the lessons map are not quizzes */
+    var CK = /تحق/, NX = /[←⬅]\s*$/;
+    function txt(b) { return (b.textContent || "").replace(/\s+/g, " ").trim(); }
+    function ours(b) { return !!(b.closest && b.closest(".sx-1bar,.sx-pad,.sx-calc,.sx-wrap,.sx-ov,.sx-modal-btns,.sx-desk,.sx-tools,#cert,.cert")); }
+    function shown(b) {
+      if (!b.offsetParent && getComputedStyle(b).position !== "fixed") return false;
+      var r = b.getBoundingClientRect(); return r.width > 0 && r.height > 0;
+    }
+    function checks() { return $$("button").filter(function (b) { var t = txt(b); return CK.test(t) && t.length < 40 && !/مسبق|إجاباتي/.test(t) && !ours(b) && shown(b); }); }
+    function nexts() { return $$("button").filter(function (b) { var t = txt(b); return NX.test(t) && t.length < 34 && !b.disabled && !ours(b) && shown(b) && !/^[◀▶←→⬅]$/.test(t); }); }
+    var bar = null, num, B, cur = null, kit = null;
+    function box(b) {
+      if (!b) return null;
+      var bx = b.closest(".q,.q-box,.q-block,.question,[data-id],.card,.mission,.step,section,fieldset") || b.parentElement;
+      for (var k = 0; k < 3 && bx.parentElement && bx !== document.body; k++) {          /* a bare answer row: take its question too */
+        var c = bx.cloneNode(true); $$("button,select,input,textarea", c).forEach(function (e) { e.parentNode.removeChild(e); });
+        if (c.textContent.replace(/\s+/g, "").length >= 12) break;
+        bx = bx.parentElement;
+      }
+      return bx;
+    }
+    /* a disabled «تحقق» is DONE only when nothing in its question can still be answered (inputs/choices disabled too);
+       a disabled «تحقق» next to open choices = a game waiting for the pupil's choice */
+    function locked(b) {
+      if (!b.disabled) return false;
+      var bx = box(b); if (!bx) return true;
+      var F = $$("input,select,textarea", bx).filter(function (e) { return e.type !== "hidden" && !ours(e); });
+      if (F.length) return !F.some(function (e) { return !e.disabled; });       /* answer boxes: open while one can still be typed in */
+      return !$$("button", bx).some(function (e) {                                /* choice games: open while a choice can be pressed */
+        var t = txt(e);
+        return e !== b && !e.disabled && !ours(e) && !CK.test(t) && t.length > 2 && shown(e) && !/^[🔊⌫◀▶]/.test(t);
+      });
+    }
+    function make() {
+      var css = el("style");
+      css.textContent = ".sx-1bar{position:fixed;left:0;right:0;bottom:0;z-index:2500;display:flex;gap:8px;align-items:center;justify-content:center;" +
+        "padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid #cbd5e1;box-shadow:0 -4px 14px rgba(15,23,42,.12);direction:rtl}" +
+        ".sx-1bar .n{font-size:.85rem;font-weight:800;color:#475569;white-space:nowrap;direction:ltr}" +
+        ".sx-1bar button{flex:1;max-width:560px;font:inherit;font-weight:800;font-size:1.3rem;border:none;border-radius:14px;padding:15px 18px;min-height:58px;cursor:pointer;color:#fff;background:#1e3a8a;box-shadow:0 3px 0 rgba(15,23,42,.35)}" +
+        ".sx-1bar button:active{transform:translateY(2px);box-shadow:none}.sx-1bar{transition:bottom .12s}" +
+        ".sx-1bar button.next{background:#15803d}.sx-1bar button.end{background:#b45309}.sx-1bar button.wait{background:#64748b}" +
+        "body.sx-1b{padding-bottom:96px!important}body.sx-1b .sx-upd{bottom:96px!important}body.sx-1b .sx-pad-fab,body.sx-1b .sx-calc-fab{bottom:80px!important}" +
+        "body.sx-kb .sx-pad-fab,body.sx-kb .sx-calc-fab{display:none!important}body.sx-1b .sx-gcur{outline:2.5px solid #38bdf8;outline-offset:3px;border-radius:10px}" +
+        ".sx-toast{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:5000;max-width:min(92vw,520px);direction:rtl;background:#fff;color:#0f172a;border:1.5px solid #cbd5e1;border-right:5px solid #0f766e;border-radius:12px;padding:10px 14px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.18);transition:opacity .5s}.sx-toast.out{opacity:0}" +
+        "html.sx-dark .sx-1bar{background:rgba(15,23,42,.96);border-color:#334155}html.sx-dark .sx-1bar .n{color:#cbd5e1}" +
+        "@media print{.sx-1bar{display:none!important}}";
+      document.head.appendChild(css);
+      bar = el("div", "sx-1bar sx-1gen"); num = el("span", "n"); B = el("button");
+      B.type = "button"; bar.appendChild(num); bar.appendChild(B); document.body.appendChild(bar);
+      document.body.classList.add("sx-1b");
+      B.addEventListener("mousedown", function (e) { e.preventDefault(); });   /* the keyboard stays open */
+      B.onclick = press;
+      kit = barKit(bar, function () { return box(cur); }, ".qt,.q-title,h3,h4,.question-text,.q-text,p");
+    }
+    /* the question the pupil is on: the one he touched, else the first open one on the screen, else the first open one */
+    function pick(C) {
+      if (cur && C.indexOf(cur) >= 0) return cur;   /* a finished question stays current until «السؤال الموالي» takes the pupil on */
+      var open = C.filter(function (b) { return !locked(b); });
+      var bt = bar ? bar.getBoundingClientRect().top : window.innerHeight;
+      var onScreen = open.filter(function (b) { var r = box(b).getBoundingClientRect(); return r.bottom > 60 && r.top < bt; });
+      return onScreen[0] || open[0] || C[0] || null;
+    }
+    function state() {
+      var C = checks(), N = nexts();
+      if (!C.length && !N.length) return null;
+      cur = pick(C);
+      var open = C.filter(function (b) { return !locked(b); });
+      if (cur && !cur.disabled) return { k: "check" };
+      if (cur && !locked(cur)) return { k: "wait" };   /* a game whose «تحقق» waits for a choice */
+      if (N.length) return { k: "next", b: N[N.length - 1] };
+      if (open.length) return { k: "move", b: open.filter(function (b) { return !cur || (cur.compareDocumentPosition(b) & 4); })[0] || open[0] };
+      if (C.length > 1) return { k: "end" };
+      return { k: "wait" };
+    }
+    function show() {
+      var s = state();
+      if (!s) { if (bar) { bar.style.display = "none"; document.body.classList.remove("sx-1b"); kit.lift(); } return; }
+      if (!bar) make();
+      if (bar.style.display === "none") { bar.style.display = ""; document.body.classList.add("sx-1b"); kit.lift(); }
+      var C = checks();
+      var gb = C.length > 1 && cur ? box(cur) : null;      /* change the outline only when the question changes (no observer loop) */
+      if (gb !== show.gb) { if (show.gb) show.gb.classList.remove("sx-gcur"); if (gb) gb.classList.add("sx-gcur"); show.gb = gb; }
+      var done = C.filter(locked).length;
+      num.textContent = C.length > 1 ? (Math.min(C.indexOf(cur) + 1, C.length) + " / " + C.length) : "";
+      num.style.display = num.textContent ? "" : "none";
+      if (s.k === "check") { B.className = ""; B.textContent = "✔ تحقق"; }
+      else if (s.k === "wait") { B.className = "wait"; B.textContent = "✔ تحقق"; }
+      else if (s.k === "next") { B.className = "next"; B.textContent = txt(s.b).replace(/\s*[←⬅]\s*$/, "") + " ⬅"; }
+      else if (s.k === "move") { B.className = "next"; B.textContent = "السؤال الموالي ⬅"; }
+      else { B.className = "end"; B.textContent = "🏁 النتيجة"; }
+      B.title = done + " / " + C.length;
+    }
+    function go(b) {
+      cur = b; var bx = box(b);
+      var inp = bx && bx.querySelector("input:not([disabled]):not([type=range]):not([type=checkbox]):not([type=radio]),select:not([disabled]),textarea:not([disabled])");
+      bx.scrollIntoView({ behavior: "smooth", block: "start" });
+      setTimeout(function () { if (inp) { try { inp.focus({ preventScroll: true }); } catch (e) {} } kit.fit(true); show(); }, 380);
+    }
+    function press() {
+      var s = state(); if (!s) return;
+      if (s.k === "check") { cur.click(); setTimeout(show, 150); setTimeout(show, 700); return; }
+      if (s.k === "wait") { toast("👆 أجب أولا (اختر أو اكتب جوابك)، ثم اضغط «تحقق»."); var bx = box(cur); if (bx) bx.scrollIntoView({ behavior: "smooth", block: "center" }); return; }
+      if (s.k === "next") { s.b.click(); cur = null; setTimeout(function () { show(); var c = checks()[0]; if (c) kit.fit(true); }, 350); return; }
+      if (s.k === "move") { go(s.b); return; }
+      var end = document.querySelector("#finalModal,#result,.result,.final,#score,.score-card");
+      if (end && end.offsetParent) end.scrollIntoView({ behavior: "smooth", block: "center" });
+      else window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }
+    document.addEventListener("focusin", function (e) {
+      if (!bar || (e.target.closest && e.target.closest(".sx-1bar"))) return;
+      var C = checks();
+      for (var i = 0; i < C.length; i++) if (box(C[i]) && box(C[i]).contains(e.target)) { cur = C[i]; break; }
+      show();
+    });
+    document.addEventListener("click", function (e) {
+      if (e.target.closest && e.target.closest(".sx-1bar")) return;
+      var C = checks();
+      for (var i = 0; i < C.length; i++) if (C[i] === e.target.closest("button") || (box(C[i]) && box(C[i]).contains(e.target))) { cur = C[i]; break; }
+      setTimeout(show, 160);
+    }, true);
+    document.addEventListener("keyup", function () { clearTimeout(show.k); show.k = setTimeout(show, 120); });
+    if (window.MutationObserver) new MutationObserver(function (m) {
+      for (var i = 0; i < m.length; i++) if (bar && bar.contains(m[i].target)) return;
+      clearTimeout(show.t); show.t = setTimeout(show, 150);
+    }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["disabled", "style", "class", "hidden"] });
+    show();
+  }
+  if (/^olymp\/g/.test(rel)) onReady(function () { setTimeout(genericBar, 700); });
+
   var pm = rel.match(/^([1-4]m)\/(?:(t[1-3])\/([a-z0-9]+)|(bem))\//);
   window.__sxGenBank = genBank;
   if (!pm) { initDaily(); return; }
@@ -1065,16 +1262,14 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       if (t && /^(BUTTON|A)$/.test(t.tagName) && t !== B) return;
       e.preventDefault(); B.click();
     });
-    function lift() {
-      var vv = window.visualViewport; if (!vv) return;
-      var hidden = window.innerHeight - (vv.height + vv.offsetTop);
-      bar.style.bottom = (hidden > 40 ? hidden : 0) + "px";
-      document.body.classList.toggle("sx-kb", hidden > 40);
-    }
-    if (window.visualViewport) { window.visualViewport.addEventListener("resize", lift); window.visualViewport.addEventListener("scroll", lift); }
+    /* 2026-11-23 his report «يغطي السؤال»: above the keyboard the bar is compact and the question + answer box stay visible (barKit) */
+    var kit = barKit(bar, function () { return curBox; }, ".qt");
     new MutationObserver(function () { clearTimeout(show.t); show.t = setTimeout(show, 100); }).observe(app, { childList: true, subtree: true });
     setTimeout(show, 500);
   });
+
+  /* 3c. every other activity page gets the GENERIC bar (games, labs, game lessons, old engines) */
+  onReady(function () { setTimeout(genericBar, 900); });
 
   function plain(html) { var d = document.createElement("div"); d.innerHTML = html; return d.textContent.replace(/\s+/g, " ").trim(); }
   function norm(v) {
@@ -1401,30 +1596,9 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       /* 2026-11-21 his report: with the phone keyboard open the bar was hidden under it → keep the bar just above the keyboard */
       B.addEventListener("mousedown", function (e) { e.preventDefault(); });   /* tapping the button does not close the keyboard */
       B.addEventListener("touchstart", function () {}, { passive: true });
-      function lift() {
-        var vv = window.visualViewport; if (!vv) return;
-        var hidden = window.innerHeight - (vv.height + vv.offsetTop);
-        bar.style.bottom = (hidden > 40 ? hidden : 0) + "px";
-        document.body.classList.toggle("sx-kb", hidden > 40);
-        clearTimeout(lift.t); lift.t = setTimeout(fitBox, 120);
-      }
-      /* 2026-11-21 his report «مكان الإجابة غير ظاهر جيدا»: while typing, the question and its answer box stay in the visible part
-         (under the top bar, above the button bar and the keyboard); the answer box comes first if both do not fit */
-      function fitBox() {
-        var a = document.activeElement, x = Q[cur];
-        if (!x || !a || a.tagName !== "INPUT" || !x.box.contains(a)) return;
-        var vv = window.visualViewport, vt = vv ? vv.offsetTop : 0, vh = vv ? vv.height : window.innerHeight;
-        var sb = $(".sticky-bar"), top = vt + (sb ? sb.getBoundingClientRect().height : 0) + 6;
-        var bottom = vt + vh - bar.getBoundingClientRect().height - 8;
-        var t = ($(".q-title", x.box) || x.box).getBoundingClientRect(), r = a.getBoundingClientRect();
-        var dy = 0;
-        if (t.top < top || r.bottom > bottom) dy = t.top - top;
-        if (r.bottom - dy > bottom) dy = r.bottom - bottom;
-        if (Math.abs(dy) > 4) window.scrollBy({ top: dy, behavior: "smooth" });
-      }
-      if (window.visualViewport) { window.visualViewport.addEventListener("resize", lift); window.visualViewport.addEventListener("scroll", lift); }
-      window.addEventListener("focusin", function () { setTimeout(lift, 350); });
-      window.addEventListener("focusout", function () { setTimeout(lift, 350); });
+      /* 2026-11-21 «مكان الإجابة غير ظاهر جيدا» + 2026-11-23 «يغطي السؤال»: the bar sits above the keyboard (compact there), the question
+         and its answer box stay between the top bar and the floating bar, the page keeps room at the bottom (shared barKit) */
+      var kit = barKit(bar, function () { var x = Q[cur]; return x ? x.box : null; }, ".q-title");
       var cur = 0;
       function locked(k) { try { return !!questionLocked[Q[k].q.qId]; } catch (e) { return Q[k].inp.disabled; } }
       function nextOpen(from) {
