@@ -495,21 +495,30 @@ body:has(#finalModal[style*="flex"]) .sx-pad-fab,body:has(#finalModal[style*="fl
       if (a.closest && a.closest(".sx-1bar,.sx-pad,.sx-calc,.sx-wrap,.sx-ov,.px-1bar")) return null;
       return a;
     }
-    /* force = scroll the current box into view even when nothing is focused (after «السؤال الموالي») */
+    /* force = place the current question even when nothing is focused (after «السؤال الموالي»).
+       2026-11-23 his ask «خانة الإجابة تكون في المكان 2 وليس في المكان 1 حتى يبقى السؤال ظاهرا»: the answer zone (answer box + symbol
+       buttons) sits just ABOVE the floating bar, and the question with what comes before it fills the screen above it.
+       Limits: the question's first line never goes under the top bar; if both cannot fit, the answer box wins. */
     function fit(force) {
       var a = typingIn(), box = getBox ? getBox() : null;
       if (!a && !force) return;
-      if (a && (!box || !box.contains(a))) box = a.closest(".q,.q-box,.question,[data-id],.card,section,fieldset") || a.parentElement;
-      if (!box) return;
+      if (a && (!box || !box.contains(a))) box = a.closest(".q,.q-box,.q-block,.question,[data-id],.card,section,fieldset") || a.parentElement;
+      if (!box || !box.getClientRects().length) return;
       var vv = window.visualViewport, vt = vv ? vv.offsetTop : 0;
-      var top = vt + hdr() + 6, bottom = bar.getBoundingClientRect().top - 8;
-      var t = ((titleSel && box.querySelector(titleSel)) || box).getBoundingClientRect();
-      var r = (a || box).getBoundingClientRect();
-      if (!a && r.height > bottom - top) r = { bottom: t.top + Math.min(r.height, 140) };   /* tall box: its start is enough */
-      var dy = 0;
-      if (t.top < top || r.bottom > bottom) dy = t.top - top;
-      if (r.bottom - dy > bottom) dy = r.bottom - bottom;
-      if (Math.abs(dy) > 4) window.scrollBy({ top: dy, behavior: "smooth" });
+      var top = vt + hdr() + 6, bottom = bar.getBoundingClientRect().top - 10;
+      function seen(e) { return !!(e && e.getClientRects().length && e.getBoundingClientRect().height > 0); }
+      var t = ((titleSel && $$(titleSel, box).filter(seen)[0]) || box).getBoundingClientRect();   /* first VISIBLE title (not a hidden solution's) */
+      var inp = a || $$("input:not([disabled]):not([type=hidden]),select:not([disabled]),textarea:not([disabled])", box).filter(seen)[0] || null;
+      var zone = (inp && inp.closest(".answer-area")) || (inp && (inp.closest(".input-row,.input-line,.row") || inp)) ||
+        $$(".sx-choices,.choices,.opts", box).filter(seen)[0] || box;   /* a choice question: its choice buttons */
+      var Z = zone.getBoundingClientRect();
+      var sym = $$(".sym-toolbar,.keys,.sx-chips", box).filter(function (e) { return e.getClientRects().length; });   /* symbol buttons under the answer box */
+      sym.forEach(function (e) { var b = e.getBoundingClientRect(); if (b.top >= Z.top - 2 && b.bottom > Z.bottom && b.top - Z.bottom < 80) Z = { top: Z.top, bottom: b.bottom }; });
+      var r = inp ? inp.getBoundingClientRect() : Z;
+      var dy = Z.bottom - bottom;                          /* answer zone right above the bar */
+      if (t.top - dy < top) dy = t.top - top;              /* … but the question stays under the top bar */
+      if (r.bottom - dy > bottom) dy = r.bottom - bottom;  /* … and the answer box itself is never hidden */
+      if (Math.abs(dy) > 4) window.scrollTo({ top: Math.max(0, window.scrollY + dy), behavior: "smooth" });
     }
     function lift() {
       var vv = window.visualViewport, hidden = vv ? window.innerHeight - (vv.height + vv.offsetTop) : 0, kb = hidden > 40;
@@ -591,7 +600,7 @@ body:has(#finalModal[style*="flex"]) .sx-pad-fab,body:has(#finalModal[style*="fl
       document.body.classList.add("sx-1b");
       B.addEventListener("mousedown", function (e) { e.preventDefault(); });   /* the keyboard stays open */
       B.onclick = press;
-      kit = barKit(bar, function () { return box(cur); }, ".qt,.q-title,h3,h4,.question-text,.q-text,p");
+      kit = barKit(bar, function () { return box(cur); }, ".qt,.qtitle,.q-title,h3,h4,.question-text,.q-text,p");
     }
     /* the question the pupil is on: the one he touched, else the first open one on the screen, else the first open one */
     function pick(C) {
@@ -634,8 +643,8 @@ body:has(#finalModal[style*="flex"]) .sx-pad-fab,body:has(#finalModal[style*="fl
     function go(b) {
       cur = b; var bx = box(b);
       var inp = bx && bx.querySelector("input:not([disabled]):not([type=range]):not([type=checkbox]):not([type=radio]),select:not([disabled]),textarea:not([disabled])");
-      bx.scrollIntoView({ behavior: "smooth", block: "start" });
-      setTimeout(function () { if (inp) { try { inp.focus({ preventScroll: true }); } catch (e) {} } kit.fit(true); show(); }, 380);
+      if (inp) { try { inp.focus({ preventScroll: true }); } catch (e) {} }
+      kit.fit(true); setTimeout(show, 120);
     }
     function press() {
       var s = state(); if (!s) return;
@@ -1236,12 +1245,9 @@ body.sx-exam .sx-calc-fab{bottom:74px}
     }
     function goBox(b) {
       curBox = b;
-      var sb = document.querySelector(".top") , h = 0;
-      if (sb && getComputedStyle(sb).position.indexOf("sticky") >= 0 || sb && getComputedStyle(sb).position === "fixed") h = sb.getBoundingClientRect().height;
-      var t = b.querySelector(".qt") || b;
-      window.scrollTo({ top: Math.max(0, t.getBoundingClientRect().top + window.scrollY - h - 10), behavior: "smooth" });
       var inp = b.querySelector("input.ans:not(:disabled)");
       if (inp) { try { inp.focus({ preventScroll: true }); } catch (e) {} }
+      kit.fit(true);   /* answer box just above the bar, the question above it (2026-11-23) */
       setTimeout(show, 80);
     }
     B.onclick = function () {
@@ -1663,12 +1669,10 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         var x = Q[k];
         if (!x.box.offsetParent) { var pill = $$(".sx-pill:not(.tool)")[x.ex]; if (pill) pill.click(); }
         setTimeout(function () {
-          var sb = $(".sticky-bar"), h = sb ? sb.getBoundingClientRect().height : 0;
-          var t = $(".q-title", x.box) || x.box;
-          window.scrollTo({ top: Math.max(0, t.getBoundingClientRect().top + window.scrollY - h - 10), behavior: "smooth" });
           var area = $(".answer-area", x.box);
           if (area && !area.classList.contains("sx-hide")) { try { if (window.__noZoom) window.__noZoom(); x.inp.focus({ preventScroll: true }); } catch (e) {} }
           show();
+          kit.fit(true); setTimeout(function () { kit.fit(true); }, 450);   /* answer box + symbols just above the bar, the question above it (2026-11-23 «المكان 2»); again after a page switch */
         }, 60);
       }
       B.onclick = function () {
