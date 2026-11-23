@@ -2584,6 +2584,19 @@ body.sx-exam .sx-calc-fab{bottom:74px}
           M(f + " ABC = " + FR(side, "BC")), M(f + " " + th + "° = " + FR(side, dn(h))), M(side + " = " + dn(h) + " × " + f + " " + th + "°"), M(side + " ≈ " + dn(Math.round(val * 1000) / 1000))],
         res: "النتيجة: " + M(side + " ≈ " + dn(r1) + " cm"), concl: "<b>الاستنتاج:</b> " + M(side + " ≈ " + dn(r1) + " cm") + " (قيمة مقرّبة إلى " + M("0,1") + ")." };
     },
+    trigrel: function () {   /* 4AM S2 «cos²x + sin²x = 1 ، tan x = sin x / cos x» */
+      var P = pick([["0,6", "0,8", "0,36", "0,64", "0,75"], ["0,8", "0,6", "0,64", "0,36", "1,333"], ["0,28", "0,96", "0,0784", "0,9216", "0,292"]]);
+      var giv = P[0], other = P[1], g2 = P[2], o2 = P[3];
+      var fromSin = Math.random() < 0.5, gv = fromSin ? "sin x" : "cos x", ov = fromSin ? "cos x" : "sin x";
+      return { q: M("x") + " قيس زاوية حادة حيث " + M(gv + " = " + giv) + ".<br>احسب " + M(ov) + ".",
+        ans: [other], unit: "",
+        h1: "استعمل العلاقة بين جيب الزاوية وجيب تمامها: " + M("cos²x + sin²x = 1") + ".",
+        h2: M(ov.replace(" x", "²x") + " = 1 − " + gv.replace(" x", "²x")) + "، ثم خذ الجذر التربيعي (الزاوية حادة فالنتيجة موجبة).",
+        steps: ["<b>الطريقة:</b> لكل زاوية حادة " + M("x") + ": " + M("cos²x + sin²x = 1") + ".",
+          M(ov.replace(" x", "²x") + " = 1 − " + gv.replace(" x", "²x")), M(ov.replace(" x", "²x") + " = 1 − " + g2 + " = " + o2),
+          M(ov + " = √" + o2 + " = " + other) + " (لأن " + M(ov + " > 0") + ")"],
+        res: "النتيجة: " + M(ov + " = " + other), concl: "<b>الاستنتاج:</b> " + M(ov + " = " + other) + "." };
+    },
     relmul: function () {
       var a, b, c, v, expr, abs;
       if (Math.random() < 0.6) {
@@ -3068,11 +3081,12 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       "1m": [["10-18", "x10", 1], ["10-25", "decops", 1], ["11-15", "diam", 2], ["11-22", "rect", 2], ["11-29", "rtri", 2], ["11-29", "circle", 2]],
       "2m": [["10-11", "prio", 1], ["10-18", "eucl", 1], ["10-25", "frac2", 1], ["11-22", "symc", 2]],
       "3m": [["10-11", "relmul", 1], ["10-25", "fracop", 1], ["11-15", "midline", 2], ["11-22", "propor", 2]],
-      "4m": [["10-04", "pgcd", 1], ["10-11", "irr", 1], ["10-18", "aroot", 1], ["10-18", "rootsum", 1], ["10-25", "thales", 2], ["11-08", "trig", 2]]
+      "4m": [["10-04", "pgcd", 1], ["10-11", "irr", 1], ["10-18", "aroot", 1], ["10-18", "rootsum", 1], ["10-25", "thales", 2], ["11-08", "trig", 2], ["11-15", "trigrel", 2]]   /* his 4AM class reached these relations on 2026-11-23 */
     };
     function syDay(m, d) { return (m >= 8 ? m - 8 : m + 4) * 31 + d; }   /* order inside a school year that starts in September */
     function pool(lv) {
-      var t = syDay(now.getMonth(), now.getDate()), L = (PLAN[lv] || []).filter(function (x) { var p = x[0].split("-"); return syDay(+p[0] - 1, +p[1]) <= t; });
+      /* 2026-11-23 18:34 his «سؤال اليوم سبقني قليلا»: classes are about ONE WEEK behind the plan, so a type enters 7 days after its teaching week */
+      var lag = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 7), t = syDay(lag.getMonth(), lag.getDate()), L = (PLAN[lv] || []).filter(function (x) { var p = x[0].split("-"); return syDay(+p[0] - 1, +p[1]) <= t; });
       if (!L.length && PLAN[lv]) L = [PLAN[lv][0]];
       var sq = L[L.length - 1][2];
       CUR[lv] = L.filter(function (x) { return x[2] === sq; }).map(function (x) { return x[1]; });   /* types of the sequence taught now */
