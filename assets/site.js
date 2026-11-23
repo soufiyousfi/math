@@ -675,7 +675,65 @@ body:has(#finalModal[style*="flex"]) .sx-pad-fab,body:has(#finalModal[style*="fl
     }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["disabled", "style", "class", "hidden"] });
     show();
   }
-  if (/^olymp\/g/.test(rel)) onReady(function () { setTimeout(genericBar, 700); });
+  /* ---------- 📝 floating MARK chip (2026-11-23 his «الزر العائم علامة التلميذ لا يظهر في جميع الأنشطة … يرجى دمجه في جميعها على أن يكون
+     لونه خفيفا شفافا ويظهر في جميع مراحل الحل»). Every activity page already counts the mark in its own score box, but on many pages
+     that box scrolls away with the header. This light, see-through chip copies the page's own mark and shows it whenever that box is
+     off the screen: before checking, after a wrong answer, hints, model answer, next question, result. It never blocks a tap. ---------- */
+  function markChip() {
+    if (document.querySelector(".sx-mark")) return;
+    var SEL = ["#scoreVal", "#globalScore", "#score", ".score-badge", ".score-pill", ".scorebar .score", ".bar .pill", ".top .pill", ".score"];
+    var RX = /\d+(?:[.,]\d+)?\s*\/\s*\d+/;
+    function src() {
+      for (var i = 0; i < SEL.length; i++) {
+        var L = $$(SEL[i]);
+        for (var k = 0; k < L.length; k++) {
+          var e = L[k], t = (e.textContent || "").replace(/\s+/g, " ").trim();
+          if (t.length < 30 && RX.test(t) && !e.closest(".sx-1bar,.sx-mark,.solution,#finalModal,.modal,.final,.result") && e.getClientRects().length) return e;
+        }
+      }
+      return null;
+    }
+    var S = src(); if (!S) return;
+    var st = el("style");
+    st.textContent = ".sx-mark{position:fixed;top:calc(8px + env(safe-area-inset-top));left:8px;z-index:2400;pointer-events:none;direction:rtl;" +
+      "font:inherit;font-weight:800;font-size:.95rem;line-height:1.2;color:#1e3a8a;background:rgba(239,246,255,.72);border:1.5px solid rgba(147,197,253,.75);" +
+      "border-radius:999px;padding:5px 12px;box-shadow:0 2px 8px rgba(15,23,42,.10);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);" +
+      "opacity:0;transform:translateY(-6px);transition:opacity .25s,transform .25s;white-space:nowrap}" +
+      ".sx-mark.on{opacity:1;transform:none}.sx-mark b{direction:ltr;unicode-bidi:isolate;display:inline-block}" +
+      ".sx-mark.up{animation:sxMarkUp .6s}@keyframes sxMarkUp{40%{background:rgba(220,252,231,.9);border-color:#86efac}}" +
+      "html.sx-dark .sx-mark{color:#bfdbfe;background:rgba(15,23,42,.6);border-color:rgba(71,85,105,.8)}@media print{.sx-mark{display:none!important}}";
+    document.head.appendChild(st);
+    var chip = el("div", "sx-mark"); chip.setAttribute("aria-hidden", "true");
+    document.body.appendChild(chip);
+    var last = "";
+    function read() {
+      if (!S || !document.contains(S)) S = src();
+      if (!S) { chip.classList.remove("on"); return; }
+      var t = (S.textContent || "").replace(/\s+/g, " ").trim(), m = t.match(RX);
+      if (!m) return;
+      var head = t.slice(0, m.index).replace(/[:：]\s*$/, "").trim();
+      var lab = /[؀-ۿ]/.test(head) ? head : ((head ? head + " " : "") + "العلامة");   /* «العلامة: 7 / 20», «🎯 العلامة 7 / 20» */
+      var txt = lab + ": " + m[0].replace(/\s*\/\s*/, " / ");
+      if (txt !== last) {
+        chip.innerHTML = esc(lab) + ": <b>" + esc(m[0].replace(/\s*\/\s*/, " / ")) + "</b>";
+        if (last) { chip.classList.remove("up"); void chip.offsetWidth; chip.classList.add("up"); }
+        last = txt;
+      }
+      /* shown only while the page's own score box is not on the screen (no double mark) */
+      var r = S.getBoundingClientRect(), vis = r.height > 0 && r.bottom > 4 && r.top < window.innerHeight - 4;
+      chip.classList.toggle("on", !vis);
+    }
+    read();
+    window.addEventListener("scroll", function () { if (!read.f) { read.f = 1; requestAnimationFrame(function () { read.f = 0; read(); }); } }, { passive: true });
+    window.addEventListener("resize", read);
+    if (window.MutationObserver) new MutationObserver(function (m) {
+      for (var i = 0; i < m.length; i++) if (chip.contains(m[i].target)) return;
+      clearTimeout(read.t); read.t = setTimeout(read, 120);
+    }).observe(document.body, { childList: true, subtree: true, characterData: true });
+    setInterval(read, 1500);   /* a page that redraws its score without DOM events (canvas games) */
+  }
+
+  if (/^olymp\/g/.test(rel)) onReady(function () { setTimeout(genericBar, 700); setTimeout(markChip, 800); });
 
   var pm = rel.match(/^([1-4]m)\/(?:(t[1-3])\/([a-z0-9]+)|(bem))\//);
   window.__sxGenBank = genBank;
@@ -1275,7 +1333,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
   });
 
   /* 3c. every other activity page gets the GENERIC bar (games, labs, game lessons, old engines) */
-  onReady(function () { setTimeout(genericBar, 900); });
+  onReady(function () { setTimeout(genericBar, 900); setTimeout(markChip, 1000); });   /* + the floating mark on every activity */
 
   function plain(html) { var d = document.createElement("div"); d.innerHTML = html; return d.textContent.replace(/\s+/g, " ").trim(); }
   function norm(v) {
