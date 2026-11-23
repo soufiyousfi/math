@@ -2495,6 +2495,38 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         steps: ["<b>الطريقة:</b> " + f + ".", M(calc)], res: "النتيجة: " + M(v + " " + U),
         concl: "<b>الاستنتاج:</b> " + (area ? "مساحة " : "محيط ") + (sq ? "المربع " : "المستطيل ") + M(v + " " + U) + "." };
     },
+    diam: function () {   /* 1AM S2 «مصطلحات الدائرة»: القطر = 2 × نصف القطر */
+      var toD = Math.random() < 0.5, r10 = ri(15, 120), r = r10 / 10, d = r10 / 5, v = toD ? d : r;
+      return { q: "دائرة مركزها " + M("O") + (toD ? " ونصف قطرها " + M(dn(r) + " cm") + ". ما طول قطرها؟" : " وقطرها " + M(dn(d) + " cm") + ". ما طول نصف قطرها؟") + " (بـ cm)",
+        ans: [dn(v)], unit: "cm",
+        h1: "القطر يمرّ بالمركز " + M("O") + " ويتكوّن من نصفي قطر.",
+        h2: toD ? "القطر = نصف القطر × 2." : "نصف القطر = القطر ÷ 2.",
+        steps: ["<b>الطريقة:</b> القطر = 2 × نصف القطر.", toD ? M(dn(r) + " × 2 = " + dn(d)) : M(dn(d) + " ÷ 2 = " + dn(r))],
+        res: "النتيجة: " + M(dn(v) + " cm"), concl: "<b>الاستنتاج:</b> " + (toD ? "قطر الدائرة " : "نصف قطر الدائرة ") + M(dn(v) + " cm") + "." };
+    },
+    symc: function () {   /* 2AM S2 «خواص التناظر المركزي»: يحفظ الأطوال والزوايا، فالمحيط نفسه */
+      var a = ri(25, 90) / 10, b = ri(25, 90) / 10, c = Math.max(Math.abs(a - b) + 0.6, Math.min(a + b - 0.6, ri(25, 90) / 10)), per = Math.round((a + b + c) * 10) / 10;
+      c = Math.round(c * 10) / 10; per = Math.round((a + b + c) * 10) / 10;
+      return { q: "المثلث " + M("A′B′C′") + " نظير المثلث " + M("ABC") + " بالنسبة إلى النقطة " + M("O") + "، حيث " + M("AB = " + dn(a) + " cm") + " و " + M("BC = " + dn(b) + " cm") + " و " + M("AC = " + dn(c) + " cm") + ".<br>احسب محيط المثلث " + M("A′B′C′") + " (بـ cm).",
+        ans: [dn(per)], unit: "cm",
+        h1: "ماذا يحفظ التناظر المركزي؟ قارن أطوال المثلثين.",
+        h2: "التناظر المركزي يحفظ الأطوال: " + M("A′B′ = AB") + " و " + M("B′C′ = BC") + " و " + M("A′C′ = AC") + "، ثم اجمع.",
+        steps: ["<b>الطريقة:</b> التناظر المركزي يحفظ الأطوال، فالمثلثان المتناظران لهما نفس الأضلاع ونفس المحيط.",
+          M("A′B′ = " + dn(a) + "  ;  B′C′ = " + dn(b) + "  ;  A′C′ = " + dn(c)), M(dn(a) + " + " + dn(b) + " + " + dn(c) + " = " + dn(per))],
+        res: "النتيجة: " + M(dn(per) + " cm"), concl: "<b>الاستنتاج:</b> محيط المثلث " + M("A′B′C′") + " يساوي " + M(dn(per) + " cm") + "." };
+    },
+    propor: function () {   /* 3AM S2 «تناسبية الأطوال في المثلث» (مستقيم يوازي ضلعا) */
+      var AB = ri(4, 12), AM = ri(1, AB - 1), k = ri(2, 6), BC = AB * k / 2, v = AM * BC / AB;
+      while (Math.round(v * 10) !== v * 10) { AM = ri(1, AB - 1); v = AM * BC / AB; }
+      return { q: M("ABC") + " مثلث، " + M("M") + " نقطة من " + M("[AB]") + " و " + M("N") + " نقطة من " + M("[AC]") + " حيث " + M("(MN) // (BC)") + ".<br>" +
+          M("AM = " + AM + " cm") + " و " + M("AB = " + AB + " cm") + " و " + M("BC = " + dn(BC) + " cm") + ". احسب الطول " + M("MN") + " (بـ cm).",
+        ans: [dn(v)], unit: "cm",
+        h1: M("(MN) // (BC)") + ": أطوال أضلاع المثلثين " + M("AMN") + " و " + M("ABC") + " متناسبة.",
+        h2: M(FR("AM", "AB") + " = " + FR("MN", "BC")) + "، إذن " + M("MN = " + FR("AM × BC", "AB")) + ".",
+        steps: ["<b>الطريقة:</b> في المثلث " + M("ABC") + "، " + M("M ∈ [AB]") + " و " + M("N ∈ [AC]") + " و " + M("(MN) // (BC)") + "، إذن أطوال أضلاع المثلثين " + M("AMN") + " و " + M("ABC") + " متناسبة: " + M(FR("AM", "AB") + " = " + FR("AN", "AC") + " = " + FR("MN", "BC")) + ".",
+          M(FR(AM, AB) + " = " + FR("MN", dn(BC))), M("MN = " + FR(AM + " × " + dn(BC), AB) + " = " + dn(v))],
+        res: "النتيجة: " + M("MN = " + dn(v) + " cm"), concl: "<b>الاستنتاج:</b> " + M("MN = " + dn(v) + " cm") + "." };
+    },
     circle: function () {
       var dia = Math.random() < 0.5, r = ri(2, 20), d = 2 * r, v = d * 314 / 100;
       return { q: "دائرة " + (dia ? "قطرها " + M(d + " cm") : "نصف قطرها " + M(r + " cm")) + ". احسب محيطها (بـ cm) مع أخذ " + M("π ≈ 3,14") + ".",
@@ -2794,18 +2826,23 @@ body.sx-exam .sx-calc-fab{bottom:74px}
     if (!host) return;
     /* follows the annual distribution (التوزيع السنوي، المخططات السنوية 2022) a little BEHIND it (his ask «متزامن مع المخطط أو متأخر عنه قليلا»):
        a type enters the daily questions on the Sunday AFTER the week its resource is taught ("MM-DD" of the 2026/2027 calendar). */
+    /* 2026-11-23 his ask «الاسئلة تكون قريبة من درس المخطط، هي مازالت في المقطع الاول»: a type now enters in the WEEK its resource
+       is taught (third field = sequence), and two days out of three the question comes from the CURRENT sequence (see question()). */
     var PLAN = {
-      "1m": [["10-25", "x10"], ["11-02", "decops"], ["11-29", "rect"], ["12-06", "rtri"], ["12-06", "circle"]],
-      "2m": [["10-18", "prio"], ["10-25", "eucl"], ["11-02", "frac2"]],
-      "3m": [["10-18", "relmul"], ["11-02", "fracop"], ["11-22", "midline"]],
-      "4m": [["10-11", "pgcd"], ["10-18", "irr"], ["10-25", "aroot"], ["10-25", "rootsum"], ["11-08", "thales"], ["11-22", "trig"]]
+      "1m": [["10-18", "x10", 1], ["10-25", "decops", 1], ["11-15", "diam", 2], ["11-22", "rect", 2], ["11-29", "rtri", 2], ["11-29", "circle", 2]],
+      "2m": [["10-11", "prio", 1], ["10-18", "eucl", 1], ["10-25", "frac2", 1], ["11-22", "symc", 2]],
+      "3m": [["10-11", "relmul", 1], ["10-25", "fracop", 1], ["11-15", "midline", 2], ["11-22", "propor", 2]],
+      "4m": [["10-04", "pgcd", 1], ["10-11", "irr", 1], ["10-18", "aroot", 1], ["10-18", "rootsum", 1], ["10-25", "thales", 2], ["11-08", "trig", 2]]
     };
     function syDay(m, d) { return (m >= 8 ? m - 8 : m + 4) * 31 + d; }   /* order inside a school year that starts in September */
     function pool(lv) {
       var t = syDay(now.getMonth(), now.getDate()), L = (PLAN[lv] || []).filter(function (x) { var p = x[0].split("-"); return syDay(+p[0] - 1, +p[1]) <= t; });
       if (!L.length && PLAN[lv]) L = [PLAN[lv][0]];
+      var sq = L[L.length - 1][2];
+      CUR[lv] = L.filter(function (x) { return x[2] === sq; }).map(function (x) { return x[1]; });   /* types of the sequence taught now */
       return L.map(function (x) { return x[1]; });
     }
+    var CUR = {};
     var DAILY;
     var LV = { "1m": "الأولى متوسط", "2m": "الثانية متوسط", "3m": "الثالثة متوسط", "4m": "الرابعة متوسط" };
     var SYM = { "4m": ["√", "²", "−", ";", ",", "/", "×", "⌫"], "3m": ["−", "/", ",", ";", "⌫"], "2m": ["/", ",", ";", "⌫"], "1m": [",", "⌫"] }; /* = GSYM of the pages */
@@ -2823,7 +2860,9 @@ body.sx-exam .sx-calc-fab{bottom:74px}
     }
     function question(lv) {
       /* every other day the newest resource taught, otherwise a review of an earlier one */
-      var list = DAILY[lv], n = dayNo(now), id = n % 2 ? list[list.length - 1] : list[(Math.floor(n / 2) + lv.charCodeAt(0)) % list.length], h = 0, s = today + "|" + lv, R = Math.random, g;
+      /* day 1 of 3: the newest resource; day 2: another resource of the current sequence; day 3: a review of an earlier sequence */
+      var list = DAILY[lv], cur = CUR[lv] || list, old = list.filter(function (x) { return cur.indexOf(x) < 0; }), n = dayNo(now), k = (n + lv.charCodeAt(0)) % 3;
+      var id = k === 0 ? cur[cur.length - 1] : k === 1 || !old.length ? cur[Math.floor(n / 3) % cur.length] : old[Math.floor(n / 3) % old.length], h = 0, s = today + "|" + lv, R = Math.random, g;
       for (var i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 2654435761);
       Math.random = seeded(h);
       try { g = GEN2[id](); } finally { Math.random = R; }
@@ -2888,7 +2927,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
       var D = load(), key = today + "|" + lv, rec = (D.done || {})[key];
       if (rec && !full) return mini(lv, rec);
       if (extra) rec = null;
-      var g = extra ? GEN2[DAILY[lv][Math.floor(Math.random() * DAILY[lv].length)]]() : question(lv), left = 3, t0 = Date.now(), st = streakNow(D);
+      var xl = Math.random() < 0.75 && CUR[lv] ? CUR[lv] : DAILY[lv], g = extra ? GEN2[xl[Math.floor(Math.random() * xl.length)]]() : question(lv), left = 3, t0 = Date.now(), st = streakNow(D);
       var numeric = g.ans.every(function (a) { return /^[−-]?\d+(,\d+)?$/.test(a); });
       host.innerHTML = '<div class="dh"><div><h2>' + (extra ? "➕ سؤال إضافي للتدرّب" : "☀️ سؤال اليوم") + '</h2><span class="lvn">' + LV[lv] + " · " + now.toLocaleDateString("ar-DZ", { weekday: "long", day: "numeric", month: "long" }) + "</span></div>" +
         '<div class="pills"><span class="pill fire" title="سلسلة المواظبة: أيام متتالية أجبت فيها عن سؤال اليوم">🔥 ' + st + '</span><span class="pill t">⏱️ 3:00</span>' +
