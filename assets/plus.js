@@ -315,13 +315,13 @@
     }
   };
   for (var k4 in NEW4) NEW[k4] = NEW4[k4];
-  var NAMES = { trigrel: "العلاقات بين النسب المثلثية", diam: "القطر ونصف القطر", symc: "خواص التناظر المركزي", propor: "تناسبية الأطوال في المثلث", x10: "الضرب والقسمة على 10، 100…", decops: "جمع وطرح الأعداد العشرية", rect: "محيط ومساحة المستطيل", circle: "محيط الدائرة", rtri: "مساحة المثلث القائم",
+  var NAMES = { quad: "أطوال أضلاع المستطيل والمربع والمعين", trigrel: "العلاقات بين النسب المثلثية", diam: "القطر ونصف القطر", symc: "خواص التناظر المركزي", propor: "تناسبية الأطوال في المثلث", x10: "الضرب والقسمة على 10، 100…", decops: "جمع وطرح الأعداد العشرية", rect: "محيط ومساحة المستطيل", circle: "محيط الدائرة", rtri: "مساحة المثلث القائم",
     div: "القسمة الإقليدية", arr: "التدوير إلى الوحدة", eucl: "القسمة الإقليدية", prio: "سلسلة عمليات", frac2: "العمليات على الكسور", rel: "جمع الأعداد النسبية", prop: "التناسبية",
     relmul: "ضرب الأعداد النسبية وقسمتها", fracop: "العمليات على الأعداد الناطقة", midline: "مستقيم المنتصفين", pyth: "خاصية فيتاغورس", pow: "القوى", dev: "النشر (التوزيع)",
     pgcd: "PGCD", irr: "الكسر غير القابل للاختزال", aroot: "الكتابة a√b", rootsum: "الحساب على الجذور", thales: "خاصية طالس", trig: "حساب المثلثات", idt: "المتطابقات الشهيرة", eq: "المعادلات" };
-  var TYPES = { "1m": ["x10", "decops", "div", "arr", "diam", "rect", "circle", "rtri"], "2m": ["eucl", "prio", "frac2", "rel", "prop", "symc"],
+  var TYPES = { "1m": ["x10", "decops", "div", "arr", "quad", "diam", "rect", "circle", "rtri"], "2m": ["eucl", "prio", "frac2", "rel", "prop", "symc"],
     "3m": ["relmul", "fracop", "pow", "dev", "pyth", "midline", "propor"], "4m": ["pgcd", "irr", "aroot", "rootsum", "idt", "eq", "thales", "trig", "trigrel"] };
-  var GEO = /rect|circle|rtri|midline|pyth|thales|trig|trigrel|diam|symc|propor/;
+  var GEO = /rect|circle|rtri|midline|pyth|thales|trig|trigrel|quad|diam|symc|propor/;
   var SYM = { "4m": ["√", "²", "x", "−", "+", ";", ",", "/", "⌫"], "3m": ["x", "−", "+", "/", ",", ";", "⌫"], "2m": ["−", "/", ",", ";", "⌫"], "1m": [",", ";", "⌫"] };
   var BANK = null;
   function bank() {
