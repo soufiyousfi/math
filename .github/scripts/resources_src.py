@@ -271,6 +271,7 @@ LESSON_OF = {
         "جمع وطرح عددين نسبيين": "2m/t2/dars/itqan-m4-nisbiya.html",
         "المجموع الجبري": "2m/t2/dars/itqan-m4-nisbiya.html",
         "خواص متوازي الأضلاع": "2m/t2/dars/itqan-m5-mutawazi.html",
+        "متوازيات الأضلاع الخاصة": "2m/t2/dars/itqan-m5-khassa.html",
         "الرابع المتناسب": "2m/t3/dars/itqan-m6-rabi3.html",
         "النسبة المئوية": "2m/t3/dars/itqan-m6-rabi3.html",
     },
@@ -326,6 +327,7 @@ LESSON_OF = {
 LESSON_KW = {
     "1m/t1/dars/itqan-m2-tawazi.html": "موازي عمودي مستقيمان متوازيان متعامدان منتصف قطعة الكوس",
     "1m/t1/dars/itqan-m2-rasm.html": "رسم موازي عمودي منتصف نقل طول قطعة ورقة غير مسطرة المدور الكوس المسطرة",
+    "2m/t2/dars/itqan-m5-khassa.html": "مستطيل معين مربع رباعيات خاصة الرباعيات الخاصة متوازيات الاضلاع الخاصة قطران متقايسان قطران متعامدان",
     "1m/t1/dars/itqan-m2-qaws.html": "قوس دائرة رسم دائرة مثيل قوس المدور فتحة المدور نقل قوس نسخ قوس",
     "1m/t1/dars/itqan-m2-daira.html": "دائرة مركز وتر قطر نصف قطر قوس",
     "1m/t1/dars/itqan-m2-mathil.html": "مثيل مثلث مربع مستطيل معين متساوي الساقين متقايس الأضلاع",
