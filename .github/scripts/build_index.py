@@ -140,7 +140,7 @@ KID_SHIM = ('<script>(function(){try{var L=window.localStorage,S=Storage.prototy
 # 3 = تقويم وتوظيف (وضعية إدماجية، تميّز، تحدٍّ). The map is written into the deployed page (window.__resmap).
 import sys as _sys
 _sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from resources_src import RES  # noqa: E402
+from resources_src import RES, LESSON_OF, LESSON_KW  # noqa: E402
 
 RES_RX = {lv: [re.compile(r[4]) for r in rows] for lv, rows in RES.items()}
 RES_STOP = set("على في من إلى مع عدد عددين أعداد معرفة استعمال وضعية وضعيات بسيطة معطاة حساب تعيين نحسب ثم الذي التي هذه هذا كل لكل حيث".split())
@@ -233,6 +233,9 @@ def write_resources(items, maps):
                     if ri == i and it["url"] not in where[b]:
                         where[b].append(it["url"])
             lessons = [u for u in where[1] if "/dars/" in u]
+            fixed = LESSON_OF.get(lv, {}).get(r[3])   # the lesson written by hand (2026-11-24) wins over the guess
+            if fixed and os.path.isfile(fixed):
+                lessons = [fixed] + [u for u in lessons if u != fixed]
             if not lessons:     # «أُتقِن» lessons have their own engine: linked by the words of their title
                 best, bs = None, 0
                 for it in items:
@@ -403,6 +406,28 @@ def last_commit_date(path):
         return None
 
 
+def add_lesson_words(items):
+    """Search words of each «أُتقِن» lesson (2026-11-24): the official wording + short name of the resources it treats
+    (resources_src.LESSON_OF) and the class words of LESSON_KW. Also its place in the plan («ro») = its first resource."""
+    words, first = {}, {}
+    for lv, m in LESSON_OF.items():
+        rows = RES.get(lv, [])
+        for i, r in enumerate(rows):
+            u = m.get(r[3])
+            if not u:
+                continue
+            words.setdefault(u, []).extend([r[2], r[3]])
+            first.setdefault(u, i)
+    for u, w in LESSON_KW.items():
+        words.setdefault(u, []).append(w)
+    for it in items:
+        u = it["url"]
+        if u in words:
+            it["kw"] = " ".join(dict.fromkeys(words[u]))
+        if u in first:
+            it["ro"] = first[u]
+
+
 def main():
     items = []
     for lv in LEVELS:
@@ -443,6 +468,7 @@ def main():
                     if kind == "html":
                         item.update(page_meta(url + "index.html" if url.endswith("/") else url))
                     items.append(item)
+    add_lesson_words(items)
     deploy = os.environ.get("GITHUB_ACTIONS") == "true" or os.environ.get("SITE_BUILD") == "1"
     maps = {}
     for it in items:
