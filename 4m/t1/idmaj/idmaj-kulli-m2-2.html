@@ -593,7 +593,7 @@
         <div class="school-title">متوسطة محمد العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
         <h1>وضعية إدماج كلي 2 للمقطع الثاني: هيكل السقف التفاعلية في الرياضيات</h1>
         <div class="sub-info">المستوى: السنة الرابعة متوسط | المقطع الثاني<br>حلّ في الكراس ثم تحقق هنا</div>
-        <button class="print-btn" onclick="document.body.classList.remove('psol');window.print()">🖨️ النسخة الورقية للطباعة</button> <div class="bem-warn" id="sol-lock" style="color:#713f12">🔒 الحل يُنشر لاحقا إن شاء الله.</div>
+        <button class="print-btn" onclick="document.body.classList.remove('psol');window.print()">🖨️ النسخة الورقية للطباعة</button> <button class="print-btn sol-btn" onclick="printSol()">🖨️ النسخة الورقية للحل</button><div class="sol-wait"></div>
     </header>
 
     <div class="sticky-bar">
@@ -688,7 +688,12 @@
     "h1": "ارسم نصف مستقيم <span class=\"math\">[Ax)</span> وعيّن عليه بالمدور <span class=\"math\">5</span> أطوال متساوية.",
     "h2": "صِل النقطة الخامسة بـ <span class=\"math\">B</span>، وارسم موازيه من النقطة الثانية.",
     "steps": [
-     "🔒 الحل يُنشر لاحقا إن شاء الله."
+     "<b>الطريقة:</b> تقسيم قطعة إلى أجزاء متقايسة بالتوازي (خاصية طالس).",
+     "أرسم نصف مستقيم <span class=\"math\">[Ax)</span> وأعيّن عليه بالمدور <span class=\"math\">5</span> أطوالا متساوية تنتهي في <span class=\"math\">A1</span>، …، <span class=\"math\">A5</span>",
+     "أرسم <span class=\"math\">(A5B)</span>، ثم الموازي له الذي يشمل <span class=\"math\">A2</span>، فيقطع <span class=\"math\">[AB]</span> في <span class=\"math\">M</span>",
+     "حسب خاصية طالس: <span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = AA2/AA5 = <span class=\"fr\"><span>2</span><span>5</span></span></span>، إذن <span class=\"math\">AM = <span class=\"fr\"><span>2</span><span>5</span></span> × 5 = 2</span>",
+     "النتيجة: <span class=\"math\">AM = 2 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">AM = 2 cm</span> على المخطط."
     ],
     "rubric": [
      {
@@ -716,7 +721,13 @@
     "h1": "احسب <span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span></span> و <span class=\"math\"><span class=\"fr\"><span>AN</span><span>AC</span></span></span>.",
     "h2": "هل النسبتان متساويتان تماما؟",
     "steps": [
-     "🔒 الحل يُنشر لاحقا إن شاء الله."
+     "<b>الطريقة:</b> الخاصية العكسية لخاصية طالس، وخاصية طالس لإثبات عدم التوازي.",
+     "الأسئلة الخفية: ما <span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span></span>؟ ما <span class=\"math\"><span class=\"fr\"><span>AN</span><span>AC</span></span></span>؟ هل النسبتان متساويتان؟ ماذا نستنتج عن <span class=\"math\">(MN)</span> و<span class=\"math\">(BC)</span>؟",
+     "<span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = <span class=\"fr\"><span>1,2</span><span>3</span></span> = 0,4</span>",
+     "<span class=\"math\"><span class=\"fr\"><span>AN</span><span>AC</span></span> = <span class=\"fr\"><span>1,52</span><span>3,75</span></span> ≈ 0,405</span>",
+     "<span class=\"math\">0,4 ≠ 0,405</span>: لو كان <span class=\"math\">(MN) // (BC)</span> لكانت النسبتان متساويتين (خاصية طالس)، إذن <span class=\"math\">(MN)</span> و<span class=\"math\">(BC)</span> غير متوازيين",
+     "النتيجة: <span class=\"math\">2</span> لا، العارضة ليست موازية (يجب <span class=\"math\">AN = 0,4 × 3,75 = 1,5 m</span>)",
+     "<b>الاستنتاج:</b> لا: <span class=\"math\"><span class=\"fr\"><span>AM</span><span>AB</span></span> = 0,4</span> و <span class=\"math\"><span class=\"fr\"><span>AN</span><span>AC</span></span> ≈ 0,405</span> غير متساويتين، فالعارضة غير موازية لـ <span class=\"math\">(BC)</span>."
     ],
     "rubric": [
      {
@@ -981,6 +992,10 @@ var st=pp.getAttribute('style');pp.setAttribute('style','display:block;position:
 var mm=document.createElement('div');mm.style.height=(n*279-6)+'mm';pp.appendChild(mm);var lim=mm.getBoundingClientRect().height;pp.removeChild(mm);
 var lo=0.45,hi=1.3,k;c.style.zoom=hi;if(c.getBoundingClientRect().height<=lim)lo=hi;else for(k=0;k<10;k++){var m=(lo+hi)/2;c.style.zoom=m;if(c.getBoundingClientRect().height<=lim)lo=m;else hi=m}
 c.style.zoom=lo;if(st===null)pp.removeAttribute('style');else pp.setAttribute('style',st)}
-window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><!--/paper-->
+window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الرابعة متوسط</span></div><div class="ttl">الحل النموذجي وسلم التنقيط — وضعية إدماج كلي 2 للمقطع الثاني: هيكل السقف — السنة الرابعة متوسط</div><div class="sxs"><div class="sx"><h4>الوضعية الإدماجية (8 ن): هيكل السقف</h4><div class="sq"><p><b>1) على المخطط (<span class="math">AB = 5 cm</span>)، أنشئ بالمسطرة غير المدرّجة والمدور النقطة <span class="math">M</span> من <span class="math">[AB]</span> بحيث <span class="math">AM = <span class="fr"><span>2</span><span>5</span></span> AB</span>، ثم اكتب الطول <span class="math">AM</span> على المخطط (بـ cm).</b></p><p><b>الطريقة:</b> تقسيم قطعة إلى أجزاء متقايسة بالتوازي (خاصية طالس).</p><p>أرسم نصف مستقيم <span class="math">[Ax)</span> وأعيّن عليه بالمدور <span class="math">5</span> أطوالا متساوية تنتهي في <span class="math">A1</span>، …، <span class="math">A5</span></p><p>أرسم <span class="math">(A5B)</span>، ثم الموازي له الذي يشمل <span class="math">A2</span>، فيقطع <span class="math">[AB]</span> في <span class="math">M</span></p><p>حسب خاصية طالس: <span class="math"><span class="fr"><span>AM</span><span>AB</span></span> = AA2/AA5 = <span class="fr"><span>2</span><span>5</span></span></span>، إذن <span class="math">AM = <span class="fr"><span>2</span><span>5</span></span> × 5 = 2</span></p><p>النتيجة: <span class="math">AM = 2 cm</span></p><p><b>الاستنتاج:</b> <span class="math">AM = 2 cm</span> على المخطط.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: يختار طريقة التقسيم بالتوازي (معيار 1)</td><td>1,5</td></tr><tr><td>م2 الاستعمال السليم: ينشئ M ويحسب AM (معيار 2)</td><td>1,5</td></tr></table></div><div class="sq"><p><b>2) شرط تثبيت السقف المستعار أن تكون العارضة <span class="math">(MN)</span> موازية لـ <span class="math">(BC)</span>. هل الهيكل المصنوع يحقق الشرط مع التبرير؟</b></p><p><b>الطريقة:</b> الخاصية العكسية لخاصية طالس، وخاصية طالس لإثبات عدم التوازي.</p><p>الأسئلة الخفية: ما <span class="math"><span class="fr"><span>AM</span><span>AB</span></span></span>؟ ما <span class="math"><span class="fr"><span>AN</span><span>AC</span></span></span>؟ هل النسبتان متساويتان؟ ماذا نستنتج عن <span class="math">(MN)</span> و<span class="math">(BC)</span>؟</p><p><span class="math"><span class="fr"><span>AM</span><span>AB</span></span> = <span class="fr"><span>1,2</span><span>3</span></span> = 0,4</span></p><p><span class="math"><span class="fr"><span>AN</span><span>AC</span></span> = <span class="fr"><span>1,52</span><span>3,75</span></span> ≈ 0,405</span></p><p><span class="math">0,4 ≠ 0,405</span>: لو كان <span class="math">(MN) // (BC)</span> لكانت النسبتان متساويتين (خاصية طالس)، إذن <span class="math">(MN)</span> و<span class="math">(BC)</span> غير متوازيين</p><p>النتيجة: <span class="math">2</span> لا، العارضة ليست موازية (يجب <span class="math">AN = 0,4 × 3,75 = 1,5 m</span>)</p><p><b>الاستنتاج:</b> لا: <span class="math"><span class="fr"><span>AM</span><span>AB</span></span> = 0,4</span> و <span class="math"><span class="fr"><span>AN</span><span>AC</span></span> ≈ 0,405</span> غير متساويتين، فالعارضة غير موازية لـ <span class="math">(BC)</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: يختار مقارنة النسبتين (معيار 1)</td><td>1,5</td></tr><tr><td>م2 الاستعمال السليم: يحسب النسبتين بدقة (معيار 2)</td><td>1,5</td></tr><tr><td>م2 الاستعمال السليم: يستنتج عدم التوازي ويبرّر (معيار 2)</td><td>1</td></tr><tr><td>م3 انسجام الإجابة: يتحقق من صحة النتائج ويصادق عليها</td><td>0,5</td></tr><tr><td>م4 الإتقان: يقدّم منتوجا بشكل منظّم</td><td>0,5</td></tr></table></div><p class="m3">تُقبل كل طريقة صحيحة أخرى، وتُمنح علامتها كاملة.</p></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
+function tick(){var b=document.querySelector('.sol-btn'),w=document.querySelector('.sol-wait');if(!b)return;var r=t+D-Date.now();
+if(r<=0){b.style.display='inline-block';if(w)w.style.display='none';return}if(w)w.textContent='📄 النسخة الورقية للحل تظهر بعد '+Math.ceil(r/60000)+' دقيقة';setTimeout(tick,20000)}
+window.printSol=function(){document.body.classList.add('psol');window.print()};window.addEventListener('afterprint',function(){document.body.classList.remove('psol')});
+window.addEventListener('load',tick)})();</script><!--/paper-->
 </body>
 </html>

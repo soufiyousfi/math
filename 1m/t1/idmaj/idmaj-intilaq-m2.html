@@ -593,7 +593,7 @@
         <div class="school-title">متوسطة محمد العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
         <h1>الوضعية الانطلاقية للمقطع الثاني: ساحة الألعاب التفاعلية في الرياضيات</h1>
         <div class="sub-info">المستوى: السنة الأولى متوسط | المقطع الثاني<br>حلّ في الكراس ثم تحقق هنا</div>
-        <button class="print-btn" onclick="document.body.classList.remove('psol');window.print()">🖨️ النسخة الورقية للطباعة</button> <div class="bem-warn" id="sol-lock" style="color:#713f12">🔒 الحل يُنشر لاحقا إن شاء الله.</div>
+        <button class="print-btn" onclick="document.body.classList.remove('psol');window.print()">🖨️ النسخة الورقية للطباعة</button> <button class="print-btn sol-btn" onclick="printSol()">🖨️ النسخة الورقية للحل</button><div class="sol-wait"></div>
     </header>
 
     <div class="sticky-bar">
@@ -691,7 +691,12 @@
     "h1": "ارسم المستطيل <span class=\"math\">14 cm</span> على <span class=\"math\">9 cm</span> بالمسطرة والكوس، ثم <span class=\"math\">E</span> على <span class=\"math\">[AB]</span> بحيث <span class=\"math\">EB = 6 cm</span>.",
     "h2": "ارسم <span class=\"math\">[AC]</span> وعيّن منتصفها <span class=\"math\">O</span>، ثم الدائرة التي مركزها <span class=\"math\">O</span> ونصف قطرها <span class=\"math\">1,5 cm</span>.",
     "steps": [
-     "🔒 الحل يُنشر لاحقا إن شاء الله."
+     "<b>الطريقة:</b> نرسم المستطيل بالكوس (الزوايا القائمة) والمسطرة (الأطوال)، ونعيّن منتصف قطعة بالقياس.",
+     "أرسم <span class=\"math\">[AB]</span> طولها <span class=\"math\">14 cm</span>، ثم العموديين على <span class=\"math\">(AB)</span> في <span class=\"math\">A</span> وفي <span class=\"math\">B</span>، وأعيّن <span class=\"math\">D</span> و<span class=\"math\">C</span> بحيث <span class=\"math\">AD = BC = 9 cm</span>",
+     "أعيّن <span class=\"math\">E</span> على <span class=\"math\">[AB]</span> بحيث <span class=\"math\">EB = 6 cm</span>، وأرسم المثلث <span class=\"math\">EBC</span> القائم في <span class=\"math\">B</span>",
+     "أقيس <span class=\"math\">AC</span> (قرابة <span class=\"math\">16,6 cm</span>)، فمنتصفها <span class=\"math\">O</span> على بعد <span class=\"math\">8,3 cm</span> من <span class=\"math\">A</span>، وأرسم الدائرة التي مركزها <span class=\"math\">O</span> ونصف قطرها <span class=\"math\">1,5 cm</span>",
+     "النتيجة: <span class=\"math\">OB</span> قريب من <span class=\"math\">8,3 cm</span>",
+     "<b>الاستنتاج:</b> على رسم دقيق نجد <span class=\"math\">OB</span> قريبا من <span class=\"math\">8,3 cm</span>."
     ],
     "rubric": [
      {
@@ -719,7 +724,16 @@
     "h1": "كم لوحا يلزم لتغطية الساحة ما عدا حوض الرمل؟ وكم مترا من الحافة يلزم للساحة وللنافورة؟",
     "h2": "العشب: مساحة المستطيل ناقص مساحة المثلث القائم. الحافة: محيط المستطيل زائد محيط الدائرة.",
     "steps": [
-     "🔒 الحل يُنشر لاحقا إن شاء الله."
+     "<b>الطريقة:</b> مساحة المستطيل <span class=\"math\">= الطول × العرض</span>؛ مساحة المثلث القائم <span class=\"math\">=</span> جداء ضلعي الزاوية القائمة <span class=\"math\">÷ 2</span>؛ محيط المستطيل <span class=\"math\">= (الطول + العرض) × 2</span>؛ محيط الدائرة <span class=\"math\">= 2 × نصف القطر × 3,14</span>.",
+     "الأسئلة الخفية: ما مساحة الساحة؟ ما مساحة حوض الرمل؟ ما مساحة العشب، وكم لوحا تلزم؟ ما محيط الساحة؟ ما محيط النافورة؟ ما طول الحافة اللازمة؟",
+     "مساحة الساحة: <div class=\"vop\"><div>  14</div><div> × 9</div><div class=\"ln\"> 126</div></div> أي <span class=\"math\">126 m²</span>",
+     "حوض الرمل: <span class=\"math\">6 × 9 = 54</span> و <span class=\"math\">54 ÷ 2 = 27</span> أي <span class=\"math\">27 m²</span>",
+     "العشب: <span class=\"math\">126 − 27 = 99 m²</span>، ومساحة اللوح <span class=\"math\">1 m²</span>: يلزم <span class=\"math\">99</span> لوحا، و <span class=\"math\">99 &lt; 100</span>: الألواح تكفي",
+     "محيط الساحة: <span class=\"math\">(14 + 9) × 2 = 46 m</span>",
+     "محيط النافورة: <span class=\"math\">2 × 1,5 = 3</span> و <div class=\"vop\"><div>      3</div><div> × 3,14</div><div class=\"ln\">     12</div><div>     3 </div><div>    9  </div><div class=\"ln\">   9,42</div></div> أي <span class=\"math\">9,42 m</span>",
+     "الحافة اللازمة: <span class=\"math\">46 + 9,42 = 55,42 m</span>، و <span class=\"math\">55,42 &gt; 55</span>: الحافة لا تكفي",
+     "النتيجة: <span class=\"math\">2</span> لا، ما اشترته البلدية لا يكفي",
+     "<b>الاستنتاج:</b> لا يكفي: الألواح تكفي (<span class=\"math\">99 &lt; 100</span>) لكن الحافة اللازمة <span class=\"math\">55,42 m</span> أطول من <span class=\"math\">55 m</span>."
     ],
     "rubric": [
      {
@@ -984,6 +998,10 @@ var st=pp.getAttribute('style');pp.setAttribute('style','display:block;position:
 var mm=document.createElement('div');mm.style.height=(n*279-6)+'mm';pp.appendChild(mm);var lim=mm.getBoundingClientRect().height;pp.removeChild(mm);
 var lo=0.45,hi=1.3,k;c.style.zoom=hi;if(c.getBoundingClientRect().height<=lim)lo=hi;else for(k=0;k<10;k++){var m=(lo+hi)/2;c.style.zoom=m;if(c.getBoundingClientRect().height<=lim)lo=m;else hi=m}
 c.style.zoom=lo;if(st===null)pp.removeAttribute('style');else pp.setAttribute('style',st)}
-window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><!--/paper-->
+window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="ttl">الحل النموذجي وسلم التنقيط — الوضعية الانطلاقية للمقطع الثاني: ساحة الألعاب — السنة الأولى متوسط</div><div class="sxs"><div class="sx"><h4>الوضعية الإدماجية (8 ن): ساحة الألعاب</h4><div class="sq"><p><b>1) أنجز على ورقة غير مسطّرة مثيلا لمخطط الساحة، حيث يُمثَّل كل <span class="math">1 m</span> بـ <span class="math">1 cm</span>، ثم قس على رسمك طول القطعة <span class="math">[OB]</span> (بـ cm، قيمة مقرّبة إلى <span class="math">0,1</span>).</b></p><p><b>الطريقة:</b> نرسم المستطيل بالكوس (الزوايا القائمة) والمسطرة (الأطوال)، ونعيّن منتصف قطعة بالقياس.</p><p>أرسم <span class="math">[AB]</span> طولها <span class="math">14 cm</span>، ثم العموديين على <span class="math">(AB)</span> في <span class="math">A</span> وفي <span class="math">B</span>، وأعيّن <span class="math">D</span> و<span class="math">C</span> بحيث <span class="math">AD = BC = 9 cm</span></p><p>أعيّن <span class="math">E</span> على <span class="math">[AB]</span> بحيث <span class="math">EB = 6 cm</span>، وأرسم المثلث <span class="math">EBC</span> القائم في <span class="math">B</span></p><p>أقيس <span class="math">AC</span> (قرابة <span class="math">16,6 cm</span>)، فمنتصفها <span class="math">O</span> على بعد <span class="math">8,3 cm</span> من <span class="math">A</span>، وأرسم الدائرة التي مركزها <span class="math">O</span> ونصف قطرها <span class="math">1,5 cm</span></p><p>النتيجة: <span class="math">OB</span> قريب من <span class="math">8,3 cm</span></p><p><b>الاستنتاج:</b> على رسم دقيق نجد <span class="math">OB</span> قريبا من <span class="math">8,3 cm</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: ينجز مثيل المستطيل والمثلث القائم بالأدوات</td><td>1,5</td></tr><tr><td>م2 الاستعمال السليم: يعيّن المنتصف O ويرسم الدائرة ويقيس OB</td><td>1,5</td></tr></table></div><div class="sq"><p><b>2) هل يكفي ما اشترته البلدية (ألواح العشب والحافة المعدنية) لإنجاز الأشغال مع التبرير؟</b></p><p><b>الطريقة:</b> مساحة المستطيل <span class="math">= الطول × العرض</span>؛ مساحة المثلث القائم <span class="math">=</span> جداء ضلعي الزاوية القائمة <span class="math">÷ 2</span>؛ محيط المستطيل <span class="math">= (الطول + العرض) × 2</span>؛ محيط الدائرة <span class="math">= 2 × نصف القطر × 3,14</span>.</p><p>الأسئلة الخفية: ما مساحة الساحة؟ ما مساحة حوض الرمل؟ ما مساحة العشب، وكم لوحا تلزم؟ ما محيط الساحة؟ ما محيط النافورة؟ ما طول الحافة اللازمة؟</p><p>مساحة الساحة: <div class="vop"><div>  14</div><div> × 9</div><div class="ln"> 126</div></div> أي <span class="math">126 m²</span></p><p>حوض الرمل: <span class="math">6 × 9 = 54</span> و <span class="math">54 ÷ 2 = 27</span> أي <span class="math">27 m²</span></p><p>العشب: <span class="math">126 − 27 = 99 m²</span>، ومساحة اللوح <span class="math">1 m²</span>: يلزم <span class="math">99</span> لوحا، و <span class="math">99 &lt; 100</span>: الألواح تكفي</p><p>محيط الساحة: <span class="math">(14 + 9) × 2 = 46 m</span></p><p>محيط النافورة: <span class="math">2 × 1,5 = 3</span> و <div class="vop"><div>      3</div><div> × 3,14</div><div class="ln">     12</div><div>     3 </div><div>    9  </div><div class="ln">   9,42</div></div> أي <span class="math">9,42 m</span></p><p>الحافة اللازمة: <span class="math">46 + 9,42 = 55,42 m</span>، و <span class="math">55,42 &gt; 55</span>: الحافة لا تكفي</p><p>النتيجة: <span class="math">2</span> لا، ما اشترته البلدية لا يكفي</p><p><b>الاستنتاج:</b> لا يكفي: الألواح تكفي (<span class="math">99 &lt; 100</span>) لكن الحافة اللازمة <span class="math">55,42 m</span> أطول من <span class="math">55 m</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: يربط الألواح بالمساحة والحافة بالمحيط</td><td>1,5</td></tr><tr><td>م2 الاستعمال السليم: يحسب المساحتين والمحيطين</td><td>1,5</td></tr><tr><td>م2 الاستعمال السليم: يقارن ويتخذ القرار</td><td>1</td></tr><tr><td>م3 انسجام الإجابة: يتحقق من صحة النتائج ويصادق عليها</td><td>0,5</td></tr><tr><td>م4 الإتقان: يقدّم منتوجا بشكل منظّم</td><td>0,5</td></tr></table></div><p class="m3">تُقبل كل طريقة صحيحة أخرى، وتُمنح علامتها كاملة.</p></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
+function tick(){var b=document.querySelector('.sol-btn'),w=document.querySelector('.sol-wait');if(!b)return;var r=t+D-Date.now();
+if(r<=0){b.style.display='inline-block';if(w)w.style.display='none';return}if(w)w.textContent='📄 النسخة الورقية للحل تظهر بعد '+Math.ceil(r/60000)+' دقيقة';setTimeout(tick,20000)}
+window.printSol=function(){document.body.classList.add('psol');window.print()};window.addEventListener('afterprint',function(){document.body.classList.remove('psol')});
+window.addEventListener('load',tick)})();</script><!--/paper-->
 </body>
 </html>

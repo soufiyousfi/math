@@ -593,7 +593,7 @@
         <div class="school-title">متوسطة محمد العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
         <h1>وضعية إدماج كلي 3 للمقطع الثاني: قطعتا أرض التفاعلية في الرياضيات</h1>
         <div class="sub-info">المستوى: السنة الأولى متوسط | المقطع الثاني<br>حلّ في الكراس ثم تحقق هنا</div>
-        <button class="print-btn" onclick="document.body.classList.remove('psol');window.print()">🖨️ النسخة الورقية للطباعة</button> <div class="bem-warn" id="sol-lock" style="color:#713f12">🔒 الحل يُنشر لاحقا إن شاء الله.</div>
+        <button class="print-btn" onclick="document.body.classList.remove('psol');window.print()">🖨️ النسخة الورقية للطباعة</button> <button class="print-btn sol-btn" onclick="printSol()">🖨️ النسخة الورقية للحل</button><div class="sol-wait"></div>
     </header>
 
     <div class="sticky-bar">
@@ -687,7 +687,12 @@
     "h1": "عدّ المربعات في القطعة 2، واحسب مساحة مربع واحد.",
     "h2": "القطعة 2: <span class=\"math\">15 × 25</span>؛ القطعة 1: <span class=\"math\">24 × 15</span>.",
     "steps": [
-     "🔒 الحل يُنشر لاحقا إن شاء الله."
+     "<b>الطريقة:</b> بالرصف: المساحة <span class=\"math\">=</span> عدد المربعات <span class=\"math\">×</span> مساحة المربع؛ مساحة المستطيل <span class=\"math\">= الطول × العرض</span>.",
+     "القطعة 2: <span class=\"math\">15</span> مربعا، مساحة المربع <span class=\"math\">5 × 5 = 25 m²</span>، فمساحتها <div class=\"vop\"><div>   15</div><div> × 25</div><div class=\"ln\">   75</div><div>  30 </div><div class=\"ln\">  375</div></div> أي <span class=\"math\">375 m²</span>",
+     "القطعة 1: <div class=\"vop\"><div>   24</div><div> × 15</div><div class=\"ln\">  120</div><div>  24 </div><div class=\"ln\">  360</div></div> أي <span class=\"math\">360 m²</span>",
+     "<span class=\"math\">375 &gt; 360</span>",
+     "النتيجة: <span class=\"math\">2</span> القطعة 2 أكبر مساحة",
+     "<b>الاستنتاج:</b> القطعة 2 أكبر مساحة (<span class=\"math\">375 m²</span> مقابل <span class=\"math\">360 m²</span>)."
     ],
     "rubric": [
      {
@@ -715,7 +720,12 @@
     "h1": "احسب محيط كل قطعة، وقارنه بـ <span class=\"math\">80 m</span>.",
     "h2": "محيط القطعة 2: عُدّ أضلاع المربعات على حافتها، ثم اضرب في <span class=\"math\">5</span>.",
     "steps": [
-     "🔒 الحل يُنشر لاحقا إن شاء الله."
+     "<b>الطريقة:</b> محيط المستطيل <span class=\"math\">= (الطول + العرض) × 2</span>؛ محيط شكل على مرصوفة <span class=\"math\">=</span> عدد أضلاع المربعات على حافته <span class=\"math\">×</span> طول الضلع.",
+     "الأسئلة الخفية: ما محيط القطعة 1؟ ما محيط القطعة 2؟ أيّ محيط لا يتجاوز <span class=\"math\">80 m</span>؟",
+     "القطعة 1: <span class=\"math\">(24 + 15) × 2 = 78 m</span>، و <span class=\"math\">78 &lt; 80</span>: السياج يكفي",
+     "القطعة 2: <span class=\"math\">18</span> ضلعا على الحافة، <span class=\"math\">18 × 5 = 90 m</span>، و <span class=\"math\">90 &gt; 80</span>: السياج لا يكفي",
+     "النتيجة: <span class=\"math\">1</span> يشتري القطعة 1",
+     "<b>الاستنتاج:</b> يشتري القطعة 1: محيطها <span class=\"math\">78 m</span> يكفيه السياج، أما القطعة 2 فمحيطها <span class=\"math\">90 m</span> رغم أنها أكبر مساحة."
     ],
     "rubric": [
      {
@@ -980,6 +990,10 @@ var st=pp.getAttribute('style');pp.setAttribute('style','display:block;position:
 var mm=document.createElement('div');mm.style.height=(n*279-6)+'mm';pp.appendChild(mm);var lim=mm.getBoundingClientRect().height;pp.removeChild(mm);
 var lo=0.45,hi=1.3,k;c.style.zoom=hi;if(c.getBoundingClientRect().height<=lim)lo=hi;else for(k=0;k<10;k++){var m=(lo+hi)/2;c.style.zoom=m;if(c.getBoundingClientRect().height<=lim)lo=m;else hi=m}
 c.style.zoom=lo;if(st===null)pp.removeAttribute('style');else pp.setAttribute('style',st)}
-window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><!--/paper-->
+window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="ttl">الحل النموذجي وسلم التنقيط — وضعية إدماج كلي 3 للمقطع الثاني: قطعتا أرض — السنة الأولى متوسط</div><div class="sxs"><div class="sx"><h4>الوضعية الإدماجية (8 ن): قطعتا أرض</h4><div class="sq"><p><b>1) أيّ القطعتين أكبر مساحة مع التبرير؟</b></p><p><b>الطريقة:</b> بالرصف: المساحة <span class="math">=</span> عدد المربعات <span class="math">×</span> مساحة المربع؛ مساحة المستطيل <span class="math">= الطول × العرض</span>.</p><p>القطعة 2: <span class="math">15</span> مربعا، مساحة المربع <span class="math">5 × 5 = 25 m²</span>، فمساحتها <div class="vop"><div>   15</div><div> × 25</div><div class="ln">   75</div><div>  30 </div><div class="ln">  375</div></div> أي <span class="math">375 m²</span></p><p>القطعة 1: <div class="vop"><div>   24</div><div> × 15</div><div class="ln">  120</div><div>  24 </div><div class="ln">  360</div></div> أي <span class="math">360 m²</span></p><p><span class="math">375 &gt; 360</span></p><p>النتيجة: <span class="math">2</span> القطعة 2 أكبر مساحة</p><p><b>الاستنتاج:</b> القطعة 2 أكبر مساحة (<span class="math">375 m²</span> مقابل <span class="math">360 m²</span>).</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: يعدّ المربعات ويحسب مساحة المستطيل</td><td>1,5</td></tr><tr><td>م2 الاستعمال السليم: يقارن المساحتين</td><td>1,5</td></tr></table></div><div class="sq"><p><b>2) بالسياج الذي يملكه، أيّ قطعة يشتري الأب ليسيّجها كلها مع التبرير؟</b></p><p><b>الطريقة:</b> محيط المستطيل <span class="math">= (الطول + العرض) × 2</span>؛ محيط شكل على مرصوفة <span class="math">=</span> عدد أضلاع المربعات على حافته <span class="math">×</span> طول الضلع.</p><p>الأسئلة الخفية: ما محيط القطعة 1؟ ما محيط القطعة 2؟ أيّ محيط لا يتجاوز <span class="math">80 m</span>؟</p><p>القطعة 1: <span class="math">(24 + 15) × 2 = 78 m</span>، و <span class="math">78 &lt; 80</span>: السياج يكفي</p><p>القطعة 2: <span class="math">18</span> ضلعا على الحافة، <span class="math">18 × 5 = 90 m</span>، و <span class="math">90 &gt; 80</span>: السياج لا يكفي</p><p>النتيجة: <span class="math">1</span> يشتري القطعة 1</p><p><b>الاستنتاج:</b> يشتري القطعة 1: محيطها <span class="math">78 m</span> يكفيه السياج، أما القطعة 2 فمحيطها <span class="math">90 m</span> رغم أنها أكبر مساحة.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: يربط السياج بالمحيط لا بالمساحة</td><td>1,5</td></tr><tr><td>م2 الاستعمال السليم: يحسب المحيطين</td><td>1,5</td></tr><tr><td>م2 الاستعمال السليم: يقارن ويتخذ القرار</td><td>1</td></tr><tr><td>م3 انسجام الإجابة: يتحقق من صحة النتائج ويصادق عليها</td><td>0,5</td></tr><tr><td>م4 الإتقان: يقدّم منتوجا بشكل منظّم</td><td>0,5</td></tr></table></div><p class="m3">تُقبل كل طريقة صحيحة أخرى، وتُمنح علامتها كاملة.</p></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
+function tick(){var b=document.querySelector('.sol-btn'),w=document.querySelector('.sol-wait');if(!b)return;var r=t+D-Date.now();
+if(r<=0){b.style.display='inline-block';if(w)w.style.display='none';return}if(w)w.textContent='📄 النسخة الورقية للحل تظهر بعد '+Math.ceil(r/60000)+' دقيقة';setTimeout(tick,20000)}
+window.printSol=function(){document.body.classList.add('psol');window.print()};window.addEventListener('afterprint',function(){document.body.classList.remove('psol')});
+window.addEventListener('load',tick)})();</script><!--/paper-->
 </body>
 </html>
