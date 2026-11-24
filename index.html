@@ -672,7 +672,7 @@ const SYN = [
 ].map(g => g.map(norm));
 // one-way: a general word also finds its particular topics (but «طالس» does not find all geometry)
 const BROAD = [[norm("هندسه"), GEO.split(" ")]];
-function strip(w) { return w.length > 4 && w.startsWith("ال") ? w.slice(2) : w; }
+function strip(w) { return w.length >= 4 && w.startsWith("ال") ? w.slice(2) : w; }   // «الظل» → «ظل» too (2026-11-24)
 // all the spellings a word of the query may have in a page
 function variants(w) {
   const out = new Set([w, strip(w)]);
@@ -686,7 +686,7 @@ const HAY = new WeakMap();
 function hay(it) {
   if (!HAY.has(it)) {
     const s = SEC[it.section] || [];
-    HAY.set(it, " " + norm([it.title, (it.topics || []).join(" "), s[1], s[2], LEVEL_WORDS[it.level], TERM_NAME[it.term]].join(" ")) + " ");
+    HAY.set(it, " " + norm([it.title, (it.topics || []).join(" "), it.kw || "", s[1], s[2], LEVEL_WORDS[it.level], TERM_NAME[it.term]].join(" ")) + " ");
   }
   return HAY.get(it);
 }
