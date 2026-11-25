@@ -593,7 +593,7 @@
         <div class="school-title">متوسطة محمد العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
         <h1>الوضعية التقويمية للمقطع الثاني: برج مراقبة الغابة التفاعلية في الرياضيات</h1>
         <div class="sub-info">المستوى: السنة الرابعة متوسط | المقطع الثاني<br>حلّ في الكراس ثم تحقق هنا</div>
-        <button class="print-btn" onclick="document.body.classList.remove('psol');window.print()">🖨️ النسخة الورقية للطباعة</button> <div class="bem-warn" id="sol-lock" style="color:#713f12">🔒 الحل يُنشر لاحقا إن شاء الله.</div>
+        <button class="print-btn" onclick="document.body.classList.remove('psol');window.print()">🖨️ النسخة الورقية للطباعة</button> <button class="print-btn sol-btn" onclick="printSol()">🖨️ النسخة الورقية للحل</button><div class="sol-wait"></div>
     </header>
 
     <div class="sticky-bar">
@@ -689,7 +689,12 @@
     "h1": "العصا والبرج عموديان على الأرض.",
     "h2": "في المثلث <span class=\"math\">ABT</span>: <span class=\"math\"><span class=\"fr\"><span>AD</span><span>AB</span></span> = <span class=\"fr\"><span>DE</span><span>BT</span></span></span>.",
     "steps": [
-     "🔒 الحل يُنشر لاحقا إن شاء الله."
+     "<b>الطريقة:</b> مستقيمان عموديان على مستقيم واحد متوازيان؛ خاصية طالس.",
+     "<span class=\"math\">(DE) ⊥ (AB)</span> و <span class=\"math\">(BT) ⊥ (AB)</span>، إذن <span class=\"math\">(DE) // (BT)</span>",
+     "النقط <span class=\"math\">A</span>، <span class=\"math\">D</span>، <span class=\"math\">B</span> في استقامة، و<span class=\"math\">A</span>، <span class=\"math\">E</span>، <span class=\"math\">T</span> كذلك: حسب خاصية طالس <span class=\"math\"><span class=\"fr\"><span>AD</span><span>AB</span></span> = <span class=\"fr\"><span>DE</span><span>BT</span></span></span>",
+     "<span class=\"math\">BT = <span class=\"fr\"><span>2,5 × 40</span><span>4</span></span> = 25</span>",
+     "النتيجة: <span class=\"math\">BT = 25 m</span>",
+     "<b>الاستنتاج:</b> ارتفاع البرج <span class=\"math\">25 m</span>."
     ],
     "rubric": [
      {
@@ -717,7 +722,13 @@
     "h1": "في المثلث <span class=\"math\">ABT</span> القائم في <span class=\"math\">B</span>: <span class=\"math\">tan TÂB = <span class=\"fr\"><span>BT</span><span>AB</span></span></span>.",
     "h2": "قيس الزاوية بالحاسبة، ثم <span class=\"math\">AT = AB ÷ cos TÂB</span> (أو خاصية فيثاغورس).",
     "steps": [
-     "🔒 الحل يُنشر لاحقا إن شاء الله."
+     "<b>الطريقة:</b> في مثلث قائم: <span class=\"math\">tan</span> <span class=\"math\">=</span> المقابل <span class=\"math\">÷</span> المجاور، <span class=\"math\">cos</span> <span class=\"math\">=</span> المجاور <span class=\"math\">÷</span> الوتر.",
+     "الأسئلة الخفية: ما <span class=\"math\">tan TÂB</span>؟ ما قيس <span class=\"math\">TÂB</span>؟ هل لا يقل عن <span class=\"math\">30°</span>؟ ما طول <span class=\"math\">AT</span>؟ هل يكفي <span class=\"math\">48 m</span>؟",
+     "<span class=\"math\">tan TÂB = <span class=\"fr\"><span>25</span><span>40</span></span> = 0,625</span>، وبالحاسبة <span class=\"math\">TÂB ≈ 32°</span>، و <span class=\"math\">32° &gt; 30°</span>: الشرط الأول محقق",
+     "<span class=\"math\">AT = 40 ÷ cos 32° ≈ 47,17 m</span> (أو: <span class=\"math\">AT² = 40² + 25² = 2225</span> و <span class=\"math\">AT ≈ 47,17 m</span>)",
+     "<span class=\"math\">47,17 &lt; 48</span>: الكابل يكفي",
+     "النتيجة: <span class=\"math\">1</span> نعم، يمكن تثبيت الكابل",
+     "<b>الاستنتاج:</b> نعم: زاوية الكابل <span class=\"math\">32°</span> لا تقل عن <span class=\"math\">30°</span>، وطوله <span class=\"math\">47,17 m</span> أقل من <span class=\"math\">48 m</span>."
     ],
     "rubric": [
      {
@@ -982,6 +993,10 @@ var st=pp.getAttribute('style');pp.setAttribute('style','display:block;position:
 var mm=document.createElement('div');mm.style.height=(n*279-6)+'mm';pp.appendChild(mm);var lim=mm.getBoundingClientRect().height;pp.removeChild(mm);
 var lo=0.45,hi=1.3,k;c.style.zoom=hi;if(c.getBoundingClientRect().height<=lim)lo=hi;else for(k=0;k<10;k++){var m=(lo+hi)/2;c.style.zoom=m;if(c.getBoundingClientRect().height<=lim)lo=m;else hi=m}
 c.style.zoom=lo;if(st===null)pp.removeAttribute('style');else pp.setAttribute('style',st)}
-window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><!--/paper-->
+window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الرابعة متوسط</span></div><div class="ttl">الحل النموذجي وسلم التنقيط — الوضعية التقويمية للمقطع الثاني: برج مراقبة الغابة — السنة الرابعة متوسط</div><div class="sxs"><div class="sx"><h4>الوضعية الإدماجية (8 ن): برج مراقبة الغابة</h4><div class="sq"><p><b>1) احسب ارتفاع البرج <span class="math">BT</span> (بـ m).</b></p><p><b>الطريقة:</b> مستقيمان عموديان على مستقيم واحد متوازيان؛ خاصية طالس.</p><p><span class="math">(DE) ⊥ (AB)</span> و <span class="math">(BT) ⊥ (AB)</span>، إذن <span class="math">(DE) // (BT)</span></p><p>النقط <span class="math">A</span>، <span class="math">D</span>، <span class="math">B</span> في استقامة، و<span class="math">A</span>، <span class="math">E</span>، <span class="math">T</span> كذلك: حسب خاصية طالس <span class="math"><span class="fr"><span>AD</span><span>AB</span></span> = <span class="fr"><span>DE</span><span>BT</span></span></span></p><p><span class="math">BT = <span class="fr"><span>2,5 × 40</span><span>4</span></span> = 25</span></p><p>النتيجة: <span class="math">BT = 25 m</span></p><p><b>الاستنتاج:</b> ارتفاع البرج <span class="math">25 m</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: يبرّر التوازي ويختار خاصية طالس (معيار 1)</td><td>1,5</td></tr><tr><td>م2 الاستعمال السليم: يحسب BT (معيار 2)</td><td>1,5</td></tr></table></div><div class="sq"><p><b>2) هل يمكن تثبيت الكابل <span class="math">[AT]</span> وفق تعليمات المحافظة مع التبرير؟</b></p><p><b>الطريقة:</b> في مثلث قائم: <span class="math">tan</span> <span class="math">=</span> المقابل <span class="math">÷</span> المجاور، <span class="math">cos</span> <span class="math">=</span> المجاور <span class="math">÷</span> الوتر.</p><p>الأسئلة الخفية: ما <span class="math">tan TÂB</span>؟ ما قيس <span class="math">TÂB</span>؟ هل لا يقل عن <span class="math">30°</span>؟ ما طول <span class="math">AT</span>؟ هل يكفي <span class="math">48 m</span>؟</p><p><span class="math">tan TÂB = <span class="fr"><span>25</span><span>40</span></span> = 0,625</span>، وبالحاسبة <span class="math">TÂB ≈ 32°</span>، و <span class="math">32° &gt; 30°</span>: الشرط الأول محقق</p><p><span class="math">AT = 40 ÷ cos 32° ≈ 47,17 m</span> (أو: <span class="math">AT² = 40² + 25² = 2225</span> و <span class="math">AT ≈ 47,17 m</span>)</p><p><span class="math">47,17 &lt; 48</span>: الكابل يكفي</p><p>النتيجة: <span class="math">1</span> نعم، يمكن تثبيت الكابل</p><p><b>الاستنتاج:</b> نعم: زاوية الكابل <span class="math">32°</span> لا تقل عن <span class="math">30°</span>، وطوله <span class="math">47,17 m</span> أقل من <span class="math">48 m</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: يختار ظل الزاوية ثم جيب التمام أو فيثاغورس (معيار 1)</td><td>1,5</td></tr><tr><td>م2 الاستعمال السليم: يحسب الزاوية و AT بالحاسبة (معيار 2)</td><td>1,5</td></tr><tr><td>م2 الاستعمال السليم: يقارن بالشرطين ويتخذ القرار (معيار 2)</td><td>1</td></tr><tr><td>م3 انسجام الإجابة: يتحقق من صحة النتائج ويصادق عليها</td><td>0,5</td></tr><tr><td>م4 الإتقان: يقدّم منتوجا بشكل منظّم</td><td>0,5</td></tr></table></div><p class="m3">تُقبل كل طريقة صحيحة أخرى، وتُمنح علامتها كاملة.</p></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
+function tick(){var b=document.querySelector('.sol-btn'),w=document.querySelector('.sol-wait');if(!b)return;var r=t+D-Date.now();
+if(r<=0){b.style.display='inline-block';if(w)w.style.display='none';return}if(w)w.textContent='📄 النسخة الورقية للحل تظهر بعد '+Math.ceil(r/60000)+' دقيقة';setTimeout(tick,20000)}
+window.printSol=function(){document.body.classList.add('psol');window.print()};window.addEventListener('afterprint',function(){document.body.classList.remove('psol')});
+window.addEventListener('load',tick)})();</script><!--/paper-->
 </body>
 </html>
