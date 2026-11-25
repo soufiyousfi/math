@@ -2744,6 +2744,17 @@ body.sx-exam .sx-calc-fab{bottom:74px}
         steps: ["<b>الطريقة:</b> " + f + ".", M(calc)], res: "النتيجة: " + M(v + " " + U),
         concl: "<b>الاستنتاج:</b> " + (area ? "مساحة " : "محيط ") + (sq ? "المربع " : "المستطيل ") + M(v + " " + U) + "." };
     },
+    quad: function () {   /* 1AM S2 «إنجاز مثيل مستطيل، مربع، معين»: the side lengths used to construct the copy (his class 2026-11-23, before the circle) */
+      var k = pick(["rect", "sq", "rh"]), a = ri(25, 95) / 10, b = ri(15, 80) / 10, v, q, why;
+      if (k === "rect") { if (b >= a) b = Math.max(1.5, a - 1); q = "مستطيل " + M("ABCD") + " حيث " + M("AB = " + dn(a) + " cm") + " و " + M("BC = " + dn(b) + " cm") + ". لإنجاز مثيله، ما طول الضلع " + M("CD") + "؟ (بـ cm)"; v = a; why = "في المستطيل كل ضلعين متقابلين لهما نفس الطول: " + M("CD = AB"); }
+      else if (k === "sq") { q = "مربع " + M("EFGH") + " حيث " + M("EF = " + dn(a) + " cm") + ". لإنجاز مثيله، ما طول الضلع " + M("GH") + "؟ (بـ cm)"; v = a; why = "أضلاع المربع الأربعة لها نفس الطول: " + M("GH = EF"); }
+      else { q = "معين " + M("KLMN") + " حيث " + M("KL = " + dn(a) + " cm") + ". لإنجاز مثيله، ما طول الضلع " + M("MN") + "؟ (بـ cm)"; v = a; why = "أضلاع المعين الأربعة لها نفس الطول: " + M("MN = KL"); }
+      return { q: q, ans: [dn(v)], unit: "cm",
+        h1: "تذكّر خاصية أضلاع هذا الرباعي قبل أن ترسم.",
+        h2: why + ".",
+        steps: ["<b>الطريقة:</b> " + why + "."], res: "النتيجة: " + M(dn(v) + " cm"),
+        concl: "<b>الاستنتاج:</b> طول الضلع " + M(dn(v) + " cm") + "، فنرسمه بالمسطرة أو ننقله بالمدور." };
+    },
     diam: function () {   /* 1AM S2 «مصطلحات الدائرة»: القطر = 2 × نصف القطر */
       var toD = Math.random() < 0.5, r10 = ri(15, 120), r = r10 / 10, d = r10 / 5, v = toD ? d : r;
       return { q: "دائرة مركزها " + M("O") + (toD ? " ونصف قطرها " + M(dn(r) + " cm") + ". ما طول قطرها؟" : " وقطرها " + M(dn(d) + " cm") + ". ما طول نصف قطرها؟") + " (بـ cm)",
@@ -3078,7 +3089,7 @@ body.sx-exam .sx-calc-fab{bottom:74px}
     /* 2026-11-23 his ask «الاسئلة تكون قريبة من درس المخطط، هي مازالت في المقطع الاول»: a type now enters in the WEEK its resource
        is taught (third field = sequence), and two days out of three the question comes from the CURRENT sequence (see question()). */
     var PLAN = {
-      "1m": [["10-18", "x10", 1], ["10-25", "decops", 1], ["11-15", "diam", 2], ["11-22", "rect", 2], ["11-29", "rtri", 2], ["11-29", "circle", 2]],
+      "1m": [["10-18", "x10", 1], ["10-25", "decops", 1], ["11-15", "quad", 2], ["11-22", "diam", 2], ["11-22", "rect", 2], ["11-29", "rtri", 2], ["11-29", "circle", 2]],
       "2m": [["10-11", "prio", 1], ["10-18", "eucl", 1], ["10-25", "frac2", 1], ["11-22", "symc", 2]],
       "3m": [["10-11", "relmul", 1], ["10-25", "fracop", 1], ["11-15", "midline", 2], ["11-22", "propor", 2]],
       "4m": [["10-04", "pgcd", 1], ["10-11", "irr", 1], ["10-18", "aroot", 1], ["10-18", "rootsum", 1], ["10-25", "thales", 2], ["11-08", "trig", 2], ["11-15", "trigrel", 2]]   /* his 4AM class reached these relations on 2026-11-23 */
