@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>وضعية إدماج كلي 5 للمقطع الثاني: منحدر مدخل المتوسطة - السنة الرابعة متوسط</title>
+  <meta name="description" content="وضعية إدماجية تفاعلية في المثلث القائم والنسب المثلثية، مع تلميحات وتصحيح فوري وسلم تنقيط.">
+  <style>
+    :root{font-family:Tahoma,Arial,sans-serif;color:#0f172a;background:#f1f5f9;line-height:1.7}
+    *{box-sizing:border-box}
+    body{margin:0;padding-bottom:40px}
+    header{padding:18px 14px;text-align:center;color:#fff;background:linear-gradient(135deg,#1e3a8a,#0f766e);border-bottom:5px solid #fbbf24}
+    header h1{font-size:clamp(1.2rem,4vw,1.65rem);margin:8px 0}
+    .school{font-size:.9rem;font-weight:700}
+    .sub{display:inline-block;background:#ffffff24;border-radius:20px;padding:4px 12px;font-size:.92rem}
+    .print{margin-top:10px;padding:7px 14px;border:2px solid #fde047;border-radius:20px;background:#fff;color:#0f766e;font:inherit;font-weight:800;cursor:pointer}
+    .sticky-bar{position:sticky;top:0;z-index:5;padding:9px 12px;background:#fffffff2;border-bottom:1px solid #cbd5e1}
+    .sticky-inner{max-width:840px;margin:0 auto;display:flex;align-items:center;gap:12px}
+    .score-badge{flex:none;padding:5px 11px;border-radius:20px;background:#1e3a8a;color:#fff;font-weight:800}
+    .progress-wrap{height:10px;flex:1;background:#e2e8f0;border-radius:10px;overflow:hidden}
+    .progress-fill{display:block;width:0;height:100%;background:#16a34a;transition:width .25s}
+    .container{max-width:840px;margin:18px auto;padding:0 12px}
+    .card{padding:16px;margin-bottom:16px;background:#fff;border:1px solid #e2e8f0;border-radius:14px;box-shadow:0 3px 8px #0f172a0d}
+    .card h2{margin:0 0 10px;color:#1e3a8a;font-size:1.12rem}
+    .context-box{margin-bottom:14px;padding:12px;background:#f8fafc;border:1px dashed #94a3b8;border-radius:10px}
+    .context-box p{margin:4px 0}
+    .diagram{display:block;width:min(100%,420px);height:auto;margin:10px auto}
+    .math{display:inline-block;direction:ltr;unicode-bidi:isolate;font-family:"Courier New",monospace;font-weight:700;background:#e2e8f0;color:#0f172a;padding:1px 6px;border-radius:5px}
+    .q-box{margin:12px 0;padding:12px;border:1px solid #e2e8f0;border-radius:10px}
+    .q-title{font-weight:700;margin-bottom:9px}
+    .q-meta{display:block;margin-top:5px;color:#475569;font-size:.88rem}
+    .answer-area{display:flex;gap:8px;align-items:center}
+    input[type=text]{min-width:0;flex:1;padding:10px;border:1.5px solid #94a3b8;border-radius:8px;font:inherit;font-size:1rem;text-align:center;direction:ltr}
+    input:focus{outline:3px solid #bfdbfe;border-color:#1d4ed8}
+    .btn-check{padding:10px 14px;border:0;border-radius:8px;background:#1e3a8a;color:#fff;font:inherit;font-weight:800;cursor:pointer}
+    .btn-check:disabled{background:#94a3b8;cursor:not-allowed}
+    .feedback-box{display:none;margin-top:9px;padding:9px 11px;border-radius:8px;font-weight:700}
+    .feedback-box.hint{display:block;background:#fef3c7;color:#92400e}
+    .feedback-box.success{display:block;background:#dcfce7;color:#166534}
+    .feedback-box.fail{display:block;background:#fee2e2;color:#991b1b}
+    .model-solution{display:none;margin-top:10px;padding:11px;background:#f8fafc;border-right:4px solid #0f766e;border-radius:8px}
+    .model-solution h3{margin:0 0 6px;color:#0f766e;font-size:1rem}
+    .model-solution p{margin:4px 0}
+    .sol-line{padding:3px 0;border-bottom:1px dashed #e2e8f0}
+    .sol-result{margin-top:6px;padding:5px 8px;border-radius:6px;background:#eff6ff;color:#1e3a8a;font-weight:800}
+    .rubric{width:100%;margin-top:8px;border-collapse:collapse;font-size:.88rem}
+    .rubric th,.rubric td{padding:6px;border:1px solid #cbd5e1;text-align:right}
+    .rubric th{background:#e2e8f0}
+    .modal-overlay{position:fixed;inset:0;z-index:10;display:none;align-items:center;justify-content:center;padding:16px;background:#0f172a99}
+    .modal-card{width:min(100%,420px);padding:22px;text-align:center;background:#fff;border-radius:16px;border-top:6px solid #fbbf24}
+    .final h2{margin:0 0 8px}
+    .final button{padding:9px 16px;border:0;border-radius:8px;background:#1e3a8a;color:#fff;font:inherit;font-weight:800;cursor:pointer}
+    .status{min-height:1.5em}
+    @media(max-width:520px){.answer-area{align-items:stretch;flex-direction:column}.answer-area>*{width:100%}.sticky-inner{gap:8px}.score-badge{font-size:.9rem}.container{padding:0 10px}.card{padding:12px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+    @media print{.sticky-bar,.print,.answer-area,.feedback-box,.modal-overlay{display:none!important}body{background:#fff}.container{max-width:none}.card{box-shadow:none;break-inside:avoid}.model-solution{display:block!important}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="school">متوسطة محمد العربي بن مهيدي، وادي فراغة، قالمة — الأستاذ: يوسفي السوفي</div>
+    <h1>وضعية إدماج كلي 5 للمقطع الثاني: منحدر مدخل المتوسطة</h1>
+    <div class="sub">السنة الرابعة متوسط · حلّ في الكراس ثم تحقّق هنا</div><br>
+    <button class="print" type="button" onclick="window.print()">🖨️ طباعة الوضعية والحل</button>
+  </header>
+  <div class="sticky-bar">
+    <div class="sticky-inner" aria-label="تقدّمك">
+      <div class="score-badge">العلامة: <span id="scoreVal">0 / 8</span> · ⭐ <span id="starsVal">0</span></div>
+      <div class="progress-wrap" role="progressbar" aria-label="الأسئلة المكتملة" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0"><i class="progress-fill" id="progressBar"></i></div>
+    </div>
+  </div>
+  <main class="container" id="exercisesRoot">
+    <article class="exercise-card card" id="exercise">
+      <div class="card-header"><h2>الوضعية الإدماجية: تهيئة مدخل المتوسطة (8 نقاط)</h2></div>
+      <div class="context-box">
+        <p>تريد إدارة المتوسطة إنشاء منحدر مستقيم ليربط ساحة المدرسة بمدخلها. يبيّن الرسم المثلث القائم <span class="math">ABH</span> الذي يمثّل المنحدر، حيث <span class="math">AH = 8 m</span> و<span class="math">AB = 10 m</span>، والزاوية قائمة عند <span class="math">H</span>.</p>
+        <p>يشترط مخطط هذا النشاط أن تكون زاوية ميل المنحدر <span class="math">α</span> بين <span class="math">30°</span> و<span class="math">40°</span>. الرسم توضيحي وليس مرسوما بالأبعاد الحقيقية.</p>
+        <svg class="diagram" viewBox="0 0 380 250" role="img" aria-labelledby="diagram-title diagram-desc" xmlns="http://www.w3.org/2000/svg">
+          <title id="diagram-title">رسم المثلث القائم الذي يمثل المنحدر</title>
+          <desc id="diagram-desc">المثلث ABH قائم في H. طول المنحدر AB هو عشرة أمتار، والقاعدة AH طولها ثمانية أمتار، والارتفاع BH مجهول.</desc>
+          <rect x="1" y="1" width="378" height="248" rx="12" fill="#eff6ff"/>
+          <line x1="70" y1="205" x2="310" y2="205" stroke="#334155" stroke-width="4"/>
+          <line x1="310" y1="205" x2="310" y2="55" stroke="#0f766e" stroke-width="4"/>
+          <line x1="70" y1="205" x2="310" y2="55" stroke="#1e3a8a" stroke-width="7" stroke-linecap="round"/>
+          <path d="M296 205v-14h14" fill="none" stroke="#b91c1c" stroke-width="2"/>
+          <path d="M105 205a35 35 0 0 0-5-19" fill="none" stroke="#b91c1c" stroke-width="2"/>
+          <circle cx="70" cy="205" r="4" fill="#0f172a"/><circle cx="310" cy="55" r="4" fill="#0f172a"/><circle cx="310" cy="205" r="4" fill="#0f172a"/>
+          <text x="54" y="229" font-size="17" font-weight="bold" fill="#1e3a8a">A</text>
+          <text x="316" y="53" font-size="17" font-weight="bold" fill="#1e3a8a">B</text>
+          <text x="316" y="225" font-size="17" font-weight="bold" fill="#1e3a8a">H</text>
+          <text x="175" y="228" font-size="16" font-weight="bold" fill="#0f172a">AH = 8 m</text>
+          <text x="166" y="115" font-size="16" font-weight="bold" fill="#0f172a" transform="rotate(-32 166 115)">AB = 10 m</text>
+          <text x="317" y="133" font-size="15" font-weight="bold" fill="#0f766e">BH = ?</text>
+          <text x="105" y="195" font-size="15" font-weight="bold" fill="#b91c1c">α</text>
+        </svg>
+      </div>
+      <div id="questions"></div>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </article>
+  </main>
+  <div class="modal-overlay" id="finalModal" role="dialog" aria-modal="true" aria-labelledby="finalTitle">
+    <div class="modal-card">
+      <h2 id="finalTitle">أتممت الوضعية!</h2>
+      <p id="finalScoreText"></p>
+      <p id="finalStarsText"></p>
+      <button type="button" onclick="document.getElementById('finalModal').style.display='none'">راجع إجاباتي</button>
+    </div>
+  </div>
+  <script>
+    const exercises = [
+      {
+        "id": 1,
+        "title": "وضعية إدماج كلي: منحدر مدخل المتوسطة",
+        "context": "منحدر يمثله مثلث قائم ABH حيث AH = 8 m وAB = 10 m. زاوية الميل α ينبغي أن تكون بين 30° و40°.",
+        "pts": 8,
+        "topics": ["المثلث القائم", "النسب المثلثية", "استعمال الحاسبة"],
+        "questions": [
+          {
+            "qId": "1-1",
+            "text": "احسب طول الارتفاع BH (بـ m).",
+            "exact": ["6"],
+            "partial": ["8"],
+            "h1": "المثلث قائم في H؛ استعمل مبرهنة فيثاغورس لإيجاد BH².",
+            "h2": "BH² = AB² − AH² = 10² − 8².",
+            "steps": [
+              "بما أن المثلث ABH قائم في H، فحسب مبرهنة فيثاغورس: AB² = AH² + BH².",
+              "BH² = AB² − AH² = 10² − 8² = 100 − 64 = 36.",
+              "إذن BH = √36 = 6 m لأن الطول موجب.",
+              "<b>النتيجة:</b> طول الارتفاع BH هو 6 m."
+            ],
+            "rubric": [
+              {"step": "اختيار مبرهنة فيثاغورس والعلاقة المناسبة", "mark": "0,5"},
+              {"step": "التعويض الصحيح وحساب BH²", "mark": "0,75"},
+              {"step": "استخراج الطول الموجب وكتابة الوحدة", "mark": "0,75"}
+            ],
+            "pts": 2,
+            "partialZero": true,
+            "partialMsg": "انتبه: AB هو الوتر، وهو أطول أضلاع المثلث القائم."
+          },
+          {
+            "qId": "1-2",
+            "text": "احسب tan α. اكتب النتيجة على شكل عدد عشري أو كسر.",
+            "exact": ["0,75", "3/4"],
+            "partial": ["1,33", "4/3"],
+            "h1": "بالنسبة إلى الزاوية α: tan α = الضلع المقابل ÷ الضلع المجاور.",
+            "h2": "tan α = BH ÷ AH = 6 ÷ 8.",
+            "steps": [
+              "بالنسبة إلى الزاوية α، الضلع المقابل هو BH والضلع المجاور هو AH.",
+              "tan α = BH ÷ AH = 6 ÷ 8 = 3/4 = 0,75.",
+              "<b>النتيجة:</b> tan α = 0,75."
+            ],
+            "rubric": [
+              {"step": "اختيار النسبة المثلثية المناسبة", "mark": "0,5"},
+              {"step": "تحديد الضلعين المقابل والمجاور", "mark": "0,75"},
+              {"step": "حساب النسبة وكتابتها بشكل صحيح", "mark": "0,75"}
+            ],
+            "pts": 2,
+            "partialZero": true,
+            "partialMsg": "لقد قلبت النسبة؛ tan α تساوي المقابل على المجاور."
+          },
+          {
+            "qId": "1-3",
+            "text": "باستعمال الحاسبة في وضع DEG، احسب α وقرّب إلى أقرب عُشر درجة. اكتب العدد فقط.",
+            "exact": ["36,9", "36,87"],
+            "partial": ["53,1"],
+            "h1": "أوجد الزاوية باستعمال tan⁻¹(0,75)، وتأكد أن الحاسبة على DEG لا RAD.",
+            "h2": "اكتب على الحاسبة: SHIFT ثم tan ثم 0,75، ثم قرّب الناتج إلى عُشر الدرجة.",
+            "steps": [
+              "من السؤال السابق: tan α = 0,75.",
+              "بالحاسبة في وضع DEG: α = tan⁻¹(0,75) ≈ 36,8699°.",
+              "بالتقريب إلى أقرب عُشر درجة: α ≈ 36,9°.",
+              "<b>النتيجة:</b> قيس زاوية الميل يقارب 36,9°."
+            ],
+            "rubric": [
+              {"step": "اختيار الدالة العكسية المناسبة", "mark": "0,5"},
+              {"step": "استعمال الحاسبة في وضع DEG", "mark": "0,75"},
+              {"step": "التقريب الصحيح إلى عُشر الدرجة", "mark": "0,75"}
+            ],
+            "pts": 2,
+            "partialZero": true,
+            "partialMsg": "تحقق من اختيار الدالة العكسية tan⁻¹ ومن وضع DEG."
+          },
+          {
+            "qId": "1-4",
+            "text": "هل تحقق زاوية الميل شرط المخطط (بين 30° و40°)؟ اكتب 1 إذا نعم أو 2 إذا لا.",
+            "exact": ["1"],
+            "partial": ["2"],
+            "h1": "قارن 36,9° بكل من الحدين 30° و40°.",
+            "h2": "لدينا 30° < 36,9° < 40°.",
+            "steps": [
+              "من السؤال السابق: α ≈ 36,9°.",
+              "نقارن: 30° < 36,9° < 40°، إذن الزاوية ضمن المجال المطلوب.",
+              "الاختيار الصحيح هو 1 (نعم).",
+              "<b>الاستنتاج:</b> يحقق المنحدر شرط زاوية الميل المحدد في المخطط."
+            ],
+            "rubric": [
+              {"step": "مقارنة قيس الزاوية بحدّي المجال", "mark": "1"},
+              {"step": "اختيار نعم مع استنتاج متوافق", "mark": "1"}
+            ],
+            "pts": 2,
+            "partialZero": true,
+            "partialMsg": "الإجابة لا توافق قيس الزاوية الذي حسبته؛ أعد المقارنة."
+          }
+        ]
+      }
+];
+
+    let totalScore = 0, totalStars = 0, completedQuestions = 0, totalQuestionsCount = 0;
+    const attemptsLeft = {}, questionEarned = {}, questionLocked = {};
+
+    function normalizeInput(raw) {
+      if (!raw) return "";
+      const digits = ["٠","١","٢","٣","٤","٥","٦","٧","٨","٩"];
+      let value = String(raw).trim();
+      digits.forEach((digit, n) => { value = value.replace(new RegExp(digit, "g"), n); });
+      return value.replace(/\s+/g, "").replace(/،/g, ",").replace(/\./g, ",")
+        .replace(/[−–]/g, "-").replace(/°|متر|m$/i, "").toLowerCase();
+    }
+
+    function render() {
+      totalQuestionsCount = exercises.reduce((n, exercise) => n + exercise.questions.length, 0);
+      const root = document.getElementById("questions");
+      root.innerHTML = exercises[0].questions.map(q => {
+        attemptsLeft[q.qId] = 3;
+        questionEarned[q.qId] = 0;
+        questionLocked[q.qId] = false;
+        const solution = q.steps.map((step, i) =>
+          `<p class="${i === q.steps.length - 1 ? "sol-result" : "sol-line"}">${step}</p>`).join("");
+        const rubric = q.rubric.map(r =>
+          `<tr><td>${r.step}</td><td>${r.mark} ن</td></tr>`).join("");
+        return `<section class="q-box" id="qbox-${q.qId}">
+          <div class="q-title"><span>${q.text}</span><span class="q-meta" id="meta-${q.qId}">المحاولات: <span class="math">3</span> · النقاط: <span class="math">${q.pts}</span></span></div>
+          <div class="answer-area"><input type="text" id="in-${q.qId}" inputmode="decimal" autocomplete="off" aria-label="الإجابة عن السؤال ${q.qId}">
+            <button type="button" class="btn-check" id="btn-${q.qId}" onclick="checkAns('${q.qId}')">تحقق من الإجابة</button></div>
+          <div class="feedback-box" id="fb-${q.qId}" role="status" aria-live="polite"></div>
+          <div class="model-solution" id="sol-${q.qId}"><h3>الإجابة النموذجية وسلم التنقيط</h3>${solution}
+            <table class="rubric"><thead><tr><th>معيار التصحيح</th><th>النقطة</th></tr></thead><tbody>${rubric}</tbody></table>
+          </div></section>`;
+      }).join("");
+      root.querySelectorAll("input").forEach(input => input.addEventListener("keydown", event => {
+        if (event.key === "Enter") checkAns(input.id.slice(3));
+      }));
+    }
+
+    function checkAns(qId) {
+      if (questionLocked[qId]) return;
+      const q = exercises[0].questions.find(item => item.qId === qId);
+      const input = document.getElementById(`in-${qId}`);
+      const feedback = document.getElementById(`fb-${qId}`);
+      const answer = normalizeInput(input.value);
+      if (!answer) {
+        feedback.className = "feedback-box hint";
+        feedback.textContent = "اكتب إجابتك أولا، ثم اضغط «تحقق من الإجابة».";
+        input.focus();
+        return;
+      }
+      if (q.exact.some(value => normalizeInput(value) === answer)) {
+        totalScore += q.pts;
+        totalStars += attemptsLeft[qId];
+        questionEarned[qId] = q.pts;
+        completedQuestions++;
+        questionLocked[qId] = true;
+        input.disabled = true;
+        document.getElementById(`btn-${qId}`).disabled = true;
+        document.getElementById(`qbox-${qId}`).classList.add("solved");
+        feedback.className = "feedback-box success";
+        feedback.textContent = "أحسنت! إجابة صحيحة، ربحت نقطتين.";
+        document.getElementById(`sol-${qId}`).style.display = "block";
+        updateHeaderStats();
+        return;
+      }
+      const remaining = --attemptsLeft[qId];
+      document.getElementById(`meta-${qId}`).textContent = `${remaining} محاولات · ${q.pts} ن`;
+      if (remaining === 0) {
+        questionLocked[qId] = true;
+        completedQuestions++;
+        input.disabled = true;
+        document.getElementById(`btn-${qId}`).disabled = true;
+        feedback.className = "feedback-box fail";
+        feedback.textContent = "انتهت المحاولات. اقرأ الحل النموذجي ثم جرّب من جديد في الكراس.";
+        document.getElementById(`sol-${qId}`).style.display = "block";
+        updateHeaderStats();
+      } else {
+        const hint = remaining === 2 ? q.h1 : q.h2;
+        const partial = q.partial && q.partial.some(value => normalizeInput(value) === answer);
+        feedback.className = "feedback-box hint";
+        feedback.innerHTML = `${partial ? q.partialMsg + "<br>" : ""}<b>تلميح ${remaining === 2 ? 1 : 2}:</b> ${hint}`;
+      }
+    }
+
+    function updateHeaderStats() {
+      const formattedScore = String(totalScore).replace(".", ",");
+      document.getElementById("scoreVal").textContent = `${formattedScore} / 8`;
+      document.getElementById("starsVal").textContent = totalStars;
+      document.getElementById("progressBar").style.width = `${completedQuestions / totalQuestionsCount * 100}%`;
+      document.querySelector(".progress-wrap").setAttribute("aria-valuenow", completedQuestions);
+      if (completedQuestions === totalQuestionsCount) {
+        document.getElementById("finalScoreText").textContent = `علامتك ${formattedScore} من 8`;
+        document.getElementById("finalStarsText").textContent = `⭐ ${totalStars} نجمة`;
+        document.getElementById("finalModal").style.display = "flex";
+      }
+    }
+
+    render();
+  </script>
+</body>
+</html>
