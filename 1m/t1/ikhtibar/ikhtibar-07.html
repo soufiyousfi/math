@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار الفصل الأول (نموذج متوسطات أخرى) - السنة الأولى متوسط - المقطعان 1 و2</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #0f766e;
+            --primary-light: #eff6ff;
+            --accent: #fbbf24;
+            --success: #15803d;
+            --success-bg: #dcfce7;
+            --warning: #b45309;
+            --warning-bg: #fef3c7;
+            --danger: #b91c1c;
+            --danger-bg: #fee2e2;
+            --dark: #0f172a;
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --border: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+        }
+
+        html, body {
+            background-color: var(--bg);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            width: 100%;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%);
+            color: #ffffff;
+            padding: 20px 12px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        header .school-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fef08a;
+            margin-bottom: 6px;
+        }
+
+        header h1 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 6px 0;
+            color: #ffffff;
+        }
+
+        header .sub-info {
+            font-size: 0.92rem;
+            opacity: 0.95;
+            background: rgba(255, 255, 255, 0.14);
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-top: 4px;
+        }
+
+        .sticky-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(6px);
+            border-bottom: 2px solid var(--border);
+            padding: 8px 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .sticky-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .stars-badge {
+            background: #fef3c7;
+            color: #b45309;
+            border: 1px solid #f59e0b;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .sound-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .progress-wrap {
+            flex: 1;
+            min-width: 110px;
+            max-width: 240px;
+            background: #e2e8f0;
+            height: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #0f766e, #15803d);
+            width: 0%;
+            height: 100%;
+            transition: width 0.35s ease;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 18px auto 0 auto;
+            padding: 0 10px;
+        }
+
+        .exercise-card {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 16px 14px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-light);
+            padding: 10px 12px;
+            border-radius: 10px;
+            border-right: 4px solid var(--primary);
+            margin-bottom: 12px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .card-header h2 {
+            font-size: 1.08rem;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .pts-badge {
+            background: #ffffff;
+            color: var(--primary);
+            border: 1px solid #bfdbfe;
+            padding: 3px 10px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .context-box {
+            background: #f8fafc;
+            border: 1px dashed #94a3b8;
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin-bottom: 14px;
+            font-size: 0.96rem;
+        }
+
+        .math {
+            direction: ltr;
+            unicode-bidi: isolate;
+            display: inline-block;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 700;
+            background: #e2e8f0;
+            padding: 1px 6px;
+            border-radius: 5px;
+            margin: 0 2px;
+            color: #0f172a;
+        }
+
+        .q-box {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 14px;
+            background: #ffffff;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .q-box.solved {
+            border-color: #86efac;
+            background: #f0fdf4;
+        }
+
+        .q-box.failed {
+            border-color: #fca5a5;
+            background: #fef2f2;
+        }
+
+        .q-title {
+            font-weight: 700;
+            font-size: 0.98rem;
+            margin-bottom: 10px;
+            color: #1e293b;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .q-meta {
+            font-size: 0.78rem;
+            background: #f1f5f9;
+            color: #475569;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .answer-area {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-line {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            min-width: 170px;
+            padding: 9px 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.98rem;
+            font-weight: 700;
+            direction: ltr;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary);
+        }
+
+        .sym-toolbar {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 4px;
+        }
+
+        .sym-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            color: #0f172a;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            direction: ltr;
+            unicode-bidi: isolate;
+            user-select: none;
+        }
+
+        .sym-btn { flex: 1 1 0; min-width: 0; padding: 6px 0; text-align: center; }
+
+        .sym-btn:hover {
+            background: #cbd5e1;
+        }
+
+        .sym-btn:active {
+            transform: scale(0.96);
+        }
+
+        .btn-check {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .btn-check:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-check:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        @keyframes shakeField {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        .shake {
+            animation: shakeField 0.35s ease;
+            border-color: var(--danger) !important;
+        }
+
+        .feedback-box {
+            margin-top: 10px;
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            display: none;
+        }
+
+        .feedback-box.success {
+            display: block;
+            background: var(--success-bg);
+            color: var(--success);
+            border-right: 4px solid var(--success);
+        }
+
+        .feedback-box.hint {
+            display: block;
+            background: var(--warning-bg);
+            color: var(--warning);
+            border-right: 4px solid var(--warning);
+        }
+
+        .feedback-box.fail {
+            display: block;
+            background: var(--danger-bg);
+            color: var(--danger);
+            border-right: 4px solid var(--danger);
+        }
+
+        .model-solution {
+            margin-top: 12px;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-right: 4px solid var(--secondary);
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+            font-size: 0.93rem;
+        }
+
+        .model-solution h4 {
+            color: var(--secondary);
+            margin-bottom: 8px;
+            font-size: 0.98rem;
+        }
+
+        .sol-line {
+            padding: 3px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .sol-result {
+            margin-top: 6px;
+            font-weight: 800;
+            color: var(--primary);
+            background: #eff6ff;
+            padding: 5px 8px;
+            border-radius: 6px;
+        }
+
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.86rem;
+            background: #ffffff;
+        }
+
+        .rubric-table td .math { white-space: nowrap; }
+        .rubric-table th, .rubric-table td {
+            border: 1px solid #cbd5e1;
+            padding: 6px 8px;
+            text-align: right;
+        }
+
+        .rubric-table th {
+            background: #e2e8f0;
+            color: #1e293b;
+            font-weight: 800;
+        }
+
+        .star-burst {
+            display: inline-block;
+            animation: popStars 0.6s ease forwards;
+        }
+
+        @keyframes popStars {
+            0% { transform: scale(0.4); opacity: 0; }
+            60% { transform: scale(1.25); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.65);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 15px;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            max-width: 420px;
+            width: 100%;
+            border-radius: 16px;
+            padding: 24px 18px;
+            text-align: center;
+            border-top: 6px solid var(--accent);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .modal-score {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin: 10px 0;
+        }
+
+        .modal-stars {
+            font-size: 1.4rem;
+            color: #d97706;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .btn-close-modal {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 9px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        @media (max-width: 420px) {
+            header .school-title { font-size: 0.98rem; }
+            header h1 { font-size: 1.12rem; }
+            .input-line { flex-direction: column; }
+            input[type="text"], .btn-check { width: 100%; }
+        }
+    
+        .fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; line-height: 1.05; margin: 0 2px; font-size: .92em; }
+        .fr > span:first-child { border-bottom: 2px solid currentColor; padding: 0 3px 1px; }
+        .fr > span:last-child { padding: 1px 3px 0; }
+        .vop { display: inline-block; direction: ltr; unicode-bidi: isolate; font-family: 'Courier New', Courier, monospace; font-weight: 700;
+               background: #e2e8f0; color: #0f172a; border-radius: 6px; padding: 4px 10px; margin: 4px 0; line-height: 1.45; font-size: 1.02rem; }
+        .vop div { font-family: inherit; white-space: pre; text-align: right; direction: ltr; unicode-bidi: bidi-override; }
+        .vop .ln { border-top: 2px solid #0f172a; }
+    
+.bem-intro{margin:0 0 6px;line-height:1.7}
+.bem-data p{margin:3px 0;line-height:1.7}
+.bem-warn{background:#fef9c3;border:1px solid #facc15;border-radius:8px;padding:6px 10px;margin:8px 0 4px;font-size:.92rem}
+.print-btn{margin-top:10px;background:#fff;color:#0f766e;border:2px solid #fde047;border-radius:20px;padding:6px 16px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+#paper .copy{border:1.5px solid #334155;border-radius:8px;padding:5px 9px 5px 80px;margin:0 0 5mm;break-inside:avoid;position:relative}
+#paper .cut{border-top:1.5px dashed #64748b;margin:0 0 4mm;text-align:center;font-size:9pt;color:#64748b;line-height:0}
+#paper .cut span{background:#fff;padding:0 6px}
+#paper .ph{display:flex;justify-content:space-between;align-items:center;font-weight:bold;font-size:9.5pt}
+#paper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #1e3a8a;border-radius:14px;padding:2px 8px;margin:3px auto 4px;width:fit-content;background:#eff6ff}
+#paper .qr{position:absolute;left:8px;top:6px;text-align:center;font-size:7pt;color:#475569;width:66px}
+#paper .qr img{width:58px;height:58px}
+#paper .cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+#paper .ex{break-inside:avoid;margin:2px 0}
+#paper .ex h4{margin:3px 0 1px;font-size:10.5pt;background:#e0f2fe;border-radius:6px;padding:1px 6px}
+#paper .ex p,#paper .ex li{margin:1px 0;line-height:1.4}
+#paper svg{max-height:120px;width:auto!important;margin:2px auto!important}
+#paper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+#paper .bem-warn{padding:3px 6px;margin:2px 0}
+#paper .bem-data p{margin:0}
+#paper .bem-intro{margin:0}
+#paper .w3{font-size:8.6pt;padding:4px 6px 4px 74px;margin-bottom:3mm}
+#paper .w3 .cols{grid-template-columns:1fr 1fr 1fr;gap:2px 8px}
+#paper .w3 svg{max-height:88px}
+#paper .w3 .ex h4{font-size:8.8pt}
+#paper .w3 .ex p{line-height:1.3}
+#paper .w3 .pt{font-size:10pt;margin:1px auto 2px;padding:1px 8px}
+#paper .one .cols{display:block}
+#paper .one svg{max-height:150px}
+#paper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt;width:192mm}
+@media print{
+ @page{size:A4;margin:8mm 9mm}
+ body>*:not(#paper){display:none!important}
+ html,body{background:#fff!important;padding:0!important;margin:0!important}
+
+ #paper{display:block!important;width:auto}
+}
+
+#paper .copy{font-size:11pt;padding:6px 10px 6px 84px;margin:0}
+#paper .copy .cols{grid-template-columns:1fr 1fr;gap:4px 14px}
+#paper .copy.flow{font-size:12pt}
+#paper .copy.flow .cols{display:block}
+#paper .copy.flow .ex{margin:0 0 4mm}
+#paper .copy.flow svg{max-height:170px}
+#paper .ex h4{font-size:11.5pt}
+#solpaper{display:none;direction:rtl;font-family:Arial,"DejaVu Sans",sans-serif;color:#000;font-size:10.5pt}
+#solpaper .sxs{columns:2;column-gap:7mm;column-rule:1px solid #cbd5e1}
+#solpaper .sx{margin:0 0 2mm}
+#solpaper h4{break-after:avoid}
+#solpaper h4{margin:2px 0;font-size:11pt;background:#dcfce7;border-radius:6px;padding:1px 6px}
+#solpaper .ph{display:flex;justify-content:space-between;font-weight:bold;font-size:9.5pt}
+#solpaper .pt{text-align:center;font-weight:bold;font-size:12pt;border:1.5px solid #166534;border-radius:14px;padding:2px 8px;margin:3px auto 6px;width:fit-content;background:#f0fdf4}
+#solpaper .sq{margin:2px 0 4px;break-inside:avoid;text-align:right}
+#solpaper .sq p{margin:1px 0;line-height:1.4;text-align:right}
+#solpaper .sq p *{text-align:right}
+#solpaper table{border-collapse:collapse;margin:2px 0 3px;font-size:9.5pt}
+#solpaper td,#solpaper th{border:1px solid #64748b;padding:1px 6px}
+#solpaper .math{background:none!important;padding:0!important;font-family:Arial,sans-serif!important}
+/* 2026-11-07 shape of his model «فرض الفصل الأول» papers: title box, red underlined headings, one column, figure on the left */
+#paper .copy{border:none;border-radius:0;padding:0 0 0 0}
+#paper .copy .cols,#paper .copy.flow .cols{display:block}
+#paper .ttl{border:1.5px solid #1e293b;border-radius:6px;text-align:center;font-weight:bold;font-size:13pt;padding:5px 8px;margin:4px 0 6px 82px}
+#paper .copy .ph{padding-left:82px}
+#paper .qr{top:0;left:0}
+#paper .ex{margin:0 0 3mm;overflow:hidden;border:none!important;box-shadow:none!important;background:none!important;padding:0!important;border-radius:0!important}
+#paper .ex h4,#solpaper h4{background:none!important;color:#b91c1c;text-decoration:underline;font-size:12.5pt;padding:0;margin:4px 0 3px}
+#paper .ex .fig{float:left;width:40%;margin:0 0 2px 12px}
+#paper .ex .fig svg{max-width:100%!important;max-height:190px;margin:0 auto!important}
+#paper .ex p{line-height:1.55}
+#paper .bem-warn{background:none;border:none;padding:0;font-size:10pt}
+#paper .foot{text-align:center;font-size:8pt;color:#475569;border-top:1px solid #cbd5e1;margin-top:3mm;padding-top:1mm;clear:both}
+#solpaper .ttl{border:1.5px solid #1e293b;border-radius:6px;text-align:center;font-weight:bold;font-size:13pt;padding:4px 8px;margin:4px 0 6px}
+.sol-btn{display:none}
+.sol-wait{margin-top:6px;font-size:.85rem;color:#64748b}
+@media print{
+ body.psol>*:not(#solpaper){display:none!important}
+ body.psol #solpaper{display:block!important}
+ body.psol #paper{display:none!important}
+}
+</style>
+</head>
+<body>
+
+    <header>
+        <div class="school-title">متوسطة محمد العربي بن مهيدي، بلدية وادي فراغة، ولاية قالمة — الأستاذ: يوسفي السوفي</div>
+        <h1>اختبار الفصل الأول (نموذج متوسطات أخرى) التفاعلي في الرياضيات</h1>
+        <div class="sub-info">المستوى: السنة الأولى متوسط | المقطعان الأول والثاني<br>حلّ على الورقة كأنك في يوم الاختبار، ثم صحّح هنا</div>
+        <button class="print-btn" onclick="document.body.classList.remove('psol');window.print()">🖨️ النسخة الورقية للطباعة</button> <button class="print-btn sol-btn" onclick="printSol()">🖨️ النسخة الورقية للحل</button><div class="sol-wait"></div>
+    </header>
+
+    <div class="sticky-bar">
+        <div class="sticky-inner">
+            <div class="stat-group">
+                <span class="score-badge">العلامة: <span class="math" id="scoreVal" style="background:transparent;color:#fff;padding:0;">0 / 20</span></span>
+                <span class="stars-badge">⭐ <span class="math" id="starsVal" style="background:transparent;color:#b45309;padding:0;">0</span></span>
+                <button type="button" class="sound-btn" id="soundToggle" onclick="toggleSound()" title="تشغيل/كتم الصوت">🔊</button>
+            </div>
+            <div class="progress-wrap" title="شريط التقدم">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="exercisesRoot"></div>
+
+    <div class="modal-overlay" id="finalModal">
+        <div class="modal-card">
+            <h3 id="finalTitle">🎉 أحسنت! أتممت جميع الأسئلة</h3>
+            <p>لقد أنهيت اختبار الفصل الأول (نموذج متوسطات أخرى)</p>
+            <div class="modal-score" id="finalScoreText">0 / 20</div>
+            <div class="modal-stars" id="finalStarsText">⭐ 0 نجمة</div>
+            <button type="button" class="btn-close-modal" onclick="document.getElementById('finalModal').style.display='none'">مراجعة إجاباتي</button>
+        </div>
+    </div>
+
+    <script>
+        let soundEnabled = true;
+        let totalScore = 0;
+        let totalStars = 0;
+        let completedQuestions = 0;
+        let totalQuestionsCount = 0;
+
+        const attemptsLeft = {};
+        const questionEarned = {};
+        const questionLocked = {};
+
+        const symbols1AM = ["+", "−", "×", "÷", ",", "/", "<", ">", ";", "⌫"];
+
+        function playTone(type) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'success') {
+                    osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+                    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.09);
+                    osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.18);
+                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.35);
+                } else {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, ctx.currentTime);
+                    osc.frequency.setValueAtTime(180, ctx.currentTime + 0.1);
+                    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.25);
+                }
+            } catch (e) {}
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            document.getElementById('soundToggle').innerText = soundEnabled ? '🔊' : '🔇';
+        }
+
+        const exercises = [
+ {
+  "id": 1,
+  "pts": 3,
+  "title": "التمرين 1: الأعداد العشرية",
+  "context": "إليك الأعداد العشرية: <span class=\"math\">7,08</span> ؛ <span class=\"math\">70,8</span> ؛ <span class=\"math\">0,78</span> ؛ <span class=\"math\">7,085</span> ؛ <span class=\"math\">7,8</span>",
+  "questions": [
+   {
+    "qId": "1-1",
+    "text": "1) رتّب هذه الأعداد ترتيبا تصاعديا (اكتبها مفصولة بالرمز <span class=\"math\">&lt;</span>).",
+    "exact": [
+     "0,78<7,08<7,085<7,8<70,8",
+     "0,78 < 7,08 < 7,085 < 7,8 < 70,8"
+    ],
+    "partial": [],
+    "h1": "ابدأ بالعدد الذي جزؤه الصحيح أصغر.",
+    "h2": "قارن <span class=\"math\">7,08</span> و<span class=\"math\">7,085</span>: اكتب <span class=\"math\">7,080</span>.",
+    "steps": [
+     "<b>الطريقة:</b> نقارن الأجزاء الصحيحة، ثم أرقام أجزاء العشرة، ثم أجزاء المائة، ثم أجزاء الألف.",
+     "الأجزاء الصحيحة: <span class=\"math\">0</span> ثم <span class=\"math\">7</span> ثم <span class=\"math\">70</span>",
+     "<span class=\"math\">7,080 &lt; 7,085 &lt; 7,800</span>",
+     "النتيجة: <span class=\"math\">0,78 &lt; 7,08 &lt; 7,085 &lt; 7,8 &lt; 70,8</span>",
+     "<b>الاستنتاج:</b> الترتيب التصاعدي <span class=\"math\">0,78 &lt; 7,08 &lt; 7,085 &lt; 7,8 &lt; 70,8</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "1-2",
+    "text": "2) اكتب العدد <span class=\"math\">7,085</span> على شكل كسر عشري.",
+    "exact": [
+     "7085/1000"
+    ],
+    "partial": [
+     "7085/100",
+     "7085/10000"
+    ],
+    "h1": "كم رقما بعد الفاصلة؟",
+    "h2": "ثلاثة أرقام ← المقام <span class=\"math\">1000</span>.",
+    "steps": [
+     "<b>الطريقة:</b> عدد الأرقام بعد الفاصلة يساوي عدد الأصفار في المقام.",
+     "ثلاثة أرقام بعد الفاصلة ← المقام <span class=\"math\">1000</span>",
+     "النتيجة: <span class=\"math\">7,085 = <span class=\"fr\"><span>7085</span><span>1000</span></span></span>",
+     "<b>الاستنتاج:</b> <span class=\"math\"><span class=\"fr\"><span>7085</span><span>1000</span></span></span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "1-3",
+    "text": "3) احسب <span class=\"math\">70,8 ÷ 1000</span>.",
+    "exact": [
+     "0,0708"
+    ],
+    "partial": [
+     "0,708",
+     "0,00708"
+    ],
+    "h1": "ننقل الفاصلة نحو اليسار.",
+    "h2": "ثلاث مراتب ونكمل بالأصفار.",
+    "steps": [
+     "<b>الطريقة:</b> للقسمة على <span class=\"math\">1000</span> ننقل الفاصلة ثلاث مراتب نحو اليسار.",
+     "النتيجة: <span class=\"math\">70,8 ÷ 1000 = 0,0708</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">0,0708</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 2,
+  "pts": 3,
+  "title": "التمرين 2: الحساب على الأعداد العشرية",
+  "context": "أجب دون استعمال الآلة الحاسبة.",
+  "questions": [
+   {
+    "qId": "2-1",
+    "text": "1) أعط رتبة مقدار للمجموع <span class=\"math\">398,6 + 201,45</span> ثم احسبه عموديا. اكتب المجموع.",
+    "exact": [
+     "600,05"
+    ],
+    "partial": [
+     "600",
+     "599,05",
+     "600,5"
+    ],
+    "h1": "رتبة المقدار: <span class=\"math\">400 + 200 = 600</span>.",
+    "h2": "ضع الفاصلة تحت الفاصلة: <span class=\"math\">398,60 + 201,45</span>.",
+    "steps": [
+     "<b>الطريقة:</b> نضع الفاصلة تحت الفاصلة ونكمل بالأصفار.",
+     "رتبة المقدار <span class=\"math\">600</span>",
+     "<div class=\"vop\"><div>  398,60</div><div>+ 201,45</div><div class=\"ln\">  600,05</div></div>",
+     "النتيجة: <span class=\"math\">600,05</span>",
+     "<b>الاستنتاج:</b> المجموع <span class=\"math\">600,05</span> (قريب من <span class=\"math\">600</span>)."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "2-2",
+    "text": "2) احسب عموديا الجداء <span class=\"math\">24,5 × 3,2</span>.",
+    "exact": [
+     "78,4"
+    ],
+    "partial": [
+     "784",
+     "7,84"
+    ],
+    "h1": "نضرب دون فاصلة: <span class=\"math\">245 × 32</span>.",
+    "h2": "رقمان بعد الفاصلة في الناتج.",
+    "steps": [
+     "<b>الطريقة:</b> نضرب دون فاصلة ثم نضع في الناتج عدد الأرقام بعد الفاصلة في العاملين.",
+     "<div class=\"vop\"><div>  245</div><div> × 32</div><div class=\"ln\">  490</div><div> 735 </div><div class=\"ln\"> 7840</div></div>",
+     "رقمان بعد الفاصلة: <span class=\"math\">78,40</span>",
+     "النتيجة: <span class=\"math\">78,4</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">78,4</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "2-3",
+    "text": "3) احسب <span class=\"math\">0,5 × 8</span> و<span class=\"math\">0,5 × 14</span> و<span class=\"math\">0,5 × 30</span>. خمّن: ضرب عدد في <span class=\"math\">0,5</span> يعطي.. مع التعليل.<br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> ضعفه، أو <span class=\"math\">2</span> نصفه.",
+    "exact": [
+     "2"
+    ],
+    "partial": [
+     "1"
+    ],
+    "h1": "احسب الجداءات الثلاثة.",
+    "h2": "<span class=\"math\">4</span> و<span class=\"math\">7</span> و<span class=\"math\">15</span>.",
+    "steps": [
+     "<b>الطريقة:</b> نجرّب على عدة أعداد ثم نخمّن قاعدة.",
+     "<span class=\"math\">0,5 × 8 = 4</span> ؛ <span class=\"math\">0,5 × 14 = 7</span> ؛ <span class=\"math\">0,5 × 30 = 15</span>",
+     "كل ناتج نصف العدد",
+     "النتيجة: <span class=\"math\">2</span> (نصفه)",
+     "<b>الاستنتاج:</b> ضرب عدد في <span class=\"math\">0,5</span> يعطي نصفه."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 3,
+  "pts": 3,
+  "title": "التمرين 3: مستقيمات ومثلث",
+  "context": "<span class=\"math\">[AB]</span> قطعة مستقيم طولها <span class=\"math\">6 cm</span>.",
+  "questions": [
+   {
+    "qId": "3-1",
+    "text": "1) ارسم <span class=\"math\">[AB]</span> وعيّن منتصفها <span class=\"math\">I</span>. احسب <span class=\"math\">AI</span> (بـ cm).",
+    "exact": [
+     "3"
+    ],
+    "partial": [
+     "6",
+     "12"
+    ],
+    "h1": "المنتصف على بعدين متساويين من الطرفين.",
+    "h2": "<span class=\"math\">6 ÷ 2</span>.",
+    "steps": [
+     "<b>الطريقة:</b> منتصف قطعة يقسمها إلى قطعتين متساويتين.",
+     "<span class=\"math\">AI = 6 ÷ 2</span>",
+     "النتيجة: <span class=\"math\">AI = 3 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">AI = 3 cm</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 0.5,
+    "partialZero": true
+   },
+   {
+    "qId": "3-2",
+    "text": "2) ارسم المستقيم <span class=\"math\">(d)</span> العمودي على <span class=\"math\">(AB)</span> في <span class=\"math\">I</span> وعيّن عليه <span class=\"math\">C</span> حيث <span class=\"math\">IC = 3 cm</span>، ثم ارسم المستقيم <span class=\"math\">(Δ)</span> الذي يشمل <span class=\"math\">C</span> ويوازي <span class=\"math\">(AB)</span>. ما وضعية <span class=\"math\">(Δ)</span> و<span class=\"math\">(d)</span> مع التعليل؟<br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> متوازيان، أو <span class=\"math\">2</span> متعامدان.",
+    "exact": [
+     "2"
+    ],
+    "partial": [
+     "1"
+    ],
+    "h1": "<span class=\"math\">(Δ) // (AB)</span> و<span class=\"math\">(d) ⊥ (AB)</span>.",
+    "h2": "إذا وازى مستقيم أحد مستقيمين متعامدين فهو يعامد الآخر.",
+    "steps": [
+     "<b>الطريقة:</b> مستقيم يوازي <span class=\"math\">(AB)</span> يعامد كل عمودي على <span class=\"math\">(AB)</span>.",
+     "<span class=\"math\">(Δ) // (AB)</span> و<span class=\"math\">(d) ⊥ (AB)</span>",
+     "النتيجة: <span class=\"math\">2</span> متعامدان",
+     "<b>الاستنتاج:</b> متعامدان."
+    ],
+    "rubric": [
+     {
+      "step": "الطريقة",
+      "mark": "0,5"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1.5,
+    "partialZero": true
+   },
+   {
+    "qId": "3-3",
+    "text": "3) احسب مساحة المثلث <span class=\"math\">AIC</span> (بـ cm²).",
+    "exact": [
+     "4,5"
+    ],
+    "partial": [
+     "9",
+     "6"
+    ],
+    "h1": "المثلث قائم في <span class=\"math\">I</span>.",
+    "h2": "<span class=\"math\">(3 × 3) ÷ 2</span>.",
+    "steps": [
+     "<b>الطريقة:</b> مساحة المثلث القائم = جداء الضلعين القائمين ÷ <span class=\"math\">2</span>.",
+     "<span class=\"math\">AIC</span> قائم في <span class=\"math\">I</span>",
+     "<span class=\"math\">(3 × 3) ÷ 2 = 4,5</span>",
+     "النتيجة: <span class=\"math\">4,5 cm²</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">4,5 cm²</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 4,
+  "pts": 3,
+  "title": "التمرين 4: الدائرة",
+  "context": "<span class=\"math\">(C)</span> دائرة مركزها <span class=\"math\">O</span> ونصف قطرها <span class=\"math\">2,5 cm</span>. (نأخذ <span class=\"math\">π ≈ 3,14</span>)",
+  "questions": [
+   {
+    "qId": "4-1",
+    "text": "1) ارسم <span class=\"math\">(C)</span> وقطرا لها <span class=\"math\">[EF]</span> ووترا <span class=\"math\">[EM]</span> لا يشمل <span class=\"math\">O</span>. أيهما أطول مع التعليل؟<br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> القطر <span class=\"math\">[EF]</span>، أو <span class=\"math\">2</span> الوتر <span class=\"math\">[EM]</span>.",
+    "exact": [
+     "1"
+    ],
+    "partial": [
+     "2"
+    ],
+    "h1": "قِس الطولين على رسمك.",
+    "h2": "القطر وتر يشمل المركز.",
+    "steps": [
+     "<b>الطريقة:</b> القطر أطول وتر في الدائرة.",
+     "النتيجة: القطر (<span class=\"math\">1</span>)",
+     "<b>الاستنتاج:</b> القطر أطول وتر."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "0,5"
+     }
+    ],
+    "pts": 0.5,
+    "partialZero": true
+   },
+   {
+    "qId": "4-2",
+    "text": "2) ما طول القطر <span class=\"math\">[EF]</span> (بـ cm)؟",
+    "exact": [
+     "5"
+    ],
+    "partial": [
+     "2,5",
+     "1,25"
+    ],
+    "h1": "القطر يشمل المركز.",
+    "h2": "القطر ضعف نصف القطر.",
+    "steps": [
+     "<b>الطريقة:</b> القطر = <span class=\"math\">2 ×</span> نصف القطر.",
+     "<span class=\"math\">EF = 2 × 2,5</span>",
+     "النتيجة: <span class=\"math\">EF = 5 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">EF = 5 cm</span>."
+    ],
+    "rubric": [
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1,
+    "partialZero": true
+   },
+   {
+    "qId": "4-3",
+    "text": "3) احسب محيط الدائرة <span class=\"math\">(C)</span> (بـ cm).",
+    "exact": [
+     "15,7"
+    ],
+    "partial": [
+     "7,85",
+     "31,4",
+     "19,625"
+    ],
+    "h1": "المحيط = القطر × π.",
+    "h2": "<span class=\"math\">5 × 3,14</span>.",
+    "steps": [
+     "<b>الطريقة:</b> محيط الدائرة = القطر × π.",
+     "<span class=\"math\">5 × 3,14 = 15,7</span>",
+     "النتيجة: <span class=\"math\">15,7 cm</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">15,7 cm</span>."
+    ],
+    "rubric": [
+     {
+      "step": "الطريقة",
+      "mark": "0,5"
+     },
+     {
+      "step": "النتيجة",
+      "mark": "1"
+     }
+    ],
+    "pts": 1.5,
+    "partialZero": true
+   }
+  ]
+ },
+ {
+  "id": 5,
+  "pts": 8,
+  "title": "الوضعية الإدماجية: تبليط غرفة في بوشقوف",
+  "context": "<p class=\"bem-intro\">يريد السيد عمر من بوشقوف تبليط أرضية غرفة مستطيلة الشكل، وتركيب إطار خشبي في أسفل جدرانها على طول محيطها ما عدا عرض الباب.</p><div class=\"bem-data\"><p>– لديه مبلغ <span class=\"math\">27000 DA</span>.<br><b>السند 1 (مخطط الغرفة):</b> الطول <span class=\"math\">4,5 m</span>، العرض <span class=\"math\">3,2 m</span>، عرض الباب <span class=\"math\">0,9 m</span>.<br><b>السند 2 (بطاقة المعلومات):</b> ثمن <span class=\"math\">1 m²</span> من البلاط <span class=\"math\">1250 DA</span> ؛ ثمن <span class=\"math\">1 m</span> من الإطار <span class=\"math\">350 DA</span> ؛ أجرة العامل <span class=\"math\">4000 DA</span>.<br>الإتقان في العمل يحفظ المال والجهد.</p></div><div class=\"fig\" style=\"text-align:center\"><img src=\"data:image/png;base64,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vHixVqxYodzcXHXt2lVDhw61BW5JSktL08KFC7Vt2zY1bNhQnTt31oUXXujXKwAAQHVS5vB577336qabbvJtN27cuMRjzzjjDPugoWUb9vDhw74AKEnnnnuuIiIiij22Z8+etvCZnp5+WmMNHz5cOTk5vu3ly5erVatWGjx4sFauXOk31pdffimPxyOv16sHHnhAM2fOVF5enu24Hj166NVXX1XHjh1PqxcAAIBgUebw2aNHj1IdV1BQoG+++cZWS0hIKNOYr732WqmP3b9/v207Li6uTGOecPDgQY0ePVobN27027dy5Urddttteuedd3T77beXeEvBqlWrlJiYqKSkJNWuXbtc/QAAAASiSv3C0aFDhzRq1Cht2rTJV4uIiND48eMrc1gdOXJECxcutNXOP//8cp3zqaeeKjZ4nrBgwQK98cYbp7yXdffu3Zo8eXK5egEAAAhU5XrVUlFr167VtGnTZFmW0tLStGHDBmVlZfn2R0VF6dVXX1Xr1q0rclg/99xzjw4fPuzbjoyM1NixY8t1zmXLlqlz58566KGHFBMToy+//FLTpk1Tbm6uJMmyLN18882SpFGjRmnEiBGSpFdeeUVvvfWW7Vwn3/8KAABQnVRo+Ny7d6/effddv3q9evU0ZswYjRo1SmeeeWZFDulnxowZevXVV221Rx555HfvSS2NBg0aaMmSJapXr54kqW/fvoqMjNT999/vO6awsFDXXnutXnnlFV+tf//+2rVrl5YtW+arbdmyRXl5eQoPDy9XTwAAAIGmUi+7n3Do0CF9/PHHmjNnjg4dOlRp4zzzzDOaMGGCrXb11VfrvvvuK/e5L730Ul/wPGHw4MF+x1199dV+tcsuu8y2XVBQ4HdPKgAAQHVQoeGzQYMGGjhwoC655BIlJCQoKirKt2/9+vWaPn26OnfurB9++KEih5UkPfroo373kvbo0UNz586tkPM3b97cr1a3bl2/WnErrA0aNKiQHgAAAAJdhYbP7t2767PPPtPnn3+utWvXav/+/X4vgE9NTdXw4cN17NixChnTsizde++9evjhh231Ll26aPHixapVq1aFjFP0PZ4lcblcFTIeAABAMKrUy+41atTQvffe6/fy+V9//VX/+te/yn3+wsJC3XrrrXr22Wdt9T59+mjJkiXFrkwCAADAOUbu+bzyyiv9auvXry/XOfPy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\" alt=\"الشكل\" style=\"max-width:100%;max-height:220px\"></div><div class=\"bem-warn\"><b>ملاحظة:</b> الرسم غير معطى بأبعاده الحقيقية، ولا يطلب إعادة الرسم.</div>",
+  "questions": [
+   {
+    "qId": "5-1",
+    "text": "1) احسب مساحة أرضية الغرفة (بـ m²).",
+    "exact": [
+     "14,4"
+    ],
+    "partial": [
+     "15,4",
+     "7,7",
+     "144"
+    ],
+    "h1": "الأرضية مستطيل.",
+    "h2": "<span class=\"math\">4,5 × 3,2</span>.",
+    "steps": [
+     "<b>الطريقة:</b> مساحة المستطيل = الطول × العرض.",
+     "<div class=\"vop\"><div>   4,5</div><div> × 3,2</div><div class=\"ln\">    90</div><div>  135 </div><div class=\"ln\"> 14,40</div></div>",
+     "النتيجة: <span class=\"math\">14,4 m²</span>",
+     "<b>الاستنتاج:</b> <span class=\"math\">14,4 m²</span>."
+    ],
+    "rubric": [
+     {
+      "step": "م1 التفسير السليم: م1 التفسير: اختيار المساحة",
+      "mark": "1"
+     },
+     {
+      "step": "م2 الاستعمال السليم: م2 الحساب",
+      "mark": "2"
+     }
+    ],
+    "pts": 3,
+    "partialZero": true
+   },
+   {
+    "qId": "5-2",
+    "text": "2) هل يكفي مبلغ <span class=\"math\">27000 DA</span> لإنجاز الأشغال كلها مع التعليل؟<br>✍️ علّل في كراسك، ثم اكتب <span class=\"math\">1</span> نعم، أو <span class=\"math\">2</span> لا.",
+    "exact": [
+     "2"
+    ],
+    "partial": [
+     "1"
+    ],
+    "h1": "احسب ثمن البلاط وثمن الإطار وأضف الأجرة.",
+    "h2": "طول الإطار = المحيط − عرض الباب.",
+    "steps": [
+     "<b>الطريقة:</b> نحسب كل تكلفة على حدة ثم نجمع ونقارن بالمبلغ.",
+     "ثمن البلاط: <span class=\"math\">14,4 × 1250 = 18000 DA</span>",
+     "المحيط: <span class=\"math\">2 × (4,5 + 3,2) = 15,4 m</span> ؛ الإطار: <span class=\"math\">15,4 − 0,9 = 14,5 m</span>",
+     "ثمن الإطار: <span class=\"math\">14,5 × 350 = 5075 DA</span>",
+     "التكلفة: <span class=\"math\">18000 + 5075 + 4000 = 27075 DA</span>",
+     "<span class=\"math\">27075 &gt; 27000</span>",
+     "النتيجة: لا (<span class=\"math\">2</span>)، ينقصه <span class=\"math\">75 DA</span>",
+     "<b>الاستنتاج:</b> المبلغ لا يكفي، ينقصه <span class=\"math\">75 DA</span>."
+    ],
+    "rubric": [
+     {
+      "step": "م1 التفسير السليم: م1 التفسير: الأسئلة المخفية",
+      "mark": "1,5"
+     },
+     {
+      "step": "م2 الاستعمال السليم: م2 الحسابات",
+      "mark": "1,5"
+     },
+     {
+      "step": "م3 انسجام الإجابة: الوحدة ومعقولية النتيجة",
+      "mark": "1"
+     },
+     {
+      "step": "م4 تنظيم وتقديم الورقة",
+      "mark": "1"
+     }
+    ],
+    "pts": 5,
+    "partialZero": true
+   }
+  ]
+ }
+];
+
+        function exercisesCount() { return exercises.reduce((a, e) => a + e.questions.length, 0); }
+
+        function renderApp() {
+            totalQuestionsCount = exercisesCount();
+            const root = document.getElementById('exercisesRoot');
+            root.innerHTML = '';
+
+            exercises.forEach(ex => {
+                const card = document.createElement('div');
+                card.className = 'exercise-card';
+
+                let questionsHtml = '';
+                ex.questions.forEach(q => {
+                    attemptsLeft[q.qId] = 3;
+                    questionEarned[q.qId] = 0;
+                    questionLocked[q.qId] = false;
+
+                    let symHtml = '';
+                    symbols1AM.forEach(s => {
+                        symHtml += `<button type="button" class="sym-btn" onclick="pressSym('${q.qId}', '${s}')">${s}</button>`;
+                    });
+
+                    let stepsHtml = '';
+                    q.steps.forEach((st, idx) => {
+                        const isLast = (idx === q.steps.length - 1);
+                        stepsHtml += `<div class="${isLast ? 'sol-result' : 'sol-line'}">${st}</div>`;
+                    });
+
+                    let rubricRows = '';
+                    q.rubric.forEach(r => {
+                        rubricRows += `<tr><td>${r.step}</td><td><span class="math">${r.mark} ن</span></td></tr>`;
+                    });
+
+                    questionsHtml += `
+                        <div class="q-box" id="qbox-${q.qId}">
+                            <div class="q-title">
+                                <span>${q.text}</span>
+                                <span class="q-meta" id="meta-${q.qId}">المحاولات: <span class="math">3</span> | النقاط: <span class="math">${String(q.pts).replace('.', ',')}</span></span>
+                            </div>
+                            <div class="answer-area">
+                                <div class="input-line">
+                                    <input type="text" id="in-${q.qId}" placeholder="اكتب إجابتك هنا" autocomplete="off">
+                                    <button type="button" class="btn-check" id="btn-${q.qId}" onclick="checkAns(${ex.id}, '${q.qId}')">تحقق من الإجابة</button>
+                                </div>
+                                <div class="sym-toolbar">${symHtml}</div>
+                            </div>
+                            <div class="feedback-box" id="fb-${q.qId}"></div>
+                            <div class="model-solution" id="sol-${q.qId}">
+                                <h4>✔ الإجابة النموذجية المفصلة:</h4>
+                                ${stepsHtml}
+                                <table class="rubric-table">
+                                    <thead>
+                                        <tr><th>مراحل الحل (سلم التنقيط)</th><th>النقطة</th></tr>
+                                    </thead>
+                                    <tbody>${rubricRows}</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h2>${ex.title}</h2>
+                        <span class="pts-badge"><span class="math">${String(ex.pts).replace('.', ',')}</span> ${ex.pts === 1 ? 'نقطة' : 'نقاط'}</span>
+                    </div>
+                    <div class="context-box">${ex.context}</div>
+                    ${questionsHtml}
+                `;
+                root.appendChild(card);
+            });
+        }
+
+        function pressSym(qId, sym) {
+            const inp = document.getElementById(`in-${qId}`);
+            if (!inp || inp.disabled) return;
+            if (sym === '⌫') {
+                inp.value = inp.value.slice(0, -1);
+            } else {
+                inp.value += sym;
+            }
+            inp.focus();
+        }
+
+        function normalizeInput(raw) {
+            if (!raw) return '';
+            const arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+            let s = raw.toString().trim();
+            for (let i = 0; i < 10; i++) {
+                s = s.replace(new RegExp(arDigits[i], 'g'), i);
+            }
+            s = s.replace(/\s+/g, '');
+            s = s.replace(/^[a-zA-Z]\s*=/i, '');
+            s = s.replace(/،/g, ',').replace(/\./g, ',');
+            s = s.replace(/\*/g, '×').replace(/(\d)[xX](?=\d)/g, '$1×').replace(/[−–]/g, '-');
+            s = s.replace(/(da|دج|دينار|أوراق|ورقة|عشرة|عشرات|وحدة|متر|درجة|°c|c°|°|cm²|m²|m2|cm|m|kg|لتر|l)$/i, '');
+            s = s.replace(/-\((\d+\/\d+)\)/g, '-$1').replace(/\((-?\d+(?:,\d+)?)\)/g, '$1').replace(/^\((.*)\)$/, '$1').replace(/^\+(?=\d)/, '');
+            s = s.replace(/(\d),(\d*?)0+(?=$|[^\d])/g, (m, a, b) => b ? a + ',' + b : a);
+            return s.toLowerCase();
+        }
+
+        function updateHeaderStats() {
+            const formattedScore = String(Math.round(totalScore * 100) / 100).replace('.', ',');
+            document.getElementById('scoreVal').innerText = `${formattedScore} / 20`;
+            document.getElementById('starsVal').innerText = totalStars;
+            const pct = Math.min(100, Math.round((completedQuestions / totalQuestionsCount) * 100));
+            document.getElementById('progressBar').style.width = pct + '%';
+
+            if (completedQuestions === totalQuestionsCount) {
+                setTimeout(() => {
+                    document.getElementById('finalScoreText').innerText = `${formattedScore} / 20`;
+                    document.getElementById('finalTitle').innerText = totalScore >= 10 ? '🎉 أحسنت! أتممت جميع الأسئلة' : '💪 أتممت الاختبار! راجع الإجابات النموذجية وأعد المحاولة';
+                    document.getElementById('finalStarsText').innerText = `⭐ ${totalStars} نجمة`;
+                    document.getElementById('finalModal').style.display = 'flex';
+                }, 600);
+            }
+        }
+
+        function triggerShake(qId) {
+            const inp = document.getElementById(`in-${qId}`);
+            inp.classList.remove('shake');
+            void inp.offsetWidth;
+            inp.classList.add('shake');
+        }
+
+        const FBMSG = {"ok": ["أحسنت! تركيزك أوصلك إلى الجواب الصحيح.", "ممتاز! أخذت وقتك وفكّرت جيدا، وهذه هي النتيجة.", "برافو! التأنّي في الحساب يصنع النجاح.", "رائع! جهدك يستحق هذه النجوم.", "إجابة صحيحة! واصل بنفس الهدوء والتركيز.", "أحسنت! من يقرأ السؤال جيدا يصل إلى الحل.", "عمل متقن! الدقة أهم من السرعة، وأنت أثبتّ ذلك.", "بارك الله فيك! تقدّم خطوة بخطوة كما فعلت الآن."], "w1": ["لا بأس، الخطأ جزء من التعلّم. أعد قراءة السؤال بهدوء.", "تمهّل قليلا: كلما أسرعت قلّ تركيزك. خذ وقتك.", "محاولة جيدة! راجع حسابك خطوة بخطوة.", "كل خطأ يعلّمنا شيئا جديدا. ركّز وحاول مرة أخرى.", "لا تستعجل. اقرأ المعطيات من جديد ثم فكّر.", "أنت قريب. أعطِ هذا السؤال الوقت الذي يحتاجه.", "الخطأ ليس فشلا بل خطوة نحو الفهم. حاول مجددا.", "هدّئ السرعة وزِد التركيز، وستجد الطريق."], "w2": ["محاولة أخيرة: اكتب الحساب على ورقة قبل أن تجيب.", "لا تيأس! التركيز يأتي مع الهدوء. اقرأ التلميح جيدا.", "السرعة والتركيز لا يجتمعان: تمهّل في هذه المحاولة الأخيرة.", "ابذل جهدا إضافيا صغيرا، فالحل قريب منك.", "راجع كل خطوة على حدة، ولا تتسرّع.", "كل العلماء أخطؤوا قبل أن ينجحوا. ركّز في هذه المحاولة."], "fail": ["لا بأس، فكلّ خطأ درسٌ يقرّبك من النجاح. اقرأ الإجابة النموذجية وسلم التنقيط بتمعّن.", "تعلّمنا شيئا جديدا اليوم! تأمّل خطوات الحل، وأعد التمرين غدا بهدوء.", "لا بأس، الفهم يحتاج وقتا وجهدا. راجع الحل خطوة بخطوة.", "المهم أن نفهم لماذا أخطأنا. اقرأ الحل، ثم حاول إعادته وحدك على ورقة.", "الصبر والتركيز مفتاحا النجاح. راجع الحل وستنجح في المرة القادمة."]};
+        function fbPick(kind, qId) { const a = FBMSG[kind]; const p = String(qId).split('-'); const n = (+p[0]) * 3 + (+p[1] || 0) + kind.length; return a[n % a.length]; }
+        function checkAns(exId, qId) {
+            if (questionLocked[qId]) return;
+            const ex = exercises.find(e => e.id === exId);
+            const q = ex.questions.find(item => item.qId === qId);
+            const inp = document.getElementById(`in-${qId}`);
+            const fb = document.getElementById(`fb-${qId}`);
+            const val = normalizeInput(inp.value);
+
+            if (!val) {
+                triggerShake(qId);
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = 'يرجى كتابة إجابتك أولاً في الخانة قبل الضغط على زر التحقق.';
+                return;
+            }
+
+            const isExactMatch = q.exact.some(ans => normalizeInput(ans) === val);
+            if (isExactMatch) {
+                const rem = attemptsLeft[qId];
+                const starsAwarded = (rem === 3) ? 3 : (rem === 2 ? 2 : 1);
+                const starIcons = '⭐'.repeat(starsAwarded);
+
+                const prevPts = questionEarned[qId] || 0;
+                totalScore += (q.pts - prevPts);
+                questionEarned[qId] = q.pts;
+                totalStars += starsAwarded;
+                questionLocked[qId] = true;
+                completedQuestions++;
+
+                playTone('success');
+                document.getElementById(`qbox-${qId}`).classList.add('solved');
+                inp.disabled = true;
+                document.getElementById(`btn-${qId}`).disabled = true;
+
+                fb.className = 'feedback-box success';
+                fb.innerHTML = `<span class="star-burst">${starIcons}</span> ${fbPick('ok', qId)} نلت العلامة الكاملة (<span class="math">${String(q.pts).replace('.', ',')} ن</span>).`;
+                flyStars(fb, 18);
+                document.getElementById(`sol-${qId}`).style.display = 'block';
+                updateHeaderStats();
+                return;
+            }
+
+            const isPartialMatch = q.partial && q.partial.some(ans => normalizeInput(ans) === val);
+            if (isPartialMatch) {
+                if (q.partialZero) { handleWrongAttempt(q, q.partialMsg); return; }
+                const halfPts = Math.round((q.pts / 2) * 100) / 100;
+                const prevPts = questionEarned[qId] || 0;
+                if (halfPts > prevPts) {
+                    totalScore += (halfPts - prevPts);
+                    questionEarned[qId] = halfPts;
+                }
+                handleWrongAttempt(q, `${q.partialMsg} (حصلت على نصف العلامة <span class="math">${String(halfPts).replace('.', ',')} ن</span>، صحّح الشكل لتنال العلامة الكاملة).`);
+                updateHeaderStats();
+                return;
+            }
+
+            handleWrongAttempt(q, null);
+        }
+
+        function handleWrongAttempt(q, customReason) {
+            const qId = q.qId;
+            attemptsLeft[qId]--;
+            const rem = attemptsLeft[qId];
+            const inp = document.getElementById(`in-${qId}`);
+            const fb = document.getElementById(`fb-${qId}`);
+
+            playTone('error');
+            triggerShake(qId);
+            document.getElementById(`meta-${qId}`).innerHTML = `المحاولات: <span class="math">${rem}</span> | النقاط: <span class="math">${String(q.pts).replace('.', ',')}</span>`;
+
+            if (rem === 2) {
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w1', qId) + '<br>'}<strong>💡 التلميح 1:</strong> ${q.h1}`;
+                flyStars(fb, 9, ['⭐','💡','✨']);
+            } else if (rem === 1) {
+                fb.className = 'feedback-box hint';
+                fb.innerHTML = `${customReason ? customReason + '<br>' : fbPick('w2', qId) + '<br>'}<strong>💡 التلميح 2:</strong> ${q.h2}`;
+                flyStars(fb, 9, ['⭐','💡','✨']);
+            } else {
+                questionLocked[qId] = true;
+                completedQuestions++;
+                inp.disabled = true;
+                document.getElementById(`btn-${qId}`).disabled = true;
+                document.getElementById(`qbox-${qId}`).classList.add('failed');
+
+                fb.className = 'feedback-box fail';
+                fb.innerHTML = (questionEarned[qId] > 0 ? `احتفظت بنصف العلامة (<span class="math">${String(questionEarned[qId]).replace('.', ',')} ن</span>) لأن إجابتك كانت قريبة.<br>` : '') + '🌟 ' + fbPick('fail', qId);
+                document.getElementById(`sol-${qId}`).style.display = 'block';
+                updateHeaderStats();
+            }
+        }
+
+        window.onload = renderApp;
+    </script>
+<!-- flyStars: نجوم متطايرة -->
+<style>.fly-star{position:fixed;z-index:70;font-size:1.45rem;pointer-events:none;animation:flystar 1s ease-out forwards}
+@keyframes flystar{from{transform:translate(0,0) scale(.4);opacity:1}to{transform:translate(var(--dx),var(--dy)) scale(1.15) rotate(220deg);opacity:0}}</style>
+<script>function flyStars(el, n, icons){ try{ icons = icons || ['⭐','✨','🌟']; const r = el.getBoundingClientRect(), x = r.left + r.width/2, y = Math.max(r.top, 0) + 20;
+ for (let i = 0; i < n; i++){ const s = document.createElement('span'); s.className = 'fly-star'; s.textContent = icons[i % icons.length];
+  const a = Math.random()*2*Math.PI, d = 60 + Math.random()*90; s.style.left = x + 'px'; s.style.top = y + 'px';
+  s.style.setProperty('--dx', Math.cos(a)*d + 'px'); s.style.setProperty('--dy', Math.sin(a)*d - 40 + 'px');
+  document.body.appendChild(s); setTimeout(() => s.remove(), 1050); } }catch(e){} }</script>
+<div id="paper"><div class="copy" data-pages="2"><div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAADDAQAAAAAXBJgHAAACdklEQVR4nMWYMY4bORRE3xcFUI4oYJPNqIu4eyLfwrfYcDxNrAT4WNPtOYFvwL4BO6OAVtcGkjNPNkszreAXwPrFKpr4/Zl37wDwwcjVzIwf3E72tJgdpuNlNrP9R895F6H2Uq4dQ65dOGe6oCzpnNsx6HC5WiHWLqz4LShXQjsGD0THYQr/com8lf9zzm/OHgA/dbAcSBEd//nalMEO0wqfjzfDpLy8AF6lJYPJ7HR94nvm8/EyA2Bmqd0uSJIqEDWGc64dTpLUcBce2+hy7bVGTAmNDO0YaAwpSuWZSpBqXwZBSwa1C8q1L0SsDKpWXPZTcS1voQzyI4Ok4qQtrLFaU080KfsNdzfk2heXNTVksKNbUlx24dpjs/VhhHhgWRtu4wbQhTXShXOufXHCGupgh2mNsCT8VG4n/xq/nfxrbOhIlbBSu3DO2kKimtb7fjT0xEL0kxK11xr9hpPfGvrB/vrlp+a/P21EJhvywcpfVIWGGUkbg+gAeklSeY409QNNStzNaJKyH4FKUx1sPAIaMGS/8RzbKrEC+BHAlKJGmvtBh9MyFNDr0U3Xl7DOwHO7jORHbnaYjk4HK7cTcMFvHz/nXYRqStFL56wxJPxUiE0z0o4ONwG33oZ5jcsLzNeWnWmH7NrXH4tyBZf9GBIQGr6NtQvrvTgBQ66mBC0706+sHFL0G0Q/6azat9TB1czMb7jpumPIdDADl8bdWVtYqX0hehWn2jd1JNkeWPYxvB6Z63S82UGxnRIfyJuU65sSB8KKxoa38Ku9WwJweXnCCZtbprReypoKkV7KtVeiaV94dOdvMaFxuf8mEFq+C/bH/9L+A4ftmhL+RwIUAAAAAElFTkSuQmCC" alt="QR"><br>امسح للتصحيح</div><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="ttl">اختبار الفصل الأول (نموذج متوسطات أخرى) في مادة الرياضيات للسنة الأولى متوسط</div><div class="ph"><span>الاسم واللقب: ........................</span><span>القسم: ........</span></div><div class="ph"><span>المدة: ساعة ونصف</span><span>يُمنع استعمال الآلة الحاسبة</span></div><div class="cols"><h3 class="part">الجزء الأول (12 نقطة)</h3><div class="ex"><h4>التمرين الأول (3 ن): الأعداد العشرية</h4>إليك الأعداد العشرية: <span class="math">7,08</span> ؛ <span class="math">70,8</span> ؛ <span class="math">0,78</span> ؛ <span class="math">7,085</span> ؛ <span class="math">7,8</span><p>1) رتّب هذه الأعداد ترتيبا تصاعديا (اكتبها مفصولة بالرمز <span class="math">&lt;</span>).</p><p>2) اكتب العدد <span class="math">7,085</span> على شكل كسر عشري.</p><p>3) احسب <span class="math">70,8 ÷ 1000</span>.</p></div><div class="ex"><h4>التمرين الثاني (3 ن): الحساب على الأعداد العشرية</h4>أجب دون استعمال الآلة الحاسبة.<p>1) أعط رتبة مقدار للمجموع <span class="math">398,6 + 201,45</span> ثم احسبه عموديا. اكتب المجموع.</p><p>2) احسب عموديا الجداء <span class="math">24,5 × 3,2</span>.</p><p>3) احسب <span class="math">0,5 × 8</span> و<span class="math">0,5 × 14</span> و<span class="math">0,5 × 30</span>. خمّن: ضرب عدد في <span class="math">0,5</span> يعطي.. مع التعليل.</p></div><div class="ex"><h4>التمرين الثالث (3 ن): مستقيمات ومثلث</h4><span class="math">[AB]</span> قطعة مستقيم طولها <span class="math">6 cm</span>.<p>1) ارسم <span class="math">[AB]</span> وعيّن منتصفها <span class="math">I</span>. احسب <span class="math">AI</span> (بـ cm).</p><p>2) ارسم المستقيم <span class="math">(d)</span> العمودي على <span class="math">(AB)</span> في <span class="math">I</span> وعيّن عليه <span class="math">C</span> حيث <span class="math">IC = 3 cm</span>، ثم ارسم المستقيم <span class="math">(Δ)</span> الذي يشمل <span class="math">C</span> ويوازي <span class="math">(AB)</span>. ما وضعية <span class="math">(Δ)</span> و<span class="math">(d)</span> مع التعليل؟</p><p>3) احسب مساحة المثلث <span class="math">AIC</span> (بـ cm²).</p></div><div class="ex"><h4>التمرين الرابع (3 ن): الدائرة</h4><span class="math">(C)</span> دائرة مركزها <span class="math">O</span> ونصف قطرها <span class="math">2,5 cm</span>. (نأخذ <span class="math">π ≈ 3,14</span>)<p>1) ارسم <span class="math">(C)</span> وقطرا لها <span class="math">[EF]</span> ووترا <span class="math">[EM]</span> لا يشمل <span class="math">O</span>. أيهما أطول مع التعليل؟</p><p>2) ما طول القطر <span class="math">[EF]</span> (بـ cm)؟</p><p>3) احسب محيط الدائرة <span class="math">(C)</span> (بـ cm).</p></div><h3 class="part">الجزء الثاني: الوضعية الإدماجية (08 نقاط)</h3><div class="ex"><h4>الوضعية الإدماجية (8 ن): تبليط غرفة في بوشقوف</h4><p class="bem-intro">يريد السيد عمر من بوشقوف تبليط أرضية غرفة مستطيلة الشكل، وتركيب إطار خشبي في أسفل جدرانها على طول محيطها ما عدا عرض الباب.</p><div class="bem-data"><p>– لديه مبلغ <span class="math">27000 DA</span>.<br><b>السند 1 (مخطط الغرفة):</b> الطول <span class="math">4,5 m</span>، العرض <span class="math">3,2 m</span>، عرض الباب <span class="math">0,9 m</span>.<br><b>السند 2 (بطاقة المعلومات):</b> ثمن <span class="math">1 m²</span> من البلاط <span class="math">1250 DA</span> ؛ ثمن <span class="math">1 m</span> من الإطار <span class="math">350 DA</span> ؛ أجرة العامل <span class="math">4000 DA</span>.<br>الإتقان في العمل يحفظ المال والجهد.</p></div><div class="fig" style="text-align:center"><img src="data:image/png;base64,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vHixVqxYodzcXHXt2lVDhw61BW5JSktL08KFC7Vt2zY1bNhQnTt31oUXXujXKwAAQHVS5vB577336qabbvJtN27cuMRjzzjjDPugoWUb9vDhw74AKEnnnnuuIiIiij22Z8+etvCZnp5+WmMNHz5cOTk5vu3ly5erVatWGjx4sFauXOk31pdffimPxyOv16sHHnhAM2fOVF5enu24Hj166NVXX1XHjh1PqxcAAIBgUebw2aNHj1IdV1BQoG+++cZWS0hIKNOYr732WqmP3b9/v207Li6uTGOecPDgQY0ePVobN27027dy5Urddttteuedd3T77beXeEvBqlWrlJiYqKSkJNWuXbtc/QAAAASiSv3C0aFDhzRq1Cht2rTJV4uIiND48eMrc1gdOXJECxcutNXOP//8cp3zqaeeKjZ4nrBgwQK98cYbp7yXdffu3Zo8eXK5egEAAAhU5XrVUlFr167VtGnTZFmW0tLStGHDBmVlZfn2R0VF6dVXX1Xr1q0rclg/99xzjw4fPuzbjoyM1NixY8t1zmXLlqlz58566KGHFBMToy+//FLTpk1Tbm6uJMmyLN18882SpFGjRmnEiBGSpFdeeUVvvfWW7Vwn3/8KAABQnVRo+Ny7d6/effddv3q9evU0ZswYjRo1SmeeeWZFDulnxowZevXVV221Rx555HfvSS2NBg0aaMmSJapXr54kqW/fvoqMjNT999/vO6awsFDXXnutXnnlFV+tf//+2rVrl5YtW+arbdmyRXl5eQoPDy9XTwAAAIGmUi+7n3Do0CF9/PHHmjNnjg4dOlRp4zzzzDOaMGGCrXb11VfrvvvuK/e5L730Ul/wPGHw4MF+x1199dV+tcsuu8y2XVBQ4HdPKgAAQHVQoeGzQYMGGjhwoC655BIlJCQoKirKt2/9+vWaPn26OnfurB9++KEih5UkPfroo373kvbo0UNz586tkPM3b97cr1a3bl2/WnErrA0aNKiQHgAAAAJdhYbP7t2767PPPtPnn3+utWvXav/+/X4vgE9NTdXw4cN17NixChnTsizde++9evjhh231Ll26aPHixapVq1aFjFP0PZ4lcblcFTIeAABAMKrUy+41atTQvffe6/fy+V9//VX/+te/yn3+wsJC3XrrrXr22Wdt9T59+mjJkiXFrkwCAADAOUbu+bzyyiv9auvXry/XOfPy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" alt="الشكل" style="max-width:100%;max-height:220px"></div><div class="bem-warn"><b>ملاحظة:</b> الرسم غير معطى بأبعاده الحقيقية، ولا يطلب إعادة الرسم.</div><p>1) احسب مساحة أرضية الغرفة (بـ m²).</p><p>2) هل يكفي مبلغ <span class="math">27000 DA</span> لإنجاز الأشغال كلها مع التعليل؟</p></div></div><div class="foot">بالتوفيق</div></div></div><script>(function(){function fit(){var pp=document.getElementById('paper');if(!pp)return;var c=pp.querySelector('.copy');var n=+(c&&c.getAttribute('data-pages'));if(!n)return;
+var st=pp.getAttribute('style');pp.setAttribute('style','display:block;position:absolute;visibility:hidden;top:0;right:0;width:192mm');c.style.zoom=1;
+var mm=document.createElement('div');mm.style.height=(n*279-6)+'mm';pp.appendChild(mm);var lim=mm.getBoundingClientRect().height;pp.removeChild(mm);
+var lo=0.45,hi=1.3,k;c.style.zoom=hi;if(c.getBoundingClientRect().height<=lim)lo=hi;else for(k=0;k<10;k++){var m=(lo+hi)/2;c.style.zoom=m;if(c.getBoundingClientRect().height<=lim)lo=m;else hi=m}
+c.style.zoom=lo;if(st===null)pp.removeAttribute('style');else pp.setAttribute('style',st)}
+window.addEventListener('load',fit);window.addEventListener('beforeprint',fit)})();</script><div id="solpaper"><div class="ph"><span>متوسطة محمد العربي بن مهيدي — وادي فراغة، قالمة</span><span>السنة الأولى متوسط</span></div><div class="ttl">الحل النموذجي وسلم التنقيط — اختبار الفصل الأول (نموذج متوسطات أخرى) — السنة الأولى متوسط</div><div class="sxs"><div class="sx"><h4>التمرين الأول (3 ن): الأعداد العشرية</h4><div class="sq"><p><b>1) رتّب هذه الأعداد ترتيبا تصاعديا (اكتبها مفصولة بالرمز <span class="math">&lt;</span>).</b></p><p><b>الطريقة:</b> نقارن الأجزاء الصحيحة، ثم أرقام أجزاء العشرة، ثم أجزاء المائة، ثم أجزاء الألف.</p><p>الأجزاء الصحيحة: <span class="math">0</span> ثم <span class="math">7</span> ثم <span class="math">70</span></p><p><span class="math">7,080 &lt; 7,085 &lt; 7,800</span></p><p>النتيجة: <span class="math">0,78 &lt; 7,08 &lt; 7,085 &lt; 7,8 &lt; 70,8</span></p><p><b>الاستنتاج:</b> الترتيب التصاعدي <span class="math">0,78 &lt; 7,08 &lt; 7,085 &lt; 7,8 &lt; 70,8</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) اكتب العدد <span class="math">7,085</span> على شكل كسر عشري.</b></p><p><b>الطريقة:</b> عدد الأرقام بعد الفاصلة يساوي عدد الأصفار في المقام.</p><p>ثلاثة أرقام بعد الفاصلة ← المقام <span class="math">1000</span></p><p>النتيجة: <span class="math">7,085 = <span class="fr"><span>7085</span><span>1000</span></span></span></p><p><b>الاستنتاج:</b> <span class="math"><span class="fr"><span>7085</span><span>1000</span></span></span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) احسب <span class="math">70,8 ÷ 1000</span>.</b></p><p><b>الطريقة:</b> للقسمة على <span class="math">1000</span> ننقل الفاصلة ثلاث مراتب نحو اليسار.</p><p>النتيجة: <span class="math">70,8 ÷ 1000 = 0,0708</span></p><p><b>الاستنتاج:</b> <span class="math">0,0708</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الثاني (3 ن): الحساب على الأعداد العشرية</h4><div class="sq"><p><b>1) أعط رتبة مقدار للمجموع <span class="math">398,6 + 201,45</span> ثم احسبه عموديا. اكتب المجموع.</b></p><p><b>الطريقة:</b> نضع الفاصلة تحت الفاصلة ونكمل بالأصفار.</p><p>رتبة المقدار <span class="math">600</span></p><p><div class="vop"><div>  398,60</div><div>+ 201,45</div><div class="ln">  600,05</div></div></p><p>النتيجة: <span class="math">600,05</span></p><p><b>الاستنتاج:</b> المجموع <span class="math">600,05</span> (قريب من <span class="math">600</span>).</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>2) احسب عموديا الجداء <span class="math">24,5 × 3,2</span>.</b></p><p><b>الطريقة:</b> نضرب دون فاصلة ثم نضع في الناتج عدد الأرقام بعد الفاصلة في العاملين.</p><p><div class="vop"><div>  245</div><div> × 32</div><div class="ln">  490</div><div> 735 </div><div class="ln"> 7840</div></div></p><p>رقمان بعد الفاصلة: <span class="math">78,40</span></p><p>النتيجة: <span class="math">78,4</span></p><p><b>الاستنتاج:</b> <span class="math">78,4</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) احسب <span class="math">0,5 × 8</span> و<span class="math">0,5 × 14</span> و<span class="math">0,5 × 30</span>. خمّن: ضرب عدد في <span class="math">0,5</span> يعطي.. مع التعليل.</b></p><p><b>الطريقة:</b> نجرّب على عدة أعداد ثم نخمّن قاعدة.</p><p><span class="math">0,5 × 8 = 4</span> ؛ <span class="math">0,5 × 14 = 7</span> ؛ <span class="math">0,5 × 30 = 15</span></p><p>كل ناتج نصف العدد</p><p>النتيجة: <span class="math">2</span> (نصفه)</p><p><b>الاستنتاج:</b> ضرب عدد في <span class="math">0,5</span> يعطي نصفه.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الثالث (3 ن): مستقيمات ومثلث</h4><div class="sq"><p><b>1) ارسم <span class="math">[AB]</span> وعيّن منتصفها <span class="math">I</span>. احسب <span class="math">AI</span> (بـ cm).</b></p><p><b>الطريقة:</b> منتصف قطعة يقسمها إلى قطعتين متساويتين.</p><p><span class="math">AI = 6 ÷ 2</span></p><p>النتيجة: <span class="math">AI = 3 cm</span></p><p><b>الاستنتاج:</b> <span class="math">AI = 3 cm</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>0,5</td></tr></table></div><div class="sq"><p><b>2) ارسم المستقيم <span class="math">(d)</span> العمودي على <span class="math">(AB)</span> في <span class="math">I</span> وعيّن عليه <span class="math">C</span> حيث <span class="math">IC = 3 cm</span>، ثم ارسم المستقيم <span class="math">(Δ)</span> الذي يشمل <span class="math">C</span> ويوازي <span class="math">(AB)</span>. ما وضعية <span class="math">(Δ)</span> و<span class="math">(d)</span> مع التعليل؟</b></p><p><b>الطريقة:</b> مستقيم يوازي <span class="math">(AB)</span> يعامد كل عمودي على <span class="math">(AB)</span>.</p><p><span class="math">(Δ) // (AB)</span> و<span class="math">(d) ⊥ (AB)</span></p><p>النتيجة: <span class="math">2</span> متعامدان</p><p><b>الاستنتاج:</b> متعامدان.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الطريقة</td><td>0,5</td></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) احسب مساحة المثلث <span class="math">AIC</span> (بـ cm²).</b></p><p><b>الطريقة:</b> مساحة المثلث القائم = جداء الضلعين القائمين ÷ <span class="math">2</span>.</p><p><span class="math">AIC</span> قائم في <span class="math">I</span></p><p><span class="math">(3 × 3) ÷ 2 = 4,5</span></p><p>النتيجة: <span class="math">4,5 cm²</span></p><p><b>الاستنتاج:</b> <span class="math">4,5 cm²</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>التمرين الرابع (3 ن): الدائرة</h4><div class="sq"><p><b>1) ارسم <span class="math">(C)</span> وقطرا لها <span class="math">[EF]</span> ووترا <span class="math">[EM]</span> لا يشمل <span class="math">O</span>. أيهما أطول مع التعليل؟</b></p><p><b>الطريقة:</b> القطر أطول وتر في الدائرة.</p><p>النتيجة: القطر (<span class="math">1</span>)</p><p><b>الاستنتاج:</b> القطر أطول وتر.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>0,5</td></tr></table></div><div class="sq"><p><b>2) ما طول القطر <span class="math">[EF]</span> (بـ cm)؟</b></p><p><b>الطريقة:</b> القطر = <span class="math">2 ×</span> نصف القطر.</p><p><span class="math">EF = 2 × 2,5</span></p><p>النتيجة: <span class="math">EF = 5 cm</span></p><p><b>الاستنتاج:</b> <span class="math">EF = 5 cm</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>النتيجة</td><td>1</td></tr></table></div><div class="sq"><p><b>3) احسب محيط الدائرة <span class="math">(C)</span> (بـ cm).</b></p><p><b>الطريقة:</b> محيط الدائرة = القطر × π.</p><p><span class="math">5 × 3,14 = 15,7</span></p><p>النتيجة: <span class="math">15,7 cm</span></p><p><b>الاستنتاج:</b> <span class="math">15,7 cm</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>الطريقة</td><td>0,5</td></tr><tr><td>النتيجة</td><td>1</td></tr></table></div></div><div class="sx"><h4>الوضعية الإدماجية (8 ن): تبليط غرفة في بوشقوف</h4><div class="sq"><p><b>1) احسب مساحة أرضية الغرفة (بـ m²).</b></p><p><b>الطريقة:</b> مساحة المستطيل = الطول × العرض.</p><p><div class="vop"><div>   4,5</div><div> × 3,2</div><div class="ln">    90</div><div>  135 </div><div class="ln"> 14,40</div></div></p><p>النتيجة: <span class="math">14,4 m²</span></p><p><b>الاستنتاج:</b> <span class="math">14,4 m²</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: م1 التفسير: اختيار المساحة</td><td>1</td></tr><tr><td>م2 الاستعمال السليم: م2 الحساب</td><td>2</td></tr></table></div><div class="sq"><p><b>2) هل يكفي مبلغ <span class="math">27000 DA</span> لإنجاز الأشغال كلها مع التعليل؟</b></p><p><b>الطريقة:</b> نحسب كل تكلفة على حدة ثم نجمع ونقارن بالمبلغ.</p><p>ثمن البلاط: <span class="math">14,4 × 1250 = 18000 DA</span></p><p>المحيط: <span class="math">2 × (4,5 + 3,2) = 15,4 m</span> ؛ الإطار: <span class="math">15,4 − 0,9 = 14,5 m</span></p><p>ثمن الإطار: <span class="math">14,5 × 350 = 5075 DA</span></p><p>التكلفة: <span class="math">18000 + 5075 + 4000 = 27075 DA</span></p><p><span class="math">27075 &gt; 27000</span></p><p>النتيجة: لا (<span class="math">2</span>)، ينقصه <span class="math">75 DA</span></p><p><b>الاستنتاج:</b> المبلغ لا يكفي، ينقصه <span class="math">75 DA</span>.</p><table><tr><th>سلم التنقيط</th><th>ن</th></tr><tr><td>م1 التفسير السليم: م1 التفسير: الأسئلة المخفية</td><td>1,5</td></tr><tr><td>م2 الاستعمال السليم: م2 الحسابات</td><td>1,5</td></tr><tr><td>م3 انسجام الإجابة: الوحدة ومعقولية النتيجة</td><td>1</td></tr><tr><td>م4 تنظيم وتقديم الورقة</td><td>1</td></tr></table></div><p class="m3">تُقبل كل طريقة صحيحة أخرى، وتُمنح علامتها كاملة.</p></div></div></div><script>(function(){var K='open:'+location.pathname,t=Date.now(),D=30*60000;try{var v=+localStorage.getItem(K);if(v&&v<=t)t=v;else localStorage.setItem(K,t)}catch(e){}
+function tick(){var b=document.querySelector('.sol-btn'),w=document.querySelector('.sol-wait');if(!b)return;var r=t+D-Date.now();
+if(r<=0){b.style.display='inline-block';if(w)w.style.display='none';return}if(w)w.textContent='📄 النسخة الورقية للحل تظهر بعد '+Math.ceil(r/60000)+' دقيقة';setTimeout(tick,20000)}
+window.printSol=function(){document.body.classList.add('psol');window.print()};window.addEventListener('afterprint',function(){document.body.classList.remove('psol')});
+window.addEventListener('load',tick)})();</script><!--/paper-->
+</body>
+</html>
