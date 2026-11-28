@@ -11,14 +11,17 @@
 
    What is kept: in YOUR Drive (folder «أوراق التلاميذ») the photos; in this sheet one row per sending.
    Nothing is sent to Gemini when a pupil sends: grading happens only when YOU choose it from the menu.
-   Gemini receives the photos and the paper (questions, model answer, marking scheme), never the name or the class. */
+   Gemini receives the photos and the paper (questions, model answer, marking scheme). No name is ever asked.
+   The pupil gets a receipt number; he sees his mark ONLY after you approve it («✅ اعتمد»). */
 
 var SITE = "https://soufiyousfi.github.io/math/";
 var SHEET = "الإرسالات";
 var FOLDER = "أوراق التلاميذ";
 var TZ = "Africa/Algiers";
 var DEFAULT_MODELS = "gemini-2.5-flash,gemini-2.5-flash-lite,gemini-2.0-flash";
-var HEAD = ["التاريخ", "الاسم", "القسم", "الورقة", "العنوان", "الصور", "الحالة", "النقطة المقترحة", "تفصيل التصحيح المقترح", "النموذج", "ملاحظة الأستاذ"];
+/* columns: no name, no class (his rule 2026-11-28: «لا أحتاج أسماء أحتاج نقاط فقط»). The pupil keeps a receipt number. */
+var HEAD = ["التاريخ", "رقم الوصل", "الورقة", "العنوان", "الصور", "الحالة", "النقطة", "نقاط التمارين", "تفصيل التصحيح", "النموذج", "ملاحظة الأستاذ"];
+var C = { date: 1, receipt: 2, page: 3, title: 4, imgs: 5, status: 6, total: 7, per: 8, detail: 9, model: 10, note: 11 };
 var PAGE_RE = /^[1-4]m\/t[1-3]\/(fard|ikhtibar|wadjib)\/[a-z0-9\-]+\.html$/;
 
 function prop_(k) { return PropertiesService.getScriptProperties().getProperty(k) || ""; }
@@ -34,6 +37,7 @@ function doPost(e) {
     return json_({ ok: false, bad: "code", msg: "الكود غير صحيح. تأكّد منه وأعد المحاولة." });
   if (b.a === "check") return json_({ ok: true });
   if (b.a === "send") return json_(receive_(b));
+  if (b.a === "results") return json_(results_(b));
   return json_({ ok: false, msg: "طلب غير معروف." });
 }
 
@@ -49,26 +53,50 @@ function receive_(b) {
   if (!PAGE_RE.test(page)) return { ok: false, msg: "اختر ورقة من القائمة." };
   var imgs = Array.isArray(b.images) ? b.images.slice(0, 6) : [];
   if (!imgs.length) return { ok: false, msg: "أضف صورة واحدة على الأقل." };
-  var name = String(b.name || "").slice(0, 40).trim(), cls = String(b.cls || "").slice(0, 10).trim();
-  if (!name || !cls) return { ok: false, msg: "اكتب اسمك وقسمك." };
   if (!brake_()) return { ok: false, msg: "ضغط كبير على الخدمة الآن. أعد المحاولة بعد 10 دقائق." };
   var lock = LockService.getScriptLock();
   if (!lock.tryLock(20000)) return { ok: false, msg: "أعد المحاولة بعد لحظات." };
   try {
     var folder = sub_(sub_(root_(), page.split("/")[0]), page.replace(/\//g, "_").replace(/\.html$/, ""));
-    var stamp = Utilities.formatDate(new Date(), TZ, "yyyy-MM-dd_HH-mm");
+    var stamp = Utilities.formatDate(new Date(), TZ, "yyyy-MM-dd_HH-mm"), receipt = newReceipt_();
     var ids = [];
     for (var i = 0; i < imgs.length; i++) {
       var s = String(imgs[i] || "");
       if (s.length > 3000000) return { ok: false, msg: "صورة كبيرة جدا. أعد تصويرها." };
       var bytes = Utilities.base64Decode(s);
       if (!(bytes[0] === -1 && bytes[1] === -40)) return { ok: false, msg: "صيغة صورة غير مقبولة." };   // JPEG only
-      var f = folder.createFile(Utilities.newBlob(bytes, "image/jpeg", stamp + "_" + cls + "_" + (i + 1) + ".jpg"));
+      var f = folder.createFile(Utilities.newBlob(bytes, "image/jpeg", stamp + "_" + receipt + "_" + (i + 1) + ".jpg"));
       ids.push(f.getId());
     }
-    sheet_().appendRow([new Date(), name, cls, page, String(b.title || "").slice(0, 120), ids.join(","), "جديد", "", "", "", ""]);
-    return { ok: true };
+    sheet_().appendRow([new Date(), receipt, page, String(b.title || "").slice(0, 120), ids.join(","), "جديد", "", "", "", "", ""]);
+    return { ok: true, receipt: receipt };
   } finally { lock.releaseLock(); }
+}
+
+/* 6 characters without look-alikes (no 0/O, 1/I/L): about 900 million possibilities, unique in the sheet */
+function newReceipt_() {
+  var A = "ABCDEFGHJKMNPQRSTUVWXYZ23456789", used = {};
+  sheet_().getRange(1, C.receipt, Math.max(sheet_().getLastRow(), 1), 1).getValues().forEach(function (r) { used[r[0]] = 1; });
+  for (;;) { var s = ""; for (var i = 0; i < 6; i++) s += A.charAt(Math.floor(Math.random() * A.length)); if (!used[s]) return s; }
+}
+
+/* the pupil's results: ONLY rows the teacher approved («معتمد») give a mark */
+function results_(b) {
+  var want = {}; (Array.isArray(b.receipts) ? b.receipts.slice(0, 40) : []).forEach(function (r) { want[String(r).toUpperCase()] = 1; });
+  var v = sheet_().getDataRange().getValues(), out = [];
+  for (var i = 1; i < v.length; i++) {
+    var row = v[i], r = String(row[C.receipt - 1]);
+    if (!want[r]) continue;
+    var it = { r: r, page: row[C.page - 1], title: row[C.title - 1], date: new Date(row[C.date - 1]).getTime(), status: "pending" };
+    if (row[C.status - 1] === "معتمد") {
+      var t = String(row[C.total - 1]).split("/");
+      it.status = "approved"; it.total = (t[0] || "").trim(); it.max = (t[1] || "20").trim();
+      it.per = String(row[C.per - 1] || "").split(";").map(function (x) { return x.trim(); }).filter(String);
+      it.feedback = String(row[C.detail - 1] || "").replace(/ \(راجع الرسم بنفسك\)/g, "").split("\n\n").filter(function (x) { return !/:\s*$/.test(x); }).join("\n\n").slice(0, 3000); it.note = String(row[C.note - 1] || "").slice(0, 500);
+    }
+    out.push(it);
+  }
+  return { ok: true, items: out };
 }
 
 function root_() { var it = DriveApp.getFoldersByName(FOLDER); return it.hasNext() ? it.next() : DriveApp.createFolder(FOLDER); }
@@ -84,13 +112,16 @@ function onOpen() {
   SpreadsheetApp.getUi().createMenu("🤖 التصحيح")
     .addItem("صحّح الإرسالات الجديدة", "gradeNew")
     .addItem("صحّح الصف المحدد (من جديد)", "gradeSelected")
+    .addSeparator()
+    .addItem("✅ اعتمد كل النقاط المقترحة (يراها التلاميذ)", "approveAll")
+    .addItem("✅ اعتمد الصف المحدد فقط", "approveSelected")
     .addToUi();
 }
 
 function gradeNew() {
   var sh = sheet_(), v = sh.getDataRange().getValues(), t0 = Date.now(), done = 0;
   for (var r = 1; r < v.length; r++) {
-    if (v[r][6] !== "جديد") continue;
+    if (v[r][C.status - 1] !== "جديد") continue;
     if (Date.now() - t0 > 270000) break;    // Apps Script stops after 6 minutes: run the menu again for the rest
     gradeRow_(sh, r + 1); done++;
   }
@@ -103,24 +134,46 @@ function gradeSelected() {
   gradeRow_(sh, r);
 }
 
+/* approval: the total is recomputed from «نقاط التمارين» (so your corrections there count), then the pupil can see it */
+function approveRow_(sh, row) {
+  var v = sh.getRange(row, 1, 1, HEAD.length).getValues()[0];
+  if (v[C.status - 1] !== "مقترح" && v[C.status - 1] !== "معتمد") return false;
+  var per = String(v[C.per - 1] || "").split(";").map(function (x) { return Number(String(x).split("/")[0].replace(",", ".")); });
+  var max = String(v[C.total - 1]).split("/")[1];
+  if (per.length && per.every(function (x) { return !isNaN(x); }))
+    sh.getRange(row, C.total).setValue(String(per.reduce(function (a, x) { return a + x; }, 0)).replace(".", ",") + " / " + (max || "20").trim());
+  sh.getRange(row, C.status).setValue("معتمد");
+  return true;
+}
+function approveAll() {
+  var sh = sheet_(), v = sh.getDataRange().getValues(), n = 0;
+  for (var r = 1; r < v.length; r++) if (v[r][C.status - 1] === "مقترح" && approveRow_(sh, r + 1)) n++;
+  SpreadsheetApp.getActive().toast(n + " نقاط اعتُمدت. يراها التلاميذ الآن برقم الوصل.", "✅ اعتماد", 8);
+}
+function approveSelected() {
+  var sh = sheet_(), r = sh.getActiveRange().getRow();
+  if (r < 2 || !approveRow_(sh, r)) return SpreadsheetApp.getUi().alert("اختر صفا حالته «مقترح».");
+  SpreadsheetApp.getActive().toast("اعتُمدت.", "✅ اعتماد", 5);
+}
+
 function gradeRow_(sh, row) {
   var v = sh.getRange(row, 1, 1, HEAD.length).getValues()[0];
   try {
-    var paper = paper_(v[3]);
+    var paper = paper_(v[C.page - 1]);
     var parts = [{ text: prompt_(paper) }];
-    String(v[5]).split(",").filter(String).forEach(function (id) {
+    String(v[C.imgs - 1]).split(",").filter(String).forEach(function (id) {
       parts.push({ inline_data: { mime_type: "image/jpeg", data: Utilities.base64Encode(DriveApp.getFileById(id).getBlob().getBytes()) } });
     });
-    var res = gemini_(parts), g = res.json, total = 0, max = 0, lines = [];
+    var res = gemini_(parts), g = res.json, total = 0, max = 0, lines = [], per = [];
     paper.forEach(function (ex, i) {
       var e = (g.exercises || [])[i] || {}, m = Math.max(0, Math.min(Number(e.mark) || 0, ex.pts));
-      m = Math.round(m * 4) / 4; total += m; max += ex.pts;
-      lines.push("التمرين " + (i + 1) + ": " + m + " / " + ex.pts + (e.teacher ? " (راجع الرسم بنفسك)" : "") + "\n" + String(e.feedback || "").slice(0, 600));
+      m = Math.round(m * 4) / 4; total += m; max += ex.pts; per.push(String(m).replace(".", ",") + "/" + ex.pts);
+      lines.push("التمرين " + (i + 1) + (e.teacher ? " (راجع الرسم بنفسك)" : "") + ": " + String(e.feedback || "").slice(0, 600));
     });
     if (g.remark) lines.push("ملاحظة عامة: " + String(g.remark).slice(0, 400));
-    sh.getRange(row, 7, 1, 4).setValues([["مقترح", total + " / " + max, lines.join("\n\n"), res.model]]);
+    sh.getRange(row, C.status, 1, 5).setValues([["مقترح", String(total).replace(".", ",") + " / " + max, per.join(" ; "), lines.join("\n\n"), res.model]]);
   } catch (err) {
-    sh.getRange(row, 7, 1, 4).setValues([["خطأ", "", String(err.message || err).slice(0, 500), ""]]);
+    sh.getRange(row, C.status, 1, 5).setValues([["خطأ", "", "", String(err.message || err).slice(0, 500), ""]]);
   }
 }
 

@@ -79,6 +79,10 @@
 .irs .th button{position:absolute;top:2px;left:2px;padding:0 7px;border-radius:8px;border:0;background:#b91c1c;color:#fff;font-size:.85rem}
 .irs .spin{display:inline-block;width:1em;height:1em;border:3px solid currentColor;border-left-color:transparent;border-radius:50%;animation:irsr .8s linear infinite;vertical-align:-3px;margin-inline-start:6px}
 @keyframes irsr{to{transform:rotate(360deg)}}
+.irs .card-r{border:1.5px solid var(--border,#e2e8f0);border-radius:12px;padding:10px;margin-top:10px;background:var(--soft,#f8fafc)}
+.irs .solbox{margin-top:8px;padding:8px;border-top:1px dashed var(--border,#e2e8f0);font-size:.9rem;overflow-x:auto}
+.irs .solbox h4{margin:8px 0 4px;background:var(--ok-bg,#dcfce7);border-radius:6px;padding:1px 6px}
+.irs .solbox table{border-collapse:collapse;width:100%}.irs .solbox td,.irs .solbox th{border:1px solid var(--border,#e2e8f0);padding:2px 4px}
 .irs .hint{font-size:.85rem;color:var(--muted,#475569);margin-top:6px}`));
   }
 
@@ -122,21 +126,21 @@
   function form() {
     const all = papers();
     const lvNow = ls.get("math-level");
+    const mine = receipts();
     const b = shell(`<h2>📤 إرسال أوراقي إلى الأستاذ</h2>
+<div class="row" style="margin:0 0 8px"><button id="irs-res">📊 نتائجي${mine.length ? " (" + mine.length + ")" : ""}</button></div>
 <p>اختر الورقة، ثم صوّر ورقة إجابتك فقط (بلا وجوه ولا أشخاص).</p>
 <label for="irs-lv">المستوى</label><select id="irs-lv">${Object.keys(LEVELS).map(l => `<option value="${l}"${l === lvNow ? " selected" : ""}>${LEVELS[l]}</option>`).join("")}</select>
 <label for="irs-k">النوع</label><select id="irs-k">${Object.keys(KINDS).map(k => `<option value="${k}">${KINDS[k]}</option>`).join("")}</select>
 <label for="irs-p">الورقة</label><select id="irs-p"></select>
-<label for="irs-n">الاسم واللقب</label><input type="text" id="irs-n" maxlength="40" autocomplete="name">
-<label for="irs-c">القسم (مثلا 4م2)</label><input type="text" id="irs-c" maxlength="10">
 <div class="row"><button id="irs-cam">📷 صوّر ورقة</button><button id="irs-gal">🖼️ من المعرض</button></div>
 <input type="file" id="irs-f1" accept="image/*" capture="environment" hidden><input type="file" id="irs-f2" accept="image/*" multiple hidden>
 <div class="hint">حتى ${MAX_PHOTOS} صور. صوّر كل صفحة كاملة، في ضوء جيد، والورقة مستوية.</div>
 <div class="th" id="irs-th"></div>
 <div class="row"><button class="main" id="irs-send" disabled>📤 أرسل أوراقي</button></div><div class="msg"></div>`);
     const $ = s => b.querySelector(s);
-    const lv = $("#irs-lv"), k = $("#irs-k"), p = $("#irs-p"), nm = $("#irs-n"), cl = $("#irs-c"), send = $("#irs-send");
-    nm.value = ls.get("math-name") || ""; cl.value = ls.get("irsal-class") || "";
+    const lv = $("#irs-lv"), k = $("#irs-k"), p = $("#irs-p"), send = $("#irs-send");
+    $("#irs-res").onclick = results;
     const fill = () => {
       const list = all.filter(it => it.level === lv.value && it.section === k.value)
         .sort((a, b2) => a.term.localeCompare(b2.term) || a.url.localeCompare(b2.url, undefined, { numeric: true }));
@@ -157,8 +161,8 @@
       });
       ready();
     }
-    function ready() { send.disabled = !(photos.length && p.value && nm.value.trim() && cl.value.trim()); }
-    nm.oninput = ready; cl.oninput = ready; p.onchange = ready;
+    function ready() { send.disabled = !(photos.length && p.value); }
+    p.onchange = ready;
     $("#irs-cam").onclick = () => $("#irs-f1").click();
     $("#irs-gal").onclick = () => $("#irs-f2").click();
     const take = async input => {
@@ -184,14 +188,17 @@
     send.onclick = async () => {
       if (!navigator.onLine) return msg(b, "err", "لا يوجد اتصال بالإنترنت. أوراقك لم تُرسل بعد، اتصل ثم اضغط «أرسل» من جديد.");
       send.disabled = true; send.innerHTML = 'جارٍ الإرسال<span class="spin"></span>';
-      ls.set("math-name", nm.value.trim()); ls.set("irsal-class", cl.value.trim());
       try {
         const images = await Promise.all(photos.map(ph => b64(ph.blob)));
         const r = await post({ a: "send", code: ss.get("irsal-code"), page: p.value, title: p.options[p.selectedIndex].text,
-                               name: nm.value.trim(), cls: cl.value.trim(), images });
-        if (r && r.ok) {
-          b.innerHTML = `<h2>✅ وصلت أوراقك إلى الأستاذ</h2><p>${esc(p.options[p.selectedIndex].text)}: ${photos.length} صور. سيصحّحها الأستاذ.</p><div class="row"><button class="main">حسنا</button></div>`;
-          b.querySelector("button").onclick = close;
+                               images });
+        if (r && r.ok && r.receipt) {
+          const title = p.options[p.selectedIndex].text;
+          addReceipt({ r: r.receipt, page: p.value, title, d: Date.now() });
+          b.innerHTML = `<h2>✅ وصلت أوراقك إلى الأستاذ</h2><p>${esc(title)}: ${photos.length} صور.</p>
+<p>رقم الوصل: <b dir="ltr" style="font-size:1.4rem;letter-spacing:2px;color:var(--text,#0f172a)">${esc(r.receipt)}</b><br>حُفظ في هاتفك. دوّنه أيضا في كراسك.</p>
+<p>ستظهر نقطتك في «📊 نتائجي» بعد أن يراجعها الأستاذ.</p><div class="row"><button class="main" id="irs-ok">حسنا</button><button id="irs-res2">📊 نتائجي</button></div>`;
+          b.querySelector("#irs-ok").onclick = close; b.querySelector("#irs-res2").onclick = results;
         } else {
           if (r && r.bad === "code") ss.set("irsal-code", "");
           msg(b, "err", (r && r.msg) || "لم تُرسل الأوراق. أعد المحاولة."); send.disabled = false; send.textContent = "📤 أرسل أوراقي";
@@ -200,6 +207,59 @@
         msg(b, "err", "انقطع الاتصال أثناء الإرسال. أوراقك لم تصل، أعد المحاولة."); send.disabled = false; send.textContent = "📤 أرسل أوراقي";
       }
     };
+  }
+
+  /* ---------- 3b. receipts and «📊 نتائجي» (only marks the teacher APPROVED come back) ---------- */
+  const RKEY = "irsal-receipts";
+  function receipts() { try { const a = JSON.parse(ls.get(RKEY) || "[]"); return Array.isArray(a) ? a : []; } catch (_) { return []; } }
+  function addReceipt(x) { const a = receipts().filter(y => y.r !== x.r); a.unshift(x); ls.set(RKEY, JSON.stringify(a.slice(0, 40))); }
+  function results() {
+    const b = shell(`<h2>📊 نتائجي</h2><p>النقاط التي راجعها الأستاذ واعتمدها.</p>
+<label for="irs-add">أضف رقم وصل (من جهاز آخر)</label>
+<div class="row" style="margin-top:0"><input type="text" id="irs-add" maxlength="8" dir="ltr" style="flex:1;text-transform:uppercase"><button id="irs-addb">إضافة</button></div>
+<div id="irs-list"><p>جارٍ التحميل<span class="spin"></span></p></div>
+<div class="row"><button id="irs-back">📤 إرسال ورقة أخرى</button></div><div class="msg"></div>`);
+    b.querySelector("#irs-back").onclick = form;
+    b.querySelector("#irs-addb").onclick = () => {
+      const v = b.querySelector("#irs-add").value.trim().toUpperCase();
+      if (!/^[A-Z0-9]{6}$/.test(v)) return msg(b, "err", "رقم الوصل 6 رموز، مثل K7Q4M2.");
+      addReceipt({ r: v, page: "", title: "", d: Date.now() }); results();
+    };
+    const list = b.querySelector("#irs-list"), mine = receipts();
+    if (!mine.length) { list.innerHTML = "<p>لم ترسل أي ورقة من هذا الهاتف بعد.</p>"; return; }
+    if (!navigator.onLine) { list.innerHTML = ""; return msg(b, "err", "لا يوجد اتصال بالإنترنت."); }
+    post({ a: "results", code: ss.get("irsal-code"), receipts: mine.map(x => x.r) }).then(r => {
+      if (!r || !r.ok) { list.innerHTML = ""; if (r && r.bad === "code") ss.set("irsal-code", ""); return msg(b, "err", (r && r.msg) || "تعذّر جلب النتائج."); }
+      const by = {}; (r.items || []).forEach(it => { by[it.r] = it; });
+      list.innerHTML = mine.map(x => {
+        const it = by[x.r] || { status: "unknown" };
+        const title = esc(it.title || x.title || "ورقة"), date = new Date(it.date || x.d).toLocaleDateString("ar-DZ");
+        const head = `<div style="display:flex;justify-content:space-between;gap:8px;align-items:baseline"><b>${title}</b><small dir="ltr">${esc(x.r)}</small></div><small style="color:var(--muted,#475569)">${date}</small>`;
+        if (it.status !== "approved")
+          return `<div class="card-r">${head}<p style="margin:6px 0 0">${it.status === "unknown" ? "❔ رقم وصل غير معروف." : "⏳ في انتظار مراجعة الأستاذ."}</p></div>`;
+        const per = (it.per || []).map((m, i) => `<li>التمرين ${i + 1}: <b>${esc(m)}</b></li>`).join("");
+        const page = it.page || x.page;
+        return `<div class="card-r">${head}
+<p style="margin:6px 0;font-size:1.25rem"><b>${esc(it.total)}</b> / ${esc(it.max)}</p>${per ? `<ul style="margin:0 0 6px;padding-inline-start:20px">${per}</ul>` : ""}
+${it.feedback ? `<p style="white-space:pre-line;margin:0 0 6px">${esc(it.feedback)}</p>` : ""}${it.note ? `<p style="margin:0 0 6px">📝 <b>ملاحظة الأستاذ:</b> ${esc(it.note)}</p>` : ""}
+${page ? `<button class="sol" data-page="${esc(page)}">📘 الحل النموذجي</button>` : ""}</div>`;
+      }).join("");
+      list.querySelectorAll("button.sol").forEach(bt => bt.onclick = () => solution(bt.dataset.page, bt));
+    }).catch(() => { list.innerHTML = ""; msg(b, "err", "تعذّر الاتصال بالخادم. أعد المحاولة بعد قليل."); });
+  }
+
+  /* the model answer and marking scheme already printed in the paper's page (#solpaper), shown under the mark */
+  function solution(page, bt) {
+    if (!/^[1-4]m\/t[1-3]\/(fard|ikhtibar|wadjib)\/[a-z0-9\-]+\.html$/.test(page)) return;
+    const box = h("div", { className: "solbox" }, '<p>جارٍ التحميل<span class="spin"></span></p>');
+    bt.replaceWith(box);
+    fetch(page).then(r => r.text()).then(t => {
+      const doc = new DOMParser().parseFromString(t, "text/html"), sp = doc.getElementById("solpaper");
+      if (!sp) throw new Error("none");
+      sp.querySelectorAll("script,style,img[src^='data:image/png;base64'][alt*='QR'],.qr").forEach(x => x.remove());
+      sp.querySelectorAll(".ph,.cover").forEach(x => x.remove());
+      box.innerHTML = sp.innerHTML;
+    }).catch(() => { box.innerHTML = `<a href="${esc(page)}">📘 افتح الورقة</a>`; });
   }
 
   /* ---------- 4. image tools ---------- */
